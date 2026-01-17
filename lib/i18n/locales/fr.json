@@ -1,0 +1,252 @@
+{
+  "common": {
+    "back": "Retour",
+    "next": "Suivant",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "close": "Fermer",
+    "retry": "Réessayer",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès"
+  },
+  
+  "nav": {
+    "home": "Accueil",
+    "skane": "Skane",
+    "settings": "Paramètres"
+  },
+  
+  "home": {
+    "title": "NOKTA ONE",
+    "recentSkane": "Recente Skane",
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "daysAgo": "Il y a {{count}} jours",
+    "noResetAvailable": "Pas de reset disponible pendant {{hours}} heures",
+    "pressToSkane": "Press to\nskane",
+    "resetCompleted": "Reset terminé.",
+    "noRecentSkanes": "Aucun skane récent",
+    "noSkaneYet": "Aucun skane effectué pour le moment",
+    "readyForFirstSkane": "Prêt pour votre premier Skane !"
+  },
+  
+  "skane": {
+    "startSkane": "Start\nSkane",
+    "analyzing": "Analyse en cours...",
+    "analyzingPatterns": "Analyse des patterns corporels...",
+    "detectingSignals": "Détection des signaux d'activation...",
+    "completed": "SKANE TERMINÉ",
+    "signal": "Signal",
+    "action": "Action",
+    "startMicroAction": "Démarrer la micro-action",
+    "disclaimer": "Signal bien-être – pas médical"
+  },
+  
+  "states": {
+    "highActivation": "Activation élevée",
+    "lowEnergy": "Énergie basse",
+    "regulated": "Régulé"
+  },
+  
+  "actions": {
+    "physiologicalSigh": "Soupir physiologique",
+    "expiration38": "Expiration longue",
+    "respiration46": "Respiration stabilisante",
+    "boxBreathing": "Box Breathing",
+    "respiration21": "Respiration énergisante",
+    "dropTrapezes": "Drop des trapèzes",
+    "ouvertureThoracique": "Ouverture thoracique",
+    "postureAncrage": "Posture d'ancrage",
+    "shakeNeuromusculaire": "Shake neuromusculaire",
+    "pressionPlantaire": "Pression plantaire",
+    "regardFixeExpiration": "Regard fixe + expiration"
+  },
+  
+  "breathing": {
+    "inhale": "Inspire",
+    "exhale": "Expire",
+    "hold": "Retiens",
+    "pause": "Pause",
+    "throughNose": "par le nez",
+    "throughMouth": "par la bouche",
+    "slowly": "lentement",
+    "quickly": "rapidement",
+    "inhaleNose": "Inspire par le nez",
+    "inhaleMore": "Inspire encore un peu",
+    "exhaleSlowMouth": "Expire lentement par la bouche",
+    "exhaleGentleMouth": "Expire doucement par la bouche",
+    "exhaleMouth": "Expire par la bouche",
+    "inhaleQuickNose": "Inspire rapidement par le nez",
+    "inhaleCalmly": "Inspire calmement",
+    "exhaleSlowLong": "Expire lentement et longuement"
+  },
+  
+  "body": {
+    "raiseShouders": "Monte les épaules",
+    "releaseCompletely": "Relâche complètement",
+    "openChest": "Ouvre légèrement la poitrine",
+    "breatheCalmly": "Respire calmement",
+    "holdPosture": "Maintiens la posture",
+    "standGrounded": "Tiens-toi debout, pieds ancrés",
+    "lookAhead": "Regard droit devant",
+    "calmBreathing": "Respiration calme",
+    "shakeArms": "Secoue doucement les bras et les mains",
+    "moveFreely": "Laisse le corps bouger librement",
+    "pressFeet": "Appuie les pieds dans le sol",
+    "release": "Relâche",
+    "fixPoint": "Fixe un point stable"
+  },
+  
+  "feedback": {
+    "howDoYouFeel": "Comment te sens-tu ?",
+    "worse": "Pire",
+    "same": "Pareil",
+    "better": "Mieux"
+  },
+  
+  "share": {
+    "shareYourReset": "Share your reset? 🔥",
+    "no": "NO",
+    "shareToStories": "Partager en Story",
+    "downloadImage": "Télécharger l'image",
+    "skaneIndex": "SKANE INDEX",
+    "before": "AVANT",
+    "after": "APRÈS"
+  },
+  
+  "camera": {
+    "accessRequired": "Accès à la caméra requis",
+    "accessDenied": "Accès caméra refusé",
+    "accessError": "Erreur technique",
+    "description": "NOKTA ONE utilise votre caméra frontale pour analyser votre niveau d'activation.",
+    "noPhotoStored": "Aucune photo stockée",
+    "instantAnalysis": "Analyse instantanée",
+    "revocableAnytime": "Révocable à tout moment",
+    "allowCamera": "Autoriser la caméra",
+    "howToEnable": "Comment activer",
+    "refreshPage": "Rafraîchir la page",
+    "cannotAccessCamera": "Impossible d'accéder à la caméra. Vérifiez qu'aucune autre app ne l'utilise.",
+    "noCameraFound": "Aucune caméra détectée. Assurez-vous qu'une caméra est connectée à votre appareil.",
+    "activatingCamera": "Activation de la caméra..."
+  },
+  
+  "settings": {
+    "profile": "Profile",
+    "title": "Profile",
+    "settingsSection": "Paramètres",
+    "editProfile": "Modifier mon profil",
+    "notifications": "Notifications",
+    "language": "Langue",
+    "connectedDevices": "Appareils connectés",
+    "referralCode": "Code de parrainage",
+    "invitations": "Invitations",
+    "invitationsAvailable": "Invitations disponibles",
+    "inviteDescription": "Invitez vos proches à tester Nokta One en mode invité.",
+    "copyInviteLink": "Copier le lien d'invitation",
+    "linkCopied": "Lien copié !",
+    "earnInvitation": "Gagnez 1 invitation toutes les 3 skanes (24h)",
+    "logOut": "Déconnexion",
+    "comingSoon": "Bientôt disponible"
+  },
+  
+  "profile": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "username": "Nom d'utilisateur",
+    "usernameNotEditable": "Non modifiable",
+    "dateOfBirth": "Date de naissance",
+    "gender": "Genre",
+    "genderMale": "Homme",
+    "genderFemale": "Femme",
+    "genderOther": "Autre",
+    "genderPreferNotToSay": "Préfère ne pas dire",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "postalCode": "Code postal",
+    "city": "Ville",
+    "country": "Pays",
+    "occupation": "Profession",
+    "changePhoto": "Changer la photo",
+    "profileUpdated": "Profil mis à jour !"
+  },
+  
+  "info": {
+    "whatIsSkane": "QU'EST-CE QU'UN SKANE ?",
+    "skaneDescription": "Un reset corporel de 30 secondes maximum :",
+    "skanePoint1": "Scan facial IA (3 secondes)",
+    "skanePoint2": "Micro-action guidée (20-30 secondes)",
+    "skanePoint3": "Retour à l'équilibre immédiat",
+    "noDiagnosis": "Aucun diagnostic. Juste une action.",
+    "guestMode": "MODE INVITÉ",
+    "guestDescription": "Invitez vos proches à tester Nokta One.",
+    "guestPoint1": "1 invitation = 1 personne peut essayer",
+    "guestPoint2": "Gagnez 1 invitation toutes les 3 skanes (24h)",
+    "guestPoint3": "Les invités peuvent partager leur Skane Index",
+    "guestPoint4": "Aucune donnée sauvegardée pour les invités",
+    "blueIconMeansGuest": "L'icône bleue indique que le mode invité est actif.",
+    "invitationsAvailable": "Invitations disponibles"
+  },
+  
+  "languages": {
+    "title": "Langue",
+    "fr": "Français",
+    "en": "English (US)",
+    "es": "Español",
+    "de": "Deutsch",
+    "it": "Italiano",
+    "pt": "Português",
+    "ar": "العربية",
+    "hi": "हिन्दी",
+    "id": "Bahasa Indonesia",
+    "ja": "日本語",
+    "ko": "한국어",
+    "zh": "中文"
+  },
+
+  "signup": {
+    "createAccount": "Créer un compte",
+    "step1": "Identité",
+    "step2": "Contact",
+    "step3": "Notifications",
+    "usernameReserved": "Ce nom d'utilisateur est réservé",
+    "usernameTaken": "Ce nom d'utilisateur est déjà pris",
+    "usernameTooShort": "Minimum 3 caractères",
+    "usernameInvalidChars": "Lettres, chiffres et underscores uniquement",
+    "usernameAvailable": "Disponible",
+    "enableNotifications": "Activer les notifications",
+    "notificationsDescription": "Restez informé de vos resets et progrès",
+    "yourReferralCode": "Votre code de parrainage",
+    "accountCreated": "Compte créé avec succès !"
+  },
+
+  "support": {
+    "title": "Aide",
+    "contactUs": "Nous contacter",
+    "createTicket": "Nous contacter",
+    "category": "Catégorie",
+    "categories": {
+      "bug": "🐛 Bug / Problème technique",
+      "account": "👤 Mon compte",
+      "billing": "💳 Paiement / Abonnement",
+      "feature": "💡 Suggestion de fonctionnalité",
+      "other": "❓ Autre"
+    },
+    "subject": "Sujet",
+    "subjectPlaceholder": "Décrivez brièvement votre problème",
+    "message": "Message",
+    "messagePlaceholder": "Décrivez votre problème en détail...",
+    "email": "Votre email",
+    "emailPlaceholder": "Pour vous répondre",
+    "send": "Envoyer",
+    "sending": "Envoi en cours...",
+    "success": "Message envoyé !",
+    "successMessage": "Nous vous répondrons dans les 24-48h.",
+    "error": "Erreur d'envoi",
+    "errorMessage": "Veuillez réessayer ou nous contacter directement à support@noktaone.com",
+    "ticketId": "Référence",
+    "requiredField": "Ce champ est requis",
+    "selectCategory": "Sélectionner..."
+  }
+}

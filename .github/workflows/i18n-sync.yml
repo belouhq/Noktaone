@@ -1,0 +1,42 @@
+name: i18n-sync
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
+      - name: Run i18n sync
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          I18N_FAIL_ON_MISSING: "false"
+        run: npm run i18n:sync
+
+      - name: Commit updated translations
+        if: github.event_name != 'pull_request'
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add lib/i18n/locales .i18n-sync-cache.json .i18n-sync-report.json
+            git commit -m "chore(i18n): sync translations"
+            git push
+          fi

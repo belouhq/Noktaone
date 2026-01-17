@@ -1,0 +1,517 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === VARIABLES CSS RESPONSIVE === */
+:root {
+  /* Safe areas pour les encoches iPhone */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  
+  /* Tailles dynamiques */
+  --header-height: 60px;
+  --bottom-nav-height: 80px;
+  
+  /* Couleurs NOKTA */
+  --nokta-blue: #3B82F6;
+  --nokta-dark: #0a0a0a;
+  --nokta-card: rgba(255, 255, 255, 0.05);
+  --nokta-border: rgba(255, 255, 255, 0.1);
+}
+
+/* === RESET ET BASE === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(59, 130, 246, 0.3); /* Highlight au tap */
+}
+
+/* Forcer les boutons à être cliquables */
+button {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  -webkit-tap-highlight-color: rgba(59, 130, 246, 0.3);
+  touch-action: manipulation;
+}
+
+html {
+  /* Empêcher le zoom sur iOS */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  
+  /* Smooth scroll */
+  scroll-behavior: smooth;
+  
+  /* Hauteur correcte sur mobile */
+  height: 100%;
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  min-height: 100dvh; /* Dynamic viewport height */
+  
+  background-color: #000000 !important;
+  background-color: var(--nokta-dark);
+  color: white;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  
+  /* Empêcher le overscroll bounce sur iOS */
+  overscroll-behavior: none;
+  
+  /* Safe areas */
+  padding-top: var(--safe-area-top);
+  padding-bottom: var(--safe-area-bottom);
+  padding-left: var(--safe-area-left);
+  padding-right: var(--safe-area-right);
+  
+  /* S'assurer que le body ne bloque pas les clics */
+  pointer-events: auto !important;
+  position: relative;
+}
+
+/* === CLASSES UTILITAIRES RESPONSIVE === */
+
+/* Container principal avec safe areas */
+.safe-container {
+  padding-top: var(--safe-area-top);
+  padding-bottom: calc(var(--safe-area-bottom) + var(--bottom-nav-height));
+  padding-left: max(16px, var(--safe-area-left));
+  padding-right: max(16px, var(--safe-area-right));
+  min-height: 100dvh;
+}
+
+/* Container sans bottom nav */
+.safe-container-no-nav {
+  padding-top: var(--safe-area-top);
+  padding-bottom: var(--safe-area-bottom);
+  padding-left: max(16px, var(--safe-area-left));
+  padding-right: max(16px, var(--safe-area-right));
+  min-height: 100dvh;
+}
+
+/* Page fullscreen (caméra, actions) */
+.fullscreen-page {
+  position: fixed;
+  inset: 0;
+  padding-top: var(--safe-area-top);
+  padding-bottom: var(--safe-area-bottom);
+}
+
+/* Bottom Nav avec safe area */
+.bottom-nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: var(--safe-area-bottom);
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 50%, transparent 100%);
+  z-index: 50;
+  pointer-events: auto;
+}
+
+/* Header avec safe area */
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: var(--safe-area-top);
+  z-index: 40;
+}
+
+/* === TAILLES DE TEXTE RESPONSIVE === */
+
+/* Utilise clamp() pour des tailles fluides */
+.text-responsive-xs {
+  font-size: clamp(0.625rem, 2.5vw, 0.75rem); /* 10px - 12px */
+}
+
+.text-responsive-sm {
+  font-size: clamp(0.75rem, 3vw, 0.875rem); /* 12px - 14px */
+}
+
+.text-responsive-base {
+  font-size: clamp(0.875rem, 3.5vw, 1rem); /* 14px - 16px */
+}
+
+.text-responsive-lg {
+  font-size: clamp(1rem, 4vw, 1.125rem); /* 16px - 18px */
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.125rem, 4.5vw, 1.25rem); /* 18px - 20px */
+}
+
+.text-responsive-2xl {
+  font-size: clamp(1.25rem, 5vw, 1.5rem); /* 20px - 24px */
+}
+
+.text-responsive-3xl {
+  font-size: clamp(1.5rem, 6vw, 1.875rem); /* 24px - 30px */
+}
+
+.text-responsive-4xl {
+  font-size: clamp(1.875rem, 7vw, 2.25rem); /* 30px - 36px */
+}
+
+/* === BOUTONS RESPONSIVE === */
+
+.btn-responsive {
+  padding: clamp(12px, 3vw, 16px) clamp(24px, 6vw, 32px);
+  font-size: clamp(0.875rem, 3.5vw, 1rem);
+  border-radius: clamp(12px, 3vw, 16px);
+}
+
+.btn-circle-responsive {
+  width: clamp(44px, 12vw, 56px);
+  height: clamp(44px, 12vw, 56px);
+}
+
+/* === ESPACEMENTS RESPONSIVE === */
+
+.spacing-responsive-sm {
+  padding: clamp(8px, 2vw, 12px);
+}
+
+.spacing-responsive-md {
+  padding: clamp(12px, 3vw, 20px);
+}
+
+.spacing-responsive-lg {
+  padding: clamp(16px, 4vw, 32px);
+}
+
+/* === CARDS RESPONSIVE === */
+
+.card-responsive {
+  padding: clamp(16px, 4vw, 24px);
+  border-radius: clamp(12px, 3vw, 20px);
+  background: var(--nokta-card);
+  border: 1px solid var(--nokta-border);
+}
+
+/* === MODALS RESPONSIVE === */
+
+.modal-responsive {
+  width: calc(100% - 32px);
+  max-width: 400px;
+  max-height: calc(100dvh - 64px - var(--safe-area-top) - var(--safe-area-bottom));
+  margin: 16px;
+  border-radius: clamp(16px, 4vw, 24px);
+}
+
+/* === INPUTS RESPONSIVE === */
+
+.input-responsive {
+  width: 100%;
+  padding: clamp(12px, 3vw, 16px);
+  font-size: clamp(0.875rem, 3.5vw, 1rem);
+  border-radius: clamp(8px, 2vw, 12px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-responsive:focus {
+  border-color: var(--nokta-blue);
+}
+
+/* === SKANE BUTTON RESPONSIVE === */
+
+.skane-button {
+  width: clamp(140px, 40vw, 200px);
+  height: clamp(140px, 40vw, 200px);
+}
+
+/* === BREATHING CIRCLE RESPONSIVE === */
+
+.breathing-circle {
+  width: clamp(160px, 45vw, 220px);
+  height: clamp(160px, 45vw, 220px);
+}
+
+.breathing-circle-outer {
+  width: clamp(180px, 50vw, 250px);
+  height: clamp(180px, 50vw, 250px);
+}
+
+/* === EMPÊCHER SÉLECTION DE TEXTE (UX mobile) === */
+
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* === ANIMATIONS OPTIMISÉES MOBILE === */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === BREAKPOINTS SPÉCIFIQUES === */
+
+/* Très petits écrans (iPhone SE, petits Android) */
+@media (max-width: 375px) {
+  :root {
+    --bottom-nav-height: 70px;
+  }
+  
+  .text-responsive-4xl {
+    font-size: 1.5rem;
+  }
+}
+
+/* Écrans moyens (iPhone standard) */
+@media (min-width: 376px) and (max-width: 428px) {
+  :root {
+    --bottom-nav-height: 80px;
+  }
+}
+
+/* Grands écrans (iPhone Pro Max, grands Android) */
+@media (min-width: 429px) and (max-width: 768px) {
+  :root {
+    --bottom-nav-height: 90px;
+  }
+}
+
+/* Tablettes */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .safe-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .safe-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  body {
+    /* Simuler un téléphone sur desktop */
+    background: #000;
+  }
+  
+  /* Conteneur "téléphone" centré */
+  .app-container {
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--nokta-dark);
+    position: relative;
+    box-shadow: 0 0 100px rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* === ORIENTATION PAYSAGE (à éviter pour cette app) === */
+
+/* Par défaut, le landscape-warning ne doit pas bloquer les clics */
+.landscape-warning {
+  pointer-events: none;
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .landscape-warning {
+    display: flex !important;
+    pointer-events: auto !important;
+  }
+  
+  .main-content {
+    display: none !important;
+  }
+}
+
+/* === PWA STANDALONE MODE === */
+
+@media (display-mode: standalone) {
+  body {
+    /* Ajustements spécifiques PWA installée */
+  }
+}
+
+/* === DARK MODE (déjà dark par défaut) === */
+
+@media (prefers-color-scheme: light) {
+  /* L'app reste dark même si le système est en light mode */
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* === SCROLLBAR STYLISÉE === */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* === FOCUS VISIBLE (Accessibilité) === */
+
+:focus-visible {
+  outline: 2px solid var(--nokta-blue);
+  outline-offset: 2px;
+}
+
+/* === PLACEHOLDER STYLING === */
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* === REACT DATEPICKER DARK THEME === */
+.react-datepicker {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.react-datepicker__header {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: #ffffff !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: #3B82F6 !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: clamp(12px, 3vw, 16px);
+  border-radius: clamp(8px, 2vw, 12px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-size: clamp(0.875rem, 3.5vw, 1rem);
+}
+
+.react-datepicker__input-container input:focus {
+  outline: none;
+  border-color: #3B82F6;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #FFFFFF;
+}
+
+.react-datepicker__triangle {
+  display: none;
+}
+
+/* === REACT PHONE INPUT DARK THEME === */
+.react-tel-input {
+  width: 100% !important;
+}
+
+.react-tel-input .flag-dropdown {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: clamp(8px, 2vw, 12px) 0 0 clamp(8px, 2vw, 12px) !important;
+}
+
+.react-tel-input .selected-flag {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.react-tel-input .selected-flag:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.react-tel-input .country-list {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.react-tel-input .country-list .country {
+  color: #ffffff !important;
+}
+
+.react-tel-input .country-list .country:hover {
+  background-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+.react-tel-input .country-list .country.highlight {
+  background-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+.react-tel-input input {
+  padding: clamp(12px, 3vw, 16px) !important;
+  font-size: clamp(0.875rem, 3.5vw, 1rem) !important;
+  border-radius: clamp(8px, 2vw, 12px) !important;
+}
+
+/* === RTL SUPPORT (Arabic) === */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}

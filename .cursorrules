@@ -1,0 +1,20 @@
+You are working on NOKTA ONE. Non-negotiable rule: do NOT hardcode user-facing strings.
+
+Goal: every UI string must be a translation key resolved via i18n.
+Source of truth: lib/i18n/locales/en.json (English).
+All other locales are generated automatically by npm run i18n:sync.
+
+Strict rules:
+1) NEVER overwrite or restructure existing files unless necessary. Make minimal diffs.
+2) Any new UI text must be added to lib/i18n/locales/en.json with a stable dotted key (e.g., "scan.completed").
+3) Replace inline strings with t("...") calls.
+4) Keep brand tokens unchanged: "Nokta One", "NOKTA ONE", "Skane", "SKANE", "Skane Index", "Reset".
+5) Use microcopy style: 2–6 words, simple, body-focused, no jargon, no explanations.
+6) Never use medical/mental-health words in new English strings: diagnosis, treatment, medical, disease, disorder, stress, anxiety, depression, burnout, therapy, meditation.
+7) Preserve placeholders exactly ({name}, {count}, %d, etc).
+8) Ensure RTL-safe layout for Arabic/Hebrew if present (use dir="rtl" based on locale).
+
+After implementing:
+- run npm run i18n:sync
+- ensure lib/i18n/locales/*.json updated and committed (or in PR diff)
+- if i18n-sync report indicates fallback used, do not change logic; it will self-heal when API is available.

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test Buttons</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      padding: 20px;
+      font-family: Arial;
+    }
+    button {
+      padding: 20px 40px;
+      background: red;
+      color: white;
+      font-size: 20px;
+      border: 3px solid white;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      display: block;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Buttons HTML Pur</h1>
+  <button onclick="alert('Button 1 works!'); window.location.href='/skane';">🔴 BOUTON TEST 1</button>
+  <button onclick="alert('Button 2 works!');">🔴 BOUTON TEST 2</button>
+  <button id="btn3">🔴 BOUTON TEST 3 (addEventListener)</button>
+  
+  <script>
+    document.getElementById('btn3').addEventListener('click', function() {
+      alert('Button 3 works with addEventListener!');
+      window.location.href = '/skane';
+    });
+    console.log('Script loaded, event listeners attached');
+  </script>
+</body>
+</html>
