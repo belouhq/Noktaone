@@ -70,61 +70,63 @@ export default function Home() {
       </div>
 
       {/* Contenu principal */}
-      <div className="relative z-10 min-h-screen px-6 pt-8 pb-24">
-        {/* Logo - Taille réduite */}
+      <div className="relative z-10 min-h-screen px-6 pt-4 pb-24">
+        {/* Logo - Réduit de 80% et remonté */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex justify-center mb-4"
+          className="flex justify-center mb-6"
         >
-          <Logo variant="text" className="h-5 w-auto" />
+          <Logo 
+            variant="text" 
+            width={40} 
+            height={8}
+            className="w-auto h-auto"
+            style={{ maxWidth: '40px', maxHeight: '8px' }}
+          />
         </motion.div>
 
-        {/* Section Last Skane - Juste en dessous du logo */}
+        {/* Section Last Skane - Informations complètes */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="flex justify-center mb-8"
-          style={{ opacity: 0.7 }}
+          className="flex flex-col items-center mb-12"
         >
-          <div className="text-center">
-            <h2 
-              className="text-sm font-medium mb-2"
-              style={{ opacity: 0.65 }}
-            >
-              {(() => {
-                const translated = t("home.lastSkaneTitle");
-                return translated !== "home.lastSkaneTitle" ? translated : "Last skane";
-              })()}
-            </h2>
+          <h2 
+            className="text-sm font-medium mb-3 text-white/80"
+          >
+            {(() => {
+              const translated = t("home.lastSkaneTitle");
+              return translated !== "home.lastSkaneTitle" ? translated : "Dernier skane";
+            })()}
+          </h2>
 
-            {isLoading ? (
-              // Loading state (skeleton)
-              <div className="flex items-center justify-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-white/10 animate-pulse" />
-                <div className="h-3 w-24 bg-white/10 rounded animate-pulse" />
-              </div>
-            ) : (
-              // Display based on state machine
-              <div className="flex items-center justify-center gap-2">
-                {lastSkane.emoji && (
-                  <span 
-                    className="text-base"
-                    style={{ fontSize: '0.8em' }}
-                  >
-                    {lastSkane.emoji}
-                  </span>
-                )}
+          {isLoading ? (
+            // Loading state (skeleton)
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-white/10 animate-pulse" />
+              <div className="h-4 w-32 bg-white/10 rounded animate-pulse" />
+            </div>
+          ) : (
+            // Display based on state machine - Informations complètes
+            <div className="flex flex-col items-center gap-2">
+              {lastSkane.emoji && (
                 <span 
-                  className="text-white/70 text-sm"
-                  style={{ opacity: 0.75 }}
+                  className="text-2xl"
+                  role="img"
+                  aria-label="Feedback emoji"
                 >
-                  {lastSkane.timeLabel}
+                  {lastSkane.emoji}
                 </span>
-              </div>
-            )}
-          </div>
+              )}
+              <span 
+                className="text-white/90 text-base font-medium"
+              >
+                {lastSkane.timeLabel}
+              </span>
+            </div>
+          )}
         </motion.div>
 
         {/* Bouton Skane - En bas, centré, à la hauteur d'un pouce (≈120px) */}
