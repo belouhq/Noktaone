@@ -39,14 +39,14 @@
   },
   "onboarding": {
     "continue": {
-      "title": "Nokta fonctionne encore mieux quand il te connaît un peu.",
+      "title": "Nokta One fonctionne encore mieux quand il te connaît un peu.",
       "subtitle": "Aucune donnée sensible. Juste ton ressenti.",
       "continue": "Continuer",
       "later": "Plus tard"
     },
     "adaptation": {
-      "title": "Nokta s'adapte à ton corps.",
-      "description": "Pendant {{days}} jours, Nokta ajuste ses recommandations pour être parfaitement aligné avec toi.",
+      "title": "Nokta One s'adapte à ton corps.",
+      "description": "Pendant {{days}} jours, Nokta One ajuste ses recommandations pour être parfaitement aligné avec toi.",
       "noAction": "Tu n'as rien de spécial à faire.",
       "timeline": "Jour 1 → Jour 7",
       "accept": "D'accord"
@@ -61,7 +61,7 @@
     "reflex": {
       "title": "Quand ton corps est off, skane.",
       "subtitle": "Stress, fatigue, surcharge mentale, avant un moment important",
-      "noktaIsHere": "Nokta est là.",
+      "noktaIsHere": "Nokta One est là.",
       "nextSkane": "Faire mon prochain skane"
     }
   },
@@ -76,7 +76,7 @@
     "inProgress": "Adaptation en cours — Jour {{day}} sur 7",
     "improvesPrecision": "Chaque skane améliore la précision.",
     "complete": "✓ Adaptation terminée",
-    "calibrated": "Nokta est maintenant calibré pour toi."
+    "calibrated": "Nokta One est maintenant calibré pour toi."
   },
   "time": {
     "minutesAgo": "Il y a {{count}} min",
