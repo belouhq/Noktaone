@@ -21,68 +21,23 @@ export function CameraPermissionScreen({ state, onRequestPermission }: CameraPer
     return translated && translated !== key ? translated : fallback;
   };
 
-  // Détecter le navigateur
-  const getBrowserInstructions = () => {
+  // Détecter le navigateur — retourne des clés i18n pour le vocabulaire NOKTA
+  const getBrowserInstructions = (): { browserKey: string; icon: string; stepKeys: string[] } => {
+    const stepKeys = ['camera.browserStep1', 'camera.browserStep2', 'camera.browserStep3', 'camera.browserStep4'];
     if (typeof window === 'undefined') {
-      return {
-        browser: 'Navigateur',
-        icon: '⚙️',
-        steps: [
-          'Ouvre les paramètres du navigateur',
-          'Trouve les permissions de site',
-          'Autorise la caméra pour ce site',
-          'Rafraîchis la page'
-        ]
-      };
+      return { browserKey: 'camera.browserDefault', icon: '⚙️', stepKeys };
     }
-
     const userAgent = navigator.userAgent.toLowerCase();
-    
     if (userAgent.includes('chrome')) {
-      return {
-        browser: 'Chrome',
-        icon: '🔒',
-        steps: [
-          'Clique sur le cadenas 🔒 dans la barre d\'URL',
-          'Clique sur "Paramètres du site"',
-          'Autorise la "Caméra"',
-          'Rafraîchis la page'
-        ]
-      };
-    } else if (userAgent.includes('safari')) {
-      return {
-        browser: 'Safari',
-        icon: '⚙️',
-        steps: [
-          'Menu Safari → Réglages pour ce site web',
-          'Trouve "Caméra"',
-          'Sélectionne "Autoriser"',
-          'Rafraîchis la page'
-        ]
-      };
-    } else if (userAgent.includes('firefox')) {
-      return {
-        browser: 'Firefox',
-        icon: '🔒',
-        steps: [
-          'Clique sur le cadenas dans la barre d\'URL',
-          'Clique sur "Permissions"',
-          'Autorise la caméra',
-          'Rafraîchis la page'
-        ]
-      };
-    } else {
-      return {
-        browser: 'Navigateur',
-        icon: '⚙️',
-        steps: [
-          'Ouvre les paramètres du navigateur',
-          'Trouve les permissions de site',
-          'Autorise la caméra pour ce site',
-          'Rafraîchis la page'
-        ]
-      };
+      return { browserKey: 'camera.browserChrome', icon: '🔒', stepKeys };
     }
+    if (userAgent.includes('safari')) {
+      return { browserKey: 'camera.browserSafari', icon: '⚙️', stepKeys };
+    }
+    if (userAgent.includes('firefox')) {
+      return { browserKey: 'camera.browserFirefox', icon: '🔒', stepKeys };
+    }
+    return { browserKey: 'camera.browserDefault', icon: '⚙️', stepKeys };
   };
 
   // Bouton retour commun à tous les états
@@ -178,10 +133,10 @@ export function CameraPermissionScreen({ state, onRequestPermission }: CameraPer
           
           <div className="text-left text-sm text-gray-500 mb-8 space-y-2 bg-white/5 p-4 rounded-xl">
             <p className="font-medium text-nokta-one-white mb-2">
-              {instructions.icon} Comment activer sur {instructions.browser} :
+              {instructions.icon} {t('camera.howToEnableOn', { browser: t(instructions.browserKey) })}
             </p>
-            {instructions.steps.map((step, index) => (
-              <p key={index}>{index + 1}. {step}</p>
+            {instructions.stepKeys.map((key, index) => (
+              <p key={index}>{index + 1}. {t(key)}</p>
             ))}
           </div>
           

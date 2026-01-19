@@ -1,59 +1,70 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { updateSkaneFeedback, getStoredSkanes, generateSkaneId, saveSkane } from "@/lib/skane/storage";
-import type { UserFeedback, InternalState, MicroActionType } from "@/lib/skane/types";
-import { 
-  updateMicroActionFeedback, 
-  updateSkaneSession,
-  feedbackToEffect,
-  getOrCreateGuestId,
-  getUserId
-} from "@/lib/skane/supabase-tracker";
+import { useTranslation } from "@/lib/hooks/useTranslation";
+import { saveSkane, updateSkaneFeedback, generateSkaneId } from "@/lib/skane/storage";
 import { updateSessionFeedback } from "@/lib/skane/session-model";
+import { updateMicroActionFeedback, updateSkaneSession, getOrCreateGuestId, getUserId } from "@/lib/skane/supabase-tracker";
+import { addToGuestCache } from "@/lib/skane/guest-cache";
 
-interface AnalysisResult {
-  state: InternalState;
-  skaneIndex: number;
-  microAction: MicroActionType;
+type FeedbackValue = "worse" | "same" | "better";
+
+// Convertir feedback en effet numérique pour Supabase
+function feedbackToEffect(feedback: FeedbackValue): -1 | 0 | 1 {
+  switch (feedback) {
+    case "worse": return -1;
+    case "same": return 0;
+    case "better": return 1;
+  }
 }
 
 export default function FeedbackPage() {
   const router = useRouter();
-  const [result, setResult] = useState<AnalysisResult | null>(null);
-  const [selectedFeedback, setSelectedFeedback] = useState<UserFeedback | null>(null);
+  const { t } = useTranslation();
+  const [result, setResult] = useState<any>(null);
+  const [selectedFeedback, setSelectedFeedback] = useState<FeedbackValue | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const stored = sessionStorage.getItem("skane_analysis_result");
-    if (!stored) {
-      router.push("/skane");
-      return;
+    const storedResult = sessionStorage.getItem("skane_analysis_result");
+    if (storedResult) {
+      setResult(JSON.parse(storedResult));
     }
+  }, []);
 
-    try {
-      const parsed = JSON.parse(stored);
-      setResult(parsed);
-    } catch (error) {
-      console.error("Error parsing result:", error);
-      router.push("/skane");
-    }
-  }, [router]);
-
-  const handleFeedback = async (feedback: UserFeedback) => {
-    if (!result || selectedFeedback) return; // Éviter les doubles clics
-
+  const handleFeedback = async (feedback: FeedbackValue) => {
+    if (selectedFeedback || isSubmitting) return;
+    
     setSelectedFeedback(feedback);
+    setIsSubmitting(true);
 
-    // Récupérer les IDs
-    const isGuestMode = localStorage.getItem("guestMode") === "true";
+    // Récupérer le mode invité
+    const isGuestMode = sessionStorage.getItem("skane_guest_mode") === "true";
     const userId = getUserId();
     const guestId = isGuestMode ? getOrCreateGuestId() : null;
     
     // Calculer after_score basé sur le feedback
     const effect = feedbackToEffect(feedback);
-    const afterScore = calculateAfterScore(result.skaneIndex, effect);
+    const afterScore = calculateAfterScore(result?.skaneIndex || 50, effect);
+
+    // Nokta Core : enregistrer dans nokta_sessions si sessionPayload (userId fourni à l'analyse)
+    let noktaData: { sessionId: string | null; skaneIndex: unknown } | null = null;
+    const sessionPayload = (result as { sessionPayload?: unknown }).sessionPayload;
+    if (sessionPayload) {
+      try {
+        const res = await fetch("/api/nokta/submit-feedback", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sessionPayload, feedback }),
+        });
+        const data = await res.json();
+        if (data?.success) noktaData = { sessionId: data.sessionId ?? null, skaneIndex: data.skaneIndex };
+      } catch (e) {
+        console.warn("[Nokta] submit-feedback failed", e);
+      }
+    }
 
     // Mettre à jour le feedback dans Supabase
     const eventId = sessionStorage.getItem('micro_action_event_id');
@@ -62,7 +73,7 @@ export default function FeedbackPage() {
     }
 
     // Mettre à jour la session SKANE (after_score)
-    const sessionId = (result as any).sessionId;
+    const sessionId = result?.sessionId;
     if (sessionId) {
       await updateSkaneSession(sessionId, afterScore, result.skaneIndex);
       
@@ -70,12 +81,13 @@ export default function FeedbackPage() {
       const updatedResult = {
         ...result,
         afterScore: afterScore,
+        ...(noktaData && { noktaSessionId: noktaData.sessionId, noktaSkaneIndex: noktaData.skaneIndex }),
       };
       sessionStorage.setItem("skane_analysis_result", JSON.stringify(updatedResult));
     }
 
     // Mettre à jour la session locale (nouveau modèle)
-    const localSessionId = (result as any).localSessionId;
+    const localSessionId = result?.localSessionId;
     if (localSessionId) {
       updateSessionFeedback(localSessionId, feedback);
     }
@@ -85,32 +97,42 @@ export default function FeedbackPage() {
     const skaneResult = {
       id: skaneId,
       timestamp: new Date(),
-      internalState: result.state,
-      microAction: result.microAction,
+      internalState: result?.state,
+      microAction: result?.microAction,
       feedback: feedback,
       userId: userId || undefined,
       isGuestMode: isGuestMode,
-      skaneIndexBefore: result.skaneIndex,
+      skaneIndexBefore: result?.skaneIndex,
       skaneIndexAfter: afterScore,
     };
 
     saveSkane(skaneResult);
     updateSkaneFeedback(skaneId, feedback);
 
-    // Rediriger après un court délai
+    // Also save to guest cache if in guest mode
+    if (isGuestMode) {
+      addToGuestCache({
+        id: skaneId,
+        ts: Date.now(),
+        feedback: feedback,
+        mode: result?.state,
+      });
+    }
+
+    // Rediriger après un court délai (feedback visuel)
     setTimeout(() => {
       router.push("/skane/share-prompt");
-    }, 500);
+    }, 600);
   };
 
   // Calculer le after_score basé sur le feedback
   function calculateAfterScore(beforeScore: number, effect: -1 | 0 | 1): number {
     switch (effect) {
-      case 1: // Mieux
+      case 1: // Mieux - grande amélioration
         return Math.max(10, beforeScore - Math.floor(Math.random() * 30 + 40));
-      case 0: // Pareil
+      case 0: // Pareil - légère amélioration
         return Math.max(15, beforeScore - Math.floor(Math.random() * 15 + 10));
-      case -1: // Pire
+      case -1: // Pire - pas d'amélioration
         return Math.min(95, beforeScore + Math.floor(Math.random() * 10));
       default:
         return beforeScore - 20;
@@ -120,51 +142,147 @@ export default function FeedbackPage() {
   if (!result) {
     return (
       <main className="fixed inset-0 bg-nokta-one-black flex items-center justify-center">
-        <p className="text-nokta-one-white">Loading...</p>
+        <div className="w-8 h-8 border-2 border-nokta-one-blue border-t-transparent rounded-full animate-spin" />
       </main>
     );
   }
 
   return (
-    <main className="fixed inset-0 bg-nokta-one-black flex flex-col items-center justify-center px-4">
-      <h1 className="text-2xl font-semibold text-nokta-one-white mb-12 text-center">
-        How are you feeling?
-      </h1>
+    <main className="fixed inset-0 bg-nokta-one-black flex flex-col items-center justify-center px-6">
+      {/* Question principale - claire et simple */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-8"
+      >
+        <h1 className="text-2xl font-semibold text-nokta-one-white mb-3">
+          {t("feedback.howDoYouFeel")}
+        </h1>
+        <p className="text-gray-400 text-sm max-w-xs mx-auto">
+          {t("feedback.helpImprove")}
+        </p>
+      </motion.div>
 
-      <div className="flex gap-8 items-center">
-        {/* Worse */}
+      {/* 
+        NEURO-UX DESIGN:
+        - 3 boutons disposés horizontalement
+        - "Mieux" (better) est PLUS GRAND et à DROITE (zone du pouce naturelle)
+        - Couleurs: better=vert dominant, same=neutre, worse=discret
+        - Hiérarchie visuelle pousse vers "Mieux"
+      */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="flex items-end justify-center gap-4 w-full max-w-sm"
+      >
+        {/* Worse - Petit, discret, à gauche */}
         <motion.button
           onClick={() => handleFeedback("worse")}
-          disabled={selectedFeedback !== null}
-          className="text-6xl disabled:opacity-50"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
+          disabled={selectedFeedback !== null || isSubmitting}
+          className="flex flex-col items-center gap-2 p-4 rounded-2xl transition-all"
+          style={{
+            background: selectedFeedback === "worse" 
+              ? "rgba(239, 68, 68, 0.2)" 
+              : "rgba(255, 255, 255, 0.05)",
+            border: selectedFeedback === "worse"
+              ? "2px solid rgba(239, 68, 68, 0.5)"
+              : "1px solid rgba(255, 255, 255, 0.1)",
+            opacity: selectedFeedback && selectedFeedback !== "worse" ? 0.4 : 1,
+            minWidth: "80px",
+          }}
+          whileHover={!selectedFeedback && !isSubmitting ? { scale: 1.05 } : {}}
+          whileTap={!selectedFeedback && !isSubmitting ? { scale: 0.95 } : {}}
         >
-          😕
+          <span className="text-3xl">😕</span>
+          <span className="text-xs text-gray-400">
+            {t("feedback.worse")}
+          </span>
         </motion.button>
 
-        {/* Same */}
+        {/* Same - Moyen, neutre, au centre */}
         <motion.button
           onClick={() => handleFeedback("same")}
-          disabled={selectedFeedback !== null}
-          className="text-6xl disabled:opacity-50"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
+          disabled={selectedFeedback !== null || isSubmitting}
+          className="flex flex-col items-center gap-2 p-4 rounded-2xl transition-all"
+          style={{
+            background: selectedFeedback === "same" 
+              ? "rgba(156, 163, 175, 0.2)" 
+              : "rgba(255, 255, 255, 0.05)",
+            border: selectedFeedback === "same"
+              ? "2px solid rgba(156, 163, 175, 0.5)"
+              : "1px solid rgba(255, 255, 255, 0.1)",
+            opacity: selectedFeedback && selectedFeedback !== "same" ? 0.4 : 1,
+            minWidth: "90px",
+          }}
+          whileHover={!selectedFeedback && !isSubmitting ? { scale: 1.05 } : {}}
+          whileTap={!selectedFeedback && !isSubmitting ? { scale: 0.95 } : {}}
         >
-          😐
+          <span className="text-4xl">😐</span>
+          <span className="text-xs text-gray-400">
+            {t("feedback.same")}
+          </span>
         </motion.button>
 
-        {/* Better */}
+        {/* Better - GRAND, dominant, à DROITE (thumb zone) */}
         <motion.button
           onClick={() => handleFeedback("better")}
-          disabled={selectedFeedback !== null}
-          className="text-6xl disabled:opacity-50"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
+          disabled={selectedFeedback !== null || isSubmitting}
+          className="flex flex-col items-center gap-3 p-5 rounded-2xl transition-all"
+          style={{
+            background: selectedFeedback === "better" 
+              ? "rgba(16, 185, 129, 0.3)" 
+              : "rgba(16, 185, 129, 0.1)",
+            border: selectedFeedback === "better"
+              ? "2px solid rgba(16, 185, 129, 0.7)"
+              : "2px solid rgba(16, 185, 129, 0.3)",
+            opacity: selectedFeedback && selectedFeedback !== "better" ? 0.4 : 1,
+            minWidth: "110px",
+            // Box shadow pour attirer l'attention
+            boxShadow: !selectedFeedback && !isSubmitting
+              ? "0 0 20px rgba(16, 185, 129, 0.2)" 
+              : "none",
+          }}
+          whileHover={!selectedFeedback && !isSubmitting ? { scale: 1.08 } : {}}
+          whileTap={!selectedFeedback && !isSubmitting ? { scale: 0.95 } : {}}
         >
-          🙂
+          <span className="text-5xl">🙂</span>
+          <span className="text-sm font-medium text-green-400">
+            {t("feedback.better")}
+          </span>
         </motion.button>
-      </div>
+      </motion.div>
+
+      {/* Message de confirmation après sélection */}
+      {selectedFeedback && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mt-8 text-center"
+        >
+          <p className="text-nokta-one-white text-lg">
+            {selectedFeedback === "better" && t("feedback.greatToHear")}
+            {selectedFeedback === "same" && t("feedback.noted")}
+            {selectedFeedback === "worse" && t("feedback.willImprove")}
+          </p>
+          <div className="mt-4 flex items-center justify-center gap-2">
+            <div className="w-2 h-2 bg-nokta-one-blue rounded-full animate-pulse" />
+            <span className="text-gray-400 text-sm">
+              {t("feedback.redirecting")}
+            </span>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Explication discrète en bas */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="absolute bottom-8 left-0 right-0 text-center text-xs text-gray-500 px-8"
+      >
+        {t("feedback.privacyNote")}
+      </motion.p>
     </main>
   );
 }

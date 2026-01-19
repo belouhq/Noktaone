@@ -7,7 +7,7 @@ import { useTranslation } from '@/lib/hooks/useTranslation';
 import { MICRO_ACTIONS } from '@/lib/skane/constants';
 import { MicroActionRunner, PhaseState } from '@/lib/skane/microActionRunner';
 import { BreathingCircle } from '@/components/skane/BreathingCircle';
-import { MicroActionType } from '@/lib/skane/types';
+import { MicroActionType, MicroAction } from '@/lib/skane/types';
 import { 
   createMicroActionEvent, 
   getOrCreateGuestId, 
@@ -22,6 +22,20 @@ export default function ActionPage() {
   const [actionId, setActionId] = useState<MicroActionType | null>(null);
   const [phase, setPhase] = useState<PhaseState | null>(null);
   const [isReady, setIsReady] = useState(false);
+
+  // État initial pour éviter le loader infini
+  const getInitialPhase = (action: MicroAction): PhaseState => {
+    const firstInstruction = action.instructions[0];
+    return {
+      type: firstInstruction?.type || 'pause',
+      instruction: firstInstruction?.text || 'Get ready...',
+      secondsRemaining: firstInstruction?.duration || 0,
+      totalSeconds: firstInstruction?.duration || 0,
+      currentCycle: 0,
+      totalCycles: action.repetitions,
+      isComplete: false,
+    };
+  };
 
   // Charger les données depuis sessionStorage
   useEffect(() => {
@@ -82,6 +96,9 @@ export default function ActionPage() {
       return;
     }
 
+    // Initialiser phase avec l'état de préparation
+    setPhase(getInitialPhase(action));
+
     // Créer le runner
     runnerRef.current = new MicroActionRunner(
       action,
@@ -92,13 +109,10 @@ export default function ActionPage() {
       }
     );
 
-    // Démarrer après un court délai
-    const timeout = setTimeout(() => {
-      runnerRef.current?.start();
-    }, 500);
+    // Démarrer immédiatement (start() appelle emitState() immédiatement)
+    runnerRef.current.start();
 
     return () => {
-      clearTimeout(timeout);
       runnerRef.current?.stop();
     };
   }, [isReady, actionId, router]);

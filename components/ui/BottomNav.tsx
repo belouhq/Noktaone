@@ -27,11 +27,20 @@ export function BottomNav({ currentPage }: BottomNavProps) {
   };
 
   const activeItem = getActiveItem();
+  
+  // Masquer l'icône Skane uniquement sur la page d'accueil et la page skane
+  const shouldHideSkaneIcon = pathname === '/' || pathname.startsWith('/skane');
+  const visibleItems = NAV_ITEMS.filter(item => {
+    if (item.id === 'skane' && shouldHideSkaneIcon) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <nav className="bottom-nav-container">
       <div className="flex items-center justify-around px-4 py-2 max-w-lg mx-auto">
-        {NAV_ITEMS.map(({ id, icon: Icon, path }) => {
+        {visibleItems.map(({ id, icon: Icon, path }) => {
           const isActive = activeItem === id;
           
           return (
@@ -40,6 +49,11 @@ export function BottomNav({ currentPage }: BottomNavProps) {
               data-nav-button={id}
               data-nav-path={path}
               type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                router.push(path);
+              }}
               className="flex items-center justify-center p-4 transition-colors cursor-pointer relative z-10"
               style={{ pointerEvents: 'auto', position: 'relative', zIndex: 20 }}
               whileTap={{ scale: 0.95 }}

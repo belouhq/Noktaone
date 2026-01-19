@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 import SkaneShareCard from "@/components/skane/SkaneShareCard";
 import { getStoredSkanes } from "@/lib/skane/storage";
 import type { InternalState, MicroActionType } from "@/lib/skane/types";
@@ -19,6 +20,7 @@ interface AnalysisResult {
 
 export default function SharePage() {
   const router = useRouter();
+  const { t } = useTranslation();
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [skaneIndexAfter, setSkaneIndexAfter] = useState<number | null>(null);
@@ -35,20 +37,38 @@ export default function SharePage() {
     try {
       const parsed = JSON.parse(stored);
       setResult(parsed);
-      setCapturedImage(image);
+      setCapturedImage(image.startsWith("data:") ? image : `data:image/jpeg;base64,${image}`);
 
-      // Récupérer le afterScore depuis sessionStorage (mis à jour dans feedback)
-      if (parsed.afterScore !== undefined) {
-        setSkaneIndexAfter(parsed.afterScore);
-      } else {
-        // Fallback : récupérer depuis localStorage
-        const skanes = getStoredSkanes();
-        const lastSkane = skanes[skanes.length - 1];
-        if (lastSkane && lastSkane.skaneIndexAfter) {
-          setSkaneIndexAfter(lastSkane.skaneIndexAfter);
+      // Fourchettes SkaneIndexResult (share-prompt) : avant/après depuis les ranges
+      let usedPayload = false;
+      const payloadRaw = sessionStorage.getItem("skane_share_payload");
+      if (payloadRaw) {
+        try {
+          const payload = JSON.parse(payloadRaw);
+          if (payload.beforeRange?.length === 2 && payload.afterRange?.length === 2) {
+            const before = (payload.beforeRange[0] + payload.beforeRange[1]) / 2;
+            const after = (payload.afterRange[0] + payload.afterRange[1]) / 2;
+            setResult((r) => (r ? { ...r, skaneIndex: Math.round(before) } : r));
+            setSkaneIndexAfter(Math.round(after));
+            sessionStorage.removeItem("skane_share_payload");
+            usedPayload = true;
+          }
+        } catch {
+          /* ignore */
+        }
+      }
+
+      if (!usedPayload) {
+        if (parsed.afterScore != null) {
+          setSkaneIndexAfter(parsed.afterScore);
         } else {
-          // Fallback : calculer approximativement
-          setSkaneIndexAfter(Math.max(10, parsed.skaneIndex - 40));
+          const skanes = getStoredSkanes();
+          const lastSkane = skanes[skanes.length - 1];
+          if (lastSkane?.skaneIndexAfter != null) {
+            setSkaneIndexAfter(lastSkane.skaneIndexAfter);
+          } else {
+            setSkaneIndexAfter(Math.max(10, (parsed.skaneIndex ?? 50) - 40));
+          }
         }
       }
     } catch (error) {
@@ -60,7 +80,7 @@ export default function SharePage() {
   if (!result || !capturedImage || skaneIndexAfter === null) {
     return (
       <main className="fixed inset-0 bg-nokta-one-black flex items-center justify-center">
-        <p className="text-nokta-one-white">Loading...</p>
+        <p className="text-nokta-one-white">{t("common.loading")}</p>
       </main>
     );
   }
@@ -101,7 +121,7 @@ export default function SharePage() {
           border: "1px solid rgba(255, 255, 255, 0.15)",
         }}
       >
-        Back to Home
+        {t("common.back")}
       </button>
     </main>
   );

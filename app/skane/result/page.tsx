@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 import { MICRO_ACTIONS } from "@/lib/skane/constants";
 import type { InternalState, MicroActionType } from "@/lib/skane/types";
 
@@ -30,6 +31,7 @@ const STATE_COLORS = {
 
 export default function ResultPage() {
   const router = useRouter();
+  const { t } = useTranslation();
   const [result, setResult] = useState<SkaneResult | null>(null);
 
   useEffect(() => {
@@ -121,7 +123,7 @@ export default function ResultPage() {
           transition={{ delay: 0.2 }}
           className="text-2xl font-bold text-white tracking-wider mb-8"
         >
-          SKANE COMPLETED
+          {t("skane.completed")}
         </motion.h1>
 
         {/* Signal et Action */}
@@ -132,7 +134,7 @@ export default function ResultPage() {
           className="text-center mb-12"
         >
           <p className="text-xl text-white mb-2">
-            <span className="font-semibold">Signal : </span>
+            <span className="font-semibold">{t("skane.signal")}: </span>
             <span
               className="inline-flex items-center gap-2"
               style={{ color: stateColor }}
@@ -145,9 +147,9 @@ export default function ResultPage() {
             </span>
           </p>
           <p className="text-xl text-white">
-            <span className="font-semibold">Action : </span>
+            <span className="font-semibold">{t("skane.action")}: </span>
             <span className="text-white/90">
-              {action?.name || actionId}
+              {t(`actions.${actionId.replace(/_/g, '')}` as any) || action?.name || actionId}
             </span>
           </p>
         </motion.div>
@@ -170,14 +172,14 @@ export default function ResultPage() {
           <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
             <ArrowRight className="w-6 h-6 text-white" />
           </div>
-          <span className="text-white text-lg">Start micro-action</span>
+          <span className="text-white text-lg">{t("skane.startMicroAction")}</span>
         </motion.button>
       </div>
 
       {/* Disclaimer en bas */}
       <div className="absolute bottom-8 left-0 right-0 text-center">
         <p className="text-white/40 text-xs">
-          Signal bien-être – pas médical
+          {t("skane.disclaimer")}
         </p>
       </div>
     </div>
@@ -189,7 +191,7 @@ function getSignalLabel(state: InternalState): string {
   const labels: Record<InternalState, string> = {
     HIGH_ACTIVATION: "High Activation",
     LOW_ENERGY: "Low Energy",
-    REGULATED: "Clear Signal",
+    REGULATED: "Regulated",
   };
-  return labels[state] || "Clear Signal";
+  return labels[state] || "Regulated";
 }

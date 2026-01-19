@@ -7,6 +7,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { LANGUAGES } from "@/lib/i18n/languages";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 interface EditProfileModalProps {
   isOpen: boolean;
@@ -32,14 +34,7 @@ interface EditProfileModalProps {
 
 const genders = ["Homme", "Femme", "Autre", "Préfère ne pas dire"];
 
-const languages = [
-  { code: "fr", flag: "🇫🇷", name: "Français" },
-  { code: "en", flag: "🇺🇸", name: "English (US)" },
-  { code: "es", flag: "🇪🇸", name: "Español" },
-  { code: "de", flag: "🇩🇪", name: "Deutsch" },
-  { code: "it", flag: "🇮🇹", name: "Italiano" },
-  { code: "zh", flag: "🇨🇳", name: "中文" },
-];
+const languages = LANGUAGES;
 
 // Liste des pays avec drapeaux (simplifiée)
 const countries = [
@@ -61,6 +56,7 @@ export default function EditProfileModal({
   onSave,
   initialData,
 }: EditProfileModalProps) {
+  const { currentLanguage, changeLanguage } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     firstName: initialData?.firstName || "Benjamin",
@@ -76,7 +72,7 @@ export default function EditProfileModal({
     postalCode: initialData?.postalCode || "75001",
     city: initialData?.city || "Paris",
     country: initialData?.country || "FR",
-    language: initialData?.language || "fr",
+    language: initialData?.language || currentLanguage || "fr",
     occupation: initialData?.occupation || "Entrepreneur",
     avatar: initialData?.avatar || "",
   });
@@ -89,32 +85,39 @@ export default function EditProfileModal({
 
   // Reset form when modal opens/closes
   useEffect(() => {
-    if (isOpen && initialData) {
+    if (isOpen) {
+      const data = initialData || {};
       setFormData({
-        firstName: initialData.firstName || "Benjamin",
-        lastName: initialData.lastName || "Bel",
-        username: initialData.username || "belouforreal",
-        dateOfBirth: initialData.dateOfBirth
-          ? new Date(initialData.dateOfBirth)
+        firstName: data.firstName || "Benjamin",
+        lastName: data.lastName || "Bel",
+        username: data.username || "belouforreal",
+        dateOfBirth: data.dateOfBirth
+          ? new Date(data.dateOfBirth)
           : new Date("1993-01-15"),
-        gender: initialData.gender || "Homme",
-        email: initialData.email || "benjamin@noktaone.app",
-        phone: initialData.phone || "+33612345678",
-        address: initialData.address || "12 Rue de la République",
-        postalCode: initialData.postalCode || "75001",
-        city: initialData.city || "Paris",
-        country: initialData.country || "FR",
-        language: initialData.language || "fr",
-        occupation: initialData.occupation || "Entrepreneur",
-        avatar: initialData.avatar || "",
+        gender: data.gender || "Homme",
+        email: data.email || "benjamin@noktaone.app",
+        phone: data.phone || "+33612345678",
+        address: data.address || "12 Rue de la République",
+        postalCode: data.postalCode || "75001",
+        city: data.city || "Paris",
+        country: data.country || "FR",
+        language: data.language || currentLanguage || "fr",
+        occupation: data.occupation || "Entrepreneur",
+        avatar: data.avatar || "",
       });
-      setAvatarPreview(initialData.avatar || null);
+      setAvatarPreview(data.avatar || null);
       setErrors({});
     }
-  }, [isOpen, initialData]);
+  }, [isOpen, initialData, currentLanguage]);
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = async (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+    
+    // Synchroniser avec i18n si c'est la langue qui change
+    if (field === "language" && typeof value === "string") {
+      await changeLanguage(value);
+    }
+    
     // Clear error for this field
     if (errors[field]) {
       setErrors((prev) => {

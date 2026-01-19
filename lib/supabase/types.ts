@@ -41,4 +41,5 @@ export interface RecentSkane {
   skane_index: number;
   created_at: string;
   timeLabel: string; // "Today - 14:34", "Yesterday", "2 days ago"
+  feedback?: 'better' | 'same' | 'worse' | null;
 }

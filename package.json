@@ -4,16 +4,23 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npx ts-node --project scripts/tsconfig.json scripts/check-translations.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "translate": "npx ts-node --project scripts/tsconfig.json scripts/translate.ts",
     "add-translation": "npx ts-node --project scripts/tsconfig.json scripts/add-translation.ts",
     "i18n:sync": "npx ts-node --project scripts/tsconfig.json scripts/i18n-sync.ts",
+    "i18n:sync:simple": "npx ts-node --project scripts/tsconfig.json scripts/i18n-sync-simple.ts",
+    "i18n:check": "npx ts-node --project scripts/tsconfig.json scripts/check-translations.ts",
     "test-supabase": "npx ts-node --project scripts/tsconfig.json scripts/test-supabase.ts",
-    "setup-supabase": "npx ts-node --project scripts/tsconfig.json scripts/setup-supabase.ts"
+    "setup-supabase": "npx ts-node --project scripts/tsconfig.json scripts/setup-supabase.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.22-rc.20250304",
     "@supabase/supabase-js": "^2.90.1",
     "@types/react-datepicker": "^6.2.0",
     "clsx": "^2.1.1",
@@ -32,13 +39,17 @@
     "react-phone-input-2": "^2.15.1"
   },
   "devDependencies": {
-    "@types/node": "^22.19.6",
+    "@jest/globals": "^30.2.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.19.7",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
     "dotenv": "^17.2.3",
+    "jest": "^30.2.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.19",
+    "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }

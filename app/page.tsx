@@ -1,39 +1,47 @@
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { useAuthContext } from "@/components/providers/AuthProvider";
-import { useSkanes } from "@/lib/hooks/useSkanes";
+import { useLastSkane } from "@/lib/hooks/useLastSkane";
 import { BottomNav } from "@/components/ui/BottomNav";
 import SkaneButton from "@/components/ui/SkaneButton";
 import DotsPattern from "@/components/ui/DotsPattern";
 
-// Emoji selon l'état
-const STATE_EMOJI: Record<string, string> = {
-  HIGH_ACTIVATION: "😰",
-  LOW_ENERGY: "😴",
-  REGULATED: "😊",
-};
+function getAdaptationDay(): number {
+  if (typeof window === 'undefined') return 0;
+  const startDateStr = localStorage.getItem("adaptation_start_date");
+  if (!startDateStr) return 0;
+  
+  const startDate = new Date(startDateStr);
+  const now = new Date();
+  const diffTime = Math.abs(now.getTime() - startDate.getTime());
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+  
+  return Math.min(diffDays, 7);
+}
 
 export default function Home() {
   const router = useRouter();
   const { t } = useTranslation();
-  const { user, loading: authLoading } = useAuthContext();
-  const {
-    recentSkanes,
-    loading: skanesLoading,
-    canReset,
-    hoursUntilReset,
-  } = useSkanes();
+  const { lastSkane, isLoading } = useLastSkane();
+
+  // Rediriger vers home-adaptation si en mode adaptation (jours 1-7)
+  useEffect(() => {
+    const onboardingCompleted = localStorage.getItem("onboarding_completed");
+    if (onboardingCompleted) {
+      const day = getAdaptationDay();
+      if (day > 0 && day <= 7) {
+        router.push("/home-adaptation");
+        return;
+      }
+    }
+  }, [router]);
 
   const handlePressSkane = () => {
-    if (canReset) {
-      router.push("/skane");
-    }
+    router.push("/skane");
   };
-
-  const isLoading = authLoading || skanesLoading;
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -43,7 +51,7 @@ export default function Home() {
       </div>
 
       {/* Contenu principal */}
-      <div className="relative z-10 flex flex-col min-h-screen px-6 pt-12 pb-24">
+      <div className="relative z-10 min-h-screen px-6 pt-12 pb-24">
         {/* Logo */}
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -53,75 +61,65 @@ export default function Home() {
           NOKTA ONE
         </motion.h1>
 
-        {/* Section Skanes récents */}
+        {/* Section Last Skane - Visually subordinate to CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           className="mb-8"
+          style={{ opacity: 0.7 }} // Reduced opacity to not compete with CTA
         >
-          <h2 className="text-lg font-semibold mb-4">
-            {t("home.recentSkane") || "Recente Skane"} :
+          <h2 
+            className="text-sm font-medium mb-2"
+            style={{ opacity: 0.65 }} // Smaller, quieter typography
+          >
+            {(() => {
+              const translated = t("home.lastSkaneTitle");
+              return translated !== "home.lastSkaneTitle" ? translated : "Last skane";
+            })()}
           </h2>
 
           {isLoading ? (
-            // Loading state
-            <div className="space-y-3">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-white/10 animate-pulse" />
-                  <div className="h-4 w-32 bg-white/10 rounded animate-pulse" />
-                </div>
-              ))}
+            // Loading state (skeleton)
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded-full bg-white/10 animate-pulse" />
+              <div className="h-3 w-24 bg-white/10 rounded animate-pulse" />
             </div>
-          ) : recentSkanes.length === 0 ? (
-            // Pas de skanes
-            <p className="text-gray-500 text-sm">
-              {t("home.noSkaneYet") || "Aucun skane effectué pour le moment"}
-            </p>
           ) : (
-            // Liste des skanes récents
-            <ul className="space-y-3">
-              {recentSkanes.map((skane, index) => (
-                <motion.li
-                  key={skane.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 * index }}
-                  className="flex items-center gap-3"
+            // Display based on state machine
+            <div className="flex items-center gap-2">
+              {lastSkane.emoji && (
+                <span 
+                  className="text-base"
+                  style={{ fontSize: '0.8em' }} // Emoji subordinate to text
                 >
-                  <span className="text-xl">
-                    {STATE_EMOJI[skane.internal_state] || "😊"}
-                  </span>
-                  <span className="text-white/80">{skane.timeLabel}</span>
-                </motion.li>
-              ))}
-            </ul>
+                  {lastSkane.emoji}
+                </span>
+              )}
+              <span 
+                className="text-white/70 text-sm"
+                style={{ opacity: 0.75 }}
+              >
+                {lastSkane.timeLabel}
+              </span>
+            </div>
           )}
         </motion.div>
 
-        {/* Message de cooldown ou statut */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mb-auto"
+        {/* Bouton Skane - Position neuro-ergonomique optimale */}
+        {/* Position : X: 50%, Y: 68% (zone instinctive absolue) */}
+        {/* Zone de respiration : 16mm minimum autour (aucun autre CTA concurrent) */}
+        <div 
+          className="absolute left-1/2 -translate-x-1/2"
+          style={{
+            top: '68vh', // Zone instinctive absolue (55-75%, sweet spot 68%)
+            // Zone de respiration : 16mm minimum autour (≈1rem)
+            padding: '1rem',
+            pointerEvents: 'auto',
+            zIndex: 10,
+          }}
         >
-          {!canReset && hoursUntilReset > 0 ? (
-            <p className="text-gray-500 text-sm">
-              {t("home.noResetAvailable", { hours: hoursUntilReset }) ||
-                `No reset today for ${hoursUntilReset} hours`}
-            </p>
-          ) : recentSkanes.length === 0 ? (
-            <p className="text-gray-500 text-sm">
-              {t("home.readyForFirstSkane") || "Ready for your first Skane!"}
-            </p>
-          ) : null}
-        </motion.div>
-
-        {/* Bouton Skane centré */}
-        <div className="flex justify-center items-center py-12">
-          <SkaneButton onClick={handlePressSkane} disabled={!canReset} />
+          <SkaneButton onClick={handlePressSkane} />
         </div>
       </div>
 

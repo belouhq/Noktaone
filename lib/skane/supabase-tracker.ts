@@ -503,7 +503,7 @@ export async function logError(
         error_code: errorCode,
         error_message: errorMessage.substring(0, 500), // Limiter la longueur
         screen,
-        device_info: deviceInfo ? JSON.stringify(device_info) : null,
+        device_info: deviceInfo ? JSON.stringify(deviceInfo) : null,
         stack_trace: stackTrace ? stackTrace.substring(0, 2000) : null,
       });
 

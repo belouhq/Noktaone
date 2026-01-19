@@ -3,7 +3,7 @@ type HapticType = 'SHORT' | 'LONG' | 'TRANSITION' | 'DOUBLE_LONG';
 
 // Durées en millisecondes
 const HAPTIC_DURATIONS: Record<HapticType, number | number[]> = {
-  SHORT: 50,
+  SHORT: 12, // 10-15ms pour tap primaire (neuro-ergonomie)
   LONG: 120,
   TRANSITION: 200,
   DOUBLE_LONG: [120, 100, 120], // vibration, pause, vibration

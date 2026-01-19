@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Bell, Globe, Smartphone, Gift, Copy, UserPlus, HelpCircle, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
@@ -9,7 +10,9 @@ import { SafeAreaContainer } from "@/components/ui/SafeAreaContainer";
 import ProfileCard from "@/components/settings/ProfileCard";
 import SettingItem from "@/components/settings/SettingItem";
 import LanguageModal from "@/components/modals/LanguageModal";
+import { LANGUAGES } from "@/lib/i18n/languages";
 import ComingSoonModal from "@/components/modals/ComingSoonModal";
+import ConnectedDevicesModal from "@/components/modals/ConnectedDevicesModal";
 import InvitationsModal from "@/components/modals/InvitationsModal";
 import EditProfileModal from "@/components/modals/EditProfileModal";
 import { SupportModal } from "@/components/modals/SupportModal";
@@ -34,9 +37,23 @@ const mockUser = {
 };
 
 export default function SettingsPage() {
-  const { t, changeLanguage, currentLanguage } = useTranslation();
+  const router = useRouter();
+  const { t, changeLanguage, currentLanguage, isClient } = useTranslation();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [, forceUpdate] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const [isChangingLanguage, setIsChangingLanguage] = useState(false);
+  
+  // Éviter les erreurs d'hydratation en chargeant uniquement côté client
+  useEffect(() => {
+    // Attendre que le client soit prêt ET que i18n soit synchronisé
+    if (isClient) {
+      // Utiliser requestAnimationFrame pour s'assurer que l'hydratation est complète
+      requestAnimationFrame(() => {
+        setMounted(true);
+      });
+    }
+  }, [isClient]);
   
   // Forcer le re-render quand la langue change
   useEffect(() => {
@@ -50,12 +67,16 @@ export default function SettingsPage() {
   }, []);
   const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
   const [isComingSoonModalOpen, setIsComingSoonModalOpen] = useState(false);
+  const [isDevicesModalOpen, setIsDevicesModalOpen] = useState(false);
   const [isInvitationsModalOpen, setIsInvitationsModalOpen] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [invitationsCount] = useState(3); // Mock pour l'instant, plus tard : calculer depuis skanesLast24h
-  const [userProfile, setUserProfile] = useState(mockUser);
+  const [userProfile, setUserProfile] = useState({
+    ...mockUser,
+    language: currentLanguage || "fr", // Synchroniser avec i18n
+  });
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -84,27 +105,7 @@ export default function SettingsPage() {
   // Attacher les event listeners pour tous les boutons
   useEffect(() => {
     const attachListeners = () => {
-      // Bouton Language
-      const languageBtn = document.querySelector('[data-setting="language"]');
-      if (languageBtn && !languageBtn.hasAttribute('data-listener-attached')) {
-        languageBtn.setAttribute('data-listener-attached', 'true');
-        languageBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsLanguageModalOpen(true);
-        });
-      }
-
-      // Bouton Connected Devices
-      const devicesBtn = document.querySelector('[data-setting="devices"]');
-      if (devicesBtn && !devicesBtn.hasAttribute('data-listener-attached')) {
-        devicesBtn.setAttribute('data-listener-attached', 'true');
-        devicesBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsComingSoonModalOpen(true);
-        });
-      }
+      // Language est maintenant géré directement par le select React, pas besoin d'event listener
 
       // Bouton Invitations
       const invitationsBtn = document.querySelector('[data-setting="invitations"]');
@@ -150,16 +151,7 @@ export default function SettingsPage() {
         });
       }
 
-      // Toggle Notifications
-      const notificationsToggle = document.querySelector('[data-setting="notifications-toggle"]');
-      if (notificationsToggle && !notificationsToggle.hasAttribute('data-listener-attached')) {
-        notificationsToggle.setAttribute('data-listener-attached', 'true');
-        notificationsToggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setNotificationsEnabled(!notificationsEnabled);
-        });
-      }
+      // Toggle Notifications - maintenant géré directement par onClick React, pas besoin d'addEventListener
 
       // Bouton Edit Profile
       const editProfileBtn = document.querySelector('[data-profile="edit"]');
@@ -183,10 +175,13 @@ export default function SettingsPage() {
     localStorage.setItem("notificationsEnabled", notificationsEnabled.toString());
   }, [notificationsEnabled]);
 
-  const handleLanguageSelect = async (language: string) => {
-    await changeLanguage(language);
-    // Forcer un re-render immédiat
-    forceUpdate(prev => prev + 1);
+  const handleLanguageSelect = async (newLang: string) => {
+    if (newLang === currentLanguage || isChangingLanguage) return;
+    
+    // Sauvegarder dans localStorage et recharger
+    // Le I18nProvider va automatiquement charger la nouvelle langue depuis localStorage au rechargement
+    localStorage.setItem('language', newLang);
+    window.location.reload();
   };
 
   const handleCopyReferral = async () => {
@@ -207,12 +202,28 @@ export default function SettingsPage() {
     console.log("Logging out...");
   };
 
+  // Forcer le re-render complet quand la langue change
+  if (!mounted) {
+    return (
+      <SafeAreaContainer currentPage="settings">
+        <main className="relative min-h-screen-safe bg-nokta-one-black">
+          <div className="px-4 pt-8 pb-8">
+            <div className="animate-pulse text-white text-center">Loading...</div>
+          </div>
+        </main>
+      </SafeAreaContainer>
+    );
+  }
+
   return (
-    <SafeAreaContainer currentPage="settings">
+    <SafeAreaContainer currentPage="settings" key={`settings-${currentLanguage}-${Date.now()}`}>
       <main className="relative min-h-screen-safe bg-nokta-one-black">
         <div className="px-4 pt-8 pb-8">
         {/* Header */}
-        <h1 className="text-center text-2xl font-light text-nokta-one-white tracking-widest mb-8">
+        <h1 
+          className="text-center text-2xl font-light text-nokta-one-white tracking-widest mb-8"
+          suppressHydrationWarning
+        >
           {t("settings.profile")}
         </h1>
 
@@ -226,7 +237,10 @@ export default function SettingsPage() {
         />
 
         {/* Settings Title */}
-        <h2 className="text-lg font-semibold text-nokta-one-white mt-8 mb-4">
+        <h2 
+          className="text-lg font-semibold text-nokta-one-white mt-8 mb-4"
+          suppressHydrationWarning
+        >
           {t("settings.settingsSection")}
         </h2>
 
@@ -239,10 +253,16 @@ export default function SettingsPage() {
             rightElement={
               <motion.button
                 data-setting="notifications-toggle"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setNotificationsEnabled(!notificationsEnabled);
+                }}
                 className={`relative w-12 h-6 rounded-full transition-colors ${
                   notificationsEnabled ? "bg-nokta-one-blue" : "bg-gray-600"
                 }`}
                 whileTap={{ scale: 0.95 }}
+                style={{ pointerEvents: "auto", zIndex: 10 }}
               >
                 <motion.div
                   className="absolute top-1 left-1 w-4 h-4 bg-white rounded-full"
@@ -256,18 +276,72 @@ export default function SettingsPage() {
           />
 
           {/* Language */}
-          <SettingItem
-            icon={Globe}
-            label={t("settings.language")}
-            dataSetting="language"
-            showChevron
-          />
+          <div 
+            className="w-full p-4 rounded-xl flex items-center justify-between"
+            style={{
+              background: "rgba(255, 255, 255, 0.05)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <Globe size={20} className="text-nokta-one-white" />
+              <span className="text-nokta-one-white" suppressHydrationWarning>
+                {t("settings.language")}
+              </span>
+            </div>
+            <div className="relative flex-shrink-0" style={{ zIndex: 100 }}>
+              {mounted ? (
+                <>
+                  <select
+                    value={currentLanguage}
+                    onChange={(e) => {
+                      const newLang = e.target.value;
+                      handleLanguageSelect(newLang).catch(console.error);
+                    }}
+                    disabled={isChangingLanguage}
+                    className="p-2 pr-10 rounded-lg text-nokta-one-white appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-nokta-one-blue bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{
+                      fontSize: "16px",
+                      border: "none",
+                      position: "relative",
+                      zIndex: 100,
+                    }}
+                  >
+                    {LANGUAGES.map((lang) => {
+                      const isSelected = lang.code === currentLanguage;
+                      return (
+                        <option
+                          key={lang.code}
+                          value={lang.code}
+                          style={{
+                            background: "#000000",
+                            color: "#FFFFFF",
+                            padding: "12px",
+                          }}
+                        >
+                          {isSelected ? "✓ " : ""}{lang.flag} {lang.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" style={{ zIndex: 1 }}>
+                    <ChevronRight size={20} className="text-gray-400 rotate-90" />
+                  </div>
+                </>
+              ) : (
+                <div className="p-2 pr-10 text-nokta-one-white" style={{ fontSize: "16px" }}>
+                  {LANGUAGES.find(l => l.code === "fr")?.flag} {LANGUAGES.find(l => l.code === "fr")?.name}
+                </div>
+              )}
+            </div>
+          </div>
 
           {/* Connected Devices */}
           <SettingItem
             icon={Smartphone}
             label={t("settings.connectedDevices")}
-            dataSetting="devices"
+            onClick={() => setIsDevicesModalOpen(true)}
             showChevron
           />
 
@@ -303,6 +377,14 @@ export default function SettingsPage() {
             showChevron
           />
 
+          {/* FAQ */}
+          <SettingItem
+            icon={HelpCircle}
+            label={t("faq.title")}
+            onClick={() => router.push("/faq")}
+            showChevron
+          />
+
           {/* Support */}
           <motion.button
             data-setting="support"
@@ -317,7 +399,9 @@ export default function SettingsPage() {
           >
             <div className="flex items-center gap-3">
               <HelpCircle size={20} className="text-nokta-one-white" />
-              <span className="text-nokta-one-white">{t("support.contactUs")}</span>
+              <span className="text-nokta-one-white" suppressHydrationWarning>
+                {t("support.contactUs")}
+              </span>
             </div>
             <ChevronRight size={20} className="text-gray-400" />
           </motion.button>
@@ -333,22 +417,22 @@ export default function SettingsPage() {
           }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          suppressHydrationWarning
         >
           {t("settings.logOut")}
         </motion.button>
       </div>
 
       {/* Modals */}
-        <LanguageModal
-          isOpen={isLanguageModalOpen}
-          onClose={() => setIsLanguageModalOpen(false)}
-          selectedLanguage={currentLanguage}
-          onSelectLanguage={handleLanguageSelect}
-        />
 
       <ComingSoonModal
         isOpen={isComingSoonModalOpen}
         onClose={() => setIsComingSoonModalOpen(false)}
+      />
+
+      <ConnectedDevicesModal
+        isOpen={isDevicesModalOpen}
+        onClose={() => setIsDevicesModalOpen(false)}
       />
 
       <InvitationsModal
@@ -363,6 +447,10 @@ export default function SettingsPage() {
         onClose={() => setIsEditProfileModalOpen(false)}
         onSave={(data) => {
           setUserProfile((prev) => ({ ...prev, ...data }));
+          // Synchroniser la langue avec i18n si elle a changé
+          if (data.language && data.language !== currentLanguage) {
+            changeLanguage(data.language);
+          }
           // Show toast notification
           console.log("Profil mis à jour !");
         }}

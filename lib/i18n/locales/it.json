@@ -22,7 +22,16 @@
     "today": "Oggi",
     "yesterday": "Ieri",
     "daysAgo": "{{count}} giorni fa",
-    "noResetAvailable": "Nessun reset oggi per {{hours}} ore"
+    "noResetAvailable": "Nessun reset oggi per {{hours}} ore",
+    "noSkaneYet": "No skane done yet",
+    "readyForFirstSkane": "Ready for your first Skane!",
+    "testKey": "Segnale corporeo rilevato",
+    "justNow": "Appena adesso",
+    "minutesAgo": "{{count}} min fa",
+    "todayAt": "Oggi – {{time}}",
+    "emptyState": "—",
+    "lastSkaneTitle": "Ultimo skane",
+    "lastSkaneEmpty": "—"
   },
   "skane": {
     "startSkane": "Avvia Skane",
@@ -33,27 +42,69 @@
     "signal": "Segnale",
     "action": "Azione",
     "startMicroAction": "Inizia la micro-azione",
-    "disclaimer": "Segnale di benessere – non medico"
+    "disclaimer": "Segnale di benessere – non medico",
+    "guestModeEnabled": "Guest mode enabled",
+    "guestModeDisabled": "Guest mode disabled",
+    "hint": {
+      "moveCloser": "Move closer",
+      "centerFace": "Center your face",
+      "moreLight": "More light",
+      "holdStill": "Hold still",
+      "oneFaceOnly": "Only one face",
+      "fitOval": "Fit your face in the frame"
+    },
+    "locked": "Locked",
+    "cameraNotReady": "La fotocamera non è pronta. Riprova.",
+    "cameraInvalidDimensions": "La fotocamera ha dimensioni non valide. Riprova.",
+    "captureError": "Impossibile acquisire l'immagine. Riprova.",
+    "flashEnabled": "Flash dello schermo attivato",
+    "flashDisabled": "Flash dello schermo disattivato",
+    "centerFace": "Centra il tuo viso"
   },
   "feedback": {
     "howDoYouFeel": "Come ti senti?",
-    "worse": "Peggio",
+    "worse": "Non meglio",
     "same": "Uguale",
-    "better": "Meglio"
+    "better": "Meglio",
+    "helpImprove": "Il tuo feedback aiuta Nokta a conoscere te",
+    "greatToHear": "Ottimo! 🎉",
+    "noted": "Annotato ✓",
+    "willImprove": "Miglioreremo",
+    "redirecting": "Reindirizzando...",
+    "privacyNote": "Il tuo feedback rimane privato e aiuta a personalizzare le tue future micro-azioni"
   },
   "camera": {
-    "accessRequired": "Accesso alla fotocamera richiesto",
+    "accessRequired": "Accesso alla fotocamera necessario per la scansione",
     "allowCamera": "Consenti fotocamera",
     "accessDenied": "Accesso alla fotocamera negato",
     "accessError": "Errore tecnico",
-    "description": "NOKTA ONE utilizza la tua fotocamera frontale per analizzare il tuo livello di attivazione.",
-    "noPhotoStored": "Nessuna foto memorizzata",
-    "instantAnalysis": "Analisi istantanea",
+    "description": "NOKTA ONE utilizza la tua fotocamera frontale per una scansione di 3 secondi per stimare il tuo livello di attivazione.",
+    "noPhotoStored": "Nessuna immagine memorizzata",
+    "instantAnalysis": "Scansione di 3 secondi, segnale immediato",
     "revocableAnytime": "Revocabile in qualsiasi momento",
     "howToEnable": "Come attivare",
     "refreshPage": "Aggiorna la pagina",
     "cannotAccessCamera": "Impossibile accedere alla fotocamera. Controlla che nessun'altra app la stia utilizzando.",
-    "activatingCamera": "Attivazione della fotocamera..."
+    "activatingCamera": "Attivazione della fotocamera...",
+    "noCameraFound": "No camera detected. Make sure a camera is connected to your device.",
+    "faceReady": "Perfetto!",
+    "faceNotFound": "Centra il tuo viso",
+    "faceNotCentered": "Centra il tuo viso",
+    "faceTooDark": "Serve più luce",
+    "faceTooBright": "Troppa luce",
+    "faceAdjusting": "Regolazione in corso...",
+    "moreLight": "Più luce",
+    "moveCloser": "Avvicinati",
+    "onlyOneFace": "Solo un viso",
+    "howToEnableOn": "Come abilitare su {{browser}}:",
+    "browserStep1": "Apri le impostazioni del sito o del browser",
+    "browserStep2": "Trova il permesso della fotocamera",
+    "browserStep3": "Consenti la fotocamera per questo sito",
+    "browserStep4": "Aggiorna la pagina",
+    "browserChrome": "Chrome",
+    "browserSafari": "Safari",
+    "browserFirefox": "Firefox",
+    "browserDefault": "Browser"
   },
   "settings": {
     "language": "Lingua",
@@ -175,7 +226,7 @@
     "skanePoint1": "Scan facciale IA (3 secondi)",
     "skanePoint2": "Micro-azione guidata (20-30 secondi)",
     "skanePoint3": "Ritorno immediato all'equilibrio",
-    "noDiagnosis": "Nessuna diagnosi. Solo un'azione.",
+    "noDiagnosis": "Segnale di benessere solo. Solo azione.",
     "guestMode": "MODALITÀ OSPITE",
     "guestDescription": "Invita i tuoi cari a provare Nokta One.",
     "guestPoint1": "1 invito = 1 persona può provare",
@@ -227,5 +278,208 @@
     "ticketId": "Riferimento",
     "requiredField": "Questo campo è obbligatorio",
     "selectCategory": "Seleziona..."
+  },
+  "time": {
+    "minutesAgo": "{{count}} min fa",
+    "hoursAgo": "{{count}} ore fa",
+    "daysAgo": "{{count}} giorni fa",
+    "todayAt": "Oggi – {{time}}",
+    "yesterday": "Ieri"
+  },
+  "consent": {
+    "title": "Consenso alla scansione",
+    "point1": "Acconsenti a una scansione facciale di 3 secondi per la regolazione del corpo.",
+    "point2": "Your images are NOT stored.",
+    "point3": "Analisi del pattern facciale solo — nessun riconoscimento dell'identità.",
+    "point4": "I dati sono utilizzati solo per raccomandare micro-azioni per la regolazione del corpo.",
+    "point5": "Solo per il benessere personale.",
+    "disclaimer": "NOKTA è solo per il benessere. Cerca consiglio professionale se necessario.",
+    "accept": "I accept",
+    "decline": "Decline"
+  },
+  "devices": {
+    "title": "Dispositivi Connessi",
+    "pwaNote": "Apple Health e Health Connect sono disponibili solo nell'app mobile Nokta (iOS e Android). La connessione non è possibile sul web.",
+    "appleHealth": "Apple Health",
+    "healthConnect": "Health Connect",
+    "statusConnected": "Connesso",
+    "statusDisconnected": "Non connesso",
+    "statusPwaUnavailable": "Non disponibile sul web",
+    "hintIos": "Usa l'app Nokta su iOS per connettere Apple Health.",
+    "hintAndroid": "Usa l'app Nokta su Android per connettere Health Connect."
+  },
+  "skaneIndex": {
+    "title": "Skane Index",
+    "before": "Before",
+    "after": "After",
+    "skaneCompleted": "Skane Completed",
+    "activationDisclaimer": "Il tuo punteggio di attivazione · Solo informativo",
+    "shareYourReset": "Share your reset",
+    "demo": {
+      "title": "Demo Skane Index",
+      "feedback": "Feedback",
+      "feedbackClear": "Pulisci",
+      "feedbackReduced": "Ridotto",
+      "feedbackStillHigh": "Ancora alto",
+      "guestMode": "Modalità ospite",
+      "launch": "Avvia demo"
+    }
+  },
+  "splash": {
+    "tagline": "Quando il tuo corpo è in disordine, skane."
+  },
+  "welcome": {
+    "message": "Scopri lo stato del tuo corpo in pochi secondi.",
+    "start": "Inizia",
+    "alreadyAccount": "Hai già un account"
+  },
+  "firstSkaneResult": {
+    "title": "Il tuo corpo ha bisogno di un reset.",
+    "subtitle": "Ti offriamo un reset immediato.",
+    "resetNow": "Resetta ora ({{duration}}s)"
+  },
+  "firstSkaneFeedback": {
+    "question": "È cambiato il tuo stato?",
+    "yesClearly": "Sì, chiaramente",
+    "aLittle": "Un po'",
+    "notReally": "Non proprio",
+    "confirmYes": "Ottimo! 🎉",
+    "confirmLittle": "Annotato ✓",
+    "confirmNot": "Grazie per il tuo feedback"
+  },
+  "onboarding": {
+    "continue": {
+      "title": "Nokta works even better when it knows you a bit.",
+      "subtitle": "No medical data. Just your feeling.",
+      "continue": "Continue",
+      "later": "Later"
+    },
+    "adaptation": {
+      "title": "Nokta si adatta al tuo corpo.",
+      "description": "Per {{days}} giorni, Nokta adatta le sue raccomandazioni per allinearsi perfettamente a te.",
+      "noAction": "Non devi fare nulla di speciale.",
+      "timeline": "Giorno 1 → Giorno 7",
+      "accept": "Va bene"
+    },
+    "bestPractices": {
+      "title": "Per risultati migliori",
+      "practice1": "Skane solo il tuo viso",
+      "practice2": "Usa la modalità ospite per qualcun altro",
+      "practice3": "Skane quando ti senti davvero giù",
+      "understood": "Capito"
+    },
+    "reflex": {
+      "title": "Quando il tuo corpo è in disordine, skane.",
+      "subtitle": "Stress, fatica, sovraccarico mentale, prima di un momento importante",
+      "noktaIsHere": "Nokta è qui.",
+      "nextSkane": "Fai il mio prossimo skane"
+    }
+  },
+  "homeAdaptation": {
+    "inProgress": "Adattamento in corso — Giorno {{day}} di 7",
+    "improvesPrecision": "Ogni skane migliora la precisione.",
+    "complete": "✓ Adattamento completato",
+    "calibrated": "Nokta è ora calibrato per te."
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Frequently Asked Questions",
+    "subtitleDesc": "Everything you need to know about Nokta",
+    "moreQuestions": "More questions?",
+    "contactUs": "Contact us",
+    "whatIsNokta": {
+      "question": "What is Nokta One, exactly?",
+      "answer": "Nokta One is a body and nervous system reset technology. In seconds, it identifies when your body is \"off\" and offers a simple micro-action to return to a functional, clear, and high-performing state.\n\nIt's not meditation, therapy, or medical monitoring.\nIt's an immediate adjustment tool, usable in real life."
+    },
+    "whenUseful": {
+      "question": "When is Nokta One useful?",
+      "answer": "Nokta One is designed for moments when you think:\n\n• \"I don't feel right, but I don't know why\"\n• \"I'm tense for no clear reason\"\n• \"I can't focus\"\n• \"My body is tired, but my mind wants to keep going\"\n• \"I'm not at my best\"\n\nThese moments happen before important meetings, after mental overload, between demanding tasks, before sports or competition, at the end of the day when your body gives up, or in the morning when energy isn't there.\n\nNokta One is designed for these daily micro-imbalances, not medical situations."
+    },
+    "whyOffButOk": {
+      "question": "Why do I sometimes feel \"fine\" but not function properly?",
+      "answer": "Because your body and nervous system can be desynchronized.\n\nYou can:\n• Have a good heart rate but feel oppressed\n• Be mentally calm but physically agitated\n• Be motivated but unable to get started\n\nNokta One is based on the principle that body sensation precedes mental performance."
+    },
+    "differentFromOthers": {
+      "question": "How is Nokta One different from classic wellness apps?",
+      "answer": "Most apps ask you to:\n• Understand what you're feeling\n• Choose a practice\n• Commit to a long time\n\nNokta One does the opposite:\n• It starts from the body signal, not your analysis\n• It reduces choice to one single action\n• It acts in less than 30 seconds\n\nLess thinking, less friction, more impact."
+    },
+    "analyzeEmotions": {
+      "question": "Does Nokta One \"analyze\" my emotions?",
+      "answer": "Nokta One doesn't judge you and makes no diagnosis.\n\nIt only observes neutral body indicators (posture, tension, visible micro-signals) to estimate a global functional state.\n\nThe goal isn't to tell you \"what you're feeling\", but to detect when your body isn't aligned with what you want to do."
+    },
+    "replaceProfessional": {
+      "question": "Does Nokta One replace a healthcare professional?",
+      "answer": "No.\n\nNokta One is a daily regulation tool, not a medical device. It treats no pathology, makes no therapeutic promises, and never replaces medical advice.\n\nIt's designed for functional, active, demanding people who want to stay high-performing without waiting to feel bad."
+    },
+    "whyBodyNotMind": {
+      "question": "Why act on the body rather than the mind?",
+      "answer": "Because in most cases:\n• The mind follows the body\n• Clarity comes after regulation\n• Performance returns when the nervous system is stable\n\nA well-targeted physical micro-action can produce an immediate effect, where a mental approach takes more time."
+    },
+    "howOften": {
+      "question": "How often should I use Nokta One?",
+      "answer": "Nokta One imposes no rhythm.\n\nSome use it:\n• 1-2 times a day as a quick check\n• Before a key moment\n• Only when \"something feels off\"\n\nThe goal isn't dependence, but autonomy."
+    },
+    "forAthletesOnly": {
+      "question": "Is Nokta One only for athletes or entrepreneurs?",
+      "answer": "No, but it's particularly useful for people seeking:\n• Clarity\n• Consistency\n• Sustainable performance\n\nThe launch targets the US market, very oriented toward performance, optimization, and efficiency, but Nokta One is designed for all cultures, all ages, and all lifestyles."
+    },
+    "dontBelieveBreathing": {
+      "question": "Does it work even if I don't believe in \"breathing techniques\"?",
+      "answer": "Yes, because Nokta One doesn't rely on belief.\n\nThe proposed micro-actions are:\n• Simple\n• Short\n• Based on known physiological mechanisms\n\nYou don't need to \"believe\" anything.\nYou do the action, you observe the effect."
+    },
+    "whySoShort": {
+      "question": "Why such short actions?",
+      "answer": "Because the nervous system often responds better to:\n• Clear signals\n• Brief stimulations\n• Sharp interruptions of the previous state\n\n30 well-targeted seconds can be more effective than 10 poorly engaged minutes."
+    },
+    "dataPrivacy": {
+      "question": "Does Nokta One collect sensitive personal data?",
+      "answer": "Nokta One applies a maximum data sobriety logic.\n\n• No medical exploitation\n• No data resale\n• No intrusive interpretation\n\nInformation only serves to improve the user experience."
+    },
+    "allLanguages": {
+      "question": "Does Nokta One work in all languages?",
+      "answer": "Yes.\nNokta One launches in 12 languages, with particular attention to universal sensation, not complex vocabulary.\n\nThe body speaks the same language everywhere."
+    },
+    "whoIsItFor": {
+      "question": "Who is Nokta One really for?",
+      "answer": "For those who:\n• Want to stay functional without over-analyzing\n• Sense when something \"slips\" but don't want to dramatize\n• Seek a simple, fast, discreet tool\n• Want to perform without exhausting themselves\n\nNokta One isn't here to change you.\nIt's here to help you return to your normal state."
+    },
+    "whyNow": {
+      "question": "Why now?",
+      "answer": "Because the world moves fast, pressure is real, and many people function in degraded mode without realizing it.\n\nNokta One answers a modern need:\nRecalibrate quickly, without stopping to live."
+    }
+  },
+  "login": {
+    "title": "Bentornato",
+    "subtitle": "Accedi per continuare",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Hai dimenticato la password?",
+    "submit": "Accedi",
+    "loading": "Accesso in corso...",
+    "or": "o",
+    "withApple": "Continua con Apple",
+    "withGoogle": "Continua con Google",
+    "noAccount": "Non hai un account?",
+    "signUp": "Crea account",
+    "errorRequired": "Tutti i campi sono obbligatori",
+    "errorGeneric": "Errore di accesso",
+    "errorInvalidCredentials": "Email o password non validi"
+  },
+  "forgotPassword": {
+    "title": "Password dimenticata?",
+    "subtitle": "Inserisci la tua email e ti invieremo un link per il reset.",
+    "email": "Email",
+    "submit": "Invia link di reimpostazione",
+    "sending": "Invio...",
+    "errorRequired": "Email richiesta",
+    "errorInvalid": "Email non valida",
+    "errorGeneric": "Si è verificato un errore",
+    "successTitle": "Email inviata!",
+    "successMessage": "Abbiamo inviato un link di reimpostazione a {{email}}. Controlla la tua inbox.",
+    "backToLogin": "Torna al login",
+    "noEmail": "Non l'hai ricevuta?",
+    "resend": "Invia di nuovo",
+    "rememberPassword": "Ricordi la tua password?",
+    "login": "Accedi"
   }
 }

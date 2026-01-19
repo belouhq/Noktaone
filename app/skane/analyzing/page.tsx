@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { getUserId } from "@/lib/skane/supabase-tracker";
 
 export default function AnalyzingPage() {
   const router = useRouter();
@@ -84,6 +85,7 @@ export default function AnalyzingPage() {
             last_skane_minutes_ago: null,
             previous_feedback: null,
           },
+          userId: getUserId() || undefined,
         }),
       });
 

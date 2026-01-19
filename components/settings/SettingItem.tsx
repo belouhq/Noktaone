@@ -44,7 +44,9 @@ export default function SettingItem({
         ) : Icon ? (
           <Icon size={20} className="text-nokta-one-white" />
         ) : null}
-        <span className="text-nokta-one-white">{label}</span>
+        <span className="text-nokta-one-white" suppressHydrationWarning>
+          {label}
+        </span>
       </div>
 
       <div className="flex items-center gap-2">

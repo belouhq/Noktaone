@@ -7,7 +7,7 @@ export async function getRecentSkanes(userId: string, limit = 5): Promise<Recent
   
   const { data, error } = await supabase
     .from('skanes')
-    .select('id, internal_state, signal_label, skane_index, created_at')
+    .select('id, internal_state, signal_label, skane_index, created_at, feedback')
     .eq('user_id', userId)
     .order('created_at', { ascending: false })
     .limit(limit);

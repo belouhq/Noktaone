@@ -35,3 +35,7 @@ export const supabaseAdmin = (() => {
     }
   );
 })();
+
+// Re-export createClient for convenience
+// Allows: import { createClient } from '@/lib/supabase/server'
+export { createClient } from '@supabase/supabase-js';

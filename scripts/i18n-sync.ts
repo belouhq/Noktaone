@@ -15,6 +15,10 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import OpenAI from "openai";
+import * as dotenv from "dotenv";
+
+// Load .env.local
+dotenv.config({ path: path.join(process.cwd(), ".env.local") });
 
 type Dict = Record<string, any>;
 type Locale = string;
@@ -72,6 +76,9 @@ const ALLOW_FORBIDDEN_ON_KEYS: string[] = [
   "legal.notTherapy",
   "legal.notMeditation",
   "legal.disclaimer",
+  "skane.disclaimer",
+  "info.noDiagnosis",
+  "camera.cannotAccessCamera", // May contain "medical" in error context
 ];
 
 function readJson<T>(p: string): T {

@@ -23,7 +23,7 @@ if (!OPENAI_API_KEY) {
  * Créer un client OpenAI configuré
  */
 export function createOpenAIClient(): OpenAI {
-  const config: OpenAI.ClientOptions = {
+  const config: { apiKey?: string; defaultHeaders?: Record<string, string> } = {
     apiKey: OPENAI_API_KEY,
   };
 
@@ -43,7 +43,7 @@ export function createOpenAIClient(): OpenAI {
     };
   }
 
-  return new OpenAI(config);
+  return new OpenAI(config as ConstructorParameters<typeof OpenAI>[0]);
 }
 
 /**

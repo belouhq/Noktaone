@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Info, User } from "lucide-react";
+import { Info, User, Zap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
@@ -10,6 +10,7 @@ import { CameraPermissionScreen } from "@/components/skane/CameraPermissionScree
 import { BottomNav } from "@/components/ui/BottomNav";
 import InfoModal from "@/components/modals/InfoModal";
 import FaceGuide from "@/components/skane/FaceGuide";
+import ScreenFlash from "@/components/skane/ScreenFlash";
 import { FLOW_V1_ENABLED } from "@/lib/flowV1";
 
 export default function SkanePage() {
@@ -20,12 +21,18 @@ export default function SkanePage() {
   const [isGuestMode, setIsGuestMode] = useState(false);
   const [isCountingDown, setIsCountingDown] = useState(false);
   const [countdown, setCountdown] = useState(3);
+  const [isFlashEnabled, setIsFlashEnabled] = useState(false);
 
-  // Charger l'état guestMode depuis localStorage au montage
+  // Charger l'état guestMode et flash depuis localStorage au montage
   useEffect(() => {
     const savedGuestMode = localStorage.getItem("guestMode");
+    const savedFlash = localStorage.getItem("screenFlashEnabled");
+    
     if (savedGuestMode === "true") {
       setIsGuestMode(true);
+    }
+    if (savedFlash === "true") {
+      setIsFlashEnabled(true);
     }
   }, []);
 
@@ -54,6 +61,17 @@ export default function SkanePage() {
         });
       }
 
+      // Bouton Flash
+      const flashBtn = document.querySelector('[data-skane="flash"]');
+      if (flashBtn && !flashBtn.hasAttribute('data-listener-attached')) {
+        flashBtn.setAttribute('data-listener-attached', 'true');
+        flashBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleFlash();
+        });
+      }
+
       // Bouton Start Skane
       const startBtn = document.querySelector('[data-skane="start"]');
       if (startBtn && !startBtn.hasAttribute('data-listener-attached')) {
@@ -69,13 +87,20 @@ export default function SkanePage() {
     attachListeners();
     setTimeout(attachListeners, 100);
     setTimeout(attachListeners, 500);
-  }, [isGuestMode]);
+  }, [isGuestMode, isFlashEnabled]);
 
   // Toggle guest mode
   const toggleGuestMode = () => {
     const newGuestMode = !isGuestMode;
     setIsGuestMode(newGuestMode);
     localStorage.setItem("guestMode", newGuestMode.toString());
+  };
+
+  // Toggle screen flash
+  const toggleFlash = () => {
+    const newFlash = !isFlashEnabled;
+    setIsFlashEnabled(newFlash);
+    localStorage.setItem("screenFlashEnabled", newFlash.toString());
   };
 
   const handleStartSkane = async () => {
@@ -111,8 +136,7 @@ export default function SkanePage() {
         videoHeight: video?.videoHeight
       });
       setIsCountingDown(false);
-      // Afficher un message à l'utilisateur
-      alert("La caméra n'est pas prête. Veuillez réessayer.");
+      alert(t("skane.cameraNotReady") || "La caméra n'est pas prête. Veuillez réessayer.");
       return;
     }
 
@@ -123,7 +147,7 @@ export default function SkanePage() {
         videoHeight: video.videoHeight
       });
       setIsCountingDown(false);
-      alert("La caméra n'a pas de dimensions valides. Veuillez réessayer.");
+      alert(t("skane.cameraInvalidDimensions") || "La caméra n'a pas de dimensions valides. Veuillez réessayer.");
       return;
     }
 
@@ -150,8 +174,7 @@ export default function SkanePage() {
     } else {
       console.error("Failed to capture frame: captureFrame returned null");
       setIsCountingDown(false);
-      // Afficher un message à l'utilisateur
-      alert("Impossible de capturer l'image. Veuillez réessayer.");
+      alert(t("skane.captureError") || "Impossible de capturer l'image. Veuillez réessayer.");
     }
   };
 
@@ -167,6 +190,9 @@ export default function SkanePage() {
 
   return (
     <main className="relative min-h-screen bg-nokta-one-black overflow-hidden">
+      {/* Screen Flash Overlay - activé quand isFlashEnabled ET pendant countdown */}
+      <ScreenFlash isActive={isFlashEnabled && isCountingDown} />
+
       {/* Video Background - z-index: 0 */}
       <video
         ref={videoRef}
@@ -214,14 +240,44 @@ export default function SkanePage() {
           <Info size={20} className="text-nokta-one-white" />
         </motion.button>
 
+        {/* Bouton Flash (Screen Flash) */}
+        <motion.button
+          data-skane="flash"
+          className="btn-circle-responsive rounded-full flex items-center justify-center"
+          style={{
+            background: isFlashEnabled 
+              ? "rgba(59, 130, 246, 0.3)" 
+              : "rgba(255, 255, 255, 0.1)",
+            backdropFilter: "blur(10px)",
+            border: isFlashEnabled 
+              ? "1px solid rgba(59, 130, 246, 0.5)" 
+              : "1px solid rgba(255, 255, 255, 0.2)",
+            pointerEvents: "auto",
+            cursor: "pointer",
+            zIndex: 20,
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <Zap
+            size={20}
+            className={isFlashEnabled ? "text-nokta-one-blue" : "text-nokta-one-white"}
+            fill={isFlashEnabled ? "#3B82F6" : "none"}
+          />
+        </motion.button>
+
         {/* Bouton Invité (Guest Mode) */}
         <motion.button
           data-skane="guest"
           className="btn-circle-responsive rounded-full flex items-center justify-center"
           style={{
-            background: "rgba(255, 255, 255, 0.1)",
+            background: isGuestMode 
+              ? "rgba(59, 130, 246, 0.3)" 
+              : "rgba(255, 255, 255, 0.1)",
             backdropFilter: "blur(10px)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
+            border: isGuestMode 
+              ? "1px solid rgba(59, 130, 246, 0.5)" 
+              : "1px solid rgba(255, 255, 255, 0.2)",
             pointerEvents: "auto",
             cursor: "pointer",
             zIndex: 20,
@@ -269,7 +325,7 @@ export default function SkanePage() {
         )}
       </AnimatePresence>
 
-      {/* Bouton Central Start Skane - z-index: 20 */}
+      {/* Bouton Central Start Skane - PARFAITEMENT ROND - z-index: 20 */}
       {!isCountingDown && (
         <div
           className="absolute"
@@ -282,8 +338,11 @@ export default function SkanePage() {
         >
           <motion.button
             data-skane="start"
-            className="skane-button rounded-full flex flex-col items-center justify-center"
+            className="rounded-full flex flex-col items-center justify-center"
             style={{
+              // IMPORTANT: même width et height pour un cercle parfait
+              width: "clamp(140px, 40vw, 200px)",
+              height: "clamp(140px, 40vw, 200px)",
               background: "rgba(255, 255, 255, 0.1)",
               border: "2px solid rgba(255, 255, 255, 0.3)",
               backdropFilter: "blur(30px)",
@@ -305,6 +364,8 @@ export default function SkanePage() {
           </motion.button>
         </div>
       )}
+
+      {/* NOTE: Pas de dots indicator (pagination) - supprimé comme demandé */}
 
       {/* Bottom Navigation */}
       <BottomNav currentPage="skane" />

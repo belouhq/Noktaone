@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+// ⚠️ IMPORTANT: Ne pas utiliser LanguageDetector ici
+// La détection se fait côté client dans I18nProvider pour éviter les erreurs d'hydratation
 
 import fr from './locales/fr.json';
 import en from './locales/en.json';
@@ -30,26 +31,23 @@ const resources = {
   ko: { translation: ko }
 };
 
-// Initialiser i18n
+// ⚠️ IMPORTANT: Ne pas utiliser LanguageDetector ici
+// La détection se fait côté client dans I18nProvider
+// Toujours démarrer avec 'fr' côté serveur pour éviter les erreurs d'hydratation
 if (!i18n.isInitialized) {
   i18n
-    .use(LanguageDetector)
     .use(initReactI18next)
     .init({
       resources,
+      lng: 'fr', // ← Toujours démarrer avec fr côté serveur
       fallbackLng: 'fr',
-      lng: 'fr', // Sera mis à jour côté client
       defaultNS: 'translation',
       ns: 'translation',
       interpolation: {
         escapeValue: false
       },
-      detection: {
-        order: ['localStorage', 'navigator'],
-        caches: ['localStorage']
-      },
       react: {
-        useSuspense: false
+        useSuspense: false // ← IMPORTANT pour éviter les erreurs d'hydratation
       }
     });
 }
