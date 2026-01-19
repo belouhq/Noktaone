@@ -10,6 +10,7 @@ import { BottomNav } from "@/components/ui/BottomNav";
 import SkaneButton from "@/components/ui/SkaneButton";
 import DotsPattern from "@/components/ui/DotsPattern";
 import Logo from "@/components/Logo";
+import { HelpCircle } from "lucide-react";
 
 function getAdaptationDay(): number {
   if (typeof window === 'undefined') return 0;
@@ -45,6 +46,11 @@ export default function Home() {
     router.push("/skane");
   };
 
+  const handleRestartOnboarding = () => {
+    // Relancer le flow du premier onboarding après le premier skane
+    router.push("/onboarding/continue");
+  };
+
   // Swipe gestures pour naviguer entre les pages
   const swipeRef = useSwipe({
     onSwipeLeft: () => {
@@ -71,6 +77,23 @@ export default function Home() {
 
       {/* Contenu principal */}
       <div className="relative z-10 min-h-screen px-6 pt-4 pb-24">
+        {/* Bouton relancer onboarding - Tout à droite */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={handleRestartOnboarding}
+          className="absolute top-4 right-6 z-20 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+          style={{
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Relancer l'onboarding"
+        >
+          <HelpCircle size={20} className="text-white/70" />
+        </motion.button>
+
         {/* Logo - Réduit de 80% et remonté */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
