@@ -262,117 +262,11 @@ export default function NoktaDictionary({
     );
   };
 
-  // Fonction pour formater une phrase avec des icônes
-  const formatSentenceWithIcons = (sentence: string, color: string): React.ReactNode[] => {
-    const elements: React.ReactNode[] = [];
-    let lastIndex = 0;
-    
-    // Patterns avec leurs icônes et couleurs
-    const iconPatterns = [
-      { 
-        regex: /468\s*(landmarks?|points?|ランドマーク|点|نقاط)/gi, 
-        icon: Scan, 
-        color: "#3B82F6",
-        size: 16
-      },
-      { 
-        regex: /(20|30)\s*[-–]\s*(20|30)\s*(secondes?|seconds?|segundos?|秒|초)/gi, 
-        icon: Clock, 
-        color: "#F59E0B",
-        size: 16
-      },
-      { 
-        regex: /(moins de|less than|menos de|unter|未満)\s*30\s*(secondes?|seconds?|segundos?|秒|초)/gi, 
-        icon: Clock, 
-        color: "#F59E0B",
-        size: 16
-      },
-      { 
-        regex: /(1\s*000\+|1000\+|plus de 1\s*000|más de 1\s*000|über 1\s*000|1000以上)\s*(études?|studies?|estudios?|Studien?|研究)/gi, 
-        icon: Brain, 
-        color: "#8B5CF6",
-        size: 16
-      },
-      { 
-        regex: /(non médical|non-medical|no médico|nicht medizinisch|非医学|非医療)/gi, 
-        icon: Shield, 
-        color: "#10B981",
-        size: 16
-      },
-      { 
-        regex: /(immédiat|immediate|inmediato|sofort|即座|즉각)/gi, 
-        icon: Zap, 
-        color: "#EF4444",
-        size: 16
-      },
-    ];
-
-    // Trouver tous les matches
-    const matches: Array<{ start: number; end: number; icon: any; color: string; size: number; text: string }> = [];
-    
-    iconPatterns.forEach(({ regex, icon, color, size }) => {
-      const regexCopy = new RegExp(regex.source, regex.flags);
-      let match;
-      while ((match = regexCopy.exec(sentence)) !== null) {
-        matches.push({
-          start: match.index,
-          end: match.index + match[0].length,
-          icon,
-          color,
-          size,
-          text: match[0]
-        });
-      }
-    });
-
-    // Trier par position
-    matches.sort((a, b) => a.start - b.start);
-
-    // Construire les éléments
-    matches.forEach((match, idx) => {
-      // Ajouter le texte avant le match
-      if (match.start > lastIndex) {
-        elements.push(
-          <span key={`text-${idx}`}>{sentence.substring(lastIndex, match.start)}</span>
-        );
-      }
-
-      // Ajouter l'icône et le texte du match
-      const IconComponent = match.icon;
-      elements.push(
-        <span 
-          key={`icon-${idx}`} 
-          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md"
-          style={{
-            background: `${match.color}15`,
-            border: `1px solid ${match.color}30`
-          }}
-        >
-          <IconComponent size={match.size} style={{ color: match.color }} />
-          <span style={{ color: match.color }} className="font-medium">
-            {match.text}
-          </span>
-        </span>
-      );
-
-      lastIndex = match.end;
-    });
-
-    // Ajouter le texte restant
-    if (lastIndex < sentence.length) {
-      elements.push(
-        <span key="text-end">{sentence.substring(lastIndex)}</span>
-      );
-    }
-
-    return elements.length > 0 ? elements : [<span key="default">{sentence}</span>];
-  };
-
   const content = (
     <div className="flex flex-col h-full bg-zinc-900">
       {/* Header - seulement en mode modal */}
       {variant === "modal" && (
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
+        <div className="flex items-center justify-between p-6 border-b border-white/10 flex-shrink-0">
           <div className="flex items-center gap-3">
             <div 
               className="w-10 h-10 rounded-xl flex items-center justify-center"
@@ -398,7 +292,7 @@ export default function NoktaDictionary({
         </div>
       )}
 
-      {/* Dictionary entries */}
+      {/* Dictionary entries - scrollable */}
       <div className={`flex-1 overflow-y-auto ${variant === "inline" ? "p-6 pt-4" : "p-6"} space-y-4`}>
         {dictionaryEntries.map((entry, index) => (
           <motion.div
@@ -526,15 +420,15 @@ export default function NoktaDictionary({
             </div>
           </motion.div>
         ))}
+      </div>
 
-        {/* Footer note */}
-        <div className="pt-6 mt-4 border-t border-white/10">
-          <p className="text-white/30 text-xs text-center">
-            Nokta creates new words for new experiences.
-            <br />
-            No diagnosis. Just action.
-          </p>
-        </div>
+      {/* Footer fixe en bas - toujours visible */}
+      <div className="flex-shrink-0 p-6 pt-4 border-t border-white/10 bg-zinc-900">
+        <p className="text-white/30 text-xs text-center">
+          Nokta creates new words for new experiences.
+          <br />
+          <span className="text-white/20">No diagnosis. Just action.</span>
+        </p>
       </div>
     </div>
   );
