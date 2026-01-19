@@ -1,29 +1,44 @@
+#!/usr/bin/env npx ts-node
+
 /**
- * Script de synchronisation des traductions
+ * 🌍 NOKTA ONE - Translation Sync
  * 
- * Compare fr.json (source) avec les autres langues et traduit automatiquement
- * les nouvelles clés manquantes en utilisant OpenAI.
+ * Synchronise TOUTES les traductions :
+ * 1. Prend fr.json comme source de vérité
+ * 2. Traduit toutes les clés manquantes dans les 11 autres langues
+ * 
+ * Usage:
+ *   npm run sync-translations
+ * 
+ * Ajoute dans package.json:
+ *   "scripts": {
+ *     "sync-translations": "npx ts-node scripts/sync-translations.ts"
+ *   }
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
-import { config } from 'dotenv';
+import * as dotenv from 'dotenv';
+import OpenAI from 'openai';
 
-// Charger les variables d'environnement
-config({ path: '.env.local' });
+dotenv.config({ path: path.join(process.cwd(), '.env.local') });
 
-const LOCALES_DIR = path.join(process.cwd(), 'lib/i18n/locales');
-const SOURCE_LOCALE = 'fr';
-const TARGET_LOCALES = ['en', 'es', 'de', 'it', 'pt', 'ar', 'hi', 'id', 'ja', 'ko', 'zh'];
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
-// Mapping des codes de langue vers les noms complets pour OpenAI
-const LANGUAGE_NAMES: Record<string, string> = {
-  en: 'English',
-  es: 'Spanish',
+// === CONFIG ===
+const LOCALES_PATH = path.join(process.cwd(), 'lib/i18n/locales');
+const SOURCE_LANG = 'fr';
+const TARGET_LANGS = ['en', 'es', 'de', 'it', 'pt', 'ar', 'hi', 'id', 'ja', 'ko', 'zh'];
+
+const LANG_NAMES: Record<string, string> = {
+  en: 'English (US)',
+  es: 'Spanish (Spain)',
   de: 'German',
   it: 'Italian',
-  pt: 'Portuguese',
-  ar: 'Arabic',
+  pt: 'Portuguese (Brazil)',
+  ar: 'Arabic (Modern Standard)',
   hi: 'Hindi',
   id: 'Indonesian',
   ja: 'Japanese',
@@ -31,201 +46,187 @@ const LANGUAGE_NAMES: Record<string, string> = {
   zh: 'Chinese (Simplified)',
 };
 
-interface TranslationFile {
-  [key: string]: any;
-}
-
-/**
- * Charger un fichier de traduction
- */
-function loadTranslationFile(locale: string): TranslationFile {
-  const filePath = path.join(LOCALES_DIR, `${locale}.json`);
-  if (!fs.existsSync(filePath)) {
+// === UTILS ===
+function loadJSON(filename: string): Record<string, any> {
+  const filePath = path.join(LOCALES_PATH, filename);
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  } catch {
     return {};
   }
-  const content = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(content);
 }
 
-/**
- * Sauvegarder un fichier de traduction
- */
-function saveTranslationFile(locale: string, data: TranslationFile): void {
-  const filePath = path.join(LOCALES_DIR, `${locale}.json`);
+function saveJSON(filename: string, data: Record<string, any>): void {
+  const filePath = path.join(LOCALES_PATH, filename);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n', 'utf-8');
 }
 
-/**
- * Trouver toutes les clés dans un objet (récursif)
- */
-function getAllKeys(obj: any, prefix = ''): string[] {
-  const keys: string[] = [];
-  for (const key in obj) {
-    const fullKey = prefix ? `${prefix}.${key}` : key;
-    if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
-      keys.push(...getAllKeys(obj[key], fullKey));
-    } else {
-      keys.push(fullKey);
+function flatten(obj: Record<string, any>, prefix = ''): Record<string, string> {
+  const result: Record<string, string> = {};
+  for (const [key, value] of Object.entries(obj)) {
+    const newKey = prefix ? `${prefix}.${key}` : key;
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+      Object.assign(result, flatten(value, newKey));
+    } else if (typeof value === 'string') {
+      result[newKey] = value;
     }
   }
-  return keys;
+  return result;
 }
 
-/**
- * Obtenir la valeur d'une clé dans un objet (notation pointée)
- */
-function getNestedValue(obj: any, key: string): any {
-  const parts = key.split('.');
-  let current = obj;
-  for (const part of parts) {
-    if (current && typeof current === 'object' && part in current) {
-      current = current[part];
-    } else {
-      return undefined;
+function unflatten(obj: Record<string, string>): Record<string, any> {
+  const result: Record<string, any> = {};
+  for (const [key, value] of Object.entries(obj)) {
+    const parts = key.split('.');
+    let current = result;
+    for (let i = 0; i < parts.length - 1; i++) {
+      if (!current[parts[i]]) current[parts[i]] = {};
+      current = current[parts[i]];
     }
+    current[parts[parts.length - 1]] = value;
   }
-  return current;
+  return result;
 }
 
-/**
- * Définir une valeur dans un objet (notation pointée)
- */
-function setNestedValue(obj: any, key: string, value: any): void {
-  const parts = key.split('.');
-  let current = obj;
-  for (let i = 0; i < parts.length - 1; i++) {
-    const part = parts[i];
-    if (!(part in current) || typeof current[part] !== 'object' || current[part] === null) {
-      current[part] = {};
-    }
-    current = current[part];
-  }
-  current[parts[parts.length - 1]] = value;
-}
+// === TRANSLATION ===
+async function translateBatch(
+  texts: Record<string, string>,
+  targetLang: string
+): Promise<Record<string, string>> {
+  if (Object.keys(texts).length === 0) return {};
+  
+  const langName = LANG_NAMES[targetLang] || targetLang;
+  
+  const prompt = `Translate the following French texts to ${langName} for a wellness mobile app called "NOKTA ONE".
 
-/**
- * Traduire un texte avec OpenAI
- */
-async function translateText(text: string, targetLanguage: string): Promise<string> {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    throw new Error('OPENAI_API_KEY not found in environment variables');
-  }
+CRITICAL RULES:
+- Return ONLY a valid JSON object
+- Keep all keys exactly as they are
+- Only translate the string values
+- Keep "Skane", "NOKTA", "NOKTA ONE" unchanged (brand names)
+- Keep all placeholders like {{count}}, {{hours}}, {{name}} unchanged
+- Keep all emojis unchanged
+- Use natural, friendly, conversational language
+- Be concise - mobile UI needs short texts
+- NEVER use medical terms like "diagnosis", "treatment", "therapy", "anxiety", "depression"
 
-  const languageName = LANGUAGE_NAMES[targetLanguage] || targetLanguage;
+JSON to translate:
+${JSON.stringify(texts, null, 2)}
+
+Return ONLY the JSON object with translated values:`;
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages: [
-          {
-            role: 'system',
-            content: `You are a professional translator. Translate the following text to ${languageName}. 
-            
-IMPORTANT RULES:
-- Keep brand names unchanged: "Nokta One", "NOKTA ONE", "Skane", "SKANE", "Skane Index", "Reset"
-- Preserve placeholders exactly: {name}, {count}, %d, etc.
-- Use microcopy style: 2–6 words, simple, body-focused, no jargon
-- Never use medical/mental-health words: diagnosis, treatment, medical, disease, disorder, stress, anxiety, depression, burnout, therapy, meditation
-- Maintain the same tone and style as the original
-- Return ONLY the translation, no explanations`,
-          },
-          {
-            role: 'user',
-            content: text,
-          },
-        ],
-        temperature: 0.3,
-        max_tokens: 500,
-      }),
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.2,
+      max_tokens: 4000,
     });
 
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`OpenAI API error: ${response.status} - ${error}`);
+    let content = response.choices[0]?.message?.content || '{}';
+    
+    // Clean markdown code blocks if present
+    content = content
+      .replace(/```json\s*/gi, '')
+      .replace(/```\s*/g, '')
+      .trim();
+    
+    // Find the JSON object
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
     }
-
-    const data = await response.json();
-    return data.choices[0].message.content.trim();
-  } catch (error) {
-    console.error(`Error translating to ${targetLanguage}:`, error);
-    throw error;
+    
+    return JSON.parse(content);
+  } catch (error: any) {
+    console.error(`\n   ❌ Error translating to ${targetLang}:`, error.message);
+    return {};
   }
 }
 
-/**
- * Synchroniser les traductions
- */
-async function syncTranslations(): Promise<void> {
-  console.log('🔄 Starting translation synchronization...\n');
-
-  // Charger le fichier source (français)
-  const sourceData = loadTranslationFile(SOURCE_LOCALE);
-  const sourceKeys = getAllKeys(sourceData);
-
-  console.log(`📝 Found ${sourceKeys.length} keys in ${SOURCE_LOCALE}.json\n`);
-
-  // Pour chaque langue cible
-  for (const targetLocale of TARGET_LOCALES) {
-    console.log(`🌍 Processing ${targetLocale}...`);
+// === MAIN ===
+async function main() {
+  console.log('\n🌍 NOKTA ONE - Translation Sync\n');
+  console.log('━'.repeat(50));
+  
+  // Load source (French)
+  const frData = loadJSON(`${SOURCE_LANG}.json`);
+  const frFlat = flatten(frData);
+  const totalKeys = Object.keys(frFlat).length;
+  
+  console.log(`\n📖 Source: ${SOURCE_LANG}.json (${totalKeys} keys)\n`);
+  
+  let totalTranslated = 0;
+  let totalMissing = 0;
+  
+  // Process each target language
+  for (const lang of TARGET_LANGS) {
+    const langData = loadJSON(`${lang}.json`);
+    const langFlat = flatten(langData);
     
-    const targetData = loadTranslationFile(targetLocale);
-    const targetKeys = getAllKeys(targetData);
+    // Find missing keys
+    const missing: Record<string, string> = {};
+    for (const [key, value] of Object.entries(frFlat)) {
+      if (!langFlat[key] || langFlat[key] === '') {
+        missing[key] = value;
+      }
+    }
     
-    // Trouver les clés manquantes
-    const missingKeys = sourceKeys.filter(key => !targetKeys.includes(key));
+    const missingCount = Object.keys(missing).length;
+    totalMissing += missingCount;
     
-    if (missingKeys.length === 0) {
-      console.log(`  ✅ ${targetLocale} is up to date\n`);
+    process.stdout.write(`   ${lang.toUpperCase().padEnd(3)} `);
+    
+    if (missingCount === 0) {
+      console.log(`✅ Complete (${Object.keys(langFlat).length}/${totalKeys})`);
       continue;
     }
-
-    console.log(`  ⚠️  Found ${missingKeys.length} missing keys`);
     
-    // Traduire chaque clé manquante
-    for (const key of missingKeys) {
-      const sourceValue = getNestedValue(sourceData, key);
+    console.log(`⏳ ${missingCount} missing...`);
+    
+    // Translate in batches of 25
+    const keys = Object.keys(missing);
+    const batchSize = 25;
+    let translated = 0;
+    
+    for (let i = 0; i < keys.length; i += batchSize) {
+      const batchKeys = keys.slice(i, i + batchSize);
+      const batch: Record<string, string> = {};
+      for (const k of batchKeys) {
+        batch[k] = missing[k];
+      }
       
-      if (typeof sourceValue !== 'string') {
-        // Si ce n'est pas une string, copier la structure
-        setNestedValue(targetData, key, sourceValue);
-        console.log(`  📋 Copied structure for: ${key}`);
-        continue;
+      process.stdout.write(`       Batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(keys.length / batchSize)}...`);
+      
+      const results = await translateBatch(batch, lang);
+      
+      for (const [k, v] of Object.entries(results)) {
+        if (v && typeof v === 'string' && v.trim()) {
+          langFlat[k] = v;
+          translated++;
+        } else {
+          // Fallback: use French text
+          langFlat[k] = missing[k];
+        }
       }
-
-      try {
-        console.log(`  🔄 Translating: ${key}...`);
-        const translated = await translateText(sourceValue, targetLocale);
-        setNestedValue(targetData, key, translated);
-        console.log(`  ✅ Translated: ${key}`);
-        
-        // Petit délai pour éviter de dépasser les limites de l'API
-        await new Promise(resolve => setTimeout(resolve, 200));
-      } catch (error) {
-        console.error(`  ❌ Error translating ${key}:`, error);
-        // En cas d'erreur, copier la valeur source comme fallback
-        setNestedValue(targetData, key, sourceValue);
-      }
+      
+      console.log(` ✓`);
     }
-
-    // Sauvegarder le fichier
-    saveTranslationFile(targetLocale, targetData);
-    console.log(`  💾 Saved ${targetLocale}.json\n`);
+    
+    // Save updated translations
+    const updated = unflatten(langFlat);
+    saveJSON(`${lang}.json`, updated);
+    
+    totalTranslated += translated;
+    console.log(`       ✅ Saved ${translated} new translations\n`);
   }
-
-  console.log('✨ Synchronization complete!');
+  
+  console.log('━'.repeat(50));
+  console.log(`\n📊 Summary:`);
+  console.log(`   • Source keys: ${totalKeys}`);
+  console.log(`   • Missing found: ${totalMissing}`);
+  console.log(`   • Translated: ${totalTranslated}`);
+  console.log(`\n✅ Sync complete!\n`);
 }
 
-// Exécuter le script
-if (require.main === module) {
-  syncTranslations().catch(error => {
-    console.error('❌ Fatal error:', error);
-    process.exit(1);
-  });
-}
+main().catch(console.error);
