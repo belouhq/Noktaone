@@ -10,6 +10,7 @@ import { MICRO_ACTIONS } from "@/lib/skane/constants";
 import { toPng } from "html-to-image";
 import SharePlatformSelector from "@/components/share/SharePlatformSelector";
 import shareService, { ShareData, ShareResult } from "@/lib/skane/shareService";
+import { generateSEOFilename } from "@/lib/skane/seo-filename";
 
 /**
  * SHARE CARD V2.1 FINAL
@@ -337,19 +338,54 @@ export default function ShareCardV2Final() {
     setIsGeneratingImage(true);
 
     try {
+      // FORMAT STORY OPTIMAL : 1080x1920 pixels (9:16)
+      // Taille standard pour Instagram Stories, TikTok, Facebook Stories, etc.
+      const STORY_WIDTH = 1080;
+      const STORY_HEIGHT = 1920;
+      const PIXEL_RATIO = 2; // Pour une qualité Retina/HiDPI
+
       const dataUrl = await toPng(cardRef.current, {
         backgroundColor: "#0a0a0a",
-        pixelRatio: 2,
+        width: STORY_WIDTH,
+        height: STORY_HEIGHT,
+        pixelRatio: PIXEL_RATIO, // Génère 2160x3840 pour qualité Retina, redimensionné à 1080x1920
         quality: 1,
+        cacheBust: true,
       });
 
       // Convertir dataUrl en Blob
       const response = await fetch(dataUrl);
       const blob = await response.blob();
 
+      // Récupérer username si disponible (depuis sessionStorage ou localStorage)
+      let username: string | undefined;
+      try {
+        const userId = localStorage.getItem("nokta_user_id");
+        if (userId) {
+          // Essayer de récupérer depuis sessionStorage ou autre source
+          const userData = sessionStorage.getItem("nokta_user_data");
+          if (userData) {
+            const parsed = JSON.parse(userData);
+            username = parsed.username || parsed.name || parsed.email?.split("@")[0];
+          }
+        }
+      } catch {
+        // Ignorer les erreurs
+      }
+
+      // Générer le nom de fichier SEO optimisé et personnalisé
+      const seoFilename = generateSEOFilename({
+        actionId: microAction,
+        username,
+        scores: ranges,
+        feedback,
+        locale: "fr",
+      });
+
       setShareData({
         imageBlob: blob,
         imageUrl: dataUrl,
+        filename: seoFilename,
         title: "Nokta One",
         text: shareService.getShareMessage("fr"),
         url: shareService.getShareUrl(),
