@@ -96,6 +96,7 @@
     "startMicroAction": "Start micro-action",
     "disclaimer": "Wellness signal – not medical",
     "guestModeEnabled": "Guest mode enabled",
+    "actionCompleted": "Action completed ✓",
     "guestModeDisabled": "Guest mode disabled",
     "cameraNotReady": "Camera is not ready. Please try again.",
     "cameraInvalidDimensions": "Camera has invalid dimensions. Please try again.",
@@ -103,6 +104,9 @@
     "flashEnabled": "Screen flash enabled",
     "flashDisabled": "Screen flash disabled",
     "centerFace": "Center your face",
+    "observeFeeling": "Observe what you feel.",
+    "breatheWithRhythm": "Breathe with the rhythm.",
+    "canPutPhoneDown": "You can put your phone down.",
     "hint": {
       "moveCloser": "Move closer",
       "centerFace": "Center your face",
@@ -177,7 +181,12 @@
     "privacyNote": "Your feedback stays private and helps personalize your future micro-actions"
   },
   "share": {
-    "shareYourReset": "Share your reset? 🔥",
+    "shareYourReset": "Want to share your reset?",
+    "beforeAfterNoPersonalData": "Before / after — no personal data.",
+    "share": "Share",
+    "shareMySkane": "Share my Skane",
+    "preparing": "Preparing",
+    "later": "Later",
     "no": "NO",
     "shareToStories": "Share to Stories",
     "downloadImage": "Download Image",
