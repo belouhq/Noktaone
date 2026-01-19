@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import Logo from "@/components/Logo";
 
 /**
  * WELCOME SCREEN - Étape 2 du Flow V1 Définitif
@@ -29,15 +28,8 @@ export default function WelcomePage() {
 
   return (
     <main className="fixed inset-0 bg-nokta-one-black flex flex-col items-center justify-between px-8 py-16">
-      {/* Espace haut - Logo discret */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="pt-8"
-      >
-        <Logo variant="icon" className="h-8 w-auto opacity-60" />
-      </motion.div>
+      {/* Espace haut */}
+      <div className="pt-8" />
 
       {/* Centre - Message principal */}
       <motion.div

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Camera, Clock, Shield, ArrowRight, X } from "lucide-react";
-import Logo from "@/components/Logo";
 
 /**
  * PAGE /try - Landing virale pour scan gratuit
@@ -87,15 +86,6 @@ export default function TryPage() {
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-12">
         
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
-          <Logo variant="text" className="h-8 w-auto" />
-        </motion.div>
-
         {/* Hero message */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { BottomNav } from "@/components/ui/BottomNav";
-import Logo from "@/components/Logo";
 
 /**
  * HOME - Mode Adaptation (7 jours)
@@ -68,15 +67,12 @@ export default function HomeAdaptationPage() {
 
   return (
     <main className="fixed inset-0 bg-nokta-one-black flex flex-col">
-      {/* Header avec logo */}
+      {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="pt-16 pb-8 text-center"
       >
-        <div className="flex justify-center">
-          <Logo variant="icon" className="h-6 w-auto" />
-        </div>
       </motion.header>
 
       {/* Contenu principal centré */}

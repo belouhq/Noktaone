@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Volume2, ChevronRight, BookOpen, Scan, Clock, Zap, Brain, Target, Shield, Sparkles } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import dictionaryData from "@/lib/nokta-dictionary.json";
-import Logo from "@/components/Logo";
 
 /**
  * NOKTA DICTIONARY COMPONENT
