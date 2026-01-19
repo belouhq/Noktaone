@@ -16,6 +16,7 @@ import ConnectedDevicesModal from "@/components/modals/ConnectedDevicesModal";
 import InvitationsModal from "@/components/modals/InvitationsModal";
 import EditProfileModal from "@/components/modals/EditProfileModal";
 import { SupportModal } from "@/components/modals/SupportModal";
+import AffiliatePanel from "@/components/settings/AffiliatePanel";
 
 // Mock user data
 const mockUser = {
@@ -77,12 +78,14 @@ export default function SettingsPage() {
     ...mockUser,
     language: currentLanguage || "fr", // Synchroniser avec i18n
   });
+  const [userId, setUserId] = useState<string>('');
 
   // Load from localStorage on mount
   useEffect(() => {
     const savedNotifications = localStorage.getItem("notificationsEnabled");
     const savedLanguage = localStorage.getItem("language");
     const savedProfile = localStorage.getItem("userProfile");
+    const savedUser = localStorage.getItem("user");
 
     if (savedLanguage && currentLanguage !== savedLanguage) {
       // S'assurer que la langue est bien chargée dans i18n
@@ -99,6 +102,20 @@ export default function SettingsPage() {
       } catch (e) {
         console.error("Error parsing saved profile:", e);
       }
+    }
+    
+    // Récupérer le userId depuis localStorage ou utiliser username comme fallback
+    if (savedUser) {
+      try {
+        const user = JSON.parse(savedUser);
+        // Utiliser user_id si disponible, sinon username, sinon email
+        setUserId(user.user_id || user.id || user.username || user.email || mockUser.username);
+      } catch (e) {
+        console.error("Error parsing saved user:", e);
+        setUserId(mockUser.username);
+      }
+    } else {
+      setUserId(mockUser.username);
     }
   }, []);
 
@@ -345,29 +362,15 @@ export default function SettingsPage() {
             showChevron
           />
 
-          {/* Referral Code */}
-          <SettingItem
-            icon={Gift}
-            label={t("settings.referralCode")}
-            rightElement={
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-nokta-one-white">
-                  {mockUser.referralCode}
-                </span>
-                <motion.button
-                  data-setting="copy-referral"
-                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Copy
-                    size={16}
-                    className={copied ? "text-nokta-one-blue" : "text-nokta-one-white"}
-                  />
-                </motion.button>
-              </div>
-            }
-          />
+          {/* Programme Ambassadeur - Section complète */}
+          {userId && (
+            <div className="mt-6">
+              <AffiliatePanel 
+                userId={userId} 
+                locale={currentLanguage || 'fr'} 
+              />
+            </div>
+          )}
 
           {/* Invitations */}
           <SettingItem

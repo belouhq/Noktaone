@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/components/providers/I18nProvider";
 import { AuthProvider } from "@/components/providers/AuthProvider";
+import ReferralTracker from "@/components/ReferralTracker";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased bg-black text-white`} style={{ pointerEvents: 'auto', position: 'relative', margin: 0, padding: 0 }}>
         <I18nProvider>
           <AuthProvider>
+            <ReferralTracker />
             <div className="app-container" style={{ pointerEvents: 'auto', position: 'relative' }}>
               <div className="landscape-warning fixed inset-0 bg-black z-[100] hidden items-center justify-center p-8 text-center pointer-events-none">
                 <div>
