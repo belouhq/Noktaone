@@ -9,7 +9,6 @@ import { useSwipe } from "@/lib/hooks/useSwipe";
 import { BottomNav } from "@/components/ui/BottomNav";
 import SkaneButton from "@/components/ui/SkaneButton";
 import DotsPattern from "@/components/ui/DotsPattern";
-import Logo from "@/components/Logo";
 import { HelpCircle } from "lucide-react";
 
 function getAdaptationDay(): number {
@@ -93,21 +92,6 @@ export default function Home() {
         >
           <HelpCircle size={20} className="text-white/70" />
         </motion.button>
-
-        {/* Logo - Réduit de 80% et remonté */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex justify-center mb-6"
-        >
-          <Logo 
-            variant="text" 
-            width={40} 
-            height={8}
-            className="w-auto h-auto"
-            style={{ maxWidth: '40px', maxHeight: '8px' }}
-          />
-        </motion.div>
 
         {/* Section Last Skane - Informations complètes */}
         <motion.div
