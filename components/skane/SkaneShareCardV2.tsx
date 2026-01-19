@@ -127,12 +127,6 @@ export default function SkaneShareCardV2({
       >
         {/* Header minimal */}
         <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-10">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-              <span className="text-white text-xs font-bold">N</span>
-            </div>
-            <span className="text-white/60 text-sm font-medium tracking-wider">NOKTA ONE</span>
-          </div>
         </div>
 
         {/* User photo avec overlay gradient */}

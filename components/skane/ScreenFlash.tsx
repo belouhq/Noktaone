@@ -30,7 +30,7 @@ export default function ScreenFlash({ isActive }: ScreenFlashProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15, ease: "easeOut" }}
           className="fixed inset-0 pointer-events-none"
-          style={{ zIndex: 100 }}
+          style={{ zIndex: 5 }}
         >
           {/* Overlay avec masque radial inversé - centre transparent, bords lumineux */}
           <div

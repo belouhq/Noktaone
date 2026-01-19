@@ -51,7 +51,9 @@
       "moreLight": "More light",
       "holdStill": "Hold still",
       "oneFaceOnly": "Only one face",
-      "fitOval": "Fit your face in the frame"
+      "fitOval": "Fit your face in the frame",
+      "showEyes": "눈을 보여주세요",
+      "showMouth": "입을 보여주세요"
     },
     "locked": "Locked",
     "cameraNotReady": "카메라가 준비되지 않았습니다. 다시 시도하세요.",
@@ -59,7 +61,11 @@
     "captureError": "이미지를 캡처할 수 없습니다. 다시 시도하세요.",
     "flashEnabled": "화면 플래시 활성화됨",
     "flashDisabled": "화면 플래시 비활성화됨",
-    "centerFace": "얼굴을 중앙에 두세요"
+    "centerFace": "얼굴을 중앙에 두세요",
+    "actionCompleted": "작업 완료 ✓",
+    "observeFeeling": "느끼는 것을 관찰하세요.",
+    "breatheWithRhythm": "리듬에 맞춰 호흡하세요.",
+    "canPutPhoneDown": "휴대폰을 내려놓을 수 있습니다."
   },
   "states": {
     "highActivation": "높은 활성화",
@@ -125,13 +131,18 @@
     "privacyNote": "귀하의 피드백은 비공식이며 향후 마이크로 액션을 개인화하는 데 도움이 됩니다"
   },
   "share": {
-    "shareYourReset": "리셋을 공유하시겠습니까? 🔥",
+    "shareYourReset": "리셋을 공유하시겠습니까?",
     "no": "아니오",
     "shareToStories": "스토리에 공유하기",
     "downloadImage": "이미지 다운로드",
     "skaneIndex": "스캔 지수",
     "before": "이전",
-    "after": "이후"
+    "after": "이후",
+    "beforeAfterNoPersonalData": "전후 — 개인 데이터 없음.",
+    "share": "공유",
+    "shareMySkane": "내 Skane 공유",
+    "preparing": "준비 중",
+    "later": "나중에"
   },
   "camera": {
     "accessRequired": "스캔을 위한 카메라 접근 필요",
@@ -156,6 +167,8 @@
     "moreLight": "더 많은 빛",
     "moveCloser": "더 가까이 가세요",
     "onlyOneFace": "하나의 얼굴만",
+    "showEyes": "눈을 보여주세요",
+    "showMouth": "입을 보여주세요",
     "howToEnableOn": "{{browser}}에서 활성화하는 방법:",
     "browserStep1": "사이트 또는 브라우저 설정 열기",
     "browserStep2": "카메라 권한 찾기",

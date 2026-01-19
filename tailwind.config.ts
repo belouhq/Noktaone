@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-poppins)', 'Poppins', 'system-ui', 'sans-serif'],
+      },
       colors: {
         "nokta-one": {
           black: "#000000",

@@ -51,7 +51,9 @@
       "moreLight": "More light",
       "holdStill": "Hold still",
       "oneFaceOnly": "Only one face",
-      "fitOval": "Fit your face in the frame"
+      "fitOval": "Fit your face in the frame",
+      "showEyes": "Tunjukkan mata Anda",
+      "showMouth": "Tunjukkan mulut Anda"
     },
     "locked": "Locked",
     "cameraNotReady": "Kamera tidak siap. Silakan coba lagi.",
@@ -59,7 +61,11 @@
     "captureError": "Tidak dapat menangkap gambar. Silakan coba lagi.",
     "flashEnabled": "Kilat layar diaktifkan",
     "flashDisabled": "Kilat layar dinonaktifkan",
-    "centerFace": "Pusatkan wajahmu"
+    "centerFace": "Pusatkan wajahmu",
+    "actionCompleted": "Tindakan selesai ✓",
+    "observeFeeling": "Amati apa yang kamu rasakan.",
+    "breatheWithRhythm": "Bernapas dengan ritme.",
+    "canPutPhoneDown": "Kamu bisa meletakkan ponselmu."
   },
   "states": {
     "highActivation": "Aktivasi tinggi",
@@ -125,13 +131,18 @@
     "privacyNote": "Umpan balik Anda tetap pribadi dan membantu mempersonalisasi mikro-tindakan Anda di masa depan"
   },
   "share": {
-    "shareYourReset": "Bagikan resetmu? 🔥",
+    "shareYourReset": "Ingin membagikan resetmu?",
     "no": "TIDAK",
     "shareToStories": "Bagikan di Story",
     "downloadImage": "Unduh gambar",
     "skaneIndex": "INDeks SKANE",
     "before": "SEBELUM",
-    "after": "SETELAH"
+    "after": "SETELAH",
+    "beforeAfterNoPersonalData": "Sebelum / sesudah — tanpa data pribadi.",
+    "share": "Bagikan",
+    "shareMySkane": "Bagikan Skane saya",
+    "preparing": "Mempersiapkan",
+    "later": "Nanti"
   },
   "camera": {
     "accessRequired": "Akses kamera diperlukan untuk pemindaian",
@@ -156,6 +167,8 @@
     "moreLight": "Lebih banyak cahaya",
     "moveCloser": "Dekatkan diri",
     "onlyOneFace": "Hanya satu wajah",
+    "showEyes": "Tunjukkan mata Anda",
+    "showMouth": "Tunjukkan mulut Anda",
     "howToEnableOn": "Cara mengaktifkan di {{browser}}:",
     "browserStep1": "Buka pengaturan situs atau browser",
     "browserStep2": "Temukan izin kamera",

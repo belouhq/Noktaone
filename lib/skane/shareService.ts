@@ -32,6 +32,7 @@ export type SharePlatform =
 export interface ShareData {
   imageBlob: Blob;
   imageUrl?: string;
+  filename?: string; // Nom de fichier SEO pour le téléchargement
   title: string;
   text: string;
   url?: string;
@@ -171,7 +172,7 @@ export async function shareToTikTok(data: ShareData): Promise<ShareResult> {
     const url = URL.createObjectURL(data.imageBlob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "nokta-skane.png";
+    a.download = data.filename || "nokta-skane.png";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -287,7 +288,7 @@ export async function shareToSnapchat(data: ShareData): Promise<ShareResult> {
     const url = URL.createObjectURL(data.imageBlob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "nokta-skane.png";
+    a.download = data.filename || "nokta-skane.png";
     a.click();
     URL.revokeObjectURL(url);
 
@@ -331,7 +332,7 @@ export async function downloadImage(data: ShareData): Promise<ShareResult> {
     const url = URL.createObjectURL(data.imageBlob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "nokta-skane.png";
+    a.download = data.filename || "nokta-skane.png";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

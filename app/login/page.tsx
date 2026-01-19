@@ -132,11 +132,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="ton@email.com"
-                className="w-full pl-12 pr-4 py-4 rounded-xl text-nokta-one-white placeholder-gray-500"
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
+                className="glass-input w-full pl-12 pr-4 py-4 text-white"
                 autoComplete="email"
               />
             </div>
@@ -154,11 +150,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-12 pr-12 py-4 rounded-xl text-nokta-one-white placeholder-gray-500"
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
+                className="glass-input w-full pl-12 pr-12 py-4 text-white"
                 autoComplete="current-password"
               />
               <button
@@ -197,11 +189,7 @@ export default function LoginPage() {
           <motion.button
             type="submit"
             disabled={isLoading}
-            className="w-full py-4 rounded-xl text-lg font-semibold text-white flex items-center justify-center gap-2"
-            style={{
-              background: isLoading ? "rgba(59, 130, 246, 0.5)" : "#3B82F6",
-              boxShadow: isLoading ? "none" : "0 4px 20px rgba(59, 130, 246, 0.4)",
-            }}
+            className="glass-button-primary w-full py-4 text-lg font-semibold flex items-center justify-center gap-2"
             whileHover={!isLoading ? { scale: 1.02 } : {}}
             whileTap={!isLoading ? { scale: 0.98 } : {}}
           >
@@ -236,11 +224,7 @@ export default function LoginPage() {
           <button
             onClick={() => handleSocialLogin("apple")}
             disabled={isLoading}
-            className="w-full py-4 rounded-xl flex items-center justify-center gap-3 text-nokta-one-white font-medium"
-            style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-            }}
+            className="glass-button-secondary w-full py-4 flex items-center justify-center gap-3 font-medium"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
@@ -252,11 +236,7 @@ export default function LoginPage() {
           <button
             onClick={() => handleSocialLogin("google")}
             disabled={isLoading}
-            className="w-full py-4 rounded-xl flex items-center justify-center gap-3 text-nokta-one-white font-medium"
-            style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-            }}
+            className="glass-button-secondary w-full py-4 flex items-center justify-center gap-3 font-medium"
           >
             <svg width="20" height="20" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>

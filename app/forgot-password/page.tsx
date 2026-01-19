@@ -111,11 +111,7 @@ export default function ForgotPasswordPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
           onClick={() => router.push("/login")}
-          className="py-4 px-8 rounded-xl text-lg font-semibold text-white"
-          style={{
-            background: "#3B82F6",
-            boxShadow: "0 4px 20px rgba(59, 130, 246, 0.4)",
-          }}
+          className="glass-button-primary py-4 px-8 text-lg font-semibold"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
@@ -220,11 +216,7 @@ export default function ForgotPasswordPage() {
           <motion.button
             type="submit"
             disabled={isLoading}
-            className="w-full py-4 rounded-xl text-lg font-semibold text-white flex items-center justify-center gap-2"
-            style={{
-              background: isLoading ? "rgba(59, 130, 246, 0.5)" : "#3B82F6",
-              boxShadow: isLoading ? "none" : "0 4px 20px rgba(59, 130, 246, 0.4)",
-            }}
+            className="glass-button-primary w-full py-4 text-lg font-semibold flex items-center justify-center gap-2"
             whileHover={!isLoading ? { scale: 1.02 } : {}}
             whileTap={!isLoading ? { scale: 0.98 } : {}}
           >

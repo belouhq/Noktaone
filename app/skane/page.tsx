@@ -6,11 +6,13 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { useCamera } from "@/lib/hooks/useCamera";
+import { useSwipe } from "@/lib/hooks/useSwipe";
 import { CameraPermissionScreen } from "@/components/skane/CameraPermissionScreen";
 import { BottomNav } from "@/components/ui/BottomNav";
 import InfoModal from "@/components/modals/InfoModal";
-import FaceGuide from "@/components/skane/FaceGuide";
+import FaceDetectionGuide from "@/components/skane/FaceDetectionGuide";
 import ScreenFlash from "@/components/skane/ScreenFlash";
+import Toast from "@/components/ui/Toast";
 import { FLOW_V1_ENABLED } from "@/lib/flowV1";
 
 export default function SkanePage() {
@@ -19,81 +21,36 @@ export default function SkanePage() {
   const { videoRef, cameraState, requestPermission, captureFrame } = useCamera();
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [isGuestMode, setIsGuestMode] = useState(false);
-  const [isCountingDown, setIsCountingDown] = useState(false);
-  const [countdown, setCountdown] = useState(3);
   const [isFlashEnabled, setIsFlashEnabled] = useState(false);
+  const [isFaceReady, setIsFaceReady] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
 
   // Charger l'état guestMode et flash depuis localStorage au montage
   useEffect(() => {
     const savedGuestMode = localStorage.getItem("guestMode");
     const savedFlash = localStorage.getItem("screenFlashEnabled");
     
-    if (savedGuestMode === "true") {
-      setIsGuestMode(true);
-    }
-    if (savedFlash === "true") {
-      setIsFlashEnabled(true);
-    }
+    // Réinitialiser les états pour éviter les conflits
+    setIsGuestMode(savedGuestMode === "true");
+    setIsFlashEnabled(savedFlash === "true");
   }, []);
 
-  // Attacher les event listeners pour tous les boutons
-  useEffect(() => {
-    const attachListeners = () => {
-      // Bouton Info
-      const infoBtn = document.querySelector('[data-skane="info"]');
-      if (infoBtn && !infoBtn.hasAttribute('data-listener-attached')) {
-        infoBtn.setAttribute('data-listener-attached', 'true');
-        infoBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setIsInfoModalOpen(true);
-        });
-      }
-
-      // Bouton Guest Mode
-      const guestBtn = document.querySelector('[data-skane="guest"]');
-      if (guestBtn && !guestBtn.hasAttribute('data-listener-attached')) {
-        guestBtn.setAttribute('data-listener-attached', 'true');
-        guestBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleGuestMode();
-        });
-      }
-
-      // Bouton Flash
-      const flashBtn = document.querySelector('[data-skane="flash"]');
-      if (flashBtn && !flashBtn.hasAttribute('data-listener-attached')) {
-        flashBtn.setAttribute('data-listener-attached', 'true');
-        flashBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleFlash();
-        });
-      }
-
-      // Bouton Start Skane
-      const startBtn = document.querySelector('[data-skane="start"]');
-      if (startBtn && !startBtn.hasAttribute('data-listener-attached')) {
-        startBtn.setAttribute('data-listener-attached', 'true');
-        startBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          handleStartSkane();
-        });
-      }
-    };
-
-    attachListeners();
-    setTimeout(attachListeners, 100);
-    setTimeout(attachListeners, 500);
-  }, [isGuestMode, isFlashEnabled]);
+  // Les boutons utilisent maintenant onClick directement, pas besoin de event listeners
 
   // Toggle guest mode
   const toggleGuestMode = () => {
     const newGuestMode = !isGuestMode;
     setIsGuestMode(newGuestMode);
     localStorage.setItem("guestMode", newGuestMode.toString());
+    
+    // Afficher le message de confirmation
+    if (newGuestMode) {
+      setToastMessage(t("skane.guestModeEnabled") || "Mode invité activé");
+    } else {
+      setToastMessage(t("skane.guestModeDisabled") || "Mode invité désactivé");
+    }
+    setShowToast(true);
   };
 
   // Toggle screen flash
@@ -103,23 +60,23 @@ export default function SkanePage() {
     localStorage.setItem("screenFlashEnabled", newFlash.toString());
   };
 
-  const handleStartSkane = async () => {
-    // Démarrer le compte à rebours
-    setIsCountingDown(true);
-    setCountdown(3);
+  // Swipe gestures pour naviguer entre les pages
+  const swipeRef = useSwipe({
+    onSwipeLeft: () => {
+      // Swipe vers la gauche = aller vers Settings
+      router.push("/settings");
+    },
+    onSwipeRight: () => {
+      // Swipe vers la droite = aller vers Home
+      router.push("/");
+    },
+    threshold: 50,
+    velocityThreshold: 0.3,
+  });
 
-    // Compte à rebours de 3 secondes
-    const countdownInterval = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(countdownInterval);
-          // Capturer l'image après le compte à rebours
-          captureAndRedirect();
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+  const handleStartSkane = async () => {
+    // Capturer directement l'image (pas de countdown)
+    captureAndRedirect();
   };
 
   const captureAndRedirect = async () => {
@@ -135,7 +92,6 @@ export default function SkanePage() {
         videoWidth: video?.videoWidth,
         videoHeight: video?.videoHeight
       });
-      setIsCountingDown(false);
       alert(t("skane.cameraNotReady") || "La caméra n'est pas prête. Veuillez réessayer.");
       return;
     }
@@ -146,7 +102,6 @@ export default function SkanePage() {
         videoWidth: video.videoWidth,
         videoHeight: video.videoHeight
       });
-      setIsCountingDown(false);
       alert(t("skane.cameraInvalidDimensions") || "La caméra n'a pas de dimensions valides. Veuillez réessayer.");
       return;
     }
@@ -173,7 +128,6 @@ export default function SkanePage() {
       }
     } else {
       console.error("Failed to capture frame: captureFrame returned null");
-      setIsCountingDown(false);
       alert(t("skane.captureError") || "Impossible de capturer l'image. Veuillez réessayer.");
     }
   };
@@ -189,9 +143,12 @@ export default function SkanePage() {
   }
 
   return (
-    <main className="relative min-h-screen bg-nokta-one-black overflow-hidden">
-      {/* Screen Flash Overlay - activé quand isFlashEnabled ET pendant countdown */}
-      <ScreenFlash isActive={isFlashEnabled && isCountingDown} />
+    <main 
+      ref={swipeRef}
+      className="relative min-h-screen bg-nokta-one-black overflow-hidden"
+    >
+      {/* Screen Flash Overlay - activé immédiatement quand isFlashEnabled */}
+      <ScreenFlash isActive={isFlashEnabled} />
 
       {/* Video Background - z-index: 0 */}
       <video
@@ -217,34 +174,51 @@ export default function SkanePage() {
         }}
       />
 
-      {/* Boutons Top-Right - z-index: 20 */}
+      {/* Boutons Top-Right - z-index: 30 */}
       <div
         className="absolute top-4 right-4 flex flex-col items-end"
-        style={{ zIndex: 20, gap: "12px" }}
+        style={{ zIndex: 30, gap: "12px", pointerEvents: "auto" }}
       >
         {/* Bouton Info */}
         <motion.button
-          data-skane="info"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsInfoModalOpen(true);
+          }}
           className="btn-circle-responsive rounded-full flex items-center justify-center"
           style={{
-            background: "rgba(255, 255, 255, 0.1)",
+            background: isFlashEnabled 
+              ? "rgba(0, 0, 0, 0.7)" 
+              : "rgba(255, 255, 255, 0.1)",
             backdropFilter: "blur(10px)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
+            border: isFlashEnabled 
+              ? "2px solid rgba(255, 255, 255, 0.4)" 
+              : "1px solid rgba(255, 255, 255, 0.2)",
             pointerEvents: "auto",
             cursor: "pointer",
-            zIndex: 20,
+            zIndex: 30,
           }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <Info size={20} className="text-nokta-one-white" />
+          <Info 
+            size={20} 
+            className={isFlashEnabled ? "text-white" : "text-nokta-one-white"} 
+          />
         </motion.button>
 
-        {/* Bouton Flash (Screen Flash) */}
+        {/* Bouton Flash (Screen Flash) - ROND */}
         <motion.button
-          data-skane="flash"
-          className="btn-circle-responsive rounded-full flex items-center justify-center"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleFlash();
+          }}
+          className="rounded-full flex items-center justify-center"
           style={{
+            width: "clamp(44px, 12vw, 56px)",
+            height: "clamp(44px, 12vw, 56px)",
             background: isFlashEnabled 
               ? "rgba(59, 130, 246, 0.3)" 
               : "rgba(255, 255, 255, 0.1)",
@@ -254,101 +228,100 @@ export default function SkanePage() {
               : "1px solid rgba(255, 255, 255, 0.2)",
             pointerEvents: "auto",
             cursor: "pointer",
-            zIndex: 20,
+            zIndex: 30,
           }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
           <Zap
             size={20}
-            className={isFlashEnabled ? "text-nokta-one-blue" : "text-nokta-one-white"}
+            className={isFlashEnabled ? "text-blue-400" : "text-white"}
             fill={isFlashEnabled ? "#3B82F6" : "none"}
           />
         </motion.button>
 
-        {/* Bouton Invité (Guest Mode) */}
+        {/* Bouton Invité (Guest Mode) - ROND */}
         <motion.button
-          data-skane="guest"
-          className="btn-circle-responsive rounded-full flex items-center justify-center"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleGuestMode();
+          }}
+          className="rounded-full flex items-center justify-center"
           style={{
-            background: isGuestMode 
-              ? "rgba(59, 130, 246, 0.3)" 
-              : "rgba(255, 255, 255, 0.1)",
+            width: "clamp(44px, 12vw, 56px)",
+            height: "clamp(44px, 12vw, 56px)",
+            background: isFlashEnabled
+              ? (isGuestMode 
+                  ? "rgba(59, 130, 246, 0.8)" 
+                  : "rgba(0, 0, 0, 0.7)")
+              : (isGuestMode 
+                  ? "rgba(59, 130, 246, 0.3)" 
+                  : "rgba(255, 255, 255, 0.1)"),
             backdropFilter: "blur(10px)",
-            border: isGuestMode 
-              ? "1px solid rgba(59, 130, 246, 0.5)" 
-              : "1px solid rgba(255, 255, 255, 0.2)",
+            border: isFlashEnabled
+              ? (isGuestMode 
+                  ? "2px solid rgba(59, 130, 246, 0.9)" 
+                  : "2px solid rgba(255, 255, 255, 0.4)")
+              : (isGuestMode 
+                  ? "1px solid rgba(59, 130, 246, 0.5)" 
+                  : "1px solid rgba(255, 255, 255, 0.2)"),
             pointerEvents: "auto",
             cursor: "pointer",
-            zIndex: 20,
+            zIndex: 30,
           }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
           <User
             size={20}
-            className={isGuestMode ? "text-nokta-one-blue" : "text-nokta-one-white"}
+            className={isFlashEnabled
+              ? (isGuestMode ? "text-blue-300" : "text-white")
+              : (isGuestMode ? "text-blue-400" : "text-white")
+            }
           />
         </motion.button>
       </div>
 
-      {/* Face Guide - visible pendant le compte à rebours */}
-      <AnimatePresence>
-        {isCountingDown && <FaceGuide />}
-      </AnimatePresence>
+      {/* Face Detection Guide - visible en permanence */}
+      <FaceDetectionGuide 
+        videoRef={videoRef}
+        showInstructions={true}
+        flashEnabled={isFlashEnabled}
+        onReadyChange={setIsFaceReady}
+      />
 
-      {/* Compte à rebours - visible pendant le countdown */}
-      <AnimatePresence>
-        {isCountingDown && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            style={{ zIndex: 25 }}
-          >
-            <motion.div
-              key={countdown}
-              initial={{ scale: 1.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              className="w-32 h-32 rounded-full flex items-center justify-center"
-              style={{
-                background: "rgba(16, 185, 129, 0.2)",
-                border: "4px solid #10B981",
-                backdropFilter: "blur(10px)",
-              }}
-            >
-              <span className="text-6xl font-bold text-green-500">{countdown}</span>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Bouton Central Start Skane - PARFAITEMENT ROND - z-index: 20 */}
-      {!isCountingDown && (
+      {/* Bouton Start Skane - UNIQUEMENT si visage prêt - En bas au niveau du pouce - ROND */}
+      {isFaceReady && (
         <div
           className="absolute"
           style={{
-            top: "50%",
+            bottom: "120px", // Au-dessus de la bottom nav (80px) + marge (40px)
             left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 20,
+            transform: "translateX(-50%)",
+            zIndex: 30,
+            pointerEvents: "auto",
           }}
         >
           <motion.button
-            data-skane="start"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleStartSkane();
+            }}
             className="rounded-full flex flex-col items-center justify-center"
             style={{
               // IMPORTANT: même width et height pour un cercle parfait
               width: "clamp(140px, 40vw, 200px)",
               height: "clamp(140px, 40vw, 200px)",
-              background: "rgba(255, 255, 255, 0.1)",
-              border: "2px solid rgba(255, 255, 255, 0.3)",
+              // Bleu quand prêt
+              background: "linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.2) 100%)",
               backdropFilter: "blur(30px)",
+              border: "2px solid rgba(59, 130, 246, 0.5)",
+              boxShadow: "0 8px 32px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
               pointerEvents: "auto",
               cursor: "pointer",
-              zIndex: 20,
+              zIndex: 30,
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -358,7 +331,7 @@ export default function SkanePage() {
               damping: 17,
             }}
           >
-            <span className="text-nokta-one-white text-responsive-xl font-bold text-center whitespace-pre-line">
+            <span className="text-white text-responsive-xl font-bold text-center whitespace-pre-line">
               {t("skane.startSkane")}
             </span>
           </motion.button>
@@ -374,6 +347,14 @@ export default function SkanePage() {
       <InfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
+      />
+
+      {/* Toast pour le mode invité */}
+      <Toast
+        message={toastMessage || ""}
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+        duration={2000}
       />
     </main>
   );

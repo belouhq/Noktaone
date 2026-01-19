@@ -1,11 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/components/providers/I18nProvider";
 import { AuthProvider } from "@/components/providers/AuthProvider";
 import ReferralTracker from "@/components/ReferralTracker";
+import "@/lib/utils/console-filter"; // Filtrer les messages TensorFlow
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
   title: "NOKTA ONE",
@@ -36,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="dark" dir="ltr" suppressHydrationWarning>
+    <html lang="fr" className={`dark ${poppins.variable}`} dir="ltr" suppressHydrationWarning>
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -44,7 +49,7 @@ export default function RootLayout({
         <meta name="HandheldFriendly" content="true" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
-      <body className={`${inter.className} antialiased bg-black text-white`} style={{ pointerEvents: 'auto', position: 'relative', margin: 0, padding: 0 }}>
+      <body className={`${poppins.className} antialiased bg-black text-white`} style={{ pointerEvents: 'auto', position: 'relative', margin: 0, padding: 0 }} suppressHydrationWarning>
         <I18nProvider>
           <AuthProvider>
             <ReferralTracker />

@@ -117,7 +117,6 @@ export default function SkaneShareCard({
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-10">
           <h2 className="text-white font-bold text-xl">SKANE INDEX</h2>
-          <p className="text-white text-sm">NOKTA ONE</p>
         </div>
 
         {/* User photo */}

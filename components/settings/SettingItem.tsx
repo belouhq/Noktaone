@@ -2,6 +2,7 @@
 
 import { LucideIcon, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { clsx } from "clsx";
 
 interface SettingItemProps {
   icon?: LucideIcon;
@@ -28,15 +29,15 @@ export default function SettingItem({
     <Component
       onClick={onClick}
       data-setting={dataSetting}
-      className="w-full p-4 rounded-xl flex items-center justify-between cursor-pointer"
+      className={clsx(
+        "glass-card w-full p-4 flex items-center justify-between",
+        (onClick || dataSetting) && "cursor-pointer"
+      )}
       style={{
-        background: "rgba(255, 255, 255, 0.05)",
-        backdropFilter: "blur(10px)",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
         pointerEvents: 'auto',
       }}
-      whileHover={(onClick || dataSetting) ? { scale: 1.02 } : {}}
-      whileTap={(onClick || dataSetting) ? { scale: 0.98 } : {}}
+      whileHover={(onClick || dataSetting) ? { scale: 1.01 } : {}}
+      whileTap={(onClick || dataSetting) ? { scale: 0.99 } : {}}
     >
       <div className="flex items-center gap-3">
         {emoji ? (

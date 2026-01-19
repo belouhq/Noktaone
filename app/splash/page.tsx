@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import Logo from "@/components/Logo";
 
 /**
  * SPLASH SCREEN - Étape 1 du Flow V1 Définitif
@@ -29,14 +30,14 @@ export default function SplashPage() {
   return (
     <main className="fixed inset-0 bg-nokta-one-black flex flex-col items-center justify-center px-8">
       {/* Logo NOKTA */}
-      <motion.h1
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-3xl font-light tracking-[0.4em] text-nokta-one-white mb-16"
+        className="mb-16"
       >
-        NOKTA
-      </motion.h1>
+        <Logo variant="icon" className="h-16 w-auto" />
+      </motion.div>
 
       {/* Message central - LE réflexe à ancrer */}
       <motion.p

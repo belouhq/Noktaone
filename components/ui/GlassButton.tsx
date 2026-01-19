@@ -9,6 +9,9 @@ interface GlassButtonProps {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  variant?: "primary" | "secondary" | "ghost";
+  size?: "sm" | "md" | "lg";
+  fullWidth?: boolean;
 }
 
 export default function GlassButton({
@@ -16,24 +19,36 @@ export default function GlassButton({
   onClick,
   className,
   disabled = false,
+  variant = "secondary",
+  size = "md",
+  fullWidth = false,
 }: GlassButtonProps) {
+  const variantClass = {
+    primary: "glass-button-primary",
+    secondary: "glass-button-secondary",
+    ghost: "glass-button-ghost",
+  }[variant];
+
+  const sizeClass = {
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg",
+  }[size];
+
   return (
     <motion.button
       onClick={onClick}
       disabled={disabled}
       className={clsx(
-        "relative px-8 py-4 rounded-lg",
-        "bg-white/10 backdrop-blur-md",
-        "border border-white/20",
-        "text-nokta-one-white font-medium",
-        "transition-all duration-300",
-        "hover:bg-white/20 hover:border-white/30",
-        "active:scale-95",
-        "disabled:opacity-50 disabled:cursor-not-allowed",
+        "glass-button",
+        variantClass,
+        sizeClass,
+        fullWidth && "w-full",
+        "no-select",
         className
       )}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={disabled ? {} : { scale: 1.02 }}
+      whileTap={disabled ? {} : { scale: 0.98 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
       {children}

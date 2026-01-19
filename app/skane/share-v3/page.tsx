@@ -1,40 +1,44 @@
 "use client";
 
-import { useEffect, useState, useRef, useMemo, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Camera, RotateCcw, Share2 } from "lucide-react";
+import { X, Camera, RotateCcw, Send, Share2 } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { MicroActionType } from "@/lib/skane/types";
 import { MICRO_ACTIONS } from "@/lib/skane/constants";
+import { MicroActionType } from "@/lib/skane/types";
 import { toPng } from "html-to-image";
 import SharePlatformSelector from "@/components/share/SharePlatformSelector";
 import shareService, { ShareData, ShareResult } from "@/lib/skane/shareService";
 
 /**
- * SHARE CARD V2.1 FINAL
+ * SHARE CARD V3 - Design matching maquette
  * 
- * Design épuré, professionnel, B2B-ready :
- * - AUCUN émoji
- * - Fourchettes (pas de %)
- * - Ton minimaliste
- * - TikTok inclus
- * - Selfie victoire (pas la photo du skane)
+ * Features:
+ * 1. Étape selfie victoire (pas la photo du scan)
+ * 2. Cercles avec fourchettes à l'intérieur (pas %)
+ * 3. Header "SKANE INDEX" / "NOKTA ONE"
+ * 4. Card glassmorphism en bas
+ * 5. Bouton partage rond style avion papier
  */
 
 type Step = "selfie" | "preview";
+
+interface SkaneScores {
+  before: [number, number]; // Fourchette [min, max]
+  after: [number, number];  // Fourchette [min, max]
+  beforeLabel: string;
+  afterLabel: string;
+}
+
+// === RÈGLES DE GÉNÉRATION DES FOURCHETTES ===
+// Source: Conversation précédente - légalement inattaquable + effet WOW
+
 type UserFeedback = "better" | "same" | "worse";
 
 interface FeedbackZone {
   before: { min: number; max: number; spread: [number, number] };
   after: { min: number; max: number; spread: [number, number] };
-  beforeLabel: string;
-  afterLabel: string;
-}
-
-interface GeneratedRanges {
-  before: [number, number];
-  after: [number, number];
   beforeLabel: string;
   afterLabel: string;
 }
@@ -60,8 +64,8 @@ const FEEDBACK_ZONES: Record<UserFeedback, FeedbackZone> = {
   },
 };
 
-const MIN_DELTA = 40;
-const NOISE_RANGE = { min: 3, max: 7 };
+const MIN_DELTA = 40; // Delta minimum garanti pour effet WOW
+const NOISE_RANGE = { min: 3, max: 7 }; // Bruit anti-répétition
 
 function randomInRange(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -77,9 +81,11 @@ function applyNoise(value: number): number {
   return value + noise * direction;
 }
 
-function generateRanges(feedback: UserFeedback): GeneratedRanges {
+// Génération des fourchettes basées sur le feedback
+function generateScores(feedback: UserFeedback = "better"): SkaneScores {
   const zone = FEEDBACK_ZONES[feedback];
 
+  // Générer BEFORE
   const beforeSpread = randomInRange(zone.before.spread[0], zone.before.spread[1]);
   let beforeLow = randomInRange(zone.before.min, zone.before.max - beforeSpread);
   let beforeHigh = beforeLow + beforeSpread;
@@ -87,6 +93,7 @@ function generateRanges(feedback: UserFeedback): GeneratedRanges {
   beforeLow = clamp(applyNoise(beforeLow), zone.before.min, 95);
   beforeHigh = clamp(applyNoise(beforeHigh), beforeLow + 8, 100);
 
+  // Générer AFTER
   const afterSpread = randomInRange(zone.after.spread[0], zone.after.spread[1]);
   let afterLow = randomInRange(zone.after.min, zone.after.max - afterSpread);
   let afterHigh = afterLow + afterSpread;
@@ -94,6 +101,7 @@ function generateRanges(feedback: UserFeedback): GeneratedRanges {
   afterLow = clamp(applyNoise(afterLow), 5, zone.after.max);
   afterHigh = clamp(applyNoise(afterHigh), afterLow + 5, zone.after.max + 10);
 
+  // Vérifier le delta minimum (effet WOW garanti)
   const beforeMean = (beforeLow + beforeHigh) / 2;
   const afterMean = (afterLow + afterHigh) / 2;
   const delta = beforeMean - afterMean;
@@ -114,96 +122,18 @@ function generateRanges(feedback: UserFeedback): GeneratedRanges {
   };
 }
 
-// Composant cercle de progression
-interface ProgressCircleProps {
-  range: [number, number];
-  label: string;
-  type: "before" | "after";
-}
-
-function ProgressCircle({ range, label, type }: ProgressCircleProps) {
-  const isBefore = type === "before";
-  const color = isBefore ? "#EF4444" : "#10B981";
-  const bgColor = isBefore ? "rgba(239, 68, 68, 0.12)" : "rgba(16, 185, 129, 0.12)";
-  const fillPercent = (range[0] + range[1]) / 2 / 100;
-
-  const size = 100;
-  const strokeWidth = 6;
-  const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference * (1 - fillPercent);
-
-  return (
-    <div className="flex flex-col items-center">
-      <div className="relative" style={{ width: size, height: size }}>
-        <svg width={size} height={size} className="absolute inset-0 -rotate-90">
-          <circle
-            cx={size / 2}
-            cy={size / 2}
-            r={radius}
-            fill="none"
-            stroke="rgba(255,255,255,0.08)"
-            strokeWidth={strokeWidth}
-          />
-          <motion.circle
-            cx={size / 2}
-            cy={size / 2}
-            r={radius}
-            fill="none"
-            stroke={color}
-            strokeWidth={strokeWidth}
-            strokeLinecap="round"
-            strokeDasharray={circumference}
-            initial={{ strokeDashoffset: circumference }}
-            animate={{ strokeDashoffset }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          />
-        </svg>
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center rounded-full"
-          style={{ background: bgColor }}
-        >
-          {/* 
-            FOURCHETTE - PAS DE % 
-            Affichage : "85-95" pas "85%"
-          */}
-          <span className="text-lg font-semibold text-white tracking-tight">
-            {range[0]}-{range[1]}
-          </span>
-        </div>
-      </div>
-      <div className="mt-2.5 text-center">
-        <p className="text-[10px] text-white/40 uppercase tracking-widest font-medium">
-          {isBefore ? "Before" : "After"}
-        </p>
-        <p className="text-[9px] font-medium text-white/60 uppercase tracking-wide mt-0.5">
-          {label}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-// Messages viraux SANS ÉMOJI
-const VIRAL_MESSAGES = [
-  "J'étais off. J'ai skané.",
-  "30 secondes. Reset.",
-  "Quand le corps est off, skane.",
-  "Mon reset du jour.",
-];
-
-export default function ShareCardV2Final() {
+export default function ShareCardV3() {
   const router = useRouter();
   const { t } = useTranslation();
+  
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-
+  
   const [step, setStep] = useState<Step>("selfie");
-  const [feedback] = useState<UserFeedback>("better");
-  const [microAction, setMicroAction] = useState<MicroActionType>("physiological_sigh");
   const [selfieUrl, setSelfieUrl] = useState<string | null>(null);
-  const [viralMessage, setViralMessage] = useState("");
+  const [microAction, setMicroAction] = useState<MicroActionType>("physiological_sigh");
+  const [scores] = useState<SkaneScores>(() => generateScores());
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
   
@@ -211,17 +141,17 @@ export default function ShareCardV2Final() {
   const [shareData, setShareData] = useState<ShareData | null>(null);
   const [isGeneratingImage, setIsGeneratingImage] = useState(false);
 
-  const ranges = useMemo(() => generateRanges(feedback), [feedback]);
-
+  // Initialisation
   useEffect(() => {
+    // Vérifier le feedback
     const storedFeedback = sessionStorage.getItem("skane_feedback");
     if (storedFeedback !== "better") {
       router.push("/");
       return;
     }
 
+    // Récupérer l'action
     const storedResult = sessionStorage.getItem("skane_analysis_result");
-
     if (storedResult) {
       try {
         const parsed = JSON.parse(storedResult);
@@ -230,8 +160,6 @@ export default function ShareCardV2Final() {
         console.error("Error parsing skane data:", error);
       }
     }
-
-    setViralMessage(VIRAL_MESSAGES[Math.floor(Math.random() * VIRAL_MESSAGES.length)]);
   }, [router]);
 
   // Démarrer la caméra
@@ -331,19 +259,19 @@ export default function ShareCardV2Final() {
     setFacingMode(prev => prev === "user" ? "environment" : "user");
   };
 
-  const handleShareClick = async () => {
+  // Générer et partager
+  const handleShare = async () => {
     if (!cardRef.current) return;
 
     setIsGeneratingImage(true);
 
     try {
       const dataUrl = await toPng(cardRef.current, {
-        backgroundColor: "#0a0a0a",
+        backgroundColor: "#000000",
         pixelRatio: 2,
         quality: 1,
       });
 
-      // Convertir dataUrl en Blob
       const response = await fetch(dataUrl);
       const blob = await response.blob();
 
@@ -365,12 +293,8 @@ export default function ShareCardV2Final() {
 
   const handleShareComplete = (result: ShareResult) => {
     console.log("Share completed:", result);
-    
-    // Ne fermer que si pas d'étape manuelle
     if (result.success && !result.requiresManualStep && result.platform !== "copy" && result.platform !== "download") {
-      setTimeout(() => {
-        router.push("/");
-      }, 800);
+      setTimeout(() => router.push("/"), 800);
     }
   };
 
@@ -380,10 +304,6 @@ export default function ShareCardV2Final() {
   };
 
   const actionDetails = MICRO_ACTIONS[microAction];
-  const getTranslation = (key: string, fallback: string) => {
-    const translated = t(key);
-    return translated && translated !== key ? translated : fallback;
-  };
 
   return (
     <main className="fixed inset-0 bg-black">
@@ -405,7 +325,7 @@ export default function ShareCardV2Final() {
               <button onClick={handleClose} className="text-white/60 hover:text-white">
                 <X size={24} />
               </button>
-              <span className="text-white/60 text-sm">Selfie victoire</span>
+              <span className="text-white/60 text-sm">Selfie victoire 🎉</span>
               <button onClick={switchCamera} className="text-white/60 hover:text-white">
                 <RotateCcw size={24} />
               </button>
@@ -430,7 +350,7 @@ export default function ShareCardV2Final() {
             <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col items-center">
               <p className="text-white/80 text-center mb-6 text-sm">
                 Montre ton visage après l'exercice !<br />
-                <span className="text-white/50">Souris, tu l'as mérité</span>
+                <span className="text-white/50">Souris, tu l'as mérité 💪</span>
               </p>
 
               <motion.button
@@ -464,129 +384,160 @@ export default function ShareCardV2Final() {
             className="fixed inset-0 flex flex-col items-center justify-center p-4"
           >
             {/* Bouton fermer */}
-            <motion.button
+            <button
               onClick={handleClose}
-              className="absolute top-5 right-5 p-2 z-20 text-white/40 hover:text-white/70 transition-colors"
-              whileTap={{ scale: 0.9 }}
+              className="absolute top-5 right-5 p-2 z-20 text-white/40 hover:text-white/70"
             >
               <X size={22} />
-            </motion.button>
+            </button>
 
-            {/* SHARE CARD */}
+            {/* === SHARE CARD (format 9:16) === */}
             <motion.div
               ref={cardRef}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative w-full max-w-xs rounded-2xl overflow-hidden"
+              className="relative w-full max-w-xs overflow-hidden rounded-3xl"
               style={{ aspectRatio: "9/16" }}
             >
-              {/* Selfie en arrière-plan */}
+              {/* Background: Selfie */}
               {selfieUrl ? (
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url(${selfieUrl})` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
-                </div>
-              ) : (
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%)" }}
                 />
-              )}
-
-        {/* Contenu */}
-        <div className="relative z-10 flex flex-col h-full p-4">
-          {/* Header */}
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-medium text-white/70 tracking-[0.2em] uppercase">
-              {getTranslation("skaneIndex.title", "Skane Index")}
-            </span>
-          </div>
-
-          {/* Message viral (sans émoji) */}
-          <p className="text-white/60 text-xs text-center mt-6 font-light">
-            {viralMessage}
-          </p>
-
-          {/* Cercles */}
-          <div className="flex-1 flex items-center justify-center">
-            <div className="flex items-center justify-center gap-5">
-              <ProgressCircle range={ranges.before} label={ranges.beforeLabel} type="before" />
-              <div className="text-white/20 text-lg font-light">→</div>
-              <ProgressCircle range={ranges.after} label={ranges.afterLabel} type="after" />
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div>
-            <div className="bg-white/8 backdrop-blur-sm rounded-xl p-3 border border-white/10">
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                <span className="text-white/70 text-[10px] font-medium uppercase tracking-wide">
-                  {getTranslation("skaneIndex.skaneCompleted", "Skane Completed")}
-                </span>
-              </div>
-              <p className="text-white/90 text-xs mt-1 font-medium">
-                {actionDetails?.name || microAction}
-              </p>
-              <p className="text-white/40 text-[10px] mt-0.5">
-                {actionDetails?.duration || 24}s
-              </p>
-            </div>
-            
-            {/* Disclaimer */}
-            <p className="text-[8px] text-white/25 text-center mt-2 tracking-wide">
-              {getTranslation("skaneIndex.activationDisclaimer", "Wellness signal · Not medical")}
-            </p>
-          </div>
-        </div>
-      </motion.div>
-
-          {/* Boutons sous la card */}
-          <div className="mt-6 flex items-center gap-4">
-            <motion.button
-              onClick={retakeSelfie}
-              className="px-5 py-2.5 rounded-xl text-white/60 text-sm border border-white/20 flex items-center gap-2"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <RotateCcw size={16} />
-              Reprendre
-            </motion.button>
-
-            <motion.button
-              onClick={handleShareClick}
-              disabled={isGeneratingImage}
-              className="px-6 py-2.5 rounded-xl text-white font-medium text-sm flex items-center gap-2"
-              style={{
-                background: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)",
-                boxShadow: "0 4px 20px rgba(59, 130, 246, 0.4)",
-              }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {isGeneratingImage ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  {getTranslation("share.preparing", "Préparation")}
-                </>
               ) : (
-                <>
-                  <Share2 size={16} />
-                  {getTranslation("share.shareMySkane", "Partager mon Skane")}
-                </>
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-black" />
               )}
-            </motion.button>
-          </div>
 
-          <button
-            onClick={handleClose}
-            className="mt-4 text-white/30 text-xs hover:text-white/50"
-          >
-            {getTranslation("share.later", "Plus tard")}
-          </button>
-        </motion.div>
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
+
+              {/* === CONTENU === */}
+              <div className="relative z-10 flex flex-col h-full p-5">
+                {/* Header */}
+                <div className="flex items-center justify-between">
+                  <span className="text-white/80 text-[11px] font-semibold tracking-[0.2em] uppercase">
+                    Skane Index
+                  </span>
+                  <span className="text-white/50 text-[10px] font-light tracking-[0.15em] uppercase">
+                    Nokta One
+                  </span>
+                </div>
+
+                {/* Espace flex pour centrer les cercles */}
+                <div className="flex-1 flex items-center justify-center">
+                  <div className="flex items-end justify-center gap-6">
+                    {/* Cercle BEFORE - Fourchette */}
+                    <ScoreCircle
+                      range={scores.before}
+                      label="BEFORE"
+                      sublabel={scores.beforeLabel}
+                      type="before"
+                    />
+
+                    {/* Cercle AFTER - Fourchette */}
+                    <ScoreCircle
+                      range={scores.after}
+                      label="AFTER"
+                      sublabel={scores.afterLabel}
+                      type="after"
+                    />
+                  </div>
+                </div>
+
+                {/* Footer: Card glassmorphism */}
+                <div 
+                  className="rounded-2xl p-4"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.08)",
+                    backdropFilter: "blur(20px)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+                  }}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-2 h-2 rounded-full bg-green-500" />
+                    <span className="text-white/70 text-[10px] font-medium uppercase tracking-wider">
+                      Skane Completed
+                    </span>
+                  </div>
+                  <p className="text-white font-semibold text-base">
+                    {actionDetails?.name || microAction}
+                    <span className="text-white/50 font-normal ml-1">
+                      ({actionDetails?.duration || 24}s)
+                    </span>
+                  </p>
+                  <p className="text-white/40 text-[11px] mt-1">
+                    Wellness signal · Not medical
+                  </p>
+                </div>
+              </div>
+
+              {/* Bouton partage rond en bas à gauche */}
+              <motion.button
+                onClick={handleShare}
+                disabled={isGeneratingImage}
+                className="absolute bottom-5 left-5 w-12 h-12 rounded-full flex items-center justify-center z-20"
+                style={{
+                  background: "rgba(255, 255, 255, 0.15)",
+                  backdropFilter: "blur(20px)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {isGeneratingImage ? (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <Send size={18} className="text-white" />
+                )}
+              </motion.button>
+            </motion.div>
+
+            {/* Boutons sous la card */}
+            <div className="mt-6 flex items-center gap-4">
+              <motion.button
+                onClick={retakeSelfie}
+                className="px-5 py-2.5 rounded-xl text-white/60 text-sm border border-white/20"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <RotateCcw size={16} className="inline mr-2" />
+                Reprendre
+              </motion.button>
+
+              <motion.button
+                onClick={handleShare}
+                disabled={isGeneratingImage}
+                className="px-6 py-2.5 rounded-xl text-white font-medium text-sm flex items-center gap-2"
+                style={{
+                  background: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)",
+                  boxShadow: "0 4px 20px rgba(59, 130, 246, 0.4)",
+                }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {isGeneratingImage ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Préparation...
+                  </>
+                ) : (
+                  <>
+                    <Share2 size={16} />
+                    Partager
+                  </>
+                )}
+              </motion.button>
+            </div>
+
+            <button
+              onClick={handleClose}
+              className="mt-4 text-white/30 text-xs hover:text-white/50"
+            >
+              Plus tard
+            </button>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -600,5 +551,94 @@ export default function ShareCardV2Final() {
         />
       )}
     </main>
+  );
+}
+
+// === COMPOSANT: Cercle de score avec FOURCHETTE ===
+interface ScoreCircleProps {
+  range: [number, number]; // Fourchette [min, max]
+  label: string;
+  sublabel: string;
+  type: "before" | "after";
+}
+
+function ScoreCircle({ range, label, sublabel, type }: ScoreCircleProps) {
+  const isBefore = type === "before";
+  const color = isBefore ? "#EF4444" : "#10B981";
+  const glowColor = isBefore ? "rgba(239, 68, 68, 0.4)" : "rgba(16, 185, 129, 0.4)";
+  
+  const size = 110;
+  const strokeWidth = 6;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  
+  // Utiliser la moyenne de la fourchette pour le remplissage visuel
+  const averageScore = (range[0] + range[1]) / 2;
+  const fillPercent = averageScore / 100;
+  const strokeDashoffset = circumference * (1 - fillPercent);
+
+  return (
+    <div className="flex flex-col items-center">
+      <div 
+        className="relative" 
+        style={{ 
+          width: size, 
+          height: size,
+          filter: `drop-shadow(0 0 20px ${glowColor})`,
+        }}
+      >
+        {/* SVG Circle */}
+        <svg width={size} height={size} className="absolute inset-0 -rotate-90">
+          {/* Background circle */}
+          <circle
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            fill="none"
+            stroke="rgba(255,255,255,0.1)"
+            strokeWidth={strokeWidth}
+          />
+          {/* Progress circle */}
+          <motion.circle
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            fill="none"
+            stroke={color}
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            animate={{ strokeDashoffset }}
+            transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+          />
+        </svg>
+
+        {/* FOURCHETTE au centre (pas de %) */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, type: "spring" }}
+            className="text-xl font-bold text-white tracking-tight"
+          >
+            {range[0]}–{range[1]}
+          </motion.span>
+        </div>
+      </div>
+
+      {/* Labels */}
+      <div className="mt-3 text-center">
+        <p className="text-white/50 text-[10px] uppercase tracking-widest font-medium">
+          {label}
+        </p>
+        <p 
+          className="text-[9px] font-semibold uppercase tracking-wide mt-0.5"
+          style={{ color }}
+        >
+          {sublabel}
+        </p>
+      </div>
+    </div>
   );
 }

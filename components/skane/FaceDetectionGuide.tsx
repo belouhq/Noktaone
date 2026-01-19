@@ -51,42 +51,7 @@ function FacePointsOverlay({
       insideOval: p.insideOval,
     }));
 
-    // Créer un maillage triangulaire (Delaunay simplifié)
-    // Pour simplifier, on connecte les points proches pour former des triangles
-    const connections: Array<[number, number]> = [];
-    const maxDistance = Math.min(width, height) * 0.12; // Distance max pour connecter (réduite pour maillage plus dense)
-
-    for (let i = 0; i < canvasPoints.length; i++) {
-      for (let j = i + 1; j < canvasPoints.length; j++) {
-        const dx = canvasPoints[i].x - canvasPoints[j].x;
-        const dy = canvasPoints[i].y - canvasPoints[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < maxDistance) {
-          connections.push([i, j]);
-        }
-      }
-    }
-
-    // Dessiner les connexions (lignes du maillage) avec glow effect
-    ctx.lineWidth = 1.2;
-    ctx.shadowBlur = isReady ? 10 : 6;
-    ctx.shadowColor = glowColor;
-
-    connections.forEach(([i, j]) => {
-      const p1 = canvasPoints[i];
-      const p2 = canvasPoints[j];
-      
-      // Utiliser la couleur selon si les deux points sont dans l'ovale
-      const bothInside = p1.insideOval && p2.insideOval;
-      ctx.strokeStyle = bothInside ? primaryColor : secondaryColor;
-      ctx.globalAlpha = bothInside ? (isReady ? 0.85 : 0.65) : (isReady ? 0.5 : 0.35);
-      
-      ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.lineTo(p2.x, p2.y);
-      ctx.stroke();
-    });
+    // Plus besoin de créer les connexions - on affiche seulement les points
 
     // Dessiner les points (nodes du maillage) avec effet lumineux
     canvasPoints.forEach((point) => {
@@ -243,6 +208,10 @@ export default function FaceDetectionGuide({
           return t('camera.onlyOneFace') || 'Only one face';
         case 'outside_guide':
           return t('camera.faceNotCentered') || 'Center your face';
+        case 'eyes_covered':
+          return t('camera.showEyes') || 'Show your eyes';
+        case 'mouth_covered':
+          return t('camera.showMouth') || 'Show your mouth';
         default:
           return t('camera.faceAdjusting') || 'Adjusting...';
       }
@@ -367,171 +336,10 @@ export default function FaceDetectionGuide({
           isReady={detection.isReady}
         />
       )}
-      {/* Face Frame OVALE fragmenté en tirets */}
-      <div
-        className="relative"
-        style={{
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        {/* OVALE fragmenté en tirets - couleur dynamique */}
-        <svg
-          width="100%"
-          height="100%"
-          className="absolute inset-0"
-          style={{ overflow: 'visible' }}
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          {/* Ovale en tirets - couleur selon l'état */}
-          <ellipse
-            cx={OVAL_CENTER_X * 100}
-            cy={OVAL_CENTER_Y * 100}
-            rx={OVAL_RX * 100}
-            ry={OVAL_RY * 100}
-            fill="none"
-            stroke={detection.isReady ? '#3B82F6' : guideColor}
-            strokeWidth="0.3"
-            strokeDasharray="8 8" // Longueur du trait, espace
-            strokeDashoffset="0"
-            opacity={detection.isReady ? 0.75 : (detection.isDetected ? 0.5 : 0.4)}
-            style={{
-              filter: detection.isReady 
-                ? `drop-shadow(0 0 8px #3B82F640)`
-                : `drop-shadow(0 0 8px ${guideColor}60)`,
-            }}
-          />
-          {/* Deuxième ellipse pour créer l'effet de tirets */}
-          <ellipse
-            cx={OVAL_CENTER_X * 100}
-            cy={OVAL_CENTER_Y * 100}
-            rx={OVAL_RX * 100}
-            ry={OVAL_RY * 100}
-            fill="none"
-            stroke={detection.isReady ? '#3B82F6' : guideColor}
-            strokeWidth="0.3"
-            strokeDasharray="8 8"
-            strokeDashoffset="16"
-            opacity={detection.isReady ? 0.75 : (detection.isDetected ? 0.5 : 0.4)}
-            style={{
-              filter: detection.isReady 
-                ? `drop-shadow(0 0 8px #3B82F640)`
-                : `drop-shadow(0 0 8px ${guideColor}60)`,
-            }}
-          />
-        </svg>
+      {/* Ovale bleu supprimé comme demandé */}
 
-        {/* Animation de pulsation pour les tirets de l'ovale */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            opacity: [0.6, 1, 0.6],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <svg
-            width="100%"
-            height="100%"
-            className="absolute inset-0"
-            style={{ overflow: 'visible' }}
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <ellipse
-              cx={OVAL_CENTER_X * 100}
-              cy={OVAL_CENTER_Y * 100}
-              rx={OVAL_RX * 100}
-              ry={OVAL_RY * 100}
-              fill="none"
-              stroke={guideColor}
-              strokeWidth="0.2"
-              strokeDasharray="4 4"
-              strokeDashoffset="0"
-              opacity={0.4}
-            />
-            <ellipse
-              cx={OVAL_CENTER_X * 100}
-              cy={OVAL_CENTER_Y * 100}
-              rx={OVAL_RX * 100}
-              ry={OVAL_RY * 100}
-              fill="none"
-              stroke={guideColor}
-              strokeWidth="0.2"
-              strokeDasharray="4 4"
-              strokeDashoffset="8"
-              opacity={0.4}
-            />
-          </svg>
-        </motion.div>
-
-        {/* Box du visage détecté (si détecté) - position relative au guide */}
-        {detection.faceBox && detection.isDetected && (() => {
-          const video = videoRef.current;
-          if (!video || !video.videoWidth || !video.videoHeight) return null;
-
-          // Le guide fait 280x360px et correspond à une zone de la vidéo
-          // Zone guide en pixels vidéo
-          const guideVideoWidth = guideBox.width * video.videoWidth;
-          const guideVideoHeight = guideBox.height * video.videoHeight;
-          const guideVideoX = (guideBox.centerX - guideBox.width / 2) * video.videoWidth;
-          const guideVideoY = (guideBox.centerY - guideBox.height / 2) * video.videoHeight;
-
-          // Ratio de conversion vidéo → guide
-          const scaleX = 280 / guideVideoWidth;
-          const scaleY = 360 / guideVideoHeight;
-
-          // Position relative au guide (0,0 = top-left du guide)
-          const relativeX = (detection.faceBox.x - guideVideoX) * scaleX;
-          const relativeY = (detection.faceBox.y - guideVideoY) * scaleY;
-          const relativeWidth = detection.faceBox.width * scaleX;
-          const relativeHeight = detection.faceBox.height * scaleY;
-
-          return (
-            <motion.div
-              className="absolute border-2"
-              style={{
-                left: `${Math.max(0, relativeX)}px`,
-                top: `${Math.max(0, relativeY)}px`,
-                width: `${Math.min(relativeWidth, 280 - Math.max(0, relativeX))}px`,
-                height: `${Math.min(relativeHeight, 360 - Math.max(0, relativeY))}px`,
-                borderColor: detection.isCentered ? '#10B981' : '#F59E0B',
-                borderStyle: 'dashed',
-                borderRadius: '8px',
-                pointerEvents: 'none',
-              }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Indicateurs aux 4 coins */}
-              <div
-                className="absolute -top-1 -left-1 w-3 h-3 rounded-full"
-                style={{ background: detection.isCentered ? '#10B981' : '#F59E0B' }}
-              />
-              <div
-                className="absolute -top-1 -right-1 w-3 h-3 rounded-full"
-                style={{ background: detection.isCentered ? '#10B981' : '#F59E0B' }}
-              />
-              <div
-                className="absolute -bottom-1 -left-1 w-3 h-3 rounded-full"
-                style={{ background: detection.isCentered ? '#10B981' : '#F59E0B' }}
-              />
-              <div
-                className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full"
-                style={{ background: detection.isCentered ? '#10B981' : '#F59E0B' }}
-              />
-            </motion.div>
-          );
-        })()}
-      </div>
-
-      {/* Hint dynamique (nouveau système) - bas-centre */}
-      {hintText && (
+      {/* Instructions - Affichées UNIQUEMENT quand le visage n'est PAS prêt */}
+      {!detection.isReady && (
         <motion.div
           className="absolute bottom-32 left-0 right-0 text-center px-4"
           initial={{ opacity: 0, y: 10 }}
@@ -540,99 +348,19 @@ export default function FaceDetectionGuide({
           transition={{ duration: 0.2 }}
         >
           <p
-            className="text-sm font-medium"
+            className="text-base font-medium"
             style={{
               color: guideColor,
               textShadow: '0 2px 8px rgba(0,0,0,0.5)',
             }}
           >
-            {hintText}
-          </p>
-        </motion.div>
-      )}
-
-      {/* Instructions textuelles (ancien système, gardé pour compatibilité) */}
-      {showInstructions && !hintText && (
-        <motion.div
-          className="absolute bottom-32 left-0 right-0 text-center px-4"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <p
-            className="text-sm font-medium"
-            style={{
-              color: guideColor,
-              textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-            }}
-          >
-            {instruction}
+            {hintText || instruction}
           </p>
         </motion.div>
       )}
 
 
-      {/* "Locked" checkmark (brièvement affiché quand complet) */}
-      {detection.isReady && lockProgress >= 1 && (
-        <motion.div
-          className="absolute bottom-24 left-1/2 transform -translate-x-1/2"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0, opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          style={{ zIndex: 17 }}
-        >
-          <div
-            className="w-6 h-6 rounded-full flex items-center justify-center"
-            style={{
-              background: '#3B82F6',
-            }}
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-          </div>
-        </motion.div>
-      )}
-
-      {/* Indicateur de statut (icône checkmark quand prêt) */}
-      {detection.isReady && (
-        <motion.div
-          className="absolute top-24"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 200 }}
-        >
-          <div
-            className="w-16 h-16 rounded-full flex items-center justify-center"
-            style={{
-              background: 'rgba(59, 130, 246, 0.2)',
-              border: '2px solid #3B82F6',
-            }}
-          >
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#3B82F6"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-          </div>
-        </motion.div>
-      )}
+      {/* Checkmarks supprimés comme demandé */}
     </div>
   );
 }

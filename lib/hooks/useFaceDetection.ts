@@ -41,12 +41,14 @@ export interface FaceDetectionResult {
     confidence: number;
     faceAreaRatio: number;
     isInGuide?: boolean;
-    failureReason?: 'no_face' | 'low_confidence' | 'too_small' | 'not_centered' | 'multiple_faces' | 'outside_guide' | 'oval_fit_failed' | 'too_much_motion';
+    failureReason?: 'no_face' | 'low_confidence' | 'too_small' | 'not_centered' | 'multiple_faces' | 'outside_guide' | 'oval_fit_failed' | 'too_much_motion' | 'eyes_covered' | 'mouth_covered';
     facePoints: Array<{ x: number; y: number; insideOval: boolean }>;
     ovalFitScore?: number;
     motionDelta?: number;
+    eyesScore?: number;
+    mouthScore?: number;
   };
-  guidanceHint?: 'move_closer' | 'center_face' | 'more_light' | 'hold_still' | 'one_face_only' | 'fit_oval' | 'ok';
+  guidanceHint?: 'move_closer' | 'center_face' | 'more_light' | 'hold_still' | 'one_face_only' | 'fit_oval' | 'show_eyes' | 'show_mouth' | 'ok';
 }
 
 interface UseFaceDetectionOptions {
@@ -74,6 +76,8 @@ const MAX_OFFSET_FROM_CENTER = 0.18; // 18% de décalage max
 const STABLE_FRAMES_REQUIRED = 12; // 12 frames consécutives stables
 const MOTION_THRESHOLD = 0.02; // Seuil de mouvement (2% de l'écran normalisé)
 const MIN_OVAL_FIT_SCORE = 0.85; // 85% des points doivent être dans l'ovale
+const MIN_EYES_VISIBILITY = 0.7; // 70% des landmarks des yeux doivent être présents
+const MIN_MOUTH_VISIBILITY = 0.6; // 60% des landmarks de la bouche doivent être présents
 
 // Paramètres de l'ovale guide (normalisés 0-1)
 const OVAL_CENTER_X = 0.5; // Centre horizontal
@@ -86,6 +90,83 @@ function isPointInOval(x: number, y: number): boolean {
   const dx = (x - OVAL_CENTER_X) / OVAL_RX;
   const dy = (y - OVAL_CENTER_Y) / OVAL_RY;
   return dx * dx + dy * dy <= 1;
+}
+
+// Vérifier la visibilité des yeux et de la bouche
+// Utilise une approche géométrique basée sur la distribution des landmarks
+function validateEyesAndMouthVisibility(landmarks: Array<{ x: number; y: number }>): {
+  eyesVisible: boolean;
+  mouthVisible: boolean;
+  eyesScore: number;
+  mouthScore: number;
+} {
+  if (!landmarks || landmarks.length < 100) {
+    // Si on n'a pas assez de landmarks, on ne peut pas valider
+    return { eyesVisible: false, mouthVisible: false, eyesScore: 0, mouthScore: 0 };
+  }
+
+  // Approche géométrique : analyser la distribution des landmarks dans les zones du visage
+  // Zone des yeux : Y normalisé entre 0.25 et 0.45 (partie supérieure du visage)
+  // Zone de la bouche : Y normalisé entre 0.55 et 0.75 (partie inférieure du visage)
+  
+  const eyeZoneTop = 0.25;
+  const eyeZoneBottom = 0.45;
+  const mouthZoneTop = 0.55;
+  const mouthZoneBottom = 0.75;
+
+  // Filtrer les landmarks dans les zones des yeux et de la bouche
+  const eyeZoneLandmarks = landmarks.filter(lm => lm.y >= eyeZoneTop && lm.y <= eyeZoneBottom);
+  const mouthZoneLandmarks = landmarks.filter(lm => lm.y >= mouthZoneTop && lm.y <= mouthZoneBottom);
+
+  // Vérifier les yeux : doivent avoir des landmarks dans la zone des yeux
+  // et ces landmarks doivent être distribués horizontalement (deux yeux)
+  const eyesScore = calculateZoneVisibility(eyeZoneLandmarks, 'eyes');
+  const eyesVisible = eyesScore >= MIN_EYES_VISIBILITY && eyeZoneLandmarks.length >= 20;
+
+  // Vérifier la bouche : doivent avoir des landmarks dans la zone de la bouche
+  // et ces landmarks doivent être distribués horizontalement
+  const mouthScore = calculateZoneVisibility(mouthZoneLandmarks, 'mouth');
+  const mouthVisible = mouthScore >= MIN_MOUTH_VISIBILITY && mouthZoneLandmarks.length >= 15;
+
+  return { eyesVisible, mouthVisible, eyesScore, mouthScore };
+}
+
+// Calculer un score de visibilité pour une zone (yeux ou bouche)
+function calculateZoneVisibility(landmarks: Array<{ x: number; y: number }>, zone: 'eyes' | 'mouth'): number {
+  if (landmarks.length < 5) return 0;
+
+  // Calculer la distribution horizontale (largeur)
+  const xCoords = landmarks.map(lm => lm.x);
+  const minX = Math.min(...xCoords);
+  const maxX = Math.max(...xCoords);
+  const width = maxX - minX;
+
+  // Calculer la distribution verticale (hauteur)
+  const yCoords = landmarks.map(lm => lm.y);
+  const minY = Math.min(...yCoords);
+  const maxY = Math.max(...yCoords);
+  const height = maxY - minY;
+
+  // Pour les yeux : on s'attend à une large distribution horizontale (deux yeux)
+  // et une hauteur modérée (yeux ouverts)
+  if (zone === 'eyes') {
+    // Largeur attendue : au moins 0.15 (deux yeux espacés)
+    // Hauteur attendue : au moins 0.02 (yeux ouverts)
+    const widthScore = Math.min(width / 0.15, 1);
+    const heightScore = Math.min(height / 0.02, 1);
+    return (widthScore * 0.6 + heightScore * 0.4); // Poids plus important sur la largeur
+  }
+
+  // Pour la bouche : on s'attend à une largeur modérée et une hauteur faible (bouche fermée ou légèrement ouverte)
+  if (zone === 'mouth') {
+    // Largeur attendue : au moins 0.08 (bouche visible)
+    // Hauteur attendue : au moins 0.01 (bouche visible, même fermée)
+    const widthScore = Math.min(width / 0.08, 1);
+    const heightScore = Math.min(height / 0.01, 1);
+    return (widthScore * 0.5 + heightScore * 0.5);
+  }
+
+  return 0;
 }
 
 export function useFaceDetection({
@@ -139,9 +220,12 @@ export function useFaceDetection({
       });
 
       isInitializedRef.current = true;
-      console.log('✅ MediaPipe Face Detector & Landmarker initialized');
+      // MediaPipe initialisé (logs TensorFlow supprimés pour réduire le bruit)
     } catch (error) {
-      console.error('❌ Failed to initialize MediaPipe:', error);
+      // Erreur d'initialisation MediaPipe (silencieux en production)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('❌ Failed to initialize MediaPipe:', error);
+      }
       // Fallback: continuer sans MediaPipe (détection basique)
       isInitializedRef.current = true; // Éviter les tentatives répétées
     }
@@ -264,9 +348,10 @@ export function useFaceDetection({
       // Si on a beaucoup de points (468), on peut en sélectionner un sous-ensemble pour le maillage
       let selectedKeypoints = keypoints;
       if (keypoints.length > 50) {
-        // Sélectionner un sous-ensemble de points clés pour le maillage (performance)
-        // Prendre les points tous les N points pour avoir ~20-30 points
-        const step = Math.floor(keypoints.length / 25);
+        // Sélectionner un sous-ensemble harmonieux de points pour le maillage
+        // Prendre les points tous les N points pour avoir ~80-100 points (plus harmonieux)
+        const targetPoints = 90; // Nombre de points cible pour un rendu harmonieux
+        const step = Math.max(1, Math.floor(keypoints.length / targetPoints));
         selectedKeypoints = keypoints.filter((_, i) => i % step === 0);
       }
       
@@ -319,8 +404,11 @@ export function useFaceDetection({
       const pointsInOval = allPoints.filter(p => p.insideOval).length;
       const ovalFitScore = allPoints.length > 0 ? pointsInOval / allPoints.length : 0;
 
+      // Vérifier la visibilité des yeux et de la bouche
+      const { eyesVisible, mouthVisible, eyesScore, mouthScore } = validateEyesAndMouthVisibility(keypoints);
+
       // Validation complète
-      let failureReason: 'no_face' | 'low_confidence' | 'too_small' | 'not_centered' | 'multiple_faces' | 'outside_guide' | 'oval_fit_failed' | 'too_much_motion' | undefined;
+      let failureReason: 'no_face' | 'low_confidence' | 'too_small' | 'not_centered' | 'multiple_faces' | 'outside_guide' | 'oval_fit_failed' | 'too_much_motion' | 'eyes_covered' | 'mouth_covered' | undefined;
       
       if (confidence < MIN_CONFIDENCE) {
         failureReason = 'low_confidence';
@@ -332,6 +420,10 @@ export function useFaceDetection({
         failureReason = 'oval_fit_failed';
       } else if (motionDelta > MOTION_THRESHOLD) {
         failureReason = 'too_much_motion';
+      } else if (!eyesVisible) {
+        failureReason = 'eyes_covered';
+      } else if (!mouthVisible) {
+        failureReason = 'mouth_covered';
       }
 
       const isValid = !failureReason;
@@ -345,7 +437,7 @@ export function useFaceDetection({
       const isReady = isValid && stableFramesRef.current >= STABLE_FRAMES_REQUIRED;
 
       // Déterminer le hint de guidage
-      let guidanceHint: 'move_closer' | 'center_face' | 'more_light' | 'hold_still' | 'one_face_only' | 'fit_oval' | 'ok' = 'ok';
+      let guidanceHint: 'move_closer' | 'center_face' | 'more_light' | 'hold_still' | 'one_face_only' | 'fit_oval' | 'show_eyes' | 'show_mouth' | 'ok' = 'ok';
       
       if (faceAreaRatio < MIN_FACE_AREA_RATIO) {
         guidanceHint = 'move_closer';
@@ -353,6 +445,10 @@ export function useFaceDetection({
         guidanceHint = 'center_face';
       } else if (ovalFitScore < MIN_OVAL_FIT_SCORE) {
         guidanceHint = 'fit_oval';
+      } else if (!eyesVisible) {
+        guidanceHint = 'show_eyes';
+      } else if (!mouthVisible) {
+        guidanceHint = 'show_mouth';
       } else if (motionDelta > MOTION_THRESHOLD) {
         guidanceHint = 'hold_still';
       } else if (!isReady) {
@@ -387,11 +483,16 @@ export function useFaceDetection({
           facePoints: allPoints,
           ovalFitScore,
           motionDelta,
+          eyesScore,
+          mouthScore,
         },
         guidanceHint,
       });
     } catch (error) {
-      console.error('MediaPipe detection error:', error);
+      // Erreur de détection MediaPipe (silencieux en production)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('MediaPipe detection error:', error);
+      }
     }
 
     // Continuer la boucle

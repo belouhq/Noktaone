@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { useLastSkane } from "@/lib/hooks/useLastSkane";
+import { useSwipe } from "@/lib/hooks/useSwipe";
 import { BottomNav } from "@/components/ui/BottomNav";
 import SkaneButton from "@/components/ui/SkaneButton";
 import DotsPattern from "@/components/ui/DotsPattern";
+import Logo from "@/components/Logo";
 
 function getAdaptationDay(): number {
   if (typeof window === 'undefined') return 0;
@@ -43,78 +45,93 @@ export default function Home() {
     router.push("/skane");
   };
 
+  // Swipe gestures pour naviguer entre les pages
+  const swipeRef = useSwipe({
+    onSwipeLeft: () => {
+      // Swipe vers la gauche = aller vers Skane
+      router.push("/skane");
+    },
+    onSwipeRight: () => {
+      // Swipe vers la droite = aller vers Settings
+      router.push("/settings");
+    },
+    threshold: 50, // Distance minimale de 50px
+    velocityThreshold: 0.3, // Vitesse minimale
+  });
+
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+    <div 
+      ref={swipeRef}
+      className="min-h-screen bg-black text-white relative overflow-hidden"
+    >
       {/* Pattern de points en bas */}
       <div className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none">
         <DotsPattern />
       </div>
 
       {/* Contenu principal */}
-      <div className="relative z-10 min-h-screen px-6 pt-12 pb-24">
-        {/* Logo */}
-        <motion.h1
+      <div className="relative z-10 min-h-screen px-6 pt-8 pb-24">
+        {/* Logo - Taille réduite */}
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-2xl font-light tracking-[0.3em] text-center mb-12"
+          className="flex justify-center mb-4"
         >
-          NOKTA ONE
-        </motion.h1>
+          <Logo variant="text" className="h-5 w-auto" />
+        </motion.div>
 
-        {/* Section Last Skane - Visually subordinate to CTA */}
+        {/* Section Last Skane - Juste en dessous du logo */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="mb-8"
-          style={{ opacity: 0.7 }} // Reduced opacity to not compete with CTA
+          className="flex justify-center mb-8"
+          style={{ opacity: 0.7 }}
         >
-          <h2 
-            className="text-sm font-medium mb-2"
-            style={{ opacity: 0.65 }} // Smaller, quieter typography
-          >
-            {(() => {
-              const translated = t("home.lastSkaneTitle");
-              return translated !== "home.lastSkaneTitle" ? translated : "Last skane";
-            })()}
-          </h2>
+          <div className="text-center">
+            <h2 
+              className="text-sm font-medium mb-2"
+              style={{ opacity: 0.65 }}
+            >
+              {(() => {
+                const translated = t("home.lastSkaneTitle");
+                return translated !== "home.lastSkaneTitle" ? translated : "Last skane";
+              })()}
+            </h2>
 
-          {isLoading ? (
-            // Loading state (skeleton)
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded-full bg-white/10 animate-pulse" />
-              <div className="h-3 w-24 bg-white/10 rounded animate-pulse" />
-            </div>
-          ) : (
-            // Display based on state machine
-            <div className="flex items-center gap-2">
-              {lastSkane.emoji && (
+            {isLoading ? (
+              // Loading state (skeleton)
+              <div className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-white/10 animate-pulse" />
+                <div className="h-3 w-24 bg-white/10 rounded animate-pulse" />
+              </div>
+            ) : (
+              // Display based on state machine
+              <div className="flex items-center justify-center gap-2">
+                {lastSkane.emoji && (
+                  <span 
+                    className="text-base"
+                    style={{ fontSize: '0.8em' }}
+                  >
+                    {lastSkane.emoji}
+                  </span>
+                )}
                 <span 
-                  className="text-base"
-                  style={{ fontSize: '0.8em' }} // Emoji subordinate to text
+                  className="text-white/70 text-sm"
+                  style={{ opacity: 0.75 }}
                 >
-                  {lastSkane.emoji}
+                  {lastSkane.timeLabel}
                 </span>
-              )}
-              <span 
-                className="text-white/70 text-sm"
-                style={{ opacity: 0.75 }}
-              >
-                {lastSkane.timeLabel}
-              </span>
-            </div>
-          )}
+              </div>
+            )}
+          </div>
         </motion.div>
 
-        {/* Bouton Skane - Position neuro-ergonomique optimale */}
-        {/* Position : X: 50%, Y: 68% (zone instinctive absolue) */}
-        {/* Zone de respiration : 16mm minimum autour (aucun autre CTA concurrent) */}
+        {/* Bouton Skane - En bas, centré, à la hauteur d'un pouce (≈120px) */}
         <div 
           className="absolute left-1/2 -translate-x-1/2"
           style={{
-            top: '68vh', // Zone instinctive absolue (55-75%, sweet spot 68%)
-            // Zone de respiration : 16mm minimum autour (≈1rem)
-            padding: '1rem',
+            bottom: '120px', // Hauteur d'un pouce depuis le bas
             pointerEvents: 'auto',
             zIndex: 10,
           }}

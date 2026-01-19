@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import Logo from "@/components/Logo";
 
 /**
  * WELCOME SCREEN - Étape 2 du Flow V1 Définitif
@@ -35,9 +36,7 @@ export default function WelcomePage() {
         transition={{ duration: 0.5 }}
         className="pt-8"
       >
-        <h1 className="text-xl font-light tracking-[0.3em] text-nokta-one-white/60">
-          NOKTA
-        </h1>
+        <Logo variant="icon" className="h-8 w-auto opacity-60" />
       </motion.div>
 
       {/* Centre - Message principal */}
@@ -65,11 +64,7 @@ export default function WelcomePage() {
         {/* CTA Principal - Plein écran, bas */}
         <motion.button
           onClick={handleStart}
-          className="w-full py-5 rounded-2xl text-lg font-semibold text-white"
-          style={{
-            background: "#3B82F6",
-            boxShadow: "0 4px 20px rgba(59, 130, 246, 0.4)",
-          }}
+          className="glass-button-primary w-full py-5 text-lg font-semibold"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

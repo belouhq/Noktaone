@@ -113,7 +113,9 @@
       "moreLight": "More light",
       "holdStill": "Hold still",
       "oneFaceOnly": "Only one face",
-      "fitOval": "Fit your face in the frame"
+      "fitOval": "Fit your face in the frame",
+      "showEyes": "Show your eyes",
+      "showMouth": "Show your mouth"
     },
     "locked": "Locked"
   },
@@ -221,6 +223,8 @@
     "moreLight": "More light",
     "moveCloser": "Move closer",
     "onlyOneFace": "Only one face",
+    "showEyes": "Show your eyes",
+    "showMouth": "Show your mouth",
     "accessRequired": "Camera access required for scan",
     "accessDenied": "Camera access denied",
     "accessError": "Technical error",

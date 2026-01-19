@@ -51,7 +51,9 @@
       "moreLight": "More light",
       "holdStill": "Hold still",
       "oneFaceOnly": "Only one face",
-      "fitOval": "Fit your face in the frame"
+      "fitOval": "Fit your face in the frame",
+      "showEyes": "Zeige deine Augen",
+      "showMouth": "Zeige deinen Mund"
     },
     "locked": "Locked",
     "cameraNotReady": "Kamera ist nicht bereit. Bitte erneut versuchen.",
@@ -59,7 +61,11 @@
     "captureError": "Bild kann nicht erfasst werden. Bitte erneut versuchen.",
     "flashEnabled": "Bildschirmblitz aktiviert",
     "flashDisabled": "Bildschirmblitz deaktiviert",
-    "centerFace": "Zentriere dein Gesicht"
+    "centerFace": "Zentriere dein Gesicht",
+    "actionCompleted": "Aktion abgeschlossen ✓",
+    "observeFeeling": "Beobachte, was du fühlst.",
+    "breatheWithRhythm": "Atme im Rhythmus.",
+    "canPutPhoneDown": "Du kannst dein Telefon ablegen."
   },
   "feedback": {
     "howDoYouFeel": "Wie fühlst du dich?",
@@ -96,6 +102,8 @@
     "moreLight": "Mehr Licht",
     "moveCloser": "Näher kommen",
     "onlyOneFace": "Nur ein Gesicht",
+    "showEyes": "Zeige deine Augen",
+    "showMouth": "Zeige deinen Mund",
     "howToEnableOn": "So aktivieren in {{browser}}:",
     "browserStep1": "Öffnen Sie die Website oder die Browsereinstellungen",
     "browserStep2": "Kameraerlaubnis finden",
@@ -191,13 +199,18 @@
     "fixPoint": "Einen stabilen Punkt fixieren"
   },
   "share": {
-    "shareYourReset": "Teile deinen Reset? 🔥",
+    "shareYourReset": "Möchtest du deinen Reset teilen?",
     "no": "NEIN",
     "shareToStories": "In Story teilen",
     "downloadImage": "Bild herunterladen",
     "skaneIndex": "SKANE INDEX",
     "before": "VORHER",
-    "after": "NACHHER"
+    "after": "NACHHER",
+    "beforeAfterNoPersonalData": "Vorher / nachher — keine persönlichen Daten.",
+    "share": "Teilen",
+    "shareMySkane": "Mein Skane teilen",
+    "preparing": "Vorbereiten",
+    "later": "Später"
   },
   "profile": {
     "firstName": "Vorname",

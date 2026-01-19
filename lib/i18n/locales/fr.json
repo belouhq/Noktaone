@@ -95,6 +95,8 @@
     "moreLight": "Plus de lumière",
     "moveCloser": "Approchez-vous",
     "onlyOneFace": "Un seul visage",
+    "showEyes": "Montrez vos yeux",
+    "showMouth": "Montrez votre bouche",
     "accessRequired": "Accès à la caméra requis pour le scan",
     "accessDenied": "Accès caméra refusé",
     "accessError": "Erreur technique",
@@ -146,7 +148,9 @@
       "moreLight": "Plus de lumière",
       "holdStill": "Restez immobile",
       "oneFaceOnly": "Un seul visage",
-      "fitOval": "Placez votre visage dans le cadre"
+      "fitOval": "Placez votre visage dans le cadre",
+      "showEyes": "Montrez vos yeux",
+      "showMouth": "Montrez votre bouche"
     },
     "locked": "Verrouillé"
   },
@@ -214,7 +218,7 @@
     "privacyNote": "Ton feedback reste privé et aide à personnaliser tes futures micro-actions"
   },
   "share": {
-    "shareYourReset": "Tu veux partager ton reset ?",
+    "shareYourReset": "Voulez-vous partager votre réinitialisation ?",
     "beforeAfterNoPersonalData": "Avant / après — sans données personnelles.",
     "share": "Partager",
     "shareMySkane": "Partager mon Skane",

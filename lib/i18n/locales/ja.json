@@ -51,7 +51,9 @@
       "moreLight": "More light",
       "holdStill": "Hold still",
       "oneFaceOnly": "Only one face",
-      "fitOval": "Fit your face in the frame"
+      "fitOval": "Fit your face in the frame",
+      "showEyes": "目を見せてください",
+      "showMouth": "口を見せてください"
     },
     "locked": "Locked",
     "cameraNotReady": "カメラが準備できていません。再試行してください。",
@@ -59,7 +61,11 @@
     "captureError": "画像をキャプチャできません。再試行してください。",
     "flashEnabled": "画面フラッシュが有効",
     "flashDisabled": "画面フラッシュが無効",
-    "centerFace": "顔を中心に"
+    "centerFace": "顔を中心に",
+    "actionCompleted": "アクション完了 ✓",
+    "observeFeeling": "感じていることを観察する。",
+    "breatheWithRhythm": "リズムに合わせて呼吸する。",
+    "canPutPhoneDown": "電話を置いても大丈夫です。"
   },
   "states": {
     "highActivation": "高い活性",
@@ -125,13 +131,18 @@
     "privacyNote": "あなたのフィードバックはプライベートで、今後のマイクロアクションをパーソナライズするのに役立ちます"
   },
   "share": {
-    "shareYourReset": "リセットを共有しますか？🔥",
+    "shareYourReset": "リセットを共有しますか？",
     "no": "いいえ",
     "shareToStories": "ストーリーに共有",
     "downloadImage": "画像をダウンロード",
     "skaneIndex": "SKANE インデックス",
     "before": "前",
-    "after": "後"
+    "after": "後",
+    "beforeAfterNoPersonalData": "前 / 後 — 個人データなし。",
+    "share": "共有",
+    "shareMySkane": "私のSkaneを共有",
+    "preparing": "準備中",
+    "later": "後で"
   },
   "camera": {
     "accessRequired": "スキャンにはカメラアクセスが必要です",
@@ -156,6 +167,8 @@
     "moreLight": "もっと明るく",
     "moveCloser": "近づいてください",
     "onlyOneFace": "顔は1つだけ",
+    "showEyes": "目を見せてください",
+    "showMouth": "口を見せてください",
     "howToEnableOn": "{{browser}}での有効化方法：",
     "browserStep1": "サイトまたはブラウザ設定を開く",
     "browserStep2": "カメラの権限を探す",

@@ -48,23 +48,32 @@ export default function ActionPage() {
 
     try {
       const parsed = JSON.parse(storedResult);
-      if (parsed.microAction && parsed.sessionId) {
-        setActionId(parsed.microAction as MicroActionType);
+      const microAction = parsed.microAction || parsed.micro_action?.id;
+      
+      // NOTE: sessionId n'existe pas encore à ce stade (créé seulement après le feedback)
+      // On peut tracker la micro-action sans sessionId, ou utiliser un ID temporaire
+      const sessionId = parsed.sessionId || parsed.sessionPayload?.sessionId || null;
+      
+      if (microAction) {
+        setActionId(microAction as MicroActionType);
         
-        // Tracker le lancement de la micro-action
+        // Tracker le lancement de la micro-action (sessionId peut être null)
         const isGuestMode = localStorage.getItem("guestMode") === "true";
         const userId = getUserId();
         const guestId = isGuestMode ? getOrCreateGuestId() : null;
         const selectionResult = parsed.selectionResult;
         
+        // Créer un ID temporaire si pas de sessionId (sera mis à jour après feedback)
+        const tempSessionId = sessionId || `temp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        
         createMicroActionEvent({
           user_id: userId,
           guest_id: guestId,
-          session_id: parsed.sessionId,
-          micro_action_id: parsed.microAction,
+          session_id: tempSessionId,
+          micro_action_id: microAction,
           mode: isGuestMode ? 'guest' : 'account',
           candidates_shown: selectionResult?.candidates,
-          picked_action_id: parsed.microAction,
+          picked_action_id: microAction,
           selection_rule: selectionResult?.selectionRule,
           penalties_applied: selectionResult?.penalties,
           user_lift_used: selectionResult?.userLiftUsed,
@@ -73,11 +82,16 @@ export default function ActionPage() {
           if (event) {
             // Stocker l'event ID pour mettre à jour le feedback plus tard
             sessionStorage.setItem('micro_action_event_id', event.id);
+            // Stocker aussi le tempSessionId pour référence
+            if (!sessionId) {
+              sessionStorage.setItem('temp_session_id', tempSessionId);
+            }
           }
         });
         
         setIsReady(true);
       } else {
+        console.error('Missing microAction:', { parsed });
         router.push('/skane');
       }
     } catch (error) {

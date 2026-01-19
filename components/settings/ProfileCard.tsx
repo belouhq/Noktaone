@@ -19,35 +19,24 @@ export default function ProfileCard({
   onEditClick,
 }: ProfileCardProps) {
   return (
-    <div
-      className="relative p-4 rounded-xl"
-      style={{
-        background: "rgba(255, 255, 255, 0.05)",
-        backdropFilter: "blur(10px)",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-      }}
-    >
+    <div className="glass-card relative p-4">
       {/* Bouton Edit */}
       <motion.button
         data-profile="edit"
         onClick={onEditClick}
-        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
+        className="glass-icon-button absolute top-4 right-4 w-8 h-8"
         style={{ pointerEvents: 'auto' }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <Edit size={16} className="text-nokta-one-white" />
+        <Edit size={16} className="text-white" />
       </motion.button>
 
       <div className="flex items-center gap-4">
         {/* Photo de profil */}
         <motion.button
           onClick={onAvatarClick}
-          className="w-20 h-20 rounded-full flex items-center justify-center overflow-hidden"
-          style={{
-            background: "rgba(255, 255, 255, 0.1)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
-          }}
+          className="glass-icon-button w-20 h-20 rounded-full flex items-center justify-center overflow-hidden"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

@@ -51,7 +51,9 @@
       "moreLight": "More light",
       "holdStill": "Hold still",
       "oneFaceOnly": "Only one face",
-      "fitOval": "Fit your face in the frame"
+      "fitOval": "Fit your face in the frame",
+      "showEyes": "Mostre seus olhos",
+      "showMouth": "Mostre sua boca"
     },
     "locked": "Locked",
     "cameraNotReady": "A câmera não está pronta. Tente novamente.",
@@ -59,7 +61,11 @@
     "captureError": "Não foi possível capturar a imagem. Tente novamente.",
     "flashEnabled": "Flash da tela ativado",
     "flashDisabled": "Flash da tela desativado",
-    "centerFace": "Centralize seu rosto"
+    "centerFace": "Centralize seu rosto",
+    "actionCompleted": "Ação concluída ✓",
+    "observeFeeling": "Observe o que você sente.",
+    "breatheWithRhythm": "Respire com o ritmo.",
+    "canPutPhoneDown": "Você pode deixar o telefone de lado."
   },
   "states": {
     "highActivation": "Ativação alta",
@@ -125,13 +131,18 @@
     "privacyNote": "Seu feedback é privado e ajuda a personalizar suas futuras microações"
   },
   "share": {
-    "shareYourReset": "Compartilhar seu reset? 🔥",
+    "shareYourReset": "Quer compartilhar seu reset?",
     "no": "NÃO",
     "shareToStories": "Compartilhar nos Stories",
     "downloadImage": "Baixar imagem",
     "skaneIndex": "ÍNDICE SKANE",
     "before": "ANTES",
-    "after": "DEPOIS"
+    "after": "DEPOIS",
+    "beforeAfterNoPersonalData": "Antes / depois — sem dados pessoais.",
+    "share": "Compartilhar",
+    "shareMySkane": "Compartilhar meu Skane",
+    "preparing": "Preparando",
+    "later": "Depois"
   },
   "camera": {
     "accessRequired": "Acesso à câmera necessário para escanear",
@@ -156,6 +167,8 @@
     "moreLight": "Mais luz",
     "moveCloser": "Aproxime-se",
     "onlyOneFace": "Apenas um rosto",
+    "showEyes": "Mostre seus olhos",
+    "showMouth": "Mostre sua boca",
     "howToEnableOn": "Como habilitar em {{browser}}:",
     "browserStep1": "Abra as configurações do site ou do navegador",
     "browserStep2": "Encontre a permissão da câmera",

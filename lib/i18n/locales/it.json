@@ -51,7 +51,9 @@
       "moreLight": "More light",
       "holdStill": "Hold still",
       "oneFaceOnly": "Only one face",
-      "fitOval": "Fit your face in the frame"
+      "fitOval": "Fit your face in the frame",
+      "showEyes": "Mostra i tuoi occhi",
+      "showMouth": "Mostra la tua bocca"
     },
     "locked": "Locked",
     "cameraNotReady": "La fotocamera non è pronta. Riprova.",
@@ -59,7 +61,11 @@
     "captureError": "Impossibile acquisire l'immagine. Riprova.",
     "flashEnabled": "Flash dello schermo attivato",
     "flashDisabled": "Flash dello schermo disattivato",
-    "centerFace": "Centra il tuo viso"
+    "centerFace": "Centra il tuo viso",
+    "actionCompleted": "Azione completata ✓",
+    "observeFeeling": "Osserva ciò che senti.",
+    "breatheWithRhythm": "Respira con il ritmo.",
+    "canPutPhoneDown": "Puoi mettere giù il telefono."
   },
   "feedback": {
     "howDoYouFeel": "Come ti senti?",
@@ -96,6 +102,8 @@
     "moreLight": "Più luce",
     "moveCloser": "Avvicinati",
     "onlyOneFace": "Solo un viso",
+    "showEyes": "Mostra i tuoi occhi",
+    "showMouth": "Mostra la tua bocca",
     "howToEnableOn": "Come abilitare su {{browser}}:",
     "browserStep1": "Apri le impostazioni del sito o del browser",
     "browserStep2": "Trova il permesso della fotocamera",
@@ -191,13 +199,18 @@
     "fixPoint": "Fissa un punto stabile"
   },
   "share": {
-    "shareYourReset": "Condividi il tuo reset? 🔥",
+    "shareYourReset": "Vuoi condividere il tuo reset?",
     "no": "NO",
     "shareToStories": "Condividi in Storia",
     "downloadImage": "Scarica l'immagine",
     "skaneIndex": "INDICE SKANE",
     "before": "PRIMA",
-    "after": "DOPO"
+    "after": "DOPO",
+    "beforeAfterNoPersonalData": "Prima / dopo — nessun dato personale.",
+    "share": "Condividi",
+    "shareMySkane": "Condividi il mio Skane",
+    "preparing": "Preparazione",
+    "later": "Dopo"
   },
   "profile": {
     "firstName": "Nome",

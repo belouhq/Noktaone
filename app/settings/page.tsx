@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Bell, Globe, Smartphone, Gift, Copy, UserPlus, HelpCircle, ChevronRight } from "lucide-react";
+import { Bell, Globe, Smartphone, Gift, Copy, UserPlus, HelpCircle, ChevronRight, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import { useSwipe } from "@/lib/hooks/useSwipe";
 import i18n from "@/lib/i18n";
 import { SafeAreaContainer } from "@/components/ui/SafeAreaContainer";
 import ProfileCard from "@/components/settings/ProfileCard";
@@ -219,6 +220,20 @@ export default function SettingsPage() {
     console.log("Logging out...");
   };
 
+  // Swipe gestures pour naviguer entre les pages
+  const swipeRef = useSwipe({
+    onSwipeLeft: () => {
+      // Swipe vers la gauche = aller vers Home
+      router.push("/");
+    },
+    onSwipeRight: () => {
+      // Swipe vers la droite = aller vers Skane
+      router.push("/skane");
+    },
+    threshold: 50,
+    velocityThreshold: 0.3,
+  });
+
   // Forcer le re-render complet quand la langue change
   if (!mounted) {
     return (
@@ -234,7 +249,10 @@ export default function SettingsPage() {
 
   return (
     <SafeAreaContainer currentPage="settings" key={`settings-${currentLanguage}-${Date.now()}`}>
-      <main className="relative min-h-screen-safe bg-nokta-one-black">
+      <main 
+        ref={swipeRef}
+        className="relative min-h-screen-safe bg-nokta-one-black"
+      >
         <div className="px-4 pt-8 pb-8">
         {/* Header */}
         <h1 
@@ -388,6 +406,14 @@ export default function SettingsPage() {
             showChevron
           />
 
+          {/* Nokta Dictionary */}
+          <SettingItem
+            icon={BookOpen}
+            label="Nokta Dictionary"
+            onClick={() => router.push("/dictionary")}
+            showChevron
+          />
+
           {/* Support */}
           <motion.button
             data-setting="support"
@@ -413,11 +439,7 @@ export default function SettingsPage() {
         {/* Log Out Button */}
         <motion.button
           data-setting="logout"
-          className="w-full mt-10 py-4 rounded-xl text-nokta-one-white font-medium"
-          style={{
-            background: "rgba(0, 0, 0, 0.5)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
-          }}
+          className="glass-button-secondary w-full mt-10 py-4 font-medium"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           suppressHydrationWarning

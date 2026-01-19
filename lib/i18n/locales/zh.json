@@ -51,7 +51,9 @@
       "moreLight": "More light",
       "holdStill": "Hold still",
       "oneFaceOnly": "Only one face",
-      "fitOval": "Fit your face in the frame"
+      "fitOval": "Fit your face in the frame",
+      "showEyes": "显示你的眼睛",
+      "showMouth": "显示你的嘴巴"
     },
     "locked": "Locked",
     "cameraNotReady": "相机未准备好。请再试一次。",
@@ -59,7 +61,11 @@
     "captureError": "无法捕捉图像。请再试一次。",
     "flashEnabled": "屏幕闪光已启用",
     "flashDisabled": "屏幕闪光已禁用",
-    "centerFace": "将脸部置于中心"
+    "centerFace": "将脸部置于中心",
+    "actionCompleted": "操作已完成 ✓",
+    "observeFeeling": "观察你的感受。",
+    "breatheWithRhythm": "跟着节奏呼吸。",
+    "canPutPhoneDown": "你可以放下手机。"
   },
   "feedback": {
     "howDoYouFeel": "你感觉怎么样？",
@@ -96,6 +102,8 @@
     "moreLight": "更多光线",
     "moveCloser": "靠近一点",
     "onlyOneFace": "仅一个脸部",
+    "showEyes": "显示你的眼睛",
+    "showMouth": "显示你的嘴巴",
     "howToEnableOn": "如何在 {{browser}} 上启用：",
     "browserStep1": "打开网站或浏览器设置",
     "browserStep2": "找到相机权限",
@@ -191,13 +199,18 @@
     "fixPoint": "盯着一个稳定的点"
   },
   "share": {
-    "shareYourReset": "分享你的重置？🔥",
+    "shareYourReset": "想分享你的重置吗？",
     "no": "否",
     "shareToStories": "分享至动态",
     "downloadImage": "下载图片",
     "skaneIndex": "SKANE 指数",
     "before": "之前",
-    "after": "之后"
+    "after": "之后",
+    "beforeAfterNoPersonalData": "前 / 后 — 无个人数据。",
+    "share": "分享",
+    "shareMySkane": "分享我的 Skane",
+    "preparing": "准备中",
+    "later": "稍后"
   },
   "profile": {
     "firstName": "名字",

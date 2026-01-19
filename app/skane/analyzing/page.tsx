@@ -41,7 +41,9 @@ export default function AnalyzingPage() {
         setProgress(100);
 
         // Stocker le résultat
+        // Stocker dans les deux formats pour compatibilité
         sessionStorage.setItem("skane_result", JSON.stringify(result));
+        sessionStorage.setItem("skane_analysis_result", JSON.stringify(result));
 
         // Rediriger vers la page de résultat
         setTimeout(() => {
@@ -64,7 +66,9 @@ export default function AnalyzingPage() {
           },
           skane_index: 45,
         };
+        // Stocker dans les deux formats pour compatibilité
         sessionStorage.setItem("skane_result", JSON.stringify(fallbackResult));
+        sessionStorage.setItem("skane_analysis_result", JSON.stringify(fallbackResult));
         setTimeout(() => {
           router.push("/skane/result");
         }, 500);
@@ -139,16 +143,9 @@ export default function AnalyzingPage() {
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* Barre de progression horizontale au milieu */}
-      <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 px-0">
-        <div className="h-1 bg-white/20">
-          <motion.div
-            className="h-full bg-blue-500"
-            initial={{ width: "0%" }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.3 }}
-          />
-        </div>
+      {/* Spinner de chargement au centre */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
       </div>
 
       {/* Texte de statut en bas */}

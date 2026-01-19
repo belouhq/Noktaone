@@ -81,6 +81,7 @@ export default function FeedbackPage() {
       const updatedResult = {
         ...result,
         afterScore: afterScore,
+        selectedFeedback: feedback, // Stocker le feedback pour share-prompt
         ...(noktaData && { noktaSessionId: noktaData.sessionId, noktaSkaneIndex: noktaData.skaneIndex }),
       };
       sessionStorage.setItem("skane_analysis_result", JSON.stringify(updatedResult));
@@ -119,9 +120,14 @@ export default function FeedbackPage() {
       });
     }
 
-    // Rediriger après un court délai (feedback visuel)
+    // Rediriger vers share-prompt uniquement si feedback positif (better)
+    // Sinon rediriger vers la home
     setTimeout(() => {
-      router.push("/skane/share-prompt");
+      if (feedback === "better") {
+        router.push("/skane/share-prompt");
+      } else {
+        router.push("/");
+      }
     }, 600);
   };
 

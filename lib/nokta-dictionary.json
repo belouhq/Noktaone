@@ -1,0 +1,296 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-01",
+    "copyright": "NOKTA ONE / SASU Nexus 1993"
+  },
+  
+  "neverTranslate": [
+    "Nokta One",
+    "NOKTA ONE", 
+    "SKANE",
+    "Skane",
+    "Skane Index",
+    "SKANE INDEX"
+  ],
+  
+  "forbiddenWords": {
+    "universal": [
+      "stress",
+      "anxiety", 
+      "depression",
+      "diagnosis",
+      "treatment",
+      "cure",
+      "disease",
+      "patient",
+      "symptom",
+      "therapy",
+      "mental health",
+      "disorder"
+    ],
+    "fr": [
+      "stress",
+      "anxiété",
+      "dépression",
+      "diagnostic",
+      "traitement",
+      "guérir",
+      "maladie",
+      "patient",
+      "symptôme",
+      "thérapie"
+    ],
+    "es": [
+      "estrés",
+      "ansiedad",
+      "depresión",
+      "diagnóstico",
+      "tratamiento",
+      "curar",
+      "enfermedad",
+      "paciente",
+      "síntoma",
+      "terapia"
+    ],
+    "de": [
+      "Stress",
+      "Angst",
+      "Depression",
+      "Diagnose",
+      "Behandlung",
+      "heilen",
+      "Krankheit",
+      "Patient",
+      "Symptom",
+      "Therapie"
+    ]
+  },
+  
+  "dictionary": {
+    "skane": {
+      "term": "SKANE",
+      "phonetic": "/skeɪn/",
+      "type": "verb & noun",
+      "tier": 1,
+      "neverTranslate": true,
+      "definitions": {
+        "en": "A 30-second body reset combining AI facial scan and guided micro-action.",
+        "fr": "Un reset corporel de 30 secondes combinant scan facial IA et micro-action guidée.",
+        "es": "Un reseteo corporal de 30 segundos que combina escaneo facial IA y micro-acción guiada.",
+        "de": "Ein 30-Sekunden-Körper-Reset, der KI-Gesichtsscan und geführte Mikro-Aktion kombiniert.",
+        "ja": "AIフェイシャルスキャンとガイド付きマイクロアクションを組み合わせた30秒のボディリセット。",
+        "pt": "Um reset corporal de 30 segundos combinando scan facial IA e micro-ação guiada.",
+        "it": "Un reset corporeo di 30 secondi che combina scansione facciale IA e micro-azione guidata.",
+        "hi": "AI फेशियल स्कैन और गाइडेड माइक्रो-एक्शन को मिलाकर 30 सेकंड का बॉडी रीसेट।",
+        "id": "Reset tubuh 30 detik yang menggabungkan pemindaian wajah AI dan mikro-aksi terpandu.",
+        "ko": "AI 안면 스캔과 가이드된 마이크로 액션을 결합한 30초 바디 리셋.",
+        "zh": "结合AI面部扫描和引导微动作的30秒身体重置。",
+        "ar": "إعادة ضبط الجسم لمدة 30 ثانية تجمع بين مسح الوجه بالذكاء الاصطناعي والإجراء الصغير الموجه."
+      },
+      "examples": {
+        "en": [
+          "\"I skane before every meeting\"",
+          "\"My morning skane changed everything\"",
+          "\"Quick skane?\""
+        ],
+        "fr": [
+          "\"Je skane avant chaque réunion\"",
+          "\"Mon skane du matin a tout changé\"",
+          "\"Un quick skane ?\""
+        ]
+      },
+      "conjugation": {
+        "fr": {
+          "present": ["je skane", "tu skanes", "il/elle skane", "nous skanons", "vous skanez", "ils/elles skanent"],
+          "past": ["j'ai skané", "tu as skané", "il/elle a skané"],
+          "future": ["je skanerai", "tu skaneras", "il/elle skanera"]
+        },
+        "en": {
+          "present": ["I skane", "you skane", "he/she skanes"],
+          "past": ["I skaned", "you skaned", "he/she skaned"],
+          "future": ["I will skane", "you will skane"]
+        },
+        "es": {
+          "present": ["yo skaneo", "tú skaneas", "él/ella skanea"],
+          "past": ["yo skaneé", "tú skaneaste"],
+          "future": ["yo skanearé", "tú skanearás"]
+        }
+      }
+    },
+    
+    "skane_index": {
+      "term": "SKANE INDEX",
+      "phonetic": "/skeɪn ˈɪndeks/",
+      "type": "noun",
+      "tier": 1,
+      "neverTranslate": true,
+      "definitions": {
+        "en": "Your activation level score (0-100), measured before and after a skane.",
+        "fr": "Ton score de niveau d'activation (0-100), mesuré avant et après un skane.",
+        "es": "Tu puntuación de nivel de activación (0-100), medida antes y después de un skane."
+      },
+      "components": {
+        "before_score": {
+          "en": "Activation level detected at scan",
+          "fr": "Niveau d'activation détecté au scan"
+        },
+        "after_score": {
+          "en": "Level after micro-action",
+          "fr": "Niveau après la micro-action"
+        },
+        "delta": {
+          "en": "Difference (negative = improvement)",
+          "fr": "Différence (négatif = amélioration)"
+        }
+      }
+    },
+    
+    "body_reset": {
+      "term": "BODY RESET",
+      "phonetic": "/ˈbɒdi riːˈset/",
+      "type": "noun",
+      "tier": 2,
+      "neverTranslate": false,
+      "definitions": {
+        "en": "A short physiological intervention (<30s) to regulate your nervous system. No meditation, no equipment.",
+        "fr": "Une intervention physiologique courte (<30s) pour réguler ton système nerveux. Sans méditation, sans équipement."
+      },
+      "translations": {
+        "fr": "Reset corporel",
+        "es": "Reseteo corporal",
+        "de": "Körper-Reset",
+        "ja": "ボディリセット",
+        "pt": "Reset corporal"
+      },
+      "notToBe": {
+        "en": ["meditation", "coaching", "medical treatment"],
+        "fr": ["méditation", "coaching", "traitement médical"]
+      }
+    },
+    
+    "micro_action": {
+      "term": "MICRO-ACTION",
+      "phonetic": "/ˈmaɪkrəʊ ˈækʃən/",
+      "type": "noun",
+      "tier": 2,
+      "neverTranslate": false,
+      "definitions": {
+        "en": "A 20-30 second guided exercise (breathing or posture) selected by AI based on your detected state.",
+        "fr": "Un exercice guidé de 20-30 secondes (respiration ou posture) sélectionné par l'IA selon ton état détecté."
+      },
+      "translations": {
+        "fr": "Micro-action",
+        "es": "Micro-acción",
+        "de": "Mikro-Aktion",
+        "ja": "マイクロアクション"
+      },
+      "types": [
+        {"id": "physiological_sigh", "category": "breathing"},
+        {"id": "box_breathing", "category": "breathing"},
+        {"id": "expiration_3_8", "category": "breathing"},
+        {"id": "respiration_4_6", "category": "breathing"},
+        {"id": "respiration_2_1", "category": "breathing"},
+        {"id": "drop_trapezes", "category": "posture"},
+        {"id": "ouverture_thoracique", "category": "posture"},
+        {"id": "posture_ancrage", "category": "posture"},
+        {"id": "shake_neuromusculaire", "category": "posture"},
+        {"id": "pression_plantaire", "category": "posture"},
+        {"id": "regard_fixe_expiration", "category": "mixed"}
+      ]
+    },
+    
+    "signal": {
+      "term": "SIGNAL",
+      "phonetic": "/ˈsɪɡnəl/",
+      "type": "noun",
+      "tier": 2,
+      "neverTranslate": false,
+      "definitions": {
+        "en": "Body reading detected by AI. Neutral term avoiding medical connotations.",
+        "fr": "Lecture corporelle détectée par l'IA. Terme neutre évitant les connotations médicales."
+      },
+      "states": {
+        "HIGH_ACTIVATION": {
+          "label": {
+            "en": "High Activation",
+            "fr": "Activation élevée"
+          },
+          "color": "#EF4444",
+          "meaning": "Body in alert/tension mode"
+        },
+        "LOW_ENERGY": {
+          "label": {
+            "en": "Low Energy",
+            "fr": "Énergie basse"
+          },
+          "color": "#F59E0B",
+          "meaning": "Body in economy/fatigue mode"
+        },
+        "REGULATED": {
+          "label": {
+            "en": "Clear Signal",
+            "fr": "Signal clair"
+          },
+          "color": "#10B981",
+          "meaning": "Body in balance"
+        }
+      }
+    }
+  },
+  
+  "expressions": {
+    "press_to_skane": {
+      "en": "Press to skane",
+      "fr": "Appuie pour skaner",
+      "es": "Pulsa para skanear",
+      "de": "Drücken zum Skanen"
+    },
+    "share_your_reset": {
+      "en": "Share your reset",
+      "fr": "Partage ton reset",
+      "es": "Comparte tu reset",
+      "de": "Teile deinen Reset"
+    },
+    "wellness_disclaimer": {
+      "en": "Wellness signal — not medical",
+      "fr": "Signal bien-être — pas médical",
+      "es": "Señal de bienestar — no médico",
+      "de": "Wellness-Signal — nicht medizinisch",
+      "ja": "ウェルネス信号 — 医療ではありません"
+    },
+    "skane_completed": {
+      "en": "SKANE COMPLETED",
+      "fr": "SKANE TERMINÉ",
+      "es": "SKANE COMPLETADO",
+      "de": "SKANE ABGESCHLOSSEN"
+    }
+  },
+  
+  "replacements": {
+    "stress": {
+      "use": "high activation",
+      "fr": "activation élevée"
+    },
+    "anxiety": {
+      "use": "activation signal",
+      "fr": "signal d'activation"
+    },
+    "tired": {
+      "use": "low energy signal",
+      "fr": "signal d'énergie basse"
+    },
+    "diagnosis": {
+      "use": "signal / reading",
+      "fr": "signal / lecture"
+    },
+    "treatment": {
+      "use": "micro-action",
+      "fr": "micro-action"
+    },
+    "cure": {
+      "use": "regulate",
+      "fr": "réguler"
+    }
+  }
+}

@@ -223,7 +223,6 @@ export default function SkaneIndexResult({
         <div className="flex items-center justify-between">
           <h1 className="text-sm font-medium text-white/80 tracking-widest uppercase">{t("skaneIndex.title")}</h1>
           <div className="flex items-center gap-4">
-            <span className="text-sm font-light text-white/60 tracking-widest uppercase">Nokta One</span>
             {onClose && (
               <button onClick={onClose} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label={t("common.close")}>
                 <X size={18} className="text-white" />

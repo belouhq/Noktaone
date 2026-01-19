@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Camera, Clock, Shield, ArrowRight, X } from "lucide-react";
+import Logo from "@/components/Logo";
 
 /**
  * PAGE /try - Landing virale pour scan gratuit
@@ -92,20 +93,7 @@ export default function TryPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <div className="flex items-center gap-3">
-            <div 
-              className="w-12 h-12 rounded-2xl flex items-center justify-center"
-              style={{
-                background: "linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.05) 100%)",
-                border: "1px solid rgba(16, 185, 129, 0.3)"
-              }}
-            >
-              <span className="text-white text-xl font-bold">N</span>
-            </div>
-            <span className="text-white/80 text-lg font-medium tracking-wider">
-              NOKTA ONE
-            </span>
-          </div>
+          <Logo variant="text" className="h-8 w-auto" />
         </motion.div>
 
         {/* Hero message */}
