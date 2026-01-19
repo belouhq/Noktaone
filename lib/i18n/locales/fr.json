@@ -62,7 +62,8 @@
       "title": "Quand ton corps est off, skane.",
       "subtitle": "Stress, fatigue, surcharge mentale, avant un moment important",
       "noktaIsHere": "Nokta One est là.",
-      "nextSkane": "Faire mon prochain skane"
+      "nextSkane": "Faire mon prochain skane",
+      "skip": "Passer"
     }
   },
   "home": {

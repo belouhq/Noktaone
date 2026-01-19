@@ -64,9 +64,9 @@ export default function SignupPage() {
     // Afficher le toast
     setShowToast(true);
 
-    // Rediriger après 2 secondes
+    // Rediriger vers l'onboarding après l'inscription
     setTimeout(() => {
-      router.push("/skane");
+      router.push("/onboarding/continue");
     }, 2000);
   };
 

@@ -385,7 +385,8 @@
       "title": "Quando seu corpo não está bem, skane.",
       "subtitle": "Estresse, fadiga, sobrecarga mental, antes de um momento importante",
       "noktaIsHere": "Nokta está aqui.",
-      "nextSkane": "Fazer meu próximo skane"
+      "nextSkane": "Fazer meu próximo skane",
+      "skip": "Pular"
     }
   },
   "homeAdaptation": {

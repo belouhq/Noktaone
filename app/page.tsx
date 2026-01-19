@@ -47,8 +47,8 @@ export default function Home() {
   };
 
   const handleRestartOnboarding = () => {
-    // Relancer le flow du premier onboarding après le premier skane
-    router.push("/onboarding/continue");
+    // Relancer le flow complet depuis l'inscription
+    router.push("/signup");
   };
 
   // Swipe gestures pour naviguer entre les pages

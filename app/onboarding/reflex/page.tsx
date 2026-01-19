@@ -28,6 +28,11 @@ export default function OnboardingReflexPage() {
     router.push("/");
   };
 
+  const handleSkip = () => {
+    // Permettre de sortir de l'onboarding sans le marquer comme terminé
+    router.push("/");
+  };
+
   return (
     <main className="fixed inset-0 bg-nokta-one-black flex flex-col items-center justify-between px-8 py-16">
       {/* Espace haut */}
@@ -88,13 +93,14 @@ export default function OnboardingReflexPage() {
         </motion.div>
       </motion.div>
 
-      {/* Bas - CTA */}
+      {/* Bas - CTAs */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.5 }}
-        className="w-full max-w-sm"
+        className="w-full max-w-sm flex flex-col items-center gap-4"
       >
+        {/* CTA Principal */}
         <motion.button
           onClick={handleNextSkane}
           className="w-full py-5 rounded-2xl text-lg font-semibold text-white"
@@ -106,6 +112,15 @@ export default function OnboardingReflexPage() {
           whileTap={{ scale: 0.98 }}
         >
           {t("onboarding.reflex.nextSkane")}
+        </motion.button>
+
+        {/* Bouton de sortie - Discret */}
+        <motion.button
+          onClick={handleSkip}
+          className="text-sm text-gray-500 py-2 px-4"
+          whileTap={{ scale: 0.95 }}
+        >
+          {t("onboarding.reflex.skip")}
         </motion.button>
       </motion.div>
     </main>

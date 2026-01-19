@@ -385,7 +385,8 @@
       "title": "Wenn dein Körper nicht im Gleichgewicht ist, skane.",
       "subtitle": "Stress, Müdigkeit, geistige Überlastung, vor einem wichtigen Moment",
       "noktaIsHere": "Nokta ist hier.",
-      "nextSkane": "Mach mein nächstes skane"
+      "nextSkane": "Mach mein nächstes skane",
+      "skip": "Überspringen"
     }
   },
   "homeAdaptation": {

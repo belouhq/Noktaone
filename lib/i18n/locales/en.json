@@ -62,7 +62,8 @@
       "title": "When your body is off, skane.",
       "subtitle": "Stress, fatigue, mental overload, before an important moment",
       "noktaIsHere": "Nokta One is here.",
-      "nextSkane": "Do my next skane"
+      "nextSkane": "Do my next skane",
+      "skip": "Skip"
     }
   },
   "home": {

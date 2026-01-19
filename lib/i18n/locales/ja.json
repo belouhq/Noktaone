@@ -385,7 +385,8 @@
       "title": "体がオフのとき、Skane。",
       "subtitle": "ストレス、疲労、精神的負荷、重要な瞬間の前に",
       "noktaIsHere": "Nokta Oneがここにあります。",
-      "nextSkane": "次のSkaneを行う"
+      "nextSkane": "次のSkaneを行う",
+      "skip": "スキップ"
     }
   },
   "homeAdaptation": {
