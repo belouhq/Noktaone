@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Volume2, ChevronRight, BookOpen } from "lucide-react";
+import { X, Volume2, ChevronRight, BookOpen, Scan, Clock, Zap, Brain, Target, Shield, Sparkles } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import dictionaryData from "@/lib/nokta-dictionary.json";
 import Logo from "@/components/Logo";
@@ -109,6 +109,263 @@ export default function NoktaDictionary({
       utterance.onend = () => setPlayingAudio(null);
       window.speechSynthesis.speak(utterance);
     }
+  };
+
+  // Fonction pour formater une phrase avec des icônes
+  const formatSentenceWithIcons = (sentence: string, color: string): React.ReactNode[] => {
+    const elements: React.ReactNode[] = [];
+    let lastIndex = 0;
+    
+    // Patterns avec leurs icônes et couleurs
+    const iconPatterns = [
+      { 
+        regex: /468\s*(landmarks?|points?|ランドマーク|点|نقاط)/gi, 
+        icon: Scan, 
+        color: "#3B82F6",
+        size: 16
+      },
+      { 
+        regex: /(20|30)\s*[-–]\s*(20|30)\s*(secondes?|seconds?|segundos?|秒|초)/gi, 
+        icon: Clock, 
+        color: "#F59E0B",
+        size: 16
+      },
+      { 
+        regex: /(moins de|less than|menos de|unter|未満)\s*30\s*(secondes?|seconds?|segundos?|秒|초)/gi, 
+        icon: Clock, 
+        color: "#F59E0B",
+        size: 16
+      },
+      { 
+        regex: /(1\s*000\+|1000\+|plus de 1\s*000|más de 1\s*000|über 1\s*000|1000以上)\s*(études?|studies?|estudios?|Studien?|研究)/gi, 
+        icon: Brain, 
+        color: "#8B5CF6",
+        size: 16
+      },
+      { 
+        regex: /(non médical|non-medical|no médico|nicht medizinisch|非医学|非医療)/gi, 
+        icon: Shield, 
+        color: "#10B981",
+        size: 16
+      },
+      { 
+        regex: /(immédiat|immediate|inmediato|sofort|即座|즉각)/gi, 
+        icon: Zap, 
+        color: "#EF4444",
+        size: 16
+      },
+    ];
+
+    // Trouver tous les matches
+    const matches: Array<{ start: number; end: number; icon: any; color: string; size: number; text: string }> = [];
+    
+    iconPatterns.forEach(({ regex, icon, color, size }) => {
+      const regexCopy = new RegExp(regex.source, regex.flags);
+      let match;
+      while ((match = regexCopy.exec(sentence)) !== null) {
+        matches.push({
+          start: match.index,
+          end: match.index + match[0].length,
+          icon,
+          color,
+          size,
+          text: match[0]
+        });
+      }
+    });
+
+    // Trier par position
+    matches.sort((a, b) => a.start - b.start);
+
+    // Construire les éléments
+    matches.forEach((match, idx) => {
+      // Ajouter le texte avant le match
+      if (match.start > lastIndex) {
+        elements.push(
+          <span key={`text-${idx}`}>{sentence.substring(lastIndex, match.start)}</span>
+        );
+      }
+
+      // Ajouter l'icône et le texte du match
+      const IconComponent = match.icon;
+      elements.push(
+        <span 
+          key={`icon-${idx}`} 
+          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md"
+          style={{
+            background: `${match.color}15`,
+            border: `1px solid ${match.color}30`
+          }}
+        >
+          <IconComponent size={match.size} style={{ color: match.color }} />
+          <span style={{ color: match.color }} className="font-medium">
+            {match.text}
+          </span>
+        </span>
+      );
+
+      lastIndex = match.end;
+    });
+
+    // Ajouter le texte restant
+    if (lastIndex < sentence.length) {
+      elements.push(
+        <span key="text-end">{sentence.substring(lastIndex)}</span>
+      );
+    }
+
+    return elements.length > 0 ? elements : [<span key="default">{sentence}</span>];
+  };
+
+  // Fonction pour formater les définitions avec icônes et espacement
+  const formatDefinition = (definition: string, color: string) => {
+    // Détecter les éléments clés et les remplacer par des versions formatées
+    const parts: React.ReactNode[] = [];
+    let remainingText = definition;
+    
+    // Diviser le texte en phrases pour un meilleur espacement
+    const sentences = remainingText.split(/(?<=[.!?])\s+/).filter(s => s.trim());
+    
+    return (
+      <div className="space-y-3">
+        {sentences.map((sentence, idx) => {
+          // Si c'est une phrase numérotée (1), (2), (3), la formater spécialement
+          const numberedMatch = sentence.match(/^\((\d+)\)\s*(.+)/);
+          if (numberedMatch) {
+            const [, number, content] = numberedMatch;
+            return (
+              <div key={idx} className="flex items-start gap-3">
+                <div 
+                  className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+                  style={{
+                    background: `linear-gradient(135deg, ${color}40, ${color}20)`,
+                    color: color,
+                    border: `1px solid ${color}60`
+                  }}
+                >
+                  {number}
+                </div>
+                <p className="text-white/80 text-sm leading-relaxed flex-1">
+                  {formatSentenceWithIcons(content, color)}
+                </p>
+              </div>
+            );
+          }
+          
+          return (
+            <p key={idx} className="text-white/80 text-sm leading-relaxed">
+              {formatSentenceWithIcons(sentence, color)}
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Fonction pour formater une phrase avec des icônes
+  const formatSentenceWithIcons = (sentence: string, color: string): React.ReactNode[] => {
+    const elements: React.ReactNode[] = [];
+    let lastIndex = 0;
+    
+    // Patterns avec leurs icônes et couleurs
+    const iconPatterns = [
+      { 
+        regex: /468\s*(landmarks?|points?|ランドマーク|点|نقاط)/gi, 
+        icon: Scan, 
+        color: "#3B82F6",
+        size: 16
+      },
+      { 
+        regex: /(20|30)\s*[-–]\s*(20|30)\s*(secondes?|seconds?|segundos?|秒|초)/gi, 
+        icon: Clock, 
+        color: "#F59E0B",
+        size: 16
+      },
+      { 
+        regex: /(moins de|less than|menos de|unter|未満)\s*30\s*(secondes?|seconds?|segundos?|秒|초)/gi, 
+        icon: Clock, 
+        color: "#F59E0B",
+        size: 16
+      },
+      { 
+        regex: /(1\s*000\+|1000\+|plus de 1\s*000|más de 1\s*000|über 1\s*000|1000以上)\s*(études?|studies?|estudios?|Studien?|研究)/gi, 
+        icon: Brain, 
+        color: "#8B5CF6",
+        size: 16
+      },
+      { 
+        regex: /(non médical|non-medical|no médico|nicht medizinisch|非医学|非医療)/gi, 
+        icon: Shield, 
+        color: "#10B981",
+        size: 16
+      },
+      { 
+        regex: /(immédiat|immediate|inmediato|sofort|即座|즉각)/gi, 
+        icon: Zap, 
+        color: "#EF4444",
+        size: 16
+      },
+    ];
+
+    // Trouver tous les matches
+    const matches: Array<{ start: number; end: number; icon: any; color: string; size: number; text: string }> = [];
+    
+    iconPatterns.forEach(({ regex, icon, color, size }) => {
+      const regexCopy = new RegExp(regex.source, regex.flags);
+      let match;
+      while ((match = regexCopy.exec(sentence)) !== null) {
+        matches.push({
+          start: match.index,
+          end: match.index + match[0].length,
+          icon,
+          color,
+          size,
+          text: match[0]
+        });
+      }
+    });
+
+    // Trier par position
+    matches.sort((a, b) => a.start - b.start);
+
+    // Construire les éléments
+    matches.forEach((match, idx) => {
+      // Ajouter le texte avant le match
+      if (match.start > lastIndex) {
+        elements.push(
+          <span key={`text-${idx}`}>{sentence.substring(lastIndex, match.start)}</span>
+        );
+      }
+
+      // Ajouter l'icône et le texte du match
+      const IconComponent = match.icon;
+      elements.push(
+        <span 
+          key={`icon-${idx}`} 
+          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md"
+          style={{
+            background: `${match.color}15`,
+            border: `1px solid ${match.color}30`
+          }}
+        >
+          <IconComponent size={match.size} style={{ color: match.color }} />
+          <span style={{ color: match.color }} className="font-medium">
+            {match.text}
+          </span>
+        </span>
+      );
+
+      lastIndex = match.end;
+    });
+
+    // Ajouter le texte restant
+    if (lastIndex < sentence.length) {
+      elements.push(
+        <span key="text-end">{sentence.substring(lastIndex)}</span>
+      );
+    }
+
+    return elements.length > 0 ? elements : [<span key="default">{sentence}</span>];
   };
 
   const content = (
@@ -226,24 +483,39 @@ export default function NoktaDictionary({
                       className="overflow-hidden"
                     >
                       <div className="pt-4 mt-4 border-t border-white/10">
-                        <p className="text-white/80 text-sm mb-4">
-                          {entry.definition}
-                        </p>
+                        <div className="mb-6">
+                          {formatDefinition(entry.definition, entry.color || "#FFFFFF")}
+                        </div>
                         
                         {entry.examples.length > 0 && (
-                          <div className="space-y-2">
-                            <p className="text-white/40 text-xs uppercase tracking-wider">
-                              Examples
-                            </p>
-                            {entry.examples.map((example, i) => (
-                              <p 
-                                key={i}
-                                className="text-white/60 text-sm italic pl-3 border-l-2"
-                                style={{ borderColor: entry.color + "60" }}
-                              >
-                                {example}
+                          <div className="space-y-3 mt-6 pt-4 border-t border-white/5">
+                            <div className="flex items-center gap-2 mb-3">
+                              <Sparkles size={14} className="text-white/40" />
+                              <p className="text-white/40 text-xs uppercase tracking-wider font-semibold">
+                                Examples
                               </p>
-                            ))}
+                            </div>
+                            <div className="space-y-2">
+                              {entry.examples.map((example, i) => (
+                                <div 
+                                  key={i}
+                                  className="flex items-start gap-2 pl-3 border-l-2 py-1"
+                                  style={{ borderColor: entry.color + "40" }}
+                                >
+                                  <span 
+                                    className="text-xs mt-0.5"
+                                    style={{ color: entry.color + "80" }}
+                                  >
+                                    "
+                                  </span>
+                                  <p 
+                                    className="text-white/70 text-sm italic flex-1"
+                                  >
+                                    {example.replace(/^"|"$/g, '')}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         )}
                       </div>
