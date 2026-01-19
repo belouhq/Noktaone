@@ -1,8 +1,9 @@
 {
   "meta": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "lastUpdated": "2026-01",
-    "copyright": "NOKTA ONE / SASU Nexus 1993"
+    "copyright": "NOKTA ONE / SASU Nexus 1993",
+    "factChecked": true
   },
   
   "neverTranslate": [
@@ -70,23 +71,23 @@
   "dictionary": {
     "skane": {
       "term": "SKANE",
-      "phonetic": "/skeɪn/",
+      "phonetic": "/ˈskeɪn/",
       "type": "verb & noun",
       "tier": 1,
       "neverTranslate": true,
       "definitions": {
-        "en": "A 30-second body reset combining AI facial scan and guided micro-action.",
-        "fr": "Un reset corporel de 30 secondes combinant scan facial IA et micro-action guidée.",
-        "es": "Un reseteo corporal de 30 segundos que combina escaneo facial IA y micro-acción guiada.",
-        "de": "Ein 30-Sekunden-Körper-Reset, der KI-Gesichtsscan und geführte Mikro-Aktion kombiniert.",
-        "ja": "AIフェイシャルスキャンとガイド付きマイクロアクションを組み合わせた30秒のボディリセット。",
-        "pt": "Um reset corporal de 30 segundos combinando scan facial IA e micro-ação guiada.",
-        "it": "Un reset corporeo di 30 secondi che combina scansione facciale IA e micro-azione guidata.",
-        "hi": "AI फेशियल स्कैन और गाइडेड माइक्रो-एक्शन को मिलाकर 30 सेकंड का बॉडी रीसेट।",
-        "id": "Reset tubuh 30 detik yang menggabungkan pemindaian wajah AI dan mikro-aksi terpandu.",
-        "ko": "AI 안면 스캔과 가이드된 마이크로 액션을 결합한 30초 바디 리셋.",
-        "zh": "结合AI面部扫描和引导微动作的30秒身体重置。",
-        "ar": "إعادة ضبط الجسم لمدة 30 ثانية تجمع بين مسح الوجه بالذكاء الاصطناعي والإجراء الصغير الموجه."
+        "en": "A complete Body Reset sequence, performed in less than 30 seconds, comprising: (1) an AI facial scan based on 468 facial landmarks, (2) a guided 20-30 second body micro-action, (3) an immediate and felt body reset. The skane is the fundamental unit of usage of Nokta One. It is neither a measurement nor a medical analysis, but a triggering action for body regulation.",
+        "fr": "Une séquence complète de Body Reset, réalisée en moins de 30 secondes, comprenant : (1) un scan facial IA basé sur 468 landmarks faciaux, (2) une micro-action corporelle guidée de 20 à 30 secondes, (3) un reset corporel immédiat et ressenti. Le skane est l'unité fondamentale d'usage de Nokta One. Ce n'est ni une mesure, ni une analyse médicale, mais une action déclenchante de régulation corporelle.",
+        "es": "Una secuencia completa de Body Reset, realizada en menos de 30 segundos, que comprende: (1) un escaneo facial IA basado en 468 puntos faciales, (2) una micro-acción corporal guiada de 20 a 30 segundos, (3) un reset corporal inmediato y sentido. El skane es la unidad fundamental de uso de Nokta One. No es ni una medición ni un análisis médico, sino una acción desencadenante de regulación corporal.",
+        "de": "Eine vollständige Body Reset-Sequenz, die in weniger als 30 Sekunden durchgeführt wird und umfasst: (1) einen KI-Gesichtsscan basierend auf 468 Gesichtslandmarken, (2) eine geführte 20-30 Sekunden Körper-Mikroaktion, (3) einen sofortigen und spürbaren Körper-Reset. Der Skane ist die grundlegende Nutzungseinheit von Nokta One. Es ist weder eine Messung noch eine medizinische Analyse, sondern eine auslösende Aktion zur Körperregulation.",
+        "ja": "30秒未満で実行される完全なBody Resetシーケンスで、以下を含みます：(1) 468個の顔のランドマークに基づくAI顔スキャン、(2) 20〜30秒のガイド付き身体マイクロアクション、(3) 即座に感じられる身体リセット。skaneはNokta Oneの基本的な使用単位です。測定でも医学的分析でもなく、身体調節のトリガーアクションです。",
+        "pt": "Uma sequência completa de Body Reset, realizada em menos de 30 segundos, compreendendo: (1) um scan facial IA baseado em 468 pontos faciais, (2) uma micro-ação corporal guiada de 20 a 30 segundos, (3) um reset corporal imediato e sentido. O skane é a unidade fundamental de uso do Nokta One. Não é uma medição nem uma análise médica, mas uma ação desencadeante de regulação corporal.",
+        "it": "Una sequenza completa di Body Reset, eseguita in meno di 30 secondi, che comprende: (1) una scansione facciale IA basata su 468 punti facciali, (2) una micro-azione corporea guidata di 20-30 secondi, (3) un reset corporeo immediato e percepito. Lo skane è l'unità fondamentale di utilizzo di Nokta One. Non è né una misurazione né un'analisi medica, ma un'azione scatenante di regolazione corporea.",
+        "hi": "30 सेकंड से कम में किया गया एक पूर्ण Body Reset अनुक्रम, जिसमें शामिल है: (1) 468 चेहरे के लैंडमार्क पर आधारित AI चेहरे का स्कैन, (2) 20-30 सेकंड का निर्देशित शरीर माइक्रो-एक्शन, (3) तत्काल और महसूस किया गया शरीर रीसेट। skane Nokta One का मौलिक उपयोग इकाई है। यह न तो माप है और न ही चिकित्सा विश्लेषण, बल्कि शरीर विनियमन के लिए एक ट्रिगर करने वाली क्रिया है।",
+        "id": "Urutan Body Reset lengkap, dilakukan dalam kurang dari 30 detik, terdiri dari: (1) pemindaian wajah AI berdasarkan 468 landmark wajah, (2) mikro-aksi tubuh terpandu 20-30 detik, (3) reset tubuh langsung dan terasa. Skane adalah unit penggunaan fundamental dari Nokta One. Ini bukan pengukuran atau analisis medis, tetapi tindakan pemicu untuk regulasi tubuh.",
+        "ko": "30초 미만으로 수행되는 완전한 Body Reset 시퀀스로 다음을 포함합니다: (1) 468개의 얼굴 랜드마크를 기반으로 한 AI 얼굴 스캔, (2) 20-30초 가이드 신체 마이크로 액션, (3) 즉각적이고 느껴지는 신체 리셋. skane은 Nokta One의 기본 사용 단위입니다. 측정도 의학적 분석도 아닌 신체 조절을 위한 트리거 액션입니다.",
+        "zh": "在不到30秒内完成的完整Body Reset序列，包括：(1) 基于468个面部标志点的AI面部扫描，(2) 20-30秒的引导身体微动作，(3) 即时且可感知的身体重置。skane是Nokta One的基本使用单位。它既不是测量也不是医学分析，而是身体调节的触发动作。",
+        "ar": "تسلسل Body Reset كامل، يتم تنفيذه في أقل من 30 ثانية، يتضمن: (1) مسحًا للوجه بالذكاء الاصطناعي يعتمد على 468 معلمًا للوجه، (2) إجراءًا صغيرًا موجهًا للجسم لمدة 20-30 ثانية، (3) إعادة ضبط فورية ومحسوسة للجسم. skane هو وحدة الاستخدام الأساسية لـ Nokta One. إنه ليس قياسًا ولا تحليلًا طبيًا، بل إجراء محفز لتنظيم الجسم."
       },
       "examples": {
         "en": [
@@ -121,14 +122,23 @@
     
     "skane_index": {
       "term": "SKANE INDEX",
-      "phonetic": "/skeɪn ˈɪndeks/",
+      "phonetic": "/ˈskeɪn ˈɪndɛks/",
       "type": "noun",
       "tier": 1,
       "neverTranslate": true,
       "definitions": {
-        "en": "Your activation level score (0-100), measured before and after a skane.",
-        "fr": "Ton score de niveau d'activation (0-100), mesuré avant et après un skane.",
-        "es": "Tu puntuación de nivel de activación (0-100), medida antes y después de un skane."
+        "en": "A non-medical visual representation of the estimated body shift after a skane. It is expressed as: before/after variation, visual trend, or indicative range. It claims neither clinical precision nor diagnostic value. Primary support for social sharing and virality, and a user understanding tool, not raw scientific measurement.",
+        "fr": "Une représentation visuelle non médicale du shift corporel estimé après un skane. Il s'exprime sous forme de : variation avant/après, tendance visuelle, ou fourchette indicative. Il ne prétend ni précision clinique, ni valeur diagnostique. Support principal de partage social et viralité, et outil de compréhension utilisateur, pas de mesure scientifique brute.",
+        "es": "Una representación visual no médica del cambio corporal estimado después de un skane. Se expresa como: variación antes/después, tendencia visual o rango indicativo. No reclama precisión clínica ni valor diagnóstico. Soporte principal para compartir social y viralidad, y herramienta de comprensión del usuario, no medición científica cruda.",
+        "de": "Eine nicht-medizinische visuelle Darstellung der geschätzten Körperverschiebung nach einem Skane. Es wird ausgedrückt als: Vorher/Nachher-Variation, visueller Trend oder indikative Reichweite. Es beansprucht weder klinische Präzision noch diagnostischen Wert. Hauptstütze für soziales Teilen und Viralität sowie Benutzerverständnis-Tool, keine rohe wissenschaftliche Messung.",
+        "ja": "skane後の推定身体シフトの非医学的視覚表現。前後変動、視覚的傾向、または示唆的範囲として表現されます。臨床的精度も診断的価値も主張しません。ソーシャルシェアとバイラリティの主要サポート、およびユーザー理解ツールであり、生の科学的測定ではありません。",
+        "pt": "Uma representação visual não médica da mudança corporal estimada após um skane. É expressa como: variação antes/depois, tendência visual ou faixa indicativa. Não reivindica precisão clínica nem valor diagnóstico. Suporte principal para compartilhamento social e viralidade, e ferramenta de compreensão do usuário, não medição científica bruta.",
+        "it": "Una rappresentazione visiva non medica dello spostamento corporeo stimato dopo uno skane. È espressa come: variazione prima/dopo, tendenza visiva o intervallo indicativo. Non rivendica precisione clinica né valore diagnostico. Supporto principale per condivisione sociale e viralità, e strumento di comprensione dell'utente, non misurazione scientifica grezza.",
+        "hi": "skane के बाद अनुमानित शरीर बदलाव का एक गैर-चिकित्सा दृश्य प्रतिनिधित्व। इसे इस रूप में व्यक्त किया जाता है: पहले/बाद में भिन्नता, दृश्य प्रवृत्ति, या संकेतक सीमा। यह न तो नैदानिक सटीकता और न ही नैदानिक मूल्य का दावा करता है। सामाजिक साझाकरण और वायरलिटी के लिए प्राथमिक समर्थन, और उपयोगकर्ता समझ उपकरण, कच्चा वैज्ञानिक माप नहीं।",
+        "id": "Representasi visual non-medis dari pergeseran tubuh yang diperkirakan setelah skane. Diekspresikan sebagai: variasi sebelum/sesudah, tren visual, atau rentang indikatif. Tidak mengklaim presisi klinis maupun nilai diagnostik. Dukungan utama untuk berbagi sosial dan viralitas, dan alat pemahaman pengguna, bukan pengukuran ilmiah mentah.",
+        "ko": "skane 후 추정된 신체 변화의 비의학적 시각적 표현. 전후 변동, 시각적 추세 또는 표시적 범위로 표현됩니다. 임상적 정밀도나 진단적 가치를 주장하지 않습니다. 소셜 공유 및 바이럴리티를 위한 주요 지원 및 사용자 이해 도구이며, 원시 과학적 측정이 아닙니다.",
+        "zh": "skane后估计的身体变化的非医学视觉表示。它表示为：前后变化、视觉趋势或指示性范围。它既不声称临床精度也不声称诊断价值。社交分享和病毒式传播的主要支持，以及用户理解工具，而非原始科学测量。",
+        "ar": "تمثيل بصري غير طبي للتحول الجسدي المقدر بعد skane. يتم التعبير عنه كـ: تباين قبل/بعد، أو اتجاه بصري، أو نطاق إرشادي. لا يدعي الدقة السريرية ولا القيمة التشخيصية. الدعم الأساسي للمشاركة الاجتماعية والانتشار الفيروسي، وأداة فهم المستخدم، وليس قياسًا علميًا خامًا."
       },
       "components": {
         "before_score": {
@@ -148,13 +158,23 @@
     
     "body_reset": {
       "term": "BODY RESET",
-      "phonetic": "/ˈbɒdi riːˈset/",
+      "phonetic": "/ˈbɒdi ˈriːsɛt/",
       "type": "noun",
       "tier": 2,
       "neverTranslate": false,
       "definitions": {
-        "en": "A short physiological intervention (<30s) to regulate your nervous system. No meditation, no equipment.",
-        "fr": "Une intervention physiologique courte (<30s) pour réguler ton système nerveux. Sans méditation, sans équipement."
+        "en": "A rapid return of the body to a more regulated state, achieved through a short physical intervention without cognitive effort. It acts primarily on: autonomic nervous system activation, body tension, and physiological and respiratory clarity. Body Reset is the final benefit, not the functionality. Nokta One is a Body Reset System, not a meditation or therapy app.",
+        "fr": "Un retour rapide du corps vers un état plus régulé, obtenu par une intervention physique courte, sans effort cognitif. Il agit principalement sur : l'activation du système nerveux autonome, la tension corporelle, la clarté physiologique et respiratoire. Le Body Reset est le bénéfice final, pas la fonctionnalité. Nokta One est un Body Reset System, et non une application de méditation ou de thérapie.",
+        "es": "Un retorno rápido del cuerpo a un estado más regulado, logrado a través de una intervención física corta sin esfuerzo cognitivo. Actúa principalmente sobre: activación del sistema nervioso autónomo, tensión corporal y claridad fisiológica y respiratoria. Body Reset es el beneficio final, no la funcionalidad. Nokta One es un Body Reset System, no una aplicación de meditación o terapia.",
+        "de": "Eine schnelle Rückkehr des Körpers zu einem stärker regulierten Zustand, erreicht durch eine kurze körperliche Intervention ohne kognitive Anstrengung. Es wirkt hauptsächlich auf: Aktivierung des autonomen Nervensystems, Körperspannung und physiologische und respiratorische Klarheit. Body Reset ist der endgültige Nutzen, nicht die Funktionalität. Nokta One ist ein Body Reset System, keine Meditations- oder Therapie-App.",
+        "ja": "認知努力なしの短い身体的介入を通じて達成される、より規制された状態への体の迅速な復帰。主に以下に作用します：自律神経系の活性化、体の緊張、生理的および呼吸的明確さ。Body Resetは最終的な利益であり、機能ではありません。Nokta OneはBody Reset Systemであり、瞑想やセラピーアプリではありません。",
+        "pt": "Um retorno rápido do corpo a um estado mais regulado, alcançado através de uma intervenção física curta sem esforço cognitivo. Atua principalmente em: ativação do sistema nervoso autônomo, tensão corporal e clareza fisiológica e respiratória. Body Reset é o benefício final, não a funcionalidade. Nokta One é um Body Reset System, não um aplicativo de meditação ou terapia.",
+        "it": "Un rapido ritorno del corpo a uno stato più regolato, ottenuto attraverso un intervento fisico breve senza sforzo cognitivo. Agisce principalmente su: attivazione del sistema nervoso autonomo, tensione corporea e chiarezza fisiologica e respiratoria. Body Reset è il beneficio finale, non la funzionalità. Nokta One è un Body Reset System, non un'app di meditazione o terapia.",
+        "hi": "संज्ञानात्मक प्रयास के बिना एक छोटे शारीरिक हस्तक्षेप के माध्यम से प्राप्त शरीर का एक अधिक विनियमित स्थिति में त्वरित वापसी। यह मुख्य रूप से कार्य करता है: स्वायत्त तंत्रिका तंत्र सक्रियता, शरीर तनाव, और शारीरिक और श्वसन स्पष्टता। Body Reset अंतिम लाभ है, कार्यक्षमता नहीं। Nokta One एक Body Reset System है, ध्यान या चिकित्सा ऐप नहीं।",
+        "id": "Kembalinya tubuh dengan cepat ke keadaan yang lebih teratur, dicapai melalui intervensi fisik singkat tanpa upaya kognitif. Bertindak terutama pada: aktivasi sistem saraf otonom, ketegangan tubuh, dan kejernihan fisiologis dan pernapasan. Body Reset adalah manfaat akhir, bukan fungsionalitas. Nokta One adalah Body Reset System, bukan aplikasi meditasi atau terapi.",
+        "ko": "인지적 노력 없이 짧은 신체적 개입을 통해 달성되는 더 규제된 상태로의 신체의 빠른 복귀. 주로 다음에 작용합니다: 자율 신경계 활성화, 신체 긴장, 생리학적 및 호흡적 명확성. Body Reset은 최종 이점이며 기능이 아닙니다. Nokta One은 Body Reset System이며 명상이나 치료 앱이 아닙니다.",
+        "zh": "通过无需认知努力的短时间身体干预实现的快速回归更受调节的身体状态。它主要作用于：自主神经系统激活、身体紧张以及生理和呼吸清晰度。Body Reset是最终收益，而非功能。Nokta One是一个Body Reset System，而不是冥想或治疗应用程序。",
+        "ar": "عودة سريعة للجسم إلى حالة أكثر تنظيماً، يتم تحقيقها من خلال تدخل جسدي قصير دون جهد إدراكي. يعمل بشكل أساسي على: تنشيط الجهاز العصبي اللاإرادي، توتر الجسم، والوضوح الفسيولوجي والتنفسي. Body Reset هو الفائدة النهائية، وليس الوظيفة. Nokta One هو Body Reset System، وليس تطبيق تأمل أو علاج."
       },
       "translations": {
         "fr": "Reset corporel",
@@ -176,8 +196,18 @@
       "tier": 2,
       "neverTranslate": false,
       "definitions": {
-        "en": "A 20-30 second guided exercise (breathing or posture) selected by AI based on your detected state.",
-        "fr": "Un exercice guidé de 20-30 secondes (respiration ou posture) sélectionné par l'IA selon ton état détecté."
+        "en": "A scientifically validated body action, guided by Nokta One, with a duration strictly between 20 and 30 seconds. The micro-actions used by Nokta One (specific breathing techniques, micro postural movements, light activations) are based on more than 1,000 peer-reviewed scientific studies published worldwide, from the fields of: neuroscience, respiratory physiology, behavioral medicine, and stress and autonomic regulation sciences. Feasible anywhere, without equipment, without reflection, guided by visual, audio, and haptic feedback (allows execution without looking at the screen).",
+        "fr": "Une action corporelle scientifiquement validée, guidée par Nokta One, d'une durée strictement comprise entre 20 et 30 secondes. Les micro-actions utilisées par Nokta One (respirations spécifiques, micro-mouvements posturaux, activations légères) s'appuient sur plus de 1 000 études scientifiques évaluées par des pairs, publiées à l'échelle mondiale, issues des domaines : neurosciences, physiologie respiratoire, médecine comportementale, sciences du stress et de la régulation autonome. Faisable partout, sans matériel, sans réflexion, guidée par visuel, audio, et haptique (permet une exécution sans regarder l'écran).",
+        "es": "Una acción corporal científicamente validada, guiada por Nokta One, con una duración estrictamente entre 20 y 30 segundos. Las micro-acciones utilizadas por Nokta One (técnicas de respiración específicas, micro-movimientos posturales, activaciones ligeras) se basan en más de 1,000 estudios científicos revisados por pares, publicados a nivel mundial, de los campos de: neurociencia, fisiología respiratoria, medicina conductual y ciencias del estrés y regulación autónoma. Factible en cualquier lugar, sin equipo, sin reflexión, guiada por retroalimentación visual, de audio y háptica (permite la ejecución sin mirar la pantalla).",
+        "de": "Eine wissenschaftlich validierte Körperaktion, geleitet von Nokta One, mit einer Dauer von streng zwischen 20 und 30 Sekunden. Die von Nokta One verwendeten Mikroaktionen (spezifische Atemtechniken, mikro-posturale Bewegungen, leichte Aktivierungen) basieren auf mehr als 1.000 von Experten begutachteten wissenschaftlichen Studien, die weltweit veröffentlicht wurden, aus den Bereichen: Neurowissenschaften, Atemphysiologie, Verhaltensmedizin und Stress- und autonome Regulationswissenschaften. Überall machbar, ohne Ausrüstung, ohne Nachdenken, geleitet durch visuelles, audio- und haptisches Feedback (ermöglicht Ausführung ohne auf den Bildschirm zu schauen).",
+        "ja": "Nokta Oneによって導かれる、厳密に20〜30秒の持続時間を持つ、科学的に検証された身体アクション。Nokta Oneが使用するマイクロアクション（特定の呼吸技術、マイクロ姿勢運動、軽い活性化）は、世界中で公開された1,000以上の査読付き科学的研究に基づいており、以下の分野から：神経科学、呼吸生理学、行動医学、ストレスおよび自律調節科学。どこでも実行可能、機器なし、反射なし、視覚、オーディオ、および触覚フィードバックによって導かれる（画面を見ずに実行可能）。",
+        "pt": "Uma ação corporal cientificamente validada, guiada pelo Nokta One, com duração estritamente entre 20 e 30 segundos. As micro-ações usadas pelo Nokta One (técnicas de respiração específicas, micro-movimentos posturais, ativações leves) são baseadas em mais de 1.000 estudos científicos revisados por pares, publicados mundialmente, dos campos de: neurociência, fisiologia respiratória, medicina comportamental e ciências do estresse e regulação autônoma. Viável em qualquer lugar, sem equipamento, sem reflexão, guiada por feedback visual, de áudio e háptico (permite execução sem olhar para a tela).",
+        "it": "Un'azione corporea scientificamente validata, guidata da Nokta One, con una durata rigorosamente compresa tra 20 e 30 secondi. Le micro-azioni utilizzate da Nokta One (tecniche di respirazione specifiche, micro-movimenti posturali, attivazioni leggere) si basano su più di 1.000 studi scientifici sottoposti a revisione paritaria, pubblicati a livello mondiale, dai campi di: neuroscienze, fisiologia respiratoria, medicina comportamentale e scienze dello stress e regolazione autonoma. Fattibile ovunque, senza attrezzature, senza riflessione, guidata da feedback visivo, audio e aptico (consente l'esecuzione senza guardare lo schermo).",
+        "hi": "Nokta One द्वारा निर्देशित, 20 और 30 सेकंड के बीच सख्ती से अवधि के साथ एक वैज्ञानिक रूप से मान्य शरीर क्रिया। Nokta One द्वारा उपयोग की जाने वाली माइक्रो-एक्शन (विशिष्ट श्वसन तकनीक, माइक्रो मुद्रा आंदोलन, हल्की सक्रियता) 1,000 से अधिक सहकर्मी-समीक्षा वैज्ञानिक अध्ययनों पर आधारित हैं, जो दुनिया भर में प्रकाशित हैं, निम्नलिखित क्षेत्रों से: तंत्रिका विज्ञान, श्वसन शरीर विज्ञान, व्यवहारिक चिकित्सा, और तनाव और स्वायत्त विनियमन विज्ञान। कहीं भी संभव, उपकरण के बिना, प्रतिबिंब के बिना, दृश्य, ऑडियो और स्पर्श प्रतिक्रिया द्वारा निर्देशित (स्क्रीन को देखे बिना निष्पादन की अनुमति देता है)।",
+        "id": "Tindakan tubuh yang divalidasi secara ilmiah, dipandu oleh Nokta One, dengan durasi yang ketat antara 20 dan 30 detik. Mikro-aksi yang digunakan oleh Nokta One (teknik pernapasan spesifik, gerakan postural mikro, aktivasi ringan) didasarkan pada lebih dari 1.000 studi ilmiah yang ditinjau sejawat, diterbitkan di seluruh dunia, dari bidang: neurosains, fisiologi pernapasan, kedokteran perilaku, dan ilmu stres dan regulasi otonom. Dapat dilakukan di mana saja, tanpa peralatan, tanpa refleksi, dipandu oleh umpan balik visual, audio, dan haptik (memungkinkan eksekusi tanpa melihat layar).",
+        "ko": "Nokta One에 의해 안내되는, 엄격하게 20-30초 사이의 지속 시간을 가진 과학적으로 검증된 신체 행동. Nokta One이 사용하는 마이크로 액션(특정 호흡 기술, 마이크로 자세 움직임, 가벼운 활성화)은 전 세계적으로 발표된 1,000개 이상의 동료 검토 과학 연구를 기반으로 하며, 다음 분야에서: 신경과학, 호흡 생리학, 행동 의학, 스트레스 및 자율 조절 과학. 어디서나 실행 가능, 장비 없음, 반성 없음, 시각, 오디오 및 햅틱 피드백으로 안내됨(화면을 보지 않고 실행 가능).",
+        "zh": "由Nokta One引导的、严格持续20-30秒的科学验证身体动作。Nokta One使用的微动作（特定呼吸技术、微姿势运动、轻度激活）基于全球发表的1,000多项同行评审科学研究，来自以下领域：神经科学、呼吸生理学、行为医学以及压力和自主调节科学。可在任何地方执行，无需设备，无需反思，由视觉、音频和触觉反馈引导（允许在不看屏幕的情况下执行）。",
+        "ar": "إجراء جسدي تم التحقق منه علميًا، موجه بواسطة Nokta One، بمدة تتراوح بدقة بين 20 و 30 ثانية. تستند الإجراءات الصغيرة المستخدمة بواسطة Nokta One (تقنيات التنفس المحددة، حركات الوضعية الدقيقة، التفعيلات الخفيفة) إلى أكثر من 1,000 دراسة علمية تمت مراجعتها من قبل الأقران، نُشرت على مستوى العالم، من مجالات: علم الأعصاب، فسيولوجيا الجهاز التنفسي، الطب السلوكي، وعلوم الإجهاد والتنظيم الذاتي. قابلة للتنفيذ في أي مكان، بدون معدات، بدون تفكير، موجهة بواسطة ردود الفعل البصرية والصوتية واللمسية (تسمح بالتنفيذ دون النظر إلى الشاشة)."
       },
       "translations": {
         "fr": "Micro-action",
@@ -207,8 +237,18 @@
       "tier": 2,
       "neverTranslate": false,
       "definitions": {
-        "en": "Body reading detected by AI. Neutral term avoiding medical connotations.",
-        "fr": "Lecture corporelle détectée par l'IA. Terme neutre évitant les connotations médicales."
+        "en": "A non-medical wellness indicator, estimated from: 468 facial landmarks detected in real time, visual patterns related to tension, fatigue and activation, and usage context. It represents a transient body state, never a medical condition. The signal diagnoses nothing; it serves solely to select the most relevant micro-action. It is intentionally abstract, non-medically quantified and non-clinical.",
+        "fr": "Un indicateur de bien-être non médical, estimé à partir de : 468 landmarks faciaux détectés en temps réel, patterns visuels liés à la tension, la fatigue et l'activation, et du contexte d'utilisation. Il représente un état corporel transitoire, jamais une condition médicale. Le signal ne diagnostique rien ; il sert uniquement à sélectionner la micro-action la plus pertinente. Il est volontairement abstrait, non chiffré médicalement et non clinique.",
+        "es": "Un indicador de bienestar no médico, estimado a partir de: 468 puntos faciales detectados en tiempo real, patrones visuales relacionados con tensión, fatiga y activación, y contexto de uso. Representa un estado corporal transitorio, nunca una condición médica. La señal no diagnostica nada; sirve únicamente para seleccionar la micro-acción más relevante. Es intencionalmente abstracta, no cuantificada médicamente y no clínica.",
+        "de": "Ein nicht-medizinischer Wellness-Indikator, geschätzt aus: 468 in Echtzeit erkannten Gesichtslandmarken, visuellen Mustern im Zusammenhang mit Spannung, Müdigkeit und Aktivierung sowie Nutzungskontext. Es repräsentiert einen vorübergehenden Körperzustand, niemals einen medizinischen Zustand. Das Signal diagnostiziert nichts; es dient ausschließlich dazu, die relevanteste Mikroaktion auszuwählen. Es ist absichtlich abstrakt, nicht medizinisch quantifiziert und nicht klinisch.",
+        "ja": "リアルタイムで検出された468個の顔のランドマーク、緊張、疲労、活性化に関連する視覚パターン、および使用コンテキストから推定される非医学的ウェルネス指標。一時的な身体状態を表し、決して医学的状態ではありません。信号は何も診断しません。最も関連性の高いマイクロアクションを選択するためだけに機能します。意図的に抽象的で、医学的に定量化されておらず、非臨床的です。",
+        "pt": "Um indicador de bem-estar não médico, estimado a partir de: 468 pontos faciais detectados em tempo real, padrões visuais relacionados a tensão, fadiga e ativação, e contexto de uso. Representa um estado corporal transitório, nunca uma condição médica. O sinal não diagnostica nada; serve apenas para selecionar a micro-ação mais relevante. É intencionalmente abstrato, não quantificado medicamente e não clínico.",
+        "it": "Un indicatore di benessere non medico, stimato da: 468 punti facciali rilevati in tempo reale, pattern visivi relativi a tensione, fatica e attivazione, e contesto d'uso. Rappresenta uno stato corporeo transitorio, mai una condizione medica. Il segnale non diagnostica nulla; serve esclusivamente per selezionare la micro-azione più rilevante. È intenzionalmente astratto, non quantificato medicalmente e non clinico.",
+        "hi": "एक गैर-चिकित्सा कल्याण संकेतक, अनुमानित: वास्तविक समय में पता लगाए गए 468 चेहरे के लैंडमार्क, तनाव, थकान और सक्रियता से संबंधित दृश्य पैटर्न, और उपयोग संदर्भ। यह एक क्षणिक शरीर की स्थिति का प्रतिनिधित्व करता है, कभी भी चिकित्सा स्थिति नहीं। संकेत कुछ भी निदान नहीं करता; यह केवल सबसे प्रासंगिक माइक्रो-एक्शन का चयन करने के लिए कार्य करता है। यह जानबूझकर अमूर्त, गैर-चिकित्सकीय रूप से मात्रात्मक और गैर-नैदानिक है।",
+        "id": "Indikator kesejahteraan non-medis, diperkirakan dari: 468 landmark wajah yang terdeteksi secara real-time, pola visual terkait ketegangan, kelelahan dan aktivasi, dan konteks penggunaan. Ini mewakili keadaan tubuh sementara, bukan kondisi medis. Sinyal tidak mendiagnosis apa pun; hanya berfungsi untuk memilih mikro-aksi yang paling relevan. Ini sengaja abstrak, tidak terkuantifikasi secara medis dan non-klinis.",
+        "ko": "실시간으로 감지된 468개의 얼굴 랜드마크, 긴장, 피로 및 활성화와 관련된 시각적 패턴, 사용 컨텍스트에서 추정된 비의학적 웰니스 지표. 일시적인 신체 상태를 나타내며 결코 의학적 상태가 아닙니다. 신호는 아무것도 진단하지 않습니다. 가장 관련성 높은 마이크로 액션을 선택하는 데만 사용됩니다. 의도적으로 추상적이고 의학적으로 정량화되지 않으며 비임상적입니다.",
+        "zh": "从以下方面估计的非医学健康指标：实时检测到的468个面部标志点、与紧张、疲劳和激活相关的视觉模式以及使用上下文。它代表一个短暂的身体状态，绝不是医学状况。信号不诊断任何东西；它仅用于选择最相关的微动作。它是有意抽象的、非医学量化的和非临床的。",
+        "ar": "مؤشر رفاهية غير طبي، يُقدر من: 468 معلمًا للوجه يتم اكتشافه في الوقت الفعلي، وأنماط بصرية متعلقة بالتوتر والتعب والتفعيل، وسياق الاستخدام. يمثل حالة جسدية عابرة، وليست حالة طبية أبدًا. الإشارة لا تشخص أي شيء؛ تخدم فقط لاختيار الإجراء الصغير الأكثر صلة. إنها مجردة بشكل متعمد، وغير محددة كميًا طبيًا وغير سريرية."
       },
       "states": {
         "HIGH_ACTIVATION": {
