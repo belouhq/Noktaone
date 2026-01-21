@@ -142,7 +142,12 @@
     "share": "Compartilhar",
     "shareMySkane": "Compartilhar meu Skane",
     "preparing": "Preparando",
-    "later": "Depois"
+    "later": "Depois",
+    "selfieTitle": "Selfie da vitória",
+    "selfieInstructions": "Mostre seu rosto após o exercício!",
+    "selfieSubtext": "Sorria, você merece",
+    "skipSelfie": "Pular esta etapa",
+    "retake": "Refazer"
   },
   "camera": {
     "accessRequired": "Acesso à câmera necessário para escanear",

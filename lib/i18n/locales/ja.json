@@ -142,7 +142,12 @@
     "share": "共有",
     "shareMySkane": "私のSkaneを共有",
     "preparing": "準備中",
-    "later": "後で"
+    "later": "後で",
+    "selfieTitle": "勝利のセルフィー",
+    "selfieInstructions": "運動の後に顔を見せて！",
+    "selfieSubtext": "笑顔で、あなたはそれに値する",
+    "skipSelfie": "このステップをスキップ",
+    "retake": "再撮影"
   },
   "camera": {
     "accessRequired": "スキャンにはカメラアクセスが必要です",

@@ -142,7 +142,12 @@
     "share": "شارك",
     "shareMySkane": "شارك سكاني",
     "preparing": "جارٍ التحضير",
-    "later": "لاحقًا"
+    "later": "لاحقًا",
+    "selfieTitle": "صورة انتصار",
+    "selfieInstructions": "أظهر وجهك بعد التمرين!",
+    "selfieSubtext": "ابتسم، لقد استحققتها",
+    "skipSelfie": "تخطي هذه الخطوة",
+    "retake": "إعادة التقاط"
   },
   "camera": {
     "accessRequired": "الوصول إلى الكاميرا مطلوب للمسح",

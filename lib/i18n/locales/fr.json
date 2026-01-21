@@ -230,7 +230,12 @@
     "downloadImage": "Télécharger l'image",
     "skaneIndex": "SKANE INDEX",
     "before": "AVANT",
-    "after": "APRÈS"
+    "after": "APRÈS",
+    "selfieTitle": "Selfie victoire",
+    "selfieInstructions": "Montre ton visage après l'exercice !",
+    "selfieSubtext": "Souris, tu l'as mérité",
+    "skipSelfie": "Passer cette étape",
+    "retake": "Reprendre"
   },
   "skaneIndex": {
     "title": "Skane Index",

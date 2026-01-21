@@ -195,7 +195,12 @@
     "downloadImage": "Download Image",
     "skaneIndex": "SKANE INDEX",
     "before": "BEFORE",
-    "after": "AFTER"
+    "after": "AFTER",
+    "selfieTitle": "Victory Selfie",
+    "selfieInstructions": "Show your face after the workout!",
+    "selfieSubtext": "Smile, you earned it",
+    "skipSelfie": "Skip this step",
+    "retake": "Retake"
   },
   "skaneIndex": {
     "title": "Skane Index",

@@ -210,7 +210,12 @@
     "share": "Compartir",
     "shareMySkane": "Compartir mi Skane",
     "preparing": "Preparando",
-    "later": "Más tarde"
+    "later": "Más tarde",
+    "selfieTitle": "Selfie victoria",
+    "selfieInstructions": "¡Muestra tu cara después del ejercicio!",
+    "selfieSubtext": "Sonríe, te lo has ganado",
+    "skipSelfie": "Saltar este paso",
+    "retake": "Rehacer"
   },
   "profile": {
     "firstName": "Nombre",

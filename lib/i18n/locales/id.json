@@ -142,7 +142,12 @@
     "share": "Bagikan",
     "shareMySkane": "Bagikan Skane saya",
     "preparing": "Mempersiapkan",
-    "later": "Nanti"
+    "later": "Nanti",
+    "selfieTitle": "Selfie kemenangan",
+    "selfieInstructions": "Tunjukkan wajahmu setelah berolahraga!",
+    "selfieSubtext": "Tersenyumlah, kamu pantas mendapatkannya",
+    "skipSelfie": "Lewati langkah ini",
+    "retake": "Ambil lagi"
   },
   "camera": {
     "accessRequired": "Akses kamera diperlukan untuk pemindaian",

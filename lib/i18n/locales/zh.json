@@ -210,7 +210,12 @@
     "share": "分享",
     "shareMySkane": "分享我的 Skane",
     "preparing": "准备中",
-    "later": "稍后"
+    "later": "稍后",
+    "selfieTitle": "胜利自拍",
+    "selfieInstructions": "锻炼后展示你的脸！",
+    "selfieSubtext": "微笑，你值得拥有",
+    "skipSelfie": "跳过这一步",
+    "retake": "重新拍摄"
   },
   "profile": {
     "firstName": "名字",

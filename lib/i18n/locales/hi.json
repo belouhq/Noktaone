@@ -142,7 +142,12 @@
     "share": "शेयर करें",
     "shareMySkane": "मेरे Skane को साझा करें",
     "preparing": "तैयारी कर रहे हैं",
-    "later": "बाद में"
+    "later": "बाद में",
+    "selfieTitle": "सेल्फी जीत",
+    "selfieInstructions": "व्यायाम के बाद अपना चेहरा दिखाओ!",
+    "selfieSubtext": "मुस्कुराओ, तुमने इसे हासिल किया है",
+    "skipSelfie": "इस चरण को छोड़ें",
+    "retake": "फिर से लें"
   },
   "camera": {
     "accessRequired": "स्कैन के लिए कैमरा एक्सेस आवश्यक है",

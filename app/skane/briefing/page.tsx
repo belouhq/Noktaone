@@ -8,6 +8,7 @@ import { useTranslation } from "@/lib/hooks/useTranslation";
 import { MICRO_ACTIONS } from "@/lib/skane/constants";
 import { MICRO_ACTION_SCIENCE, getInstructionColor, getInstructionIcon } from "@/lib/skane/science";
 import type { MicroActionType, Instruction } from "@/lib/skane/types";
+import { hapticV2 } from "@/lib/skane/hapticsV2";
 
 /**
  * PAGE BRIEFING - Avant la micro-action
@@ -25,6 +26,7 @@ export default function BriefingPage() {
   const [actionId, setActionId] = useState<MicroActionType | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [countdown, setCountdown] = useState<number | null>(null);
 
   useEffect(() => {
     const storedResult = sessionStorage.getItem("skane_analysis_result");
@@ -51,7 +53,30 @@ export default function BriefingPage() {
   }, [router]);
 
   const handleStart = () => {
-    router.push("/skane/action");
+    // Démarrer le compte à rebours de 3 secondes
+    setCountdown(3);
+    
+    // Retour haptique initial
+    hapticV2.transition();
+    
+    // Compte à rebours avec retour haptique à chaque seconde
+    const countdownInterval = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev === null || prev <= 1) {
+          clearInterval(countdownInterval);
+          // Retour haptique final avant le démarrage
+          hapticV2.cycleEnd();
+          // Rediriger vers l'action après un court délai
+          setTimeout(() => {
+            router.push("/skane/action");
+          }, 100);
+          return null;
+        }
+        // Retour haptique à chaque seconde
+        hapticV2.transition();
+        return prev - 1;
+      });
+    }, 1000);
   };
 
   const handleBack = () => {
@@ -297,23 +322,53 @@ export default function BriefingPage() {
         <div className="h-24" />
       </div>
 
+      {/* Overlay de compte à rebours */}
+      <AnimatePresence>
+        {countdown !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
+          >
+            <motion.div
+              key={countdown}
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 1.5, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              className="text-9xl font-bold text-white"
+            >
+              {countdown}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Bouton CTA fixe en bas */}
       <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0A0A0B] via-[#0A0A0B] to-transparent">
         <motion.button
           onClick={handleStart}
+          disabled={countdown !== null}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="w-full py-4 rounded-2xl text-white font-semibold text-lg flex items-center justify-center gap-3"
+          className="w-full py-4 rounded-2xl text-white font-semibold text-lg flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
           style={{
             background: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)",
             boxShadow: "0 8px 32px rgba(59, 130, 246, 0.4)",
           }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={countdown === null ? { scale: 1.02 } : {}}
+          whileTap={countdown === null ? { scale: 0.98 } : {}}
         >
-          Je suis prêt
-          <ArrowRight size={20} />
+          {countdown === null ? (
+            <>
+              Je suis prêt
+              <ArrowRight size={20} />
+            </>
+          ) : (
+            "Préparation..."
+          )}
         </motion.button>
       </div>
     </div>

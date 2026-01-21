@@ -210,7 +210,12 @@
     "share": "Condividi",
     "shareMySkane": "Condividi il mio Skane",
     "preparing": "Preparazione",
-    "later": "Dopo"
+    "later": "Dopo",
+    "selfieTitle": "Selfie vittoria",
+    "selfieInstructions": "Mostra il tuo viso dopo l'esercizio!",
+    "selfieSubtext": "Sorridi, te lo sei meritato",
+    "skipSelfie": "Salta questo passaggio",
+    "retake": "Rifare"
   },
   "profile": {
     "firstName": "Nome",

@@ -142,7 +142,12 @@
     "share": "공유",
     "shareMySkane": "내 Skane 공유",
     "preparing": "준비 중",
-    "later": "나중에"
+    "later": "나중에",
+    "selfieTitle": "셀카 승리",
+    "selfieInstructions": "운동 후 얼굴을 보여줘!",
+    "selfieSubtext": "미소 지어, 너는 그럴 자격이 있어",
+    "skipSelfie": "이 단계 건너뛰기",
+    "retake": "다시 찍기"
   },
   "camera": {
     "accessRequired": "스캔을 위한 카메라 접근 필요",
