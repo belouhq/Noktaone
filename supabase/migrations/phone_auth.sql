@@ -1,7 +1,30 @@
 -- Migration: Phone Authentication Support
 -- Adds phone-based OTP authentication and SMS consent tracking
 
--- Table for storing OTP codes
+-- Table for storing OTP verifications (renamed from phone_otps for clarity)
+CREATE TABLE IF NOT EXISTS phone_verifications (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  phone TEXT NOT NULL UNIQUE,
+  otp_hash TEXT NOT NULL,
+  expires_at TIMESTAMPTZ NOT NULL,
+  verified BOOLEAN DEFAULT FALSE,
+  verified_at TIMESTAMPTZ,
+  attempts INTEGER DEFAULT 0,
+  last_attempt_at TIMESTAMPTZ,
+  sms_consent BOOLEAN DEFAULT FALSE,
+  consent_timestamp TIMESTAMPTZ,
+  consent_ip TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  
+  -- Indexes for fast lookups
+  CONSTRAINT phone_verifications_phone_check CHECK (phone ~ '^\+[1-9]\d{1,14}$')
+);
+
+CREATE INDEX IF NOT EXISTS idx_phone_verifications_phone ON phone_verifications(phone);
+CREATE INDEX IF NOT EXISTS idx_phone_verifications_expires ON phone_verifications(expires_at);
+CREATE INDEX IF NOT EXISTS idx_phone_verifications_verified ON phone_verifications(verified);
+
+-- Legacy table name (for backward compatibility)
 CREATE TABLE IF NOT EXISTS phone_otps (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   phone TEXT NOT NULL,
@@ -12,7 +35,6 @@ CREATE TABLE IF NOT EXISTS phone_otps (
   consent_sms BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   
-  -- Indexes for fast lookups
   CONSTRAINT phone_otps_phone_check CHECK (phone ~ '^\+[1-9]\d{1,14}$')
 );
 
@@ -53,7 +75,15 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- RLS Policies
+-- RLS Policies for phone_verifications
+ALTER TABLE phone_verifications ENABLE ROW LEVEL SECURITY;
+
+-- Only service role can manage verifications
+CREATE POLICY "Service role can manage verifications" ON phone_verifications
+  FOR ALL
+  USING (auth.role() = 'service_role');
+
+-- RLS Policies for phone_otps (legacy)
 ALTER TABLE phone_otps ENABLE ROW LEVEL SECURITY;
 
 -- Users can only see their own OTPs (if needed for debugging)
@@ -73,6 +103,12 @@ CREATE POLICY "Service role can manage OTPs" ON phone_otps
   USING (auth.role() = 'service_role');
 
 -- Comments
-COMMENT ON TABLE phone_otps IS 'Stores OTP codes for phone authentication';
+COMMENT ON TABLE phone_verifications IS 'Stores OTP verifications for phone authentication';
+COMMENT ON COLUMN phone_verifications.otp_hash IS 'SHA256 hash of OTP code + salt';
+COMMENT ON COLUMN phone_verifications.sms_consent IS 'User consent to receive SMS reminders';
+COMMENT ON COLUMN phone_verifications.attempts IS 'Number of verification attempts';
+COMMENT ON COLUMN phone_verifications.consent_ip IS 'IP address when consent was given (RGPD audit)';
+
+COMMENT ON TABLE phone_otps IS 'Legacy table - use phone_verifications instead';
 COMMENT ON COLUMN phone_otps.otp_hash IS 'SHA256 hash of OTP code + phone + salt';
 COMMENT ON COLUMN phone_otps.consent_sms IS 'User consent to receive SMS reminders';
