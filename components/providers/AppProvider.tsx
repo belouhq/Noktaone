@@ -17,13 +17,10 @@ export default function AppProvider({ children }: { children: React.ReactNode })
   const { hasConsented, isLoading, saveConsent, needsConsentUpdate } = useConsent(user?.id);
   const [showConsentModal, setShowConsentModal] = useState(false);
 
+  // Afficher le modal si pas de consentement ou si mise à jour nécessaire
   useEffect(() => {
-    // Attendre que le chargement soit terminé
     if (isLoading) return;
 
-    // Afficher le modal si :
-    // 1. Pas de consentement OU
-    // 2. La version du consentement est obsolète
     const hasSeenModal = localStorage.getItem("nokta_consent_modal_seen") === "true";
 
     if ((!hasConsented || needsConsentUpdate) && !hasSeenModal) {
@@ -33,24 +30,44 @@ export default function AppProvider({ children }: { children: React.ReactNode })
     }
   }, [hasConsented, isLoading, needsConsentUpdate]);
 
-  const handleAccept = async (newConsents: ConsentState) => {
-    await saveConsent(newConsents);
-    localStorage.setItem("nokta_consent_modal_seen", "true");
-    setShowConsentModal(false);
+  const handleAcceptConsent = async (consents: ConsentState) => {
+    try {
+      await saveConsent(consents);
+      localStorage.setItem("nokta_consent_modal_seen", "true");
+      setShowConsentModal(false);
+    } catch (error) {
+      console.error("Failed to save consent:", error);
+    }
   };
 
-  const handleAcceptAll = async (newConsents: ConsentState) => {
-    await saveConsent(newConsents);
-    localStorage.setItem("nokta_consent_modal_seen", "true");
-    setShowConsentModal(false);
+  const handleAcceptAll = async (consents: ConsentState) => {
+    try {
+      await saveConsent(consents);
+      localStorage.setItem("nokta_consent_modal_seen", "true");
+      setShowConsentModal(false);
+    } catch (error) {
+      console.error("Failed to save consent:", error);
+    }
   };
+
+  // Optionnel : Afficher un loader pendant le chargement
+  // (Décommenter si tu veux bloquer l'affichage de l'app)
+  // if (isLoading) {
+  //   return (
+  //     <div className="min-h-screen bg-black flex items-center justify-center">
+  //       <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
       {children}
+      
+      {/* Consent Modal - S'affiche par-dessus tout */}
       <ConsentModal
         isOpen={showConsentModal}
-        onAccept={handleAccept}
+        onAccept={handleAcceptConsent}
         onAcceptAll={handleAcceptAll}
       />
     </>
