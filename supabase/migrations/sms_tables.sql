@@ -19,8 +19,9 @@ CREATE INDEX IF NOT EXISTS idx_sms_unsubscribes_unsubscribed_at ON sms_unsubscri
 -- Table for SMS logs (audit trail)
 CREATE TABLE IF NOT EXISTS sms_logs (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID, -- Reference to user_profiles.user_id
   phone TEXT NOT NULL,
-  message_type TEXT NOT NULL, -- "transactional", "promotional", "otp"
+  message_type TEXT NOT NULL, -- "transactional", "promotional", "otp", "reminder"
   status TEXT NOT NULL, -- "sent", "delivered", "failed", "unsubscribed", "bounced"
   message_id TEXT, -- Twilio message SID
   error_code TEXT,
