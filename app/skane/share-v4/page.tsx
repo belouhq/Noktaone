@@ -3,14 +3,13 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Camera, RotateCcw, Share2 } from "lucide-react";
+import { X, Camera, RotateCcw, Send, Share2 } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { MICRO_ACTIONS } from "@/lib/skane/constants";
 import { MicroActionType } from "@/lib/skane/types";
 import { toPng } from "html-to-image";
 import SharePlatformSelector from "@/components/share/SharePlatformSelector";
 import shareService, { ShareData, ShareResult } from "@/lib/skane/shareService";
-import { generateSEOFilename as generateSEOFilenameUtil } from "@/lib/skane/seo-filename";
 
 /**
  * SHARE CARD V4 - FORMAT STORY OPTIMISÉ
@@ -116,6 +115,49 @@ function generateScores(feedback: UserFeedback = "better"): SkaneScores {
   };
 }
 
+// === GÉNÉRATION NOM DE FICHIER SEO ===
+function generateSEOFilename(actionId: string, username?: string): string {
+  const date = new Date();
+  const dateStr = date.toISOString().split('T')[0];
+  
+  // Mapping action -> mots-clés SEO
+  const actionKeywords: Record<string, string> = {
+    physiological_sigh: "stress-relief-breathing-technique",
+    box_breathing: "box-breathing-anxiety-relief",
+    expiration_3_8: "deep-breathing-relaxation",
+    respiration_4_6: "heart-coherence-breathing",
+    respiration_2_1: "energy-boost-breathing",
+    drop_trapezes: "shoulder-tension-release",
+    shake_neuromusculaire: "stress-shake-off-technique",
+    posture_ancrage: "grounding-exercise-anxiety",
+    ouverture_thoracique: "chest-opening-wellness",
+    pression_plantaire: "grounding-technique-calm",
+    regard_fixe_expiration: "focus-breathing-meditation",
+  };
+
+  const keyword = actionKeywords[actionId] || "wellness-reset-nokta";
+  
+  // Format: nokta-one-{keyword}-{username?}-{date}.png
+  const parts = ["nokta-one", keyword];
+  
+  if (username) {
+    const cleanUsername = username
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // Enlever accents
+      .replace(/[^a-z0-9]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .substring(0, 15);
+    if (cleanUsername) {
+      parts.push(cleanUsername);
+    }
+  }
+  
+  parts.push(dateStr);
+  
+  return `${parts.join('-')}.png`;
+}
 
 // === COMPOSANT PRINCIPAL ===
 export default function ShareCardV4() {
@@ -255,42 +297,24 @@ export default function ShareCardV4() {
     setFacingMode(prev => prev === "user" ? "environment" : "user");
   };
 
-  // Générer et partager avec nom SEO et format optimal
+  // Générer et partager avec nom SEO
   const handleShare = async () => {
     if (!cardRef.current) return;
 
     setIsGeneratingImage(true);
 
     try {
-      // FORMAT STORY OPTIMAL : 1080x1920 pixels (9:16)
-      // C'est la taille standard pour Instagram Stories, TikTok, Facebook Stories, etc.
-      const STORY_WIDTH = 1080;
-      const STORY_HEIGHT = 1920;
-      const PIXEL_RATIO = 2; // Pour une qualité Retina/HiDPI
-
       const dataUrl = await toPng(cardRef.current, {
         backgroundColor: "#000000",
-        width: STORY_WIDTH,
-        height: STORY_HEIGHT,
-        pixelRatio: PIXEL_RATIO, // Génère 2160x3840 pour qualité Retina, redimensionné à 1080x1920
+        pixelRatio: 2,
         quality: 1,
-        cacheBust: true,
       });
 
       const response = await fetch(dataUrl);
       const blob = await response.blob();
 
-      // Récupérer le feedback pour le nom de fichier SEO
-      const storedFeedback = sessionStorage.getItem("skane_feedback") as UserFeedback | null;
-
-      // Générer le nom de fichier SEO optimisé et personnalisé
-      const seoFilename = generateSEOFilenameUtil({
-        actionId: microAction,
-        username,
-        scores,
-        feedback: storedFeedback || "better",
-        locale: "fr",
-      });
+      // Générer le nom de fichier SEO
+      const seoFilename = generateSEOFilename(microAction, username);
 
       setShareData({
         imageBlob: blob,
@@ -410,7 +434,7 @@ export default function ShareCardV4() {
                 aspectRatio: "9 / 16",
               }}
             >
-              {/* Container interne pour html-to-image - Format exact 1080x1920 */}
+              {/* Container interne pour html-to-image */}
               <div
                 ref={cardRef}
                 className="absolute inset-0"
@@ -418,7 +442,6 @@ export default function ShareCardV4() {
                   width: "100%",
                   height: "100%",
                   aspectRatio: "9 / 16",
-                  // Les dimensions exactes seront appliquées lors de la génération d'image
                 }}
               >
                 {/* Background: Selfie plein écran */}
