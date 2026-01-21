@@ -578,5 +578,22 @@
     "invalidOTP": "Kode tidak valid",
     "verifyOTPError": "Kode salah",
     "oauthError": "Kesalahan otentikasi"
+  },
+  "privacy": {
+    "sectionTitle": "Kerahasiaan",
+    "saved": "Tersimpan",
+    "analyticsTitle": "Analitik",
+    "analyticsDescription": "Membantu meningkatkan aplikasi",
+    "marketingTitle": "Pemasaran",
+    "marketingDescription": "Email dan SMS tentang hal baru kami",
+    "exportTitle": "Ekspor data saya",
+    "exportDescription": "Unduh semua data Anda",
+    "deleteTitle": "Hapus akun saya",
+    "deleteDescription": "Tindakan ini tidak dapat dibatalkan",
+    "deleteConfirmTitle": "Hapus akun Anda?",
+    "deleteConfirmDescription": "Semua data Anda akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.",
+    "deleteConfirmLabel": "Ketik DELETE untuk mengonfirmasi",
+    "cancel": "Batal",
+    "confirmDelete": "Hapus secara permanen"
   }
 }

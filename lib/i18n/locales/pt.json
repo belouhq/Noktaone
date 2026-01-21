@@ -578,5 +578,22 @@
     "invalidOTP": "Código inválido",
     "verifyOTPError": "Código incorreto",
     "oauthError": "Erro de autenticação"
+  },
+  "privacy": {
+    "sectionTitle": "Privacidade",
+    "saved": "Salvo",
+    "analyticsTitle": "Análises",
+    "analyticsDescription": "Ajuda a melhorar o aplicativo",
+    "marketingTitle": "Marketing",
+    "marketingDescription": "E-mails e SMS sobre nossas novidades",
+    "exportTitle": "Exportar meus dados",
+    "exportDescription": "Baixar todos os seus dados",
+    "deleteTitle": "Excluir minha conta",
+    "deleteDescription": "Esta ação é irreversível",
+    "deleteConfirmTitle": "Excluir sua conta?",
+    "deleteConfirmDescription": "Todos os seus dados serão excluídos permanentemente. Esta ação é irreversível.",
+    "deleteConfirmLabel": "Digite DELETE para confirmar",
+    "cancel": "Cancelar",
+    "confirmDelete": "Excluir permanentemente"
   }
 }

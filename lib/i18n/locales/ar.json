@@ -578,5 +578,22 @@
     "invalidOTP": "رمز غير صالح",
     "verifyOTPError": "رمز غير صحيح",
     "oauthError": "خطأ في المصادقة"
+  },
+  "privacy": {
+    "sectionTitle": "الخصوصية",
+    "saved": "تم التسجيل",
+    "analyticsTitle": "التحليلات",
+    "analyticsDescription": "يساعد في تحسين التطبيق",
+    "marketingTitle": "التسويق",
+    "marketingDescription": "رسائل بريدية ورسائل نصية حول مستجداتنا",
+    "exportTitle": "تصدير بياناتي",
+    "exportDescription": "تحميل جميع بياناتك",
+    "deleteTitle": "حذف حسابي",
+    "deleteDescription": "هذه العملية لا يمكن التراجع عنها",
+    "deleteConfirmTitle": "هل تريد حذف حسابك؟",
+    "deleteConfirmDescription": "ستتم إزالة جميع بياناتك بشكل دائم. هذه العملية لا يمكن التراجع عنها.",
+    "deleteConfirmLabel": "اكتب DELETE للتأكيد",
+    "cancel": "إلغاء",
+    "confirmDelete": "حذف نهائي"
   }
 }

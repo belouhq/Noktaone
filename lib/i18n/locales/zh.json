@@ -578,5 +578,22 @@
     "invalidOTP": "无效的代码",
     "verifyOTPError": "代码不正确",
     "oauthError": "认证错误"
+  },
+  "privacy": {
+    "sectionTitle": "隐私",
+    "saved": "已保存",
+    "analyticsTitle": "分析",
+    "analyticsDescription": "帮助改善应用程序",
+    "marketingTitle": "营销",
+    "marketingDescription": "关于我们新产品的电子邮件和短信",
+    "exportTitle": "导出我的数据",
+    "exportDescription": "下载您的所有数据",
+    "deleteTitle": "删除我的账户",
+    "deleteDescription": "此操作无法恢复",
+    "deleteConfirmTitle": "确定要删除您的账户吗？",
+    "deleteConfirmDescription": "您的所有数据将被永久删除。此操作无法恢复。",
+    "deleteConfirmLabel": "输入 DELETE 以确认",
+    "cancel": "取消",
+    "confirmDelete": "永久删除"
   }
 }

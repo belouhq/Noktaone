@@ -578,5 +578,22 @@
     "invalidOTP": "Ungültiger Code",
     "verifyOTPError": "Code falsch",
     "oauthError": "Authentifizierungsfehler"
+  },
+  "privacy": {
+    "sectionTitle": "Datenschutz",
+    "saved": "Gespeichert",
+    "analyticsTitle": "Analysen",
+    "analyticsDescription": "Hilft, die App zu verbessern",
+    "marketingTitle": "Marketing",
+    "marketingDescription": "E-Mails und SMS zu unseren Neuigkeiten",
+    "exportTitle": "Meine Daten exportieren",
+    "exportDescription": "Lade alle deine Daten herunter",
+    "deleteTitle": "Mein Konto löschen",
+    "deleteDescription": "Diese Aktion ist unwiderruflich",
+    "deleteConfirmTitle": "Ihr Konto löschen?",
+    "deleteConfirmDescription": "Alle Ihre Daten werden dauerhaft gelöscht. Diese Aktion ist unwiderruflich.",
+    "deleteConfirmLabel": "Geben Sie DELETE zur Bestätigung ein",
+    "cancel": "Abbrechen",
+    "confirmDelete": "Dauerhaft löschen"
   }
 }

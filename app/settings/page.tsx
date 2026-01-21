@@ -394,7 +394,7 @@ export default function SettingsPage() {
 
           {/* Privacy & Data Section */}
           {userId && (
-            <div className="mt-8 glass-card p-6 rounded-2xl">
+            <div className="mt-8">
               <PrivacySettingsSection
                 userId={userId}
                 currentConsents={{
@@ -414,6 +414,21 @@ export default function SettingsPage() {
                       updated_at: new Date().toISOString(),
                     })
                     .eq("id", userId);
+                }}
+                onExportData={async () => {
+                  const { exportUserData } = await import("@/lib/hooks/useConsent");
+                  const blob = await exportUserData(userId);
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url;
+                  a.download = `nokta-export-${Date.now()}.json`;
+                  a.click();
+                  URL.revokeObjectURL(url);
+                }}
+                onDeleteAccount={async () => {
+                  const { deleteUserAccount } = await import("@/lib/hooks/useConsent");
+                  await deleteUserAccount(userId);
+                  window.location.href = "/";
                 }}
               />
             </div>

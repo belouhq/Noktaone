@@ -578,5 +578,22 @@
     "invalidOTP": "無効なコード",
     "verifyOTPError": "コードが正しくありません",
     "oauthError": "認証エラー"
+  },
+  "privacy": {
+    "sectionTitle": "プライバシー",
+    "saved": "保存されました",
+    "analyticsTitle": "分析",
+    "analyticsDescription": "アプリを改善するために役立ちます",
+    "marketingTitle": "マーケティング",
+    "marketingDescription": "新着情報に関するメールとSMS",
+    "exportTitle": "データをエクスポート",
+    "exportDescription": "すべてのデータをダウンロード",
+    "deleteTitle": "アカウントを削除",
+    "deleteDescription": "この操作は取り消せません",
+    "deleteConfirmTitle": "アカウントを削除しますか？",
+    "deleteConfirmDescription": "すべてのデータが完全に削除されます。この操作は取り消せません。",
+    "deleteConfirmLabel": "確認するにはDELETEと入力してください",
+    "cancel": "キャンセル",
+    "confirmDelete": "完全に削除"
   }
 }

@@ -393,6 +393,23 @@
       "deleteError": "Erreur lors de la suppression"
     }
   },
+  "privacy": {
+    "sectionTitle": "Confidentialité",
+    "saved": "Enregistré",
+    "analyticsTitle": "Analytics",
+    "analyticsDescription": "Aide à améliorer l'application",
+    "marketingTitle": "Marketing",
+    "marketingDescription": "Emails et SMS sur nos nouveautés",
+    "exportTitle": "Exporter mes données",
+    "exportDescription": "Télécharger toutes vos données",
+    "deleteTitle": "Supprimer mon compte",
+    "deleteDescription": "Cette action est irréversible",
+    "deleteConfirmTitle": "Supprimer votre compte ?",
+    "deleteConfirmDescription": "Toutes vos données seront supprimées définitivement. Cette action est irréversible.",
+    "deleteConfirmLabel": "Tapez DELETE pour confirmer",
+    "cancel": "Annuler",
+    "confirmDelete": "Supprimer définitivement"
+  },
   "info": {
     "whatIsSkane": "QU'EST-CE QU'UN SKANE ?",
     "skaneDescription": "Un reset corporel de 30 secondes maximum :",

@@ -578,5 +578,22 @@
     "invalidOTP": "अमान्य कोड",
     "verifyOTPError": "कोड गलत है",
     "oauthError": "प्रमाणीकरण में त्रुटि"
+  },
+  "privacy": {
+    "sectionTitle": "गोपनीयता",
+    "saved": "सहेजा गया",
+    "analyticsTitle": "विश्लेषण",
+    "analyticsDescription": "ऐप को बेहतर बनाने में मदद करता है",
+    "marketingTitle": "मार्केटिंग",
+    "marketingDescription": "हमारी नई चीजों पर ईमेल और एसएमएस",
+    "exportTitle": "मेरे डेटा को निर्यात करें",
+    "exportDescription": "अपने सभी डेटा को डाउनलोड करें",
+    "deleteTitle": "मेरा खाता हटाएं",
+    "deleteDescription": "यह क्रिया अपरिवर्तनीय है",
+    "deleteConfirmTitle": "क्या आप अपना खाता हटाना चाहते हैं?",
+    "deleteConfirmDescription": "आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा। यह क्रिया अपरिवर्तनीय है।",
+    "deleteConfirmLabel": "पुष्टि करने के लिए DELETE टाइप करें",
+    "cancel": "रद्द करें",
+    "confirmDelete": "स्थायी रूप से हटाएं"
   }
 }

@@ -374,6 +374,23 @@
       "deleteError": "Delete error"
     }
   },
+  "privacy": {
+    "sectionTitle": "Privacy",
+    "saved": "Saved",
+    "analyticsTitle": "Analytics",
+    "analyticsDescription": "Helps improve the app",
+    "marketingTitle": "Marketing",
+    "marketingDescription": "Emails and SMS about updates",
+    "exportTitle": "Export my data",
+    "exportDescription": "Download all your data",
+    "deleteTitle": "Delete my account",
+    "deleteDescription": "This action is irreversible",
+    "deleteConfirmTitle": "Delete your account?",
+    "deleteConfirmDescription": "All your data will be permanently deleted. This action is irreversible.",
+    "deleteConfirmLabel": "Type DELETE to confirm",
+    "cancel": "Cancel",
+    "confirmDelete": "Delete permanently"
+  },
   "info": {
     "whatIsSkane": "WHAT IS A SKANE?",
     "skaneDescription": "A body reset in 30 seconds max:",
