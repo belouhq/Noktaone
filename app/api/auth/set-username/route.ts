@@ -1,49 +1,43 @@
 /**
- * API Route: Set Username
- * 
+ * API: Set username for user
  * POST /api/auth/set-username
  * Body: { userId: string, username: string }
- * 
- * Saves username to user profile after signup
  */
 
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-// Reserved usernames (same as frontend)
 const RESERVED_USERNAMES = [
   "nokta", "noktaone", "admin", "support", "help", "official",
   "app", "api", "www", "mail", "team", "staff", "mod", "moderator",
   "system", "root", "null", "undefined", "test", "demo"
 ];
 
-// Username validation regex
-const USERNAME_REGEX = /^[a-zA-Z0-9_]{3,20}$/;
-
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { userId, username } = body;
+    const { userId, username } = await request.json();
 
     if (!userId || !username) {
       return NextResponse.json(
-        { error: "userId and username are required" },
+        { error: "userId and username required" },
         { status: 400 }
       );
     }
+
+    const cleanUsername = username.toLowerCase().trim();
 
     // Validate format
-    if (!USERNAME_REGEX.test(username)) {
+    if (!/^[a-zA-Z0-9_]{3,20}$/.test(cleanUsername)) {
       return NextResponse.json(
-        { error: "Username must be 3-20 characters, letters, numbers, and underscores only" },
+        { error: "Invalid username format" },
         { status: 400 }
       );
     }
 
-    // Check if reserved
-    if (RESERVED_USERNAMES.includes(username.toLowerCase())) {
+    // Check reserved
+    if (RESERVED_USERNAMES.includes(cleanUsername)) {
       return NextResponse.json(
-        { error: "This username is reserved" },
+        { error: "Username is reserved" },
         { status: 400 }
       );
     }
@@ -53,61 +47,52 @@ export async function POST(request: NextRequest) {
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
-    const normalizedUsername = username.toLowerCase();
-
     // Check availability again (race condition protection)
-    const { data: existingProfile } = await supabase
-      .from("user_profiles")
-      .select("user_id")
-      .eq("username", normalizedUsername)
-      .limit(1)
-      .single();
-
-    const { data: existingLegacy } = await supabase
+    const { data: existing } = await supabase
       .from("profiles")
       .select("id")
-      .eq("username", normalizedUsername)
-      .limit(1)
+      .eq("username", cleanUsername)
+      .neq("id", userId)
       .single();
 
-    if (existingProfile || existingLegacy) {
+    if (existing) {
       return NextResponse.json(
-        { error: "Username is already taken" },
+        { error: "Username already taken" },
         { status: 409 }
       );
     }
 
-    // Update user_profiles (primary)
+    // Generate referral code
+    const referralCode = `@${cleanUsername}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    // Update profile
     const { error: updateError } = await supabase
-      .from("user_profiles")
-      .update({ username: normalizedUsername })
-      .eq("user_id", userId);
+      .from("profiles")
+      .update({
+        username: cleanUsername,
+        referral_code: referralCode,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", userId);
 
     if (updateError) {
-      // If user_profiles doesn't have username column, try profiles table
-      const { error: legacyError } = await supabase
-        .from("profiles")
-        .update({ username: normalizedUsername })
-        .eq("id", userId);
-
-      if (legacyError) {
-        console.error("[Set Username Error]", updateError, legacyError);
-        return NextResponse.json(
-          { error: "Failed to save username" },
-          { status: 500 }
-        );
-      }
+      console.error("Set username error:", updateError);
+      return NextResponse.json(
+        { error: "Failed to save username" },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({
       success: true,
-      username: normalizedUsername,
+      username: cleanUsername,
+      referralCode,
     });
 
   } catch (error: any) {
-    console.error("[Set Username Error]", error);
+    console.error("Set username error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Something went wrong" },
       { status: 500 }
     );
   }
