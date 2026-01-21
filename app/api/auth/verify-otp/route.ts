@@ -102,14 +102,24 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (fetchError || !verification) {
-      // Incrémenter les tentatives même en cas d'échec
-      await supabase
+      // Incrémenter les tentatives même en cas d'échec (si un enregistrement existe)
+      const { data: existingVerification } = await supabase
         .from("phone_verifications")
-        .update({ 
-          attempts: (verification?.attempts || 0) + 1,
-          last_attempt_at: new Date().toISOString(),
-        })
-        .eq("phone", phone);
+        .select("attempts")
+        .eq("phone", phone)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .single();
+
+      if (existingVerification) {
+        await supabase
+          .from("phone_verifications")
+          .update({ 
+            attempts: (existingVerification.attempts || 0) + 1,
+            last_attempt_at: new Date().toISOString(),
+          })
+          .eq("phone", phone);
+      }
 
       return NextResponse.json(
         { error: "Code invalide ou expiré" },
