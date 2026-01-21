@@ -50,14 +50,42 @@
 
 ---
 
+### 4. ✅ RLS Enabled No Policy (7 tables)
+
+**Problème :**
+- 7 tables avaient RLS activé mais aucune politique n'était définie
+- **Risque** : RLS activé sans politique = accès refusé par défaut, ce qui peut bloquer les opérations légitimes
+
+**Tables corrigées :**
+1. `audit_log` — Logs d'audit sensibles
+2. `consent_log` — Historique des consentements RGPD
+3. `error_events` — Événements d'erreur pour le debugging
+4. `feature_flags` — Flags de fonctionnalités
+5. `phone_verifications` — Vérifications OTP
+6. `referrals` — Codes de parrainage
+7. `subscriptions` — Abonnements utilisateurs
+
+**Solution :**
+- Ajout de politiques RLS appropriées pour chaque table :
+  - **Service role** : Accès complet pour toutes les tables (API routes, webhooks, cron)
+  - **Users** : Accès en lecture à leurs propres données (consent_log, error_events, referrals, subscriptions)
+  - **Public** : Accès en lecture pour `feature_flags` (nécessaire pour les checks côté client)
+  - **Users insert** : Permission d'insertion pour `error_events` (reporting d'erreurs)
+
+**Migration :** `supabase/migrations/add_missing_rls_policies.sql`
+
+---
+
 ## Application de la migration
 
 ### Via Supabase Dashboard
 
 1. Aller dans **SQL Editor**
-2. Copier le contenu de `supabase/migrations/fix_security_issues.sql`
-3. Exécuter la requête
-4. Vérifier que les erreurs de sécurité ont disparu dans **Database** → **Linter**
+2. Exécuter les migrations dans l'ordre :
+   - `supabase/migrations/fix_security_issues.sql` (RLS et Security Definer)
+   - `supabase/migrations/fix_function_search_path.sql` (Search path)
+   - `supabase/migrations/add_missing_rls_policies.sql` (Politiques RLS manquantes)
+3. Vérifier que les erreurs/suggestions de sécurité ont disparu dans **Database** → **Linter**
 
 ### Via CLI Supabase
 
@@ -95,7 +123,23 @@ SELECT pg_get_viewdef('share_conversion_funnel', true);
 -- Ne doit pas contenir "SECURITY DEFINER"
 ```
 
-### 3. Tester les politiques RLS
+### 3. Vérifier les politiques RLS manquantes
+
+```sql
+-- Vérifier que toutes les tables avec RLS ont des politiques
+SELECT 
+  schemaname,
+  tablename,
+  COUNT(*) as policy_count
+FROM pg_policies
+WHERE schemaname = 'public'
+  AND tablename IN ('audit_log', 'consent_log', 'error_events', 'feature_flags', 
+                    'phone_verifications', 'referrals', 'subscriptions')
+GROUP BY schemaname, tablename;
+-- Toutes les tables doivent avoir au moins 1 politique
+```
+
+### 4. Tester les politiques RLS
 
 ```sql
 -- Test en tant qu'utilisateur authentifié
@@ -113,6 +157,18 @@ SELECT * FROM share_click_events
 WHERE share_id NOT IN (
   SELECT asset_id FROM share_events WHERE user_id = 'user-uuid-here'
 );
+
+-- Doit fonctionner : lire ses propres subscriptions
+SELECT * FROM subscriptions WHERE user_id = 'user-uuid-here';
+
+-- Ne doit PAS fonctionner : lire les subscriptions d'autres utilisateurs
+SELECT * FROM subscriptions WHERE user_id != 'user-uuid-here';
+
+-- Doit fonctionner : lire les feature flags (public)
+SELECT * FROM feature_flags;
+
+-- Ne doit PAS fonctionner : lire les audit logs (service role only)
+SELECT * FROM audit_log;
 ```
 
 ---
