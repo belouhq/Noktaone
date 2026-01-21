@@ -313,7 +313,50 @@
     "point5": "Solo per il benessere personale.",
     "disclaimer": "NOKTA è solo per il benessere. Cerca consiglio professionale se necessario.",
     "accept": "I accept",
-    "decline": "Decline"
+    "decline": "Decline",
+    "modal": {
+      "title": "Gestione dei tuoi dati",
+      "description": "Rispettiamo la tua privacy. Scegli cosa accetti.",
+      "privacy": {
+        "title": "Dati personali",
+        "description": "Necessario per creare il tuo account e salvare i tuoi risultati."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Ci aiuta a migliorare l'app (anonimizzato)."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Ricevi email e SMS sulle nostre novità."
+      },
+      "ccpa": "Non vendiamo i tuoi dati personali.",
+      "privacyLink": "Politica sulla privacy",
+      "termsLink": "Condizioni d'uso",
+      "accept": "Accetta la selezione",
+      "acceptAll": "Accetta tutto"
+    },
+    "signup": {
+      "privacy": "Accetto la politica sulla privacy",
+      "analytics": "Accetto l'uso di analytics (anonimizzato)",
+      "marketing": "Accetto di ricevere comunicazioni di marketing",
+      "links": "Continuando, accetti le nostre Condizioni d'uso e la nostra Politica sulla privacy."
+    },
+    "settings": {
+      "title": "Privacy e dati",
+      "analytics": "Analytics",
+      "analyticsDescription": "Aiuta a migliorare l'app",
+      "marketing": "Marketing",
+      "marketingDescription": "Email e SMS sulle nostre novità",
+      "export": "Esporta i miei dati",
+      "exporting": "Esportazione in corso...",
+      "exportError": "Errore durante l'esportazione",
+      "delete": "Elimina il mio account",
+      "deleteWarning": "Questa azione è irreversibile",
+      "deleteDescription": "Tutti i tuoi dati saranno eliminati definitivamente.",
+      "deleting": "Eliminazione in corso...",
+      "confirmDelete": "Conferma eliminazione",
+      "deleteError": "Errore durante l'eliminazione"
+    }
   },
   "devices": {
     "title": "Dispositivi Connessi",

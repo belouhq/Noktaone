@@ -313,7 +313,50 @@
     "point5": "個人のウェルネスのみ。",
     "disclaimer": "NOKTAはウェルネスのためのものです。必要に応じて専門家のアドバイスを求めてください。",
     "accept": "I accept",
-    "decline": "Decline"
+    "decline": "Decline",
+    "modal": {
+      "title": "データ管理",
+      "description": "あなたのプライバシーを尊重します。受け入れる内容を選んでください。",
+      "privacy": {
+        "title": "個人データ",
+        "description": "アカウントを作成し、結果を保存するために必要です。"
+      },
+      "analytics": {
+        "title": "分析",
+        "description": "アプリを改善するのに役立ちます（匿名化されています）。"
+      },
+      "marketing": {
+        "title": "マーケティング",
+        "description": "新しい情報をメールやSMSで受け取ります。"
+      },
+      "ccpa": "私たちはあなたの個人データを販売しません。",
+      "privacyLink": "プライバシーポリシー",
+      "termsLink": "利用規約",
+      "accept": "選択を受け入れる",
+      "acceptAll": "すべて受け入れる"
+    },
+    "signup": {
+      "privacy": "プライバシーポリシーに同意します",
+      "analytics": "分析の使用に同意します（匿名化されています）",
+      "marketing": "マーケティングコミュニケーションを受け取ることに同意します",
+      "links": "続行することで、私たちの利用規約とプライバシーポリシーに同意します。"
+    },
+    "settings": {
+      "title": "プライバシーとデータ",
+      "analytics": "分析",
+      "analyticsDescription": "アプリを改善するのに役立ちます",
+      "marketing": "マーケティング",
+      "marketingDescription": "新しい情報をメールやSMSで受け取ります",
+      "export": "データをエクスポート",
+      "exporting": "エクスポート中...",
+      "exportError": "エクスポート中にエラーが発生しました",
+      "delete": "アカウントを削除",
+      "deleteWarning": "この操作は元に戻せません",
+      "deleteDescription": "すべてのデータが完全に削除されます。",
+      "deleting": "削除中...",
+      "confirmDelete": "削除を確認",
+      "deleteError": "削除中にエラーが発生しました"
+    }
   },
   "devices": {
     "title": "接続デバイス",

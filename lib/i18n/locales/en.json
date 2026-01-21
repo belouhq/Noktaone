@@ -313,7 +313,50 @@
     "point5": "For personal wellness only.",
     "disclaimer": "NOKTA is for wellness only. Seek professional advice if needed.",
     "accept": "I accept",
-    "decline": "Decline"
+    "decline": "Decline",
+    "modal": {
+      "title": "Your data privacy",
+      "description": "We respect your privacy. Choose what you accept.",
+      "privacy": {
+        "title": "Personal data",
+        "description": "Required to create your account and save your results."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Helps us improve the app (anonymized)."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Receive emails and SMS about our updates."
+      },
+      "ccpa": "We do not sell your personal data.",
+      "privacyLink": "Privacy Policy",
+      "termsLink": "Terms of Service",
+      "accept": "Accept selection",
+      "acceptAll": "Accept all"
+    },
+    "signup": {
+      "privacy": "I accept the privacy policy",
+      "analytics": "I accept analytics usage (anonymized)",
+      "marketing": "I accept marketing communications",
+      "links": "By continuing, you agree to our Terms of Service and Privacy Policy."
+    },
+    "settings": {
+      "title": "Privacy & Data",
+      "analytics": "Analytics",
+      "analyticsDescription": "Helps improve the app",
+      "marketing": "Marketing",
+      "marketingDescription": "Emails and SMS about updates",
+      "export": "Export my data",
+      "exporting": "Exporting...",
+      "exportError": "Export error",
+      "delete": "Delete my account",
+      "deleteWarning": "This action is irreversible",
+      "deleteDescription": "All your data will be permanently deleted.",
+      "deleting": "Deleting...",
+      "confirmDelete": "Confirm deletion",
+      "deleteError": "Delete error"
+    }
   },
   "info": {
     "whatIsSkane": "WHAT IS A SKANE?",

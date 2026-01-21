@@ -332,7 +332,50 @@
     "point5": "Pour le bien-être personnel uniquement.",
     "disclaimer": "NOKTA est uniquement pour le bien-être. Demandez un avis professionnel si nécessaire.",
     "accept": "J'accepte",
-    "decline": "Refuser"
+    "decline": "Refuser",
+    "modal": {
+      "title": "Gestion de vos données",
+      "description": "Nous respectons votre vie privée. Choisissez ce que vous acceptez.",
+      "privacy": {
+        "title": "Données personnelles",
+        "description": "Nécessaire pour créer votre compte et sauvegarder vos résultats."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Nous aide à améliorer l'application (anonymisé)."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Recevoir des emails et SMS sur nos nouveautés."
+      },
+      "ccpa": "Nous ne vendons pas vos données personnelles.",
+      "privacyLink": "Politique de confidentialité",
+      "termsLink": "Conditions d'utilisation",
+      "accept": "Accepter la sélection",
+      "acceptAll": "Tout accepter"
+    },
+    "signup": {
+      "privacy": "J'accepte la politique de confidentialité",
+      "analytics": "J'accepte l'utilisation d'analytics (anonymisé)",
+      "marketing": "J'accepte de recevoir des communications marketing",
+      "links": "En continuant, vous acceptez nos Conditions d'utilisation et notre Politique de confidentialité."
+    },
+    "settings": {
+      "title": "Confidentialité et données",
+      "analytics": "Analytics",
+      "analyticsDescription": "Aide à améliorer l'application",
+      "marketing": "Marketing",
+      "marketingDescription": "Emails et SMS sur nos nouveautés",
+      "export": "Exporter mes données",
+      "exporting": "Export en cours...",
+      "exportError": "Erreur lors de l'export",
+      "delete": "Supprimer mon compte",
+      "deleteWarning": "Cette action est irréversible",
+      "deleteDescription": "Toutes vos données seront supprimées définitivement.",
+      "deleting": "Suppression...",
+      "confirmDelete": "Confirmer la suppression",
+      "deleteError": "Erreur lors de la suppression"
+    }
   },
   "info": {
     "whatIsSkane": "QU'EST-CE QU'UN SKANE ?",

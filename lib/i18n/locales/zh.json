@@ -313,7 +313,50 @@
     "point5": "仅用于个人健康。",
     "disclaimer": "NOKTA 仅用于健康。如有需要，请寻求专业建议。",
     "accept": "I accept",
-    "decline": "Decline"
+    "decline": "Decline",
+    "modal": {
+      "title": "管理您的数据",
+      "description": "我们尊重您的隐私。选择您所接受的内容。",
+      "privacy": {
+        "title": "个人数据",
+        "description": "创建您的账户并保存您的结果所必需。"
+      },
+      "analytics": {
+        "title": "分析",
+        "description": "帮助我们改进应用程序（匿名）。"
+      },
+      "marketing": {
+        "title": "营销",
+        "description": "接收关于我们新产品的电子邮件和短信。"
+      },
+      "ccpa": "我们不会出售您的个人数据。",
+      "privacyLink": "隐私政策",
+      "termsLink": "使用条款",
+      "accept": "接受所选内容",
+      "acceptAll": "全部接受"
+    },
+    "signup": {
+      "privacy": "我接受隐私政策",
+      "analytics": "我接受使用分析（匿名）",
+      "marketing": "我接受接收营销通讯",
+      "links": "继续即表示您接受我们的使用条款和隐私政策。"
+    },
+    "settings": {
+      "title": "隐私和数据",
+      "analytics": "分析",
+      "analyticsDescription": "帮助改进应用程序",
+      "marketing": "营销",
+      "marketingDescription": "关于我们新产品的电子邮件和短信",
+      "export": "导出我的数据",
+      "exporting": "导出中...",
+      "exportError": "导出时出错",
+      "delete": "删除我的账户",
+      "deleteWarning": "此操作无法恢复",
+      "deleteDescription": "您的所有数据将被永久删除。",
+      "deleting": "正在删除...",
+      "confirmDelete": "确认删除",
+      "deleteError": "删除时出错"
+    }
   },
   "devices": {
     "title": "连接设备",

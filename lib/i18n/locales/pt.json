@@ -313,7 +313,50 @@
     "point5": "Apenas para bem-estar pessoal.",
     "disclaimer": "NOKTA é apenas para bem-estar. Procure orientação profissional se necessário.",
     "accept": "I accept",
-    "decline": "Decline"
+    "decline": "Decline",
+    "modal": {
+      "title": "Gerenciamento dos seus dados",
+      "description": "Respeitamos sua privacidade. Escolha o que você aceita.",
+      "privacy": {
+        "title": "Dados pessoais",
+        "description": "Necessário para criar sua conta e salvar seus resultados."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Ajuda a melhorar o aplicativo (anônimo)."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Receber e-mails e SMS sobre nossas novidades."
+      },
+      "ccpa": "Não vendemos seus dados pessoais.",
+      "privacyLink": "Política de privacidade",
+      "termsLink": "Termos de uso",
+      "accept": "Aceitar seleção",
+      "acceptAll": "Aceitar tudo"
+    },
+    "signup": {
+      "privacy": "Eu aceito a política de privacidade",
+      "analytics": "Eu aceito o uso de analytics (anônimo)",
+      "marketing": "Eu aceito receber comunicações de marketing",
+      "links": "Ao continuar, você aceita nossos Termos de uso e nossa Política de privacidade."
+    },
+    "settings": {
+      "title": "Privacidade e dados",
+      "analytics": "Analytics",
+      "analyticsDescription": "Ajuda a melhorar o aplicativo",
+      "marketing": "Marketing",
+      "marketingDescription": "E-mails e SMS sobre nossas novidades",
+      "export": "Exportar meus dados",
+      "exporting": "Exportando...",
+      "exportError": "Erro ao exportar",
+      "delete": "Excluir minha conta",
+      "deleteWarning": "Esta ação é irreversível",
+      "deleteDescription": "Todos os seus dados serão excluídos permanentemente.",
+      "deleting": "Excluindo...",
+      "confirmDelete": "Confirmar exclusão",
+      "deleteError": "Erro ao excluir"
+    }
   },
   "devices": {
     "title": "Dispositivos Conectados",

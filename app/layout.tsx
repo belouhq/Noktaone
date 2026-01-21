@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/components/providers/I18nProvider";
 import { AuthProvider } from "@/components/providers/AuthProvider";
+import AppProvider from "@/components/providers/AppProvider";
 import ReferralTracker from "@/components/ReferralTracker";
 import TestButtons from "@/components/debug/TestButtons";
 import "@/lib/utils/console-filter"; // Filtrer les messages TensorFlow
@@ -53,21 +54,23 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased bg-black text-white`} style={{ pointerEvents: 'auto', position: 'relative', margin: 0, padding: 0 }} suppressHydrationWarning>
         <I18nProvider>
           <AuthProvider>
-            <ReferralTracker />
-            <TestButtons />
-            <div className="app-container" style={{ pointerEvents: 'auto', position: 'relative' }}>
-              <div className="landscape-warning fixed inset-0 bg-black z-[100] hidden items-center justify-center p-8 text-center pointer-events-none">
-                <div>
-                  <p className="text-4xl mb-4">📱</p>
-                  <p className="text-white text-lg">
-                    Veuillez tourner votre téléphone en mode portrait
-                  </p>
+            <AppProvider>
+              <ReferralTracker />
+              <TestButtons />
+              <div className="app-container" style={{ pointerEvents: 'auto', position: 'relative' }}>
+                <div className="landscape-warning fixed inset-0 bg-black z-[100] hidden items-center justify-center p-8 text-center pointer-events-none">
+                  <div>
+                    <p className="text-4xl mb-4">📱</p>
+                    <p className="text-white text-lg">
+                      Veuillez tourner votre téléphone en mode portrait
+                    </p>
+                  </div>
                 </div>
+                <main className="main-content" style={{ pointerEvents: 'auto', position: 'relative', zIndex: 10 }}>
+                  {children}
+                </main>
               </div>
-              <main className="main-content" style={{ pointerEvents: 'auto', position: 'relative', zIndex: 10 }}>
-                {children}
-              </main>
-            </div>
+            </AppProvider>
           </AuthProvider>
         </I18nProvider>
         <script

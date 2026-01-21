@@ -313,7 +313,50 @@
     "point5": "Hanya untuk kesejahteraan pribadi.",
     "disclaimer": "NOKTA hanya untuk kesejahteraan. Cari saran profesional jika diperlukan.",
     "accept": "I accept",
-    "decline": "Decline"
+    "decline": "Decline",
+    "modal": {
+      "title": "Pengelolaan data Anda",
+      "description": "Kami menghargai privasi Anda. Pilih apa yang Anda setujui.",
+      "privacy": {
+        "title": "Data pribadi",
+        "description": "Diperlukan untuk membuat akun Anda dan menyimpan hasil Anda."
+      },
+      "analytics": {
+        "title": "Analitik",
+        "description": "Membantu kami meningkatkan aplikasi (anonymized)."
+      },
+      "marketing": {
+        "title": "Pemasaran",
+        "description": "Menerima email dan SMS tentang pembaruan kami."
+      },
+      "ccpa": "Kami tidak menjual data pribadi Anda.",
+      "privacyLink": "Kebijakan privasi",
+      "termsLink": "Syarat dan ketentuan",
+      "accept": "Setujui pilihan",
+      "acceptAll": "Setujui semua"
+    },
+    "signup": {
+      "privacy": "Saya setuju dengan kebijakan privasi",
+      "analytics": "Saya setuju dengan penggunaan analitik (anonymized)",
+      "marketing": "Saya setuju untuk menerima komunikasi pemasaran",
+      "links": "Dengan melanjutkan, Anda setuju dengan Syarat dan Ketentuan serta Kebijakan Privasi kami."
+    },
+    "settings": {
+      "title": "Privasi dan data",
+      "analytics": "Analitik",
+      "analyticsDescription": "Membantu meningkatkan aplikasi",
+      "marketing": "Pemasaran",
+      "marketingDescription": "Email dan SMS tentang pembaruan kami",
+      "export": "Ekspor data saya",
+      "exporting": "Ekspor sedang berlangsung...",
+      "exportError": "Kesalahan saat mengekspor",
+      "delete": "Hapus akun saya",
+      "deleteWarning": "Tindakan ini tidak dapat dibatalkan",
+      "deleteDescription": "Semua data Anda akan dihapus secara permanen.",
+      "deleting": "Menghapus...",
+      "confirmDelete": "Konfirmasi penghapusan",
+      "deleteError": "Kesalahan saat menghapus"
+    }
   },
   "devices": {
     "title": "Perangkat Terhubung",

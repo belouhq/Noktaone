@@ -313,7 +313,50 @@
     "point5": "Solo para bienestar personal.",
     "disclaimer": "NOKTA es solo para bienestar. Busca consejo profesional si es necesario.",
     "accept": "I accept",
-    "decline": "Decline"
+    "decline": "Decline",
+    "modal": {
+      "title": "Gestión de tus datos",
+      "description": "Respetamos tu privacidad. Elige lo que aceptas.",
+      "privacy": {
+        "title": "Datos personales",
+        "description": "Necesario para crear tu cuenta y guardar tus resultados."
+      },
+      "analytics": {
+        "title": "Analíticas",
+        "description": "Nos ayuda a mejorar la aplicación (anónimo)."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Recibir correos y SMS sobre nuestras novedades."
+      },
+      "ccpa": "No vendemos tus datos personales.",
+      "privacyLink": "Política de privacidad",
+      "termsLink": "Condiciones de uso",
+      "accept": "Aceptar selección",
+      "acceptAll": "Aceptar todo"
+    },
+    "signup": {
+      "privacy": "Acepto la política de privacidad",
+      "analytics": "Acepto el uso de analíticas (anónimo)",
+      "marketing": "Acepto recibir comunicaciones de marketing",
+      "links": "Al continuar, aceptas nuestras Condiciones de uso y nuestra Política de privacidad."
+    },
+    "settings": {
+      "title": "Privacidad y datos",
+      "analytics": "Analíticas",
+      "analyticsDescription": "Ayuda a mejorar la aplicación",
+      "marketing": "Marketing",
+      "marketingDescription": "Correos y SMS sobre nuestras novedades",
+      "export": "Exportar mis datos",
+      "exporting": "Exportando...",
+      "exportError": "Error al exportar",
+      "delete": "Eliminar mi cuenta",
+      "deleteWarning": "Esta acción es irreversible",
+      "deleteDescription": "Todos tus datos se eliminarán de forma permanente.",
+      "deleting": "Eliminando...",
+      "confirmDelete": "Confirmar eliminación",
+      "deleteError": "Error al eliminar"
+    }
   },
   "devices": {
     "title": "Dispositivos Conectados",

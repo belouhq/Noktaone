@@ -313,7 +313,50 @@
     "point5": "Nur für persönliches Wohlbefinden.",
     "disclaimer": "NOKTA ist nur für Wohlbefinden. Holen Sie sich bei Bedarf professionelle Beratung.",
     "accept": "I accept",
-    "decline": "Decline"
+    "decline": "Decline",
+    "modal": {
+      "title": "Verwaltung Ihrer Daten",
+      "description": "Wir respektieren Ihre Privatsphäre. Wählen Sie, was Sie akzeptieren.",
+      "privacy": {
+        "title": "Persönliche Daten",
+        "description": "Notwendig, um Ihr Konto zu erstellen und Ihre Ergebnisse zu speichern."
+      },
+      "analytics": {
+        "title": "Analysen",
+        "description": "Hilft uns, die App zu verbessern (anonymisiert)."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Erhalten Sie E-Mails und SMS über unsere Neuheiten."
+      },
+      "ccpa": "Wir verkaufen Ihre persönlichen Daten nicht.",
+      "privacyLink": "Datenschutzrichtlinie",
+      "termsLink": "Nutzungsbedingungen",
+      "accept": "Auswahl akzeptieren",
+      "acceptAll": "Alles akzeptieren"
+    },
+    "signup": {
+      "privacy": "Ich akzeptiere die Datenschutzrichtlinie",
+      "analytics": "Ich akzeptiere die Nutzung von Analysen (anonymisiert)",
+      "marketing": "Ich akzeptiere, Marketingkommunikation zu erhalten",
+      "links": "Indem Sie fortfahren, akzeptieren Sie unsere Nutzungsbedingungen und unsere Datenschutzrichtlinie."
+    },
+    "settings": {
+      "title": "Privatsphäre und Daten",
+      "analytics": "Analysen",
+      "analyticsDescription": "Hilft, die App zu verbessern",
+      "marketing": "Marketing",
+      "marketingDescription": "E-Mails und SMS über unsere Neuheiten",
+      "export": "Meine Daten exportieren",
+      "exporting": "Export läuft...",
+      "exportError": "Fehler beim Export",
+      "delete": "Mein Konto löschen",
+      "deleteWarning": "Diese Aktion ist unwiderruflich",
+      "deleteDescription": "Alle Ihre Daten werden dauerhaft gelöscht.",
+      "deleting": "Löschen...",
+      "confirmDelete": "Löschen bestätigen",
+      "deleteError": "Fehler beim Löschen"
+    }
   },
   "devices": {
     "title": "Verbundene Geräte",

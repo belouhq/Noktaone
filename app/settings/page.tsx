@@ -18,6 +18,8 @@ import InvitationsModal from "@/components/modals/InvitationsModal";
 import EditProfileModal from "@/components/modals/EditProfileModal";
 import { SupportModal } from "@/components/modals/SupportModal";
 import AffiliatePanel from "@/components/settings/AffiliatePanel";
+import PrivacySettingsSection from "@/components/settings/PrivacySettingsSection";
+import { createClient } from "@supabase/supabase-js";
 
 // Mock user data
 const mockUser = {
@@ -386,6 +388,33 @@ export default function SettingsPage() {
               <AffiliatePanel 
                 userId={userId} 
                 locale={currentLanguage || 'fr'} 
+              />
+            </div>
+          )}
+
+          {/* Privacy & Data Section */}
+          {userId && (
+            <div className="mt-8 glass-card p-6 rounded-2xl">
+              <PrivacySettingsSection
+                userId={userId}
+                currentConsents={{
+                  analytics: true, // TODO: Load from profile
+                  marketing: userProfile.email ? true : false, // TODO: Load from profile
+                }}
+                onUpdateConsents={async (consents) => {
+                  // Save to Supabase
+                  const supabase = createClient(
+                    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+                    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+                  );
+                  await supabase
+                    .from("profiles")
+                    .update({
+                      marketing_opt_in: consents.marketing,
+                      updated_at: new Date().toISOString(),
+                    })
+                    .eq("id", userId);
+                }}
               />
             </div>
           )}
