@@ -128,6 +128,7 @@ export default function FeedbackPage() {
     // Si utilisateur non connecté → afficher modal inscription
     if (!user && !authLoading) {
       setPendingFeedback(feedback);
+      setPendingFeedback(feedback);
       setShowSignupModal(true);
       setIsSubmitting(false);
       return;
@@ -143,7 +144,7 @@ export default function FeedbackPage() {
     }, 600);
   };
 
-  const handleSignupSuccess = async (userId: string) => {
+  const handleSignupSuccess = async (userId: string, username: string) => {
     // Associer le skane au nouvel utilisateur si nécessaire
     if (pendingFeedback && result) {
       // Le skane a déjà été sauvegardé localement, on peut le lier à l'utilisateur
@@ -338,19 +339,12 @@ export default function FeedbackPage() {
       </motion.p>
 
       {/* Modal d'inscription pour utilisateurs non connectés */}
-      {result && (
-        <QuickSignupModal
-          isOpen={showSignupModal}
-          onClose={() => setShowSignupModal(false)}
-          onSkip={handleSignupSkip}
-          onSuccess={handleSignupSuccess}
-          skaneData={{
-            beforeScore: result?.skaneIndex || 85,
-            afterScore: result?.afterScore || 28,
-            actionLabel: result?.microAction || "Physiological Sigh",
-          }}
-        />
-      )}
+      <QuickSignupModal
+        isOpen={showSignupModal}
+        onClose={() => setShowSignupModal(false)}
+        onSkip={handleSignupSkip}
+        onSuccess={handleSignupSuccess}
+      />
     </main>
   );
 }
