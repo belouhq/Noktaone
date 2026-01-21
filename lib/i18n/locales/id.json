@@ -500,5 +500,24 @@
       "question": "Why now?",
       "answer": "Because the world moves fast, pressure is real, and many people function in degraded mode without realizing it.\n\nNokta One answers a modern need:\nRecalibrate quickly, without stopping to live."
     }
+  },
+  "quickSignup": {
+    "saveYourReset": "Simpan reset Anda",
+    "saveAndReminders": "Simpan reset Anda dan terima pengingat",
+    "phoneNumber": "Nomor telepon",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "Saya setuju untuk menerima pengingat SMS",
+    "or": "atau",
+    "later": "Nanti",
+    "invalidPhone": "Nomor tidak valid",
+    "sendOTPError": "Kesalahan saat mengirim",
+    "otpSent": "Kode dikirim ke",
+    "enterCode": "Masukkan kode 6 digit",
+    "verifying": "Memverifikasi...",
+    "verify": "Verifikasi",
+    "changeNumber": "Ganti nomor",
+    "invalidOTP": "Kode tidak valid",
+    "verifyOTPError": "Kode salah",
+    "oauthError": "Kesalahan otentikasi"
   }
 }

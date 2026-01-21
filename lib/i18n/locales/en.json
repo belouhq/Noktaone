@@ -489,5 +489,24 @@
     "ticketId": "Reference",
     "requiredField": "This field is required",
     "selectCategory": "Select..."
+  },
+  "quickSignup": {
+    "saveYourReset": "Save your reset",
+    "saveAndReminders": "Save your reset and get your reminders",
+    "phoneNumber": "Phone number",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "I agree to receive SMS reminders",
+    "or": "or",
+    "later": "Later",
+    "invalidPhone": "Invalid number",
+    "sendOTPError": "Error sending",
+    "otpSent": "Code sent to",
+    "enterCode": "Enter the 6-digit code",
+    "verifying": "Verifying...",
+    "verify": "Verify",
+    "changeNumber": "Change number",
+    "invalidOTP": "Invalid code",
+    "verifyOTPError": "Incorrect code",
+    "oauthError": "Authentication error"
   }
 }

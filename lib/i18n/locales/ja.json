@@ -500,5 +500,24 @@
       "question": "Why now?",
       "answer": "Because the world moves fast, pressure is real, and many people function in degraded mode without realizing it.\n\nNokta One answers a modern need:\nRecalibrate quickly, without stopping to live."
     }
+  },
+  "quickSignup": {
+    "saveYourReset": "リセットを保存",
+    "saveAndReminders": "リセットを保存してリマインダーを受け取る",
+    "phoneNumber": "電話番号",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "SMSリマインダーを受け取ることに同意します",
+    "or": "または",
+    "later": "後で",
+    "invalidPhone": "無効な番号",
+    "sendOTPError": "送信エラー",
+    "otpSent": "コードが送信されました",
+    "enterCode": "6桁のコードを入力",
+    "verifying": "確認中...",
+    "verify": "確認する",
+    "changeNumber": "番号を変更",
+    "invalidOTP": "無効なコード",
+    "verifyOTPError": "コードが正しくありません",
+    "oauthError": "認証エラー"
   }
 }

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import { useAuthContext } from "@/components/providers/AuthProvider";
+import QuickSignupModal from "@/components/signup/QuickSignupModal";
 import { saveSkane, updateSkaneFeedback, generateSkaneId } from "@/lib/skane/storage";
 import { updateSessionFeedback } from "@/lib/skane/session-model";
 import { updateMicroActionFeedback, updateSkaneSession, getOrCreateGuestId, getUserId } from "@/lib/skane/supabase-tracker";
@@ -23,9 +25,12 @@ function feedbackToEffect(feedback: FeedbackValue): -1 | 0 | 1 {
 export default function FeedbackPage() {
   const router = useRouter();
   const { t } = useTranslation();
+  const { user, loading: authLoading } = useAuthContext();
   const [result, setResult] = useState<any>(null);
   const [selectedFeedback, setSelectedFeedback] = useState<FeedbackValue | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
+  const [pendingFeedback, setPendingFeedback] = useState<FeedbackValue | null>(null);
 
   useEffect(() => {
     const storedResult = sessionStorage.getItem("skane_analysis_result");
@@ -120,8 +125,15 @@ export default function FeedbackPage() {
       });
     }
 
-    // Rediriger vers share-prompt uniquement si feedback positif (better)
-    // Sinon rediriger vers la home
+    // Si utilisateur non connecté → afficher modal inscription
+    if (!user && !authLoading) {
+      setPendingFeedback(feedback);
+      setShowSignupModal(true);
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Si connecté → rediriger normalement
     setTimeout(() => {
       if (feedback === "better") {
         router.push("/skane/share-prompt");
@@ -129,6 +141,41 @@ export default function FeedbackPage() {
         router.push("/");
       }
     }, 600);
+  };
+
+  const handleSignupSuccess = async (userId: string) => {
+    // Associer le skane au nouvel utilisateur si nécessaire
+    if (pendingFeedback && result) {
+      // Le skane a déjà été sauvegardé localement, on peut le lier à l'utilisateur
+      // via une mise à jour dans Supabase si nécessaire
+      const sessionId = result?.sessionId;
+      if (sessionId) {
+        // Mettre à jour la session avec le userId
+        await updateSkaneSession(sessionId, result.afterScore, result.skaneIndex);
+      }
+    }
+
+    setShowSignupModal(false);
+    setPendingFeedback(null);
+
+    // Rediriger selon le feedback
+    if (pendingFeedback === "better") {
+      router.push("/skane/share-prompt");
+    } else {
+      router.push("/");
+    }
+  };
+
+  const handleSignupSkip = () => {
+    setShowSignupModal(false);
+    setPendingFeedback(null);
+    
+    // Rediriger selon le feedback
+    if (pendingFeedback === "better") {
+      router.push("/skane/share-prompt");
+    } else {
+      router.push("/");
+    }
   };
 
   // Calculer le after_score basé sur le feedback
@@ -289,6 +336,21 @@ export default function FeedbackPage() {
       >
         {t("feedback.privacyNote")}
       </motion.p>
+
+      {/* Modal d'inscription pour utilisateurs non connectés */}
+      {result && (
+        <QuickSignupModal
+          isOpen={showSignupModal}
+          onClose={() => setShowSignupModal(false)}
+          onSkip={handleSignupSkip}
+          onSuccess={handleSignupSuccess}
+          skaneData={{
+            beforeScore: result?.skaneIndex || 85,
+            afterScore: result?.afterScore || 28,
+            actionLabel: result?.microAction || "Physiological Sigh",
+          }}
+        />
+      )}
     </main>
   );
 }

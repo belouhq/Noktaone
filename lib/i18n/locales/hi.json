@@ -500,5 +500,24 @@
       "question": "Why now?",
       "answer": "Because the world moves fast, pressure is real, and many people function in degraded mode without realizing it.\n\nNokta One answers a modern need:\nRecalibrate quickly, without stopping to live."
     }
+  },
+  "quickSignup": {
+    "saveYourReset": "अपने रीसेट को सुरक्षित करें",
+    "saveAndReminders": "अपने रीसेट को सुरक्षित करें और अपने रिमाइंडर प्राप्त करें",
+    "phoneNumber": "फोन नंबर",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "मैं SMS रिमाइंडर प्राप्त करने के लिए सहमत हूं",
+    "or": "या",
+    "later": "बाद में",
+    "invalidPhone": "अमान्य नंबर",
+    "sendOTPError": "भेजने में त्रुटि",
+    "otpSent": "कोड भेजा गया",
+    "enterCode": "6 अंकों का कोड दर्ज करें",
+    "verifying": "जांच हो रही है...",
+    "verify": "जांचें",
+    "changeNumber": "नंबर बदलें",
+    "invalidOTP": "अमान्य कोड",
+    "verifyOTPError": "कोड गलत है",
+    "oauthError": "प्रमाणीकरण में त्रुटि"
   }
 }

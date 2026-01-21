@@ -237,6 +237,25 @@
     "skipSelfie": "Passer cette étape",
     "retake": "Reprendre"
   },
+  "quickSignup": {
+    "saveYourReset": "Sauvegardez votre reset",
+    "saveAndReminders": "Sauvegardez votre reset et recevez vos rappels",
+    "phoneNumber": "Numéro de téléphone",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "J'accepte de recevoir des rappels SMS",
+    "or": "ou",
+    "later": "Plus tard",
+    "invalidPhone": "Numéro invalide",
+    "sendOTPError": "Erreur lors de l'envoi",
+    "otpSent": "Code envoyé à",
+    "enterCode": "Entrez le code à 6 chiffres",
+    "verifying": "Vérification...",
+    "verify": "Vérifier",
+    "changeNumber": "Changer de numéro",
+    "invalidOTP": "Code invalide",
+    "verifyOTPError": "Code incorrect",
+    "oauthError": "Erreur d'authentification"
+  },
   "skaneIndex": {
     "title": "Skane Index",
     "before": "Avant",

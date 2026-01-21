@@ -500,5 +500,24 @@
       "question": "Why now?",
       "answer": "Because the world moves fast, pressure is real, and many people function in degraded mode without realizing it.\n\nNokta One answers a modern need:\nRecalibrate quickly, without stopping to live."
     }
+  },
+  "quickSignup": {
+    "saveYourReset": "리셋을 저장하세요",
+    "saveAndReminders": "리셋을 저장하고 알림을 받으세요",
+    "phoneNumber": "전화번호",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "SMS 알림을 받는 데 동의합니다",
+    "or": "또는",
+    "later": "나중에",
+    "invalidPhone": "유효하지 않은 번호",
+    "sendOTPError": "전송 중 오류 발생",
+    "otpSent": "코드가 전송되었습니다",
+    "enterCode": "6자리 코드를 입력하세요",
+    "verifying": "확인 중...",
+    "verify": "확인",
+    "changeNumber": "번호 변경",
+    "invalidOTP": "유효하지 않은 코드",
+    "verifyOTPError": "잘못된 코드",
+    "oauthError": "인증 오류"
   }
 }

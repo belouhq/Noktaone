@@ -500,5 +500,24 @@
     "resend": "Erneut senden",
     "rememberPassword": "Passwort merken?",
     "login": "Anmelden"
+  },
+  "quickSignup": {
+    "saveYourReset": "Speichern Sie Ihren Reset",
+    "saveAndReminders": "Speichern Sie Ihren Reset und erhalten Sie Ihre Erinnerungen",
+    "phoneNumber": "Telefonnummer",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "Ich akzeptiere, Erinnerungen per SMS zu erhalten",
+    "or": "oder",
+    "later": "Später",
+    "invalidPhone": "Ungültige Nummer",
+    "sendOTPError": "Fehler beim Senden",
+    "otpSent": "Code gesendet an",
+    "enterCode": "Geben Sie den 6-stelligen Code ein",
+    "verifying": "Überprüfung...",
+    "verify": "Überprüfen",
+    "changeNumber": "Nummer ändern",
+    "invalidOTP": "Ungültiger Code",
+    "verifyOTPError": "Code falsch",
+    "oauthError": "Authentifizierungsfehler"
   }
 }

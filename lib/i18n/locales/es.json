@@ -500,5 +500,24 @@
     "resend": "Reenviar",
     "rememberPassword": "¿Recuerdas tu contraseña?",
     "login": "Iniciar sesión"
+  },
+  "quickSignup": {
+    "saveYourReset": "Guarda tu reinicio",
+    "saveAndReminders": "Guarda tu reinicio y recibe tus recordatorios",
+    "phoneNumber": "Número de teléfono",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "Acepto recibir recordatorios por SMS",
+    "or": "o",
+    "later": "Más tarde",
+    "invalidPhone": "Número inválido",
+    "sendOTPError": "Error al enviar",
+    "otpSent": "Código enviado a",
+    "enterCode": "Introduce el código de 6 cifras",
+    "verifying": "Verificando...",
+    "verify": "Verificar",
+    "changeNumber": "Cambiar número",
+    "invalidOTP": "Código inválido",
+    "verifyOTPError": "Código incorrecto",
+    "oauthError": "Error de autenticación"
   }
 }

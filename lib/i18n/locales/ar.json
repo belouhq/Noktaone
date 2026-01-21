@@ -500,5 +500,24 @@
     "resend": "إعادة إرسال",
     "rememberPassword": "تتذكر كلمة مرورك؟",
     "login": "تسجيل الدخول"
+  },
+  "quickSignup": {
+    "saveYourReset": "احفظ إعادة الضبط الخاصة بك",
+    "saveAndReminders": "احفظ إعادة الضبط الخاصة بك وتلقَ تذكيراتك",
+    "phoneNumber": "رقم الهاتف",
+    "phonePlaceholder": "6 12 34 56 78",
+    "smsConsent": "أوافق على تلقي تذكيرات عبر الرسائل القصيرة",
+    "or": "أو",
+    "later": "لاحقًا",
+    "invalidPhone": "رقم غير صالح",
+    "sendOTPError": "خطأ أثناء الإرسال",
+    "otpSent": "تم إرسال الرمز إلى",
+    "enterCode": "أدخل الرمز المكون من 6 أرقام",
+    "verifying": "جارٍ التحقق...",
+    "verify": "تحقق",
+    "changeNumber": "تغيير الرقم",
+    "invalidOTP": "رمز غير صالح",
+    "verifyOTPError": "رمز غير صحيح",
+    "oauthError": "خطأ في المصادقة"
   }
 }
