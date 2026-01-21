@@ -13,7 +13,8 @@ import { createClient } from "@supabase/supabase-js";
 // Reserved usernames (same as frontend)
 const RESERVED_USERNAMES = [
   "nokta", "noktaone", "admin", "support", "help", "official",
-  "app", "api", "www", "mail", "team", "staff", "mod", "moderator"
+  "app", "api", "www", "mail", "team", "staff", "mod", "moderator",
+  "system", "root", "null", "undefined", "test", "demo"
 ];
 
 // Username validation regex

@@ -46,7 +46,8 @@ const COUNTRY_CODES: CountryCode[] = [
 // Reserved usernames
 const RESERVED_USERNAMES = [
   "nokta", "noktaone", "admin", "support", "help", "official",
-  "app", "api", "www", "mail", "team", "staff", "mod", "moderator"
+  "app", "api", "www", "mail", "team", "staff", "mod", "moderator",
+  "system", "root", "null", "undefined", "test", "demo"
 ];
 
 type Step = "auth" | "phone" | "otp" | "username" | "done";
