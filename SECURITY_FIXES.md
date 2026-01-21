@@ -134,11 +134,40 @@ WHERE share_id NOT IN (
 
 ---
 
+---
+
+### 4. ✅ Function Search Path Mutable (9 fonctions)
+
+**Problème :**
+- 9 fonctions PostgreSQL avaient un `search_path` mutable, ce qui peut permettre des attaques de type "search_path hijacking"
+- **Risque** : Un attaquant pourrait créer des tables/fonctions dans un schéma avec un nom prioritaire et détourner l'exécution des fonctions
+
+**Fonctions corrigées :**
+1. `cleanup_expired_verifications`
+2. `cleanup_expired_sessions`
+3. `increment_user_session_count`
+4. `handle_sms_unsubscribe`
+5. `increment_share_click`
+6. `get_fatigue_penalty`
+7. `update_updated_at_column`
+8. `get_user_lift`
+9. `handle_new_user`
+
+**Solution :**
+- Ajout de `SET search_path = public, pg_temp` à toutes les fonctions
+- Le `search_path` est maintenant fixe et ne peut pas être modifié par l'utilisateur
+- Protection contre les attaques de hijacking
+
+**Migration :** `supabase/migrations/fix_function_search_path.sql`
+
+---
+
 ## Conformité
 
 ✅ **RGPD** : Les données sont maintenant protégées par RLS  
 ✅ **OWASP** : Meilleures pratiques de sécurité des bases de données  
-✅ **Supabase Best Practices** : Conforme aux recommandations Supabase
+✅ **Supabase Best Practices** : Conforme aux recommandations Supabase  
+✅ **PostgreSQL Security** : Protection contre search_path hijacking
 
 ---
 
@@ -147,3 +176,4 @@ WHERE share_id NOT IN (
 - [Supabase RLS Documentation](https://supabase.com/docs/guides/auth/row-level-security)
 - [Security Definer Views](https://www.postgresql.org/docs/current/sql-createview.html#SQL-CREATEVIEW-SECURITY)
 - [Supabase Database Linter](https://supabase.com/docs/guides/database/database-linter)
+- [PostgreSQL Search Path Security](https://www.postgresql.org/docs/current/ddl-schemas.html#DDL-SCHEMAS-PATH)
