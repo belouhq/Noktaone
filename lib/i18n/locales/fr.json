@@ -394,21 +394,21 @@
     }
   },
   "privacy": {
-    "sectionTitle": "Confidentialité",
-    "saved": "Enregistré",
+    "sectionTitle": "Confidentialité & Données",
+    "saved": "Enregistré !",
     "analyticsTitle": "Analytics",
-    "analyticsDescription": "Aide à améliorer l'application",
-    "marketingTitle": "Marketing",
-    "marketingDescription": "Emails et SMS sur nos nouveautés",
+    "analyticsDescription": "Partager des données d'utilisation anonymes",
+    "marketingTitle": "Emails marketing",
+    "marketingDescription": "Conseils, actualités et offres",
     "exportTitle": "Exporter mes données",
-    "exportDescription": "Télécharger toutes vos données",
+    "exportDescription": "Télécharger toutes vos données Nokta (Article 20 RGPD)",
     "deleteTitle": "Supprimer mon compte",
-    "deleteDescription": "Cette action est irréversible",
+    "deleteDescription": "Supprimer définitivement toutes vos données",
     "deleteConfirmTitle": "Supprimer votre compte ?",
-    "deleteConfirmDescription": "Toutes vos données seront supprimées définitivement. Cette action est irréversible.",
+    "deleteConfirmDescription": "Cette action est irréversible. Toutes vos données, y compris l'historique des scans et vos préférences, seront définitivement supprimées.",
     "deleteConfirmLabel": "Tapez DELETE pour confirmer",
     "cancel": "Annuler",
-    "confirmDelete": "Supprimer définitivement"
+    "confirmDelete": "Supprimer le compte"
   },
   "info": {
     "whatIsSkane": "QU'EST-CE QU'UN SKANE ?",
