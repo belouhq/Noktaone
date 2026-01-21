@@ -2,7 +2,28 @@
   "crons": [
     {
       "path": "/api/cron/send-reminders",
-      "schedule": "0 8,14,20 * * *"
+      "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron/send-reminders", 
+      "schedule": "0 18 * * *"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/webhooks/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/ingest/:path*",
+      "destination": "https://eu.posthog.com/:path*"
     }
   ]
 }
