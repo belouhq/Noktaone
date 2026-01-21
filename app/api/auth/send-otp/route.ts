@@ -104,21 +104,18 @@ export async function POST(request: NextRequest) {
       process.env.SUPABASE_SERVICE_ROLE_KEY! // Service role pour écriture
     );
 
-    // Hash OTP avant stockage
-    const otpHash = await hashOTP(otp);
-
     // Upsert dans la table phone_verifications
     const { error: dbError } = await supabase
       .from("phone_verifications")
       .upsert(
         {
           phone,
-          otp_hash: otpHash,
+          otp_hash: await hashOTP(otp), // Ne jamais stocker OTP en clair
           expires_at: expiresAt.toISOString(),
           attempts: 0,
           sms_consent: consent,
           consent_timestamp: new Date().toISOString(),
-          consent_ip: request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "unknown",
+          consent_ip: request.headers.get("x-forwarded-for") || "unknown",
         },
         { onConflict: "phone" }
       );
@@ -163,7 +160,7 @@ export async function POST(request: NextRequest) {
 // Hash OTP pour stockage sécurisé
 async function hashOTP(otp: string): Promise<string> {
   const encoder = new TextEncoder();
-  const data = encoder.encode(otp + (process.env.OTP_SALT || "default-salt-change-in-production"));
+  const data = encoder.encode(otp + process.env.OTP_SALT);
   const hashBuffer = await crypto.subtle.digest("SHA-256", data);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
