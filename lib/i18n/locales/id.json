@@ -356,7 +356,23 @@
       "deleting": "Menghapus...",
       "confirmDelete": "Konfirmasi penghapusan",
       "deleteError": "Kesalahan saat menghapus"
-    }
+    },
+    "subtitle": "Kami menghargai privasi Anda. Pilih apa yang Anda setujui.",
+    "required": "Wajib",
+    "optional": "Opsional",
+    "privacyRequired": "Persetujuan untuk kebijakan privasi adalah wajib",
+    "privacyTitle": "Data Pribadi",
+    "privacyDescription": "Diperlukan untuk membuat akun Anda dan menyimpan hasil Anda.",
+    "analyticsTitle": "Analitik",
+    "analyticsDescription": "Membantu kami meningkatkan aplikasi (anonymized).",
+    "marketingTitle": "Pemasaran",
+    "marketingDescription": "Menerima email dan SMS tentang berita terbaru kami.",
+    "readPolicy": "Baca kebijakan",
+    "managePreferences": "Kelola preferensi saya",
+    "ccpaNotice": "Kami tidak menjual data pribadi Anda.",
+    "acceptAll": "Terima semua",
+    "acceptSelected": "Terima yang dipilih",
+    "footerNotice": "Dengan melanjutkan, Anda menyetujui Syarat dan Ketentuan kami."
   },
   "devices": {
     "title": "Perangkat Terhubung",

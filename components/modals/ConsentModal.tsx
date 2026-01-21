@@ -1,17 +1,10 @@
 "use client";
 
-/**
- * ConsentModal - Modal RGPD au premier lancement
- * 
- * Affiche les consentements obligatoires et optionnels
- * Conforme RGPD Article 6 & 7
- */
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ChevronDown, X } from "lucide-react";
+import { Shield, ChevronDown, ChevronUp, ExternalLink, Check } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { ConsentState, CONSENT_VERSION, useConsent } from "@/lib/hooks/useConsent";
+import { ConsentState, CONSENT_VERSION } from "@/lib/hooks/useConsent";
 
 interface ConsentModalProps {
   isOpen: boolean;
@@ -19,241 +12,302 @@ interface ConsentModalProps {
   onAcceptAll: (consents: ConsentState) => void;
 }
 
-export default function ConsentModal({
-  isOpen,
-  onAccept,
-  onAcceptAll,
-}: ConsentModalProps) {
+export default function ConsentModal({ isOpen, onAccept, onAcceptAll }: ConsentModalProps) {
   const { t } = useTranslation();
-  const { consents } = useConsent();
-
-  const [privacy, setPrivacy] = useState(false);
-  const [analytics, setAnalytics] = useState(false);
-  const [marketing, setMarketing] = useState(false);
-  const [showDetails, setShowDetails] = useState({
-    analytics: false,
-    marketing: false,
+  
+  const [consents, setConsents] = useState<ConsentState>({
+    privacy: false,
+    analytics: true,    // Pré-coché par défaut (opt-out)
+    marketing: false,   // Non coché par défaut (opt-in)
+    version: CONSENT_VERSION,
+    timestamp: "",
   });
+  
+  const [showDetails, setShowDetails] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Si consents existent déjà, ne pas afficher
-  useEffect(() => {
-    if (consents) {
-      setPrivacy(consents.privacy);
-      setAnalytics(consents.analytics);
-      setMarketing(consents.marketing);
-    }
-  }, [consents]);
+  const handlePrivacyToggle = () => {
+    setConsents(prev => ({ ...prev, privacy: !prev.privacy }));
+    setError(null);
+  };
 
-  if (!isOpen || consents) return null;
+  const handleAnalyticsToggle = () => {
+    setConsents(prev => ({ ...prev, analytics: !prev.analytics }));
+  };
+
+  const handleMarketingToggle = () => {
+    setConsents(prev => ({ ...prev, marketing: !prev.marketing }));
+  };
 
   const handleAcceptAll = () => {
-    const allConsents: ConsentState = {
+    const finalConsents: ConsentState = {
       privacy: true,
       analytics: true,
       marketing: true,
       version: CONSENT_VERSION,
       timestamp: new Date().toISOString(),
     };
-    onAcceptAll(allConsents);
+    onAcceptAll(finalConsents);
   };
 
-  const handleAccept = () => {
-    if (!privacy) return; // Privacy obligatoire
-
-    const selectedConsents: ConsentState = {
-      privacy,
-      analytics,
-      marketing,
-      version: CONSENT_VERSION,
+  const handleAcceptSelected = () => {
+    if (!consents.privacy) {
+      setError(t("consent.privacyRequired") || "Privacy consent is required");
+      return;
+    }
+    
+    const finalConsents: ConsentState = {
+      ...consents,
       timestamp: new Date().toISOString(),
     };
-    onAccept(selectedConsents);
+    onAccept(finalConsents);
   };
 
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] flex items-center justify-center p-4"
-      >
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          className="w-full max-w-md bg-[#0A0A0F] rounded-3xl p-6 border border-white/10"
-        >
-          <h2 className="text-2xl font-semibold text-white mb-4">
-            {t("consent.modal.title")}
-          </h2>
+      {isOpen && (
+        <>
+          {/* Backdrop - pas de fermeture au clic (obligatoire) */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-md"
+            style={{ zIndex: 100 }}
+          />
 
-          <p className="text-gray-400 text-sm mb-6">
-            {t("consent.modal.description")}
-          </p>
-
-          {/* Privacy - Obligatoire */}
-          <label className="flex items-start gap-3 mb-4 cursor-pointer">
-            <div className="relative mt-0.5">
-              <input
-                type="checkbox"
-                checked={privacy}
-                onChange={(e) => setPrivacy(e.target.checked)}
-                className="sr-only"
-                required
-              />
-              <div
-                className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-                  privacy
-                    ? "bg-blue-500 border-blue-500"
-                    : "border-gray-500"
-                }`}
-              >
-                {privacy && <Check size={14} className="text-white" />}
+          {/* Modal */}
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed inset-0 flex items-center justify-center p-4"
+            style={{ zIndex: 101 }}
+          >
+            <div
+              className="relative w-full max-w-[420px] max-h-[90vh] overflow-y-auto rounded-3xl p-6"
+              style={{
+                background: "linear-gradient(145deg, rgba(20, 20, 25, 0.98), rgba(10, 10, 15, 0.99))",
+                backdropFilter: "blur(40px)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.8)",
+              }}
+            >
+              {/* Header avec icône */}
+              <div className="flex flex-col items-center mb-6">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05))",
+                    border: "1px solid rgba(59, 130, 246, 0.3)",
+                  }}
+                >
+                  <Shield size={32} className="text-blue-500" />
+                </motion.div>
+                
+                <h2 className="text-xl font-semibold text-white text-center">
+                  {t("consent.modal.title") || t("consent.title")}
+                </h2>
+                <p className="text-sm text-gray-400 text-center mt-2">
+                  {t("consent.modal.description") || t("consent.subtitle")}
+                </p>
               </div>
-            </div>
-            <div className="flex-1">
-              <span className="text-white text-sm font-medium">
-                {t("consent.modal.privacy.title")} <span className="text-red-400">*</span>
-              </span>
-              <p className="text-gray-400 text-xs mt-1">
-                {t("consent.modal.privacy.description")}
+
+              {/* Consentement Privacy (Obligatoire) */}
+              <div
+                className="p-4 rounded-xl mb-3"
+                style={{
+                  background: "rgba(255, 255, 255, 0.03)",
+                  border: error ? "1px solid rgba(239, 68, 68, 0.5)" : "1px solid rgba(255, 255, 255, 0.08)",
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <button
+                    onClick={handlePrivacyToggle}
+                    className={`w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 transition-all ${
+                      consents.privacy 
+                        ? "bg-blue-500" 
+                        : "bg-transparent border-2 border-gray-500"
+                    }`}
+                  >
+                    {consents.privacy && <Check size={14} className="text-white" />}
+                  </button>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-white font-medium">
+                        {t("consent.modal.privacy.title") || t("consent.privacyTitle")}
+                      </span>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-red-500/20 text-red-400">
+                        {t("consent.required") || "*"}
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-400 mt-1">
+                      {t("consent.modal.privacy.description") || t("consent.privacyDescription")}
+                    </p>
+                    <a
+                      href="/privacy"
+                      target="_blank"
+                      className="inline-flex items-center gap-1 text-xs text-blue-400 mt-2 hover:underline"
+                    >
+                      {t("consent.readPolicy") || t("consent.modal.privacyLink")}
+                      <ExternalLink size={12} />
+                    </a>
+                  </div>
+                </div>
+                {error && (
+                  <p className="text-xs text-red-400 mt-2 ml-9">{error}</p>
+                )}
+              </div>
+
+              {/* Toggle pour voir les options détaillées */}
+              <button
+                onClick={() => setShowDetails(!showDetails)}
+                className="w-full flex items-center justify-between p-3 rounded-xl mb-3 transition-colors hover:bg-white/5"
+                style={{
+                  background: "rgba(255, 255, 255, 0.02)",
+                  border: "1px solid rgba(255, 255, 255, 0.05)",
+                }}
+              >
+                <span className="text-sm text-gray-300">
+                  {t("consent.managePreferences") || t("consent.modal.managePreferences")}
+                </span>
+                {showDetails ? (
+                  <ChevronUp size={18} className="text-gray-400" />
+                ) : (
+                  <ChevronDown size={18} className="text-gray-400" />
+                )}
+              </button>
+
+              {/* Options détaillées */}
+              <AnimatePresence>
+                {showDetails && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    {/* Analytics */}
+                    <div
+                      className="p-4 rounded-xl mb-3"
+                      style={{
+                        background: "rgba(255, 255, 255, 0.03)",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                      }}
+                    >
+                      <div className="flex items-start gap-3">
+                        <button
+                          onClick={handleAnalyticsToggle}
+                          className={`w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 transition-all ${
+                            consents.analytics 
+                              ? "bg-blue-500" 
+                              : "bg-transparent border-2 border-gray-500"
+                          }`}
+                        >
+                          {consents.analytics && <Check size={14} className="text-white" />}
+                        </button>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-white font-medium">
+                              {t("consent.modal.analytics.title") || t("consent.analyticsTitle")}
+                            </span>
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-gray-500/20 text-gray-400">
+                              {t("consent.optional") || "Optional"}
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-400 mt-1">
+                            {t("consent.modal.analytics.description") || t("consent.analyticsDescription")}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Marketing */}
+                    <div
+                      className="p-4 rounded-xl mb-3"
+                      style={{
+                        background: "rgba(255, 255, 255, 0.03)",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                      }}
+                    >
+                      <div className="flex items-start gap-3">
+                        <button
+                          onClick={handleMarketingToggle}
+                          className={`w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 transition-all ${
+                            consents.marketing 
+                              ? "bg-blue-500" 
+                              : "bg-transparent border-2 border-gray-500"
+                          }`}
+                        >
+                          {consents.marketing && <Check size={14} className="text-white" />}
+                        </button>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-white font-medium">
+                              {t("consent.modal.marketing.title") || t("consent.marketingTitle")}
+                            </span>
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-gray-500/20 text-gray-400">
+                              {t("consent.optional") || "Optional"}
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-400 mt-1">
+                            {t("consent.modal.marketing.description") || t("consent.marketingDescription")}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Mention CCPA pour les US */}
+              <p className="text-xs text-gray-500 text-center mb-4">
+                {t("consent.modal.ccpa") || t("consent.ccpaNotice")}
+              </p>
+
+              {/* Boutons */}
+              <div className="space-y-3">
+                <motion.button
+                  onClick={handleAcceptAll}
+                  className="w-full py-3.5 rounded-xl text-white font-medium"
+                  style={{
+                    background: "linear-gradient(135deg, #3B82F6, #2563EB)",
+                    boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.4)",
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {t("consent.modal.acceptAll") || t("consent.acceptAll")}
+                </motion.button>
+
+                <motion.button
+                  onClick={handleAcceptSelected}
+                  className="w-full py-3.5 rounded-xl text-white font-medium"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.05)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                  }}
+                  whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {t("consent.modal.accept") || t("consent.acceptSelected")}
+                </motion.button>
+              </div>
+
+              {/* Footer légal */}
+              <p className="text-xs text-gray-500 text-center mt-4">
+                {t("consent.footerNotice") || t("consent.modal.footerNotice")}
               </p>
             </div>
-          </label>
-
-          {/* Analytics - Optionnel */}
-          <div className="mb-4">
-            <label className="flex items-start gap-3 cursor-pointer">
-              <div className="relative mt-0.5">
-                <input
-                  type="checkbox"
-                  checked={analytics}
-                  onChange={(e) => setAnalytics(e.target.checked)}
-                  className="sr-only"
-                />
-                <div
-                  className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-                    analytics
-                      ? "bg-blue-500 border-blue-500"
-                      : "border-gray-500"
-                  }`}
-                >
-                  {analytics && <Check size={14} className="text-white" />}
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <span className="text-white text-sm font-medium">
-                    {t("consent.modal.analytics.title")}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setShowDetails({ ...showDetails, analytics: !showDetails.analytics })
-                    }
-                    className="text-gray-400 hover:text-white"
-                  >
-                    <ChevronDown
-                      size={16}
-                      className={`transition-transform ${
-                        showDetails.analytics ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                </div>
-                {showDetails.analytics && (
-                  <p className="text-gray-400 text-xs mt-1">
-                    {t("consent.modal.analytics.description")}
-                  </p>
-                )}
-              </div>
-            </label>
-          </div>
-
-          {/* Marketing - Optionnel */}
-          <div className="mb-6">
-            <label className="flex items-start gap-3 cursor-pointer">
-              <div className="relative mt-0.5">
-                <input
-                  type="checkbox"
-                  checked={marketing}
-                  onChange={(e) => setMarketing(e.target.checked)}
-                  className="sr-only"
-                />
-                <div
-                  className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-                    marketing
-                      ? "bg-blue-500 border-blue-500"
-                      : "border-gray-500"
-                  }`}
-                >
-                  {marketing && <Check size={14} className="text-white" />}
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <span className="text-white text-sm font-medium">
-                    {t("consent.modal.marketing.title")}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setShowDetails({ ...showDetails, marketing: !showDetails.marketing })
-                    }
-                    className="text-gray-400 hover:text-white"
-                  >
-                    <ChevronDown
-                      size={16}
-                      className={`transition-transform ${
-                        showDetails.marketing ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                </div>
-                {showDetails.marketing && (
-                  <p className="text-gray-400 text-xs mt-1">
-                    {t("consent.modal.marketing.description")}
-                  </p>
-                )}
-              </div>
-            </label>
-          </div>
-
-          {/* CCPA Notice (US) */}
-          <p className="text-xs text-gray-500 mb-6 text-center">
-            {t("consent.modal.ccpa")}
-          </p>
-
-          {/* Links */}
-          <div className="flex gap-4 text-xs text-gray-400 mb-6 justify-center">
-            <a href="/privacy" className="hover:text-white underline">
-              {t("consent.modal.privacyLink")}
-            </a>
-            <span>•</span>
-            <a href="/terms" className="hover:text-white underline">
-              {t("consent.modal.termsLink")}
-            </a>
-          </div>
-
-          {/* Buttons */}
-          <div className="flex gap-3">
-            <button
-              onClick={handleAccept}
-              disabled={!privacy}
-              className="flex-1 py-3 px-4 rounded-xl bg-blue-500 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors"
-            >
-              {t("consent.modal.accept")}
-            </button>
-            <button
-              onClick={handleAcceptAll}
-              className="flex-1 py-3 px-4 rounded-xl bg-white/10 text-white font-semibold hover:bg-white/15 transition-colors"
-            >
-              {t("consent.modal.acceptAll")}
-            </button>
-          </div>
-        </motion.div>
-      </motion.div>
+          </motion.div>
+        </>
+      )}
     </AnimatePresence>
   );
 }

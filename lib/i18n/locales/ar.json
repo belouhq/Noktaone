@@ -356,7 +356,23 @@
       "deleting": "جاري الحذف...",
       "confirmDelete": "تأكيد الحذف",
       "deleteError": "حدث خطأ أثناء الحذف"
-    }
+    },
+    "subtitle": "نحن نحترم خصوصيتك. اختر ما تقبله.",
+    "required": "إلزامي",
+    "optional": "اختياري",
+    "privacyRequired": "الموافقة على سياسة الخصوصية إلزامية",
+    "privacyTitle": "البيانات الشخصية",
+    "privacyDescription": "ضروري لإنشاء حسابك وحفظ نتائجك.",
+    "analyticsTitle": "التحليلات",
+    "analyticsDescription": "يساعدنا في تحسين التطبيق (بشكل مجهول).",
+    "marketingTitle": "التسويق",
+    "marketingDescription": "استلام رسائل بريد إلكتروني ورسائل نصية حول مستجداتنا.",
+    "readPolicy": "اقرأ السياسة",
+    "managePreferences": "إدارة تفضيلاتي",
+    "ccpaNotice": "نحن لا نبيع بياناتك الشخصية.",
+    "acceptAll": "قبول الكل",
+    "acceptSelected": "قبول المحدد",
+    "footerNotice": "بمتابعتك، فإنك توافق على شروط الاستخدام الخاصة بنا."
   },
   "devices": {
     "title": "Connected Devices",

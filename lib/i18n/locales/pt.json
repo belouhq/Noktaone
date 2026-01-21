@@ -356,7 +356,23 @@
       "deleting": "Excluindo...",
       "confirmDelete": "Confirmar exclusão",
       "deleteError": "Erro ao excluir"
-    }
+    },
+    "subtitle": "Respeitamos sua privacidade. Escolha o que você aceita.",
+    "required": "Obrigatório",
+    "optional": "Opcional",
+    "privacyRequired": "O consentimento para a política de privacidade é obrigatório",
+    "privacyTitle": "Dados pessoais",
+    "privacyDescription": "Necessário para criar sua conta e salvar seus resultados.",
+    "analyticsTitle": "Analytics",
+    "analyticsDescription": "Nos ajuda a melhorar o aplicativo (anônimo).",
+    "marketingTitle": "Marketing",
+    "marketingDescription": "Receber emails e SMS sobre nossas novidades.",
+    "readPolicy": "Ler a política",
+    "managePreferences": "Gerenciar minhas preferências",
+    "ccpaNotice": "Não vendemos seus dados pessoais.",
+    "acceptAll": "Aceitar tudo",
+    "acceptSelected": "Aceitar seleção",
+    "footerNotice": "Ao continuar, você aceita nossos Termos de uso."
   },
   "devices": {
     "title": "Dispositivos Conectados",

@@ -356,7 +356,23 @@
       "deleting": "削除中...",
       "confirmDelete": "削除を確認",
       "deleteError": "削除中にエラーが発生しました"
-    }
+    },
+    "subtitle": "あなたのプライバシーを尊重します。受け入れる内容を選んでください。",
+    "required": "必須",
+    "optional": "オプション",
+    "privacyRequired": "プライバシーポリシーへの同意は必須です",
+    "privacyTitle": "個人データ",
+    "privacyDescription": "アカウントを作成し、結果を保存するために必要です。",
+    "analyticsTitle": "分析",
+    "analyticsDescription": "アプリを改善するのに役立ちます（匿名化されています）。",
+    "marketingTitle": "マーケティング",
+    "marketingDescription": "新しい情報についてのメールやSMSを受け取ります。",
+    "readPolicy": "ポリシーを読む",
+    "managePreferences": "設定を管理する",
+    "ccpaNotice": "私たちはあなたの個人データを販売しません。",
+    "acceptAll": "すべて受け入れる",
+    "acceptSelected": "選択を受け入れる",
+    "footerNotice": "続行することで、利用規約に同意したことになります。"
   },
   "devices": {
     "title": "接続デバイス",

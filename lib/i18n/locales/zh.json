@@ -356,7 +356,23 @@
       "deleting": "正在删除...",
       "confirmDelete": "确认删除",
       "deleteError": "删除时出错"
-    }
+    },
+    "subtitle": "我们尊重您的隐私。选择您接受的内容。",
+    "required": "必填",
+    "optional": "选填",
+    "privacyRequired": "同意隐私政策是必需的",
+    "privacyTitle": "个人数据",
+    "privacyDescription": "创建您的账户并保存您的结果所需。",
+    "analyticsTitle": "分析",
+    "analyticsDescription": "帮助我们改进应用程序（匿名）。",
+    "marketingTitle": "营销",
+    "marketingDescription": "接收关于我们新产品的电子邮件和短信。",
+    "readPolicy": "阅读政策",
+    "managePreferences": "管理我的偏好",
+    "ccpaNotice": "我们不会出售您的个人数据。",
+    "acceptAll": "全部接受",
+    "acceptSelected": "接受所选",
+    "footerNotice": "继续使用即表示您接受我们的服务条款。"
   },
   "devices": {
     "title": "连接设备",

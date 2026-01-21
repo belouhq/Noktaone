@@ -356,7 +356,23 @@
       "deleting": "삭제 중...",
       "confirmDelete": "삭제 확인",
       "deleteError": "삭제 중 오류 발생"
-    }
+    },
+    "subtitle": "우리는 귀하의 개인 정보를 존중합니다. 수락할 항목을 선택하세요.",
+    "required": "필수",
+    "optional": "선택",
+    "privacyRequired": "개인정보 보호정책에 대한 동의는 필수입니다.",
+    "privacyTitle": "개인정보",
+    "privacyDescription": "계정을 만들고 결과를 저장하는 데 필요합니다.",
+    "analyticsTitle": "분석",
+    "analyticsDescription": "앱을 개선하는 데 도움이 됩니다 (익명화됨).",
+    "marketingTitle": "마케팅",
+    "marketingDescription": "새로운 소식에 대한 이메일과 SMS를 받습니다.",
+    "readPolicy": "정책 읽기",
+    "managePreferences": "내 선호 관리",
+    "ccpaNotice": "귀하의 개인 데이터를 판매하지 않습니다.",
+    "acceptAll": "모두 수락",
+    "acceptSelected": "선택한 항목 수락",
+    "footerNotice": "계속 진행하면 이용 약관에 동의하는 것입니다."
   },
   "devices": {
     "title": "연결된 기기",

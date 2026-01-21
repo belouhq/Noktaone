@@ -356,7 +356,23 @@
       "deleting": "Löschen...",
       "confirmDelete": "Löschen bestätigen",
       "deleteError": "Fehler beim Löschen"
-    }
+    },
+    "subtitle": "Wir respektieren Ihre Privatsphäre. Wählen Sie, was Sie akzeptieren.",
+    "required": "Erforderlich",
+    "optional": "Optional",
+    "privacyRequired": "Die Zustimmung zur Datenschutzrichtlinie ist erforderlich",
+    "privacyTitle": "Persönliche Daten",
+    "privacyDescription": "Notwendig, um Ihr Konto zu erstellen und Ihre Ergebnisse zu speichern.",
+    "analyticsTitle": "Analysen",
+    "analyticsDescription": "Hilft uns, die App zu verbessern (anonymisiert).",
+    "marketingTitle": "Marketing",
+    "marketingDescription": "Erhalten Sie E-Mails und SMS über unsere Neuigkeiten.",
+    "readPolicy": "Richtlinie lesen",
+    "managePreferences": "Meine Präferenzen verwalten",
+    "ccpaNotice": "Wir verkaufen Ihre persönlichen Daten nicht.",
+    "acceptAll": "Alles akzeptieren",
+    "acceptSelected": "Auswahl akzeptieren",
+    "footerNotice": "Wenn Sie fortfahren, akzeptieren Sie unsere Nutzungsbedingungen."
   },
   "devices": {
     "title": "Verbundene Geräte",

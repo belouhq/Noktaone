@@ -356,7 +356,23 @@
       "deleting": "Eliminazione in corso...",
       "confirmDelete": "Conferma eliminazione",
       "deleteError": "Errore durante l'eliminazione"
-    }
+    },
+    "subtitle": "Rispettiamo la tua privacy. Scegli cosa accetti.",
+    "required": "Obbligatorio",
+    "optional": "Facoltativo",
+    "privacyRequired": "Il consenso alla politica sulla privacy è obbligatorio",
+    "privacyTitle": "Dati personali",
+    "privacyDescription": "Necessario per creare il tuo account e salvare i tuoi risultati.",
+    "analyticsTitle": "Analytics",
+    "analyticsDescription": "Ci aiuta a migliorare l'app (anonimizzato).",
+    "marketingTitle": "Marketing",
+    "marketingDescription": "Ricevi email e SMS sulle nostre novità.",
+    "readPolicy": "Leggi la politica",
+    "managePreferences": "Gestisci le mie preferenze",
+    "ccpaNotice": "Non vendiamo i tuoi dati personali.",
+    "acceptAll": "Accetta tutto",
+    "acceptSelected": "Accetta la selezione",
+    "footerNotice": "Continuando, accetti i nostri Termini di utilizzo."
   },
   "devices": {
     "title": "Dispositivi Connessi",
