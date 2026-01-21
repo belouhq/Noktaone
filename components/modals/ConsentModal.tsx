@@ -4,7 +4,15 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, ChevronDown, ChevronUp, ExternalLink, Check } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { ConsentState, CONSENT_VERSION } from "@/lib/hooks/useConsent";
+import { CONSENT_VERSION } from "@/lib/hooks/useConsent";
+
+export interface ConsentState {
+  privacy: boolean;
+  analytics: boolean;
+  marketing: boolean;
+  version: string;
+  timestamp: string;
+}
 
 interface ConsentModalProps {
   isOpen: boolean;

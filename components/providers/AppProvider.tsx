@@ -7,33 +7,40 @@
  */
 
 import { useState, useEffect } from "react";
-import { useConsent, ConsentState, CONSENT_VERSION } from "@/lib/hooks/useConsent";
+import { useConsent } from "@/lib/hooks/useConsent";
 import ConsentModal from "@/components/modals/ConsentModal";
+import { ConsentState } from "@/components/modals/ConsentModal";
 import { useAuthContext } from "./AuthProvider";
 
 export default function AppProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuthContext();
-  const { consents, updateConsents } = useConsent(user?.id);
+  const { hasConsented, isLoading, saveConsent, needsConsentUpdate } = useConsent(user?.id);
   const [showConsentModal, setShowConsentModal] = useState(false);
 
   useEffect(() => {
-    // Vérifier si consentement nécessaire
-    const hasConsent = consents && consents.version === CONSENT_VERSION;
+    // Attendre que le chargement soit terminé
+    if (isLoading) return;
+
+    // Afficher le modal si :
+    // 1. Pas de consentement OU
+    // 2. La version du consentement est obsolète
     const hasSeenModal = localStorage.getItem("nokta_consent_modal_seen") === "true";
 
-    if (!hasConsent && !hasSeenModal) {
+    if ((!hasConsented || needsConsentUpdate) && !hasSeenModal) {
       setShowConsentModal(true);
+    } else {
+      setShowConsentModal(false);
     }
-  }, [consents]);
+  }, [hasConsented, isLoading, needsConsentUpdate]);
 
   const handleAccept = async (newConsents: ConsentState) => {
-    await updateConsents(newConsents);
+    await saveConsent(newConsents);
     localStorage.setItem("nokta_consent_modal_seen", "true");
     setShowConsentModal(false);
   };
 
   const handleAcceptAll = async (newConsents: ConsentState) => {
-    await updateConsents(newConsents);
+    await saveConsent(newConsents);
     localStorage.setItem("nokta_consent_modal_seen", "true");
     setShowConsentModal(false);
   };
