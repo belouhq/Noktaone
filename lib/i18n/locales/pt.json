@@ -267,7 +267,15 @@
     "enableNotifications": "Ativar notificações",
     "notificationsDescription": "Fique por dentro dos seus resets e progresso",
     "yourReferralCode": "Seu código de referência",
-    "accountCreated": "Conta criada com sucesso!"
+    "accountCreated": "Conta criada com sucesso!",
+    "acceptTerms": "Eu aceito os",
+    "termsOfService": "Termos de Uso",
+    "and": "e a",
+    "privacyPolicy": "Política de Privacidade",
+    "marketingOptIn": "Receber dicas e ofertas",
+    "marketingOptInDescription": "E-mails ocasionais com dicas de bem-estar, novas funcionalidades e ofertas exclusivas. Cancelamento fácil.",
+    "dataUsageNotice": "Seus scans faciais são processados localmente. Apenas as métricas de bem-estar são armazenadas de forma segura.",
+    "termsRequired": "Você deve aceitar os Termos e a Política de Privacidade para criar uma conta"
   },
   "support": {
     "title": "Ajuda",

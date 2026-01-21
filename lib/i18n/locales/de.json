@@ -267,7 +267,15 @@
     "enableNotifications": "Benachrichtigungen aktivieren",
     "notificationsDescription": "Bleibe über deine Resets und Fortschritte informiert",
     "yourReferralCode": "Dein Empfehlungscode",
-    "accountCreated": "Konto erfolgreich erstellt!"
+    "accountCreated": "Konto erfolgreich erstellt!",
+    "acceptTerms": "Ich akzeptiere die",
+    "termsOfService": "Nutzungsbedingungen",
+    "and": "und die",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "marketingOptIn": "Tipps und Angebote erhalten",
+    "marketingOptInDescription": "Gelegentliche E-Mails mit Wellness-Tipps, neuen Funktionen und exklusiven Angeboten. Einfach abbestellen.",
+    "dataUsageNotice": "Ihre Gesichtsscans werden lokal verarbeitet. Nur die Wellness-Metriken werden sicher gespeichert.",
+    "termsRequired": "Sie müssen die Nutzungsbedingungen und die Datenschutzrichtlinie akzeptieren, um ein Konto zu erstellen"
   },
   "support": {
     "title": "Hilfe",

@@ -267,7 +267,15 @@
     "enableNotifications": "تفعيل الإشعارات",
     "notificationsDescription": "ابق على اطلاع بإعادة التعيين والتقدم الخاص بك",
     "yourReferralCode": "رمز الإحالة الخاص بك",
-    "accountCreated": "تم إنشاء الحساب بنجاح!"
+    "accountCreated": "تم إنشاء الحساب بنجاح!",
+    "acceptTerms": "أوافق على",
+    "termsOfService": "شروط الاستخدام",
+    "and": "و",
+    "privacyPolicy": "سياسة الخصوصية",
+    "marketingOptIn": "استلام نصائح وعروض",
+    "marketingOptInDescription": "رسائل بريد إلكتروني عرضية تحتوي على نصائح للعناية الذاتية، ميزات جديدة وعروض حصرية. إلغاء الاشتراك سهل.",
+    "dataUsageNotice": "يتم معالجة مسحات وجهك محليًا. يتم تخزين مقاييس العناية الذاتية بشكل آمن.",
+    "termsRequired": "يجب عليك قبول الشروط وسياسة الخصوصية لإنشاء حساب"
   },
   "support": {
     "title": "المساعدة",

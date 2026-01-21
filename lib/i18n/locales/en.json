@@ -469,7 +469,15 @@
     "enableNotifications": "Enable notifications",
     "notificationsDescription": "Stay informed about your resets and progress",
     "yourReferralCode": "Your referral code",
-    "accountCreated": "Account created successfully!"
+    "accountCreated": "Account created successfully!",
+    "acceptTerms": "I accept the",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy",
+    "marketingOptIn": "Keep me updated with tips and offers",
+    "marketingOptInDescription": "Occasional emails about wellness tips, new features, and exclusive offers. Unsubscribe anytime.",
+    "dataUsageNotice": "Your facial scans are processed locally. Only wellness metrics are stored securely.",
+    "termsRequired": "You must accept the Terms and Privacy Policy to create an account"
   },
   "faq": {
     "title": "FAQ",

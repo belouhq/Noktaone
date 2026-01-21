@@ -267,7 +267,15 @@
     "enableNotifications": "通知を有効にする",
     "notificationsDescription": "リセットと進捗を把握する",
     "yourReferralCode": "あなたの紹介コード",
-    "accountCreated": "アカウントが正常に作成されました！"
+    "accountCreated": "アカウントが正常に作成されました！",
+    "acceptTerms": "私は",
+    "termsOfService": "利用規約に同意します",
+    "and": "と",
+    "privacyPolicy": "プライバシーポリシーに同意します",
+    "marketingOptIn": "アドバイスやオファーを受け取る",
+    "marketingOptInDescription": "ウェルネスに関するアドバイス、新機能、限定オファーを含む時折のメール。簡単に退会できます。",
+    "dataUsageNotice": "あなたの顔のスキャンはローカルで処理されます。ウェルネスのメトリックのみが安全に保存されます。",
+    "termsRequired": "アカウントを作成するには、利用規約とプライバシーポリシーに同意する必要があります"
   },
   "support": {
     "title": "ヘルプ",

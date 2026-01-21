@@ -1,118 +1,132 @@
 "use client";
 
-/**
- * SignupConsent - Checkboxes de consentement dans le flow d'inscription
- * 
- * Version simplifiée pour le signup
- */
-
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { motion } from "framer-motion";
+import { Check, ExternalLink } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
-export interface SignupConsentState {
-  privacy: boolean;
-  analytics: boolean;
-  marketing: boolean;
-}
-
 interface SignupConsentProps {
-  consents: SignupConsentState;
   onConsentChange: (consents: SignupConsentState) => void;
+  consents: SignupConsentState;
 }
 
-export default function SignupConsent({
-  consents,
-  onConsentChange,
-}: SignupConsentProps) {
-  const { t } = useTranslation();
+export interface SignupConsentState {
+  termsAccepted: boolean;
+  marketingOptIn: boolean;
+}
 
-  const updateConsent = (key: keyof SignupConsentState, value: boolean) => {
+/**
+ * Composant de consentement à intégrer dans StepThree.tsx (ou la dernière étape du signup)
+ * AVANT le bouton "Create Account"
+ */
+export default function SignupConsent({ onConsentChange, consents }: SignupConsentProps) {
+  const { t } = useTranslation();
+  const [error, setError] = useState<string | null>(null);
+
+  const handleTermsToggle = () => {
     onConsentChange({
       ...consents,
-      [key]: value,
+      termsAccepted: !consents.termsAccepted,
+    });
+    setError(null);
+  };
+
+  const handleMarketingToggle = () => {
+    onConsentChange({
+      ...consents,
+      marketingOptIn: !consents.marketingOptIn,
     });
   };
 
   return (
-    <div className="space-y-4">
-      {/* Privacy - Obligatoire */}
-      <label className="flex items-start gap-3 cursor-pointer">
-        <div className="relative mt-0.5">
-          <input
-            type="checkbox"
-            checked={consents.privacy}
-            onChange={(e) => updateConsent("privacy", e.target.checked)}
-            className="sr-only"
-            required
-          />
-          <div
-            className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-              consents.privacy
-                ? "bg-blue-500 border-blue-500"
-                : "border-gray-500"
+    <div className="space-y-3 mt-6 mb-4">
+      {/* Consentement CGU/Privacy (Obligatoire) */}
+      <motion.div
+        className="p-4 rounded-xl"
+        style={{
+          background: "rgba(255, 255, 255, 0.03)",
+          border: error 
+            ? "1px solid rgba(239, 68, 68, 0.5)" 
+            : "1px solid rgba(255, 255, 255, 0.08)",
+        }}
+        animate={error ? { x: [-5, 5, -5, 5, 0] } : {}}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="flex items-start gap-3">
+          <button
+            type="button"
+            onClick={handleTermsToggle}
+            className={`w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5 transition-all ${
+              consents.termsAccepted
+                ? "bg-blue-500"
+                : "bg-transparent border-2 border-gray-500 hover:border-gray-400"
             }`}
           >
-            {consents.privacy && <Check size={14} className="text-white" />}
+            {consents.termsAccepted && <Check size={12} className="text-white" />}
+          </button>
+          <div className="flex-1">
+            <p className="text-sm text-white">
+              {t("signup.acceptTerms") || "I accept the"}{" "}
+              <a
+                href="/terms"
+                target="_blank"
+                className="text-blue-400 hover:underline inline-flex items-center gap-1"
+              >
+                {t("signup.termsOfService") || "Terms of Service"}
+                <ExternalLink size={12} />
+              </a>
+              {" "}{t("signup.and") || "and"}{" "}
+              <a
+                href="/privacy"
+                target="_blank"
+                className="text-blue-400 hover:underline inline-flex items-center gap-1"
+              >
+                {t("signup.privacyPolicy") || "Privacy Policy"}
+                <ExternalLink size={12} />
+              </a>
+              <span className="text-red-400 ml-1">*</span>
+            </p>
           </div>
         </div>
-        <div className="flex-1">
-          <span className="text-white text-sm">
-            {t("consent.signup.privacy")} <span className="text-red-400">*</span>
-          </span>
-        </div>
-      </label>
+        {error && (
+          <p className="text-xs text-red-400 mt-2 ml-8">{error}</p>
+        )}
+      </motion.div>
 
-      {/* Analytics - Optionnel */}
-      <label className="flex items-start gap-3 cursor-pointer">
-        <div className="relative mt-0.5">
-          <input
-            type="checkbox"
-            checked={consents.analytics}
-            onChange={(e) => updateConsent("analytics", e.target.checked)}
-            className="sr-only"
-          />
-          <div
-            className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-              consents.analytics
-                ? "bg-blue-500 border-blue-500"
-                : "border-gray-500"
+      {/* Opt-in Marketing (Optionnel) */}
+      <div
+        className="p-4 rounded-xl"
+        style={{
+          background: "rgba(255, 255, 255, 0.03)",
+          border: "1px solid rgba(255, 255, 255, 0.08)",
+        }}
+      >
+        <div className="flex items-start gap-3">
+          <button
+            type="button"
+            onClick={handleMarketingToggle}
+            className={`w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5 transition-all ${
+              consents.marketingOptIn
+                ? "bg-blue-500"
+                : "bg-transparent border-2 border-gray-500 hover:border-gray-400"
             }`}
           >
-            {consents.analytics && <Check size={14} className="text-white" />}
+            {consents.marketingOptIn && <Check size={12} className="text-white" />}
+          </button>
+          <div className="flex-1">
+            <p className="text-sm text-gray-300">
+              {t("signup.marketingOptIn") || "Keep me updated with tips and offers"}
+            </p>
+            <p className="text-xs text-gray-500 mt-1">
+              {t("signup.marketingOptInDescription") || "Occasional emails about wellness tips, new features, and exclusive offers. Unsubscribe anytime."}
+            </p>
           </div>
         </div>
-        <span className="text-gray-400 text-sm">
-          {t("consent.signup.analytics")}
-        </span>
-      </label>
+      </div>
 
-      {/* Marketing - Optionnel */}
-      <label className="flex items-start gap-3 cursor-pointer">
-        <div className="relative mt-0.5">
-          <input
-            type="checkbox"
-            checked={consents.marketing}
-            onChange={(e) => updateConsent("marketing", e.target.checked)}
-            className="sr-only"
-          />
-          <div
-            className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
-              consents.marketing
-                ? "bg-blue-500 border-blue-500"
-                : "border-gray-500"
-            }`}
-          >
-            {consents.marketing && <Check size={14} className="text-white" />}
-          </div>
-        </div>
-        <span className="text-gray-400 text-sm">
-          {t("consent.signup.marketing")}
-        </span>
-      </label>
-
-      <p className="text-xs text-gray-500 mt-4">
-        {t("consent.signup.links")}
+      {/* Mention légale */}
+      <p className="text-xs text-gray-500 text-center px-4">
+        {t("signup.dataUsageNotice") || "Your facial scans are processed locally. Only wellness metrics are stored securely."}
       </p>
     </div>
   );

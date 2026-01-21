@@ -267,7 +267,15 @@
     "enableNotifications": "알림 활성화",
     "notificationsDescription": "리셋 및 진행 상황에 대한 정보를 유지하세요",
     "yourReferralCode": "당신의 추천 코드",
-    "accountCreated": "계정이 성공적으로 생성되었습니다!"
+    "accountCreated": "계정이 성공적으로 생성되었습니다!",
+    "acceptTerms": "저는 다음에 동의합니다",
+    "termsOfService": "이용 약관",
+    "and": "그리고",
+    "privacyPolicy": "개인정보 보호정책",
+    "marketingOptIn": "조언 및 제안 받기",
+    "marketingOptInDescription": "웰니스 팁, 새로운 기능 및 독점 제안이 포함된 간헐적인 이메일. 쉽게 구독 취소 가능.",
+    "dataUsageNotice": "귀하의 얼굴 스캔은 로컬에서 처리됩니다. 웰니스 메트릭만 안전하게 저장됩니다.",
+    "termsRequired": "계정을 만들려면 이용 약관 및 개인정보 보호정책에 동의해야 합니다."
   },
   "support": {
     "title": "도움",

@@ -488,7 +488,15 @@
     "enableNotifications": "Activer les notifications",
     "notificationsDescription": "Restez informé de vos resets et progrès",
     "yourReferralCode": "Votre code de parrainage",
-    "accountCreated": "Compte créé avec succès !"
+    "accountCreated": "Compte créé avec succès !",
+    "acceptTerms": "J'accepte les",
+    "termsOfService": "Conditions d'Utilisation",
+    "and": "et la",
+    "privacyPolicy": "Politique de Confidentialité",
+    "marketingOptIn": "Recevoir des conseils et offres",
+    "marketingOptInDescription": "Emails occasionnels avec des conseils wellness, nouvelles fonctionnalités et offres exclusives. Désabonnement facile.",
+    "dataUsageNotice": "Vos scans faciaux sont traités localement. Seules les métriques wellness sont stockées de façon sécurisée.",
+    "termsRequired": "Vous devez accepter les Conditions et la Politique de Confidentialité pour créer un compte"
   },
   "faq": {
     "title": "FAQ",

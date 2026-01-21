@@ -267,7 +267,15 @@
     "enableNotifications": "Aktifkan notifikasi",
     "notificationsDescription": "Tetap terinformasi tentang reset dan kemajuan Anda",
     "yourReferralCode": "Kode rujukan Anda",
-    "accountCreated": "Akun berhasil dibuat!"
+    "accountCreated": "Akun berhasil dibuat!",
+    "acceptTerms": "Saya menerima",
+    "termsOfService": "Ketentuan Penggunaan",
+    "and": "dan",
+    "privacyPolicy": "Kebijakan Privasi",
+    "marketingOptIn": "Menerima tips dan penawaran",
+    "marketingOptInDescription": "Email sesekali dengan tips wellness, fitur baru, dan penawaran eksklusif. Mudah untuk berhenti berlangganan.",
+    "dataUsageNotice": "Pindai wajah Anda diproses secara lokal. Hanya metrik wellness yang disimpan dengan aman.",
+    "termsRequired": "Anda harus menerima Ketentuan dan Kebijakan Privasi untuk membuat akun"
   },
   "support": {
     "title": "Bantuan",

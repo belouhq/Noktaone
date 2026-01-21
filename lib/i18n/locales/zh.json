@@ -267,7 +267,15 @@
     "enableNotifications": "启用通知",
     "notificationsDescription": "随时了解你的重置和进展",
     "yourReferralCode": "你的推荐码",
-    "accountCreated": "账户创建成功！"
+    "accountCreated": "账户创建成功！",
+    "acceptTerms": "我接受",
+    "termsOfService": "使用条款",
+    "and": "和",
+    "privacyPolicy": "隐私政策",
+    "marketingOptIn": "接收建议和优惠",
+    "marketingOptInDescription": "偶尔发送关于健康的小贴士、新功能和独家优惠的邮件。轻松退订。",
+    "dataUsageNotice": "您的面部扫描在本地处理。只有健康指标会安全存储。",
+    "termsRequired": "您必须接受使用条款和隐私政策才能创建账户"
   },
   "support": {
     "title": "帮助",
