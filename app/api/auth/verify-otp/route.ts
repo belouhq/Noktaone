@@ -104,16 +104,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Incrémenter les tentatives
-    await supabase
-      .from("phone_verifications")
-      .update({ attempts: verification.attempts + 1 })
-      .eq("phone", phone);
-
-    // Vérifier le code (comparaison hash)
+    // Vérifier le code (comparaison hash) AVANT d'incrémenter
     const hashedInput = await hashOTP(code);
     if (hashedInput !== verification.otp_hash) {
-      const remaining = MAX_ATTEMPTS - verification.attempts - 1;
+      // Incrémenter les tentatives seulement si le code est incorrect
+      const newAttempts = verification.attempts + 1;
+      await supabase
+        .from("phone_verifications")
+        .update({ attempts: newAttempts })
+        .eq("phone", phone);
+
+      const remaining = MAX_ATTEMPTS - newAttempts;
       return NextResponse.json(
         { 
           error: `Code incorrect. ${remaining} tentative(s) restante(s).`,
@@ -177,7 +178,7 @@ export async function POST(request: NextRequest) {
           sms_consent: verification.sms_consent,
           sms_consent_at: verification.consent_timestamp,
           language: getLanguageFromRequest(request),
-          country: await getCountryFromPhone(phone),
+          country: getCountryFromPhone(phone),
           created_at: new Date().toISOString(),
         });
 
@@ -198,17 +199,12 @@ export async function POST(request: NextRequest) {
       .delete()
       .eq("phone", phone);
 
-    // Créer une session
-    const { data: sessionData, error: sessionError } = await supabase.auth.admin.generateLink({
-      type: "magiclink",
-      email: `${phone.replace("+", "")}@phone.nokta.app`, // Email fictif pour le système
-    });
-
     // Créer un token de session custom
     const sessionToken = crypto.randomUUID();
     const sessionExpiry = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 jours
 
-    await supabase
+    // Insérer la session dans la base de données
+    const { error: sessionInsertError } = await supabase
       .from("sessions")
       .insert({
         id: sessionToken,
@@ -216,6 +212,12 @@ export async function POST(request: NextRequest) {
         expires_at: sessionExpiry.toISOString(),
         created_at: new Date().toISOString(),
       });
+
+    if (sessionInsertError) {
+      console.error("Session creation error:", sessionInsertError);
+      // Continue quand même - la session cookie sera créée mais pas persistée en DB
+      // L'utilisateur pourra toujours utiliser l'app, mais devra se reconnecter après expiration
+    }
 
     // Set cookie
     const cookieStore = await cookies();
@@ -254,7 +256,7 @@ function getLanguageFromRequest(request: NextRequest): string {
   return supported.includes(primary) ? primary : "en";
 }
 
-async function getCountryFromPhone(phone: string): Promise<string> {
+function getCountryFromPhone(phone: string): string {
   // Mapping simple des préfixes
   const prefixMap: Record<string, string> = {
     "+33": "FR",
