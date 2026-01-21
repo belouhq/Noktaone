@@ -398,17 +398,17 @@
     "saved": "Saved!",
     "analyticsTitle": "Analytics",
     "analyticsDescription": "Share anonymous usage data",
-    "marketingTitle": "Marketing Emails",
-    "marketingDescription": "Tips, news, and offers",
+    "marketingTitle": "Marketing emails",
+    "marketingDescription": "Tips, updates, and offers",
     "exportTitle": "Export my data",
-    "exportDescription": "Download all your Nokta data (Article 20 GDPR)",
+    "exportDescription": "Download all your Nokta data (GDPR Article 20)",
     "deleteTitle": "Delete my account",
-    "deleteDescription": "Permanently delete all your data",
+    "deleteDescription": "Permanently remove all your data",
     "deleteConfirmTitle": "Delete your account?",
-    "deleteConfirmDescription": "This action is irreversible. All your data, including scan history and preferences, will be permanently deleted.",
+    "deleteConfirmDescription": "This action is permanent and cannot be undone. All your data, including scan history and preferences, will be permanently deleted.",
     "deleteConfirmLabel": "Type DELETE to confirm",
     "cancel": "Cancel",
-    "confirmDelete": "Delete account"
+    "confirmDelete": "Delete Account"
   },
   "info": {
     "whatIsSkane": "WHAT IS A SKANE?",
