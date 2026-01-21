@@ -30,9 +30,12 @@ export default function Home() {
   const { lastSkane, isLoading } = useLastSkane();
 
   // Rediriger vers home-adaptation si en mode adaptation (jours 1-7)
+  // MAIS seulement si l'utilisateur n'a pas explicitement quitté le mode adaptation
   useEffect(() => {
     const onboardingCompleted = localStorage.getItem("onboarding_completed");
-    if (onboardingCompleted) {
+    const adaptationExited = sessionStorage.getItem("adaptation_exited");
+    
+    if (onboardingCompleted && !adaptationExited) {
       const day = getAdaptationDay();
       if (day > 0 && day <= 7) {
         router.push("/home-adaptation");

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+import { User, X } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { BottomNav } from "@/components/ui/BottomNav";
 
@@ -65,8 +65,34 @@ export default function HomeAdaptationPage() {
     router.push("/skane");
   };
 
+  const handleExitAdaptation = () => {
+    // Marquer que l'utilisateur a quitté le mode adaptation
+    sessionStorage.setItem("adaptation_exited", "true");
+    // Retirer le mode adaptation et revenir à la page d'accueil normale
+    localStorage.removeItem("adaptation_start_date");
+    localStorage.removeItem("adaptation_day");
+    router.push("/");
+  };
+
   return (
     <main className="fixed inset-0 bg-nokta-one-black flex flex-col">
+      {/* Bouton retour en haut à gauche */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        onClick={handleExitAdaptation}
+        className="absolute top-6 left-6 z-20 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+        style={{
+          backdropFilter: "blur(10px)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        aria-label="Retour à l'accueil"
+      >
+        <X size={20} className="text-white/70" />
+      </motion.button>
+
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
