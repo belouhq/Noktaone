@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import { X } from "lucide-react";
 
 /**
  * ONBOARDING - Étape 8 : Introduction de la phase d'adaptation
@@ -20,8 +21,30 @@ export default function OnboardingAdaptationPage() {
     router.push("/onboarding/best-practices");
   };
 
+  const handleBack = () => {
+    // Retour à la page d'accueil normale
+    router.push("/");
+  };
+
   return (
     <main className="fixed inset-0 bg-nokta-one-black flex flex-col items-center justify-between px-8 py-16">
+      {/* Bouton retour en haut à gauche */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        onClick={handleBack}
+        className="absolute top-6 left-6 z-20 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+        style={{
+          backdropFilter: "blur(10px)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        aria-label="Retour à l'accueil"
+      >
+        <X size={20} className="text-white/70" />
+      </motion.button>
+
       {/* Espace haut */}
       <div className="pt-8" />
 
