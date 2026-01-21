@@ -19,10 +19,8 @@ export interface ConsentState {
   timestamp: string;
 }
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+// Note: useConsent is client-side, so we use anon key
+// For server-side operations (export/delete), use service role key
 
 /**
  * Charger les consentements depuis localStorage ou Supabase
@@ -79,7 +77,13 @@ async function loadConsents(userId?: string): Promise<ConsentState | null> {
 
   // 2. Si userId, charger depuis Supabase
   if (userId) {
-    const { data } = await supabase
+    const { createClient } = await import("@supabase/supabase-js");
+    const client = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
+    
+    const { data } = await client
       .from("profiles")
       .select("consent_version, consent_at, marketing_opt_in")
       .eq("id", userId)
@@ -103,8 +107,14 @@ async function loadConsents(userId?: string): Promise<ConsentState | null> {
  * Sauvegarder les consentements sur le serveur
  */
 async function saveConsentToServer(userId: string, consent: ConsentState) {
+  const { createClient } = await import("@supabase/supabase-js");
+  const client = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+
   // Insert dans consent_log
-  await supabase.from("consent_log").insert([
+  await client.from("consent_log").insert([
     {
       user_id: userId,
       consent_type: "privacy",
@@ -129,7 +139,7 @@ async function saveConsentToServer(userId: string, consent: ConsentState) {
   ]);
 
   // Update profiles
-  await supabase
+  await client
     .from("profiles")
     .update({
       consent_version: consent.version,
@@ -143,19 +153,25 @@ async function saveConsentToServer(userId: string, consent: ConsentState) {
  * Exporter toutes les données utilisateur (Article 20 RGPD)
  */
 export async function exportUserData(userId: string): Promise<Blob> {
-  const { data: profile } = await supabase
+  const { createClient } = await import("@supabase/supabase-js");
+  const client = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+
+  const { data: profile } = await client
     .from("profiles")
     .select("*")
     .eq("id", userId)
     .single();
 
-  const { data: sessions } = await supabase
+  const { data: sessions } = await client
     .from("skane_sessions")
     .select("*")
     .eq("user_id", userId)
     .order("created_at", { ascending: false });
 
-  const { data: consents } = await supabase
+  const { data: consents } = await client
     .from("consent_log")
     .select("*")
     .eq("user_id", userId)
@@ -178,8 +194,14 @@ export async function exportUserData(userId: string): Promise<Blob> {
  * Supprimer le compte utilisateur (Article 17 RGPD)
  */
 export async function deleteUserAccount(userId: string): Promise<void> {
+  const { createClient } = await import("@supabase/supabase-js");
+  const adminClient = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+
   // Anonymiser les données (pas de hard delete pour audit)
-  await supabase
+  await adminClient
     .from("profiles")
     .update({
       account_status: "deleted",
@@ -191,11 +213,6 @@ export async function deleteUserAccount(userId: string): Promise<void> {
     .eq("id", userId);
 
   // Supprimer l'utilisateur Auth
-  const { createClient } = await import("@supabase/supabase-js");
-  const adminClient = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
   await adminClient.auth.admin.deleteUser(userId);
 
   // Nettoyer localStorage
