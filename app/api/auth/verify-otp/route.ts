@@ -1,12 +1,15 @@
 /**
- * API Route: Verify OTP and create/login user
+ * API Route: Verify OTP
  * 
  * POST /api/auth/verify-otp
  * Body: { phone: string, code: string }
+ * 
+ * Crée ou connecte l'utilisateur après vérification
  */
 
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { cookies } from "next/headers";
 
 // Types
 interface VerifyOTPRequest {
@@ -14,38 +17,34 @@ interface VerifyOTPRequest {
   code: string;
 }
 
-// Rate limiting pour vérification
-const verifyRateLimitMap = new Map<string, { count: number; resetAt: number }>();
-const VERIFY_RATE_LIMIT_MAX = 5; // 5 tentatives
-const VERIFY_RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
-
-function checkVerifyRateLimit(phone: string): { allowed: boolean; retryAfter?: number } {
-  const now = Date.now();
-  const entry = verifyRateLimitMap.get(phone);
-
-  if (!entry || now > entry.resetAt) {
-    verifyRateLimitMap.set(phone, { count: 1, resetAt: now + VERIFY_RATE_LIMIT_WINDOW });
-    return { allowed: true };
-  }
-
-  if (entry.count >= VERIFY_RATE_LIMIT_MAX) {
-    return { 
-      allowed: false, 
-      retryAfter: Math.ceil((entry.resetAt - now) / 1000) 
-    };
-  }
-
-  entry.count++;
-  return { allowed: true };
+// Validation OTP format
+function isValidOTPFormat(code: string): boolean {
+  return /^\d{6}$/.test(code);
 }
 
 // Hash OTP pour comparaison
 async function hashOTP(otp: string): Promise<string> {
   const encoder = new TextEncoder();
-  const data = encoder.encode(otp + (process.env.OTP_SALT || "default-salt-change-in-production"));
+  const data = encoder.encode(otp + process.env.OTP_SALT);
   const hashBuffer = await crypto.subtle.digest("SHA-256", data);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+// Générer un username unique
+function generateUsername(): string {
+  const adjectives = ["swift", "calm", "bright", "zen", "flow", "pure", "clear"];
+  const nouns = ["wave", "light", "mind", "soul", "breath", "focus", "peace"];
+  const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+  const noun = nouns[Math.floor(Math.random() * nouns.length)];
+  const num = Math.floor(1000 + Math.random() * 9000);
+  return `${adj}${noun}${num}`;
+}
+
+// Générer un referral code
+function generateReferralCode(username: string): string {
+  const suffix = Math.floor(1000 + Math.random() * 9000);
+  return `@${username}-${suffix}`;
 }
 
 export async function POST(request: NextRequest) {
@@ -53,7 +52,7 @@ export async function POST(request: NextRequest) {
     const body: VerifyOTPRequest = await request.json();
     const { phone, code } = body;
 
-    // Validation
+    // Validation basique
     if (!phone || !code) {
       return NextResponse.json(
         { error: "Téléphone et code requis" },
@@ -61,114 +60,101 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (code.length !== 6 || !/^\d{6}$/.test(code)) {
+    if (!isValidOTPFormat(code)) {
       return NextResponse.json(
-        { error: "Code invalide (6 chiffres requis)" },
+        { error: "Format de code invalide" },
         { status: 400 }
       );
     }
 
-    // Rate limiting
-    const rateCheck = checkVerifyRateLimit(phone);
-    if (!rateCheck.allowed) {
-      return NextResponse.json(
-        { 
-          error: `Trop de tentatives. Réessayez dans ${rateCheck.retryAfter}s`,
-          retryAfter: rateCheck.retryAfter 
-        },
-        { status: 429 }
-      );
-    }
-
-    // Supabase client
+    // Supabase client avec service role
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
-    // Hash le code fourni
-    const codeHash = await hashOTP(code);
-
-    // Récupérer la vérification en cours
+    // Récupérer la vérification en attente
     const { data: verification, error: fetchError } = await supabase
       .from("phone_verifications")
       .select("*")
       .eq("phone", phone)
-      .eq("otp_hash", codeHash)
-      .eq("verified", false)
-      .gt("expires_at", new Date().toISOString())
-      .order("created_at", { ascending: false })
-      .limit(1)
       .single();
 
     if (fetchError || !verification) {
-      // Incrémenter les tentatives même en cas d'échec (si un enregistrement existe)
-      const { data: existingVerification } = await supabase
-        .from("phone_verifications")
-        .select("attempts")
-        .eq("phone", phone)
-        .order("created_at", { ascending: false })
-        .limit(1)
-        .single();
-
-      if (existingVerification) {
-        await supabase
-          .from("phone_verifications")
-          .update({ 
-            attempts: (existingVerification.attempts || 0) + 1,
-            last_attempt_at: new Date().toISOString(),
-          })
-          .eq("phone", phone);
-      }
-
       return NextResponse.json(
-        { error: "Code invalide ou expiré" },
-        { status: 401 }
+        { error: "Aucune vérification en cours pour ce numéro" },
+        { status: 400 }
       );
     }
 
-    // Vérifier le nombre de tentatives
-    if (verification.attempts >= 5) {
+    // Vérifier expiration
+    if (new Date(verification.expires_at) < new Date()) {
+      return NextResponse.json(
+        { error: "Code expiré. Demandez un nouveau code." },
+        { status: 400 }
+      );
+    }
+
+    // Vérifier nombre de tentatives (anti brute-force)
+    const MAX_ATTEMPTS = 5;
+    if (verification.attempts >= MAX_ATTEMPTS) {
       return NextResponse.json(
         { error: "Trop de tentatives. Demandez un nouveau code." },
         { status: 429 }
       );
     }
 
-    // Marquer comme vérifié
+    // Incrémenter les tentatives
     await supabase
       .from("phone_verifications")
-      .update({ 
-        verified: true,
-        verified_at: new Date().toISOString(),
-        attempts: verification.attempts + 1,
-      })
-      .eq("id", verification.id);
+      .update({ attempts: verification.attempts + 1 })
+      .eq("phone", phone);
 
-    // Vérifier si l'utilisateur existe déjà
+    // Vérifier le code (comparaison hash)
+    const hashedInput = await hashOTP(code);
+    if (hashedInput !== verification.otp_hash) {
+      const remaining = MAX_ATTEMPTS - verification.attempts - 1;
+      return NextResponse.json(
+        { 
+          error: `Code incorrect. ${remaining} tentative(s) restante(s).`,
+          attemptsRemaining: remaining 
+        },
+        { status: 400 }
+      );
+    }
+
+    // ✅ Code valide - Créer ou récupérer l'utilisateur
+
+    // Chercher un utilisateur existant avec ce téléphone
     const { data: existingProfile } = await supabase
-      .from("user_profiles")
-      .select("user_id, phone")
+      .from("profiles")
+      .select("id, username")
       .eq("phone", phone)
       .single();
 
     let userId: string;
+    let isNewUser = false;
 
-    if (existingProfile?.user_id) {
-      // Utilisateur existant - connecter
-      userId = existingProfile.user_id;
+    if (existingProfile) {
+      // Utilisateur existant - connexion
+      userId = existingProfile.id;
     } else {
-      // Nouvel utilisateur - créer compte
-      // Créer l'utilisateur Supabase Auth
+      // Nouvel utilisateur - création
+      isNewUser = true;
+
+      // Créer l'utilisateur dans Supabase Auth
       const { data: authData, error: authError } = await supabase.auth.admin.createUser({
-        email: `${phone.replace(/\D/g, "")}@nokta.phone`,
-        phone: phone,
-        email_confirm: true,
-        phone_confirm: true,
+        phone,
+        phone_confirm: true, // Téléphone déjà vérifié
+        user_metadata: {
+          phone_verified: true,
+          sms_consent: verification.sms_consent,
+          consent_timestamp: verification.consent_timestamp,
+        },
       });
 
       if (authError || !authData.user) {
-        console.error("[verify-otp] Auth error:", authError);
+        console.error("Auth creation error:", authError);
         return NextResponse.json(
           { error: "Erreur lors de la création du compte" },
           { status: 500 }
@@ -177,30 +163,80 @@ export async function POST(request: NextRequest) {
 
       userId = authData.user.id;
 
-      // Créer le profil utilisateur
+      // Créer le profil
+      const username = generateUsername();
+      const referralCode = generateReferralCode(username);
+
       const { error: profileError } = await supabase
-        .from("user_profiles")
+        .from("profiles")
         .insert({
-          user_id: userId,
-          phone: phone,
+          id: userId,
+          phone,
+          username,
+          referral_code: referralCode,
           sms_consent: verification.sms_consent,
           sms_consent_at: verification.consent_timestamp,
+          language: getLanguageFromRequest(request),
+          country: await getCountryFromPhone(phone),
+          created_at: new Date().toISOString(),
         });
 
       if (profileError) {
-        console.error("[verify-otp] Profile error:", profileError);
-        // Continue quand même - le profil peut être créé plus tard
+        console.error("Profile creation error:", profileError);
+        // Rollback: supprimer l'utilisateur auth
+        await supabase.auth.admin.deleteUser(userId);
+        return NextResponse.json(
+          { error: "Erreur lors de la création du profil" },
+          { status: 500 }
+        );
       }
     }
 
+    // Nettoyer la vérification utilisée
+    await supabase
+      .from("phone_verifications")
+      .delete()
+      .eq("phone", phone);
+
+    // Créer une session
+    const { data: sessionData, error: sessionError } = await supabase.auth.admin.generateLink({
+      type: "magiclink",
+      email: `${phone.replace("+", "")}@phone.nokta.app`, // Email fictif pour le système
+    });
+
+    // Créer un token de session custom
+    const sessionToken = crypto.randomUUID();
+    const sessionExpiry = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 jours
+
+    await supabase
+      .from("sessions")
+      .insert({
+        id: sessionToken,
+        user_id: userId,
+        expires_at: sessionExpiry.toISOString(),
+        created_at: new Date().toISOString(),
+      });
+
+    // Set cookie
+    const cookieStore = await cookies();
+    cookieStore.set("session", sessionToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      expires: sessionExpiry,
+      path: "/",
+    });
+
     // Log pour audit
-    console.log(`[OTP] Verified for ${maskPhone(phone)} at ${new Date().toISOString()}`);
+    console.log(`[Auth] ${isNewUser ? "New user" : "Login"}: ${phone.slice(0, 4)}****${phone.slice(-2)}`);
 
     return NextResponse.json({
       success: true,
       userId,
-      phone: phone,
+      isNewUser,
+      message: isNewUser ? "Compte créé avec succès" : "Connexion réussie",
     });
+
   } catch (error: any) {
     console.error("[VerifyOTP Error]", error);
     return NextResponse.json(
@@ -210,8 +246,41 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Masquer le numéro pour les logs
-function maskPhone(phone: string): string {
-  if (phone.length < 6) return "***";
-  return phone.slice(0, 4) + "****" + phone.slice(-2);
+// Helpers
+function getLanguageFromRequest(request: NextRequest): string {
+  const acceptLang = request.headers.get("accept-language") || "";
+  const primary = acceptLang.split(",")[0]?.split("-")[0] || "en";
+  const supported = ["fr", "en", "es", "de", "it", "pt", "ar", "hi", "ja", "ko", "zh"];
+  return supported.includes(primary) ? primary : "en";
+}
+
+async function getCountryFromPhone(phone: string): Promise<string> {
+  // Mapping simple des préfixes
+  const prefixMap: Record<string, string> = {
+    "+33": "FR",
+    "+1": "US", // ou CA
+    "+44": "GB",
+    "+49": "DE",
+    "+34": "ES",
+    "+39": "IT",
+    "+32": "BE",
+    "+41": "CH",
+    "+212": "MA",
+    "+221": "SN",
+    "+225": "CI",
+    "+261": "MG",
+    "+55": "BR",
+    "+52": "MX",
+    "+81": "JP",
+    "+82": "KR",
+    "+91": "IN",
+    "+971": "AE",
+  };
+
+  for (const [prefix, country] of Object.entries(prefixMap)) {
+    if (phone.startsWith(prefix)) {
+      return country;
+    }
+  }
+  return "XX"; // Unknown
 }
