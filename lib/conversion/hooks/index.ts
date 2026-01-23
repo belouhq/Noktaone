@@ -249,3 +249,73 @@ export function usePaywall(params: UsePaywallParams): UsePaywallReturn {
     trialProgress,
   };
 }
+
+// ===================
+// useSkaneLimit Hook
+// ===================
+
+interface UseSkaneLimitParams {
+  subscriptionStatus: string | null;
+  userId?: string | null;
+}
+
+interface UseSkaneLimitReturn {
+  canPerformSkane: boolean;
+  remaining: number;
+  isLimited: boolean;
+  dailyLimit: number;
+}
+
+/**
+ * Hook to check skane limits based on subscription status
+ */
+export function useSkaneLimit(
+  subscriptionStatus: string | null = 'free',
+  userId?: string | null
+): UseSkaneLimitReturn {
+  const [remaining, setRemaining] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!userId || subscriptionStatus === 'active' || subscriptionStatus === 'premium') {
+      // Premium users have unlimited skanes
+      setRemaining(Infinity);
+      setIsLoading(false);
+      return;
+    }
+
+    // Free/trial users: check daily limit
+    const checkDailyLimit = async () => {
+      try {
+        // TODO: Fetch actual daily count from API
+        // For now, use localStorage as fallback
+        const today = new Date().toISOString().split('T')[0];
+        const stored = localStorage.getItem(`nokta_skane_count_${today}`);
+        const count = stored ? parseInt(stored, 10) : 0;
+        
+        const DAILY_LIMIT_FREE = 3;
+        const remainingCount = Math.max(0, DAILY_LIMIT_FREE - count);
+        
+        setRemaining(remainingCount);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error checking skane limit:', error);
+        setRemaining(0);
+        setIsLoading(false);
+      }
+    };
+
+    checkDailyLimit();
+  }, [userId, subscriptionStatus]);
+
+  const isPremium = subscriptionStatus === 'active' || subscriptionStatus === 'premium';
+  const canPerformSkane = isPremium || remaining > 0;
+  const isLimited = !isPremium && remaining < 3;
+
+  return {
+    canPerformSkane,
+    remaining: isPremium ? Infinity : remaining,
+    isLimited,
+    dailyLimit: isPremium ? Infinity : 3,
+  };
+}
