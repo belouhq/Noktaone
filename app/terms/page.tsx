@@ -89,7 +89,7 @@ export default function TermsOfServicePage() {
               }}
             >
               <p className="text-sm text-yellow-200 m-0 font-medium">
-                ⚠️ {language === "fr" 
+                {language === "fr" 
                   ? "AVERTISSEMENT : Nokta One n'est PAS un dispositif médical et ne fournit PAS de conseils médicaux. En cas de problème de santé, consultez un professionnel."
                   : "DISCLAIMER: Nokta One is NOT a medical device and does NOT provide medical advice. If you have health concerns, consult a professional."
                 }
@@ -130,7 +130,7 @@ export default function TermsOfServicePage() {
                 href="mailto:support@noktaone.com"
                 className="flex items-center gap-2 text-nokta-one-blue hover:underline"
               >
-                📧 support@noktaone.com
+                support@noktaone.com
               </a>
             </section>
 

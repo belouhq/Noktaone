@@ -29,37 +29,37 @@ export async function POST(request: NextRequest) {
 <body>
   <div class="container">
     <div class="header">
-      <h1 style="margin: 0 0 10px 0;">🎫 Nouveau Ticket Support</h1>
+      <h1 style="margin: 0 0 10px 0;">Nouveau Ticket Support</h1>
       <span class="ticket-id">${ticketId}</span>
     </div>
     <div class="content">
       <div class="field">
-        <div class="label">📧 Email de l'utilisateur</div>
+        <div class="label">Email de l'utilisateur</div>
         <div class="value">${email}</div>
       </div>
       
       <div class="field">
-        <div class="label">👤 Utilisateur</div>
+        <div class="label">Utilisateur</div>
         <div class="value">@${username || 'Anonyme'} (ID: ${userId || 'N/A'})</div>
       </div>
       
       <div class="field">
-        <div class="label">📁 Catégorie</div>
+        <div class="label">Catégorie</div>
         <div class="value">${category}</div>
       </div>
       
       <div class="field">
-        <div class="label">📋 Sujet</div>
+        <div class="label">Sujet</div>
         <div class="value">${subject}</div>
       </div>
       
       <div class="field">
-        <div class="label">💬 Message</div>
+        <div class="label">Message</div>
         <div class="value message-box">${message}</div>
       </div>
       
       <div class="field">
-        <div class="label">📅 Date</div>
+        <div class="label">Date</div>
         <div class="value">${new Date().toLocaleString('fr-FR', { 
           dateStyle: 'full', 
           timeStyle: 'short' 
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // Fallback: Log pour le développement
-      console.log('📧 EMAIL TICKET (DEV MODE)');
+      console.log('EMAIL TICKET (DEV MODE)');
       console.log('To: support@noktaone.com');
       console.log('From:', email);
       console.log('Subject:', `[${ticketId}] ${category} - ${subject}`);

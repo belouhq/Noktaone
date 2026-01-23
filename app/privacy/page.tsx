@@ -116,7 +116,7 @@ export default function PrivacyPolicyPage() {
                   href="mailto:support@noktaone.com"
                   className="flex items-center gap-2 text-nokta-one-blue hover:underline"
                 >
-                  📧 support@noktaone.com
+                  support@noktaone.com
                 </a>
               </div>
             </section>
@@ -132,7 +132,7 @@ const contentFR = {
   sections: [
     {
       title: "Introduction",
-      icon: "📋",
+      icon: "",
       content: `
         <p>La présente Politique de Confidentialité décrit comment vos informations personnelles sont collectées, utilisées et partagées lorsque vous utilisez l'application <strong>Nokta One</strong>.</p>
         <p>Nokta One est éditée par une société française immatriculée au Registre du Commerce et des Sociétés de Paris. En utilisant notre Service, vous acceptez les pratiques décrites dans cette Politique.</p>
@@ -140,7 +140,7 @@ const contentFR = {
     },
     {
       title: "1. Données collectées",
-      icon: "📊",
+      icon: "",
       content: `
         <p><strong>Données de compte :</strong> Email, nom d'utilisateur, mot de passe (hashé)</p>
         <p><strong>Données de profil :</strong> Prénom, date de naissance, pays, langue</p>
@@ -150,7 +150,7 @@ const contentFR = {
     },
     {
       title: "2. Utilisation des données",
-      icon: "⚙️",
+      icon: "",
       content: `
         <p>Nous utilisons vos données pour :</p>
         <ul>
@@ -164,7 +164,7 @@ const contentFR = {
     },
     {
       title: "3. Partage des données",
-      icon: "🤝",
+      icon: "",
       content: `
         <p><strong>Nous ne vendons jamais vos données personnelles.</strong></p>
         <p>Nous faisons appel à des sous-traitants de confiance (infrastructure cloud UE, services de paiement certifiés PCI-DSS). Des transferts hors UE sont encadrés par les Clauses Contractuelles Types.</p>
@@ -172,7 +172,7 @@ const contentFR = {
     },
     {
       title: "4. Conservation",
-      icon: "🗄️",
+      icon: "",
       content: `
         <p><strong>Données de compte :</strong> Durée de l'inscription + 3 ans</p>
         <p><strong>Données de session :</strong> 24 mois</p>
@@ -182,7 +182,7 @@ const contentFR = {
     },
     {
       title: "5. Vos droits",
-      icon: "✅",
+      icon: "",
       content: `
         <p>Vous disposez des droits suivants :</p>
         <ul>
@@ -199,7 +199,7 @@ const contentFR = {
     },
     {
       title: "6. Sécurité",
-      icon: "🔒",
+      icon: "",
       content: `
         <p>Vos données sont protégées par :</p>
         <ul>
@@ -212,7 +212,7 @@ const contentFR = {
     },
     {
       title: "7. Mineurs",
-      icon: "👶",
+      icon: "",
       content: `
         <p>Notre Service est destiné aux personnes de <strong>16 ans et plus</strong>.</p>
         <p>Entre 13 et 16 ans, le consentement parental est requis. Nous ne collectons pas sciemment de données d'enfants de moins de 13 ans.</p>
@@ -220,7 +220,7 @@ const contentFR = {
     },
     {
       title: "8. Californie (CCPA)",
-      icon: "🇺🇸",
+      icon: "",
       content: `
         <p>Si vous résidez en Californie :</p>
         <ul>
@@ -237,7 +237,7 @@ const contentEN = {
   sections: [
     {
       title: "Introduction",
-      icon: "📋",
+      icon: "",
       content: `
         <p>This Privacy Policy describes how your personal information is collected, used, and shared when you use the <strong>Nokta One</strong> application.</p>
         <p>Nokta One is published by a French company registered with the Paris Trade and Companies Registry. By using our Service, you agree to the practices described in this Policy.</p>
@@ -245,7 +245,7 @@ const contentEN = {
     },
     {
       title: "1. Data We Collect",
-      icon: "📊",
+      icon: "",
       content: `
         <p><strong>Account Data:</strong> Email, username, password (hashed)</p>
         <p><strong>Profile Data:</strong> First name, date of birth, country, language</p>
@@ -255,7 +255,7 @@ const contentEN = {
     },
     {
       title: "2. How We Use Data",
-      icon: "⚙️",
+      icon: "",
       content: `
         <p>We use your data to:</p>
         <ul>
@@ -269,7 +269,7 @@ const contentEN = {
     },
     {
       title: "3. Data Sharing",
-      icon: "🤝",
+      icon: "",
       content: `
         <p><strong>We never sell your personal data.</strong></p>
         <p>We use trusted service providers (EU cloud infrastructure, PCI-DSS certified payment services). Transfers outside the EU are governed by Standard Contractual Clauses.</p>
@@ -277,7 +277,7 @@ const contentEN = {
     },
     {
       title: "4. Retention",
-      icon: "🗄️",
+      icon: "",
       content: `
         <p><strong>Account Data:</strong> Duration of registration + 3 years</p>
         <p><strong>Session Data:</strong> 24 months</p>
@@ -287,7 +287,7 @@ const contentEN = {
     },
     {
       title: "5. Your Rights",
-      icon: "✅",
+      icon: "",
       content: `
         <p>You have the following rights:</p>
         <ul>
@@ -304,7 +304,7 @@ const contentEN = {
     },
     {
       title: "6. Security",
-      icon: "🔒",
+      icon: "",
       content: `
         <p>Your data is protected by:</p>
         <ul>
@@ -317,7 +317,7 @@ const contentEN = {
     },
     {
       title: "7. Minors",
-      icon: "👶",
+      icon: "",
       content: `
         <p>Our Service is intended for persons <strong>16 years and older</strong>.</p>
         <p>Between 13 and 16 years, parental consent is required. We do not knowingly collect data from children under 13.</p>
@@ -325,7 +325,7 @@ const contentEN = {
     },
     {
       title: "8. California (CCPA)",
-      icon: "🇺🇸",
+      icon: "",
       content: `
         <p>If you are a California resident:</p>
         <ul>

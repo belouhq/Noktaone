@@ -150,7 +150,7 @@ const contentFR = {
     },
     {
       title: "3. Contact",
-      icon: "📧",
+      icon: "",
       content: `
         <p>Pour toute question ou réclamation :</p>
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
@@ -162,7 +162,7 @@ const contentFR = {
     },
     {
       title: "4. Propriété Intellectuelle",
-      icon: "©️",
+      icon: "",
       content: `
         <h3>4.1 Droits d'auteur</h3>
         <p>L'ensemble des éléments composant l'Application (structure, textes, graphismes, images, sons, vidéos, logos, icônes, logiciels, base de données, etc.) sont la propriété exclusive de l'éditeur ou de ses partenaires et sont protégés par le droit de la propriété intellectuelle.</p>
@@ -173,7 +173,7 @@ const contentFR = {
     },
     {
       title: "5. Protection des Données Personnelles",
-      icon: "🔒",
+      icon: "",
       content: `
         <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez de droits sur vos données personnelles.</p>
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
@@ -193,7 +193,7 @@ const contentFR = {
     },
     {
       title: "6. Cookies et Traceurs",
-      icon: "🍪",
+      icon: "",
       content: `
         <p>L'Application utilise des technologies de stockage local (cookies, localStorage) pour son fonctionnement. Vous pouvez gérer vos préférences dans les paramètres de l'Application.</p>
         <p>Pour plus d'informations, consultez notre <a href="/privacy" style="color: rgb(59, 130, 246);">Politique de Confidentialité</a>.</p>
@@ -201,7 +201,7 @@ const contentFR = {
     },
     {
       title: "7. Limitation de Responsabilité",
-      icon: "⚠️",
+      icon: "",
       content: `
         <h3>7.1 Informations de bien-être</h3>
         <p>Les informations et recommandations fournies par Nokta One sont de nature générale et destinées uniquement à des fins de bien-être personnel. Elles ne constituent en aucun cas :</p>
@@ -218,14 +218,14 @@ const contentFR = {
     },
     {
       title: "8. Droit Applicable",
-      icon: "⚖️",
+      icon: "",
       content: `
         <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, et après tentative de résolution amiable, compétence est attribuée aux tribunaux français.</p>
       `
     },
     {
       title: "9. Médiation de la Consommation",
-      icon: "🤝",
+      icon: "",
       content: `
         <p>Conformément aux dispositions du Code de la consommation concernant le règlement amiable des litiges, l'éditeur adhère au Service du Médiateur [à compléter].</p>
         <p>Avant de saisir le médiateur, vous devez avoir préalablement tenté de résoudre votre litige directement auprès de notre service client par une réclamation écrite.</p>
@@ -234,7 +234,7 @@ const contentFR = {
     },
     {
       title: "10. Crédits",
-      icon: "🙏",
+      icon: "",
       content: `
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
           <p><strong>Conception et développement</strong> : Équipe Nokta One</p>
@@ -288,7 +288,7 @@ const contentEN = {
     },
     {
       title: "3. Contact",
-      icon: "📧",
+      icon: "",
       content: `
         <p>For any questions or complaints:</p>
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
@@ -300,7 +300,7 @@ const contentEN = {
     },
     {
       title: "4. Intellectual Property",
-      icon: "©️",
+      icon: "",
       content: `
         <h3>4.1 Copyright</h3>
         <p>All elements comprising the Application (structure, texts, graphics, images, sounds, videos, logos, icons, software, database, etc.) are the exclusive property of the publisher or its partners and are protected by intellectual property law.</p>
@@ -311,7 +311,7 @@ const contentEN = {
     },
     {
       title: "5. Personal Data Protection",
-      icon: "🔒",
+      icon: "",
       content: `
         <p>In accordance with the General Data Protection Regulation (GDPR) and the French Data Protection Act, you have rights regarding your personal data.</p>
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
@@ -331,7 +331,7 @@ const contentEN = {
     },
     {
       title: "6. Cookies and Trackers",
-      icon: "🍪",
+      icon: "",
       content: `
         <p>The Application uses local storage technologies (cookies, localStorage) for its operation. You can manage your preferences in the Application settings.</p>
         <p>For more information, see our <a href="/privacy" style="color: rgb(59, 130, 246);">Privacy Policy</a>.</p>
@@ -339,7 +339,7 @@ const contentEN = {
     },
     {
       title: "7. Limitation of Liability",
-      icon: "⚠️",
+      icon: "",
       content: `
         <h3>7.1 Wellness Information</h3>
         <p>The information and recommendations provided by Nokta One are general in nature and intended solely for personal wellness purposes. They do not constitute:</p>
@@ -356,14 +356,14 @@ const contentEN = {
     },
     {
       title: "8. Applicable Law",
-      icon: "⚖️",
+      icon: "",
       content: `
         <p>This legal notice is subject to French law. In case of dispute, and after attempting amicable resolution, jurisdiction is attributed to French courts.</p>
       `
     },
     {
       title: "9. Consumer Mediation",
-      icon: "🤝",
+      icon: "",
       content: `
         <p>In accordance with the provisions of the Consumer Code regarding the amicable settlement of disputes, the publisher adheres to the Mediator Service [to be completed].</p>
         <p>Before contacting the mediator, you must have previously attempted to resolve your dispute directly with our customer service by written complaint.</p>
@@ -372,7 +372,7 @@ const contentEN = {
     },
     {
       title: "10. Credits",
-      icon: "🙏",
+      icon: "",
       content: `
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
           <p><strong>Design and development</strong>: Nokta One Team</p>

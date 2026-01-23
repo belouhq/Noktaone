@@ -20,19 +20,19 @@ function verifyCronSecret(request: NextRequest): boolean {
 // Messages de rappel variés (évite la lassitude)
 const REMINDER_MESSAGES = {
   morning: [
-    "Bonjour ! 🌅 Un reset de 30 secondes pour bien démarrer ? → nokta.app",
-    "Nouvelle journée, nouveau reset 💫 Scannez votre état → nokta.app",
-    "30 secondes pour être au top ce matin ✨ → nokta.app",
+    "Bonjour ! Un reset de 30 secondes pour bien démarrer ? → nokta.app",
+    "Nouvelle journée, nouveau reset. Scannez votre état → nokta.app",
+    "30 secondes pour être au top ce matin → nokta.app",
   ],
   afternoon: [
-    "Pause reset ? 🧘 30 sec pour recharger → nokta.app",
-    "Mi-journée = moment idéal pour un reset rapide 💪 → nokta.app",
+    "Pause reset ? 30 sec pour recharger → nokta.app",
+    "Mi-journée = moment idéal pour un reset rapide → nokta.app",
     "Besoin d'un coup de boost ? Skane rapide → nokta.app",
   ],
   evening: [
-    "Reset du soir pour bien terminer 🌙 → nokta.app",
-    "30 secondes pour décompresser avant la soirée ✨ → nokta.app",
-    "Un dernier reset pour clôturer en beauté 🧘 → nokta.app",
+    "Reset du soir pour bien terminer → nokta.app",
+    "30 secondes pour décompresser avant la soirée → nokta.app",
+    "Un dernier reset pour clôturer en beauté → nokta.app",
   ],
 };
 

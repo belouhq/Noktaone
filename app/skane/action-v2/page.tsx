@@ -20,11 +20,11 @@ import { hapticV2 } from "@/lib/skane/hapticsV2";
  * 5. Fin = vibration signature + 300ms silence
  * 
  * UTILISABLE :
- * ✋ Mains libres
- * 👀 Regard optionnel
- * 🔕 Silence compatible
- * 🌙 Dans le noir
- * 🚶‍♂️ En mouvement léger
+ * Mains libres
+ * Regard optionnel
+ * Silence compatible
+ * Dans le noir
+ * En mouvement léger
  */
 
 export default function MicroActionPageV2() {

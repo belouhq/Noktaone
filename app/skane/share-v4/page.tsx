@@ -364,7 +364,7 @@ export default function ShareCardV4() {
               <button onClick={handleClose} className="text-white/60 hover:text-white">
                 <X size={24} />
               </button>
-              <span className="text-white/60 text-sm font-medium">Selfie victoire ✨</span>
+              <span className="text-white/60 text-sm font-medium">Selfie victoire</span>
               <button onClick={switchCamera} className="text-white/60 hover:text-white">
                 <RotateCcw size={24} />
               </button>
@@ -386,7 +386,7 @@ export default function ShareCardV4() {
             <div className="absolute bottom-0 left-0 right-0 p-8 pb-12 flex flex-col items-center safe-area-inset-bottom">
               <p className="text-white/80 text-center mb-6 text-sm">
                 Montre ton meilleur sourire !<br />
-                <span className="text-white/50">Tu viens de faire ton reset 💪</span>
+                <span className="text-white/50">Tu viens de faire ton reset</span>
               </p>
 
               <motion.button

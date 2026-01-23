@@ -325,7 +325,7 @@ export default function ShareCardV3() {
               <button onClick={handleClose} className="text-white/60 hover:text-white">
                 <X size={24} />
               </button>
-              <span className="text-white/60 text-sm">Selfie victoire 🎉</span>
+              <span className="text-white/60 text-sm">Selfie victoire</span>
               <button onClick={switchCamera} className="text-white/60 hover:text-white">
                 <RotateCcw size={24} />
               </button>
@@ -350,7 +350,7 @@ export default function ShareCardV3() {
             <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col items-center">
               <p className="text-white/80 text-center mb-6 text-sm">
                 Montre ton visage après l'exercice !<br />
-                <span className="text-white/50">Souris, tu l'as mérité 💪</span>
+                <span className="text-white/50">Souris, tu l'as mérité</span>
               </p>
 
               <motion.button

@@ -60,7 +60,7 @@ export default function RootLayout({
               <div className="app-container" style={{ pointerEvents: 'auto', position: 'relative' }}>
                 <div className="landscape-warning fixed inset-0 bg-black z-[100] hidden items-center justify-center p-8 text-center pointer-events-none">
                   <div>
-                    <p className="text-4xl mb-4">📱</p>
+                    <p className="text-4xl mb-4"></p>
                     <p className="text-white text-lg">
                       Veuillez tourner votre téléphone en mode portrait
                     </p>
