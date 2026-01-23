@@ -3,17 +3,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { CONSENT_VERSION } from "@/lib/hooks/useConsent";
+
+export interface ConsentState {
+  privacy: boolean; // Mapped from essential
+  analytics: boolean;
+  marketing: boolean;
+  version: string;
+  timestamp: string;
+}
 
 interface ConsentModalProps {
   isOpen: boolean;
-  onAcceptAll: () => void;
-  onAcceptSelection: (consent: ConsentState) => void;
-}
-
-interface ConsentState {
-  essential: boolean; // Toujours true, requis
-  analytics: boolean;
-  marketing: boolean;
+  onAccept: (consent: ConsentState) => void;
+  onAcceptAll: (consent: ConsentState) => void;
 }
 
 /**
@@ -35,22 +38,36 @@ interface ConsentState {
  */
 export default function ConsentModal({
   isOpen,
+  onAccept,
   onAcceptAll,
-  onAcceptSelection,
 }: ConsentModalProps) {
   const [showPreferences, setShowPreferences] = useState(false);
-  const [consent, setConsent] = useState<ConsentState>({
-    essential: true,
+  const [consent, setConsent] = useState({
+    privacy: true, // Essential, toujours requis
     analytics: true,  // Pré-coché mais clairement visible
     marketing: false, // Non pré-coché par défaut
   });
 
   const handleAcceptAll = () => {
-    onAcceptAll();
+    const finalConsents: ConsentState = {
+      privacy: true,
+      analytics: true,
+      marketing: true,
+      version: CONSENT_VERSION,
+      timestamp: new Date().toISOString(),
+    };
+    onAcceptAll(finalConsents);
   };
 
   const handleAcceptSelection = () => {
-    onAcceptSelection(consent);
+    const finalConsents: ConsentState = {
+      privacy: consent.privacy,
+      analytics: consent.analytics,
+      marketing: consent.marketing,
+      version: CONSENT_VERSION,
+      timestamp: new Date().toISOString(),
+    };
+    onAccept(finalConsents);
   };
 
   return (
