@@ -114,7 +114,7 @@ export default function PrivacySettingsSection({
         )}
       </div>
 
-      {/* Consent Toggles */}
+      {/* Single Card - All Privacy Settings */}
       <div
         className="p-4 rounded-xl space-y-4"
         style={{
@@ -173,62 +173,60 @@ export default function PrivacySettingsSection({
             />
           </motion.button>
         </div>
+
+        {/* Divider */}
+        <div className="pt-3 border-t border-white/5" />
+
+        {/* Export Data Button */}
+        <motion.button
+          onClick={handleExportData}
+          disabled={isExporting}
+          className="w-full flex items-center justify-between transition-colors py-2"
+          whileHover={{ opacity: 0.8 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <div className="flex items-center gap-3">
+            {isExporting ? (
+              <Loader2 size={20} className="text-blue-500 animate-spin" />
+            ) : (
+              <Download size={20} className="text-blue-500" />
+            )}
+            <div className="text-left">
+              <p className="text-white font-medium text-sm">
+                {t("privacy.exportTitle") || t("consent.settings.export")}
+              </p>
+              <p className="text-xs text-gray-400">
+                {t("privacy.exportDescription") || t("consent.settings.exportDescription")}
+              </p>
+            </div>
+          </div>
+          <ChevronRight size={18} className="text-gray-400" />
+        </motion.button>
+
+        {/* Divider */}
+        <div className="pt-3 border-t border-white/5" />
+
+        {/* Delete Account Button */}
+        <motion.button
+          onClick={() => setShowDeleteConfirm(true)}
+          className="w-full flex items-center justify-between transition-colors py-2"
+          whileHover={{ opacity: 0.8 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <div className="flex items-center gap-3">
+            <Trash2 size={20} className="text-red-400" />
+            <div className="text-left">
+              <p className="text-red-400 font-medium text-sm">
+                {t("privacy.deleteTitle") || t("consent.settings.delete")}
+              </p>
+              <p className="text-xs text-gray-400">
+                {t("privacy.deleteDescription") || t("consent.settings.deleteDescription")}
+              </p>
+            </div>
+          </div>
+          <ChevronRight size={18} className="text-red-400/50" />
+        </motion.button>
       </div>
-
-      {/* Export Data Button */}
-      <motion.button
-        onClick={handleExportData}
-        disabled={isExporting}
-        className="w-full p-4 rounded-xl flex items-center justify-between transition-colors"
-        style={{
-          background: "rgba(255, 255, 255, 0.03)",
-          border: "1px solid rgba(255, 255, 255, 0.08)",
-        }}
-        whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <div className="flex items-center gap-3">
-          {isExporting ? (
-            <Loader2 size={20} className="text-blue-500 animate-spin" />
-          ) : (
-            <Download size={20} className="text-blue-500" />
-          )}
-          <div className="text-left">
-            <p className="text-white font-medium text-sm">
-              {t("privacy.exportTitle") || t("consent.settings.export")}
-            </p>
-            <p className="text-xs text-gray-400">
-              {t("privacy.exportDescription") || "Download all your data"}
-            </p>
-          </div>
-        </div>
-        <ChevronRight size={18} className="text-gray-400" />
-      </motion.button>
-
-      {/* Delete Account Button */}
-      <motion.button
-        onClick={() => setShowDeleteConfirm(true)}
-        className="w-full p-4 rounded-xl flex items-center justify-between transition-colors"
-        style={{
-          background: "rgba(239, 68, 68, 0.05)",
-          border: "1px solid rgba(239, 68, 68, 0.2)",
-        }}
-        whileHover={{ backgroundColor: "rgba(239, 68, 68, 0.1)" }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <div className="flex items-center gap-3">
-          <Trash2 size={20} className="text-red-400" />
-          <div className="text-left">
-            <p className="text-red-400 font-medium text-sm">
-              {t("privacy.deleteTitle") || t("consent.settings.delete")}
-            </p>
-            <p className="text-xs text-gray-400">
-              {t("privacy.deleteDescription") || t("consent.settings.deleteDescription")}
-            </p>
-          </div>
-        </div>
-        <ChevronRight size={18} className="text-red-400/50" />
-      </motion.button>
 
       {/* Delete Confirmation Modal */}
       <AnimatePresence>
