@@ -47,6 +47,21 @@ FIRSTPROMOTER_ACCOUNT_ID=xxx
 
 ---
 
+## ✅ PARTNERSHIP ACCESS
+
+```bash
+# Code d'accès pour le panneau de gestion des partenariats
+PARTNERSHIP_ACCESS_CODE=votre_code_secret_ici
+```
+
+**Note** :
+- Code unique pour accéder au panneau d'affiliation dans les paramètres
+- Par défaut : `NOkta2025!` si non défini
+- Stocké uniquement côté serveur (variable d'environnement)
+- Voir [PARTNERSHIP_ACCESS_SETUP.md](./PARTNERSHIP_ACCESS_SETUP.md) pour plus de détails
+
+---
+
 ## 📝 Autres variables (déjà configurées ?)
 
 ### Supabase
@@ -105,6 +120,9 @@ STRIPE_PRICE_LIFETIME=price_xxx
 # FirstPromoter
 FIRSTPROMOTER_API_KEY=xxx
 FIRSTPROMOTER_ACCOUNT_ID=xxx
+
+# Partnership Access
+PARTNERSHIP_ACCESS_CODE=votre_code_secret_ici
 
 # OneSignal
 NEXT_PUBLIC_ONESIGNAL_APP_ID=xxx
