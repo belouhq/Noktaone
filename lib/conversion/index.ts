@@ -64,7 +64,7 @@ export * from './utils';
 export * from './hooks';
 
 // Components
-export { Paywall, default as PaywallComponent } from '../paywall/components/Paywall';
+export { Paywall, default as PaywallComponent } from '@/components/paywall/Paywall';
 
 // Services (server-side only)
 // Note: Import these directly in API routes
