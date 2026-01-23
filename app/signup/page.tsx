@@ -39,7 +39,7 @@ export default function SignupPage() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Générer le code de parrainage final
     const randomDigits = Math.floor(1000 + Math.random() * 9000);
     const finalReferralCode = `@${username}-${randomDigits}`;
