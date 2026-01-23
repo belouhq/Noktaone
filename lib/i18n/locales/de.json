@@ -1205,5 +1205,11 @@
   },
   "ritual": {
     "suggestion": "Einige Nutzer verbinden diese Momente gerne mit einem ruhigen Ritual (heiße Getränke, Stille, sanftes Licht). Das ist optional."
+  },
+  "haptic": {
+    "enabled": "Vibrationen aktiviert",
+    "disabled": "Vibrationen deaktiviert",
+    "settingsTitle": "Freihandmodus",
+    "settingsDescription": "Die Vibrationen unterstützen deine Atmung, ohne auf den Bildschirm zu schauen"
   }
 }

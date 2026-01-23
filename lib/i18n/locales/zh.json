@@ -1205,5 +1205,11 @@
   },
   "ritual": {
     "suggestion": "一些用户喜欢将这些时刻与宁静的仪式结合起来（热饮、安静、柔和的光线）。这不是必需的。"
+  },
+  "haptic": {
+    "enabled": "震动已开启",
+    "disabled": "震动已关闭",
+    "settingsTitle": "免提模式",
+    "settingsDescription": "震动引导你的呼吸，无需查看屏幕"
   }
 }

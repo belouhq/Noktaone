@@ -1205,5 +1205,11 @@
   },
   "ritual": {
     "suggestion": "Beberapa pengguna suka mengaitkan momen ini dengan ritual tenang (minuman hangat, keheningan, cahaya lembut). Ini opsional."
+  },
+  "haptic": {
+    "enabled": "Getaran diaktifkan",
+    "disabled": "Getaran dinonaktifkan",
+    "settingsTitle": "Mode bebas tangan",
+    "settingsDescription": "Getaran membimbing pernapasanmu tanpa melihat layar"
   }
 }

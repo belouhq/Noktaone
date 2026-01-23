@@ -275,6 +275,12 @@
   "ritual": {
     "suggestion": "Some users like to pair these moments with a calm ritual (warm drink, silence, soft light). It's optional."
   },
+  "haptic": {
+    "enabled": "Vibrations enabled",
+    "disabled": "Vibrations disabled",
+    "settingsTitle": "Hands-free mode",
+    "settingsDescription": "Vibrations guide your breathing without looking at the screen"
+  },
   "skaneIndex": {
     "title": "Skane Index",
     "before": "Before",
