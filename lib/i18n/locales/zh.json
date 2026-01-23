@@ -791,7 +791,7 @@
       "responseTime": "响应时间",
       "responseTimeDesc": "我们将在最多30天内回复所有请求。",
       "contact": "联系",
-      "contactEmail": "privacy@nokta.app",
+      "contactEmail": "support@noktaone.com",
       "complaint": "投诉",
       "complaintDesc": "如果您认为您的数据处理侵犯了您的权利，您有权向CNIL（www.cnil.fr）提出投诉。"
     },
@@ -873,9 +873,9 @@
       "title": "13. 联系我们",
       "description": "如对本隐私政策有任何疑问或行使您的权利：",
       "email": "电子邮件",
-      "emailAddress": "privacy@nokta.app",
+      "emailAddress": "support@noktaone.com",
       "dpo": "数据保护专员（DPO）",
-      "dpoEmail": "dpo@nokta.app",
+      "dpoEmail": "support@noktaone.com",
       "postal": "邮寄地址",
       "postalAddress": "数据保护服务\n法国巴黎",
       "responseTime": "我们承诺在30天内回复任何请求。"
@@ -1119,7 +1119,7 @@
       },
       "subsection2": {
         "title": "11.2 和解",
-        "description": "如有争议，各方应努力寻求友好解决。您可以通过以下方式联系我们：support@nokta.app"
+        "description": "如有争议，各方应努力寻求友好解决。您可以通过以下方式联系我们：support@noktaone.com"
       },
       "subsection3": {
         "title": "11.3 调解",
@@ -1165,7 +1165,7 @@
       "title": "第13条 – 联系方式",
       "description": "如有关于这些使用条款的任何问题：",
       "email": "电子邮件",
-      "emailAddress": "support@nokta.app",
+      "emailAddress": "support@noktaone.com",
       "postal": "邮寄地址",
       "postalAddress": "客户服务\n法国巴黎"
     },

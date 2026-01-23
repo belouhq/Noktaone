@@ -780,7 +780,7 @@
       "responseTime": "Response time",
       "responseTimeDesc": "We respond to any request within a maximum of 30 days.",
       "contact": "Contact",
-      "contactEmail": "privacy@nokta.app",
+      "contactEmail": "support@noktaone.com",
       "complaint": "Complaint",
       "complaintDesc": "You have the right to file a complaint with the CNIL (www.cnil.fr) if you believe that the processing of your data constitutes a violation of your rights."
     },
@@ -862,9 +862,9 @@
       "title": "13. Contact us",
       "description": "For any questions regarding this Privacy Policy or to exercise your rights:",
       "email": "Email",
-      "emailAddress": "privacy@nokta.app",
+      "emailAddress": "support@noktaone.com",
       "dpo": "Data Protection Officer (DPO)",
-      "dpoEmail": "dpo@nokta.app",
+      "dpoEmail": "support@noktaone.com",
       "postal": "Postal address",
       "postalAddress": "Data Protection Service\nParis, France",
       "responseTime": "We commit to responding to any request within 30 days."
@@ -1108,7 +1108,7 @@
       },
       "subsection2": {
         "title": "11.2 Amicable Resolution",
-        "description": "In case of dispute, the parties will endeavor to find an amicable solution. You may contact us at: support@nokta.app"
+        "description": "In case of dispute, the parties will endeavor to find an amicable solution. You may contact us at: support@noktaone.com"
       },
       "subsection3": {
         "title": "11.3 Mediation",
@@ -1154,7 +1154,7 @@
       "title": "Article 13 – Contact",
       "description": "For any questions about these Terms of Service:",
       "email": "Email",
-      "emailAddress": "support@nokta.app",
+      "emailAddress": "support@noktaone.com",
       "postal": "Mailing Address",
       "postalAddress": "Customer Service\nParis, France"
     },

@@ -780,7 +780,7 @@
       "responseTime": "Délai de réponse",
       "responseTimeDesc": "Nous répondons à toute demande dans un délai maximum de 30 jours.",
       "contact": "Contact",
-      "contactEmail": "privacy@nokta.app",
+      "contactEmail": "support@noktaone.com",
       "complaint": "Réclamation",
       "complaintDesc": "Vous avez le droit d'introduire une réclamation auprès de la CNIL (www.cnil.fr) si vous estimez que le traitement de vos données constitue une violation de vos droits."
     },
@@ -862,9 +862,9 @@
       "title": "13. Nous contacter",
       "description": "Pour toute question concernant cette Politique de Confidentialité ou pour exercer vos droits :",
       "email": "Email",
-      "emailAddress": "privacy@nokta.app",
+      "emailAddress": "support@noktaone.com",
       "dpo": "Délégué à la Protection des Données (DPO)",
-      "dpoEmail": "dpo@nokta.app",
+      "dpoEmail": "support@noktaone.com",
       "postal": "Adresse postale",
       "postalAddress": "Service Protection des Données\nParis, France",
       "responseTime": "Nous nous engageons à répondre à toute demande dans un délai de 30 jours."
@@ -1108,7 +1108,7 @@
       },
       "subsection2": {
         "title": "11.2 Résolution amiable",
-        "description": "En cas de litige, les parties s'efforceront de trouver une solution amiable. Vous pouvez nous contacter à : support@nokta.app"
+        "description": "En cas de litige, les parties s'efforceront de trouver une solution amiable. Vous pouvez nous contacter à : support@noktaone.com"
       },
       "subsection3": {
         "title": "11.3 Médiation",
@@ -1154,7 +1154,7 @@
       "title": "Article 13 – Contact",
       "description": "Pour toute question concernant ces Conditions Générales d'Utilisation :",
       "email": "Email",
-      "emailAddress": "support@nokta.app",
+      "emailAddress": "support@noktaone.com",
       "postal": "Adresse postale",
       "postalAddress": "Service Client\nParis, France"
     },

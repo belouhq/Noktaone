@@ -155,7 +155,7 @@ const contentFR = {
         <p>Pour toute question ou réclamation :</p>
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
           <p><strong>Email général</strong> : <a href="mailto:contact@nokta.app" style="color: rgb(59, 130, 246);">contact@nokta.app</a></p>
-          <p><strong>Support technique</strong> : <a href="mailto:support@nokta.app" style="color: rgb(59, 130, 246);">support@nokta.app</a></p>
+          <p><strong>Support technique</strong> : <a href="mailto:support@noktaone.com" style="color: rgb(59, 130, 246);">support@noktaone.com</a></p>
           <p><strong>Protection des données</strong> : <a href="mailto:privacy@nokta.app" style="color: rgb(59, 130, 246);">privacy@nokta.app</a></p>
         </div>
       `
@@ -293,7 +293,7 @@ const contentEN = {
         <p>For any questions or complaints:</p>
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
           <p><strong>General email</strong>: <a href="mailto:contact@nokta.app" style="color: rgb(59, 130, 246);">contact@nokta.app</a></p>
-          <p><strong>Technical support</strong>: <a href="mailto:support@nokta.app" style="color: rgb(59, 130, 246);">support@nokta.app</a></p>
+          <p><strong>Technical support</strong>: <a href="mailto:support@noktaone.com" style="color: rgb(59, 130, 246);">support@noktaone.com</a></p>
           <p><strong>Data protection</strong>: <a href="mailto:privacy@nokta.app" style="color: rgb(59, 130, 246);">privacy@nokta.app</a></p>
         </div>
       `

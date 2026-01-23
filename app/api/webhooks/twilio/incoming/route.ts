@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
     if (body === "HELP" || body === "AIDE" || body === "INFO") {
       const twimlResponse = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
-  <Message>Nokta One - Rappels de bien-être. Commandes: STOP pour se désabonner, START pour se réabonner. Support: support@nokta.app</Message>
+  <Message>Nokta One - Rappels de bien-être. Commandes: STOP pour se désabonner, START pour se réabonner. Support: support@noktaone.com</Message>
 </Response>`;
 
       return new NextResponse(twimlResponse, {

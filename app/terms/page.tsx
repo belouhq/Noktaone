@@ -127,10 +127,10 @@ export default function TermsOfServicePage() {
                 }
               </p>
               <a 
-                href="mailto:support@nokta.app"
+                href="mailto:support@noktaone.com"
                 className="flex items-center gap-2 text-nokta-one-blue hover:underline"
               >
-                📧 support@nokta.app
+                📧 support@noktaone.com
               </a>
             </section>
 

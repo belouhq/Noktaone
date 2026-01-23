@@ -791,7 +791,7 @@
       "responseTime": "Waktu respons",
       "responseTimeDesc": "Kami akan menjawab setiap permintaan dalam waktu maksimum 30 hari.",
       "contact": "Kontak",
-      "contactEmail": "privacy@nokta.app",
+      "contactEmail": "support@noktaone.com",
       "complaint": "Pengaduan",
       "complaintDesc": "Anda berhak mengajukan pengaduan kepada CNIL (www.cnil.fr) jika Anda merasa pengolahan data Anda melanggar hak Anda."
     },
@@ -873,9 +873,9 @@
       "title": "13. Hubungi kami",
       "description": "Untuk pertanyaan mengenai Kebijakan Privasi ini atau untuk menggunakan hak Anda:",
       "email": "Email",
-      "emailAddress": "privacy@nokta.app",
+      "emailAddress": "support@noktaone.com",
       "dpo": "Petugas Perlindungan Data (DPO)",
-      "dpoEmail": "dpo@nokta.app",
+      "dpoEmail": "support@noktaone.com",
       "postal": "Alamat pos",
       "postalAddress": "Layanan Perlindungan Data\nParis, Prancis",
       "responseTime": "Kami berkomitmen untuk menjawab setiap permintaan dalam waktu 30 hari."
@@ -1119,7 +1119,7 @@
       },
       "subsection2": {
         "title": "11.2 Penyelesaian secara damai",
-        "description": "Jika terjadi sengketa, pihak-pihak akan berusaha mencari solusi secara damai. Anda dapat menghubungi kami di: support@nokta.app"
+        "description": "Jika terjadi sengketa, pihak-pihak akan berusaha mencari solusi secara damai. Anda dapat menghubungi kami di: support@noktaone.com"
       },
       "subsection3": {
         "title": "11.3 Mediasi",
@@ -1165,7 +1165,7 @@
       "title": "Pasal 13 – Kontak",
       "description": "Untuk pertanyaan mengenai Syarat dan Ketentuan ini:",
       "email": "Email",
-      "emailAddress": "support@nokta.app",
+      "emailAddress": "support@noktaone.com",
       "postal": "Alamat pos",
       "postalAddress": "Layanan Pelanggan\nParis, Prancis"
     },
