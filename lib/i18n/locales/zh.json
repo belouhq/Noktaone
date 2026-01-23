@@ -1211,5 +1211,66 @@
     "disabled": "震动已关闭",
     "settingsTitle": "免提模式",
     "settingsDescription": "震动引导你的呼吸，无需查看屏幕"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "优惠将在内过期"
+    },
+    "socialProof": {
+      "users": "{{count}} 用户",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "之前",
+      "after": "之后"
+    },
+    "pricing": {
+      "monthly": "每月",
+      "annual": "每年",
+      "perMonth": "/月",
+      "perYear": "/年",
+      "bestValue": "最佳优惠",
+      "savings": "节省 {{percent}}%",
+      "influencerDiscount": "-{{percent}}% 使用 {{code}}"
+    },
+    "headline": {
+      "default": "释放你的潜力",
+      "trialExpired": "{{name}}，你的试用已结束",
+      "dailyLimit": "你已达到每日限制",
+      "trialProgress": "{{name}}，你在 {{days}} 天内进行了 {{count}} 次重置"
+    },
+    "subheadline": {
+      "default": "将 30 秒转化为持久改变。",
+      "trialExpired": "继续你的旅程，保持动力。",
+      "improvement": "不要失去你的平均提升 {{percent}}%"
+    },
+    "trust": {
+      "securePayment": "安全支付",
+      "cancelAnytime": "一键取消",
+      "moneyBack": "满意或退款 <strong>{{days}} 天</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "常见问题"
+    },
+    "testimonials": {
+      "title": "他们怎么说"
+    },
+    "influencer": {
+      "applied": "代码 <strong>{{code}}</strong> 来自 <strong>{{name}}</strong> 已应用",
+      "validMonths": "有效 {{months}} 个月"
+    },
+    "button": {
+      "continue": "继续我的旅程",
+      "processing": "正在重定向..."
+    },
+    "footer": {
+      "terms": "条款",
+      "privacy": "隐私",
+      "support": "支持"
+    }
   }
 }

@@ -1211,5 +1211,66 @@
     "disabled": "진동 비활성화",
     "settingsTitle": "핸즈프리 모드",
     "settingsDescription": "진동이 화면을 보지 않고도 호흡을 안내해 줍니다"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "제안 만료까지"
+    },
+    "socialProof": {
+      "users": "{{count}} 사용자",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "전",
+      "after": "후"
+    },
+    "pricing": {
+      "monthly": "월간",
+      "annual": "연간",
+      "perMonth": "/월",
+      "perYear": "/년",
+      "bestValue": "최고의 혜택",
+      "savings": "{{percent}}% 절약",
+      "influencerDiscount": "-{{percent}}% {{code}}로"
+    },
+    "headline": {
+      "default": "당신의 잠재력을 열어보세요",
+      "trialExpired": "{{name}}님, 체험이 종료되었습니다",
+      "dailyLimit": "일일 한도에 도달했습니다",
+      "trialProgress": "{{name}}님, {{days}}일 동안 {{count}}번 리셋했습니다"
+    },
+    "subheadline": {
+      "default": "30초를 지속 가능한 변화로 바꾸세요.",
+      "trialExpired": "여정을 계속하고 모멘텀을 유지하세요.",
+      "improvement": "{{percent}}%의 평균 개선을 잃지 마세요."
+    },
+    "trust": {
+      "securePayment": "안전한 결제",
+      "cancelAnytime": "1클릭으로 취소",
+      "moneyBack": "만족하지 않으면 <strong>{{days}}일</strong> 내에 환불"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "자주 묻는 질문"
+    },
+    "testimonials": {
+      "title": "그들이 말하는 것"
+    },
+    "influencer": {
+      "applied": "<strong>{{code}}</strong> 코드가 <strong>{{name}}</strong>에 적용됨",
+      "validMonths": "{{months}}개월 유효"
+    },
+    "button": {
+      "continue": "내 여정 계속하기",
+      "processing": "리디렉션 중..."
+    },
+    "footer": {
+      "terms": "이용 약관",
+      "privacy": "개인정보 보호",
+      "support": "지원"
+    }
   }
 }

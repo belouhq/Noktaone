@@ -1188,6 +1188,67 @@
     },
     "footer": "By using Nokta One, you acknowledge that you have read, understood, and agree to these Terms of Service."
   },
+  "paywall": {
+    "countdown": {
+      "expires": "Offer expires in"
+    },
+    "socialProof": {
+      "users": "{{count}} users",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "Before",
+      "after": "After"
+    },
+    "pricing": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "perMonth": "/month",
+      "perYear": "/year",
+      "bestValue": "BEST VALUE",
+      "savings": "Save {{percent}}%",
+      "influencerDiscount": "-{{percent}}% with {{code}}"
+    },
+    "headline": {
+      "default": "Unlock your potential",
+      "trialExpired": "{{name}}, your trial has ended",
+      "dailyLimit": "You've reached your daily limit",
+      "trialProgress": "{{name}}, you've done {{count}} resets in {{days}} days"
+    },
+    "subheadline": {
+      "default": "Transform 30 seconds into lasting change.",
+      "trialExpired": "Continue your journey and keep your momentum.",
+      "improvement": "Don't lose your average improvement of {{percent}}%"
+    },
+    "trust": {
+      "securePayment": "Secure payment",
+      "cancelAnytime": "Cancel anytime",
+      "moneyBack": "Satisfaction guaranteed <strong>{{days}} days</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "Frequently asked questions"
+    },
+    "testimonials": {
+      "title": "What they say"
+    },
+    "influencer": {
+      "applied": "Code <strong>{{code}}</strong> from <strong>{{name}}</strong> applied",
+      "validMonths": "Valid for {{months}} months"
+    },
+    "button": {
+      "continue": "Continue my journey",
+      "processing": "Redirecting..."
+    },
+    "footer": {
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "support": "Support"
+    }
+  },
   "partnership": {
     "title": "Partnership Management",
     "accessTitle": "Partnership Access",

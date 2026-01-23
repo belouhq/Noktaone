@@ -1211,5 +1211,66 @@
     "disabled": "वाइब्रेशन अक्षम हैं",
     "settingsTitle": "हैंड्स-फ्री मोड",
     "settingsDescription": "वाइब्रेशन तुम्हारी सांस को बिना स्क्रीन देखे गाइड करते हैं"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "ऑफर समाप्त हो रहा है"
+    },
+    "socialProof": {
+      "users": "{{count}} उपयोगकर्ता",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "पहले",
+      "after": "बाद में"
+    },
+    "pricing": {
+      "monthly": "मासिक",
+      "annual": "वार्षिक",
+      "perMonth": "/माह",
+      "perYear": "/साल",
+      "bestValue": "सर्वश्रेष्ठ ऑफर",
+      "savings": "{{percent}}% बचत",
+      "influencerDiscount": "-{{percent}}% {{code}} के साथ"
+    },
+    "headline": {
+      "default": "अपनी क्षमता को अनलॉक करें",
+      "trialExpired": "{{name}}, आपकी ट्रायल समाप्त हो गई है",
+      "dailyLimit": "आपने अपनी दैनिक सीमा तक पहुँच गए हैं",
+      "trialProgress": "{{name}}, आपने {{days}} दिनों में {{count}} रिसेट किए हैं"
+    },
+    "subheadline": {
+      "default": "30 सेकंड को स्थायी बदलाव में बदलें।",
+      "trialExpired": "अपनी यात्रा जारी रखें और अपनी गति बनाए रखें।",
+      "improvement": "{{percent}}% की औसत सुधार न खोएं"
+    },
+    "trust": {
+      "securePayment": "सुरक्षित भुगतान",
+      "cancelAnytime": "एक क्लिक में रद्द करें",
+      "moneyBack": "संतुष्ट या धनवापसी <strong>{{days}} दिन</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "अक्सर पूछे जाने वाले प्रश्न"
+    },
+    "testimonials": {
+      "title": "वे क्या कहते हैं"
+    },
+    "influencer": {
+      "applied": "<strong>{{code}}</strong> को <strong>{{name}}</strong> द्वारा लागू किया गया",
+      "validMonths": "{{months}} महीने के लिए मान्य"
+    },
+    "button": {
+      "continue": "मेरे सफर को जारी रखें",
+      "processing": "पुनर्निर्देशन..."
+    },
+    "footer": {
+      "terms": "शर्तें",
+      "privacy": "गोपनीयता",
+      "support": "सहायता"
+    }
   }
 }

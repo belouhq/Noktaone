@@ -1211,5 +1211,66 @@
     "disabled": "Vibraciones desactivadas",
     "settingsTitle": "Modo manos libres",
     "settingsDescription": "Las vibraciones guían tu respiración sin mirar la pantalla"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "La oferta expira en"
+    },
+    "socialProof": {
+      "users": "{{count}} usuarios",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "Antes",
+      "after": "Después"
+    },
+    "pricing": {
+      "monthly": "Mensual",
+      "annual": "Anual",
+      "perMonth": "/mes",
+      "perYear": "/año",
+      "bestValue": "MEJOR OFERTA",
+      "savings": "Ahorra {{percent}}%",
+      "influencerDiscount": "-{{percent}}% con {{code}}"
+    },
+    "headline": {
+      "default": "Desbloquea tu potencial",
+      "trialExpired": "{{name}}, tu prueba ha terminado",
+      "dailyLimit": "Has alcanzado tu límite diario",
+      "trialProgress": "{{name}}, has hecho {{count}} reinicios en {{days}} días"
+    },
+    "subheadline": {
+      "default": "Transforma 30 segundos en un cambio duradero.",
+      "trialExpired": "Continúa tu camino y mantén tu impulso.",
+      "improvement": "No pierdas tu mejora media del {{percent}}%"
+    },
+    "trust": {
+      "securePayment": "Pago seguro",
+      "cancelAnytime": "Cancela con un clic",
+      "moneyBack": "Satisfecho o reembolsado <strong>{{days}} días</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes"
+    },
+    "testimonials": {
+      "title": "Lo que dicen"
+    },
+    "influencer": {
+      "applied": "Código <strong>{{code}}</strong> de <strong>{{name}}</strong> aplicado",
+      "validMonths": "Válido {{months}} meses"
+    },
+    "button": {
+      "continue": "Continuar mi camino",
+      "processing": "Redirigiendo..."
+    },
+    "footer": {
+      "terms": "Condiciones",
+      "privacy": "Privacidad",
+      "support": "Soporte"
+    }
   }
 }

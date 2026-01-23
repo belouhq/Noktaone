@@ -1211,5 +1211,66 @@
     "disabled": "バイブレーションがオフ",
     "settingsTitle": "ハンズフリーモード",
     "settingsDescription": "画面を見ずにバイブレーションが呼吸をサポートします"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "オファーは終了します"
+    },
+    "socialProof": {
+      "users": "{{count}} ユーザー",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "前",
+      "after": "後"
+    },
+    "pricing": {
+      "monthly": "月額",
+      "annual": "年額",
+      "perMonth": "/月",
+      "perYear": "/年",
+      "bestValue": "ベストオファー",
+      "savings": "{{percent}}% 節約",
+      "influencerDiscount": "-{{percent}}% {{code}} で"
+    },
+    "headline": {
+      "default": "あなたの可能性を解放しましょう",
+      "trialExpired": "{{name}}、あなたのトライアルは終了しました",
+      "dailyLimit": "あなたは1日の制限に達しました",
+      "trialProgress": "{{name}}、{{days}}日で{{count}}回リセットしました"
+    },
+    "subheadline": {
+      "default": "30秒を持続可能な変化に変えましょう。",
+      "trialExpired": "あなたの旅を続けて、勢いを保ちましょう。",
+      "improvement": "{{percent}}% の平均改善を失わないでください"
+    },
+    "trust": {
+      "securePayment": "安全な支払い",
+      "cancelAnytime": "1クリックでキャンセル",
+      "moneyBack": "満足できなければ<strong>{{days}}日</strong>以内に返金"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "よくある質問"
+    },
+    "testimonials": {
+      "title": "彼らの声"
+    },
+    "influencer": {
+      "applied": "<strong>{{name}}</strong>のコード<strong>{{code}}</strong>が適用されました",
+      "validMonths": "{{months}}ヶ月間有効"
+    },
+    "button": {
+      "continue": "私の旅を続ける",
+      "processing": "リダイレクト中..."
+    },
+    "footer": {
+      "terms": "利用規約",
+      "privacy": "プライバシー",
+      "support": "サポート"
+    }
   }
 }

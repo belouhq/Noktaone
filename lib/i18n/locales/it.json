@@ -1211,5 +1211,66 @@
     "disabled": "Vibrazioni disattivate",
     "settingsTitle": "Modalità mani libere",
     "settingsDescription": "Le vibrazioni guidano il tuo respiro senza guardare lo schermo"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "Offerta scade tra"
+    },
+    "socialProof": {
+      "users": "{{count}} utenti",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "Prima",
+      "after": "Dopo"
+    },
+    "pricing": {
+      "monthly": "Mensile",
+      "annual": "Annuale",
+      "perMonth": "/mese",
+      "perYear": "/anno",
+      "bestValue": "MIGLIOR OFFERTA",
+      "savings": "Risparmia {{percent}}%",
+      "influencerDiscount": "-{{percent}}% con {{code}}"
+    },
+    "headline": {
+      "default": "Sblocca il tuo potenziale",
+      "trialExpired": "{{name}}, la tua prova è terminata",
+      "dailyLimit": "Hai raggiunto il tuo limite giornaliero",
+      "trialProgress": "{{name}}, hai fatto {{count}} reset in {{days}} giorni"
+    },
+    "subheadline": {
+      "default": "Trasforma 30 secondi in un cambiamento duraturo.",
+      "trialExpired": "Continua il tuo percorso e mantieni il tuo slancio.",
+      "improvement": "Non perdere il tuo miglioramento medio del {{percent}}%"
+    },
+    "trust": {
+      "securePayment": "Pagamento sicuro",
+      "cancelAnytime": "Annulla con un clic",
+      "moneyBack": "Soddisfatto o rimborsato <strong>{{days}} giorni</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "Domande frequenti"
+    },
+    "testimonials": {
+      "title": "Cosa ne dicono"
+    },
+    "influencer": {
+      "applied": "Codice <strong>{{code}}</strong> di <strong>{{name}}</strong> applicato",
+      "validMonths": "Valido per {{months}} mesi"
+    },
+    "button": {
+      "continue": "Continua il mio percorso",
+      "processing": "Reindirizzamento..."
+    },
+    "footer": {
+      "terms": "Condizioni",
+      "privacy": "Privacy",
+      "support": "Supporto"
+    }
   }
 }

@@ -1188,6 +1188,67 @@
     },
     "footer": "En utilisant Nokta One, vous reconnaissez avoir lu, compris et accepté ces Conditions Générales d'Utilisation."
   },
+  "paywall": {
+    "countdown": {
+      "expires": "Offre expire dans"
+    },
+    "socialProof": {
+      "users": "{{count}} utilisateurs",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "Avant",
+      "after": "Après"
+    },
+    "pricing": {
+      "monthly": "Mensuel",
+      "annual": "Annuel",
+      "perMonth": "/mois",
+      "perYear": "/an",
+      "bestValue": "MEILLEURE OFFRE",
+      "savings": "Économise {{percent}}%",
+      "influencerDiscount": "-{{percent}}% avec {{code}}"
+    },
+    "headline": {
+      "default": "Débloquez votre potentiel",
+      "trialExpired": "{{name}}, ton essai est terminé",
+      "dailyLimit": "Tu as atteint ta limite quotidienne",
+      "trialProgress": "{{name}}, tu as fait {{count}} resets en {{days}} jours"
+    },
+    "subheadline": {
+      "default": "Transforme 30 secondes en changement durable.",
+      "trialExpired": "Continue ton parcours et garde ton momentum.",
+      "improvement": "Ne perds pas ton amélioration moyenne de {{percent}}%"
+    },
+    "trust": {
+      "securePayment": "Paiement sécurisé",
+      "cancelAnytime": "Annule en 1 clic",
+      "moneyBack": "Satisfait ou remboursé <strong>{{days}} jours</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "Questions fréquentes"
+    },
+    "testimonials": {
+      "title": "Ce qu'ils en disent"
+    },
+    "influencer": {
+      "applied": "Code <strong>{{code}}</strong> de <strong>{{name}}</strong> appliqué",
+      "validMonths": "Valable {{months}} mois"
+    },
+    "button": {
+      "continue": "Continuer mon parcours",
+      "processing": "Redirection..."
+    },
+    "footer": {
+      "terms": "Conditions",
+      "privacy": "Confidentialité",
+      "support": "Support"
+    }
+  },
   "partnership": {
     "title": "Gestion des partenariats",
     "accessTitle": "Accès Partenariats",

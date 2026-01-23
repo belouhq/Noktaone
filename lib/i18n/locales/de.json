@@ -1211,5 +1211,66 @@
     "disabled": "Vibrationen deaktiviert",
     "settingsTitle": "Freihandmodus",
     "settingsDescription": "Die Vibrationen unterstützen deine Atmung, ohne auf den Bildschirm zu schauen"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "Angebot läuft ab in"
+    },
+    "socialProof": {
+      "users": "{{count}} Nutzer",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "Vorher",
+      "after": "Nachher"
+    },
+    "pricing": {
+      "monthly": "Monatlich",
+      "annual": "Jährlich",
+      "perMonth": "/Monat",
+      "perYear": "/Jahr",
+      "bestValue": "BESTE ANGEBOT",
+      "savings": "Spare {{percent}}%",
+      "influencerDiscount": "-{{percent}}% mit {{code}}"
+    },
+    "headline": {
+      "default": "Entfalte dein Potenzial",
+      "trialExpired": "{{name}}, deine Testphase ist beendet",
+      "dailyLimit": "Du hast dein tägliches Limit erreicht",
+      "trialProgress": "{{name}}, du hast {{count}} Rücksetzungen in {{days}} Tagen gemacht"
+    },
+    "subheadline": {
+      "default": "Verwandle 30 Sekunden in nachhaltige Veränderung.",
+      "trialExpired": "Setze deinen Weg fort und halte dein Momentum.",
+      "improvement": "Verliere nicht deinen durchschnittlichen Fortschritt von {{percent}}%"
+    },
+    "trust": {
+      "securePayment": "Sichere Zahlung",
+      "cancelAnytime": "Jederzeit mit einem Klick kündigen",
+      "moneyBack": "Zufrieden oder Geld zurück <strong>{{days}} Tage</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen"
+    },
+    "testimonials": {
+      "title": "Was sie sagen"
+    },
+    "influencer": {
+      "applied": "Code <strong>{{code}}</strong> von <strong>{{name}}</strong> angewendet",
+      "validMonths": "Gültig für {{months}} Monate"
+    },
+    "button": {
+      "continue": "Mein Weg fortsetzen",
+      "processing": "Weiterleitung..."
+    },
+    "footer": {
+      "terms": "Bedingungen",
+      "privacy": "Datenschutz",
+      "support": "Unterstützung"
+    }
   }
 }

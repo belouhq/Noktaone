@@ -1211,5 +1211,66 @@
     "disabled": "الاهتزازات معطلة",
     "settingsTitle": "وضع اليد الحرة",
     "settingsDescription": "الاهتزازات توجه تنفسك دون الحاجة للنظر إلى الشاشة"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "العرض ينتهي في"
+    },
+    "socialProof": {
+      "users": "{{count}} مستخدمين",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "قبل",
+      "after": "بعد"
+    },
+    "pricing": {
+      "monthly": "شهري",
+      "annual": "سنوي",
+      "perMonth": "/شهر",
+      "perYear": "/سنة",
+      "bestValue": "أفضل عرض",
+      "savings": "وفر {{percent}}%",
+      "influencerDiscount": "-{{percent}}% مع {{code}}"
+    },
+    "headline": {
+      "default": "افتح إمكانياتك",
+      "trialExpired": "{{name}}، انتهت فترة تجربتك",
+      "dailyLimit": "لقد وصلت إلى حدك اليومي",
+      "trialProgress": "{{name}}، لقد قمت بـ {{count}} إعادة تعيين خلال {{days}} أيام"
+    },
+    "subheadline": {
+      "default": "حوّل 30 ثانية إلى تغيير دائم.",
+      "trialExpired": "واصل رحلتك واحتفظ بزخمك.",
+      "improvement": "لا تفقد تحسينك المتوسط بنسبة {{percent}}%"
+    },
+    "trust": {
+      "securePayment": "دفع آمن",
+      "cancelAnytime": "إلغاء بنقرة واحدة",
+      "moneyBack": "مضمون أو استرداد <strong>{{days}} أيام</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "أسئلة شائعة"
+    },
+    "testimonials": {
+      "title": "ماذا يقولون"
+    },
+    "influencer": {
+      "applied": "تم تطبيق الرمز <strong>{{code}}</strong> من <strong>{{name}}</strong>",
+      "validMonths": "صالح لمدة {{months}} شهر"
+    },
+    "button": {
+      "continue": "تابع رحلتي",
+      "processing": "جارٍ التحويل..."
+    },
+    "footer": {
+      "terms": "الشروط",
+      "privacy": "الخصوصية",
+      "support": "الدعم"
+    }
   }
 }

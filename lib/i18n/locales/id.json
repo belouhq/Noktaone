@@ -1211,5 +1211,66 @@
     "disabled": "Getaran dinonaktifkan",
     "settingsTitle": "Mode bebas tangan",
     "settingsDescription": "Getaran membimbing pernapasanmu tanpa melihat layar"
+  },
+  "paywall": {
+    "countdown": {
+      "expires": "Penawaran berakhir dalam"
+    },
+    "socialProof": {
+      "users": "{{count}} pengguna",
+      "rating": "{{score}} ({{count}})"
+    },
+    "beforeAfter": {
+      "before": "Sebelum",
+      "after": "Sesudah"
+    },
+    "pricing": {
+      "monthly": "Bulanan",
+      "annual": "Tahunan",
+      "perMonth": "/bulan",
+      "perYear": "/tahun",
+      "bestValue": "PENAWARAN TERBAIK",
+      "savings": "Hemat {{percent}}%",
+      "influencerDiscount": "-{{percent}}% dengan {{code}}"
+    },
+    "headline": {
+      "default": "Buka potensimu",
+      "trialExpired": "{{name}}, masa percobaanmu telah berakhir",
+      "dailyLimit": "Kamu telah mencapai batas harianmu",
+      "trialProgress": "{{name}}, kamu telah melakukan {{count}} reset dalam {{days}} hari"
+    },
+    "subheadline": {
+      "default": "Ubah 30 detik menjadi perubahan yang berkelanjutan.",
+      "trialExpired": "Lanjutkan perjalananmu dan jaga momentum.",
+      "improvement": "Jangan kehilangan peningkatan rata-rata {{percent}}%"
+    },
+    "trust": {
+      "securePayment": "Pembayaran aman",
+      "cancelAnytime": "Batalkan dengan 1 klik",
+      "moneyBack": "Puaskah atau uang kembali <strong>{{days}} hari</strong>"
+    },
+    "payment": {
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay"
+    },
+    "faq": {
+      "title": "Pertanyaan yang Sering Diajukan"
+    },
+    "testimonials": {
+      "title": "Apa kata mereka"
+    },
+    "influencer": {
+      "applied": "Kode <strong>{{code}}</strong> dari <strong>{{name}}</strong> diterapkan",
+      "validMonths": "Berlaku {{months}} bulan"
+    },
+    "button": {
+      "continue": "Lanjutkan perjalanan saya",
+      "processing": "Mengalihkan..."
+    },
+    "footer": {
+      "terms": "Syarat",
+      "privacy": "Privasi",
+      "support": "Dukungan"
+    }
   }
 }
