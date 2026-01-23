@@ -7,6 +7,7 @@ import { getLastSession } from '@/lib/skane/session-model';
 import { noktaService, mapGptToFacial, SIGNAL_LABELS } from '@/lib/nokta';
 import { logger } from '@/lib/utils/logger';
 import { validateBase64Image, validateUserId, validationErrorResponse, serverErrorResponse, checkRateLimit } from '@/lib/utils/guards';
+import { selectMicroActionV25 } from '@/lib/skane/selector-v25';
 
 // Helper pour déterminer le moment de la journée
 function getTimeOfDay(): 'morning' | 'afternoon' | 'evening' | 'night' {
@@ -154,7 +155,11 @@ export async function POST(request: NextRequest) {
         const { signal, recommendedAction, sessionPayload } = await noktaService.startSession(userId, facialData);
         const stateMap: Record<string, InternalState> = { high: 'HIGH_ACTIVATION', moderate: 'LOW_ENERGY', clear: 'REGULATED' };
         const noktaState = stateMap[signal] ?? 'REGULATED';
-        const actionId = recommendedAction.id === 'grounding_54321' ? 'box_breathing' : recommendedAction.id;
+        
+        // Utiliser le sélecteur V2.5 pour choisir la micro-action
+        const isGuestMode = false; // userId présent = mode compte
+        const selectionResult = await selectMicroActionV25(noktaState, userId, isGuestMode);
+        const actionId = selectionResult.actionId;
         const skaneIndexVal = sessionPayload.internalScoreBefore.rawScore;
 
         return NextResponse.json({
@@ -171,6 +176,11 @@ export async function POST(request: NextRequest) {
           inferredSignals: analysis.inferred_signals,
           ui_flags: analysis.ui_flags || { share_allowed: true, medical_disclaimer: true },
           sessionPayload,
+          selectionResult: {
+            actionId: selectionResult.actionId,
+            rule: selectionResult.rule,
+            candidates: selectionResult.candidates,
+          },
           requestId,
         });
       } catch (e) {
