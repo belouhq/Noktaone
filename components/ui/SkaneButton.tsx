@@ -36,9 +36,9 @@ export default function SkaneButton({ onClick, disabled }: SkaneButtonProps) {
         zIndex: 10,
         cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.5 : 1,
-        // Diamètre : 64-72mm responsive (sweet spot 68mm)
-        width: 'clamp(220px, 28vw, 280px)',
-        height: 'clamp(220px, 28vw, 280px)',
+        // Diamètre : proportion optimale pour le bouton principal
+        width: 'clamp(200px, 25vw, 260px)',
+        height: 'clamp(200px, 25vw, 260px)',
         minWidth: '48px', // Accessible hit area
         minHeight: '48px',
         // Forme : cercle parfait
