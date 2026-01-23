@@ -344,6 +344,16 @@ export default function BriefingPage() {
         <div className="h-24" />
       </div>
 
+      {/* Tip d'usage (optionnel) */}
+      {showTip && action?.tip && (
+        <ActionTip
+          tip={action.tip}
+          tipKey={action.tipKey}
+          onSkip={handleTipSkip}
+          onContinue={handleTipContinue}
+        />
+      )}
+
       {/* Overlay de compte à rebours */}
       <AnimatePresence>
         {countdown !== null && (
