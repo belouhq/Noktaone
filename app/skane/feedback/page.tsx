@@ -45,8 +45,8 @@ export default function FeedbackPage() {
     setSelectedFeedback(feedback);
     setIsSubmitting(true);
 
-    // Récupérer le mode invité
-    const isGuestMode = sessionStorage.getItem("skane_guest_mode") === "true";
+    // Récupérer le mode invité (uniformiser : utiliser localStorage comme partout ailleurs)
+    const isGuestMode = localStorage.getItem("guestMode") === "true";
     const userId = getUserId();
     const guestId = isGuestMode ? getOrCreateGuestId() : null;
     
@@ -125,9 +125,9 @@ export default function FeedbackPage() {
       });
     }
 
-    // Si utilisateur non connecté → afficher modal inscription
-    if (!user && !authLoading) {
-      setPendingFeedback(feedback);
+    // Si utilisateur non connecté ET pas en mode invité → afficher modal inscription
+    // En mode invité, on ne demande pas d'inscription (l'utilisateur peut s'inscrire via lien partagé)
+    if (!user && !authLoading && !isGuestMode) {
       setPendingFeedback(feedback);
       setShowSignupModal(true);
       setIsSubmitting(false);
@@ -168,11 +168,12 @@ export default function FeedbackPage() {
   };
 
   const handleSignupSkip = () => {
+    const feedbackToRedirect = pendingFeedback;
     setShowSignupModal(false);
     setPendingFeedback(null);
     
-    // Rediriger selon le feedback
-    if (pendingFeedback === "better") {
+    // Rediriger selon le feedback (utiliser la variable locale pour éviter le problème de timing)
+    if (feedbackToRedirect === "better") {
       router.push("/skane/share-prompt");
     } else {
       router.push("/");

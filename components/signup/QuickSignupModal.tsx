@@ -320,8 +320,9 @@ export default function QuickSignupModal({
         >
           {/* Close */}
           <button
-            onClick={onClose}
+            onClick={onSkip || onClose}
             className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white transition-colors"
+            aria-label="Close"
           >
             <X size={20} />
           </button>

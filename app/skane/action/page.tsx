@@ -57,37 +57,43 @@ export default function ActionPage() {
       if (microAction) {
         setActionId(microAction as MicroActionType);
         
-        // Tracker le lancement de la micro-action (sessionId peut être null)
+        // Tracker le lancement de la micro-action
+        // IMPORTANT: Ne créer l'événement que si on a un sessionId valide (UUID)
+        // Sinon, on le créera après le feedback quand la session sera disponible
         const isGuestMode = localStorage.getItem("guestMode") === "true";
         const userId = getUserId();
         const guestId = isGuestMode ? getOrCreateGuestId() : null;
         const selectionResult = parsed.selectionResult;
         
-        // Créer un ID temporaire si pas de sessionId (sera mis à jour après feedback)
-        const tempSessionId = sessionId || `temp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        // Vérifier si sessionId est un UUID valide (format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+        const isValidUUID = sessionId && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(sessionId);
         
-        createMicroActionEvent({
-          user_id: userId,
-          guest_id: guestId,
-          session_id: tempSessionId,
-          micro_action_id: microAction,
-          mode: isGuestMode ? 'guest' : 'account',
-          candidates_shown: selectionResult?.candidates,
-          picked_action_id: microAction,
-          selection_rule: selectionResult?.selectionRule,
-          penalties_applied: selectionResult?.penalties,
-          user_lift_used: selectionResult?.userLiftUsed,
-          completed: false,
-        }).then(event => {
-          if (event) {
-            // Stocker l'event ID pour mettre à jour le feedback plus tard
-            sessionStorage.setItem('micro_action_event_id', event.id);
-            // Stocker aussi le tempSessionId pour référence
-            if (!sessionId) {
-              sessionStorage.setItem('temp_session_id', tempSessionId);
+        // Créer l'événement seulement si on a un sessionId valide
+        if (isValidUUID) {
+          createMicroActionEvent({
+            user_id: userId,
+            guest_id: guestId,
+            session_id: sessionId,
+            micro_action_id: microAction,
+            mode: isGuestMode ? 'guest' : 'account',
+            candidates_shown: selectionResult?.candidates,
+            picked_action_id: microAction,
+            selection_rule: selectionResult?.selectionRule,
+            penalties_applied: selectionResult?.penalties,
+            user_lift_used: selectionResult?.userLiftUsed,
+            completed: false,
+          }).then(event => {
+            if (event) {
+              // Stocker l'event ID pour mettre à jour le feedback plus tard
+              sessionStorage.setItem('micro_action_event_id', event.id);
             }
-          }
-        });
+          }).catch(err => {
+            console.warn('Could not create micro action event (will be created after feedback):', err);
+          });
+        } else {
+          // Pas de sessionId valide : on créera l'événement après le feedback
+          console.log('No valid sessionId yet, micro action event will be created after feedback');
+        }
         
         setIsReady(true);
       } else {
