@@ -12,11 +12,10 @@ import type {
   PricingDisplay, 
   TrialProgress, 
   PaywallTrigger,
-  SupportedLocale,
   SubscriptionPlan,
 } from '../types';
-import { PAYWALL_CONFIG } from '@/lib/paywall/constants';
-import { LOCALE_PRICING } from '@/lib/notifications/constants';
+import type { SupportedLocale } from '../constants';
+import { PAYWALL_CONFIG, LOCALE_PRICING } from '../constants';
 import { formatPrice } from '@/lib/utils/formatPrice';
 import { 
   calculateConversionProbability, 
@@ -44,17 +43,18 @@ export function usePricing(locale: SupportedLocale = 'fr'): UsePricingReturn {
 
   useEffect(() => {
     try {
-      const localePricing = LOCALE_PRICING[locale] || LOCALE_PRICING.fr;
+      const localePricing = LOCALE_PRICING[locale] || LOCALE_PRICING.en;
       
+      // Convert to cents for PricingDisplay format
       const pricingData: PricingDisplay = {
         monthly: {
-          original: localePricing.monthly,
+          original: Math.round(localePricing.monthly * 100), // Convert to cents
           discounted: undefined,
         },
         annual: {
-          original: localePricing.annual,
-          discounted: localePricing.annual * 0.8, // 20% discount
-          savingsPercent: 20,
+          original: Math.round(localePricing.annual * 100), // Convert to cents
+          discounted: undefined,
+          savingsPercent: Math.round(((localePricing.monthly * 12 - localePricing.annual) / (localePricing.monthly * 12)) * 100),
         },
         currency: localePricing.currency,
         influencerDiscount: null,
