@@ -114,7 +114,7 @@ const contentFR = {
   sections: [
     {
       title: "1. Éditeur de l'Application",
-      icon: "🏢",
+      icon: "",
       content: `
         <p>L'application <strong>Nokta One</strong> est éditée par :</p>
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
@@ -130,7 +130,7 @@ const contentFR = {
     },
     {
       title: "2. Hébergement",
-      icon: "☁️",
+      icon: "",
       content: `
         <p>L'Application et ses données sont hébergées par :</p>
         <h3>Hébergeur principal</h3>
@@ -252,7 +252,7 @@ const contentEN = {
   sections: [
     {
       title: "1. Application Publisher",
-      icon: "🏢",
+      icon: "",
       content: `
         <p>The <strong>Nokta One</strong> application is published by:</p>
         <div style="background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
@@ -268,7 +268,7 @@ const contentEN = {
     },
     {
       title: "2. Hosting",
-      icon: "☁️",
+      icon: "",
       content: `
         <p>The Application and its data are hosted by:</p>
         <h3>Main Host</h3>
