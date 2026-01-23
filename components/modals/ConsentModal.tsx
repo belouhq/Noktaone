@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 import { CONSENT_VERSION } from "@/lib/hooks/useConsent";
 
 export interface ConsentState {
@@ -41,6 +42,7 @@ export default function ConsentModal({
   onAccept,
   onAcceptAll,
 }: ConsentModalProps) {
+  const { t } = useTranslation();
   const [showPreferences, setShowPreferences] = useState(false);
   const [consent, setConsent] = useState({
     privacy: true, // Essential, toujours requis
@@ -112,10 +114,10 @@ export default function ConsentModal({
                 </div>
 
                 <h2 className="text-xl font-semibold text-white mb-2">
-                  Gestion de vos données
+                  {t("consent.modal.title") || t("consent.title") || "Gestion de vos données"}
                 </h2>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  Nous respectons votre vie privée. Choisissez ce que vous acceptez.
+                  {t("consent.modal.description") || t("consent.subtitle") || "Nous respectons votre vie privée. Choisissez ce que vous acceptez."}
                 </p>
               </div>
 
@@ -152,7 +154,7 @@ export default function ConsentModal({
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-white font-medium text-sm">
-                          Données personnelles
+                          {t("consent.modal.privacy.title") || t("consent.privacyTitle") || "Données personnelles"}
                         </span>
                         <span
                           className="px-2 py-0.5 rounded text-xs font-medium"
@@ -161,18 +163,18 @@ export default function ConsentModal({
                             color: "#60A5FA",
                           }}
                         >
-                          Requis
+                          {t("consent.required") || "Requis"}
                         </span>
                       </div>
                       <p className="text-gray-500 text-xs leading-relaxed">
-                        Nécessaire pour créer votre compte et sauvegarder vos résultats.
+                        {t("consent.modal.privacy.description") || t("consent.privacyDescription") || "Nécessaire pour créer votre compte et sauvegarder vos résultats."}
                       </p>
                       <a
                         href="/privacy"
                         target="_blank"
                         className="inline-flex items-center gap-1 text-blue-400 text-xs mt-2 hover:underline"
                       >
-                        Lire notre Politique de confidentialité
+                        {t("consent.modal.privacyLink") || t("consent.readPolicy") || "Lire notre Politique de confidentialité"}
                         <ExternalLink size={10} />
                       </a>
                     </div>
@@ -188,7 +190,9 @@ export default function ConsentModal({
                     border: "1px solid rgba(255, 255, 255, 0.06)",
                   }}
                 >
-                  <span className="text-gray-300 text-sm">Gérer mes préférences</span>
+                  <span className="text-gray-300 text-sm">
+                    {t("consent.managePreferences") || "Gérer mes préférences"}
+                  </span>
                   {showPreferences ? (
                     <ChevronUp size={18} className="text-gray-500" />
                   ) : (
@@ -225,10 +229,10 @@ export default function ConsentModal({
                           />
                           <div>
                             <span className="text-white text-sm font-medium">
-                              Amélioration de l'app
+                              {t("consent.modal.analytics.title") || t("consent.analyticsTitle") || "Amélioration de l'app"}
                             </span>
                             <p className="text-gray-500 text-xs mt-0.5">
-                              Nous aide à comprendre comment vous utilisez l'app pour l'améliorer.
+                              {t("consent.modal.analytics.description") || t("consent.analyticsDescription") || "Nous aide à comprendre comment vous utilisez l'app pour l'améliorer."}
                             </p>
                           </div>
                         </label>
@@ -251,10 +255,10 @@ export default function ConsentModal({
                           />
                           <div>
                             <span className="text-white text-sm font-medium">
-                              Communications personnalisées
+                              {t("consent.modal.marketing.title") || t("consent.marketingTitle") || "Communications personnalisées"}
                             </span>
                             <p className="text-gray-500 text-xs mt-0.5">
-                              Recevez des conseils et offres adaptés à votre utilisation.
+                              {t("consent.modal.marketing.description") || t("consent.marketingDescription") || "Recevez des conseils et offres adaptés à votre utilisation."}
                             </p>
                           </div>
                         </label>
@@ -265,7 +269,7 @@ export default function ConsentModal({
 
                 {/* Message de réassurance - LÉGAL et persuasif */}
                 <p className="text-center text-gray-500 text-xs mb-4">
-                  Nous ne vendons pas vos données personnelles.
+                  {t("consent.modal.ccpa") || t("consent.ccpaNotice") || "Nous ne vendons pas vos données personnelles."}
                 </p>
 
                 {/* 
@@ -291,7 +295,7 @@ export default function ConsentModal({
                       boxShadow: "0 4px 20px rgba(59, 130, 246, 0.3)",
                     }}
                   >
-                    Tout accepter
+                    {t("consent.modal.acceptAll") || t("consent.acceptAll") || "Tout accepter"}
                   </button>
 
                   {/* Accepter la sélection - Même taille, visible */}
@@ -303,14 +307,13 @@ export default function ConsentModal({
                       border: "1px solid rgba(255, 255, 255, 0.15)",
                     }}
                   >
-                    Accepter la sélection
+                    {t("consent.modal.accept") || t("consent.acceptSelected") || "Accepter la sélection"}
                   </button>
                 </div>
 
                 {/* Lien vers paramètres */}
                 <p className="text-center text-gray-600 text-xs mt-4">
-                  Vous pouvez modifier ces paramètres à tout moment dans{" "}
-                  <span className="text-gray-500">Réglages {">"} Confidentialité</span>.
+                  {t("consent.footerNotice") || t("consent.modal.footerNotice") || "Vous pouvez modifier ces paramètres à tout moment dans Réglages > Confidentialité."}
                 </p>
               </div>
             </div>
