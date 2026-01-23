@@ -1170,5 +1170,18 @@
       "postalAddress": "カスタマーサービス\nフランス、パリ"
     },
     "footer": "Nokta Oneを使用することで、これらの利用規約を読み、理解し、同意したことを認めます。"
+  },
+  "partnership": {
+    "title": "パートナーシップ管理",
+    "accessTitle": "パートナーシップアクセス",
+    "accessDescription": "パートナーシップ管理パネルにアクセスするために、アクセスコードを入力してください。",
+    "codeLabel": "アクセスコード",
+    "codePlaceholder": "コードを入力",
+    "verify": "確認",
+    "verifying": "確認中...",
+    "accessGranted": "アクセスが許可されました",
+    "codeRequired": "コードが必要です",
+    "codeIncorrect": "コードが正しくありません",
+    "tooManyAttempts": "試行回数が多すぎます。後で再試行してください。"
   }
 }

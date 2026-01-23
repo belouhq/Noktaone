@@ -1170,5 +1170,18 @@
       "postalAddress": "客户服务\n法国巴黎"
     },
     "footer": "使用Nokta One即表示您已阅读、理解并接受这些使用条款。"
+  },
+  "partnership": {
+    "title": "合作管理",
+    "accessTitle": "合作访问",
+    "accessDescription": "输入您的访问代码以进入合作管理面板。",
+    "codeLabel": "访问代码",
+    "codePlaceholder": "输入代码",
+    "verify": "验证",
+    "verifying": "验证中...",
+    "accessGranted": "访问授权",
+    "codeRequired": "需要代码",
+    "codeIncorrect": "代码不正确",
+    "tooManyAttempts": "尝试次数过多。请稍后再试。"
   }
 }

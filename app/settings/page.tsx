@@ -17,8 +17,8 @@ import ConnectedDevicesModal from "@/components/modals/ConnectedDevicesModal";
 import InvitationsModal from "@/components/modals/InvitationsModal";
 import EditProfileModal from "@/components/modals/EditProfileModal";
 import { SupportModal } from "@/components/modals/SupportModal";
-import AffiliatePanel from "@/components/settings/AffiliatePanel";
 import PrivacySettingsSection from "@/components/settings/PrivacySettingsSection";
+import PartnershipSection from "@/components/settings/PartnershipSection";
 import { createClient } from "@supabase/supabase-js";
 
 // Mock user data
@@ -382,12 +382,12 @@ export default function SettingsPage() {
             showChevron
           />
 
-          {/* Programme Ambassadeur - Section complète */}
+          {/* Partnership Section */}
           {userId && (
-            <div className="mt-6">
-              <AffiliatePanel 
-                userId={userId} 
-                locale={currentLanguage || 'fr'} 
+            <div className="mt-8">
+              <PartnershipSection
+                userId={userId}
+                locale={currentLanguage || 'fr'}
               />
             </div>
           )}

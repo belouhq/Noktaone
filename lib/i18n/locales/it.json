@@ -1170,5 +1170,18 @@
       "postalAddress": "Servizio Clienti\nParigi, Francia"
     },
     "footer": "Utilizzando NOKTA ONE, riconosci di aver letto, compreso e accettato questi Termini di Servizio."
+  },
+  "partnership": {
+    "title": "Gestione dei partenariati",
+    "accessTitle": "Accesso ai Partenariati",
+    "accessDescription": "Inserisci il tuo codice di accesso per accedere al pannello di gestione dei partenariati.",
+    "codeLabel": "Codice di accesso",
+    "codePlaceholder": "Inserisci il codice",
+    "verify": "Verifica",
+    "verifying": "Verifica in corso...",
+    "accessGranted": "Accesso autorizzato",
+    "codeRequired": "Codice richiesto",
+    "codeIncorrect": "Codice errato",
+    "tooManyAttempts": "Troppe tentativi. Riprova più tardi."
   }
 }

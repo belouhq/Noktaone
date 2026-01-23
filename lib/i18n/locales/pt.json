@@ -1170,5 +1170,18 @@
       "postalAddress": "Atendimento ao Cliente\nParis, França"
     },
     "footer": "Ao usar o Nokta One, você reconhece que leu, entendeu e aceitou estes Termos de Uso."
+  },
+  "partnership": {
+    "title": "Gestão de Parcerias",
+    "accessTitle": "Acesso a Parcerias",
+    "accessDescription": "Digite seu código de acesso para acessar o painel de gestão de parcerias.",
+    "codeLabel": "Código de acesso",
+    "codePlaceholder": "Digite o código",
+    "verify": "Verificar",
+    "verifying": "Verificando...",
+    "accessGranted": "Acesso permitido",
+    "codeRequired": "Código necessário",
+    "codeIncorrect": "Código incorreto",
+    "tooManyAttempts": "Muitas tentativas. Tente novamente mais tarde."
   }
 }

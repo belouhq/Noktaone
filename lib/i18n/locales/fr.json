@@ -1159,5 +1159,18 @@
       "postalAddress": "Service Client\nParis, France"
     },
     "footer": "En utilisant Nokta One, vous reconnaissez avoir lu, compris et accepté ces Conditions Générales d'Utilisation."
+  },
+  "partnership": {
+    "title": "Gestion des partenariats",
+    "accessTitle": "Accès Partenariats",
+    "accessDescription": "Entrez votre code d'accès pour accéder au panneau de gestion des partenariats.",
+    "codeLabel": "Code d'accès",
+    "codePlaceholder": "Entrez le code",
+    "verify": "Vérifier",
+    "verifying": "Vérification...",
+    "accessGranted": "Accès autorisé",
+    "codeRequired": "Code requis",
+    "codeIncorrect": "Code incorrect",
+    "tooManyAttempts": "Trop de tentatives. Réessayez plus tard."
   }
 }

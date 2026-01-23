@@ -1170,5 +1170,18 @@
       "postalAddress": "Layanan Pelanggan\nParis, Prancis"
     },
     "footer": "Dengan menggunakan Nokta One, Anda mengakui telah membaca, memahami, dan menerima Syarat dan Ketentuan ini."
+  },
+  "partnership": {
+    "title": "Pengelolaan Kemitraan",
+    "accessTitle": "Akses Kemitraan",
+    "accessDescription": "Masukkan kode akses Anda untuk mengakses panel pengelolaan kemitraan.",
+    "codeLabel": "Kode akses",
+    "codePlaceholder": "Masukkan kode",
+    "verify": "Verifikasi",
+    "verifying": "Memverifikasi...",
+    "accessGranted": "Akses diberikan",
+    "codeRequired": "Kode diperlukan",
+    "codeIncorrect": "Kode salah",
+    "tooManyAttempts": "Terlalu banyak percobaan. Coba lagi nanti."
   }
 }
