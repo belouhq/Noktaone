@@ -7,6 +7,7 @@ import {
   Download, 
   Trash2, 
   ChevronRight, 
+  ChevronDown,
   AlertTriangle,
   Check,
   X,
@@ -41,6 +42,7 @@ export default function PrivacySettingsSection({
   const [isDeleting, setIsDeleting] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggleAnalytics = async () => {
     const newConsents = { ...consents, analytics: !consents.analytics };
@@ -96,26 +98,38 @@ export default function PrivacySettingsSection({
 
   return (
     <div className="space-y-4">
-      {/* Section Title */}
-      <div className="flex items-center gap-2 mb-2">
-        <Shield size={18} className="text-blue-500" />
-        <h3 className="text-sm uppercase text-gray-400 tracking-wider">
-          {t("privacy.sectionTitle") || t("consent.settings.title")}
-        </h3>
-        {saveSuccess && (
-          <motion.span
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0 }}
-            className="text-xs text-green-400 ml-auto"
-          >
-            {t("privacy.saved") || "Saved"}
-          </motion.span>
-        )}
-      </div>
+      {/* Main Menu Button - Expandable */}
+      <motion.button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="glass-card w-full p-4 flex items-center justify-between"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
+      >
+        <div className="flex items-center gap-3">
+          <Shield size={20} className="text-blue-500" />
+          <span className="text-white font-medium text-sm">
+            {t("privacy.sectionTitle") || t("consent.settings.title")}
+          </span>
+        </div>
+        <motion.div
+          animate={{ rotate: isExpanded ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronDown size={18} className="text-gray-400" />
+        </motion.div>
+      </motion.button>
 
-      {/* Single Menu Card - All Privacy Settings */}
-      <div className="glass-card p-4 space-y-4">
+      {/* Expanded Content */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="glass-card p-4 space-y-4 mt-3">
         {/* Analytics Toggle */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 flex-1">
@@ -233,7 +247,10 @@ export default function PrivacySettingsSection({
           </div>
           <ChevronRight size={18} className="text-red-400/50" />
         </motion.button>
-      </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Delete Confirmation Modal */}
       <AnimatePresence>
