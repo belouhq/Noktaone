@@ -275,7 +275,10 @@
     "marketingOptIn": "Menerima tips dan penawaran",
     "marketingOptInDescription": "Email sesekali dengan tips wellness, fitur baru, dan penawaran eksklusif. Mudah untuk berhenti berlangganan.",
     "dataUsageNotice": "Pindai wajah Anda diproses secara lokal. Hanya metrik wellness yang disimpan dengan aman.",
-    "termsRequired": "Anda harus menerima Ketentuan dan Kebijakan Privasi untuk membuat akun"
+    "termsRequired": "Anda harus menerima Ketentuan dan Kebijakan Privasi untuk membuat akun",
+    "occupation": "Pekerjaan",
+    "occupationOptional": "Pekerjaan (opsional)",
+    "occupationPlaceholder": "Pengusaha, Mahasiswa, Eksekutif..."
   },
   "support": {
     "title": "Bantuan",

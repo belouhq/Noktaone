@@ -275,7 +275,10 @@
     "marketingOptIn": "Receber dicas e ofertas",
     "marketingOptInDescription": "E-mails ocasionais com dicas de bem-estar, novas funcionalidades e ofertas exclusivas. Cancelamento fácil.",
     "dataUsageNotice": "Seus scans faciais são processados localmente. Apenas as métricas de bem-estar são armazenadas de forma segura.",
-    "termsRequired": "Você deve aceitar os Termos e a Política de Privacidade para criar uma conta"
+    "termsRequired": "Você deve aceitar os Termos e a Política de Privacidade para criar uma conta",
+    "occupation": "Ocupação",
+    "occupationOptional": "Ocupação (opcional)",
+    "occupationPlaceholder": "Empreendedor, Estudante, Executivo..."
   },
   "support": {
     "title": "Ajuda",

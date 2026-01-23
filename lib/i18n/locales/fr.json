@@ -496,6 +496,9 @@
     "marketingOptIn": "Recevoir des conseils et offres",
     "marketingOptInDescription": "Emails occasionnels avec des conseils wellness, nouvelles fonctionnalités et offres exclusives. Désabonnement facile.",
     "dataUsageNotice": "Vos scans faciaux sont traités localement. Seules les métriques wellness sont stockées de façon sécurisée.",
+    "occupation": "Occupation",
+    "occupationOptional": "Occupation (optionnel)",
+    "occupationPlaceholder": "Entrepreneur, Étudiant, Cadre...",
     "termsRequired": "Vous devez accepter les Conditions et la Politique de Confidentialité pour créer un compte"
   },
   "faq": {

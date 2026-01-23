@@ -275,7 +275,10 @@
     "marketingOptIn": "Ricevi consigli e offerte",
     "marketingOptInDescription": "Email occasionali con consigli wellness, nuove funzionalità e offerte esclusive. Disiscrizione facile.",
     "dataUsageNotice": "Le tue scansioni facciali vengono elaborate localmente. Solo le metriche wellness sono memorizzate in modo sicuro.",
-    "termsRequired": "Devi accettare i Termini e la Politica sulla Privacy per creare un account"
+    "termsRequired": "Devi accettare i Termini e la Politica sulla Privacy per creare un account",
+    "occupation": "Occupazione",
+    "occupationOptional": "Occupazione (opzionale)",
+    "occupationPlaceholder": "Imprenditore, Studente, Manager..."
   },
   "support": {
     "title": "Aiuto",

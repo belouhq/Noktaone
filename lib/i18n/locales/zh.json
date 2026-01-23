@@ -275,7 +275,10 @@
     "marketingOptIn": "接收建议和优惠",
     "marketingOptInDescription": "偶尔发送关于健康的小贴士、新功能和独家优惠的邮件。轻松退订。",
     "dataUsageNotice": "您的面部扫描在本地处理。只有健康指标会安全存储。",
-    "termsRequired": "您必须接受使用条款和隐私政策才能创建账户"
+    "termsRequired": "您必须接受使用条款和隐私政策才能创建账户",
+    "occupation": "职业",
+    "occupationOptional": "职业（可选）",
+    "occupationPlaceholder": "企业家，学生，管理人员..."
   },
   "support": {
     "title": "帮助",

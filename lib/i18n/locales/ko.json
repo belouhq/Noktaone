@@ -275,7 +275,10 @@
     "marketingOptIn": "조언 및 제안 받기",
     "marketingOptInDescription": "웰니스 팁, 새로운 기능 및 독점 제안이 포함된 간헐적인 이메일. 쉽게 구독 취소 가능.",
     "dataUsageNotice": "귀하의 얼굴 스캔은 로컬에서 처리됩니다. 웰니스 메트릭만 안전하게 저장됩니다.",
-    "termsRequired": "계정을 만들려면 이용 약관 및 개인정보 보호정책에 동의해야 합니다."
+    "termsRequired": "계정을 만들려면 이용 약관 및 개인정보 보호정책에 동의해야 합니다.",
+    "occupation": "직업",
+    "occupationOptional": "직업 (선택 사항)",
+    "occupationPlaceholder": "기업가, 학생, 관리자..."
   },
   "support": {
     "title": "도움",

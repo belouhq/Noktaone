@@ -7,9 +7,11 @@ interface StepTwoProps {
   email: string;
   country: string;
   language: string;
+  occupation: string;
   onEmailChange: (value: string) => void;
   onCountryChange: (value: string) => void;
   onLanguageChange: (value: string) => void;
+  onOccupationChange: (value: string) => void;
   onNext: () => void;
 }
 
@@ -37,11 +39,14 @@ export default function StepTwo({
   email,
   country,
   language,
+  occupation,
   onEmailChange,
   onCountryChange,
   onLanguageChange,
+  onOccupationChange,
   onNext,
 }: StepTwoProps) {
+  const { t } = useTranslation();
   const [emailError, setEmailError] = useState<string>("");
 
   const validateEmail = (email: string): boolean => {
@@ -120,6 +125,20 @@ export default function StepTwo({
             </option>
           ))}
         </select>
+      </div>
+
+      {/* Occupation */}
+      <div>
+        <label className="block text-sm text-gray-400 mb-2">
+          {t("signup.occupationOptional") || "Occupation (optionnel)"}
+        </label>
+        <input
+          type="text"
+          value={occupation}
+          onChange={(e) => onOccupationChange(e.target.value)}
+          className="w-full px-4 py-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 focus:border-nokta-one-blue focus:outline-none text-nokta-one-white transition-colors"
+          placeholder={t("signup.occupationPlaceholder") || "Entrepreneur, Étudiant, Cadre..."}
+        />
       </div>
 
       {/* Bouton Next */}

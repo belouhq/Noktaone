@@ -275,7 +275,10 @@
     "marketingOptIn": "Recibir consejos y ofertas",
     "marketingOptInDescription": "Correos ocasionales con consejos de bienestar, nuevas funciones y ofertas exclusivas. Fácil de darse de baja.",
     "dataUsageNotice": "Tus escaneos faciales se procesan localmente. Solo las métricas de bienestar se almacenan de forma segura.",
-    "termsRequired": "Debes aceptar los Términos y la Política de Privacidad para crear una cuenta"
+    "termsRequired": "Debes aceptar los Términos y la Política de Privacidad para crear una cuenta",
+    "occupation": "Ocupación",
+    "occupationOptional": "Ocupación (opcional)",
+    "occupationPlaceholder": "Emprendedor, Estudiante, Ejecutivo..."
   },
   "support": {
     "title": "Ayuda",

@@ -20,6 +20,7 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [language, setLanguage] = useState("");
+  const [occupation, setOccupation] = useState("");
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [referralCode, setReferralCode] = useState("");
   const [showToast, setShowToast] = useState(false);
@@ -43,6 +44,10 @@ export default function SignupPage() {
     const randomDigits = Math.floor(1000 + Math.random() * 9000);
     const finalReferralCode = `@${username}-${randomDigits}`;
 
+    // Importer le mapper CSP pour déterminer la catégorie
+    const { mapOccupationToCSP } = await import("@/lib/utils/csp-mapper");
+    const cspMapping = occupation ? mapOccupationToCSP(occupation) : null;
+
     // Sauvegarder dans localStorage (mock DB)
     const userData = {
       firstName,
@@ -52,6 +57,9 @@ export default function SignupPage() {
       email,
       country,
       language,
+      occupation: occupation || null,
+      cspCategory: cspMapping?.category || null,
+      cspLabel: cspMapping?.label || null,
       notificationsEnabled,
       referralCode: finalReferralCode,
       createdAt: new Date().toISOString(),
@@ -104,9 +112,11 @@ export default function SignupPage() {
                 email={email}
                 country={country}
                 language={language}
+                occupation={occupation}
                 onEmailChange={setEmail}
                 onCountryChange={setCountry}
                 onLanguageChange={setLanguage}
+                onOccupationChange={setOccupation}
                 onNext={handleNext}
               />
             )}

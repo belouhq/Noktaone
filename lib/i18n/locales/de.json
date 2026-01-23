@@ -275,7 +275,10 @@
     "marketingOptIn": "Tipps und Angebote erhalten",
     "marketingOptInDescription": "Gelegentliche E-Mails mit Wellness-Tipps, neuen Funktionen und exklusiven Angeboten. Einfach abbestellen.",
     "dataUsageNotice": "Ihre Gesichtsscans werden lokal verarbeitet. Nur die Wellness-Metriken werden sicher gespeichert.",
-    "termsRequired": "Sie müssen die Nutzungsbedingungen und die Datenschutzrichtlinie akzeptieren, um ein Konto zu erstellen"
+    "termsRequired": "Sie müssen die Nutzungsbedingungen und die Datenschutzrichtlinie akzeptieren, um ein Konto zu erstellen",
+    "occupation": "Beruf",
+    "occupationOptional": "Beruf (optional)",
+    "occupationPlaceholder": "Unternehmer, Student, Führungskraft..."
   },
   "support": {
     "title": "Hilfe",
