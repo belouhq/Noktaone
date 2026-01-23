@@ -83,7 +83,18 @@
     "postureAncrage": "アンカーポーズ",
     "shakeNeuromusculaire": "神経筋のシェイク",
     "pressionPlantaire": "足裏の圧力",
-    "regardFixeExpiration": "固定視点 + 呼気"
+    "regardFixeExpiration": "固定視点 + 呼気",
+    "tipLabel": "ヒント（オプション）",
+    "skipTip": "スキップ",
+    "continue": "続ける",
+    "tips": {
+      "physiologicalSigh": "肩を動かさないで。",
+      "expiration38": "空気を押し出さずに自然に出して。",
+      "respiration46": "始める前にあごを軽く緩めて。",
+      "dropTrapezes": "肩が下に「溶ける」ように想像して。",
+      "ouvertureThoracique": "反り返らずに背を伸ばして。",
+      "regardFixeExpiration": "じっと見つめずに見て。"
+    }
   },
   "breathing": {
     "inhale": "吸う",

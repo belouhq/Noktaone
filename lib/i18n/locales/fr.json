@@ -171,7 +171,18 @@
     "postureAncrage": "Posture d'ancrage",
     "shakeNeuromusculaire": "Shake neuromusculaire",
     "pressionPlantaire": "Pression plantaire",
-    "regardFixeExpiration": "Regard fixe + expiration"
+    "regardFixeExpiration": "Regard fixe + expiration",
+    "tipLabel": "Astuce (optionnelle)",
+    "skipTip": "Passer",
+    "continue": "Continuer",
+    "tips": {
+      "physiologicalSigh": "Garde les épaules immobiles.",
+      "expiration38": "Laisse l'air sortir tout seul, sans pousser.",
+      "respiration46": "Relâche légèrement la mâchoire avant de commencer.",
+      "dropTrapezes": "Imagine que les épaules \"fondent\" vers le bas.",
+      "ouvertureThoracique": "Grandis-toi sans cambrer.",
+      "regardFixeExpiration": "Regarde sans fixer."
+    }
   },
   "breathing": {
     "inhale": "Inspire",

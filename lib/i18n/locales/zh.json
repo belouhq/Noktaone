@@ -163,7 +163,18 @@
     "postureAncrage": "锚定姿势",
     "shakeNeuromusculaire": "神经肌肉摇动",
     "pressionPlantaire": "脚底压力",
-    "regardFixeExpiration": "固定视线 + 呼气"
+    "regardFixeExpiration": "固定视线 + 呼气",
+    "tipLabel": "提示（可选）",
+    "skipTip": "跳过",
+    "continue": "继续",
+    "tips": {
+      "physiologicalSigh": "保持肩膀静止。",
+      "expiration38": "让空气自然流出，不要用力。",
+      "respiration46": "开始前稍微放松下颚。",
+      "dropTrapezes": "想象肩膀向下“融化”。",
+      "ouvertureThoracique": "挺直身体，不要弯腰。",
+      "regardFixeExpiration": "看着，不要盯着。"
+    }
   },
   "breathing": {
     "inhale": "吸气",

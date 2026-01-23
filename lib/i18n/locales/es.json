@@ -163,7 +163,18 @@
     "postureAncrage": "Postura de anclaje",
     "shakeNeuromusculaire": "Sacudida neuromuscular",
     "pressionPlantaire": "Presión plantar",
-    "regardFixeExpiration": "Mirada fija + exhalación"
+    "regardFixeExpiration": "Mirada fija + exhalación",
+    "tipLabel": "Consejo (opcional)",
+    "skipTip": "Saltar",
+    "continue": "Continuar",
+    "tips": {
+      "physiologicalSigh": "Mantén los hombros inmóviles.",
+      "expiration38": "Deja que el aire salga solo, sin empujar.",
+      "respiration46": "Relaja ligeramente la mandíbula antes de empezar.",
+      "dropTrapezes": "Imagina que los hombros \"se derriten\" hacia abajo.",
+      "ouvertureThoracique": "Estírate sin arquearte.",
+      "regardFixeExpiration": "Mira sin fijar la vista."
+    }
   },
   "breathing": {
     "inhale": "Inhala",

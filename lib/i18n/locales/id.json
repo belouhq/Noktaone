@@ -83,7 +83,18 @@
     "postureAncrage": "Postur penanaman",
     "shakeNeuromusculaire": "Goyang neuromuskular",
     "pressionPlantaire": "Tekanan telapak kaki",
-    "regardFixeExpiration": "Tatapan tetap + pengeluaran"
+    "regardFixeExpiration": "Tatapan tetap + pengeluaran",
+    "tipLabel": "Tip (opsional)",
+    "skipTip": "Lewati",
+    "continue": "Lanjutkan",
+    "tips": {
+      "physiologicalSigh": "Jaga bahu tetap diam.",
+      "expiration38": "Biarkan udara keluar dengan sendirinya, tanpa mendorong.",
+      "respiration46": "Santai sedikit rahang sebelum mulai.",
+      "dropTrapezes": "Bayangkan bahu \"meleleh\" ke bawah.",
+      "ouvertureThoracique": "Tinggi tanpa membungkuk.",
+      "regardFixeExpiration": "Lihat tanpa menatap."
+    }
   },
   "breathing": {
     "inhale": "Tarik napas",

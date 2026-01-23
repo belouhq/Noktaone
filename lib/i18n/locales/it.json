@@ -163,7 +163,18 @@
     "postureAncrage": "Postura di ancoraggio",
     "shakeNeuromusculaire": "Shake neuromuscolare",
     "pressionPlantaire": "Pressione plantare",
-    "regardFixeExpiration": "Sguardo fisso + espirazione"
+    "regardFixeExpiration": "Sguardo fisso + espirazione",
+    "tipLabel": "Suggerimento (opzionale)",
+    "skipTip": "Salta",
+    "continue": "Continua",
+    "tips": {
+      "physiologicalSigh": "Tieni le spalle ferme.",
+      "expiration38": "Lascia uscire l'aria da sola, senza spingere.",
+      "respiration46": "Rilascia leggermente la mascella prima di iniziare.",
+      "dropTrapezes": "Immagina che le spalle \"si sciolgano\" verso il basso.",
+      "ouvertureThoracique": "Allungati senza inarcare.",
+      "regardFixeExpiration": "Guarda senza fissare."
+    }
   },
   "breathing": {
     "inhale": "Inspira",

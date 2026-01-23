@@ -26,6 +26,8 @@ export interface MicroAction {
   duration: number; // en secondes
   instructions: Instruction[];
   repetitions: number;
+  tip?: string; // Tip d'usage optionnel (texte par défaut)
+  tipKey?: string; // Clé de traduction pour le tip
 }
 
 // Instruction individuelle

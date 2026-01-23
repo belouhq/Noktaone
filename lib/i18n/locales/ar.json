@@ -83,7 +83,18 @@
     "postureAncrage": "وضعية التثبيت",
     "shakeNeuromusculaire": "اهتزاز عصبي عضلي",
     "pressionPlantaire": "ضغط أخمصي",
-    "regardFixeExpiration": "نظرة ثابتة + زفير"
+    "regardFixeExpiration": "نظرة ثابتة + زفير",
+    "tipLabel": "نصيحة (اختيارية)",
+    "skipTip": "تخطي",
+    "continue": "استمر",
+    "tips": {
+      "physiologicalSigh": "ابقِ الكتفين ثابتين.",
+      "expiration38": "دع الهواء يخرج بمفرده، دون دفع.",
+      "respiration46": "افتح فكك قليلاً قبل البدء.",
+      "dropTrapezes": "تخيل أن الكتفين \"تذوبان\" نحو الأسفل.",
+      "ouvertureThoracique": "انمو دون انحناء.",
+      "regardFixeExpiration": "انظر دون تثبيت النظر."
+    }
   },
   "breathing": {
     "inhale": "شهيق",

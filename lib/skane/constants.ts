@@ -9,6 +9,8 @@ export const MICRO_ACTIONS: Record<MicroActionType, MicroAction> = {
     nameKey: 'actions.physiologicalSigh',
     duration: 24,
     repetitions: 3,
+    tip: 'Garde les épaules immobiles.',
+    tipKey: 'actions.tips.physiologicalSigh',
     instructions: [
       { text: 'Inspire par le nez', textKey: 'breathing.inhaleNose', duration: 2, type: 'inhale' },
       { text: 'Inspire encore un peu', textKey: 'breathing.inhaleMore', duration: 1, type: 'inhale' },
@@ -23,6 +25,8 @@ export const MICRO_ACTIONS: Record<MicroActionType, MicroAction> = {
     nameKey: 'actions.expiration38',
     duration: 33,
     repetitions: 3,
+    tip: 'Laisse l\'air sortir tout seul, sans pousser.',
+    tipKey: 'actions.tips.expiration38',
     instructions: [
       { text: 'Inspire par le nez', textKey: 'breathing.inhaleNose', duration: 3, type: 'inhale' },
       { text: 'Expire lentement par la bouche', textKey: 'breathing.exhaleSlowMouth', duration: 8, type: 'exhale' },
@@ -36,6 +40,8 @@ export const MICRO_ACTIONS: Record<MicroActionType, MicroAction> = {
     nameKey: 'actions.respiration46',
     duration: 30,
     repetitions: 3,
+    tip: 'Relâche légèrement la mâchoire avant de commencer.',
+    tipKey: 'actions.tips.respiration46',
     instructions: [
       { text: 'Inspire par le nez', textKey: 'breathing.inhaleNose', duration: 4, type: 'inhale' },
       { text: 'Expire doucement par la bouche', textKey: 'breathing.exhaleGentleMouth', duration: 6, type: 'exhale' },
@@ -77,6 +83,8 @@ export const MICRO_ACTIONS: Record<MicroActionType, MicroAction> = {
     nameKey: 'actions.dropTrapezes',
     duration: 20,
     repetitions: 5,
+    tip: 'Imagine que les épaules "fondent" vers le bas.',
+    tipKey: 'actions.tips.dropTrapezes',
     instructions: [
       { text: 'Monte les épaules', textKey: 'body.raiseShouders', duration: 2, type: 'action' },
       { text: 'Relâche complètement', textKey: 'body.releaseCompletely', duration: 2, type: 'pause' },
@@ -90,6 +98,8 @@ export const MICRO_ACTIONS: Record<MicroActionType, MicroAction> = {
     nameKey: 'actions.ouvertureThoracique',
     duration: 30,
     repetitions: 1,
+    tip: 'Grandis-toi sans cambrer.',
+    tipKey: 'actions.tips.ouvertureThoracique',
     instructions: [
       { text: 'Ouvre légèrement la poitrine', textKey: 'body.openChest', duration: 10, type: 'action' },
       { text: 'Respire calmement', textKey: 'body.breatheCalmly', duration: 10, type: 'action' },
@@ -144,6 +154,8 @@ export const MICRO_ACTIONS: Record<MicroActionType, MicroAction> = {
     nameKey: 'actions.regardFixeExpiration',
     duration: 24,
     repetitions: 3,
+    tip: 'Regarde sans fixer.',
+    tipKey: 'actions.tips.regardFixeExpiration',
     instructions: [
       { text: 'Fixe un point stable', textKey: 'body.fixPoint', duration: 2, type: 'action' },
       { text: 'Inspire calmement', textKey: 'breathing.inhaleCalmly', duration: 2, type: 'inhale' },

@@ -83,7 +83,18 @@
     "postureAncrage": "Postura de ancoragem",
     "shakeNeuromusculaire": "Agitar neuromuscular",
     "pressionPlantaire": "Pressão plantar",
-    "regardFixeExpiration": "Olhar fixo + expiração"
+    "regardFixeExpiration": "Olhar fixo + expiração",
+    "tipLabel": "Dica (opcional)",
+    "skipTip": "Pular",
+    "continue": "Continuar",
+    "tips": {
+      "physiologicalSigh": "Mantenha os ombros imóveis.",
+      "expiration38": "Deixe o ar sair sozinho, sem forçar.",
+      "respiration46": "Relaxe levemente a mandíbula antes de começar.",
+      "dropTrapezes": "Imagine que os ombros \"derretem\" para baixo.",
+      "ouvertureThoracique": "Alongue-se sem arquear.",
+      "regardFixeExpiration": "Olhe sem fixar."
+    }
   },
   "breathing": {
     "inhale": "Inspire",

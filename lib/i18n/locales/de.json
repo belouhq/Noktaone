@@ -163,7 +163,18 @@
     "postureAncrage": "Verankerungsposition",
     "shakeNeuromusculaire": "Neuromuskuläres Schütteln",
     "pressionPlantaire": "Fussdruck",
-    "regardFixeExpiration": "Fester Blick + Ausatmung"
+    "regardFixeExpiration": "Fester Blick + Ausatmung",
+    "tipLabel": "Tipp (optional)",
+    "skipTip": "Überspringen",
+    "continue": "Fortfahren",
+    "tips": {
+      "physiologicalSigh": "Halte die Schultern ruhig.",
+      "expiration38": "Lass die Luft von selbst entweichen, ohne zu drücken.",
+      "respiration46": "Entspanne leicht den Kiefer, bevor du beginnst.",
+      "dropTrapezes": "Stell dir vor, die Schultern \"schmelzen\" nach unten.",
+      "ouvertureThoracique": "Wachse, ohne dich zu überdehnen.",
+      "regardFixeExpiration": "Schau, ohne zu starren."
+    }
   },
   "breathing": {
     "inhale": "Einatmen",

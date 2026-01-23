@@ -9,6 +9,7 @@ import { MICRO_ACTIONS } from "@/lib/skane/constants";
 import { MICRO_ACTION_SCIENCE, getInstructionColor, getInstructionIcon } from "@/lib/skane/science";
 import type { MicroActionType, Instruction } from "@/lib/skane/types";
 import { hapticV2 } from "@/lib/skane/hapticsV2";
+import ActionTip from "@/components/skane/ActionTip";
 
 /**
  * PAGE BRIEFING - Avant la micro-action
@@ -27,6 +28,7 @@ export default function BriefingPage() {
   const [isReady, setIsReady] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [countdown, setCountdown] = useState<number | null>(null);
+  const [showTip, setShowTip] = useState(false);
 
   useEffect(() => {
     const storedResult = sessionStorage.getItem("skane_analysis_result");
@@ -53,6 +55,16 @@ export default function BriefingPage() {
   }, [router]);
 
   const handleStart = () => {
+    // Si l'action a un tip, l'afficher d'abord
+    if (action?.tip) {
+      setShowTip(true);
+    } else {
+      // Sinon, démarrer directement le compte à rebours
+      startCountdown();
+    }
+  };
+
+  const startCountdown = () => {
     // Démarrer le compte à rebours de 3 secondes
     setCountdown(3);
     
@@ -77,6 +89,16 @@ export default function BriefingPage() {
         return prev - 1;
       });
     }, 1000);
+  };
+
+  const handleTipSkip = () => {
+    setShowTip(false);
+    startCountdown();
+  };
+
+  const handleTipContinue = () => {
+    setShowTip(false);
+    startCountdown();
   };
 
   const handleBack = () => {

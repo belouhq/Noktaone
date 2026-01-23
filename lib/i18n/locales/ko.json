@@ -83,7 +83,18 @@
     "postureAncrage": "고정 자세",
     "shakeNeuromusculaire": "신경근 떨기",
     "pressionPlantaire": "발바닥 압력",
-    "regardFixeExpiration": "고정된 시선 + 호흡"
+    "regardFixeExpiration": "고정된 시선 + 호흡",
+    "tipLabel": "팁 (선택 사항)",
+    "skipTip": "건너뛰기",
+    "continue": "계속하기",
+    "tips": {
+      "physiologicalSigh": "어깨를 고정해 두세요.",
+      "expiration38": "공기가 자연스럽게 나가게 하세요.",
+      "respiration46": "시작하기 전에 턱을 살짝 풀어주세요.",
+      "dropTrapezes": "어깨가 아래로 '녹아내리는' 모습을 상상하세요.",
+      "ouvertureThoracique": "허리를 구부리지 않고 키를 크게 하세요.",
+      "regardFixeExpiration": "눈을 고정하지 말고 바라보세요."
+    }
   },
   "breathing": {
     "inhale": "들이쉬기",

@@ -171,7 +171,18 @@
     "postureAncrage": "Grounding posture",
     "shakeNeuromusculaire": "Neuromuscular shake",
     "pressionPlantaire": "Foot pressure",
-    "regardFixeExpiration": "Fixed gaze + exhale"
+    "regardFixeExpiration": "Fixed gaze + exhale",
+    "tipLabel": "Tip (optional)",
+    "skipTip": "Skip",
+    "continue": "Continue",
+    "tips": {
+      "physiologicalSigh": "Keep your shoulders still.",
+      "expiration38": "Let the air out naturally, without pushing.",
+      "respiration46": "Slightly relax your jaw before starting.",
+      "dropTrapezes": "Imagine your shoulders \"melting\" down.",
+      "ouvertureThoracique": "Lengthen yourself without arching.",
+      "regardFixeExpiration": "Look without staring."
+    }
   },
   "breathing": {
     "inhale": "Inhale",
@@ -498,11 +509,8 @@
     "dataUsageNotice": "Your facial scans are processed locally. Only wellness metrics are securely stored.",
     "occupation": "Occupation",
     "occupationOptional": "Occupation (optional)",
-    "occupationPlaceholder": "Entrepreneur, Student, Manager...",
-    "termsRequired": "You must accept the Terms and Privacy Policy to create an account",
-    "occupation": "Occupation",
-    "occupationOptional": "Occupation (optional)",
-    "occupationPlaceholder": "Entrepreneur, Student, Executive..."
+    "occupationPlaceholder": "Entrepreneur, Student, Executive...",
+    "termsRequired": "You must accept the Terms and Privacy Policy to create an account"
   },
   "faq": {
     "title": "FAQ",

@@ -83,7 +83,18 @@
     "postureAncrage": "आधारभूत स्थिति",
     "shakeNeuromusculaire": "न्यूरोमस्क्युलर झटका",
     "pressionPlantaire": "पैरों का दबाव",
-    "regardFixeExpiration": "स्थिर दृष्टि + श्वास छोड़ना"
+    "regardFixeExpiration": "स्थिर दृष्टि + श्वास छोड़ना",
+    "tipLabel": "टिप (वैकल्पिक)",
+    "skipTip": "छोड़ें",
+    "continue": "जारी रखें",
+    "tips": {
+      "physiologicalSigh": "कंधों को स्थिर रखें।",
+      "expiration38": "हवा को अपने आप बाहर जाने दें, बिना दबाव डाले।",
+      "respiration46": "शुरू करने से पहले हल्का सा जबड़ा ढीला करें।",
+      "dropTrapezes": "कल्पना करें कि कंधे नीचे की ओर \"पिघल\" रहे हैं।",
+      "ouvertureThoracique": "बिना झुकाव के खुद को बड़ा करें।",
+      "regardFixeExpiration": "देखें लेकिन घूरें नहीं।"
+    }
   },
   "breathing": {
     "inhale": "श्वास लें",
