@@ -113,16 +113,10 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="space-y-2">
                 <a 
-                  href="mailto:privacy@nokta.app"
+                  href="mailto:support@noktaone.com"
                   className="flex items-center gap-2 text-nokta-one-blue hover:underline"
                 >
-                  📧 privacy@nokta.app
-                </a>
-                <a 
-                  href="mailto:dpo@nokta.app"
-                  className="flex items-center gap-2 text-nokta-one-blue hover:underline"
-                >
-                  🛡️ dpo@nokta.app (DPO)
+                  📧 support@noktaone.com
                 </a>
               </div>
             </section>
