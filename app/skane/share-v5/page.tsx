@@ -8,7 +8,7 @@ import { useTranslation } from "@/lib/hooks/useTranslation";
 import ShareCardV5 from "@/components/skane/ShareCardV5";
 import type { MicroActionType } from "@/lib/skane/types";
 import SharePlatformSelector from "@/components/share/SharePlatformSelector";
-import shareService, { ShareData } from "@/lib/skane/shareService";
+import { ShareData } from "@/lib/skane/shareService";
 import { generateSEOFilename } from "@/lib/skane/seo-filename";
 
 type Step = "selfie" | "preview";
@@ -158,7 +158,7 @@ export default function ShareCardV5Page() {
       });
 
       const data: ShareData = {
-        image: blob,
+        imageBlob: blob,
         filename,
         title: "My Skane Result",
         text: "Check out my Skane result!",
@@ -269,20 +269,16 @@ export default function ShareCardV5Page() {
 
   return (
     <div className="min-h-screen bg-black text-white py-8 px-4">
-      <AnimatePresence>
-        {isShareSheetOpen && (
-          <SharePlatformSelector
-            shareData={{
-              image: shareData?.image,
-              filename: shareData?.filename,
-              title: shareData?.title,
-              text: shareData?.text,
-            }}
-            onClose={() => setIsShareSheetOpen(false)}
-            onShareComplete={() => setIsShareSheetOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+      <SharePlatformSelector
+        isOpen={isShareSheetOpen}
+        shareData={shareData || {
+          imageBlob: new Blob(),
+          title: "My Skane Result",
+          text: "Check out my Skane result!",
+        }}
+        onClose={() => setIsShareSheetOpen(false)}
+        onShareComplete={() => setIsShareSheetOpen(false)}
+      />
 
       {selfieUrl && (
         <ShareCardV5
