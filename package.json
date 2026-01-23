@@ -18,6 +18,7 @@
     "auto-translate:fix": "npx ts-node --project scripts/tsconfig.json scripts/auto-translate.ts --fix",
     "auto-translate:dry": "npx ts-node --project scripts/tsconfig.json scripts/auto-translate.ts --dry-run",
     "prepare": "husky",
+    "setup-hooks": "bash scripts/setup-hooks.sh",
     "test-supabase": "npx ts-node --project scripts/tsconfig.json scripts/test-supabase.ts",
     "setup-supabase": "npx ts-node --project scripts/tsconfig.json scripts/setup-supabase.ts",
     "test": "jest",
