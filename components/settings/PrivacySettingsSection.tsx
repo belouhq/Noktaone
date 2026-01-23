@@ -114,28 +114,31 @@ export default function PrivacySettingsSection({
         )}
       </div>
 
-      {/* Single Card - All Privacy Settings */}
-      <div
-        className="p-4 rounded-xl space-y-4"
-        style={{
-          background: "rgba(255, 255, 255, 0.03)",
-          border: "1px solid rgba(255, 255, 255, 0.08)",
-        }}
-      >
-        {/* Analytics Toggle */}
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-white font-medium text-sm">
-              {t("privacy.analyticsTitle") || t("consent.settings.analytics")}
-            </p>
-            <p className="text-xs text-gray-400 mt-0.5">
-              {t("privacy.analyticsDescription") || t("consent.settings.analyticsDescription")}
-            </p>
+      {/* Menu Items - Similar to Invitations button */}
+      <div className="space-y-3">
+        {/* Analytics Toggle - Menu Item */}
+        <motion.div
+          className="glass-card p-4 flex items-center justify-between"
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
+        >
+          <div className="flex items-center gap-3 flex-1">
+            <div className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center">
+              <div className="w-2 h-2 rounded-full bg-blue-500" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium text-sm">
+                {t("privacy.analyticsTitle") || t("consent.settings.analytics")}
+              </p>
+              <p className="text-xs text-gray-400 mt-0.5">
+                {t("privacy.analyticsDescription") || t("consent.settings.analyticsDescription")}
+              </p>
+            </div>
           </div>
           <motion.button
             onClick={handleToggleAnalytics}
             disabled={isSaving}
-            className={`relative w-12 h-6 rounded-full transition-colors ${
+            className={`relative w-12 h-6 rounded-full transition-colors ml-4 ${
               consents.analytics ? "bg-blue-500" : "bg-gray-600"
             }`}
             whileTap={{ scale: 0.95 }}
@@ -146,22 +149,31 @@ export default function PrivacySettingsSection({
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             />
           </motion.button>
-        </div>
+        </motion.div>
 
-        {/* Marketing Toggle */}
-        <div className="flex items-center justify-between pt-3 border-t border-white/5">
-          <div>
-            <p className="text-white font-medium text-sm">
-              {t("privacy.marketingTitle") || t("consent.settings.marketing")}
-            </p>
-            <p className="text-xs text-gray-400 mt-0.5">
-              {t("privacy.marketingDescription") || t("consent.settings.marketingDescription")}
-            </p>
+        {/* Marketing Toggle - Menu Item */}
+        <motion.div
+          className="glass-card p-4 flex items-center justify-between"
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
+        >
+          <div className="flex items-center gap-3 flex-1">
+            <div className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center">
+              <div className="w-2 h-2 rounded-full bg-blue-500" />
+            </div>
+            <div className="flex-1">
+              <p className="text-white font-medium text-sm">
+                {t("privacy.marketingTitle") || t("consent.settings.marketing")}
+              </p>
+              <p className="text-xs text-gray-400 mt-0.5">
+                {t("privacy.marketingDescription") || t("consent.settings.marketingDescription")}
+              </p>
+            </div>
           </div>
           <motion.button
             onClick={handleToggleMarketing}
             disabled={isSaving}
-            className={`relative w-12 h-6 rounded-full transition-colors ${
+            className={`relative w-12 h-6 rounded-full transition-colors ml-4 ${
               consents.marketing ? "bg-blue-500" : "bg-gray-600"
             }`}
             whileTap={{ scale: 0.95 }}
@@ -172,18 +184,15 @@ export default function PrivacySettingsSection({
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             />
           </motion.button>
-        </div>
+        </motion.div>
 
-        {/* Divider */}
-        <div className="pt-3 border-t border-white/5" />
-
-        {/* Export Data Button */}
+        {/* Export Data - Menu Item */}
         <motion.button
           onClick={handleExportData}
           disabled={isExporting}
-          className="w-full flex items-center justify-between transition-colors py-2"
-          whileHover={{ opacity: 0.8 }}
-          whileTap={{ scale: 0.98 }}
+          className="glass-card w-full p-4 flex items-center justify-between"
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
         >
           <div className="flex items-center gap-3">
             {isExporting ? (
@@ -203,15 +212,16 @@ export default function PrivacySettingsSection({
           <ChevronRight size={18} className="text-gray-400" />
         </motion.button>
 
-        {/* Divider */}
-        <div className="pt-3 border-t border-white/5" />
-
-        {/* Delete Account Button */}
+        {/* Delete Account - Menu Item */}
         <motion.button
           onClick={() => setShowDeleteConfirm(true)}
-          className="w-full flex items-center justify-between transition-colors py-2"
-          whileHover={{ opacity: 0.8 }}
-          whileTap={{ scale: 0.98 }}
+          className="glass-card w-full p-4 flex items-center justify-between"
+          style={{
+            background: "rgba(239, 68, 68, 0.05)",
+            border: "1px solid rgba(239, 68, 68, 0.2)",
+          }}
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
         >
           <div className="flex items-center gap-3">
             <Trash2 size={20} className="text-red-400" />
