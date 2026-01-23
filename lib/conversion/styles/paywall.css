@@ -1,0 +1,355 @@
+/* ============================================
+   NOKTA CONVERSION SYSTEM - TAILWIND STYLES
+   Version: 1.0.0
+   ============================================ */
+
+/* 
+  Ajouter ces classes à votre tailwind.config.ts :
+  
+  theme: {
+    extend: {
+      animation: {
+        'fade-in': 'fadeIn 0.3s ease-out',
+        'slide-up': 'slideUp 0.4s ease-out',
+        'scale-in': 'scaleIn 0.2s ease-out',
+        'gradient-x': 'gradientX 3s ease infinite',
+        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+        'spin-slow': 'spin 3s linear infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        gradientX: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
+        },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      colors: {
+        nokta: {
+          bg: '#0a0a0f',
+          card: '#0f0f14',
+          border: 'rgba(255, 255, 255, 0.1)',
+          cyan: {
+            50: '#ecfeff',
+            100: '#cffafe',
+            200: '#a5f3fc',
+            300: '#67e8f9',
+            400: '#22d3ee',
+            500: '#06b6d4',
+            600: '#0891b2',
+            700: '#0e7490',
+            800: '#155e75',
+            900: '#164e63',
+          },
+        },
+      },
+      boxShadow: {
+        'nokta-glow': '0 0 60px -12px rgba(34, 211, 238, 0.25)',
+        'nokta-card': '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+      },
+    },
+  },
+*/
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+@layer base {
+  :root {
+    --nokta-bg: #0a0a0f;
+    --nokta-card: #0f0f14;
+    --nokta-cyan: #22d3ee;
+    --nokta-blue: #3b82f6;
+    --nokta-green: #10b981;
+    --nokta-red: #ef4444;
+    --nokta-yellow: #f59e0b;
+  }
+  
+  /* Custom scrollbar for paywall */
+  .paywall-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .paywall-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .paywall-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+  
+  .paywall-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
+@layer components {
+  /* Paywall container */
+  .paywall-container {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    @apply bg-black/90 backdrop-blur-md;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Paywall modal */
+  .paywall-modal {
+    @apply relative w-full max-w-md max-h-[90vh] overflow-y-auto;
+    @apply bg-gradient-to-b from-[#0f0f14] to-[#0a0a0f];
+    @apply rounded-3xl shadow-2xl;
+    @apply border border-white/10;
+    animation: slideUp 0.4s ease-out;
+  }
+  
+  /* Pricing card */
+  .pricing-card {
+    @apply w-full p-4 rounded-xl border-2 transition-all duration-200;
+    @apply relative overflow-hidden;
+  }
+  
+  .pricing-card-default {
+    @apply border-gray-700/50 bg-white/[0.02];
+    @apply hover:border-gray-600 hover:bg-white/[0.04];
+  }
+  
+  .pricing-card-selected {
+    @apply border-cyan-400 bg-gradient-to-br from-cyan-400/10 to-blue-500/10;
+    @apply scale-[1.02];
+  }
+  
+  /* CTA button */
+  .cta-button {
+    @apply w-full py-4 px-6;
+    @apply bg-gradient-to-r from-cyan-500 to-blue-500;
+    @apply hover:from-cyan-400 hover:to-blue-400;
+    @apply disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed;
+    @apply text-white font-bold text-lg rounded-xl;
+    @apply transition-all duration-200;
+    @apply transform hover:scale-[1.02] active:scale-[0.98];
+    @apply shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40;
+    @apply relative overflow-hidden;
+  }
+  
+  /* Shine effect on hover */
+  .shine-effect {
+    @apply absolute inset-0 -translate-x-full;
+    @apply bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    @apply transition-transform duration-700;
+  }
+  
+  .group:hover .shine-effect {
+    @apply translate-x-full;
+  }
+  
+  /* Trust badge */
+  .trust-badge {
+    @apply flex items-center gap-1.5 text-xs text-gray-500;
+  }
+  
+  /* Countdown timer */
+  .countdown-timer {
+    @apply sticky top-0 z-20;
+    @apply bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500;
+    @apply text-white text-center py-3 px-4;
+    @apply shadow-lg shadow-cyan-500/20;
+    background-size: 200% 200%;
+    animation: gradientX 3s ease infinite;
+  }
+  
+  /* Radio button custom */
+  .radio-custom {
+    @apply w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all;
+  }
+  
+  .radio-custom-default {
+    @apply border-gray-600;
+  }
+  
+  .radio-custom-selected {
+    @apply border-cyan-400 bg-cyan-400/20;
+  }
+  
+  .radio-dot {
+    @apply w-2.5 h-2.5 rounded-full bg-cyan-400;
+    animation: scaleIn 0.2s ease-out;
+  }
+  
+  /* FAQ item */
+  .faq-item {
+    @apply p-4 bg-white/[0.03] rounded-xl border border-white/5;
+  }
+  
+  /* Testimonial card */
+  .testimonial-card {
+    @apply p-4 bg-white/[0.03] rounded-xl border border-white/5;
+  }
+  
+  /* Avatar placeholder */
+  .avatar-placeholder {
+    @apply w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500;
+    @apply flex items-center justify-center text-white font-bold text-sm;
+  }
+  
+  /* Before/After visualization */
+  .before-after-card {
+    @apply flex items-center justify-center gap-4 p-5;
+    @apply bg-gradient-to-br from-white/5 to-white/[0.02];
+    @apply rounded-2xl border border-white/10 backdrop-blur-sm;
+  }
+  
+  /* Influencer discount banner */
+  .influencer-banner {
+    @apply p-4 bg-green-500/10 border border-green-500/30 rounded-xl;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+@layer utilities {
+  /* Glass effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
+  }
+  
+  /* Glow effect */
+  .glow-cyan {
+    box-shadow: 0 0 40px -8px rgba(34, 211, 238, 0.4);
+  }
+  
+  .glow-green {
+    box-shadow: 0 0 40px -8px rgba(16, 185, 129, 0.4);
+  }
+  
+  /* Hide scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Safe area insets for mobile */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* ============================================
+   ANIMATIONS KEYFRAMES
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradientX {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 640px) {
+  .paywall-modal {
+    @apply max-h-[95vh] rounded-t-3xl rounded-b-none;
+    @apply fixed bottom-0 left-0 right-0;
+    max-width: 100%;
+  }
+  
+  .countdown-timer {
+    @apply py-2 text-sm;
+  }
+  
+  .cta-button {
+    @apply py-3 text-base;
+  }
+}
+
+/* ============================================
+   DARK MODE (already dark by default)
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  /* Force dark mode for paywall */
+  .paywall-container {
+    color-scheme: dark;
+  }
+}
