@@ -603,5 +603,572 @@
     "deleteConfirmLabel": "输入 DELETE 以确认",
     "cancel": "取消",
     "confirmDelete": "永久删除"
+  },
+  "privacyPolicy": {
+    "title": "隐私政策",
+    "lastUpdated": "最后更新",
+    "lastUpdatedDate": "2025年1月",
+    "version": "版本",
+    "versionNumber": "1.0",
+    "introduction": "本隐私政策描述了您在使用NOKTA ONE应用时，您的个人信息是如何被收集、使用和共享的。NOKTA ONE由一家在巴黎商业注册处注册的法国公司运营（以下简称“我们”、“我们的”或“公司”）。我们的总部位于法国巴黎。使用我们的服务即表示您接受本隐私政策中描述的做法。如果您不同意此政策，请不要使用我们的服务。",
+    "table": {
+      "category": "类别",
+      "examples": "示例",
+      "purpose": "目的",
+      "legalBasis": "法律依据",
+      "details": "详情",
+      "provider": "提供者",
+      "function": "功能",
+      "location": "数据位置",
+      "guarantees": "保障",
+      "dataType": "数据类型",
+      "retentionPeriod": "保留期限",
+      "justification": "理由",
+      "right": "权利",
+      "description": "描述",
+      "howToExercise": "如何行使",
+      "type": "类型",
+      "duration": "持续时间"
+    },
+    "section1": {
+      "title": "1. 我们收集的数据",
+      "subsection1": {
+        "title": "1.1 您直接提供给我们的数据",
+        "accountData": "账户数据",
+        "accountExamples": "电子邮件地址、用户名、密码（哈希）",
+        "accountPurpose": "创建和管理您的账户",
+        "profileData": "个人资料数据",
+        "profileExamples": "名字、出生日期、国家、首选语言",
+        "profilePurpose": "服务个性化",
+        "paymentData": "支付数据",
+        "paymentExamples": "账单信息（由我们的支付服务提供商处理）",
+        "paymentPurpose": "管理订阅"
+      },
+      "subsection2": {
+        "title": "1.2 自动收集的数据",
+        "usageData": "使用数据",
+        "usageExamples": "会话、执行的操作、时间戳",
+        "usagePurpose": "服务改进",
+        "technicalData": "技术数据",
+        "technicalExamples": "设备类型、操作系统、应用版本",
+        "technicalPurpose": "技术支持和兼容性",
+        "diagnosticData": "诊断数据",
+        "diagnosticExamples": "匿名错误报告",
+        "diagnosticPurpose": "解决问题"
+      },
+      "subsection3": {
+        "title": "1.3 生物识别和面部分析数据",
+        "localProcessing": "本地处理",
+        "localProcessingDesc": "您相机捕获的图像直接在您的设备上或通过安全服务进行分析。原始图像从不存储在我们的服务器上。",
+        "derivedData": "派生数据",
+        "derivedDataDesc": "仅传输和存储健康指标（匿名数字分数），以便为您提供会话历史记录。",
+        "noIdentification": "无识别",
+        "noIdentificationDesc": "分析旨在检测一般生理信号（肌肉紧张、眼睛疲劳等），而非识别您。",
+        "noFacialRecognition": "不使用面部识别",
+        "noFacialRecognitionDesc": "我们不使用面部识别技术来识别您。"
+      },
+      "subsection4": {
+        "title": "1.4 可穿戴设备数据（可选功能）",
+        "description": "如果您选择连接可穿戴设备（手表、手环），我们可能会收集：",
+        "item1": "心率",
+        "item2": "心率变异性（HRV）",
+        "item3": "睡眠质量",
+        "item4": "活动水平"
+      }
+    },
+    "section2": {
+      "title": "2. 我们如何使用您的数据",
+      "subsection1": {
+        "title": "2.1 法律依据（GDPR）",
+        "serviceProvision": "提供服务",
+        "contractExecution": "合同执行",
+        "contractDetails": "提供Nokta One所需",
+        "serviceImprovement": "服务改进",
+        "legitimateInterest": "合法利益",
+        "legitimateDetails": "匿名分析以改善体验",
+        "marketing": "营销沟通",
+        "consent": "同意",
+        "consentDetails": "仅在您选择接收我们的电子邮件时"
+      },
+      "subsection2": {
+        "title": "2.2 详细目的",
+        "item1": "提供和维护服务：创建您的账户，处理您的会话，显示您的历史记录",
+        "item2": "个性化您的体验：根据您的个人资料调整推荐",
+        "item3": "与您沟通：重要通知、客户支持、更新（如已同意）",
+        "item4": "改善我们的服务：对使用趋势进行汇总和匿名分析",
+        "item5": "确保安全：检测和防止欺诈活动",
+        "item6": "遵守我们的法律义务：税务合规，回应当局的合法请求"
+      }
+    },
+    "section3": {
+      "title": "3. 共享您的数据",
+      "noSale": "我们绝不会出售、出租或交换您的个人数据用于商业目的。",
+      "subsection1": {
+        "title": "3.2 承包商和合作伙伴",
+        "cloud": "云基础设施",
+        "cloudFunction": "数据库托管",
+        "cloudLocation": "欧洲联盟",
+        "cloudGuarantees": "获得ISO 27001和SOC 2认证",
+        "analysis": "分析服务",
+        "analysisFunction": "图像处理",
+        "analysisLocation": "美国",
+        "analysisGuarantees": "标准合同条款（SCCs）",
+        "payment": "支付",
+        "paymentFunction": "交易处理",
+        "paymentLocation": "欧洲联盟",
+        "paymentGuarantees": "获得PCI-DSS认证",
+        "analytics": "分析",
+        "analyticsFunction": "使用统计（如已同意）",
+        "analyticsLocation": "欧洲联盟",
+        "analyticsGuarantees": "数据匿名化"
+      },
+      "subsection2": {
+        "title": "3.3 其他共享情况",
+        "withConsent": "在您同意的情况下",
+        "withConsentDesc": "当您明确授权我们时",
+        "legalObligations": "法律义务",
+        "legalObligationsDesc": "响应法院命令或法律请求",
+        "rightsProtection": "权利保护",
+        "rightsProtectionDesc": "为了执行我们的使用条款",
+        "businessTransactions": "商业交易",
+        "businessTransactionsDesc": "在合并、收购或资产出售的情况下（您将收到通知）"
+      }
+    },
+    "section4": {
+      "title": "4. 国际转移",
+      "description": "我们的某些操作涉及将数据转移到欧洲经济区（EEA）以外的国家，包括美国。",
+      "guarantees": "实施的保障措施：",
+      "guarantee1": "欧盟委员会批准的标准合同条款（SCCs）",
+      "guarantee2": "根据EDPB的建议进行的转移影响评估（TIA）",
+      "guarantee3": "补充技术措施（加密、假名化）"
+    },
+    "section5": {
+      "title": "5. 数据保留",
+      "accountData": "账户数据",
+      "accountRetention": "注册时间 + 3年",
+      "accountJustification": "客户关系管理",
+      "sessionData": "会话数据",
+      "sessionRetention": "24个月",
+      "sessionJustification": "历史记录和个性化",
+      "paymentData": "支付数据",
+      "paymentRetention": "10年",
+      "paymentJustification": "法国税务义务",
+      "diagnosticData": "诊断数据",
+      "diagnosticRetention": "12个月",
+      "diagnosticJustification": "技术改进",
+      "securityLogs": "安全日志",
+      "securityRetention": "12个月",
+      "securityJustification": "安全和审计",
+      "afterDeletion": "在您删除账户后，您的数据将会：",
+      "afterDeletion1": "用于统计数据的匿名化",
+      "afterDeletion2": "在30天内删除个人识别数据",
+      "afterDeletion3": "仅在法律要求时保留"
+    },
+    "section6": {
+      "title": "6. 您的权利",
+      "description": "根据GDPR和信息与自由法，您拥有以下权利：",
+      "access": "访问",
+      "accessDesc": "获取您的数据副本",
+      "accessHow": "设置 > 隐私 > 导出",
+      "rectification": "更正",
+      "rectificationDesc": "更正您的不准确数据",
+      "rectificationHow": "设置 > 个人资料",
+      "erasure": "删除",
+      "erasureDesc": "删除您的数据",
+      "erasureHow": "设置 > 隐私 > 删除我的账户",
+      "portability": "可携带性",
+      "portabilityDesc": "以结构化格式接收您的数据",
+      "portabilityHow": "设置 > 隐私 > 导出",
+      "opposition": "反对",
+      "oppositionDesc": "反对某些处理",
+      "oppositionHow": "设置 > 隐私",
+      "limitation": "限制",
+      "limitationDesc": "暂时限制处理",
+      "limitationHow": "联系我们",
+      "withdrawConsent": "撤回同意",
+      "withdrawConsentDesc": "您可以随时撤回您的同意",
+      "withdrawConsentHow": "设置 > 隐私",
+      "responseTime": "响应时间",
+      "responseTimeDesc": "我们将在最多30天内回复所有请求。",
+      "contact": "联系",
+      "contactEmail": "privacy@nokta.app",
+      "complaint": "投诉",
+      "complaintDesc": "如果您认为您的数据处理侵犯了您的权利，您有权向CNIL（www.cnil.fr）提出投诉。"
+    },
+    "section7": {
+      "title": "7. 数据安全",
+      "description": "我们采取适当的技术和组织措施来保护您的数据：",
+      "encryption": "加密",
+      "encryptionDesc": "传输中的数据加密（TLS 1.3）和静态数据加密（AES-256）",
+      "authentication": "身份验证",
+      "authenticationDesc": "安全的身份验证协议",
+      "limitedAccess": "有限访问",
+      "limitedAccessDesc": "我们的团队遵循最小权限原则",
+      "audits": "审计",
+      "auditsDesc": "定期进行安全测试",
+      "notification": "通知",
+      "notificationDesc": "如发生违规，按照GDPR在72小时内通知"
+    },
+    "section8": {
+      "title": "8. 未成年人",
+      "description": "我们的服务面向16岁及以上的人士。",
+      "age13to16": "如果您在13到16岁之间，您需要获得父母或法定监护人的同意才能使用我们的服务。",
+      "under13": "我们不会故意收集13岁以下儿童的数据。如果我们发现有13岁以下的儿童向我们提供了个人数据，我们会立即删除这些数据。"
+    },
+    "section9": {
+      "title": "9. Cookies和类似技术",
+      "description": "我们的应用程序使用本地存储技术来：",
+      "essential": "必要的",
+      "essentialPurpose": "服务运行（身份验证，偏好设置）",
+      "essentialDuration": "会话",
+      "functional": "功能性",
+      "functionalPurpose": "记住您的选择（语言，主题）",
+      "functionalDuration": "12个月",
+      "analytics": "分析",
+      "analyticsPurpose": "匿名使用统计",
+      "analyticsDuration": "13个月",
+      "managePreferences": "您可以在设置 > 隐私中管理您的偏好。"
+    },
+    "section10": {
+      "title": "10. 自动化决策",
+      "description": "我们的服务使用算法为您提供个性化推荐（锻炼，建议）。",
+      "important": "重要：",
+      "item1": "这些推荐仅供参考",
+      "item2": "不构成医疗建议",
+      "item3": "您可以选择是否遵循",
+      "item4": "您可以请求人工干预任何与您相关的决策"
+    },
+    "section11": {
+      "title": "11. 特定司法管辖区的信息",
+      "subsection1": {
+        "title": "11.1 加利福尼亚居民（CCPA/CPRA）",
+        "description": "如果您居住在加利福尼亚州，您享有额外的权利：",
+        "rightToKnow": "知情权",
+        "rightToKnowDesc": "我们收集哪些数据以及如何使用这些数据",
+        "rightToDelete": "删除权",
+        "rightToDeleteDesc": "请求删除您的数据",
+        "rightToOptOut": "拒绝权",
+        "rightToOptOutDesc": "拒绝您的数据“销售”（我们不出售您的数据）",
+        "nonDiscrimination": "非歧视",
+        "nonDiscriminationDesc": "我们不会因为您行使权利而歧视您",
+        "noSale": "我们不按照CCPA出售您的个人信息。"
+      },
+      "subsection2": {
+        "title": "11.2 巴西居民（LGPD）",
+        "description": "如果您居住在巴西，您享有《一般数据保护法》规定的权利。"
+      },
+      "subsection3": {
+        "title": "11.3 其他司法管辖区",
+        "description": "我们努力遵守我们运营的每个司法管辖区适用的数据保护法律。"
+      }
+    },
+    "section12": {
+      "title": "12. 本政策的修改",
+      "description": "我们可能会定期更新本隐私政策。如有重大修改：",
+      "item1": "我们会通过电子邮件或应用内通知您",
+      "item2": "“最后更新”日期将被修改",
+      "item3": "您在通知后继续使用服务即表示接受修改"
+    },
+    "section13": {
+      "title": "13. 联系我们",
+      "description": "如对本隐私政策有任何疑问或行使您的权利：",
+      "email": "电子邮件",
+      "emailAddress": "privacy@nokta.app",
+      "dpo": "数据保护专员（DPO）",
+      "dpoEmail": "dpo@nokta.app",
+      "postal": "邮寄地址",
+      "postalAddress": "数据保护服务\n法国巴黎",
+      "responseTime": "我们承诺在30天内回复任何请求。"
+    },
+    "footer": "本隐私政策以法语撰写，并可以翻译成其他语言。如有不一致，以法语版本为准。"
+  },
+  "termsOfService": {
+    "title": "服务条款",
+    "lastUpdated": "最后更新",
+    "lastUpdatedDate": "2025年1月",
+    "version": "版本",
+    "versionNumber": "1.0",
+    "preamble": "本服务条款（以下简称“条款”）规定了对Nokta One应用程序（以下简称“应用程序”、“服务”或“Nokta One”）的访问和使用。Nokta One由一家注册于巴黎商业和公司注册处的法国公司出版，总部位于法国巴黎（以下简称“我们”、“我们的”或“公司”）。",
+    "preambleBold": "通过访问或使用我们的服务，您同意遵守这些条款。如果您不同意这些条款，请不要使用我们的服务。",
+    "article1": {
+      "title": "第1条 – 定义",
+      "application": "\"应用程序\"",
+      "applicationDesc": "Nokta One移动和网页应用程序",
+      "content": "\"内容\"",
+      "contentDesc": "通过服务提供的任何文本、图像、视频、数据或其他材料",
+      "userContent": "\"用户内容\"",
+      "userContentDesc": "您通过服务提交、上传或传输的任何内容",
+      "service": "\"服务\"",
+      "serviceDesc": "Nokta One提供的所有功能",
+      "user": "\"用户\"或\"您\"",
+      "userDesc": "使用服务的任何人",
+      "account": "\"账户\"",
+      "accountDesc": "您为访问服务而创建的个人账户",
+      "personalData": "\"个人数据\"",
+      "personalDataDesc": "与已识别或可识别的自然人相关的信息"
+    },
+    "article2": {
+      "title": "第2条 – 接受条款",
+      "subsection1": {
+        "title": "2.1 法律能力",
+        "description": "使用我们的服务时，您声明并保证您：",
+        "item1": "至少16岁（或13岁并获得父母同意）",
+        "item2": "有能力签订具有约束力的合同",
+        "item3": "不是根据适用法律禁止使用服务的人"
+      },
+      "subsection2": {
+        "title": "2.2 接受",
+        "description": "您对服务的访问和使用取决于您接受并遵守这些条款。这些条款适用于所有访问或使用服务的访客、用户和其他人员。"
+      },
+      "subsection3": {
+        "title": "2.3 修改",
+        "description": "我们保留随时修改这些条款的权利。修改在发布时生效。您在通知修改后继续使用服务即表示您接受新的条款。"
+      }
+    },
+    "article3": {
+      "title": "第3条 – 服务描述",
+      "subsection1": {
+        "title": "3.1 功能",
+        "description": "Nokta One 是一款个人健康应用，提供：",
+        "item1": "生理调节的引导课程",
+        "item2": "呼吸和姿势练习",
+        "item3": "健康状态跟踪",
+        "item4": "个性化推荐"
+      },
+      "subsection2": {
+        "title": "3.2 服务性质",
+        "important": "重要 – 医疗通知：",
+        "description": "该服务仅用于信息和一般健康目的。Nokta One：",
+        "isNot": "不属于",
+        "isNotDesc": "医疗设备",
+        "doesNotProvide": "不提供",
+        "doesNotProvideDesc": "医疗诊断",
+        "doesNotReplace": "不替代",
+        "doesNotReplaceDesc": "专业医疗人员的建议",
+        "isNotIntended": "不旨在",
+        "isNotIntendedDesc": "治疗、治愈或预防疾病",
+        "disclaimer": "提供的指标和建议是一般的健康信号，不应被视为医疗建议。如果您有健康问题，请咨询合格的专业人士。"
+      },
+      "subsection3": {
+        "title": "3.3 可用性",
+        "description": "我们努力保持服务全天候可用。然而，我们不保证服务的持续可用性，并可能因维护、更新或其他技术原因暂停或中断服务。"
+      }
+    },
+    "article4": {
+      "title": "第4条 – 注册和账户",
+      "subsection1": {
+        "title": "4.1 创建账户",
+        "description": "要访问某些功能，您需要创建一个账户。在注册时，您同意：",
+        "item1": "提供准确、完整和最新的信息",
+        "item2": "保持您的登录凭据的机密性",
+        "item3": "立即通知我们任何未经授权使用您账户的情况",
+        "item4": "对您账户下的所有活动负责"
+      },
+      "subsection2": {
+        "title": "4.2 游客模式",
+        "description": "您可以在游客模式下使用某些功能，而无需创建账户。游客模式下的数据不会永久保存。"
+      },
+      "subsection3": {
+        "title": "4.3 账户安全",
+        "description": "您对保护您的账户负全责。我们不对因未经授权使用您的账户而导致的损失负责。"
+      }
+    },
+    "article5": {
+      "title": "第5条 – 订阅和支付",
+      "subsection1": {
+        "title": "5.1 方案",
+        "description": "服务可能以不同的方案提供：",
+        "free": "免费",
+        "freeDesc": "对某些功能的有限访问",
+        "premium": "高级",
+        "premiumDesc": "通过付费订阅获得全面访问"
+      },
+      "subsection2": {
+        "title": "5.2 定价",
+        "description": "价格以欧元（€）显示，含税。我们保留随时修改价格的权利，需提前通知。"
+      },
+      "subsection3": {
+        "title": "5.3 支付",
+        "description": "支付由我们的安全支付服务提供商处理。通过订阅，您授权自动扣除相应的金额。"
+      },
+      "subsection4": {
+        "title": "5.4 自动续订",
+        "description": "除非您在续订日期之前取消，否则订阅将在到期时自动续订。"
+      },
+      "subsection5": {
+        "title": "5.5 取消",
+        "description": "您可以随时通过账户设置或平台（App Store，Google Play）取消订阅。取消将在当前订阅期结束时生效。"
+      },
+      "subsection6": {
+        "title": "5.6 撤回权",
+        "description": "根据适用的消费者保护法律，撤回权不能用于未在实物介质上提供的数字内容，且执行已在您事先同意并承认失去撤回权的情况下开始。"
+      },
+      "subsection7": {
+        "title": "5.7 退款",
+        "description": "除非法律另有规定或我们出现账单错误，已支付的款项不可退款。"
+      }
+    },
+    "article6": {
+      "title": "第6条 - 使用规则",
+      "subsection1": {
+        "title": "6.1 允许的使用",
+        "description": "您同意按照以下方式使用服务：",
+        "item1": "遵守这些条款和适用法律",
+        "item2": "用于个人而非商业目的",
+        "item3": "不损害其他用户或服务的正常运行"
+      },
+      "subsection2": {
+        "title": "6.2 禁止的行为",
+        "description": "严格禁止：",
+        "item1": "将服务用于非法或未授权的目的",
+        "item2": "未经授权尝试访问我们的系统",
+        "item3": "传播病毒、恶意软件或恶意代码",
+        "item4": "收集或存储其他用户的个人数据",
+        "item5": "冒充他人",
+        "item6": "干扰或过载我们的基础设施",
+        "item7": "绕过安全措施或访问限制",
+        "item8": "转售、再授权或转让您对服务的访问",
+        "item9": "未经授权使用机器人、抓取工具或自动化工具",
+        "item10": "出于商业目的复制、重复、复制或利用服务"
+      },
+      "subsection3": {
+        "title": "6.3 用户内容",
+        "description": "如果您通过服务提交内容（评论、图片等）：",
+        "item1": "您保留您的知识产权",
+        "item2": "您授予我们全球非独占、免费、可转让的许可，以便在与服务相关的情况下使用、复制和展示该内容",
+        "item3": "您保证该内容不侵犯第三方的权利"
+      }
+    },
+    "article7": {
+      "title": "第7条 – 知识产权",
+      "subsection1": {
+        "title": "7.1 公司的权利",
+        "description": "服务及其原创内容（不包括用户内容），包括但不限于：源代码、文本、图形、徽标、图标、图片、音频和视频剪辑、数据汇编和软件，均为公司或其许可方的独有财产，并受法国和国际知识产权法的保护。"
+      },
+      "subsection2": {
+        "title": "7.2 商标",
+        "description": "\"Nokta One\"及相关徽标是公司的商标。未经我们事先书面许可，您不得使用它们。"
+      },
+      "subsection3": {
+        "title": "7.3 限制性许可",
+        "description": "在遵守这些条款的前提下，我们授予您个人的、有限的、非独占的、不可转让和可撤销的许可，以便出于个人和非商业目的访问和使用服务。"
+      }
+    },
+    "article8": {
+      "title": "第8条 – 责任限制",
+      "subsection1": {
+        "title": "8.1 免责声明",
+        "disclaimer": "服务是按“现状”和“可用性”提供的，不提供任何形式的明示或暗示的保证。",
+        "description": "我们不保证：",
+        "item1": "服务将满足您的特定需求",
+        "item2": "服务将不间断、安全或无错误",
+        "item3": "获得的结果将是准确或可靠的",
+        "item4": "缺陷将被修正"
+      },
+      "subsection2": {
+        "title": "8.2 责任限制",
+        "limitation": "在适用法律允许的最大范围内，公司不对以下事项负责：",
+        "item1": "间接、附带、特殊、后果性或惩罚性损害",
+        "item2": "任何利润、数据、使用、商誉或其他无形损失的损失",
+        "item3": "因您使用或无法使用服务而导致的损害",
+        "item4": "因未经授权访问您的数据而导致的损害"
+      },
+      "subsection3": {
+        "title": "8.3 责任上限",
+        "description": "公司对因这些条款或使用服务而产生的任何索赔的总责任限于您在过去12个月内为服务支付的金额，或如果您没有支付，则为100欧元。"
+      },
+      "subsection4": {
+        "title": "8.4 例外",
+        "description": "某些司法管辖区不允许排除某些保证或限制责任。在这些司法管辖区，我们的责任将限于法律允许的最大范围。"
+      }
+    },
+    "article9": {
+      "title": "第9条 – 赔偿",
+      "description": "您同意为公司及其高管、董事、员工和代理人辩护、赔偿并使其免受任何索赔、损害、义务、损失、责任、费用或支出（包括律师费）的影响，这些均源于：",
+      "item1": "您对服务的使用",
+      "item2": "您对这些条款的违反",
+      "item3": "您对第三方权利的侵犯",
+      "item4": "您的用户内容"
+    },
+    "article10": {
+      "title": "第10条 – 暂停和终止",
+      "subsection1": {
+        "title": "10.1 由您",
+        "description": "您可以随时通过应用程序的设置停止使用服务并删除您的账户。"
+      },
+      "subsection2": {
+        "title": "10.2 由我们",
+        "description": "如果：",
+        "item1": "您违反这些条款",
+        "item2": "我们合理相信您的行为对服务或其他用户造成了损害",
+        "item3": "法律要求这样做"
+      },
+      "subsection3": {
+        "title": "10.3 终止的影响",
+        "description": "在终止时：",
+        "item1": "您使用服务的权利立即终止",
+        "item2": "我们可以删除或停用您的账户及所有相关数据",
+        "item3": "根据其性质应在终止后继续有效的条款将继续有效（包括：知识产权、责任限制、赔偿、适用法律）"
+      }
+    },
+    "article11": {
+      "title": "第11条 – 适用法律与争议",
+      "subsection1": {
+        "title": "11.1 适用法律",
+        "description": "这些条款受法国法律管辖并按其解释，不考虑法律冲突原则。"
+      },
+      "subsection2": {
+        "title": "11.2 和解",
+        "description": "如有争议，各方应努力寻求友好解决。您可以通过以下方式联系我们：support@nokta.app"
+      },
+      "subsection3": {
+        "title": "11.3 调解",
+        "description": "根据适用的消费者保护法律，如争议未解决，您可以免费使用调解服务：消费者调解员：[待指定调解员的详细信息]"
+      },
+      "subsection4": {
+        "title": "11.4 管辖权",
+        "description": "如未能友好解决或调解，任何争议将提交巴黎（法国）法院的专属管辖，受消费者有利的强制管辖规则的约束。"
+      },
+      "subsection5": {
+        "title": "11.5 欧洲在线争议解决平台",
+        "description": "欧洲委员会提供在线争议解决平台：https://ec.europa.eu/consumers/odr"
+      }
+    },
+    "article12": {
+      "title": "第12条 – 其他条款",
+      "subsection1": {
+        "title": "12.1 完整协议",
+        "description": "这些条款以及我们的隐私政策构成您与公司之间关于服务的完整协议。"
+      },
+      "subsection2": {
+        "title": "12.2 可分割性",
+        "description": "如果这些条款的某一条款被视为无效或不可执行，其余条款仍然有效。"
+      },
+      "subsection3": {
+        "title": "12.3 放弃",
+        "description": "未行使这些条款规定的权利不构成对该权利的放弃。"
+      },
+      "subsection4": {
+        "title": "12.4 转让",
+        "description": "未经我们事先书面同意，您不得转让或转移您在这些条款下的权利或义务。我们可以不受限制地转让我们的权利和义务。"
+      },
+      "subsection5": {
+        "title": "12.5 不可抗力",
+        "description": "对于因我们合理控制之外的原因（自然灾害、战争、恐怖主义、疫情等）导致的任何延误或未能履行我们的义务，我们不承担责任。"
+      },
+      "subsection6": {
+        "title": "12.6 语言",
+        "description": "这些条款以法语撰写。如有翻译，以法语版本为准。"
+      }
+    },
+    "article13": {
+      "title": "第13条 – 联系方式",
+      "description": "如有关于这些使用条款的任何问题：",
+      "email": "电子邮件",
+      "emailAddress": "support@nokta.app",
+      "postal": "邮寄地址",
+      "postalAddress": "客户服务\n法国巴黎"
+    },
+    "footer": "使用Nokta One即表示您已阅读、理解并接受这些使用条款。"
   }
 }

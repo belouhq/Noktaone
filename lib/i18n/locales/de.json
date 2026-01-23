@@ -603,5 +603,572 @@
     "deleteConfirmLabel": "Geben Sie DELETE zur Bestätigung ein",
     "cancel": "Abbrechen",
     "confirmDelete": "Dauerhaft löschen"
+  },
+  "privacyPolicy": {
+    "title": "Datenschutzrichtlinie",
+    "lastUpdated": "Letzte Aktualisierung",
+    "lastUpdatedDate": "Januar 2025",
+    "version": "Version",
+    "versionNumber": "1.0",
+    "introduction": "Diese Datenschutzrichtlinie beschreibt, wie Ihre persönlichen Informationen gesammelt, verwendet und geteilt werden, wenn Sie die Anwendung NOKTA ONE nutzen (im Folgenden „die Anwendung“, „der Service“ oder „NOKTA ONE“). NOKTA ONE wird von einem französischen Unternehmen herausgegeben, das im Handelsregister von Paris eingetragen ist (im Folgenden „wir“, „unser“ oder „das Unternehmen“). Unser Hauptsitz befindet sich in Paris, Frankreich. Durch die Nutzung unseres Services akzeptieren Sie die in dieser Datenschutzrichtlinie beschriebenen Praktiken. Wenn Sie dieser Richtlinie nicht zustimmen, verwenden Sie bitte unseren Service nicht.",
+    "table": {
+      "category": "Kategorie",
+      "examples": "Beispiele",
+      "purpose": "Zweck",
+      "legalBasis": "Rechtsgrundlage",
+      "details": "Details",
+      "provider": "Anbieter",
+      "function": "Funktion",
+      "location": "Datenstandort",
+      "guarantees": "Garantien",
+      "dataType": "Datentyp",
+      "retentionPeriod": "Aufbewahrungsdauer",
+      "justification": "Rechtfertigung",
+      "right": "Recht",
+      "description": "Beschreibung",
+      "howToExercise": "Wie ausüben",
+      "type": "Typ",
+      "duration": "Dauer"
+    },
+    "section1": {
+      "title": "1. Daten, die wir sammeln",
+      "subsection1": {
+        "title": "1.1 Daten, die Sie uns direkt zur Verfügung stellen",
+        "accountData": "Kontodaten",
+        "accountExamples": "E-Mail-Adresse, Benutzername, Passwort (verschlüsselt)",
+        "accountPurpose": "Erstellung und Verwaltung Ihres Kontos",
+        "profileData": "Profildaten",
+        "profileExamples": "Vorname, Geburtsdatum, Land, bevorzugte Sprache",
+        "profilePurpose": "Personalisierung des Services",
+        "paymentData": "Zahlungsdaten",
+        "paymentExamples": "Rechnungsinformationen (bearbeitet von unserem Zahlungsanbieter)",
+        "paymentPurpose": "Verwaltung von Abonnements"
+      },
+      "subsection2": {
+        "title": "1.2 Automatisch gesammelte Daten",
+        "usageData": "Nutzungsdaten",
+        "usageExamples": "Sitzungen, durchgeführte Aktionen, Zeitstempel",
+        "usagePurpose": "Verbesserung des Services",
+        "technicalData": "Technische Daten",
+        "technicalExamples": "Gerätetyp, Betriebssystem, App-Version",
+        "technicalPurpose": "Technischer Support und Kompatibilität",
+        "diagnosticData": "Diagnosedaten",
+        "diagnosticExamples": "Anonymisierte Fehlerberichte",
+        "diagnosticPurpose": "Fehlerbehebung"
+      },
+      "subsection3": {
+        "title": "1.3 Biometrische und Gesichtsanalyse-Daten",
+        "localProcessing": "Lokale Verarbeitung",
+        "localProcessingDesc": "Die von Ihrer Kamera aufgenommenen Bilder werden direkt auf Ihrem Gerät oder über sichere Dienste analysiert. Rohbilder werden niemals auf unseren Servern gespeichert.",
+        "derivedData": "Abgeleitete Daten",
+        "derivedDataDesc": "Nur Wellness-Indikatoren (anonymisierte Punktzahlen) werden übermittelt und gespeichert, um Ihnen eine Historie Ihrer Sitzungen bereitzustellen.",
+        "noIdentification": "Keine Identifizierung",
+        "noIdentificationDesc": "Die Analyse zielt nicht darauf ab, Sie zu identifizieren, sondern lediglich allgemeine physiologische Signale zu erkennen (Muskelverspannungen, Augenmüdigkeit usw.).",
+        "noFacialRecognition": "Keine Gesichtserkennung",
+        "noFacialRecognitionDesc": "Wir verwenden keine Gesichtserkennungstechnologie, um Sie zu identifizieren."
+      },
+      "subsection4": {
+        "title": "1.4 Wearable-Daten (optionale Funktion)",
+        "description": "Wenn Sie sich entscheiden, ein vernetztes Gerät (Uhr, Armband) zu verbinden, können wir Folgendes sammeln:",
+        "item1": "Herzfrequenz",
+        "item2": "Herzfrequenzvariabilität (HRV)",
+        "item3": "Schlafqualität",
+        "item4": "Aktivitätsniveau"
+      }
+    },
+    "section2": {
+      "title": "2. Wie wir Ihre Daten verwenden",
+      "subsection1": {
+        "title": "2.1 Rechtliche Grundlagen (DSGVO)",
+        "serviceProvision": "Bereitstellung des Dienstes",
+        "contractExecution": "Vertragserfüllung",
+        "contractDetails": "Notwendig, um Ihnen NOKTA ONE bereitzustellen",
+        "serviceImprovement": "Verbesserung des Dienstes",
+        "legitimateInterest": "Berechtigtes Interesse",
+        "legitimateDetails": "Anonymisierte Analyse zur Verbesserung des Erlebnisses",
+        "marketing": "Marketingkommunikation",
+        "consent": "Einwilligung",
+        "consentDetails": "Nur wenn Sie sich entschieden haben, unsere E-Mails zu erhalten"
+      },
+      "subsection2": {
+        "title": "2.2 Detaillierte Zwecke",
+        "item1": "Bereitstellung und Wartung des Dienstes: Ihr Konto erstellen, Ihre Sitzungen verarbeiten, Ihre Historie anzeigen",
+        "item2": "Personalisierung Ihres Erlebnisses: Empfehlungen an Ihr Profil anpassen",
+        "item3": "Kommunikation mit Ihnen: Wichtige Benachrichtigungen, Kundenservice, Updates (wenn zugestimmt)",
+        "item4": "Verbesserung unseres Dienstes: Aggregierte und anonymisierte Analyse der Nutzungstrends",
+        "item5": "Sicherheit gewährleisten: Betrügerische Aktivitäten erkennen und verhindern",
+        "item6": "Unsere gesetzlichen Verpflichtungen einhalten: Steuerkonformität, Reaktion auf legitime Anfragen von Behörden"
+      }
+    },
+    "section3": {
+      "title": "3. Teilen Ihrer Daten",
+      "noSale": "Wir verkaufen, vermieten und tauschen Ihre persönlichen Daten niemals zu kommerziellen Zwecken.",
+      "subsection1": {
+        "title": "3.2 Dienstleister und Partner",
+        "cloud": "Cloud-Infrastruktur",
+        "cloudFunction": "Datenbank-Hosting",
+        "cloudLocation": "Europäische Union",
+        "cloudGuarantees": "ISO 27001, SOC 2 zertifiziert",
+        "analysis": "Analyse-Dienste",
+        "analysisFunction": "Bildverarbeitung",
+        "analysisLocation": "Vereinigte Staaten",
+        "analysisGuarantees": "Standardvertragsklauseln (SCCs)",
+        "payment": "Zahlung",
+        "paymentFunction": "Transaktionsverarbeitung",
+        "paymentLocation": "Europäische Union",
+        "paymentGuarantees": "PCI-DSS zertifiziert",
+        "analytics": "Analytik",
+        "analyticsFunction": "Nutzungsstatistiken (sofern zugestimmt)",
+        "analyticsLocation": "Europäische Union",
+        "analyticsGuarantees": "Anonymisierte Daten"
+      },
+      "subsection2": {
+        "title": "3.3 Weitere Fälle des Teilens",
+        "withConsent": "Mit Ihrer Zustimmung",
+        "withConsentDesc": "Wenn Sie uns ausdrücklich erlauben",
+        "legalObligations": "Gesetzliche Verpflichtungen",
+        "legalObligationsDesc": "Antwort auf eine gerichtliche Anordnung oder rechtliche Anfrage",
+        "rightsProtection": "Schutz der Rechte",
+        "rightsProtectionDesc": "Um unsere Nutzungsbedingungen durchzusetzen",
+        "businessTransactions": "Unternehmensgeschäfte",
+        "businessTransactionsDesc": "Im Falle einer Fusion, Übernahme oder Vermögensveräußerung (Sie werden benachrichtigt)"
+      }
+    },
+    "section4": {
+      "title": "4. Internationale Übertragungen",
+      "description": "Einige unserer Vorgänge beinhalten die Übertragung von Daten in Länder außerhalb des Europäischen Wirtschaftsraums (EWR), insbesondere in die Vereinigten Staaten.",
+      "guarantees": "Eingeführte Garantien:",
+      "guarantee1": "Von der Europäischen Kommission genehmigte Standardvertragsklauseln (SCCs)",
+      "guarantee2": "Folgenabschätzung der Übertragungen (TIA) gemäß den Empfehlungen des EDPB",
+      "guarantee3": "Zusätzliche technische Maßnahmen (Verschlüsselung, Pseudonymisierung)"
+    },
+    "section5": {
+      "title": "5. Datenaufbewahrung",
+      "accountData": "Kontodaten",
+      "accountRetention": "Dauer der Anmeldung + 3 Jahre",
+      "accountJustification": "Kundenbeziehungsmanagement",
+      "sessionData": "Sitzungsdaten",
+      "sessionRetention": "24 Monate",
+      "sessionJustification": "Historie und Personalisierung",
+      "paymentData": "Zahlungsdaten",
+      "paymentRetention": "10 Jahre",
+      "paymentJustification": "Französische steuerliche Verpflichtungen",
+      "diagnosticData": "Diagnosedaten",
+      "diagnosticRetention": "12 Monate",
+      "diagnosticJustification": "Technische Verbesserung",
+      "securityLogs": "Sicherheitsprotokolle",
+      "securityRetention": "12 Monate",
+      "securityJustification": "Sicherheit und Prüfung",
+      "afterDeletion": "Nach der Löschung Ihres Kontos sind Ihre Daten:",
+      "afterDeletion1": "Anonymisiert für aggregierte statistische Daten",
+      "afterDeletion2": "Gelöscht für identifizierbare persönliche Daten (innerhalb von 30 Tagen)",
+      "afterDeletion3": "Nur aufbewahrt, wenn eine gesetzliche Verpflichtung besteht"
+    },
+    "section6": {
+      "title": "6. Ihre Rechte",
+      "description": "Nach der DSGVO und dem Datenschutzgesetz haben Sie folgende Rechte:",
+      "access": "Zugriff",
+      "accessDesc": "Eine Kopie Ihrer Daten erhalten",
+      "accessHow": "Einstellungen > Datenschutz > Exportieren",
+      "rectification": "Berichtigung",
+      "rectificationDesc": "Ihre ungenauen Daten korrigieren",
+      "rectificationHow": "Einstellungen > Profil",
+      "erasure": "Löschung",
+      "erasureDesc": "Ihre Daten löschen",
+      "erasureHow": "Einstellungen > Datenschutz > Mein Konto löschen",
+      "portability": "Datenübertragbarkeit",
+      "portabilityDesc": "Ihre Daten in einem strukturierten Format erhalten",
+      "portabilityHow": "Einstellungen > Datenschutz > Exportieren",
+      "opposition": "Widerspruch",
+      "oppositionDesc": "Widerspruch gegen bestimmte Verarbeitungen",
+      "oppositionHow": "Einstellungen > Datenschutz",
+      "limitation": "Einschränkung",
+      "limitationDesc": "Die Verarbeitung vorübergehend einschränken",
+      "limitationHow": "Kontaktieren Sie uns",
+      "withdrawConsent": "Widerruf der Einwilligung",
+      "withdrawConsentDesc": "Widerrufen Sie Ihre Einwilligung jederzeit",
+      "withdrawConsentHow": "Einstellungen > Datenschutz",
+      "responseTime": "Antwortzeit",
+      "responseTimeDesc": "Wir antworten auf jede Anfrage innerhalb von maximal 30 Tagen.",
+      "contact": "Kontakt",
+      "contactEmail": "privacy@nokta.app",
+      "complaint": "Beschwerde",
+      "complaintDesc": "Sie haben das Recht, eine Beschwerde bei der CNIL (www.cnil.fr) einzureichen, wenn Sie der Meinung sind, dass die Verarbeitung Ihrer Daten Ihre Rechte verletzt."
+    },
+    "section7": {
+      "title": "7. Datensicherheit",
+      "description": "Wir setzen geeignete technische und organisatorische Maßnahmen zum Schutz Ihrer Daten um:",
+      "encryption": "Verschlüsselung",
+      "encryptionDesc": "Verschlüsselte Daten während der Übertragung (TLS 1.3) und im Ruhezustand (AES-256)",
+      "authentication": "Authentifizierung",
+      "authenticationDesc": "Sichere Authentifizierungsprotokolle",
+      "limitedAccess": "Eingeschränkter Zugang",
+      "limitedAccessDesc": "Prinzip der minimalen Berechtigungen für unsere Teams",
+      "audits": "Audits",
+      "auditsDesc": "Regelmäßige Sicherheitstests",
+      "notification": "Benachrichtigung",
+      "notificationDesc": "Im Falle einer Verletzung Benachrichtigung innerhalb von 72 Stunden gemäß der DSGVO"
+    },
+    "section8": {
+      "title": "8. Minderjährige",
+      "description": "Unser Service richtet sich an Personen ab 16 Jahren.",
+      "age13to16": "Wenn Sie zwischen 13 und 16 Jahre alt sind, müssen Sie die Zustimmung Ihres Elternteils oder gesetzlichen Vertreters einholen, um unseren Service nutzen zu können.",
+      "under13": "Wir sammeln nicht absichtlich Daten von Kindern unter 13 Jahren. Wenn wir feststellen, dass ein Kind unter 13 Jahren uns persönliche Daten zur Verfügung gestellt hat, werden wir diese sofort löschen."
+    },
+    "section9": {
+      "title": "9. Cookies und ähnliche Technologien",
+      "description": "Unsere App verwendet lokale Speichertechnologien für:",
+      "essential": "Essentiell",
+      "essentialPurpose": "Betrieb des Dienstes (Authentifizierung, Einstellungen)",
+      "essentialDuration": "Sitzung",
+      "functional": "Funktional",
+      "functionalPurpose": "Speicherung Ihrer Auswahl (Sprache, Thema)",
+      "functionalDuration": "12 Monate",
+      "analytics": "Analytik",
+      "analyticsPurpose": "Anonymisierte Nutzungsstatistiken",
+      "analyticsDuration": "13 Monate",
+      "managePreferences": "Sie können Ihre Einstellungen unter Einstellungen > Datenschutz verwalten."
+    },
+    "section10": {
+      "title": "10. Automatisierte Entscheidungen",
+      "description": "Unser Dienst verwendet Algorithmen, um Ihnen personalisierte Empfehlungen zu geben (Übungen, Vorschläge).",
+      "important": "Wichtig:",
+      "item1": "Diese Empfehlungen sind nur informativ",
+      "item2": "Sie stellen keine medizinische Beratung dar",
+      "item3": "Sie können entscheiden, ob Sie ihnen folgen oder nicht",
+      "item4": "Sie können eine menschliche Intervention für jede Entscheidung, die Sie betrifft, anfordern"
+    },
+    "section11": {
+      "title": "11. Spezifische Informationen nach Gerichtsbarkeit",
+      "subsection1": {
+        "title": "11.1 Bewohner Kaliforniens (CCPA/CPRA)",
+        "description": "Wenn Sie in Kalifornien wohnen, haben Sie zusätzliche Rechte:",
+        "rightToKnow": "Recht auf Wissen",
+        "rightToKnowDesc": "Welche Daten wir sammeln und wie wir sie verwenden",
+        "rightToDelete": "Recht auf Löschung",
+        "rightToDeleteDesc": "Fordern Sie die Löschung Ihrer Daten an",
+        "rightToOptOut": "Recht auf Widerspruch",
+        "rightToOptOutDesc": "Widersprechen Sie dem \"Verkauf\" Ihrer Daten (wir verkaufen Ihre Daten nicht)",
+        "nonDiscrimination": "Keine Diskriminierung",
+        "nonDiscriminationDesc": "Wir diskriminieren Sie nicht, wenn Sie Ihre Rechte ausüben",
+        "noSale": "Wir verkaufen Ihre persönlichen Informationen im Sinne des CCPA nicht."
+      },
+      "subsection2": {
+        "title": "11.2 Bewohner Brasiliens (LGPD)",
+        "description": "Wenn Sie in Brasilien wohnen, haben Sie die Rechte gemäß dem Lei Geral de Proteção de Dados."
+      },
+      "subsection3": {
+        "title": "11.3 Andere Jurisdiktionen",
+        "description": "Wir bemühen uns, die geltenden Datenschutzgesetze in jeder Jurisdiktion, in der wir tätig sind, einzuhalten."
+      }
+    },
+    "section12": {
+      "title": "12. Änderungen dieser Richtlinie",
+      "description": "Wir können diese Datenschutzrichtlinie regelmäßig aktualisieren. Bei wesentlichen Änderungen:",
+      "item1": "Wir informieren Sie per E-Mail oder Benachrichtigung in der App",
+      "item2": "Das Datum der \"Letzten Aktualisierung\" wird geändert",
+      "item3": "Ihre fortgesetzte Nutzung des Dienstes nach der Benachrichtigung gilt als Zustimmung zu den Änderungen"
+    },
+    "section13": {
+      "title": "13. Kontaktieren Sie uns",
+      "description": "Bei Fragen zu dieser Datenschutzrichtlinie oder zur Ausübung Ihrer Rechte:",
+      "email": "E-Mail",
+      "emailAddress": "privacy@nokta.app",
+      "dpo": "Datenschutzbeauftragter (DPO)",
+      "dpoEmail": "dpo@nokta.app",
+      "postal": "Postanschrift",
+      "postalAddress": "Datenschutzservice\nParis, Frankreich",
+      "responseTime": "Wir verpflichten uns, auf jede Anfrage innerhalb von 30 Tagen zu antworten."
+    },
+    "footer": "Diese Datenschutzrichtlinie ist in Französisch verfasst und kann in andere Sprachen übersetzt werden. Im Falle von Abweichungen gilt die französische Version."
+  },
+  "termsOfService": {
+    "title": "Nutzungsbedingungen",
+    "lastUpdated": "Letzte Aktualisierung",
+    "lastUpdatedDate": "Januar 2025",
+    "version": "Version",
+    "versionNumber": "1.0",
+    "preamble": "Diese Nutzungsbedingungen (im Folgenden \"Bedingungen\") regeln den Zugang und die Nutzung der Anwendung NOKTA ONE (im Folgenden \"die Anwendung\", \"der Dienst\" oder \"NOKTA ONE\"). NOKTA ONE wird von einem französischen Unternehmen herausgegeben, das im Handelsregister von Paris eingetragen ist und seinen Sitz in Paris, Frankreich hat (im Folgenden \"wir\", \"unser\", \"das Unternehmen\" oder \"der Herausgeber\").",
+    "preambleBold": "Durch den Zugriff auf oder die Nutzung unseres Dienstes stimmen Sie zu, an diese Bedingungen gebunden zu sein. Wenn Sie diesen Bedingungen nicht zustimmen, dürfen Sie unseren Dienst nicht nutzen.",
+    "article1": {
+      "title": "Artikel 1 – Definitionen",
+      "application": "\"Anwendung\"",
+      "applicationDesc": "Die mobile und webbasierte Anwendung NOKTA ONE",
+      "content": "\"Inhalt\"",
+      "contentDesc": "Alle Texte, Bilder, Videos, Daten oder andere Materialien, die über den Dienst verfügbar sind",
+      "userContent": "\"Benutzerinhalt\"",
+      "userContentDesc": "Alle Inhalte, die Sie über den Dienst einreichen, hochladen oder übermitteln",
+      "service": "\"Dienst\"",
+      "serviceDesc": "Alle Funktionen, die von NOKTA ONE angeboten werden",
+      "user": "\"Benutzer\" oder \"Sie\"",
+      "userDesc": "Jede Person, die den Dienst nutzt",
+      "account": "\"Konto\"",
+      "accountDesc": "Ihr persönliches Konto, das zur Nutzung des Dienstes erstellt wurde",
+      "personalData": "\"Personenbezogene Daten\"",
+      "personalDataDesc": "Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen"
+    },
+    "article2": {
+      "title": "Artikel 2 – Akzeptanz der Bedingungen",
+      "subsection1": {
+        "title": "2.1 Geschäftsfähigkeit",
+        "description": "Durch die Nutzung unseres Dienstes erklären und garantieren Sie, dass Sie:",
+        "item1": "Mindestens 16 Jahre alt sein (oder 13 Jahre mit elterlicher Zustimmung)",
+        "item2": "Die rechtliche Fähigkeit haben, einen verbindlichen Vertrag abzuschließen",
+        "item3": "Keine Person sein, die gemäß den geltenden Gesetzen vom Nutzen des Dienstes ausgeschlossen ist"
+      },
+      "subsection2": {
+        "title": "2.2 Akzeptanz",
+        "description": "Ihr Zugang und Ihre Nutzung des Dienstes sind an Ihre Akzeptanz und Einhaltung dieser Bedingungen gebunden. Diese Bedingungen gelten für alle Besucher, Nutzer und andere Personen, die auf den Dienst zugreifen oder ihn nutzen."
+      },
+      "subsection3": {
+        "title": "2.3 Änderungen",
+        "description": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen treten mit ihrer Veröffentlichung in Kraft. Ihre fortgesetzte Nutzung des Dienstes nach Bekanntgabe der Änderungen stellt Ihre Akzeptanz der neuen Bedingungen dar."
+      }
+    },
+    "article3": {
+      "title": "Artikel 3 – Beschreibung des Dienstes",
+      "subsection1": {
+        "title": "3.1 Funktionen",
+        "description": "Nokta One ist eine persönliche Wellness-App, die Folgendes bietet:",
+        "item1": "Geführte Sitzungen zur physiologischen Regulation",
+        "item2": "Atem- und Haltungsübungen",
+        "item3": "Überwachung des Wohlbefindens",
+        "item4": "Personalisierte Empfehlungen"
+      },
+      "subsection2": {
+        "title": "3.2 Art des Dienstes",
+        "important": "WICHTIG – MEDIZINISCHER HINWEIS:",
+        "description": "Der Dienst wird nur zu Informations- und allgemeinen Wohlfühlzwecken bereitgestellt. Nokta One:",
+        "isNot": "IST NICHT",
+        "isNotDesc": "ein Medizinprodukt",
+        "doesNotProvide": "BIETET KEINE",
+        "doesNotProvideDesc": "medizinische Diagnosen",
+        "doesNotReplace": "ERSATZT NICHT",
+        "doesNotReplaceDesc": "die Beratung durch einen Gesundheitsfachmann",
+        "isNotIntended": "IST NICHT BESTIMMT",
+        "isNotIntendedDesc": "zur Behandlung, Heilung oder Vorbeugung von Krankheiten",
+        "disclaimer": "Die bereitgestellten Indikatoren und Empfehlungen sind allgemeine Wohlfühlsignale und sollten nicht als medizinische Ratschläge interpretiert werden. Bei gesundheitlichen Bedenken konsultieren Sie bitte einen qualifizierten Fachmann."
+      },
+      "subsection3": {
+        "title": "3.3 Verfügbarkeit",
+        "description": "Wir bemühen uns, den Service rund um die Uhr verfügbar zu halten. Wir garantieren jedoch keine ununterbrochene Verfügbarkeit und können den Service aus Wartungs-, Aktualisierungs- oder anderen technischen Gründen aussetzen oder unterbrechen."
+      }
+    },
+    "article4": {
+      "title": "Artikel 4 – Registrierung und Konto",
+      "subsection1": {
+        "title": "4.1 Kontoerstellung",
+        "description": "Um auf bestimmte Funktionen zuzugreifen, müssen Sie ein Konto erstellen. Bei der Registrierung stimmen Sie zu:",
+        "item1": "Genau, vollständig und aktuell Informationen bereitzustellen",
+        "item2": "Die Vertraulichkeit Ihrer Anmeldedaten zu wahren",
+        "item3": "Uns sofort über jede unbefugte Nutzung Ihres Kontos zu informieren",
+        "item4": "Für alle Aktivitäten, die unter Ihrem Konto durchgeführt werden, verantwortlich zu sein"
+      },
+      "subsection2": {
+        "title": "4.2 Gastmodus",
+        "description": "Sie können bestimmte Funktionen im Gastmodus nutzen, ohne ein Konto zu erstellen. Die Daten im Gastmodus werden nicht dauerhaft gespeichert."
+      },
+      "subsection3": {
+        "title": "4.3 Kontosicherheit",
+        "description": "Sie sind allein verantwortlich für den Schutz Ihres Kontos. Wir übernehmen keine Verantwortung für Verluste, die aus der unbefugten Nutzung Ihres Kontos resultieren."
+      }
+    },
+    "article5": {
+      "title": "Artikel 5 – Abonnements und Zahlungen",
+      "subsection1": {
+        "title": "5.1 Angebote",
+        "description": "Der Service kann in verschiedenen Angeboten bereitgestellt werden:",
+        "free": "Kostenlos",
+        "freeDesc": "Eingeschränkter Zugang zu bestimmten Funktionen",
+        "premium": "Premium",
+        "premiumDesc": "Vollzugang über ein kostenpflichtiges Abonnement"
+      },
+      "subsection2": {
+        "title": "5.2 Preisgestaltung",
+        "description": "Die Preise werden in Euro (€) inklusive aller Steuern angezeigt. Wir behalten uns das Recht vor, unsere Preise jederzeit zu ändern, vorbehaltlich einer vorherigen Benachrichtigung."
+      },
+      "subsection3": {
+        "title": "5.3 Zahlung",
+        "description": "Zahlungen werden von unserem sicheren Zahlungsanbieter verarbeitet. Mit Ihrem Abonnement autorisieren Sie die automatische Abbuchung des entsprechenden Betrags."
+      },
+      "subsection4": {
+        "title": "5.4 Automatische Verlängerung",
+        "description": "Abonnements werden automatisch bei Ablauf verlängert, es sei denn, Sie kündigen vor dem Verlängerungsdatum."
+      },
+      "subsection5": {
+        "title": "5.5 Kündigung",
+        "description": "Sie können Ihr Abonnement jederzeit in den Einstellungen Ihres Kontos oder über die Plattform (App Store, Google Play) kündigen. Die Kündigung tritt am Ende des aktuellen Abonnementzeitraums in Kraft."
+      },
+      "subsection6": {
+        "title": "5.6 Widerrufsrecht",
+        "description": "Gemäß den geltenden Verbraucherschutzgesetzen kann das Widerrufsrecht nicht für digitale Inhalte ausgeübt werden, die nicht auf einem materiellen Träger bereitgestellt werden und deren Ausführung mit Ihrer vorherigen Zustimmung und dem Hinweis auf den Verlust des Widerrufsrechts begonnen hat."
+      },
+      "subsection7": {
+        "title": "5.7 Rückerstattungen",
+        "description": "Sofern gesetzlich nichts anderes vorgesehen ist oder im Falle eines Abrechnungsfehlers unsererseits, sind geleistete Zahlungen nicht erstattungsfähig."
+      }
+    },
+    "article6": {
+      "title": "Artikel 6 – Nutzungsregeln",
+      "subsection1": {
+        "title": "6.1 Erlaubte Nutzung",
+        "description": "Sie stimmen zu, den Service zu nutzen:",
+        "item1": "In Übereinstimmung mit diesen Bedingungen und den geltenden Gesetzen",
+        "item2": "Für persönliche und nicht kommerzielle Zwecke",
+        "item3": "Ohne anderen Nutzern oder dem Betrieb des Services zu schaden"
+      },
+      "subsection2": {
+        "title": "6.2 Verbotene Verhaltensweisen",
+        "description": "Es ist strengstens untersagt:",
+        "item1": "Den Service für illegale oder unbefugte Zwecke zu nutzen",
+        "item2": "Ohne Erlaubnis auf unsere Systeme zuzugreifen",
+        "item3": "Viren, Malware oder schädlichen Code zu übertragen",
+        "item4": "Persönliche Daten anderer Nutzer zu sammeln oder zu speichern",
+        "item5": "Sich als eine andere Person auszugeben",
+        "item6": "Unsere Infrastruktur zu stören oder zu überlasten",
+        "item7": "Sicherheitsmaßnahmen oder Zugangsbeschränkungen zu umgehen",
+        "item8": "Ihren Zugang zum Service weiterzuverkaufen, unterzulizenzieren oder zu übertragen",
+        "item9": "Roboter, Scraper oder automatisierte Tools ohne Erlaubnis zu verwenden",
+        "item10": "Den Dienst für kommerzielle Zwecke reproduzieren, duplizieren, kopieren oder nutzen"
+      },
+      "subsection3": {
+        "title": "6.3 Nutzerinhalt",
+        "description": "Wenn Sie Inhalte über den Dienst einreichen (Kommentare, Bilder usw.):",
+        "item1": "Sie behalten Ihre geistigen Eigentumsrechte",
+        "item2": "Sie gewähren uns eine weltweite, nicht-exklusive, kostenlose, übertragbare Lizenz zur Nutzung, Reproduktion und Anzeige dieser Inhalte im Zusammenhang mit dem Dienst",
+        "item3": "Sie garantieren, dass diese Inhalte keine Rechte Dritter verletzen"
+      }
+    },
+    "article7": {
+      "title": "Artikel 7 – Geistiges Eigentum",
+      "subsection1": {
+        "title": "7.1 Rechte des Unternehmens",
+        "description": "Der Dienst und sein ursprünglicher Inhalt (außer Nutzerinhalt), einschließlich, aber nicht beschränkt auf: Quellcode, Texte, Grafiken, Logos, Icons, Bilder, Audio- und Videoclips, Datensammlungen und Software, sind das ausschließliche Eigentum des Unternehmens oder seiner Lizenzgeber und sind durch französische und internationale Gesetze zum geistigen Eigentum geschützt."
+      },
+      "subsection2": {
+        "title": "7.2 Marken",
+        "description": "\"Nokta One\" und die zugehörigen Logos sind Marken des Unternehmens. Sie dürfen diese ohne unsere vorherige schriftliche Genehmigung nicht verwenden."
+      },
+      "subsection3": {
+        "title": "7.3 Eingeschränkte Lizenz",
+        "description": "Vorbehaltlich der Einhaltung dieser Bedingungen gewähren wir Ihnen eine persönliche, eingeschränkte, nicht-exklusive, nicht übertragbare und widerrufbare Lizenz zum Zugriff auf und zur Nutzung des Dienstes für persönliche und nicht-kommerzielle Zwecke."
+      }
+    },
+    "article8": {
+      "title": "Artikel 8 – Haftungsbeschränkung",
+      "subsection1": {
+        "title": "8.1 Ausschluss von Garantien",
+        "disclaimer": "DER DIENST WIRD \"WIE BESEHEN\" UND \"VERFÜGBAR\" BEREITGESTELLT, OHNE IRGENDEINE GARANTIE, WEDER AUSDRÜCKLICH NOCH STILLSCHWEIGEND.",
+        "description": "Wir garantieren nicht, dass:",
+        "item1": "Der Dienst Ihren spezifischen Bedürfnissen entspricht",
+        "item2": "Der Dienst ununterbrochen, sicher oder fehlerfrei ist",
+        "item3": "Die erzielten Ergebnisse genau oder zuverlässig sind",
+        "item4": "Fehler behoben werden"
+      },
+      "subsection2": {
+        "title": "8.2 Haftungsbeschränkung",
+        "limitation": "SOWEIT ES DAS ANWENDBARE RECHT ERLAUBT, IST DAS UNTERNEHMEN NICHT HAFTBAR FÜR:",
+        "item1": "Indirekte, zufällige, spezielle, Folgeschäden oder Strafschäden",
+        "item2": "Jeglichen Verlust von Gewinnen, Daten, Nutzung, Goodwill oder anderen immateriellen Verlusten",
+        "item3": "Schäden, die aus Ihrer Nutzung oder Unfähigkeit zur Nutzung des Dienstes resultieren",
+        "item4": "Schäden, die aus unbefugtem Zugriff auf Ihre Daten resultieren"
+      },
+      "subsection3": {
+        "title": "8.3 Haftungsobergrenze",
+        "description": "Die Gesamthaftung der Gesellschaft für alle Ansprüche, die sich aus diesen Bedingungen oder der Nutzung des Dienstes ergeben, ist auf den Betrag begrenzt, den Sie in den letzten 12 Monaten für den Dienst bezahlt haben, oder 100 €, wenn Sie keine Zahlung geleistet haben."
+      },
+      "subsection4": {
+        "title": "8.4 Ausnahmen",
+        "description": "Einige Rechtsordnungen erlauben nicht den Ausschluss bestimmter Garantien oder die Haftungsbeschränkung. In diesen Rechtsordnungen wird unsere Haftung im maximal gesetzlich zulässigen Umfang begrenzt."
+      }
+    },
+    "article9": {
+      "title": "Artikel 9 – Entschädigung",
+      "description": "Sie stimmen zu, die Gesellschaft, ihre Führungskräfte, Direktoren, Mitarbeiter und Vertreter von allen Ansprüchen, Schäden, Verpflichtungen, Verlusten, Haftungen, Kosten oder Ausgaben (einschließlich Anwaltsgebühren) freizustellen und schadlos zu halten, die sich ergeben aus:",
+      "item1": "Ihrer Nutzung des Dienstes",
+      "item2": "Ihrem Verstoß gegen diese Bedingungen",
+      "item3": "Ihrem Verstoß gegen die Rechte Dritter",
+      "item4": "Ihrem Benutzerinhalt"
+    },
+    "article10": {
+      "title": "Artikel 10 – Aussetzung und Kündigung",
+      "subsection1": {
+        "title": "10.1 Durch Sie",
+        "description": "Sie können die Nutzung des Dienstes jederzeit über die Einstellungen der App einstellen und Ihr Konto löschen."
+      },
+      "subsection2": {
+        "title": "10.2 Durch uns",
+        "description": "Wir können Ihren Zugang zum Dienst sofort, ohne Vorankündigung oder Haftung, aussetzen oder kündigen, wenn:",
+        "item1": "Sie gegen diese Bedingungen verstoßen",
+        "item2": "Wir vernünftigerweise glauben, dass Ihr Verhalten dem Dienst oder anderen Nutzern schadet",
+        "item3": "Dies gesetzlich erforderlich ist"
+      },
+      "subsection3": {
+        "title": "10.3 Auswirkungen der Kündigung",
+        "description": "Bei der Kündigung:",
+        "item1": "Ihr Recht zur Nutzung des Dienstes endet sofort",
+        "item2": "Wir können Ihr Konto und alle zugehörigen Daten löschen oder deaktivieren",
+        "item3": "Die Bestimmungen, die aufgrund ihrer Natur über die Kündigung hinaus bestehen bleiben müssen, bleiben bestehen (einschließlich: Geistiges Eigentum, Haftungsbeschränkung, Entschädigung, anwendbares Recht)"
+      }
+    },
+    "article11": {
+      "title": "Artikel 11 – Anwendbares Recht und Streitigkeiten",
+      "subsection1": {
+        "title": "11.1 Anwendbares Recht",
+        "description": "Diese Bedingungen unterliegen dem französischen Recht und werden entsprechend ausgelegt, ohne Rücksicht auf die Grundsätze des internationalen Privatrechts."
+      },
+      "subsection2": {
+        "title": "11.2 Einvernehmliche Lösung",
+        "description": "Im Falle eines Streits werden die Parteien versuchen, eine einvernehmliche Lösung zu finden. Sie können uns kontaktieren unter: support@nokta.app"
+      },
+      "subsection3": {
+        "title": "11.3 Mediation",
+        "description": "Gemäß den geltenden Verbraucherschutzgesetzen können Sie im Falle eines ungelösten Streits kostenlos den Mediationsdienst nutzen: Verbrauchermediator: [Details werden bei der Benennung des Mediators ergänzt]"
+      },
+      "subsection4": {
+        "title": "11.4 Zuständigkeit",
+        "description": "Wenn keine einvernehmliche Lösung oder Mediation erfolgt, wird jeder Streitfall der ausschließlichen Zuständigkeit der Gerichte in Paris, Frankreich, unterliegen, vorbehaltlich der zwingenden Zuständigkeitsregeln zugunsten der Verbraucher."
+      },
+      "subsection5": {
+        "title": "11.5 Europäische Plattform zur Online-Streitbeilegung",
+        "description": "Die Europäische Kommission bietet eine Plattform zur Online-Streitbeilegung an: https://ec.europa.eu/consumers/odr"
+      }
+    },
+    "article12": {
+      "title": "Artikel 12 – Verschiedene Bestimmungen",
+      "subsection1": {
+        "title": "12.1 Vollständige Vereinbarung",
+        "description": "Diese Bedingungen sowie unsere Datenschutzrichtlinie stellen die vollständige Vereinbarung zwischen Ihnen und der Gesellschaft bezüglich des Dienstes dar."
+      },
+      "subsection2": {
+        "title": "12.2 Teilbarkeit",
+        "description": "Wenn eine Bestimmung dieser Bedingungen für ungültig oder nicht durchsetzbar gehalten wird, bleiben die übrigen Bestimmungen in Kraft."
+      },
+      "subsection3": {
+        "title": "12.3 Verzicht",
+        "description": "Das Nichtausüben eines Rechts, das in diesen Bedingungen vorgesehen ist, stellt keinen Verzicht auf dieses Recht dar."
+      },
+      "subsection4": {
+        "title": "12.4 Abtretung",
+        "description": "Sie dürfen Ihre Rechte oder Pflichten aus diesen Bedingungen nicht ohne unsere vorherige schriftliche Zustimmung abtreten oder übertragen. Wir können unsere Rechte und Pflichten ohne Einschränkungen abtreten."
+      },
+      "subsection5": {
+        "title": "12.5 Höhere Gewalt",
+        "description": "Wir sind nicht verantwortlich für Verzögerungen oder Nichterfüllungen unserer Verpflichtungen, die aus Gründen entstehen, die außerhalb unserer angemessenen Kontrolle liegen (Naturkatastrophen, Krieg, Terrorismus, Pandemie usw.)."
+      },
+      "subsection6": {
+        "title": "12.6 Sprache",
+        "description": "Diese Bedingungen sind in französischer Sprache verfasst. Im Falle einer Übersetzung hat die französische Version Vorrang."
+      }
+    },
+    "article13": {
+      "title": "Artikel 13 – Kontakt",
+      "description": "Bei Fragen zu diesen Nutzungsbedingungen:",
+      "email": "E-Mail",
+      "emailAddress": "support@nokta.app",
+      "postal": "Postadresse",
+      "postalAddress": "Kundenservice\nParis, Frankreich"
+    },
+    "footer": "Durch die Nutzung von NOKTA ONE bestätigen Sie, dass Sie diese Nutzungsbedingungen gelesen, verstanden und akzeptiert haben."
   }
 }

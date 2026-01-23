@@ -603,5 +603,572 @@
     "deleteConfirmLabel": "確認するにはDELETEと入力してください",
     "cancel": "キャンセル",
     "confirmDelete": "完全に削除"
+  },
+  "privacyPolicy": {
+    "title": "プライバシーポリシー",
+    "lastUpdated": "最終更新日",
+    "lastUpdatedDate": "2025年1月",
+    "version": "バージョン",
+    "versionNumber": "1.0",
+    "introduction": "このプライバシーポリシーは、NOKTA ONEアプリ（以下「アプリ」、「サービス」または「NOKTA ONE」）を使用する際に、あなたの個人情報がどのように収集、使用、共有されるかを説明します。NOKTA ONEは、パリの商業登記簿に登録されたフランスの会社によって運営されています（以下「私たち」、「私たちの」または「会社」）。本社はフランスのパリにあります。私たちのサービスを使用することで、あなたはこのプライバシーポリシーに記載された慣行に同意したことになります。このポリシーに同意しない場合は、私たちのサービスを使用しないでください。",
+    "table": {
+      "category": "カテゴリ",
+      "examples": "例",
+      "purpose": "目的",
+      "legalBasis": "法的根拠",
+      "details": "詳細",
+      "provider": "提供者",
+      "function": "機能",
+      "location": "データの所在地",
+      "guarantees": "保証",
+      "dataType": "データの種類",
+      "retentionPeriod": "保存期間",
+      "justification": "正当化",
+      "right": "権利",
+      "description": "説明",
+      "howToExercise": "行使方法",
+      "type": "タイプ",
+      "duration": "期間"
+    },
+    "section1": {
+      "title": "1. 収集するデータ",
+      "subsection1": {
+        "title": "1.1 あなたが直接提供するデータ",
+        "accountData": "アカウントデータ",
+        "accountExamples": "メールアドレス、ユーザー名、パスワード（ハッシュ化）",
+        "accountPurpose": "アカウントの作成と管理",
+        "profileData": "プロフィールデータ",
+        "profileExamples": "名前、生年月日、国、好みの言語",
+        "profilePurpose": "サービスのパーソナライズ",
+        "paymentData": "支払いデータ",
+        "paymentExamples": "請求情報（当社の決済サービスプロバイダーによって処理されます）",
+        "paymentPurpose": "サブスクリプションの管理"
+      },
+      "subsection2": {
+        "title": "1.2 自動収集データ",
+        "usageData": "使用データ",
+        "usageExamples": "セッション、実行されたアクション、タイムスタンプ",
+        "usagePurpose": "サービスの改善",
+        "technicalData": "技術データ",
+        "technicalExamples": "デバイスタイプ、オペレーティングシステム、アプリのバージョン",
+        "technicalPurpose": "技術サポートと互換性",
+        "diagnosticData": "診断データ",
+        "diagnosticExamples": "匿名化されたエラーレポート",
+        "diagnosticPurpose": "バグの解決"
+      },
+      "subsection3": {
+        "title": "1.3 バイオメトリクスおよび顔分析データ",
+        "localProcessing": "ローカル処理",
+        "localProcessingDesc": "カメラでキャプチャされた画像は、デバイス上または安全なサービスを通じて直接分析されます。生の画像は当社のサーバーに保存されることはありません。",
+        "derivedData": "派生データ",
+        "derivedDataDesc": "ウェルネス指標（匿名化された数値スコア）のみが送信され、セッションの履歴を提供するために保存されます。",
+        "noIdentification": "識別なし",
+        "noIdentificationDesc": "分析はあなたを特定することを目的としておらず、一般的な生理的信号（筋肉の緊張、目の疲れなど）を検出することのみを目的としています。",
+        "noFacialRecognition": "顔認識なし",
+        "noFacialRecognitionDesc": "あなたを特定するために顔認識技術を使用していません。"
+      },
+      "subsection4": {
+        "title": "1.4 ウェアラブルデータ（オプション機能）",
+        "description": "接続されたデバイス（時計、ブレスレット）を接続することを選択した場合、以下の情報を収集することがあります：",
+        "item1": "心拍数",
+        "item2": "心拍変動（HRV）",
+        "item3": "睡眠の質",
+        "item4": "活動レベル"
+      }
+    },
+    "section2": {
+      "title": "2. データの使用方法",
+      "subsection1": {
+        "title": "2.1 法的根拠（GDPR）",
+        "serviceProvision": "サービスの提供",
+        "contractExecution": "契約の履行",
+        "contractDetails": "NOKTA ONEを提供するために必要です",
+        "serviceImprovement": "サービスの改善",
+        "legitimateInterest": "正当な利益",
+        "legitimateDetails": "体験を向上させるための匿名化された分析",
+        "marketing": "マーケティングコミュニケーション",
+        "consent": "同意",
+        "consentDetails": "私たちのメールを受け取ることに同意した場合のみ"
+      },
+      "subsection2": {
+        "title": "2.2 詳細な目的",
+        "item1": "サービスの提供と維持：アカウントの作成、セッションの処理、履歴の表示",
+        "item2": "体験のカスタマイズ：プロフィールに合わせた推奨の調整",
+        "item3": "あなたとのコミュニケーション：重要な通知、カスタマーサポート、更新（同意があれば）",
+        "item4": "サービスの改善：使用傾向の集計された匿名化分析",
+        "item5": "セキュリティの確保：不正行為の検出と防止",
+        "item6": "法的義務の遵守：税務コンプライアンス、正当な当局からの要求への対応"
+      }
+    },
+    "section3": {
+      "title": "3. あなたのデータの共有",
+      "noSale": "私たちは、あなたの個人データを商業目的で販売、賃貸、交換することはありません。",
+      "subsection1": {
+        "title": "3.2 サブコントラクターとパートナー",
+        "cloud": "クラウドインフラ",
+        "cloudFunction": "データベースのホスティング",
+        "cloudLocation": "欧州連合",
+        "cloudGuarantees": "ISO 27001、SOC 2認証",
+        "analysis": "分析サービス",
+        "analysisFunction": "画像処理",
+        "analysisLocation": "アメリカ合衆国",
+        "analysisGuarantees": "標準契約条項（SCC）",
+        "payment": "支払い",
+        "paymentFunction": "取引処理",
+        "paymentLocation": "欧州連合",
+        "paymentGuarantees": "PCI-DSS認証",
+        "analytics": "分析",
+        "analyticsFunction": "利用統計（同意がある場合）",
+        "analyticsLocation": "欧州連合",
+        "analyticsGuarantees": "匿名化データ"
+      },
+      "subsection2": {
+        "title": "3.3 その他の共有ケース",
+        "withConsent": "あなたの同意のもとで",
+        "withConsentDesc": "あなたが明示的に許可した場合",
+        "legalObligations": "法的義務",
+        "legalObligationsDesc": "裁判所の命令や法的要求への対応",
+        "rightsProtection": "権利の保護",
+        "rightsProtectionDesc": "利用規約の遵守を確保するため",
+        "businessTransactions": "ビジネス取引",
+        "businessTransactionsDesc": "合併、買収、または資産の売却の場合（通知されます）"
+      }
+    },
+    "section4": {
+      "title": "4. 国際データ転送",
+      "description": "一部の操作では、欧州経済地域（EEA）外の国へのデータ転送が含まれます。特にアメリカ合衆国。",
+      "guarantees": "設定された保証：",
+      "guarantee1": "欧州委員会によって承認された標準契約条項（SCC）",
+      "guarantee2": "EDPBの推奨に従った転送影響評価（TIA）",
+      "guarantee3": "追加の技術的措置（暗号化、仮名化）"
+    },
+    "section5": {
+      "title": "5. データの保存",
+      "accountData": "アカウントデータ",
+      "accountRetention": "登録期間 + 3年",
+      "accountJustification": "顧客関係の管理",
+      "sessionData": "セッションデータ",
+      "sessionRetention": "24ヶ月",
+      "sessionJustification": "履歴とパーソナライズ",
+      "paymentData": "支払いデータ",
+      "paymentRetention": "10年",
+      "paymentJustification": "フランスの税務義務",
+      "diagnosticData": "診断データ",
+      "diagnosticRetention": "12ヶ月",
+      "diagnosticJustification": "技術的改善",
+      "securityLogs": "セキュリティログ",
+      "securityRetention": "12ヶ月",
+      "securityJustification": "セキュリティと監査",
+      "afterDeletion": "アカウント削除後、あなたのデータは次のようになります：",
+      "afterDeletion1": "集計された統計データのために匿名化されます",
+      "afterDeletion2": "個人を特定できるデータは削除されます（30日以内）",
+      "afterDeletion3": "法的義務がある場合のみ保持されます"
+    },
+    "section6": {
+      "title": "6. あなたの権利",
+      "description": "GDPRおよび情報保護法に基づき、あなたには次の権利があります：",
+      "access": "アクセス",
+      "accessDesc": "あなたのデータのコピーを取得する",
+      "accessHow": "設定 > プライバシー > エクスポート",
+      "rectification": "訂正",
+      "rectificationDesc": "不正確なデータを修正する",
+      "rectificationHow": "設定 > プロフィール",
+      "erasure": "削除",
+      "erasureDesc": "あなたのデータを削除する",
+      "erasureHow": "設定 > プライバシー > アカウントを削除",
+      "portability": "ポータビリティ",
+      "portabilityDesc": "構造化された形式でデータを受け取る",
+      "portabilityHow": "設定 > プライバシー > エクスポート",
+      "opposition": "異議",
+      "oppositionDesc": "特定の処理に異議を唱える",
+      "oppositionHow": "設定 > プライバシー",
+      "limitation": "制限",
+      "limitationDesc": "処理を一時的に制限する",
+      "limitationHow": "お問い合わせ",
+      "withdrawConsent": "同意の撤回",
+      "withdrawConsentDesc": "いつでも同意を撤回できます",
+      "withdrawConsentHow": "設定 > プライバシー",
+      "responseTime": "応答時間",
+      "responseTimeDesc": "すべてのリクエストには最大30日以内にお応えします。",
+      "contact": "連絡先",
+      "contactEmail": "privacy@nokta.app",
+      "complaint": "苦情",
+      "complaintDesc": "データ処理が権利の侵害であると感じた場合、CNIL（www.cnil.fr）に苦情を申し立てる権利があります。"
+    },
+    "section7": {
+      "title": "7. データの安全性",
+      "description": "あなたのデータを保護するために適切な技術的および組織的措置を講じています：",
+      "encryption": "暗号化",
+      "encryptionDesc": "転送中（TLS 1.3）および静止中（AES-256）のデータを暗号化",
+      "authentication": "認証",
+      "authenticationDesc": "安全な認証プロトコル",
+      "limitedAccess": "アクセス制限",
+      "limitedAccessDesc": "チームのための最小特権の原則",
+      "audits": "監査",
+      "auditsDesc": "定期的なセキュリティテスト",
+      "notification": "通知",
+      "notificationDesc": "違反があった場合、GDPRに従い72時間以内に通知"
+    },
+    "section8": {
+      "title": "8. 未成年者",
+      "description": "当サービスは16歳以上の方を対象としています。",
+      "age13to16": "13歳から16歳の場合、サービスを利用するには親または法定代理人の同意が必要です。",
+      "under13": "私たちは13歳未満の子供に関するデータを意図的に収集しません。もし13歳未満の子供が私たちに個人データを提供したことが判明した場合、直ちに削除します。"
+    },
+    "section9": {
+      "title": "9. クッキーおよび類似技術",
+      "description": "私たちのアプリは、次の目的でローカルストレージ技術を使用します：",
+      "essential": "必須",
+      "essentialPurpose": "サービスの運営（認証、設定）",
+      "essentialDuration": "セッション",
+      "functional": "機能的",
+      "functionalPurpose": "あなたの選択を記憶する（言語、テーマ）",
+      "functionalDuration": "12ヶ月",
+      "analytics": "分析",
+      "analyticsPurpose": "匿名化された使用統計",
+      "analyticsDuration": "13ヶ月",
+      "managePreferences": "設定 > プライバシーで好みを管理できます。"
+    },
+    "section10": {
+      "title": "10. 自動化された決定",
+      "description": "私たちのサービスは、あなたにパーソナライズされた推奨を提供するためにアルゴリズムを使用します（エクササイズ、提案）。",
+      "important": "重要：",
+      "item1": "これらの推奨は情報提供のみを目的としています",
+      "item2": "医療的なアドバイスではありません",
+      "item3": "従うかどうかはあなたの自由です",
+      "item4": "あなたに関する決定については人間の介入を求めることができます"
+    },
+    "section11": {
+      "title": "11. 法域別の特定情報",
+      "subsection1": {
+        "title": "11.1 カリフォルニア州の居住者（CCPA/CPRA）",
+        "description": "カリフォルニアに居住している場合、追加の権利があります：",
+        "rightToKnow": "知る権利",
+        "rightToKnowDesc": "私たちが収集するデータとその使用方法",
+        "rightToDelete": "削除の権利",
+        "rightToDeleteDesc": "あなたのデータの削除をリクエストする",
+        "rightToOptOut": "オプトアウトの権利",
+        "rightToOptOutDesc": "あなたのデータの「販売」を拒否する（私たちはあなたのデータを販売しません）",
+        "nonDiscrimination": "非差別",
+        "nonDiscriminationDesc": "あなたの権利を行使したことで差別することはありません",
+        "noSale": "私たちはCCPAの意味であなたの個人情報を販売しません。"
+      },
+      "subsection2": {
+        "title": "11.2 ブラジルの居住者（LGPD）",
+        "description": "ブラジルに居住している場合、Lei Geral de Proteção de Dadosに基づく権利があります。"
+      },
+      "subsection3": {
+        "title": "11.3 その他の法域",
+        "description": "私たちは、運営する各法域のデータ保護法を遵守するよう努めています。"
+      }
+    },
+    "section12": {
+      "title": "12. このポリシーの変更",
+      "description": "このプライバシーポリシーは定期的に更新されることがあります。重要な変更がある場合：",
+      "item1": "メールまたはアプリ内通知でお知らせします",
+      "item2": "\"最終更新日\"が変更されます",
+      "item3": "通知後のサービスの継続的な利用は、変更の受け入れを意味します"
+    },
+    "section13": {
+      "title": "13. お問い合わせ",
+      "description": "このプライバシーポリシーに関する質問や権利の行使については：",
+      "email": "メール",
+      "emailAddress": "privacy@nokta.app",
+      "dpo": "データ保護責任者（DPO）",
+      "dpoEmail": "dpo@nokta.app",
+      "postal": "郵送先",
+      "postalAddress": "データ保護サービス\nパリ、フランス",
+      "responseTime": "すべてのリクエストには30日以内に対応することをお約束します。"
+    },
+    "footer": "このプライバシーポリシーはフランス語で書かれており、他の言語に翻訳されることがあります。異なる場合は、フランス語版が優先されます。"
+  },
+  "termsOfService": {
+    "title": "利用規約",
+    "lastUpdated": "最終更新日",
+    "lastUpdatedDate": "2025年1月",
+    "version": "バージョン",
+    "versionNumber": "1.0",
+    "preamble": "本利用規約（以下「規約」）は、Nokta Oneアプリ（以下「アプリ」、「サービス」または「Nokta One」）へのアクセスおよび利用を規定します。Nokta Oneは、フランスのパリ商業登記所に登録された企業によって運営されており、本社はフランスのパリにあります（以下「私たち」、「私たちの」、「会社」または「発行者」）。",
+    "preambleBold": "私たちのサービスにアクセスまたは利用することで、これらの規約に同意したことになります。これらの規約に同意しない場合は、私たちのサービスを利用しないでください。",
+    "article1": {
+      "title": "第1条 – 定義",
+      "application": "\"アプリ\"",
+      "applicationDesc": "Nokta Oneのモバイルおよびウェブアプリ",
+      "content": "\"コンテンツ\"",
+      "contentDesc": "サービスを通じて利用可能なすべてのテキスト、画像、動画、データまたはその他の資料",
+      "userContent": "\"ユーザーコンテンツ\"",
+      "userContentDesc": "サービスを通じてあなたが提出、アップロードまたは送信するすべてのコンテンツ",
+      "service": "\"サービス\"",
+      "serviceDesc": "Nokta Oneが提供するすべての機能",
+      "user": "\"ユーザー\"または\"あなた\"",
+      "userDesc": "サービスを利用するすべての人",
+      "account": "\"アカウント\"",
+      "accountDesc": "サービスにアクセスするために作成されたあなたの個人アカウント",
+      "personalData": "\"個人データ\"",
+      "personalDataDesc": "特定の個人を識別できる情報"
+    },
+    "article2": {
+      "title": "第2条 – 規約の受諾",
+      "subsection1": {
+        "title": "2.1 法的能力",
+        "description": "私たちのサービスを利用することで、あなたは次のことを宣言し、保証します：",
+        "item1": "16歳以上（または親の同意があれば13歳以上）であること",
+        "item2": "法的に拘束力のある契約を結ぶ能力があること",
+        "item3": "適用法に基づいてサービスの利用を禁止されていないこと"
+      },
+      "subsection2": {
+        "title": "2.2 同意",
+        "description": "サービスへのアクセスと利用は、これらの条件に同意し、遵守することを条件とします。これらの条件は、サービスにアクセスまたは利用するすべての訪問者、ユーザー、その他の人に適用されます。"
+      },
+      "subsection3": {
+        "title": "2.3 変更",
+        "description": "私たちは、いつでもこれらの条件を変更する権利を留保します。変更は公開時に有効となります。変更の通知後にサービスを引き続き利用することは、新しい条件に同意することを意味します。"
+      }
+    },
+    "article3": {
+      "title": "第3条 – サービスの説明",
+      "subsection1": {
+        "title": "3.1 機能",
+        "description": "NOKTA ONEは、以下の機能を提供する個人のウェルネスアプリです：",
+        "item1": "生理的調整のためのガイド付きセッション",
+        "item2": "呼吸法と姿勢のエクササイズ",
+        "item3": "ウェルネス状態の追跡",
+        "item4": "パーソナライズされた推奨"
+      },
+      "subsection2": {
+        "title": "3.2 サービスの性質",
+        "important": "重要 – 医療に関する通知：",
+        "description": "このサービスは、情報提供と一般的なウェルネスの目的のみで提供されます。NOKTA ONEは：",
+        "isNot": "ではありません",
+        "isNotDesc": "医療機器",
+        "doesNotProvide": "提供しません",
+        "doesNotProvideDesc": "医療診断",
+        "doesNotReplace": "置き換えません",
+        "doesNotReplaceDesc": "医療専門家のアドバイス",
+        "isNotIntended": "意図されていません",
+        "isNotIntendedDesc": "病気の治療、回復、または予防",
+        "disclaimer": "提供される指標や推奨は一般的なウェルネスの信号であり、医療的なアドバイスとして解釈されるべきではありません。健康に関する懸念がある場合は、資格のある専門家に相談してください。"
+      },
+      "subsection3": {
+        "title": "3.3 利用可能性",
+        "description": "私たちはサービスを24時間365日利用可能にするよう努めています。ただし、継続的な利用可能性を保証するものではなく、メンテナンス、更新、その他の技術的理由でサービスを一時停止または中断することがあります。"
+      }
+    },
+    "article4": {
+      "title": "第4条 – 登録とアカウント",
+      "subsection1": {
+        "title": "4.1 アカウントの作成",
+        "description": "特定の機能にアクセスするには、アカウントを作成する必要があります。登録時に、以下に同意します：",
+        "item1": "正確で完全かつ最新の情報を提供すること",
+        "item2": "ログイン情報の機密性を維持すること",
+        "item3": "アカウントの不正使用について直ちに通知すること",
+        "item4": "アカウント下で行われるすべての活動に責任を持つこと"
+      },
+      "subsection2": {
+        "title": "4.2 ゲストモード",
+        "description": "アカウントを作成せずにゲストモードで特定の機能を利用できます。ゲストモードのデータは永続的に保存されません。"
+      },
+      "subsection3": {
+        "title": "4.3 アカウントのセキュリティ",
+        "description": "アカウントの保護はあなたの責任です。不正使用による損失については責任を負いません。"
+      }
+    },
+    "article5": {
+      "title": "第5条 – サブスクリプションと支払い",
+      "subsection1": {
+        "title": "5.1 プラン",
+        "description": "サービスは異なるプランで提供される場合があります：",
+        "free": "無料",
+        "freeDesc": "特定の機能への制限付きアクセス",
+        "premium": "プレミアム",
+        "premiumDesc": "有料サブスクリプションによる完全アクセス"
+      },
+      "subsection2": {
+        "title": "5.2 料金",
+        "description": "価格はすべての税金を含むユーロ（€）で表示されます。事前通知のもと、価格を変更する権利を留保します。"
+      },
+      "subsection3": {
+        "title": "5.3 支払い",
+        "description": "支払いは当社の安全な決済プロバイダーによって処理されます。サブスクリプションに登録することで、対応する金額の自動引き落としを許可します。"
+      },
+      "subsection4": {
+        "title": "5.4 自動更新",
+        "description": "サブスクリプションは、更新日までにキャンセルしない限り、期限が切れると自動的に更新されます。"
+      },
+      "subsection5": {
+        "title": "5.5 キャンセル",
+        "description": "アカウントの設定またはプラットフォーム（App Store、Google Play）を通じて、いつでもサブスクリプションをキャンセルできます。キャンセルは、現在のサブスクリプション期間の終了時に有効になります。"
+      },
+      "subsection6": {
+        "title": "5.6 返品の権利",
+        "description": "適用される消費者保護法に従い、物理的なメディアで提供されていないデジタルコンテンツについては、事前の同意と返品権の喪失の認識がある場合、返品の権利を行使できません。"
+      },
+      "subsection7": {
+        "title": "5.7 返金",
+        "description": "法律で別段の定めがある場合や当社の請求ミスがあった場合を除き、支払った金額は返金できません。"
+      }
+    },
+    "article6": {
+      "title": "第6条 – 利用規則",
+      "subsection1": {
+        "title": "6.1 許可された利用",
+        "description": "サービスを次のように利用することに同意します：",
+        "item1": "これらの条件および適用される法律に従って",
+        "item2": "個人的かつ非商業的な目的で",
+        "item3": "他のユーザーやサービスの運営に害を及ぼさないように"
+      },
+      "subsection2": {
+        "title": "6.2 禁止行為",
+        "description": "次の行為は厳禁です：",
+        "item1": "サービスを違法または無許可の目的で使用すること",
+        "item2": "無許可で当社のシステムにアクセスしようとすること",
+        "item3": "ウイルス、マルウェア、または悪意のあるコードを送信すること",
+        "item4": "他のユーザーの個人データを収集または保存すること",
+        "item5": "他の人になりすますこと",
+        "item6": "当社のインフラを妨害または過負荷にすること",
+        "item7": "セキュリティ対策やアクセス制限を回避すること",
+        "item8": "サービスへのアクセスを再販、サブライセンス、または譲渡すること",
+        "item9": "無許可でロボット、スクレイパー、または自動化ツールを使用すること",
+        "item10": "サービスを商業目的で再現、複製、コピーまたは利用すること"
+      },
+      "subsection3": {
+        "title": "6.3 ユーザーコンテンツ",
+        "description": "サービスを通じてコンテンツを提出する場合（コメント、画像など）：",
+        "item1": "あなたは知的財産権を保持します",
+        "item2": "私たちは、サービスに関連してこのコンテンツを使用、複製、表示するための、世界的で非独占的、無料、譲渡可能なライセンスを取得します",
+        "item3": "このコンテンツが第三者の権利を侵害していないことを保証します"
+      }
+    },
+    "article7": {
+      "title": "第7条 – 知的財産",
+      "subsection1": {
+        "title": "7.1 会社の権利",
+        "description": "サービスおよびそのオリジナルコンテンツ（ユーザーコンテンツを除く）、コード、テキスト、グラフィック、ロゴ、アイコン、画像、音声およびビデオクリップ、データのコンパイルおよびソフトウェアを含むがこれに限らず、は会社またはそのライセンサーの独占的な所有物であり、フランスおよび国際的な知的財産法によって保護されています。"
+      },
+      "subsection2": {
+        "title": "7.2 商標",
+        "description": "\"Nokta One\"および関連するロゴは会社の商標です。事前の書面による許可なしに使用することはできません。"
+      },
+      "subsection3": {
+        "title": "7.3 限定ライセンス",
+        "description": "これらの条件を遵守する限り、私たちはあなたに個人的で限定的、非独占的、譲渡不可、取り消し可能なライセンスを付与し、サービスにアクセスし、個人的かつ非商業的な目的で使用することを許可します。"
+      }
+    },
+    "article8": {
+      "title": "第8条 – 責任の制限",
+      "subsection1": {
+        "title": "8.1 保証の除外",
+        "disclaimer": "サービスは「現状のまま」および「利用可能な状態」で提供され、いかなる種類の明示的または暗示的な保証もありません。",
+        "description": "私たちは次のことを保証しません：",
+        "item1": "サービスがあなたの特定のニーズに応えること",
+        "item2": "サービスが中断なく、安全で、エラーがないこと",
+        "item3": "得られた結果が正確または信頼できること",
+        "item4": "欠陥が修正されること"
+      },
+      "subsection2": {
+        "title": "8.2 責任の制限",
+        "limitation": "適用法が許可する最大限の範囲で、会社は次のことに対して責任を負いません：",
+        "item1": "間接的、付随的、特別、結果的または懲罰的な損害",
+        "item2": "利益、データ、使用、善意またはその他の無形の損失のいかなる喪失",
+        "item3": "サービスの利用または利用できないことから生じる損害",
+        "item4": "あなたのデータへの不正アクセスから生じる損害"
+      },
+      "subsection3": {
+        "title": "8.3 責任の上限",
+        "description": "これらの条件またはサービスの利用に起因する請求に対する会社の総責任は、過去12ヶ月間にサービスに対して支払った金額、または支払いがない場合は100€に制限されます。"
+      },
+      "subsection4": {
+        "title": "8.4 例外",
+        "description": "一部の法域では、特定の保証の除外や責任の制限が許可されていません。これらの法域では、私たちの責任は法律で許可される最大限に制限されます。"
+      }
+    },
+    "article9": {
+      "title": "第9条 – 補償",
+      "description": "あなたは、会社、その役員、取締役、従業員、代理人を、以下から生じる請求、損害、義務、損失、責任、費用または支出（弁護士費用を含む）から守り、補償し、責任を免除することに同意します：",
+      "item1": "サービスの利用",
+      "item2": "これらの条件の違反",
+      "item3": "第三者の権利の違反",
+      "item4": "あなたのユーザーコンテンツ"
+    },
+    "article10": {
+      "title": "第10条 – 一時停止と解約",
+      "subsection1": {
+        "title": "10.1 あなたによる",
+        "description": "アプリの設定からいつでもサービスの利用を停止し、アカウントを削除できます。"
+      },
+      "subsection2": {
+        "title": "10.2 私たちによる",
+        "description": "以下の場合、事前通知なしにあなたのサービスへのアクセスを即座に一時停止または解約することがあります：",
+        "item1": "これらの条件に違反した場合",
+        "item2": "あなたの行動がサービスまたは他のユーザーに悪影響を及ぼすと合理的に判断した場合",
+        "item3": "法律で要求される場合"
+      },
+      "subsection3": {
+        "title": "10.3 解約の影響",
+        "description": "解約時には：",
+        "item1": "サービスの利用権が直ちに終了します",
+        "item2": "私たちはあなたのアカウントと関連データを削除または無効化することがあります",
+        "item3": "その性質上、解約後も存続すべき条項（知的財産、責任の制限、補償、準拠法を含む）は存続します"
+      }
+    },
+    "article11": {
+      "title": "第11条 – 適用法と紛争",
+      "subsection1": {
+        "title": "11.1 適用法",
+        "description": "これらの条件は、フランス法に従って解釈されます。"
+      },
+      "subsection2": {
+        "title": "11.2 和解",
+        "description": "紛争が発生した場合、当事者は友好的な解決を目指します。お問い合わせは: support@nokta.app"
+      },
+      "subsection3": {
+        "title": "11.3 調停",
+        "description": "消費者保護に関する適用法に従い、解決できない場合は無料の調停サービスを利用できます: 調停者: [調停者指定時に詳細を記入]"
+      },
+      "subsection4": {
+        "title": "11.4 管轄",
+        "description": "友好的な解決や調停ができない場合、すべての紛争はフランス・パリの裁判所の専属管轄に服します。"
+      },
+      "subsection5": {
+        "title": "11.5 欧州オンライン紛争解決プラットフォーム",
+        "description": "欧州委員会はオンライン紛争解決プラットフォームを提供しています: https://ec.europa.eu/consumers/odr"
+      }
+    },
+    "article12": {
+      "title": "第12条 – その他の規定",
+      "subsection1": {
+        "title": "12.1 完全合意",
+        "description": "これらの条件とプライバシーポリシーは、サービスに関するあなたと会社との完全な合意を構成します。"
+      },
+      "subsection2": {
+        "title": "12.2 分離可能性",
+        "description": "これらの条件のいずれかの規定が無効または執行不能と判断された場合、残りの規定は有効です。"
+      },
+      "subsection3": {
+        "title": "12.3 放棄",
+        "description": "これらの条件に基づく権利を行使しないことは、その権利の放棄とはみなされません。"
+      },
+      "subsection4": {
+        "title": "12.4 譲渡",
+        "description": "当社の事前の書面による同意なしに、これらの条件に基づく権利や義務を譲渡または移転することはできません。当社は権利や義務を制限なく譲渡できます。"
+      },
+      "subsection5": {
+        "title": "12.5 不可抗力",
+        "description": "自然災害、戦争、テロ、パンデミックなど、当社の合理的な制御を超える原因による遅延や義務不履行については責任を負いません。"
+      },
+      "subsection6": {
+        "title": "12.6 言語",
+        "description": "これらの条件はフランス語で作成されています。翻訳がある場合、フランス語版が優先されます。"
+      }
+    },
+    "article13": {
+      "title": "第13条 – お問い合わせ",
+      "description": "これらの利用規約に関する質問は、",
+      "email": "メール",
+      "emailAddress": "support@nokta.app",
+      "postal": "郵送先住所",
+      "postalAddress": "カスタマーサービス\nフランス、パリ"
+    },
+    "footer": "Nokta Oneを使用することで、これらの利用規約を読み、理解し、同意したことを認めます。"
   }
 }

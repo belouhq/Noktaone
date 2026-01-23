@@ -592,5 +592,572 @@
     "ticketId": "Reference",
     "requiredField": "This field is required",
     "selectCategory": "Select..."
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated",
+    "lastUpdatedDate": "January 2025",
+    "version": "Version",
+    "versionNumber": "1.0",
+    "introduction": "This Privacy Policy describes how your personal information is collected, used, and shared when you use the Nokta One application (hereinafter \"the Application\", \"the Service\" or \"Nokta One\"). Nokta One is published by a French company registered with the Paris Trade and Companies Register (hereinafter \"we\", \"our\" or \"the Company\"). Our headquarters is located in Paris, France. By using our Service, you agree to the practices described in this Privacy Policy. If you do not accept this policy, please do not use our Service.",
+    "table": {
+      "category": "Category",
+      "examples": "Examples",
+      "purpose": "Purpose",
+      "legalBasis": "Legal basis",
+      "details": "Details",
+      "provider": "Provider",
+      "function": "Function",
+      "location": "Data location",
+      "guarantees": "Guarantees",
+      "dataType": "Data type",
+      "retentionPeriod": "Retention period",
+      "justification": "Justification",
+      "right": "Right",
+      "description": "Description",
+      "howToExercise": "How to exercise",
+      "type": "Type",
+      "duration": "Duration"
+    },
+    "section1": {
+      "title": "1. Data we collect",
+      "subsection1": {
+        "title": "1.1 Data you provide directly",
+        "accountData": "Account data",
+        "accountExamples": "Email address, username, password (hashed)",
+        "accountPurpose": "Creating and managing your account",
+        "profileData": "Profile data",
+        "profileExamples": "First name, date of birth, country, preferred language",
+        "profilePurpose": "Service personalization",
+        "paymentData": "Payment data",
+        "paymentExamples": "Billing information (processed by our payment provider)",
+        "paymentPurpose": "Subscription management"
+      },
+      "subsection2": {
+        "title": "1.2 Automatically collected data",
+        "usageData": "Usage data",
+        "usageExamples": "Sessions, actions performed, timestamps",
+        "usagePurpose": "Service improvement",
+        "technicalData": "Technical data",
+        "technicalExamples": "Device type, operating system, application version",
+        "technicalPurpose": "Technical support and compatibility",
+        "diagnosticData": "Diagnostic data",
+        "diagnosticExamples": "Anonymized error reports",
+        "diagnosticPurpose": "Bug resolution"
+      },
+      "subsection3": {
+        "title": "1.3 Biometric and facial analysis data",
+        "localProcessing": "Local processing",
+        "localProcessingDesc": "Images captured by your camera are analyzed directly on your device or via secure services. Raw images are never stored on our servers.",
+        "derivedData": "Derived data",
+        "derivedDataDesc": "Only wellness indicators (anonymized numerical scores) are transmitted and stored to provide you with a history of your sessions.",
+        "noIdentification": "No identification",
+        "noIdentificationDesc": "The analysis does not aim to identify you but only to detect general physiological signals (muscle tension, eye fatigue, etc.).",
+        "noFacialRecognition": "No facial recognition",
+        "noFacialRecognitionDesc": "We do not use facial recognition technology to identify you."
+      },
+      "subsection4": {
+        "title": "1.4 Wearable data (optional feature)",
+        "description": "If you choose to connect a wearable device (watch, bracelet), we may collect:",
+        "item1": "Heart rate",
+        "item2": "Heart rate variability (HRV)",
+        "item3": "Sleep quality",
+        "item4": "Activity level"
+      }
+    },
+    "section2": {
+      "title": "2. How we use your data",
+      "subsection1": {
+        "title": "2.1 Legal bases (GDPR)",
+        "serviceProvision": "Service provision",
+        "contractExecution": "Contract execution",
+        "contractDetails": "Necessary to provide you with Nokta One",
+        "serviceImprovement": "Service improvement",
+        "legitimateInterest": "Legitimate interest",
+        "legitimateDetails": "Anonymized analysis to improve experience",
+        "marketing": "Marketing communications",
+        "consent": "Consent",
+        "consentDetails": "Only if you have opted to receive our emails"
+      },
+      "subsection2": {
+        "title": "2.2 Detailed purposes",
+        "item1": "Provide and maintain the Service: Create your account, process your sessions, display your history",
+        "item2": "Personalize your experience: Adapt recommendations to your profile",
+        "item3": "Communicate with you: Important notifications, customer support, updates (if consented)",
+        "item4": "Improve our Service: Aggregated and anonymized analysis of usage trends",
+        "item5": "Ensure security: Detect and prevent fraudulent activities",
+        "item6": "Comply with legal obligations: Tax compliance, response to legitimate requests from authorities"
+      }
+    },
+    "section3": {
+      "title": "3. Sharing your data",
+      "noSale": "We never sell, rent, or exchange your personal data for commercial purposes.",
+      "subsection1": {
+        "title": "3.2 Subcontractors and partners",
+        "cloud": "Cloud infrastructure",
+        "cloudFunction": "Database hosting",
+        "cloudLocation": "European Union",
+        "cloudGuarantees": "ISO 27001, SOC 2 certified",
+        "analysis": "Analysis services",
+        "analysisFunction": "Image processing",
+        "analysisLocation": "United States",
+        "analysisGuarantees": "Standard Contractual Clauses (SCCs)",
+        "payment": "Payment",
+        "paymentFunction": "Transaction processing",
+        "paymentLocation": "European Union",
+        "paymentGuarantees": "PCI-DSS certified",
+        "analytics": "Analytics",
+        "analyticsFunction": "Usage statistics (if consented)",
+        "analyticsLocation": "European Union",
+        "analyticsGuarantees": "Anonymized data"
+      },
+      "subsection2": {
+        "title": "3.3 Other sharing cases",
+        "withConsent": "With your consent",
+        "withConsentDesc": "When you explicitly authorize us",
+        "legalObligations": "Legal obligations",
+        "legalObligationsDesc": "Response to a court order or legal request",
+        "rightsProtection": "Rights protection",
+        "rightsProtectionDesc": "To enforce our terms of use",
+        "businessTransactions": "Business transactions",
+        "businessTransactionsDesc": "In case of merger, acquisition, or asset sale (you will be notified)"
+      }
+    },
+    "section4": {
+      "title": "4. International transfers",
+      "description": "Some of our operations involve transferring data to countries outside the European Economic Area (EEA), particularly the United States.",
+      "guarantees": "Guarantees in place:",
+      "guarantee1": "Standard Contractual Clauses (SCCs) approved by the European Commission",
+      "guarantee2": "Transfer Impact Assessment (TIA) in accordance with EDPB recommendations",
+      "guarantee3": "Additional technical measures (encryption, pseudonymization)"
+    },
+    "section5": {
+      "title": "5. Data retention",
+      "accountData": "Account data",
+      "accountRetention": "Registration period + 3 years",
+      "accountJustification": "Customer relationship management",
+      "sessionData": "Session data",
+      "sessionRetention": "24 months",
+      "sessionJustification": "History and personalization",
+      "paymentData": "Payment data",
+      "paymentRetention": "10 years",
+      "paymentJustification": "French tax obligations",
+      "diagnosticData": "Diagnostic data",
+      "diagnosticRetention": "12 months",
+      "diagnosticJustification": "Technical improvement",
+      "securityLogs": "Security logs",
+      "securityRetention": "12 months",
+      "securityJustification": "Security and audit",
+      "afterDeletion": "After account deletion, your data is:",
+      "afterDeletion1": "Anonymized for aggregated statistical data",
+      "afterDeletion2": "Deleted for personally identifiable data (within 30 days)",
+      "afterDeletion3": "Retained only if a legal obligation requires it"
+    },
+    "section6": {
+      "title": "6. Your rights",
+      "description": "Under GDPR and the French Data Protection Act, you have the following rights:",
+      "access": "Access",
+      "accessDesc": "Obtain a copy of your data",
+      "accessHow": "Settings > Privacy > Export",
+      "rectification": "Rectification",
+      "rectificationDesc": "Correct your inaccurate data",
+      "rectificationHow": "Settings > Profile",
+      "erasure": "Erasure",
+      "erasureDesc": "Delete your data",
+      "erasureHow": "Settings > Privacy > Delete my account",
+      "portability": "Portability",
+      "portabilityDesc": "Receive your data in a structured format",
+      "portabilityHow": "Settings > Privacy > Export",
+      "opposition": "Opposition",
+      "oppositionDesc": "Object to certain processing",
+      "oppositionHow": "Settings > Privacy",
+      "limitation": "Limitation",
+      "limitationDesc": "Temporarily limit processing",
+      "limitationHow": "Contact us",
+      "withdrawConsent": "Withdraw consent",
+      "withdrawConsentDesc": "Withdraw your consent at any time",
+      "withdrawConsentHow": "Settings > Privacy",
+      "responseTime": "Response time",
+      "responseTimeDesc": "We respond to any request within a maximum of 30 days.",
+      "contact": "Contact",
+      "contactEmail": "privacy@nokta.app",
+      "complaint": "Complaint",
+      "complaintDesc": "You have the right to file a complaint with the CNIL (www.cnil.fr) if you believe that the processing of your data constitutes a violation of your rights."
+    },
+    "section7": {
+      "title": "7. Data security",
+      "description": "We implement appropriate technical and organizational measures to protect your data:",
+      "encryption": "Encryption",
+      "encryptionDesc": "Data encrypted in transit (TLS 1.3) and at rest (AES-256)",
+      "authentication": "Authentication",
+      "authenticationDesc": "Secure authentication protocols",
+      "limitedAccess": "Limited access",
+      "limitedAccessDesc": "Principle of least privilege for our teams",
+      "audits": "Audits",
+      "auditsDesc": "Regular security testing",
+      "notification": "Notification",
+      "notificationDesc": "In case of breach, notification within 72 hours in accordance with GDPR"
+    },
+    "section8": {
+      "title": "8. Minors",
+      "description": "Our Service is intended for people aged 16 and over.",
+      "age13to16": "If you are between 13 and 16 years old, you must obtain the consent of your parent or legal guardian to use our Service.",
+      "under13": "We do not knowingly collect data about children under 13 years of age. If we discover that a child under 13 has provided us with personal data, we will delete it immediately."
+    },
+    "section9": {
+      "title": "9. Cookies and similar technologies",
+      "description": "Our Application uses local storage technologies for:",
+      "essential": "Essential",
+      "essentialPurpose": "Service operation (authentication, preferences)",
+      "essentialDuration": "Session",
+      "functional": "Functional",
+      "functionalPurpose": "Remembering your choices (language, theme)",
+      "functionalDuration": "12 months",
+      "analytics": "Analytics",
+      "analyticsPurpose": "Anonymized usage statistics",
+      "analyticsDuration": "13 months",
+      "managePreferences": "You can manage your preferences in Settings > Privacy."
+    },
+    "section10": {
+      "title": "10. Automated decisions",
+      "description": "Our Service uses algorithms to provide you with personalized recommendations (exercises, suggestions).",
+      "important": "Important:",
+      "item1": "These recommendations are for informational purposes only",
+      "item2": "They do not constitute medical advice",
+      "item3": "You are free to follow them or not",
+      "item4": "You can request human intervention for any decision concerning you"
+    },
+    "section11": {
+      "title": "11. Jurisdiction-specific information",
+      "subsection1": {
+        "title": "11.1 California residents (CCPA/CPRA)",
+        "description": "If you reside in California, you have additional rights:",
+        "rightToKnow": "Right to know",
+        "rightToKnowDesc": "What data we collect and how we use it",
+        "rightToDelete": "Right to deletion",
+        "rightToDeleteDesc": "Request deletion of your data",
+        "rightToOptOut": "Right to opt-out",
+        "rightToOptOutDesc": "Refuse the \"sale\" of your data (we do not sell your data)",
+        "nonDiscrimination": "Non-discrimination",
+        "nonDiscriminationDesc": "We will not discriminate against you for exercising your rights",
+        "noSale": "We do not sell your personal information within the meaning of CCPA."
+      },
+      "subsection2": {
+        "title": "11.2 Brazil residents (LGPD)",
+        "description": "If you reside in Brazil, you have the rights provided by the Lei Geral de Proteção de Dados."
+      },
+      "subsection3": {
+        "title": "11.3 Other jurisdictions",
+        "description": "We strive to comply with applicable data protection laws in each jurisdiction where we operate."
+      }
+    },
+    "section12": {
+      "title": "12. Changes to this policy",
+      "description": "We may update this Privacy Policy periodically. In case of substantial modification:",
+      "item1": "We will notify you by email or notification in the Application",
+      "item2": "The \"Last updated\" date will be modified",
+      "item3": "Your continued use of the Service after notification constitutes acceptance of the changes"
+    },
+    "section13": {
+      "title": "13. Contact us",
+      "description": "For any questions regarding this Privacy Policy or to exercise your rights:",
+      "email": "Email",
+      "emailAddress": "privacy@nokta.app",
+      "dpo": "Data Protection Officer (DPO)",
+      "dpoEmail": "dpo@nokta.app",
+      "postal": "Postal address",
+      "postalAddress": "Data Protection Service\nParis, France",
+      "responseTime": "We commit to responding to any request within 30 days."
+    },
+    "footer": "This Privacy Policy is written in French and may be translated into other languages. In case of discrepancy, the French version prevails."
+  },
+  "termsOfService": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated",
+    "lastUpdatedDate": "January 2025",
+    "version": "Version",
+    "versionNumber": "1.0",
+    "preamble": "These Terms of Service (hereinafter \"Terms\" or \"Conditions\") govern access to and use of the Nokta One application (hereinafter \"the Application,\" \"the Service,\" or \"Nokta One\"). Nokta One is published by a French company registered with the Paris Trade and Companies Registry, with its headquarters located in Paris, France (hereinafter \"we,\" \"our,\" \"the Company,\" or \"the Publisher\").",
+    "preambleBold": "By accessing or using our Service, you agree to be bound by these Terms. If you do not agree to these Terms, you must not use our Service.",
+    "article1": {
+      "title": "Article 1 – Definitions",
+      "application": "\"Application\"",
+      "applicationDesc": "The Nokta One mobile and web application",
+      "content": "\"Content\"",
+      "contentDesc": "Any text, image, video, data, or other material available through the Service",
+      "userContent": "\"User Content\"",
+      "userContentDesc": "Any content you submit, upload, or transmit through the Service",
+      "service": "\"Service\"",
+      "serviceDesc": "All features offered by Nokta One",
+      "user": "\"User\" or \"you\"",
+      "userDesc": "Any individual using the Service",
+      "account": "\"Account\"",
+      "accountDesc": "Your personal account created to access the Service",
+      "personalData": "\"Personal Data\"",
+      "personalDataDesc": "Information relating to an identified or identifiable natural person"
+    },
+    "article2": {
+      "title": "Article 2 – Acceptance of Terms",
+      "subsection1": {
+        "title": "2.1 Legal Capacity",
+        "description": "By using our Service, you represent and warrant that you:",
+        "item1": "Are at least 16 years old (or 13 years old with parental consent)",
+        "item2": "Have the legal capacity to enter into a binding contract",
+        "item3": "Are not a person prohibited from using the Service under applicable laws"
+      },
+      "subsection2": {
+        "title": "2.2 Acceptance",
+        "description": "Your access to and use of the Service is conditioned upon your acceptance and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service."
+      },
+      "subsection3": {
+        "title": "2.3 Modifications",
+        "description": "We reserve the right to modify these Terms at any time. Modifications take effect upon publication. Your continued use of the Service after notification of changes constitutes your acceptance of the new Terms."
+      }
+    },
+    "article3": {
+      "title": "Article 3 – Description of Service",
+      "subsection1": {
+        "title": "3.1 Features",
+        "description": "Nokta One is a personal wellness application that offers:",
+        "item1": "Guided physiological regulation sessions",
+        "item2": "Breathing and posture exercises",
+        "item3": "Wellness state tracking",
+        "item4": "Personalized recommendations"
+      },
+      "subsection2": {
+        "title": "3.2 Nature of Service",
+        "important": "IMPORTANT – MEDICAL DISCLAIMER:",
+        "description": "The Service is provided for informational and general wellness purposes only. Nokta One:",
+        "isNot": "IS NOT",
+        "isNotDesc": "a medical device",
+        "doesNotProvide": "DOES NOT PROVIDE",
+        "doesNotProvideDesc": "medical diagnosis",
+        "doesNotReplace": "DOES NOT REPLACE",
+        "doesNotReplaceDesc": "the advice of a healthcare professional",
+        "isNotIntended": "IS NOT INTENDED",
+        "isNotIntendedDesc": "to treat, cure, or prevent diseases",
+        "disclaimer": "The indicators and recommendations provided are general wellness signals and should not be interpreted as medical advice. If you have medical concerns, consult a qualified healthcare professional."
+      },
+      "subsection3": {
+        "title": "3.3 Availability",
+        "description": "We strive to maintain the Service available 24/7. However, we do not guarantee uninterrupted availability and may suspend or interrupt the Service for maintenance, updates, or other technical reasons."
+      }
+    },
+    "article4": {
+      "title": "Article 4 – Registration and Account",
+      "subsection1": {
+        "title": "4.1 Account Creation",
+        "description": "To access certain features, you must create an account. When registering, you agree to:",
+        "item1": "Provide accurate, complete, and up-to-date information",
+        "item2": "Maintain the confidentiality of your login credentials",
+        "item3": "Notify us immediately of any unauthorized use of your account",
+        "item4": "Be responsible for all activities conducted under your account"
+      },
+      "subsection2": {
+        "title": "4.2 Guest Mode",
+        "description": "You may use certain features in guest mode without creating an account. Data in guest mode is not permanently saved."
+      },
+      "subsection3": {
+        "title": "4.3 Account Security",
+        "description": "You are solely responsible for protecting your account. We will not be liable for losses resulting from unauthorized use of your account."
+      }
+    },
+    "article5": {
+      "title": "Article 5 – Subscriptions and Payments",
+      "subsection1": {
+        "title": "5.1 Plans",
+        "description": "The Service may be offered under different formulas:",
+        "free": "Free",
+        "freeDesc": "Limited access to certain features",
+        "premium": "Premium",
+        "premiumDesc": "Full access through a paid subscription"
+      },
+      "subsection2": {
+        "title": "5.2 Pricing",
+        "description": "Prices are displayed in euros (€) including taxes. We reserve the right to modify our prices at any time, subject to prior notification."
+      },
+      "subsection3": {
+        "title": "5.3 Payment",
+        "description": "Payments are processed by our secure payment provider. By subscribing, you authorize automatic debit of the corresponding amount."
+      },
+      "subsection4": {
+        "title": "5.4 Automatic Renewal",
+        "description": "Subscriptions are automatically renewed at expiration, unless you cancel before the renewal date."
+      },
+      "subsection5": {
+        "title": "5.5 Cancellation",
+        "description": "You may cancel your subscription at any time from your account settings or via the platform (App Store, Google Play). Cancellation takes effect at the end of the current subscription period."
+      },
+      "subsection6": {
+        "title": "5.6 Right of Withdrawal",
+        "description": "In accordance with applicable consumer protection laws, the right of withdrawal cannot be exercised for digital content not supplied on a tangible medium whose performance has begun with your prior consent and acknowledgment of the loss of the right of withdrawal."
+      },
+      "subsection7": {
+        "title": "5.7 Refunds",
+        "description": "Unless otherwise required by law or in case of billing error on our part, payments made are non-refundable."
+      }
+    },
+    "article6": {
+      "title": "Article 6 – Rules of Use",
+      "subsection1": {
+        "title": "6.1 Permitted Use",
+        "description": "You agree to use the Service:",
+        "item1": "In accordance with these Terms and applicable laws",
+        "item2": "For personal and non-commercial purposes",
+        "item3": "Without harming other users or the operation of the Service"
+      },
+      "subsection2": {
+        "title": "6.2 Prohibited Conduct",
+        "description": "It is strictly prohibited to:",
+        "item1": "Use the Service for illegal or unauthorized purposes",
+        "item2": "Attempt unauthorized access to our systems",
+        "item3": "Transmit viruses, malware, or malicious code",
+        "item4": "Collect or store personal data of other users",
+        "item5": "Impersonate another person",
+        "item6": "Disrupt or overload our infrastructure",
+        "item7": "Circumvent security or access restriction measures",
+        "item8": "Resell, sublicense, or transfer your access to the Service",
+        "item9": "Use robots, scrapers, or automated tools without authorization",
+        "item10": "Reproduce, duplicate, copy, or exploit the Service for commercial purposes"
+      },
+      "subsection3": {
+        "title": "6.3 User Content",
+        "description": "If you submit content through the Service (comments, images, etc.):",
+        "item1": "You retain your intellectual property rights",
+        "item2": "You grant us a worldwide, non-exclusive, royalty-free, transferable license to use, reproduce, and display that content in connection with the Service",
+        "item3": "You warrant that such content does not violate the rights of third parties"
+      }
+    },
+    "article7": {
+      "title": "Article 7 – Intellectual Property",
+      "subsection1": {
+        "title": "7.1 Company Rights",
+        "description": "The Service and its original content (excluding User Content), including but not limited to: source code, texts, graphics, logos, icons, images, audio and video clips, data compilations, and software, are the exclusive property of the Company or its licensors and are protected by French and international intellectual property laws."
+      },
+      "subsection2": {
+        "title": "7.2 Trademarks",
+        "description": "\"Nokta One\" and associated logos are trademarks of the Company. You may not use them without our prior written authorization."
+      },
+      "subsection3": {
+        "title": "7.3 Limited License",
+        "description": "Subject to compliance with these Terms, we grant you a personal, limited, non-exclusive, non-transferable, and revocable license to access and use the Service for personal and non-commercial purposes."
+      }
+    },
+    "article8": {
+      "title": "Article 8 – Limitation of Liability",
+      "subsection1": {
+        "title": "8.1 Disclaimer of Warranties",
+        "disclaimer": "THE SERVICE IS PROVIDED \"AS IS\" AND \"AS AVAILABLE,\" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.",
+        "description": "We do not warrant that:",
+        "item1": "The Service will meet your specific needs",
+        "item2": "The Service will be uninterrupted, secure, or error-free",
+        "item3": "Results obtained will be accurate or reliable",
+        "item4": "Defects will be corrected"
+      },
+      "subsection2": {
+        "title": "8.2 Limitation of Liability",
+        "limitation": "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE COMPANY SHALL NOT BE LIABLE FOR:",
+        "item1": "Indirect, incidental, special, consequential, or punitive damages",
+        "item2": "Any loss of profits, data, use, goodwill, or other intangible loss",
+        "item3": "Damages resulting from your use or inability to use the Service",
+        "item4": "Damages resulting from unauthorized access to your data"
+      },
+      "subsection3": {
+        "title": "8.3 Liability Cap",
+        "description": "The Company's total liability for any claim arising from these Terms or use of the Service is limited to the amount you paid for the Service in the last 12 months, or €100 if you have not made any payment."
+      },
+      "subsection4": {
+        "title": "8.4 Exceptions",
+        "description": "Some jurisdictions do not allow the exclusion of certain warranties or limitation of liability. In such jurisdictions, our liability will be limited to the maximum extent permitted by law."
+      }
+    },
+    "article9": {
+      "title": "Article 9 – Indemnification",
+      "description": "You agree to defend, indemnify, and hold harmless the Company, its officers, directors, employees, and agents, from any claim, damage, obligation, loss, liability, cost, or expense (including attorney's fees) arising from:",
+      "item1": "Your use of the Service",
+      "item2": "Your violation of these Terms",
+      "item3": "Your violation of the rights of a third party",
+      "item4": "Your User Content"
+    },
+    "article10": {
+      "title": "Article 10 – Suspension and Termination",
+      "subsection1": {
+        "title": "10.1 By You",
+        "description": "You may stop using the Service and delete your account at any time from the Application settings."
+      },
+      "subsection2": {
+        "title": "10.2 By Us",
+        "description": "We may suspend or terminate your access to the Service immediately, without notice or liability, if:",
+        "item1": "You violate these Terms",
+        "item2": "We reasonably believe your conduct is detrimental to the Service or other users",
+        "item3": "Required by law"
+      },
+      "subsection3": {
+        "title": "10.3 Effects of Termination",
+        "description": "Upon termination:",
+        "item1": "Your right to use the Service ceases immediately",
+        "item2": "We may delete or disable your account and all associated data",
+        "item3": "Provisions that, by their nature, should survive termination will survive (including: Intellectual Property, Limitation of Liability, Indemnification, Governing Law)"
+      }
+    },
+    "article11": {
+      "title": "Article 11 – Governing Law and Disputes",
+      "subsection1": {
+        "title": "11.1 Governing Law",
+        "description": "These Terms are governed by and construed in accordance with French law, without regard to conflict of law principles."
+      },
+      "subsection2": {
+        "title": "11.2 Amicable Resolution",
+        "description": "In case of dispute, the parties will endeavor to find an amicable solution. You may contact us at: support@nokta.app"
+      },
+      "subsection3": {
+        "title": "11.3 Mediation",
+        "description": "In accordance with applicable consumer protection laws, in case of unresolved dispute, you may use the mediation service free of charge: Consumer Mediator: [Details to be completed upon mediator designation]"
+      },
+      "subsection4": {
+        "title": "11.4 Jurisdiction",
+        "description": "Failing amicable resolution or mediation, any dispute shall be submitted to the exclusive jurisdiction of the courts of Paris, France, subject to mandatory jurisdiction rules in favor of consumers."
+      },
+      "subsection5": {
+        "title": "11.5 European Online Dispute Resolution Platform",
+        "description": "The European Commission provides an online dispute resolution platform: https://ec.europa.eu/consumers/odr"
+      }
+    },
+    "article12": {
+      "title": "Article 12 – Miscellaneous Provisions",
+      "subsection1": {
+        "title": "12.1 Entire Agreement",
+        "description": "These Terms, together with our Privacy Policy, constitute the entire agreement between you and the Company regarding the Service."
+      },
+      "subsection2": {
+        "title": "12.2 Severability",
+        "description": "If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect."
+      },
+      "subsection3": {
+        "title": "12.3 Waiver",
+        "description": "Failure to exercise a right provided by these Terms does not constitute a waiver of that right."
+      },
+      "subsection4": {
+        "title": "12.4 Assignment",
+        "description": "You may not assign or transfer your rights or obligations under these Terms without our prior written consent. We may assign our rights and obligations without restriction."
+      },
+      "subsection5": {
+        "title": "12.5 Force Majeure",
+        "description": "We shall not be liable for any delay or failure to perform our obligations resulting from causes beyond our reasonable control (natural disasters, war, terrorism, pandemic, etc.)."
+      },
+      "subsection6": {
+        "title": "12.6 Language",
+        "description": "These Terms are written in French. In case of translation, the French version prevails."
+      }
+    },
+    "article13": {
+      "title": "Article 13 – Contact",
+      "description": "For any questions about these Terms of Service:",
+      "email": "Email",
+      "emailAddress": "support@nokta.app",
+      "postal": "Mailing Address",
+      "postalAddress": "Customer Service\nParis, France"
+    },
+    "footer": "By using Nokta One, you acknowledge that you have read, understood, and agree to these Terms of Service."
   }
 }

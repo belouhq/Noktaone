@@ -603,5 +603,572 @@
     "deleteConfirmLabel": "Ketik DELETE untuk mengonfirmasi",
     "cancel": "Batal",
     "confirmDelete": "Hapus secara permanen"
+  },
+  "privacyPolicy": {
+    "title": "Kebijakan Privasi",
+    "lastUpdated": "Terakhir diperbarui",
+    "lastUpdatedDate": "Januari 2025",
+    "version": "Versi",
+    "versionNumber": "1.0",
+    "introduction": "Kebijakan Privasi ini menjelaskan bagaimana informasi pribadi Anda dikumpulkan, digunakan, dan dibagikan saat Anda menggunakan aplikasi NOKTA ONE (selanjutnya disebut « Aplikasi », « Layanan » atau « NOKTA ONE »). NOKTA ONE diterbitkan oleh perusahaan Prancis yang terdaftar di Registri Perdagangan dan Perusahaan Paris (selanjutnya disebut « kami », « kita » atau « Perusahaan »). Kantor pusat kami terletak di Paris, Prancis. Dengan menggunakan Layanan kami, Anda menyetujui praktik yang dijelaskan dalam Kebijakan Privasi ini. Jika Anda tidak setuju dengan kebijakan ini, harap jangan gunakan Layanan kami.",
+    "table": {
+      "category": "Kategori",
+      "examples": "Contoh",
+      "purpose": "Tujuan",
+      "legalBasis": "Dasar hukum",
+      "details": "Detail",
+      "provider": "Penyedia",
+      "function": "Fungsi",
+      "location": "Lokasi data",
+      "guarantees": "Jaminan",
+      "dataType": "Tipe data",
+      "retentionPeriod": "Periode penyimpanan",
+      "justification": "Justifikasi",
+      "right": "Hak",
+      "description": "Deskripsi",
+      "howToExercise": "Cara melakukannya",
+      "type": "Tipe",
+      "duration": "Durasi"
+    },
+    "section1": {
+      "title": "1. Data yang kami kumpulkan",
+      "subsection1": {
+        "title": "1.1 Data yang Anda berikan langsung kepada kami",
+        "accountData": "Data akun",
+        "accountExamples": "Alamat email, nama pengguna, kata sandi (hash)",
+        "accountPurpose": "Pembuatan dan pengelolaan akun Anda",
+        "profileData": "Data profil",
+        "profileExamples": "Nama depan, tanggal lahir, negara, bahasa yang diinginkan",
+        "profilePurpose": "Personalisasi Layanan",
+        "paymentData": "Data pembayaran",
+        "paymentExamples": "Informasi penagihan (diproses oleh penyedia pembayaran kami)",
+        "paymentPurpose": "Pengelolaan langganan"
+      },
+      "subsection2": {
+        "title": "1.2 Data yang dikumpulkan secara otomatis",
+        "usageData": "Data penggunaan",
+        "usageExamples": "Sesi, tindakan yang dilakukan, cap waktu",
+        "usagePurpose": "Peningkatan Layanan",
+        "technicalData": "Data teknis",
+        "technicalExamples": "Jenis perangkat, sistem operasi, versi aplikasi",
+        "technicalPurpose": "Dukungan teknis dan kompatibilitas",
+        "diagnosticData": "Data diagnostik",
+        "diagnosticExamples": "Laporan kesalahan yang dianonimkan",
+        "diagnosticPurpose": "Penyelesaian masalah"
+      },
+      "subsection3": {
+        "title": "1.3 Data biometrik dan analisis wajah",
+        "localProcessing": "Pemrosesan lokal",
+        "localProcessingDesc": "Gambar yang ditangkap oleh kamera Anda dianalisis langsung di perangkat Anda atau melalui layanan yang aman. Gambar mentah tidak pernah disimpan di server kami.",
+        "derivedData": "Data turunan",
+        "derivedDataDesc": "Hanya indikator wellness (skor numerik yang dianonimkan) yang dikirim dan disimpan untuk memberikan riwayat sesi Anda.",
+        "noIdentification": "Tanpa identifikasi",
+        "noIdentificationDesc": "Analisis ini tidak bertujuan untuk mengidentifikasi Anda, tetapi hanya untuk mendeteksi sinyal fisiologis umum (ketegangan otot, kelelahan mata, dll.).",
+        "noFacialRecognition": "Tidak ada pengenalan wajah",
+        "noFacialRecognitionDesc": "Kami tidak menggunakan teknologi pengenalan wajah untuk mengidentifikasi Anda."
+      },
+      "subsection4": {
+        "title": "1.4 Data perangkat wearable (fitur opsional)",
+        "description": "Jika Anda memilih untuk menghubungkan perangkat yang terhubung (jam tangan, gelang), kami dapat mengumpulkan:",
+        "item1": "Detak jantung",
+        "item2": "Variabilitas detak jantung (HRV)",
+        "item3": "Kualitas tidur",
+        "item4": "Tingkat aktivitas"
+      }
+    },
+    "section2": {
+      "title": "2. Bagaimana kami menggunakan data Anda",
+      "subsection1": {
+        "title": "2.1 Dasar hukum (GDPR)",
+        "serviceProvision": "Penyediaan Layanan",
+        "contractExecution": "Pelaksanaan kontrak",
+        "contractDetails": "Diperlukan untuk menyediakan Nokta One kepada Anda",
+        "serviceImprovement": "Peningkatan Layanan",
+        "legitimateInterest": "Kepentingan yang sah",
+        "legitimateDetails": "Analisis anonim untuk meningkatkan pengalaman",
+        "marketing": "Komunikasi pemasaran",
+        "consent": "Persetujuan",
+        "consentDetails": "Hanya jika Anda memilih untuk menerima email kami"
+      },
+      "subsection2": {
+        "title": "2.2 Tujuan yang lebih rinci",
+        "item1": "Menyediakan dan mempertahankan Layanan: Membuat akun Anda, memproses sesi Anda, menampilkan riwayat Anda",
+        "item2": "Personalisasi pengalaman Anda: Menyesuaikan rekomendasi dengan profil Anda",
+        "item3": "Berkomunikasi dengan Anda: Pemberitahuan penting, dukungan pelanggan, pembaruan (jika disetujui)",
+        "item4": "Meningkatkan Layanan kami: Analisis agregat dan anonim dari tren penggunaan",
+        "item5": "Menjamin keamanan: Mendeteksi dan mencegah aktivitas penipuan",
+        "item6": "Mematuhi kewajiban hukum kami: Kepatuhan pajak, menanggapi permintaan sah dari otoritas"
+      }
+    },
+    "section3": {
+      "title": "3. Berbagi data Anda",
+      "noSale": "Kami tidak pernah menjual, menyewakan, atau menukar data pribadi Anda untuk tujuan komersial.",
+      "subsection1": {
+        "title": "3.2 Subkontraktor dan mitra",
+        "cloud": "Infrastruktur cloud",
+        "cloudFunction": "Hosting basis data",
+        "cloudLocation": "Uni Eropa",
+        "cloudGuarantees": "Bersertifikat ISO 27001, SOC 2",
+        "analysis": "Layanan analisis",
+        "analysisFunction": "Pengolahan gambar",
+        "analysisLocation": "Amerika Serikat",
+        "analysisGuarantees": "Klausul Kontrak Standar (SCCs)",
+        "payment": "Pembayaran",
+        "paymentFunction": "Pengolahan transaksi",
+        "paymentLocation": "Uni Eropa",
+        "paymentGuarantees": "Bersertifikat PCI-DSS",
+        "analytics": "Analitik",
+        "analyticsFunction": "Statistik penggunaan (jika disetujui)",
+        "analyticsLocation": "Uni Eropa",
+        "analyticsGuarantees": "Data dianonimkan"
+      },
+      "subsection2": {
+        "title": "3.3 Kasus lain berbagi",
+        "withConsent": "Dengan persetujuan Anda",
+        "withConsentDesc": "Ketika Anda secara eksplisit mengizinkan kami",
+        "legalObligations": "Kewajiban hukum",
+        "legalObligationsDesc": "Menanggapi perintah pengadilan atau permintaan hukum",
+        "rightsProtection": "Perlindungan hak",
+        "rightsProtectionDesc": "Untuk menegakkan syarat penggunaan kami",
+        "businessTransactions": "Transaksi bisnis",
+        "businessTransactionsDesc": "Dalam hal merger, akuisisi, atau penjualan aset (Anda akan diberitahu)"
+      }
+    },
+    "section4": {
+      "title": "4. Transfer internasional",
+      "description": "Beberapa operasi kami melibatkan transfer data ke negara di luar Wilayah Ekonomi Eropa (EEA), termasuk Amerika Serikat.",
+      "guarantees": "Jaminan yang diterapkan:",
+      "guarantee1": "Klausul Kontrak Standar (SCC) yang disetujui oleh Komisi Eropa",
+      "guarantee2": "Penilaian dampak transfer (TIA) sesuai rekomendasi EDPB",
+      "guarantee3": "Langkah teknis tambahan (enkripsi, pseudonimisasi)"
+    },
+    "section5": {
+      "title": "5. Penyimpanan data",
+      "accountData": "Data akun",
+      "accountRetention": "Durasi pendaftaran + 3 tahun",
+      "accountJustification": "Manajemen hubungan pelanggan",
+      "sessionData": "Data sesi",
+      "sessionRetention": "24 bulan",
+      "sessionJustification": "Riwayat dan personalisasi",
+      "paymentData": "Data pembayaran",
+      "paymentRetention": "10 tahun",
+      "paymentJustification": "Kewajiban pajak Prancis",
+      "diagnosticData": "Data diagnostik",
+      "diagnosticRetention": "12 bulan",
+      "diagnosticJustification": "Peningkatan teknis",
+      "securityLogs": "Log keamanan",
+      "securityRetention": "12 bulan",
+      "securityJustification": "Keamanan dan audit",
+      "afterDeletion": "Setelah penghapusan akun Anda, data Anda adalah:",
+      "afterDeletion1": "Anonymisasi untuk data statistik agregat",
+      "afterDeletion2": "Dihapus untuk data pribadi yang dapat diidentifikasi (dalam waktu 30 hari)",
+      "afterDeletion3": "Disimpan hanya jika ada kewajiban hukum yang mengharuskannya"
+    },
+    "section6": {
+      "title": "6. Hak Anda",
+      "description": "Sesuai dengan GDPR dan undang-undang Perlindungan Data, Anda memiliki hak berikut:",
+      "access": "Akses",
+      "accessDesc": "Mendapatkan salinan data Anda",
+      "accessHow": "Pengaturan > Privasi > Ekspor",
+      "rectification": "Perbaikan",
+      "rectificationDesc": "Memperbaiki data Anda yang tidak akurat",
+      "rectificationHow": "Pengaturan > Profil",
+      "erasure": "Penghapusan",
+      "erasureDesc": "Menghapus data Anda",
+      "erasureHow": "Pengaturan > Privasi > Hapus akun saya",
+      "portability": "Portabilitas",
+      "portabilityDesc": "Menerima data Anda dalam format terstruktur",
+      "portabilityHow": "Pengaturan > Privasi > Ekspor",
+      "opposition": "Penolakan",
+      "oppositionDesc": "Menolak beberapa pengolahan",
+      "oppositionHow": "Pengaturan > Privasi",
+      "limitation": "Pembatasan",
+      "limitationDesc": "Membatasi sementara pengolahan",
+      "limitationHow": "Hubungi kami",
+      "withdrawConsent": "Penarikan persetujuan",
+      "withdrawConsentDesc": "Tarik persetujuan Anda kapan saja",
+      "withdrawConsentHow": "Pengaturan > Privasi",
+      "responseTime": "Waktu respons",
+      "responseTimeDesc": "Kami akan menjawab setiap permintaan dalam waktu maksimum 30 hari.",
+      "contact": "Kontak",
+      "contactEmail": "privacy@nokta.app",
+      "complaint": "Pengaduan",
+      "complaintDesc": "Anda berhak mengajukan pengaduan kepada CNIL (www.cnil.fr) jika Anda merasa pengolahan data Anda melanggar hak Anda."
+    },
+    "section7": {
+      "title": "7. Keamanan data",
+      "description": "Kami menerapkan langkah-langkah teknis dan organisasi yang tepat untuk melindungi data Anda:",
+      "encryption": "Enkripsi",
+      "encryptionDesc": "Data terenkripsi saat transit (TLS 1.3) dan saat diam (AES-256)",
+      "authentication": "Autentikasi",
+      "authenticationDesc": "Protokol autentikasi yang aman",
+      "limitedAccess": "Akses terbatas",
+      "limitedAccessDesc": "Prinsip hak akses minimum untuk tim kami",
+      "audits": "Audit",
+      "auditsDesc": "Pengujian keamanan secara berkala",
+      "notification": "Notifikasi",
+      "notificationDesc": "Dalam hal pelanggaran, notifikasi dalam waktu 72 jam sesuai dengan GDPR"
+    },
+    "section8": {
+      "title": "8. Anak-anak",
+      "description": "Layanan kami ditujukan untuk orang berusia 16 tahun ke atas.",
+      "age13to16": "Jika Anda berusia antara 13 dan 16 tahun, Anda harus mendapatkan persetujuan dari orang tua atau wali hukum Anda untuk menggunakan Layanan kami.",
+      "under13": "Kami tidak secara sengaja mengumpulkan data tentang anak-anak di bawah 13 tahun. Jika kami menemukan bahwa seorang anak di bawah 13 tahun telah memberikan data pribadi kepada kami, kami akan segera menghapusnya."
+    },
+    "section9": {
+      "title": "9. Cookies dan teknologi serupa",
+      "description": "Aplikasi kami menggunakan teknologi penyimpanan lokal untuk:",
+      "essential": "Esensial",
+      "essentialPurpose": "Operasional Layanan (autentikasi, preferensi)",
+      "essentialDuration": "Sesi",
+      "functional": "Fungsional",
+      "functionalPurpose": "Mengingat pilihan Anda (bahasa, tema)",
+      "functionalDuration": "12 bulan",
+      "analytics": "Analitik",
+      "analyticsPurpose": "Statistik penggunaan yang dianonimkan",
+      "analyticsDuration": "13 bulan",
+      "managePreferences": "Anda dapat mengelola preferensi Anda di Pengaturan > Privasi."
+    },
+    "section10": {
+      "title": "10. Keputusan otomatis",
+      "description": "Layanan kami menggunakan algoritma untuk memberikan rekomendasi yang dipersonalisasi (latihan, saran).",
+      "important": "Penting:",
+      "item1": "Rekomendasi ini hanya bersifat informatif",
+      "item2": "Ini bukan saran medis",
+      "item3": "Anda bebas untuk mengikutinya atau tidak",
+      "item4": "Anda dapat meminta intervensi manusia untuk setiap keputusan yang berkaitan dengan Anda"
+    },
+    "section11": {
+      "title": "11. Informasi spesifik berdasarkan yurisdiksi",
+      "subsection1": {
+        "title": "11.1 Penduduk California (CCPA/CPRA)",
+        "description": "Jika Anda tinggal di California, Anda memiliki hak tambahan:",
+        "rightToKnow": "Hak untuk tahu",
+        "rightToKnowDesc": "Data apa yang kami kumpulkan dan bagaimana kami menggunakannya",
+        "rightToDelete": "Hak untuk menghapus",
+        "rightToDeleteDesc": "Minta penghapusan data Anda",
+        "rightToOptOut": "Hak untuk menolak",
+        "rightToOptOutDesc": "Menolak \"penjualan\" data Anda (kami tidak menjual data Anda)",
+        "nonDiscrimination": "Non-diskriminasi",
+        "nonDiscriminationDesc": "Kami tidak akan mendiskriminasi Anda karena telah menggunakan hak Anda",
+        "noSale": "Kami tidak menjual informasi pribadi Anda sesuai dengan CCPA."
+      },
+      "subsection2": {
+        "title": "11.2 Penduduk Brasil (LGPD)",
+        "description": "Jika Anda tinggal di Brasil, Anda memiliki hak yang diatur oleh Lei Geral de Proteção de Dados."
+      },
+      "subsection3": {
+        "title": "11.3 Yurisdiksi lain",
+        "description": "Kami berusaha untuk mematuhi undang-undang perlindungan data yang berlaku di setiap yurisdiksi tempat kami beroperasi."
+      }
+    },
+    "section12": {
+      "title": "12. Perubahan pada kebijakan ini",
+      "description": "Kami dapat memperbarui Kebijakan Privasi ini secara berkala. Jika ada perubahan yang signifikan:",
+      "item1": "Kami akan memberi tahu Anda melalui email atau notifikasi di Aplikasi",
+      "item2": "Tanggal \"Pembaruan Terakhir\" akan diubah",
+      "item3": "Penggunaan Anda yang berkelanjutan terhadap Layanan setelah pemberitahuan dianggap sebagai penerimaan perubahan"
+    },
+    "section13": {
+      "title": "13. Hubungi kami",
+      "description": "Untuk pertanyaan mengenai Kebijakan Privasi ini atau untuk menggunakan hak Anda:",
+      "email": "Email",
+      "emailAddress": "privacy@nokta.app",
+      "dpo": "Petugas Perlindungan Data (DPO)",
+      "dpoEmail": "dpo@nokta.app",
+      "postal": "Alamat pos",
+      "postalAddress": "Layanan Perlindungan Data\nParis, Prancis",
+      "responseTime": "Kami berkomitmen untuk menjawab setiap permintaan dalam waktu 30 hari."
+    },
+    "footer": "Kebijakan Privasi ini ditulis dalam bahasa Prancis dan dapat diterjemahkan ke dalam bahasa lain. Jika ada perbedaan, versi bahasa Prancis yang berlaku."
+  },
+  "termsOfService": {
+    "title": "Syarat dan Ketentuan Penggunaan",
+    "lastUpdated": "Terakhir diperbarui",
+    "lastUpdatedDate": "Januari 2025",
+    "version": "Versi",
+    "versionNumber": "1.0",
+    "preamble": "Syarat dan Ketentuan Penggunaan ini (selanjutnya disebut \"Syarat\") mengatur akses dan penggunaan aplikasi NOKTA ONE (selanjutnya disebut \"Aplikasi\", \"Layanan\" atau \"NOKTA ONE\"). NOKTA ONE diterbitkan oleh sebuah perusahaan Prancis yang terdaftar di Register Perdagangan dan Perusahaan Paris, yang berkantor pusat di Paris, Prancis (selanjutnya disebut \"kami\", \"kita\", \"Perusahaan\" atau \"Penerbit\").",
+    "preambleBold": "Dengan mengakses atau menggunakan Layanan kami, Anda setuju untuk terikat oleh Syarat ini. Jika Anda tidak setuju dengan Syarat ini, Anda tidak boleh menggunakan Layanan kami.",
+    "article1": {
+      "title": "Pasal 1 – Definisi",
+      "application": "\"Aplikasi\"",
+      "applicationDesc": "Aplikasi mobile dan web NOKTA ONE",
+      "content": "\"Konten\"",
+      "contentDesc": "Segala teks, gambar, video, data, atau materi lain yang tersedia melalui Layanan",
+      "userContent": "\"Konten Pengguna\"",
+      "userContentDesc": "Segala konten yang Anda kirimkan, unggah, atau sampaikan melalui Layanan",
+      "service": "\"Layanan\"",
+      "serviceDesc": "Semua fitur yang ditawarkan oleh NOKTA ONE",
+      "user": "\"Pengguna\" atau \"Anda\"",
+      "userDesc": "Setiap orang yang menggunakan Layanan",
+      "account": "\"Akun\"",
+      "accountDesc": "Akun pribadi Anda yang dibuat untuk mengakses Layanan",
+      "personalData": "\"Data Pribadi\"",
+      "personalDataDesc": "Informasi yang berkaitan dengan individu yang teridentifikasi atau dapat diidentifikasi"
+    },
+    "article2": {
+      "title": "Pasal 2 – Penerimaan Syarat",
+      "subsection1": {
+        "title": "2.1 Kapasitas Hukum",
+        "description": "Dengan menggunakan Layanan kami, Anda menyatakan dan menjamin bahwa Anda:",
+        "item1": "Berusia setidaknya 16 tahun (atau 13 tahun dengan persetujuan orang tua)",
+        "item2": "Memiliki kapasitas hukum untuk membuat kontrak yang mengikat",
+        "item3": "Bukan orang yang dilarang menggunakan Layanan berdasarkan hukum yang berlaku"
+      },
+      "subsection2": {
+        "title": "2.2 Penerimaan",
+        "description": "Akses dan penggunaan Anda terhadap Layanan tergantung pada penerimaan dan kepatuhan Anda terhadap Ketentuan ini. Ketentuan ini berlaku untuk semua pengunjung, pengguna, dan orang lain yang mengakses atau menggunakan Layanan."
+      },
+      "subsection3": {
+        "title": "2.3 Perubahan",
+        "description": "Kami berhak untuk mengubah Ketentuan ini kapan saja. Perubahan berlaku saat dipublikasikan. Penggunaan Anda yang berkelanjutan terhadap Layanan setelah pemberitahuan perubahan merupakan penerimaan Anda terhadap Ketentuan yang baru."
+      }
+    },
+    "article3": {
+      "title": "Artikel 3 – Deskripsi Layanan",
+      "subsection1": {
+        "title": "3.1 Fitur",
+        "description": "Nokta One adalah aplikasi kesejahteraan pribadi yang menawarkan:",
+        "item1": "Sesi panduan untuk regulasi fisiologis",
+        "item2": "Latihan pernapasan dan postur",
+        "item3": "Pemantauan kondisi kesejahteraan",
+        "item4": "Rekomendasi yang dipersonalisasi"
+      },
+      "subsection2": {
+        "title": "3.2 Sifat Layanan",
+        "important": "PENTING – PEMBERITAHUAN:",
+        "description": "Layanan ini disediakan hanya untuk tujuan informasi dan kesejahteraan umum. Nokta One:",
+        "isNot": "BUKAN",
+        "isNotDesc": "alat medis",
+        "doesNotProvide": "TIDAK MENYEDIAKAN",
+        "doesNotProvideDesc": "diagnosis medis",
+        "doesNotReplace": "TIDAK MENGGANTIKAN",
+        "doesNotReplaceDesc": "nasihat dari profesional kesehatan",
+        "isNotIntended": "TIDAK DIMAKSUDKAN",
+        "isNotIntendedDesc": "untuk mengobati, menyembuhkan, atau mencegah penyakit",
+        "disclaimer": "Indikator dan rekomendasi yang diberikan adalah sinyal kesejahteraan umum dan tidak boleh diartikan sebagai saran medis. Jika Anda memiliki kekhawatiran medis, konsultasikan dengan profesional kesehatan yang berkualitas."
+      },
+      "subsection3": {
+        "title": "3.3 Ketersediaan",
+        "description": "Kami berusaha menjaga Layanan tersedia 24 jam sehari, 7 hari seminggu. Namun, kami tidak menjamin ketersediaan yang tidak terputus dan dapat menghentikan atau menghentikan Layanan untuk pemeliharaan, pembaruan, atau alasan teknis lainnya."
+      }
+    },
+    "article4": {
+      "title": "Artikel 4 – Pendaftaran dan Akun",
+      "subsection1": {
+        "title": "4.1 Pembuatan akun",
+        "description": "Untuk mengakses beberapa fitur, Anda harus membuat akun. Saat mendaftar, Anda setuju untuk:",
+        "item1": "Memberikan informasi yang akurat, lengkap, dan terkini",
+        "item2": "Menjaga kerahasiaan identitas masuk Anda",
+        "item3": "Segera memberi tahu kami tentang penggunaan akun Anda yang tidak sah",
+        "item4": "Bertanggung jawab atas semua aktivitas yang dilakukan di bawah akun Anda"
+      },
+      "subsection2": {
+        "title": "4.2 Mode tamu",
+        "description": "Anda dapat menggunakan beberapa fitur dalam mode tamu tanpa membuat akun. Data dalam mode tamu tidak disimpan secara permanen."
+      },
+      "subsection3": {
+        "title": "4.3 Keamanan akun",
+        "description": "Anda bertanggung jawab penuh untuk melindungi akun Anda. Kami tidak bertanggung jawab atas kerugian yang diakibatkan oleh penggunaan akun Anda yang tidak sah."
+      }
+    },
+    "article5": {
+      "title": "Artikel 5 – Langganan dan Pembayaran",
+      "subsection1": {
+        "title": "5.1 Paket",
+        "description": "Layanan dapat ditawarkan dalam berbagai paket:",
+        "free": "Gratis",
+        "freeDesc": "Akses terbatas ke beberapa fitur",
+        "premium": "Premium",
+        "premiumDesc": "Akses penuh melalui langganan berbayar"
+      },
+      "subsection2": {
+        "title": "5.2 Harga",
+        "description": "Harga ditampilkan dalam euro (€) sudah termasuk pajak. Kami berhak mengubah harga kami kapan saja, dengan pemberitahuan sebelumnya."
+      },
+      "subsection3": {
+        "title": "5.3 Pembayaran",
+        "description": "Pembayaran diproses oleh penyedia pembayaran aman kami. Dengan berlangganan, Anda mengizinkan pemotongan otomatis dari jumlah yang sesuai."
+      },
+      "subsection4": {
+        "title": "5.4 Pembaruan otomatis",
+        "description": "Langganan akan diperbarui secara otomatis saat masa berlakunya habis, kecuali Anda membatalkan sebelum tanggal pembaruan."
+      },
+      "subsection5": {
+        "title": "5.5 Pembatalan",
+        "description": "Anda dapat membatalkan langganan kapan saja dari pengaturan akun Anda atau melalui platform (App Store, Google Play). Pembatalan akan berlaku pada akhir periode langganan saat ini."
+      },
+      "subsection6": {
+        "title": "5.6 Hak untuk menarik diri",
+        "description": "Sesuai dengan undang-undang perlindungan konsumen yang berlaku, hak untuk menarik diri tidak dapat diterapkan untuk konten digital yang tidak disediakan dalam bentuk fisik yang pelaksanaannya telah dimulai dengan persetujuan Anda sebelumnya dan pengakuan atas hilangnya hak untuk menarik diri."
+      },
+      "subsection7": {
+        "title": "5.7 Pengembalian dana",
+        "description": "Kecuali ditentukan lain oleh hukum atau dalam kasus kesalahan penagihan dari pihak kami, pembayaran yang dilakukan tidak dapat dikembalikan."
+      }
+    },
+    "article6": {
+      "title": "Artikel 6 – Aturan Penggunaan",
+      "subsection1": {
+        "title": "6.1 Penggunaan yang diizinkan",
+        "description": "Anda setuju untuk menggunakan Layanan:",
+        "item1": "Sesuai dengan Ketentuan ini dan hukum yang berlaku",
+        "item2": "Untuk tujuan pribadi dan non-komersial",
+        "item3": "Tanpa merugikan pengguna lain atau fungsi Layanan"
+      },
+      "subsection2": {
+        "title": "6.2 Perilaku terlarang",
+        "description": "Sangat dilarang untuk:",
+        "item1": "Menggunakan Layanan untuk tujuan ilegal atau tidak sah",
+        "item2": "Mencoba mengakses sistem kami tanpa izin",
+        "item3": "Mengirimkan virus, perangkat lunak berbahaya, atau kode berbahaya",
+        "item4": "Mengumpulkan atau menyimpan data pribadi pengguna lain",
+        "item5": "Menyamar sebagai orang lain",
+        "item6": "Mengganggu atau membebani infrastruktur kami",
+        "item7": "Menghindari langkah-langkah keamanan atau pembatasan akses",
+        "item8": "Menjual kembali, memberikan lisensi, atau mentransfer akses Anda ke Layanan",
+        "item9": "Menggunakan robot, pengikis, atau alat otomatis tanpa izin",
+        "item10": "Menggandakan, menyalin, atau memanfaatkan Layanan untuk tujuan komersial"
+      },
+      "subsection3": {
+        "title": "6.3 Konten Pengguna",
+        "description": "Jika Anda mengirimkan konten melalui Layanan (komentar, gambar, dll.):",
+        "item1": "Anda mempertahankan hak kekayaan intelektual Anda",
+        "item2": "Anda memberikan kami lisensi global, non-eksklusif, gratis, yang dapat dialihkan untuk menggunakan, menggandakan, dan menampilkan konten ini sehubungan dengan Layanan",
+        "item3": "Anda menjamin bahwa konten ini tidak melanggar hak pihak ketiga"
+      }
+    },
+    "article7": {
+      "title": "Artikel 7 – Kekayaan Intelektual",
+      "subsection1": {
+        "title": "7.1 Hak Perusahaan",
+        "description": "Layanan dan konten aslinya (tidak termasuk Konten Pengguna), termasuk namun tidak terbatas pada: kode sumber, teks, grafik, logo, ikon, gambar, klip audio dan video, kumpulan data, dan perangkat lunak, adalah milik eksklusif Perusahaan atau pemberi lisensinya dan dilindungi oleh undang-undang kekayaan intelektual Prancis dan internasional."
+      },
+      "subsection2": {
+        "title": "7.2 Merek",
+        "description": "\"Nokta One\" dan logo terkait adalah merek dagang Perusahaan. Anda tidak dapat menggunakannya tanpa izin tertulis dari kami."
+      },
+      "subsection3": {
+        "title": "7.3 Lisensi terbatas",
+        "description": "Dengan mematuhi Ketentuan ini, kami memberikan Anda lisensi pribadi, terbatas, non-eksklusif, tidak dapat dialihkan, dan dapat dicabut untuk mengakses dan menggunakan Layanan untuk tujuan pribadi dan non-komersial."
+      }
+    },
+    "article8": {
+      "title": "Artikel 8 – Pembatasan Tanggung Jawab",
+      "subsection1": {
+        "title": "8.1 Pengecualian jaminan",
+        "disclaimer": "LAYANAN DIBERIKAN \"SEBAGAIMANA ADANYA\" DAN \"TERSEDIA\", TANPA JAMINAN APAPUN, EKSPRES ATAU IMPLIKIT.",
+        "description": "Kami tidak menjamin bahwa:",
+        "item1": "Layanan akan memenuhi kebutuhan spesifik Anda",
+        "item2": "Layanan akan tanpa gangguan, aman, atau tanpa kesalahan",
+        "item3": "Hasil yang diperoleh akan akurat atau dapat diandalkan",
+        "item4": "Kekurangan akan diperbaiki"
+      },
+      "subsection2": {
+        "title": "8.2 Pembatasan tanggung jawab",
+        "limitation": "SEBAGAI MANA YANG DIPERBOLEHKAN OLEH HUKUM YANG BERLAKU, PERUSAHAAN TIDAK AKAN BERTANGGUNG JAWAB ATAS:",
+        "item1": "Kerusakan tidak langsung, insidental, khusus, konsekuensial, atau punitif",
+        "item2": "Setiap kehilangan keuntungan, data, penggunaan, goodwill, atau kehilangan tidak berwujud lainnya",
+        "item3": "Kerugian yang diakibatkan oleh penggunaan Anda atau ketidakmampuan Anda untuk menggunakan Layanan",
+        "item4": "Kerugian yang diakibatkan oleh akses tidak sah ke data Anda"
+      },
+      "subsection3": {
+        "title": "8.3 Batas Tanggung Jawab",
+        "description": "Tanggung jawab total Perusahaan untuk setiap klaim yang timbul dari Syarat ini atau penggunaan Layanan dibatasi pada jumlah yang Anda bayar untuk Layanan dalam 12 bulan terakhir, atau 100 € jika Anda tidak melakukan pembayaran."
+      },
+      "subsection4": {
+        "title": "8.4 Pengecualian",
+        "description": "Beberapa yurisdiksi tidak mengizinkan pengecualian jaminan tertentu atau pembatasan tanggung jawab. Di yurisdiksi ini, tanggung jawab kami akan dibatasi sejauh yang diizinkan oleh hukum."
+      }
+    },
+    "article9": {
+      "title": "Artikel 9 – Ganti Rugi",
+      "description": "Anda setuju untuk membela, mengganti rugi, dan membebaskan Perusahaan, direksi, pejabat, karyawan, dan agen dari setiap klaim, kerugian, kewajiban, biaya, atau pengeluaran (termasuk biaya pengacara) yang timbul dari:",
+      "item1": "Penggunaan Anda atas Layanan",
+      "item2": "Pelanggaran Anda terhadap Syarat ini",
+      "item3": "Pelanggaran Anda terhadap hak pihak ketiga",
+      "item4": "Konten Pengguna Anda"
+    },
+    "article10": {
+      "title": "Artikel 10 – Penangguhan dan Penghentian",
+      "subsection1": {
+        "title": "10.1 Oleh Anda",
+        "description": "Anda dapat berhenti menggunakan Layanan dan menghapus akun Anda kapan saja dari pengaturan Aplikasi."
+      },
+      "subsection2": {
+        "title": "10.2 Oleh Kami",
+        "description": "Kami dapat menangguhkan atau menghentikan akses Anda ke Layanan segera, tanpa pemberitahuan atau tanggung jawab, jika:",
+        "item1": "Anda melanggar Syarat ini",
+        "item2": "Kami secara wajar percaya bahwa perilaku Anda merugikan Layanan atau pengguna lain",
+        "item3": "Ini diwajibkan oleh hukum"
+      },
+      "subsection3": {
+        "title": "10.3 Efek Penghentian",
+        "description": "Saat penghentian:",
+        "item1": "Hak Anda untuk menggunakan Layanan berhenti segera",
+        "item2": "Kami dapat menghapus atau menonaktifkan akun Anda dan semua data terkait",
+        "item3": "Ketentuan yang, secara alami, harus bertahan setelah penghentian akan tetap berlaku (termasuk: Kekayaan Intelektual, Pembatasan Tanggung Jawab, Ganti Rugi, Hukum yang berlaku)"
+      }
+    },
+    "article11": {
+      "title": "Pasal 11 – Hukum yang Berlaku dan Sengketa",
+      "subsection1": {
+        "title": "11.1 Hukum yang berlaku",
+        "description": "Ketentuan ini diatur dan ditafsirkan sesuai dengan hukum Prancis, tanpa memperhatikan prinsip konflik hukum."
+      },
+      "subsection2": {
+        "title": "11.2 Penyelesaian secara damai",
+        "description": "Jika terjadi sengketa, pihak-pihak akan berusaha mencari solusi secara damai. Anda dapat menghubungi kami di: support@nokta.app"
+      },
+      "subsection3": {
+        "title": "11.3 Mediasi",
+        "description": "Sesuai dengan hukum perlindungan konsumen yang berlaku, jika sengketa tidak terpecahkan, Anda dapat menggunakan layanan mediasi secara gratis: Mediator Konsumen: [Detail akan dilengkapi saat penunjukan mediator]"
+      },
+      "subsection4": {
+        "title": "11.4 Yurisdiksi",
+        "description": "Jika tidak ada penyelesaian secara damai atau mediasi, semua sengketa akan diajukan ke yurisdiksi eksklusif pengadilan Paris, Prancis, dengan memperhatikan aturan yurisdiksi yang menguntungkan konsumen."
+      },
+      "subsection5": {
+        "title": "11.5 Platform penyelesaian sengketa online Eropa",
+        "description": "Komisi Eropa menyediakan platform penyelesaian sengketa online: https://ec.europa.eu/consumers/odr"
+      }
+    },
+    "article12": {
+      "title": "Pasal 12 – Ketentuan Lainnya",
+      "subsection1": {
+        "title": "12.1 Kesepakatan lengkap",
+        "description": "Ketentuan ini, bersama dengan Kebijakan Privasi kami, merupakan kesepakatan lengkap antara Anda dan Perusahaan mengenai Layanan."
+      },
+      "subsection2": {
+        "title": "12.2 Keterpisahan",
+        "description": "Jika ada ketentuan dalam Ketentuan ini dianggap tidak sah atau tidak dapat diterapkan, ketentuan lainnya akan tetap berlaku."
+      },
+      "subsection3": {
+        "title": "12.3 Pengabaian",
+        "description": "Tidak melaksanakan hak yang diatur dalam Ketentuan ini tidak dianggap sebagai pengabaian hak tersebut."
+      },
+      "subsection4": {
+        "title": "12.4 Pengalihan",
+        "description": "Anda tidak dapat mengalihkan atau mentransfer hak atau kewajiban Anda berdasarkan Ketentuan ini tanpa persetujuan tertulis dari kami. Kami dapat mengalihkan hak dan kewajiban kami tanpa batasan."
+      },
+      "subsection5": {
+        "title": "12.5 Force majeure",
+        "description": "Kami tidak bertanggung jawab atas keterlambatan atau kegagalan dalam melaksanakan kewajiban kami yang disebabkan oleh hal-hal di luar kendali kami yang wajar (bencana alam, perang, terorisme, pandemi, dll.)."
+      },
+      "subsection6": {
+        "title": "12.6 Bahasa",
+        "description": "Ketentuan ini ditulis dalam bahasa Prancis. Jika ada terjemahan, versi bahasa Prancis yang berlaku."
+      }
+    },
+    "article13": {
+      "title": "Pasal 13 – Kontak",
+      "description": "Untuk pertanyaan mengenai Syarat dan Ketentuan ini:",
+      "email": "Email",
+      "emailAddress": "support@nokta.app",
+      "postal": "Alamat pos",
+      "postalAddress": "Layanan Pelanggan\nParis, Prancis"
+    },
+    "footer": "Dengan menggunakan Nokta One, Anda mengakui telah membaca, memahami, dan menerima Syarat dan Ketentuan ini."
   }
 }

@@ -603,5 +603,572 @@
     "deleteConfirmLabel": "확인을 위해 DELETE 입력",
     "cancel": "취소",
     "confirmDelete": "영구 삭제"
+  },
+  "privacyPolicy": {
+    "title": "개인정보 보호정책",
+    "lastUpdated": "최종 업데이트",
+    "lastUpdatedDate": "2025년 1월",
+    "version": "버전",
+    "versionNumber": "1.0",
+    "introduction": "본 개인정보 보호정책은 NOKTA ONE 앱(이하 '앱', '서비스' 또는 'NOKTA ONE')을 사용할 때 귀하의 개인 정보가 어떻게 수집, 사용 및 공유되는지를 설명합니다. NOKTA ONE은 파리 상업 등기소에 등록된 프랑스 회사에서 운영합니다(이하 '우리', '우리의' 또는 '회사'). 본사는 프랑스 파리에 위치하고 있습니다. 서비스를 사용함으로써 귀하는 본 개인정보 보호정책에 설명된 관행에 동의하게 됩니다. 이 정책에 동의하지 않으시면 서비스를 사용하지 마십시오.",
+    "table": {
+      "category": "카테고리",
+      "examples": "예시",
+      "purpose": "목적",
+      "legalBasis": "법적 근거",
+      "details": "세부사항",
+      "provider": "제공자",
+      "function": "기능",
+      "location": "데이터 위치",
+      "guarantees": "보장",
+      "dataType": "데이터 유형",
+      "retentionPeriod": "보존 기간",
+      "justification": "정당화",
+      "right": "권리",
+      "description": "설명",
+      "howToExercise": "행사 방법",
+      "type": "유형",
+      "duration": "기간"
+    },
+    "section1": {
+      "title": "1. 우리가 수집하는 데이터",
+      "subsection1": {
+        "title": "1.1 귀하가 직접 제공하는 데이터",
+        "accountData": "계정 데이터",
+        "accountExamples": "이메일 주소, 사용자 이름, 비밀번호 (해시 처리됨)",
+        "accountPurpose": "계정 생성 및 관리",
+        "profileData": "프로필 데이터",
+        "profileExamples": "이름, 생년월일, 국가, 선호 언어",
+        "profilePurpose": "서비스 개인화",
+        "paymentData": "결제 데이터",
+        "paymentExamples": "청구 정보 (우리의 결제 제공업체가 처리함)",
+        "paymentPurpose": "구독 관리"
+      },
+      "subsection2": {
+        "title": "1.2 자동으로 수집되는 데이터",
+        "usageData": "사용 데이터",
+        "usageExamples": "세션, 수행된 작업, 타임스탬프",
+        "usagePurpose": "서비스 개선",
+        "technicalData": "기술 데이터",
+        "technicalExamples": "장치 유형, 운영 체제, 앱 버전",
+        "technicalPurpose": "기술 지원 및 호환성",
+        "diagnosticData": "진단 데이터",
+        "diagnosticExamples": "익명화된 오류 보고서",
+        "diagnosticPurpose": "버그 해결"
+      },
+      "subsection3": {
+        "title": "1.3 생체 데이터 및 얼굴 분석",
+        "localProcessing": "로컬 처리",
+        "localProcessingDesc": "카메라로 캡처된 이미지는 귀하의 장치에서 직접 또는 안전한 서비스를 통해 분석됩니다. 원본 이미지는 절대 우리의 서버에 저장되지 않습니다.",
+        "derivedData": "파생 데이터",
+        "derivedDataDesc": "웰니스 지표(익명화된 숫자 점수)만 전송 및 저장되어 귀하의 세션 기록을 제공합니다.",
+        "noIdentification": "식별 없음",
+        "noIdentificationDesc": "분석은 여러분을 식별하는 것이 아니라 일반적인 생리적 신호(근육 긴장, 눈 피로 등)를 감지하는 데 목적이 있습니다.",
+        "noFacialRecognition": "얼굴 인식 없음",
+        "noFacialRecognitionDesc": "여러분을 식별하기 위해 얼굴 인식 기술을 사용하지 않습니다."
+      },
+      "subsection4": {
+        "title": "1.4 웨어러블 데이터 (선택적 기능)",
+        "description": "연결된 기기(시계, 팔찌)를 연결하기로 선택하면, 다음을 수집할 수 있습니다:",
+        "item1": "심박수",
+        "item2": "심박 변동성 (HRV)",
+        "item3": "수면 질",
+        "item4": "활동 수준"
+      }
+    },
+    "section2": {
+      "title": "2. 데이터 사용 방법",
+      "subsection1": {
+        "title": "2.1 법적 근거 (GDPR)",
+        "serviceProvision": "서비스 제공",
+        "contractExecution": "계약 이행",
+        "contractDetails": "NOKTA ONE을 제공하기 위해 필요합니다.",
+        "serviceImprovement": "서비스 개선",
+        "legitimateInterest": "정당한 이익",
+        "legitimateDetails": "경험 개선을 위한 익명 분석",
+        "marketing": "마케팅 커뮤니케이션",
+        "consent": "동의",
+        "consentDetails": "우리의 이메일 수신에 동의한 경우에만"
+      },
+      "subsection2": {
+        "title": "2.2 세부 목적",
+        "item1": "서비스 제공 및 유지: 계정 생성, 세션 처리, 기록 표시",
+        "item2": "경험 개인화: 프로필에 맞춘 추천 조정",
+        "item3": "여러분과 소통: 중요한 알림, 고객 지원, 업데이트(동의한 경우)",
+        "item4": "서비스 개선: 사용 추세에 대한 집계 및 익명 분석",
+        "item5": "보안 보장: 사기 활동 탐지 및 예방",
+        "item6": "법적 의무 준수: 세금 준수, 정부의 정당한 요청에 대한 응답"
+      }
+    },
+    "section3": {
+      "title": "3. 데이터 공유",
+      "noSale": "우리는 귀하의 개인 데이터를 상업적 목적으로 판매, 임대 또는 교환하지 않습니다.",
+      "subsection1": {
+        "title": "3.2 하청업체 및 파트너",
+        "cloud": "클라우드 인프라",
+        "cloudFunction": "데이터베이스 호스팅",
+        "cloudLocation": "유럽 연합",
+        "cloudGuarantees": "ISO 27001, SOC 2 인증",
+        "analysis": "분석 서비스",
+        "analysisFunction": "이미지 처리",
+        "analysisLocation": "미국",
+        "analysisGuarantees": "표준 계약 조항 (SCCs)",
+        "payment": "결제",
+        "paymentFunction": "거래 처리",
+        "paymentLocation": "유럽 연합",
+        "paymentGuarantees": "PCI-DSS 인증",
+        "analytics": "분석",
+        "analyticsFunction": "사용 통계 (동의 시)",
+        "analyticsLocation": "유럽 연합",
+        "analyticsGuarantees": "익명화된 데이터"
+      },
+      "subsection2": {
+        "title": "3.3 기타 공유 사례",
+        "withConsent": "귀하의 동의로",
+        "withConsentDesc": "귀하가 명시적으로 허용할 때",
+        "legalObligations": "법적 의무",
+        "legalObligationsDesc": "법원 명령 또는 법적 요청에 대한 응답",
+        "rightsProtection": "권리 보호",
+        "rightsProtectionDesc": "이용 약관을 준수하기 위해",
+        "businessTransactions": "비즈니스 거래",
+        "businessTransactionsDesc": "합병, 인수 또는 자산 판매 시 (알림을 받게 됩니다)"
+      }
+    },
+    "section4": {
+      "title": "4. 국제 데이터 전송",
+      "description": "일부 작업은 유럽 경제 지역(EEA) 외부 국가로 데이터 전송을 포함하며, 특히 미국이 포함됩니다.",
+      "guarantees": "설정된 보장:",
+      "guarantee1": "유럽연합 집행위원회에서 승인한 표준 계약 조항(SCCs)",
+      "guarantee2": "EDPB 권장 사항에 따른 전송 영향 평가(TIA)",
+      "guarantee3": "추가 기술 조치(암호화, 가명화)"
+    },
+    "section5": {
+      "title": "5. 데이터 보존",
+      "accountData": "계정 데이터",
+      "accountRetention": "가입 기간 + 3년",
+      "accountJustification": "고객 관계 관리",
+      "sessionData": "세션 데이터",
+      "sessionRetention": "24개월",
+      "sessionJustification": "기록 및 개인화",
+      "paymentData": "결제 데이터",
+      "paymentRetention": "10년",
+      "paymentJustification": "프랑스 세금 의무",
+      "diagnosticData": "진단 데이터",
+      "diagnosticRetention": "12개월",
+      "diagnosticJustification": "기술 개선",
+      "securityLogs": "보안 로그",
+      "securityRetention": "12개월",
+      "securityJustification": "보안 및 감사",
+      "afterDeletion": "계정 삭제 후, 귀하의 데이터는 다음과 같습니다:",
+      "afterDeletion1": "집계된 통계 데이터는 익명화됨",
+      "afterDeletion2": "개인 식별 데이터는 삭제됨 (30일 이내)",
+      "afterDeletion3": "법적 의무가 있는 경우에만 보관됨"
+    },
+    "section6": {
+      "title": "6. 귀하의 권리",
+      "description": "GDPR 및 정보 보호법에 따라 귀하는 다음과 같은 권리를 가지고 있습니다:",
+      "access": "접근",
+      "accessDesc": "귀하의 데이터 사본을 받기",
+      "accessHow": "설정 > 개인정보 보호 > 내보내기",
+      "rectification": "수정",
+      "rectificationDesc": "부정확한 데이터 수정하기",
+      "rectificationHow": "설정 > 프로필",
+      "erasure": "삭제",
+      "erasureDesc": "귀하의 데이터 삭제하기",
+      "erasureHow": "설정 > 개인정보 보호 > 내 계정 삭제",
+      "portability": "이식성",
+      "portabilityDesc": "구조화된 형식으로 데이터 받기",
+      "portabilityHow": "설정 > 개인정보 보호 > 내보내기",
+      "opposition": "반대",
+      "oppositionDesc": "특정 처리에 반대하기",
+      "oppositionHow": "설정 > 개인정보 보호",
+      "limitation": "제한",
+      "limitationDesc": "처리를 일시적으로 제한하기",
+      "limitationHow": "문의하기",
+      "withdrawConsent": "동의 철회",
+      "withdrawConsentDesc": "언제든지 동의를 철회할 수 있습니다.",
+      "withdrawConsentHow": "설정 > 개인정보 보호",
+      "responseTime": "응답 시간",
+      "responseTimeDesc": "모든 요청에 대해 최대 30일 이내에 응답합니다.",
+      "contact": "연락처",
+      "contactEmail": "privacy@nokta.app",
+      "complaint": "불만 제기",
+      "complaintDesc": "귀하의 데이터 처리로 인해 권리가 침해되었다고 생각되면 CNIL(www.cnil.fr)에 불만을 제기할 권리가 있습니다."
+    },
+    "section7": {
+      "title": "7. 데이터 보안",
+      "description": "귀하의 데이터를 보호하기 위해 적절한 기술적 및 조직적 조치를 시행합니다:",
+      "encryption": "암호화",
+      "encryptionDesc": "전송 중 (TLS 1.3) 및 저장 중 (AES-256) 암호화된 데이터",
+      "authentication": "인증",
+      "authenticationDesc": "안전한 인증 프로토콜",
+      "limitedAccess": "제한된 접근",
+      "limitedAccessDesc": "우리 팀을 위한 최소 권한 원칙",
+      "audits": "감사",
+      "auditsDesc": "정기적인 보안 테스트",
+      "notification": "알림",
+      "notificationDesc": "위반 시, GDPR에 따라 72시간 이내에 알림"
+    },
+    "section8": {
+      "title": "8. 미성년자",
+      "description": "우리 서비스는 16세 이상을 대상으로 합니다.",
+      "age13to16": "13세에서 16세 사이인 경우, 서비스를 사용하기 위해 부모 또는 법적 보호자의 동의를 받아야 합니다.",
+      "under13": "우리는 13세 미만 아동의 데이터를 의도적으로 수집하지 않습니다. 13세 미만 아동이 개인 데이터를 제공한 경우, 즉시 삭제하겠습니다."
+    },
+    "section9": {
+      "title": "9. 쿠키 및 유사 기술",
+      "description": "우리 앱은 다음을 위해 로컬 저장 기술을 사용합니다:",
+      "essential": "필수",
+      "essentialPurpose": "서비스 운영 (인증, 선호도)",
+      "essentialDuration": "세션",
+      "functional": "기능적",
+      "functionalPurpose": "선택 사항 기억하기 (언어, 테마)",
+      "functionalDuration": "12개월",
+      "analytics": "분석",
+      "analyticsPurpose": "익명화된 사용 통계",
+      "analyticsDuration": "13개월",
+      "managePreferences": "설정 > 개인정보 보호에서 선호도를 관리할 수 있습니다."
+    },
+    "section10": {
+      "title": "10. 자동화된 결정",
+      "description": "우리 서비스는 개인 맞춤형 추천(운동, 제안)을 제공하기 위해 알고리즘을 사용합니다.",
+      "important": "중요:",
+      "item1": "이 추천은 정보 제공의 목적만 있습니다.",
+      "item2": "의료 조언이 아닙니다.",
+      "item3": "따를지 여부는 자유입니다.",
+      "item4": "귀하와 관련된 모든 결정에 대해 인간의 개입을 요청할 수 있습니다."
+    },
+    "section11": {
+      "title": "11. 관할권별 특정 정보",
+      "subsection1": {
+        "title": "11.1 캘리포니아 거주자 (CCPA/CPRA)",
+        "description": "캘리포니아에 거주하는 경우 추가 권리가 있습니다:",
+        "rightToKnow": "알 권리",
+        "rightToKnowDesc": "우리가 수집하는 데이터와 그 사용 방법",
+        "rightToDelete": "삭제 권리",
+        "rightToDeleteDesc": "귀하의 데이터 삭제 요청",
+        "rightToOptOut": "거부 권리",
+        "rightToOptOutDesc": "귀하의 데이터 \"판매\"를 거부합니다 (우리는 귀하의 데이터를 판매하지 않습니다)",
+        "nonDiscrimination": "비차별",
+        "nonDiscriminationDesc": "귀하의 권리를 행사한 것에 대해 차별하지 않습니다",
+        "noSale": "우리는 CCPA의 의미에서 귀하의 개인 정보를 판매하지 않습니다."
+      },
+      "subsection2": {
+        "title": "11.2 브라질 거주자 (LGPD)",
+        "description": "브라질에 거주하는 경우, Lei Geral de Proteção de Dados에 따른 권리를 누릴 수 있습니다."
+      },
+      "subsection3": {
+        "title": "11.3 기타 관할권",
+        "description": "우리는 운영하는 각 관할권의 데이터 보호 법률을 준수하기 위해 노력합니다."
+      }
+    },
+    "section12": {
+      "title": "12. 이 정책의 변경",
+      "description": "우리는 이 개인정보 보호정책을 주기적으로 업데이트할 수 있습니다. 중요한 변경 사항이 있을 경우:",
+      "item1": "이메일 또는 앱 내 알림으로 알려드립니다",
+      "item2": "\"최종 업데이트\" 날짜가 변경됩니다",
+      "item3": "알림 후 서비스의 지속적인 사용은 변경 사항에 대한 수락으로 간주됩니다"
+    },
+    "section13": {
+      "title": "13. 문의하기",
+      "description": "이 개인정보 보호정책에 대한 질문이나 권리 행사에 대해:",
+      "email": "이메일",
+      "emailAddress": "privacy@nokta.app",
+      "dpo": "데이터 보호 책임자 (DPO)",
+      "dpoEmail": "dpo@nokta.app",
+      "postal": "우편 주소",
+      "postalAddress": "데이터 보호 서비스\n파리, 프랑스",
+      "responseTime": "모든 요청에 대해 30일 이내에 응답할 것을 약속합니다."
+    },
+    "footer": "이 개인정보 보호정책은 프랑스어로 작성되었으며 다른 언어로 번역될 수 있습니다. 차이가 있을 경우 프랑스어 버전이 우선합니다."
+  },
+  "termsOfService": {
+    "title": "이용 약관",
+    "lastUpdated": "최종 업데이트",
+    "lastUpdatedDate": "2025년 1월",
+    "version": "버전",
+    "versionNumber": "1.0",
+    "preamble": "본 이용 약관(이하 \"약관\")은 Nokta One 애플리케이션(이하 \"애플리케이션\", \"서비스\" 또는 \"Nokta One\")에 대한 접근 및 사용을 규정합니다. Nokta One은 파리 상업 등록부에 등록된 프랑스 회사가 운영하며, 본사는 프랑스 파리에 위치합니다(이하 \"저희\", \"우리\", \"회사\" 또는 \"발행자\").",
+    "preambleBold": "저희 서비스에 접근하거나 사용함으로써, 귀하는 이 약관에 동의하는 것입니다. 이 약관에 동의하지 않으시면 저희 서비스를 사용하지 마십시오.",
+    "article1": {
+      "title": "제 1조 – 정의",
+      "application": "\"애플리케이션\"",
+      "applicationDesc": "Nokta One 모바일 및 웹 애플리케이션",
+      "content": "\"콘텐츠\"",
+      "contentDesc": "서비스를 통해 제공되는 모든 텍스트, 이미지, 비디오, 데이터 또는 기타 자료",
+      "userContent": "\"사용자 콘텐츠\"",
+      "userContentDesc": "귀하가 서비스에 제출, 업로드 또는 전송하는 모든 콘텐츠",
+      "service": "\"서비스\"",
+      "serviceDesc": "Nokta One이 제공하는 모든 기능",
+      "user": "\"사용자\" 또는 \"귀하\"",
+      "userDesc": "서비스를 사용하는 모든 사람",
+      "account": "\"계정\"",
+      "accountDesc": "서비스에 접근하기 위해 생성한 개인 계정",
+      "personalData": "\"개인 데이터\"",
+      "personalDataDesc": "식별되거나 식별 가능한 개인에 대한 정보"
+    },
+    "article2": {
+      "title": "제 2조 – 약관의 수락",
+      "subsection1": {
+        "title": "2.1 법적 능력",
+        "description": "저희 서비스를 사용함으로써 귀하는 다음을 선언하고 보증합니다:",
+        "item1": "최소 16세 이상입니다 (또는 부모의 동의가 있는 13세 이상)",
+        "item2": "법적 계약을 체결할 수 있는 능력이 있습니다",
+        "item3": "적용 법률에 따라 서비스 사용이 금지된 사람이 아닙니다"
+      },
+      "subsection2": {
+        "title": "2.2 동의",
+        "description": "서비스에 대한 접근 및 사용은 이 약관에 대한 귀하의 동의와 준수에 따라 달라집니다. 이 약관은 서비스에 접근하거나 사용하는 모든 방문자, 사용자 및 기타 사람에게 적용됩니다."
+      },
+      "subsection3": {
+        "title": "2.3 변경",
+        "description": "우리는 언제든지 이 약관을 수정할 권리를 보유합니다. 변경 사항은 게시 시 효력을 발생합니다. 변경 사항에 대한 통지 후 서비스의 지속적인 사용은 새로운 약관에 대한 귀하의 동의를 나타냅니다."
+      }
+    },
+    "article3": {
+      "title": "제3조 – 서비스 설명",
+      "subsection1": {
+        "title": "3.1 기능",
+        "description": "Nokta One은 다음과 같은 개인 웰빙 앱입니다:",
+        "item1": "생리적 조절을 위한 안내 세션",
+        "item2": "호흡 및 자세 운동",
+        "item3": "웰빙 상태 추적",
+        "item4": "개인화된 추천"
+      },
+      "subsection2": {
+        "title": "3.2 서비스의 성격",
+        "important": "중요 – 의료 고지:",
+        "description": "서비스는 정보 제공 및 일반 웰빙을 위한 것입니다. Nokta One은:",
+        "isNot": "의료 기기가 아닙니다",
+        "isNotDesc": "un dispositif médical",
+        "doesNotProvide": "의료 진단을 제공하지 않습니다",
+        "doesNotProvideDesc": "de diagnostic médical",
+        "doesNotReplace": "전문가의 조언을 대체하지 않습니다",
+        "doesNotReplaceDesc": "les conseils d'un professionnel de santé",
+        "isNotIntended": "질병을 치료, 치유 또는 예방하기 위한 것이 아닙니다",
+        "isNotIntendedDesc": "à traiter, guérir ou prévenir des maladies",
+        "disclaimer": "제공된 지표와 권장 사항은 일반적인 웰빙 신호이며 의료 조언으로 해석되어서는 안 됩니다. 의료에 대한 우려가 있는 경우 자격을 갖춘 전문가와 상담하세요."
+      },
+      "subsection3": {
+        "title": "3.3 이용 가능성",
+        "description": "우리는 서비스를 24시간 연중무휴로 제공하기 위해 노력합니다. 그러나 중단 없는 이용 가능성을 보장하지 않으며, 유지보수, 업데이트 또는 기타 기술적 이유로 서비스를 일시 중단하거나 중지할 수 있습니다."
+      }
+    },
+    "article4": {
+      "title": "제4조 – 가입 및 계정",
+      "subsection1": {
+        "title": "4.1 계정 생성",
+        "description": "일부 기능에 접근하려면 계정을 생성해야 합니다. 가입 시 다음에 동의합니다:",
+        "item1": "정확하고 완전하며 최신 정보를 제공하기",
+        "item2": "로그인 정보의 비밀 유지하기",
+        "item3": "계정의 무단 사용에 대해 즉시 통지하기",
+        "item4": "계정 아래에서 수행되는 모든 활동에 책임지기"
+      },
+      "subsection2": {
+        "title": "4.2 게스트 모드",
+        "description": "계정을 생성하지 않고도 게스트 모드에서 일부 기능을 사용할 수 있습니다. 게스트 모드의 데이터는 영구적으로 저장되지 않습니다."
+      },
+      "subsection3": {
+        "title": "4.3 계정 보안",
+        "description": "계정 보호는 전적으로 귀하의 책임입니다. 계정의 무단 사용으로 인한 손실에 대해서는 책임을 지지 않습니다."
+      }
+    },
+    "article5": {
+      "title": "제5조 – 구독 및 결제",
+      "subsection1": {
+        "title": "5.1 요금제",
+        "description": "서비스는 다양한 요금제로 제공될 수 있습니다:",
+        "free": "무료",
+        "freeDesc": "일부 기능에 대한 제한된 접근",
+        "premium": "프리미엄",
+        "premiumDesc": "유료 구독을 통한 전체 접근"
+      },
+      "subsection2": {
+        "title": "5.2 가격",
+        "description": "가격은 세금 포함 유로(€)로 표시됩니다. 사전 통지 후 언제든지 가격을 변경할 권리를 보유합니다."
+      },
+      "subsection3": {
+        "title": "5.3 결제",
+        "description": "결제는 안전한 결제 제공업체를 통해 처리됩니다. 구독 시 해당 금액의 자동 인출을 허용합니다."
+      },
+      "subsection4": {
+        "title": "5.4 자동 갱신",
+        "description": "구독은 만료 시 자동으로 갱신되며, 갱신 날짜 이전에 취소하지 않는 한 계속됩니다."
+      },
+      "subsection5": {
+        "title": "5.5 취소",
+        "description": "계정 설정이나 플랫폼(App Store, Google Play)을 통해 언제든지 구독을 취소할 수 있습니다. 취소는 현재 구독 기간이 끝날 때 적용됩니다."
+      },
+      "subsection6": {
+        "title": "5.6 철회권",
+        "description": "소비자 보호 관련 법률에 따라, 물리적 매체에서 제공되지 않는 디지털 콘텐츠에 대해서는 사전 동의와 철회권 상실 인식이 있을 경우 철회권을 행사할 수 없습니다."
+      },
+      "subsection7": {
+        "title": "5.7 환불",
+        "description": "법률에 별도의 규정이 없거나 청구 오류가 발생한 경우를 제외하고, 지불한 금액은 환불되지 않습니다."
+      }
+    },
+    "article6": {
+      "title": "제6조 – 이용 규칙",
+      "subsection1": {
+        "title": "6.1 허용된 사용",
+        "description": "서비스를 다음과 같이 사용하기로 동의합니다:",
+        "item1": "이 약관 및 적용 가능한 법률에 따라",
+        "item2": "개인적이고 비상업적인 목적으로",
+        "item3": "다른 사용자나 서비스 운영에 해를 끼치지 않도록"
+      },
+      "subsection2": {
+        "title": "6.2 금지된 행동",
+        "description": "다음 행위는 엄격히 금지됩니다:",
+        "item1": "불법적이거나 허가되지 않은 목적으로 서비스를 사용하는 것",
+        "item2": "무단으로 우리의 시스템에 접근하려고 시도하는 것",
+        "item3": "바이러스, 악성 소프트웨어 또는 악성 코드를 전송하는 것",
+        "item4": "다른 사용자의 개인 데이터를 수집하거나 저장하는 것",
+        "item5": "다른 사람으로 가장하는 것",
+        "item6": "우리의 인프라를 방해하거나 과부하를 주는 것",
+        "item7": "보안 조치나 접근 제한을 우회하는 것",
+        "item8": "서비스에 대한 접근을 재판매, 하위 라이센스 또는 이전하는 것",
+        "item9": "무단으로 로봇, 스크레이퍼 또는 자동화 도구를 사용하는 것",
+        "item10": "서비스를 상업적 목적으로 복제, 복사, 복제하거나 활용하는 것"
+      },
+      "subsection3": {
+        "title": "6.3 사용자 콘텐츠",
+        "description": "서비스를 통해 콘텐츠를 제출하는 경우(댓글, 이미지 등):",
+        "item1": "귀하는 지적 재산권을 유지합니다.",
+        "item2": "귀하는 서비스와 관련하여 이 콘텐츠를 사용, 복제 및 표시할 수 있는 전 세계적이고 비독점적이며 무료이며 양도 가능한 라이센스를 부여합니다.",
+        "item3": "귀하는 이 콘텐츠가 제3자의 권리를 침해하지 않음을 보장합니다."
+      }
+    },
+    "article7": {
+      "title": "제7조 – 지적 재산권",
+      "subsection1": {
+        "title": "7.1 회사의 권리",
+        "description": "서비스 및 그 원본 콘텐츠(사용자 콘텐츠 제외)는 코드, 텍스트, 그래픽, 로고, 아이콘, 이미지, 오디오 및 비디오 클립, 데이터 컴파일 및 소프트웨어를 포함하되 이에 국한되지 않으며, 회사 또는 그 라이센스 제공자의 독점 소유이며 프랑스 및 국제 지적 재산권 법에 의해 보호됩니다."
+      },
+      "subsection2": {
+        "title": "7.2 상표",
+        "description": "\"Nokta One\" 및 관련 로고는 회사의 상표입니다. 사전 서면 허가 없이 사용할 수 없습니다."
+      },
+      "subsection3": {
+        "title": "7.3 제한된 라이센스",
+        "description": "이 약관을 준수하는 조건으로, 귀하에게 개인적이고 제한적이며 비독점적이고 양도 불가능하며 철회 가능한 라이센스를 부여하여 개인적이고 비상업적인 목적으로 서비스에 접근하고 사용할 수 있습니다."
+      }
+    },
+    "article8": {
+      "title": "제8조 – 책임 제한",
+      "subsection1": {
+        "title": "8.1 보증의 제외",
+        "disclaimer": "서비스는 \"있는 그대로\" 및 \"이용 가능한\" 상태로 제공되며, 어떠한 종류의 보증도 없습니다.",
+        "description": "우리는 다음을 보장하지 않습니다:",
+        "item1": "서비스가 귀하의 특정 요구를 충족할 것",
+        "item2": "서비스가 중단되지 않거나 안전하거나 오류가 없을 것",
+        "item3": "얻은 결과가 정확하거나 신뢰할 수 있을 것",
+        "item4": "결함이 수정될 것"
+      },
+      "subsection2": {
+        "title": "8.2 책임 제한",
+        "limitation": "적용 가능한 법률이 허용하는 최대 범위 내에서, 회사는 다음에 대해 책임을 지지 않습니다:",
+        "item1": "간접적, 부수적, 특별, 결과적 또는 징벌적 손해",
+        "item2": "이익, 데이터, 사용, 브랜드 가치 또는 기타 무형 자산의 손실",
+        "item3": "서비스 사용 또는 사용 불능으로 인한 손해",
+        "item4": "귀하의 데이터에 대한 무단 접근으로 인한 손해"
+      },
+      "subsection3": {
+        "title": "8.3 책임 한도",
+        "description": "회사의 서비스 관련 모든 청구에 대한 총 책임은 귀하가 지난 12개월 동안 서비스에 대해 지불한 금액 또는 지불이 없을 경우 100€로 제한됩니다."
+      },
+      "subsection4": {
+        "title": "8.4 예외",
+        "description": "일부 관할권에서는 특정 보증의 배제 또는 책임의 제한을 허용하지 않습니다. 이러한 관할권에서는 법이 허용하는 최대한도로 우리의 책임이 제한됩니다."
+      }
+    },
+    "article9": {
+      "title": "제9조 – 면책",
+      "description": "귀하는 회사, 그 임원, 이사, 직원 및 대리인을 다음으로부터 방어하고 면책하며 책임을 지지 않기로 동의합니다:",
+      "item1": "서비스 사용",
+      "item2": "이 약관 위반",
+      "item3": "제3자의 권리 위반",
+      "item4": "귀하의 사용자 콘텐츠"
+    },
+    "article10": {
+      "title": "제10조 – 중단 및 해지",
+      "subsection1": {
+        "title": "10.1 귀하에 의한 해지",
+        "description": "앱의 설정에서 언제든지 서비스를 중단하고 계정을 삭제할 수 있습니다."
+      },
+      "subsection2": {
+        "title": "10.2 당사에 의한 해지",
+        "description": "다음과 같은 경우 즉시 귀하의 서비스 접근을 중단하거나 해지할 수 있습니다:",
+        "item1": "이 약관을 위반한 경우",
+        "item2": "귀하의 행동이 서비스나 다른 사용자에게 해를 끼친다고 합리적으로 판단되는 경우",
+        "item3": "법에 의해 요구되는 경우"
+      },
+      "subsection3": {
+        "title": "10.3 해지의 효과",
+        "description": "해지 시:",
+        "item1": "서비스 사용 권리가 즉시 종료됩니다.",
+        "item2": "귀하의 계정과 모든 관련 데이터를 삭제하거나 비활성화할 수 있습니다.",
+        "item3": "본질적으로 해지 후에도 지속되어야 하는 조항은 지속됩니다 (예: 지적 재산권, 책임 제한, 면책, 적용 법률)"
+      }
+    },
+    "article11": {
+      "title": "제11조 – 적용 법률 및 분쟁",
+      "subsection1": {
+        "title": "11.1 적용 법률",
+        "description": "본 약관은 프랑스 법률에 따라 규율되며 해석됩니다."
+      },
+      "subsection2": {
+        "title": "11.2 원만한 해결",
+        "description": "분쟁이 발생할 경우, 당사자들은 원만한 해결을 위해 노력합니다. 문의는 support@nokta.app으로 해주세요."
+      },
+      "subsection3": {
+        "title": "11.3 중재",
+        "description": "소비자 보호 관련 법률에 따라, 해결되지 않은 분쟁의 경우 무료 중재 서비스를 이용할 수 있습니다: 소비자 중재인: [중재인 지정 시 세부사항 기재]"
+      },
+      "subsection4": {
+        "title": "11.4 관할권",
+        "description": "원만한 해결이나 중재가 이루어지지 않을 경우, 모든 분쟁은 프랑스 파리 법원의 전속 관할에 따릅니다."
+      },
+      "subsection5": {
+        "title": "11.5 유럽 온라인 분쟁 해결 플랫폼",
+        "description": "유럽연합 집행위원회는 온라인 분쟁 해결 플랫폼을 제공합니다: https://ec.europa.eu/consumers/odr"
+      }
+    },
+    "article12": {
+      "title": "제12조 – 기타 조항",
+      "subsection1": {
+        "title": "12.1 완전한 합의",
+        "description": "본 약관과 개인정보 보호정책은 서비스에 관한 귀하와 회사 간의 완전한 합의를 구성합니다."
+      },
+      "subsection2": {
+        "title": "12.2 분리 가능성",
+        "description": "본 약관의 조항 중 하나가 무효 또는 집행 불가능한 경우, 나머지 조항은 유효합니다."
+      },
+      "subsection3": {
+        "title": "12.3 포기",
+        "description": "본 약관에 따른 권리를 행사하지 않는 것은 해당 권리에 대한 포기가 아닙니다."
+      },
+      "subsection4": {
+        "title": "12.4 양도",
+        "description": "당사의 사전 서면 동의 없이 본 약관에 따른 권리나 의무를 양도하거나 이전할 수 없습니다. 우리는 권리와 의무를 제한 없이 양도할 수 있습니다."
+      },
+      "subsection5": {
+        "title": "12.5 불가항력",
+        "description": "우리는 자연재해, 전쟁, 테러, 팬데믹 등 우리의 합리적인 통제를 벗어난 원인으로 인한 지연이나 의무 불이행에 대해 책임을 지지 않습니다."
+      },
+      "subsection6": {
+        "title": "12.6 언어",
+        "description": "본 약관은 프랑스어로 작성되었습니다. 번역이 있을 경우, 프랑스어 버전이 우선합니다."
+      }
+    },
+    "article13": {
+      "title": "제13조 – 연락처",
+      "description": "이용 약관에 대한 질문이 있으시면:",
+      "email": "이메일",
+      "emailAddress": "support@nokta.app",
+      "postal": "우편 주소",
+      "postalAddress": "고객 서비스\n파리, 프랑스"
+    },
+    "footer": "Nokta One을 사용함으로써, 귀하는 이 이용 약관을 읽고 이해했으며 동의함을 인정합니다."
   }
 }
