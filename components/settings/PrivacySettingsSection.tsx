@@ -106,7 +106,7 @@ export default function PrivacySettingsSection({
         whileTap={{ scale: 0.99 }}
       >
         <div className="flex items-center gap-3">
-          <Shield size={20} className="text-blue-500" />
+          <Shield size={20} className="text-nokta-one-white" />
           <span className="text-white font-medium text-sm">
             {t("privacy.sectionTitle") || t("consent.settings.title")}
           </span>
