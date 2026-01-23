@@ -200,15 +200,10 @@ export async function POST(request: NextRequest) {
       ? (analysis.internal_state as InternalState)
       : 'REGULATED';
 
-    // Valider la micro-action
-    if (!analysis.micro_action?.id) {
-      logger.warn('OpenAI response missing micro_action.id, using fallback', { requestId });
-      analysis.micro_action = {
-        id: 'box_breathing',
-        duration_seconds: 24,
-        category: 'breathing',
-      };
-    }
+    // Utiliser le sélecteur V2.5 pour choisir la micro-action
+    const isGuestMode = !userId || userId === 'guest';
+    const selectionResult = await selectMicroActionV25(state, userId || null, isGuestMode);
+    const selectedActionId = selectionResult.actionId;
 
     // Générer le Skane Index (avant l'action)
     const range = SKANE_INDEX_RANGES[state];
@@ -229,17 +224,22 @@ export async function POST(request: NextRequest) {
       confidence: 0.85, // Basé sur la qualité de l'analyse
       skaneIndex,
       skane_index: skaneIndex, // Format alternatif
-      microAction: analysis.micro_action.id,
+      microAction: selectedActionId,
       micro_action: {
-        id: analysis.micro_action.id,
-        duration_seconds: analysis.micro_action.duration_seconds || 24,
-        category: analysis.micro_action.category || 'breathing',
+        id: selectedActionId,
+        duration_seconds: analysis.micro_action?.duration_seconds || 24,
+        category: analysis.micro_action?.category || 'breathing',
       },
       amplifier: analysis.amplifier || { enabled: false, type: null },
       inferredSignals: analysis.inferred_signals,
       ui_flags: analysis.ui_flags || {
         share_allowed: true,
         medical_disclaimer: true,
+      },
+      selectionResult: {
+        actionId: selectionResult.actionId,
+        rule: selectionResult.rule,
+        candidates: selectionResult.candidates,
       },
       requestId, // Pour debugging
     });
