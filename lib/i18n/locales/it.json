@@ -1197,5 +1197,8 @@
     "codeRequired": "Codice richiesto",
     "codeIncorrect": "Codice errato",
     "tooManyAttempts": "Troppe tentativi. Riprova più tardi."
+  },
+  "ritual": {
+    "suggestion": "Alcuni utenti amano associare questi momenti a un rituale tranquillo (bevanda calda, silenzio, luce soffusa). È facoltativo."
   }
 }

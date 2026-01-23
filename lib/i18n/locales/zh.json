@@ -1197,5 +1197,8 @@
     "codeRequired": "需要代码",
     "codeIncorrect": "代码不正确",
     "tooManyAttempts": "尝试次数过多。请稍后再试。"
+  },
+  "ritual": {
+    "suggestion": "一些用户喜欢将这些时刻与宁静的仪式结合起来（热饮、安静、柔和的光线）。这不是必需的。"
   }
 }

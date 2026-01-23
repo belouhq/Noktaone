@@ -1197,5 +1197,8 @@
     "codeRequired": "Kode diperlukan",
     "codeIncorrect": "Kode salah",
     "tooManyAttempts": "Terlalu banyak percobaan. Coba lagi nanti."
+  },
+  "ritual": {
+    "suggestion": "Beberapa pengguna suka mengaitkan momen ini dengan ritual tenang (minuman hangat, keheningan, cahaya lembut). Ini opsional."
   }
 }

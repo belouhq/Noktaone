@@ -267,6 +267,9 @@
     "verifyOTPError": "Code incorrect",
     "oauthError": "Erreur d'authentification"
   },
+  "ritual": {
+    "suggestion": "Certains utilisateurs aiment associer ces moments à un rituel calme (boisson chaude, silence, lumière douce). C'est optionnel."
+  },
   "skaneIndex": {
     "title": "Skane Index",
     "before": "Avant",

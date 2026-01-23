@@ -1197,5 +1197,8 @@
     "codeRequired": "Code erforderlich",
     "codeIncorrect": "Code falsch",
     "tooManyAttempts": "Zu viele Versuche. Bitte später erneut versuchen."
+  },
+  "ritual": {
+    "suggestion": "Einige Nutzer verbinden diese Momente gerne mit einem ruhigen Ritual (heiße Getränke, Stille, sanftes Licht). Das ist optional."
   }
 }

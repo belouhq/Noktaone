@@ -267,6 +267,9 @@
     "verifyOTPError": "Incorrect code",
     "oauthError": "Authentication error"
   },
+  "ritual": {
+    "suggestion": "Some users like to pair these moments with a calm ritual (warm drink, silence, soft light). It's optional."
+  },
   "skaneIndex": {
     "title": "Skane Index",
     "before": "Before",
