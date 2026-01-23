@@ -193,7 +193,12 @@
     "browserChrome": "크롬",
     "browserSafari": "사파리",
     "browserFirefox": "파이어폭스",
-    "browserDefault": "브라우저"
+    "browserDefault": "브라우저",
+    "permissionTitle": "카메라 접근",
+    "permissionDescription": "NOKTA ONE은 몇 초 안에 당신의 상태를 분석하기 위해 카메라 접근이 필요합니다.",
+    "privacyNote": "당신의 이미지는 절대 저장되지 않습니다. 분석은 실시간으로 이루어지며 비공식적입니다.",
+    "allowButton": "카메라 활성화",
+    "laterButton": "나중에"
   },
   "settings": {
     "profile": "프로필",

@@ -112,7 +112,12 @@
     "browserChrome": "Chrome",
     "browserSafari": "Safari",
     "browserFirefox": "Firefox",
-    "browserDefault": "Browser"
+    "browserDefault": "Browser",
+    "permissionTitle": "Zugriff auf die Kamera",
+    "permissionDescription": "NOKTA ONE benötigt Zugriff auf Ihre Kamera, um Ihren Zustand in wenigen Sekunden zu analysieren.",
+    "privacyNote": "Ihre Bilder werden niemals gespeichert. Die Analyse erfolgt in Echtzeit und bleibt privat.",
+    "allowButton": "Kamera aktivieren",
+    "laterButton": "Später"
   },
   "settings": {
     "profile": "Profil",

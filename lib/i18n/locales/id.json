@@ -193,7 +193,12 @@
     "browserChrome": "Chrome",
     "browserSafari": "Safari",
     "browserFirefox": "Firefox",
-    "browserDefault": "Browser"
+    "browserDefault": "Browser",
+    "permissionTitle": "Akses Kamera",
+    "permissionDescription": "NOKTA ONE perlu mengakses kamera Anda untuk menganalisis keadaan Anda dalam beberapa detik.",
+    "privacyNote": "Gambar Anda tidak pernah disimpan. Analisis dilakukan secara real-time dan tetap pribadi.",
+    "allowButton": "Aktifkan Kamera",
+    "laterButton": "Nanti"
   },
   "settings": {
     "profile": "Profil",

@@ -193,7 +193,12 @@
     "browserChrome": "क्रोम",
     "browserSafari": "सफारी",
     "browserFirefox": "फायरफॉक्स",
-    "browserDefault": "ब्राउज़र"
+    "browserDefault": "ब्राउज़र",
+    "permissionTitle": "कैमरा की अनुमति",
+    "permissionDescription": "NOKTA ONE को आपके कैमरे तक पहुंच की आवश्यकता है ताकि वह कुछ सेकंड में आपकी स्थिति का विश्लेषण कर सके।",
+    "privacyNote": "आपकी छवियाँ कभी भी संग्रहीत नहीं की जाती हैं। विश्लेषण वास्तविक समय में होता है और निजी रहता है।",
+    "allowButton": "कैमरा सक्रिय करें",
+    "laterButton": "बाद में"
   },
   "settings": {
     "profile": "प्रोफ़ाइल",

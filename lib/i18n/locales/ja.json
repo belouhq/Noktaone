@@ -193,7 +193,12 @@
     "browserChrome": "Chrome",
     "browserSafari": "Safari",
     "browserFirefox": "Firefox",
-    "browserDefault": "ブラウザ"
+    "browserDefault": "ブラウザ",
+    "permissionTitle": "カメラのアクセス",
+    "permissionDescription": "NOKTA ONEは、あなたの状態を数秒で分析するためにカメラへのアクセスが必要です。",
+    "privacyNote": "あなたの画像は決して保存されません。分析はリアルタイムで行われ、プライベートです。",
+    "allowButton": "カメラを有効にする",
+    "laterButton": "後で"
   },
   "settings": {
     "profile": "プロフィール",

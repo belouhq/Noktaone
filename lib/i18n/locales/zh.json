@@ -112,7 +112,12 @@
     "browserChrome": "Chrome",
     "browserSafari": "Safari",
     "browserFirefox": "Firefox",
-    "browserDefault": "浏览器"
+    "browserDefault": "浏览器",
+    "permissionTitle": "相机访问",
+    "permissionDescription": "NOKTA ONE 需要访问您的相机，以便在几秒钟内分析您的状态。",
+    "privacyNote": "您的图像不会被存储。分析是实时进行的，并保持私密。",
+    "allowButton": "启用相机",
+    "laterButton": "稍后"
   },
   "settings": {
     "language": "语言",

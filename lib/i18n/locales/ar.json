@@ -193,7 +193,12 @@
     "browserChrome": "كروم",
     "browserSafari": "سفاري",
     "browserFirefox": "فايرفوكس",
-    "browserDefault": "متصفح"
+    "browserDefault": "متصفح",
+    "permissionTitle": "الوصول إلى الكاميرا",
+    "permissionDescription": "تحتاج NOKTA ONE للوصول إلى كاميرتك لتحليل حالتك في بضع ثوان.",
+    "privacyNote": "صورك لا تُخزن أبدًا. التحليل يتم في الوقت الحقيقي ويظل خاصًا.",
+    "allowButton": "تفعيل الكاميرا",
+    "laterButton": "لاحقًا"
   },
   "settings": {
     "profile": "الملف الشخصي",
