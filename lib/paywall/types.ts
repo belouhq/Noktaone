@@ -2,7 +2,9 @@
  * Paywall Types
  */
 
-export type SupportedCurrency = 'EUR' | 'USD' | 'GBP' | 'CAD' | 'AUD';
+export type SupportedCurrency = 
+  | 'EUR' | 'USD' | 'GBP' | 'CAD' | 'AUD'
+  | 'JPY' | 'KRW' | 'CNY' | 'INR' | 'AED' | 'RUB';
 
 export type PaywallTrigger = 
   | 'trial_expired'

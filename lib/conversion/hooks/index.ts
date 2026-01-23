@@ -45,16 +45,31 @@ export function usePricing(locale: SupportedLocale = 'fr'): UsePricingReturn {
     try {
       const localePricing = LOCALE_PRICING[locale] || LOCALE_PRICING.en;
       
-      // Convert to cents for PricingDisplay format
+      // Check if currency uses decimals (EUR, USD, etc.) or whole units (JPY, KRW, etc.)
+      const DECIMAL_CURRENCIES: SupportedCurrency[] = ['EUR', 'USD', 'GBP', 'CAD', 'AUD', 'CNY', 'INR', 'AED', 'RUB'];
+      const isDecimal = DECIMAL_CURRENCIES.includes(localePricing.currency);
+      
+      // Convert to smallest unit: multiply by 100 for decimal currencies, keep as-is for whole unit currencies
+      const monthlyInSmallestUnit = isDecimal 
+        ? Math.round(localePricing.monthly * 100)
+        : Math.round(localePricing.monthly);
+      const annualInSmallestUnit = isDecimal
+        ? Math.round(localePricing.annual * 100)
+        : Math.round(localePricing.annual);
+      
+      // Calculate savings percentage
+      const monthlyAnnual = localePricing.monthly * 12;
+      const savingsPercent = Math.round(((monthlyAnnual - localePricing.annual) / monthlyAnnual) * 100);
+      
       const pricingData: PricingDisplay = {
         monthly: {
-          original: Math.round(localePricing.monthly * 100), // Convert to cents
+          original: monthlyInSmallestUnit,
           discounted: undefined,
         },
         annual: {
-          original: Math.round(localePricing.annual * 100), // Convert to cents
+          original: annualInSmallestUnit,
           discounted: undefined,
-          savingsPercent: Math.round(((localePricing.monthly * 12 - localePricing.annual) / (localePricing.monthly * 12)) * 100),
+          savingsPercent,
         },
         currency: localePricing.currency,
         influencerDiscount: null,
