@@ -17,7 +17,7 @@
   },
   "home": {
     "title": "NOKTA ONE",
-    "pressToSkane": "按下扫描",
+    "pressToSkane": "按下进行\n扫描",
     "recentSkane": "最近的 Skane：",
     "today": "今天",
     "yesterday": "昨天",
@@ -30,11 +30,16 @@
     "minutesAgo": "{{count}} 分钟前",
     "todayAt": "今天 - {{time}}",
     "emptyState": "—",
-    "lastSkaneTitle": "上次 Skane",
-    "lastSkaneEmpty": "—"
+    "lastSkaneTitle": "最后一次扫描",
+    "lastSkaneEmpty": "—",
+    "helpAria": "帮助",
+    "startSkaneAria": "开始Skane"
   },
   "skane": {
     "startSkane": "开始扫描",
+    "recentActivity": "最近活动",
+    "streakDays": "天连续",
+    "totalSkanes": "Skane总数",
     "completed": "扫描完成",
     "analyzing": "分析中...",
     "analyzingPatterns": "身体模式分析中...",
@@ -42,7 +47,7 @@
     "signal": "信号",
     "action": "动作",
     "startMicroAction": "开始微动作",
-    "disclaimer": "健康信号 - 非医疗",
+    "disclaimer": "健康信号 — 非医疗",
     "guestModeEnabled": "Guest mode enabled",
     "guestModeDisabled": "Guest mode disabled",
     "hint": {
@@ -50,7 +55,7 @@
       "centerFace": "Center your face",
       "moreLight": "More light",
       "holdStill": "Hold still",
-      "oneFaceOnly": "Only one face",
+      "oneFaceOnly": "仅一个面部",
       "fitOval": "Fit your face in the frame",
       "showEyes": "显示你的眼睛",
       "showMouth": "显示你的嘴巴"
@@ -63,7 +68,7 @@
     "flashDisabled": "屏幕闪光已禁用",
     "centerFace": "将脸部置于中心",
     "actionCompleted": "操作已完成 ✓",
-    "observeFeeling": "观察你的感受。",
+    "observeFeeling": "注意您的感受。",
     "breatheWithRhythm": "跟着节奏呼吸。",
     "canPutPhoneDown": "你可以放下手机。"
   },
@@ -72,15 +77,15 @@
     "worse": "没有好转",
     "same": "一样",
     "better": "更好",
-    "helpImprove": "您的反馈帮助Nokta了解您",
-    "greatToHear": "太好了！🎉",
+    "helpImprove": "您的反馈帮助NOKTA了解您",
+    "greatToHear": "很高兴听到！🎉",
     "noted": "已记录 ✓",
     "willImprove": "我们会改进",
     "redirecting": "正在重定向...",
-    "privacyNote": "您的反馈保持私密，并帮助个性化您的未来微行动"
+    "privacyNote": "您的反馈保持私密，帮助个性化您的未来微动作"
   },
   "camera": {
-    "accessRequired": "扫描需要相机访问",
+    "accessRequired": "扫描需要相机访问权限",
     "allowCamera": "允许相机",
     "accessDenied": "相机访问被拒绝",
     "accessError": "技术错误",
@@ -101,12 +106,12 @@
     "faceAdjusting": "调整中...",
     "moreLight": "更多光线",
     "moveCloser": "靠近一点",
-    "onlyOneFace": "仅一个脸部",
+    "onlyOneFace": "仅一个面部",
     "showEyes": "显示你的眼睛",
     "showMouth": "显示你的嘴巴",
     "howToEnableOn": "如何在 {{browser}} 上启用：",
     "browserStep1": "打开网站或浏览器设置",
-    "browserStep2": "找到相机权限",
+    "browserStep2": "查找相机权限",
     "browserStep3": "允许此网站使用相机",
     "browserStep4": "刷新页面",
     "browserChrome": "Chrome",
@@ -121,21 +126,59 @@
   },
   "settings": {
     "language": "语言",
-    "logOut": "退出",
+    "logOut": "登出",
     "profile": "个人资料",
     "title": "个人资料",
     "settingsSection": "设置",
     "editProfile": "编辑我的个人资料",
     "notifications": "通知",
-    "connectedDevices": "连接设备",
+    "connectedDevices": "连接的设备",
     "referralCode": "推荐码",
     "invitations": "邀请",
     "invitationsAvailable": "可用邀请",
-    "inviteDescription": "邀请你的亲友体验 Nokta One 的访客模式。",
+    "inviteDescription": "邀请您的亲人试用NOKTA ONE作为嘉宾。",
     "copyInviteLink": "复制邀请链接",
     "linkCopied": "链接已复制！",
     "earnInvitation": "每 3 个 skanes 获得 1 个邀请（24 小时）",
-    "comingSoon": "即将推出"
+    "comingSoon": "即将推出",
+    "notificationSchedule": "Reminder schedule",
+    "scheduleDescription": "Customize your 3 daily reminders",
+    "morningReminder": "Morning reminder",
+    "afternoonReminder": "Afternoon reminder",
+    "eveningReminder": "Evening reminder",
+    "dailyReminders": "Daily reminders",
+    "dailyRemindersDescription": "3 reminders for your daily reset: morning, noon, evening",
+    "customizeSchedule": "Customize schedule",
+    "remindersScheduleTitle": "提醒时间",
+    "remindersScheduleDescription": "自定义 3 个每日提醒，助你不忘重置。",
+    "reminderMorning": "早晨",
+    "reminderNoon": "中午",
+    "reminderEvening": "晚上",
+    "remindersScheduleInfo": "提醒将作为通知显示在您的设备上",
+    "more": "More",
+    "exportData": "Export my data",
+    "partnershipManagement": "Partnership management",
+    "enableReminders": "启用提醒",
+    "termsOfUse": "使用条款",
+    "privacyPolicy": "隐私政策",
+    "licenses": "许可证",
+    "privacyAndData": "隐私与数据",
+    "contactUs": "联系我们",
+    "editProfileAria": "编辑个人资料",
+    "notificationPermissionDeniedDesc": "允许通知以接收你选择的时间的提醒。",
+    "enableNotifications": "允许通知"
+  },
+  "invitationsModal": {
+    "title": "邀请",
+    "counterLabel_one": "1 个邀请可用",
+    "counterLabel_other": "{{count}} 个邀请可用",
+    "description": "邀请亲友体验 Nokta One。他们可免费进行一次 Skane。",
+    "shareInvitation": "分享邀请",
+    "copyLink": "复制链接",
+    "linkCopied": "链接已复制！",
+    "earnPerFriend": "每有一位好友完成 3 次 Skane，即可获得 1 个邀请",
+    "shareTitle": "试试 Nokta One",
+    "shareText": "3 秒发现你的压力信号，30 秒重置神经系统。"
   },
   "languages": {
     "fr": "法语",
@@ -158,16 +201,16 @@
     "regulated": "已调节"
   },
   "actions": {
-    "physiologicalSigh": "生理叹息",
-    "expiration38": "长呼气",
+    "physiologicalSigh": "生理性叹息",
+    "expiration38": "长时间呼气",
     "respiration46": "稳定呼吸",
     "boxBreathing": "盒式呼吸",
-    "respiration21": "提神呼吸",
-    "dropTrapezes": "放松斜方肌",
+    "respiration21": "充满活力的呼吸",
+    "dropTrapezes": "放下陷阱",
     "ouvertureThoracique": "打开胸部",
-    "postureAncrage": "锚定姿势",
-    "shakeNeuromusculaire": "神经肌肉摇动",
-    "pressionPlantaire": "脚底压力",
+    "postureAncrage": "扎根姿势",
+    "shakeNeuromusculaire": "神经肌肉震动",
+    "pressionPlantaire": "脚部压力",
     "regardFixeExpiration": "固定视线 + 呼气",
     "tipLabel": "提示（可选）",
     "skipTip": "跳过",
@@ -197,27 +240,27 @@
     "exhaleMouth": "通过嘴巴呼气",
     "inhaleQuickNose": "通过鼻子快速吸气",
     "inhaleCalmly": "平静地吸气",
-    "exhaleSlowLong": "慢慢而长地呼气"
+    "exhaleSlowLong": "慢慢完全呼气"
   },
   "body": {
     "raiseShouders": "抬起肩膀",
     "releaseCompletely": "完全放松",
-    "openChest": "轻微打开胸部",
+    "openChest": "轻轻打开胸部",
     "breatheCalmly": "平静地呼吸",
     "holdPosture": "保持姿势",
-    "standGrounded": "站稳，脚踏实地",
+    "standGrounded": "站直，脚踏实地",
     "lookAhead": "目光向前",
     "calmBreathing": "平静的呼吸",
     "shakeArms": "轻轻摇动手臂和手",
     "moveFreely": "让身体自由移动",
     "pressFeet": "将脚压入地面",
     "release": "放松",
-    "fixPoint": "盯着一个稳定的点"
+    "fixPoint": "专注于一个稳定的点"
   },
   "share": {
-    "shareYourReset": "想分享你的重置吗？",
+    "shareYourReset": "您想分享您的重置吗？",
     "no": "否",
-    "shareToStories": "分享至动态",
+    "shareToStories": "分享至故事",
     "downloadImage": "下载图片",
     "skaneIndex": "SKANE 指数",
     "before": "之前",
@@ -252,22 +295,53 @@
     "country": "国家",
     "occupation": "职业",
     "changePhoto": "更换照片",
-    "profileUpdated": "个人资料已更新！"
+    "profileUpdated": "个人资料已更新！",
+    "memberSince": "Member since",
+    "streakDays": "day streak",
+    "inviteFriends": "Invite friends"
+  },
+  "editProfile": {
+    "title": "编辑我的个人资料",
+    "sectionPhoto": "个人资料照片",
+    "sectionPersonal": "个人信息",
+    "sectionContact": "联系方式",
+    "sectionPreferences": "偏好设置",
+    "placeholders": {
+      "firstName": "您的名字",
+      "lastName": "您的姓氏",
+      "username": "用户名",
+      "email": "您的@邮箱.com",
+      "phone": "+86 138 1234 5678",
+      "address": "您的地址",
+      "postalCode": "100000",
+      "city": "城市",
+      "job": "例如：企业家、运动员、学生..."
+    },
+    "saving": "保存中...",
+    "jobOptional": "职业（可选）",
+    "countryFR": "法国",
+    "countryUS": "美国",
+    "countryGB": "英国",
+    "countryDE": "德国",
+    "countryES": "西班牙",
+    "countryIT": "意大利",
+    "countryCN": "中国",
+    "countryJP": "日本"
   },
   "info": {
     "whatIsSkane": "什么是 SKANE？",
-    "skaneDescription": "最多 30 秒的身体重置：",
+    "skaneDescription": "身体重置，最长可达 30 秒：",
     "skanePoint1": "面部扫描 AI（3 秒）",
     "skanePoint2": "引导微动作（20-30 秒）",
     "skanePoint3": "立即恢复平衡",
-    "noDiagnosis": "仅健康信号。只需行动。",
+    "noDiagnosis": "仅为福祉信号。只是一个动作。",
     "guestMode": "访客模式",
-    "guestDescription": "邀请你的亲友体验 Nokta One。",
+    "guestDescription": "邀请您的亲人尝试 Nokta One。",
     "guestPoint1": "1 个邀请 = 1 个人可以尝试",
     "guestPoint2": "每 3 个 skanes 获得 1 个邀请（24 小时）",
     "guestPoint3": "访客可以分享他们的 Skane 指数",
     "guestPoint4": "访客没有数据保存",
-    "blueIconMeansGuest": "蓝色图标表示访客模式已启用。",
+    "blueIconMeansGuest": "蓝色图标表示访客模式已激活。",
     "invitationsAvailable": "可用邀请"
   },
   "signup": {
@@ -281,7 +355,7 @@
     "usernameInvalidChars": "仅限字母、数字和下划线",
     "usernameAvailable": "可用",
     "enableNotifications": "启用通知",
-    "notificationsDescription": "随时了解你的重置和进展",
+    "notificationsDescription": "保持对您的重置和进展的更新",
     "yourReferralCode": "你的推荐码",
     "accountCreated": "账户创建成功！",
     "acceptTerms": "我接受",
@@ -332,13 +406,13 @@
     "yesterday": "昨天"
   },
   "consent": {
-    "title": "扫描同意",
+    "title": "您的隐私很重要",
     "point1": "您同意进行 3 秒的面部扫描以调节身体。",
     "point2": "Your images are NOT stored.",
     "point3": "仅面部模式分析 — 不识别身份。",
     "point4": "数据仅用于推荐微行动以调节身体。",
-    "point5": "仅用于个人健康。",
-    "disclaimer": "NOKTA 仅用于健康。如有需要，请寻求专业建议。",
+    "point5": "仅用于个人福祉。",
+    "disclaimer": "NOKTA 仅用于福祉。如有需要，请寻求专业建议。",
     "accept": "I accept",
     "decline": "Decline",
     "modal": {
@@ -402,25 +476,29 @@
     "footerNotice": "继续使用即表示您接受我们的服务条款。"
   },
   "devices": {
-    "title": "连接设备",
-    "pwaNote": "Apple Health 和 Health Connect 仅在 Nokta 移动应用（iOS 和 Android）中可用。无法在网页上连接。",
+    "title": "连接的设备",
+    "pwaNote": "Apple Health 和 Health Connect 仅在 NOKTA 移动应用程序（iOS 和 Android）中可用。网页上无法连接。",
     "appleHealth": "Apple Health",
     "healthConnect": "Health Connect",
+    "appleHealthDescription": "同步 iOS 健康数据",
+    "healthConnectDescription": "同步 Android 健康数据",
     "statusConnected": "已连接",
-    "statusDisconnected": "未连接",
-    "statusPwaUnavailable": "在网页上不可用",
-    "hintIos": "在 iOS 上使用 Nokta 应用连接 Apple Health。",
-    "hintAndroid": "在 Android 上使用 Nokta 应用连接 Health Connect。"
+    "statusDisconnected": "已断开连接",
+    "statusPwaUnavailable": "网页上不可用",
+    "comingSoon": "即将推出",
+    "footerMoreIntegrations": "更多集成即将推出：Garmin、Fitbit、Oura、WHOOP...",
+    "hintIos": "在 iOS 上使用 NOKTA 应用连接 Apple Health。",
+    "hintAndroid": "在 Android 上使用 NOKTA 应用连接 Health Connect。"
   },
   "skaneIndex": {
     "title": "Skane Index",
     "before": "Before",
     "after": "After",
-    "skaneCompleted": "Skane Completed",
+    "skaneCompleted": "Skane完成",
     "activationDisclaimer": "您的激活分数 · 仅供参考",
     "shareYourReset": "Share your reset",
     "demo": {
-      "title": "Skane Index 演示",
+      "title": "Skane Index演示",
       "feedback": "反馈",
       "feedbackClear": "清除",
       "feedbackReduced": "减少",
@@ -435,11 +513,25 @@
   "welcome": {
     "message": "几秒钟内了解身体状态。",
     "start": "开始",
-    "alreadyAccount": "已经有账户"
+    "alreadyAccount": "已经有账户",
+    "headlinePrefix": "测量你的",
+    "headlineSuffix": "3秒即可。",
+    "words": {
+      "stress": "压力",
+      "tension": "紧张",
+      "anxiety": "焦虑",
+      "fatigue": "疲劳"
+    },
+    "subheadline": "用30秒微动作重置你的神经系统。",
+    "disclaimer": "健康信号 · 非医疗建议",
+    "featureScan": "3秒面部扫描",
+    "featureAction": "30秒微动作",
+    "featureResult": "即时结果",
+    "skaneIndex": "SKANE INDEX"
   },
   "firstSkaneResult": {
     "title": "您的身体需要重置。",
-    "subtitle": "我们为您提供立即重置。",
+    "subtitle": "我们建议立即重置。",
     "resetNow": "立即重置 ({{duration}}s)"
   },
   "firstSkaneFeedback": {
@@ -449,19 +541,19 @@
     "notReally": "不太是",
     "confirmYes": "太好了！🎉",
     "confirmLittle": "已记录 ✓",
-    "confirmNot": "感谢你的反馈"
+    "confirmNot": "感谢您的反馈"
   },
   "onboarding": {
     "continue": {
-      "title": "Nokta One 更了解你时效果更佳。",
-      "subtitle": "没有敏感数据。只是你的感受。",
+      "title": "NOKTA ONE 了解您后效果更佳。",
+      "subtitle": "没有敏感数据。只是您的感受。",
       "continue": "继续",
       "later": "稍后"
     },
     "adaptation": {
-      "title": "Nokta 适应你的身体。",
-      "description": "在{{days}}天内，Nokta 会调整建议以完美契合你。",
-      "noAction": "你不需要做任何特别的事情。",
+      "title": "NOKTA ONE 适应您的身体。",
+      "description": "在 {{days}} 天内，NOKTA ONE 调整推荐以完美契合您。",
+      "noAction": "您无需做任何特别的事情。",
       "timeline": "第 1 天 → 第 7 天",
       "accept": "好的"
     },
@@ -469,25 +561,25 @@
       "title": "获得更好结果",
       "practice1": "仅扫描您的面部",
       "practice2": "使用访客模式给他人",
-      "practice3": "在感觉不适时扫描",
+      "practice3": "在您感觉不适时扫描",
       "understood": "明白了"
     },
     "reflex": {
-      "title": "当你的身体不适时，Skane。",
+      "title": "当您的身体不适时，扫描。",
       "subtitle": "压力，疲劳，精神过载，在重要时刻之前",
-      "noktaIsHere": "Nokta在这里。",
-      "nextSkane": "进行我的下一个Skane",
+      "noktaIsHere": "NOKTA ONE 在这里。",
+      "nextSkane": "进行我的下一个扫描",
       "skip": "跳过"
     }
   },
   "homeAdaptation": {
-    "inProgress": "适应进行中 — 第 {{day}} 天，共 7 天",
+    "inProgress": "适应中 — 第 {{day}} 天，共 7 天",
     "improvesPrecision": "每次 skane 提高精度。",
     "complete": "✓ 适应完成",
-    "calibrated": "Nokta 现在已为您校准。"
+    "calibrated": "NOKTA ONE 现在已为您校准。"
   },
   "login": {
-    "title": "欢迎回来",
+    "title": "很高兴再次见到您",
     "subtitle": "登录以继续",
     "email": "电子邮件",
     "password": "密码",
@@ -497,17 +589,29 @@
     "or": "或",
     "withApple": "使用Apple继续",
     "withGoogle": "使用Google继续",
-    "noAccount": "没有账户？",
+    "noAccount": "还没有账户？",
     "signUp": "创建账户",
     "errorRequired": "所有字段都是必填的",
     "errorGeneric": "登录错误",
-    "errorInvalidCredentials": "无效的电子邮件或密码"
+    "errorInvalidCredentials": "电子邮件或密码不正确",
+    "errorEmailRequired": "电子邮件为必填项",
+    "errorEmailInvalid": "电子邮件格式无效",
+    "errorPasswordRequired": "密码为必填项",
+    "errorPasswordMin": "至少6个字符",
+    "placeholderEmail": "your@email.com",
+    "placeholderPassword": "••••••••",
+    "showPassword": "显示密码",
+    "hidePassword": "隐藏密码",
+    "footerPrefix": "继续即表示您同意我们的",
+    "footerTerms": "条款",
+    "footerAnd": "和",
+    "footerPrivacy": "隐私政策"
   },
   "forgotPassword": {
     "title": "忘记密码？",
     "subtitle": "输入您的电子邮件，我们将发送重置链接。",
     "email": "电子邮件",
-    "submit": "发送重置链接",
+    "submit": "发送链接",
     "sending": "发送中...",
     "errorRequired": "电子邮件是必填的",
     "errorInvalid": "无效的电子邮件",
@@ -515,35 +619,35 @@
     "successTitle": "邮件已发送！",
     "successMessage": "我们已向${email}发送重置链接。请检查您的收件箱。",
     "backToLogin": "返回登录",
-    "noEmail": "没有收到邮件？",
+    "noEmail": "没有收到吗？",
     "resend": "重新发送",
-    "rememberPassword": "记得您的密码吗？",
+    "rememberPassword": "记得吗？",
     "login": "登录"
   },
   "faq": {
     "title": "常见问题",
     "subtitle": "常见问题解答",
-    "subtitleDesc": "关于Nokta的所有信息",
+    "subtitleDesc": "关于 Nokta One 的所有信息",
     "moreQuestions": "还有其他问题吗？",
     "contactUs": "联系我们",
     "whatIsNokta": {
       "question": "What is Nokta One, exactly?",
-      "answer": "Nokta One is a body and nervous system reset technology. In seconds, it identifies when your body is \"off\" and offers a simple micro-action to return to a functional, clear, and high-performing state.\n\nIt's not meditation, therapy, or medical monitoring.\nIt's an immediate adjustment tool, usable in real life."
+      "answer": "Nokta One 是一种身体和神经系统重置技术。它在几秒钟内识别您的身体何时“失调”，并建议一个简单的微动作以恢复功能、清晰和高效的状态。\n\n这不是冥想或临床程序。\n这是一个立即调整工具，可在现实生活中使用。"
     },
     "whenUseful": {
       "question": "When is Nokta One useful?",
-      "answer": "Nokta One is designed for moments when you think:\n\n• \"I don't feel right, but I don't know why\"\n• \"I'm tense for no clear reason\"\n• \"I can't focus\"\n• \"My body is tired, but my mind wants to keep going\"\n• \"I'm not at my best\"\n\nThese moments happen before important meetings, after mental overload, between demanding tasks, before sports or competition, at the end of the day when your body gives up, or in the morning when energy isn't there.\n\nNokta One is designed for these daily micro-imbalances, not medical situations."
+      "answer": "Nokta One 设计用于您认为的时刻：\n\n• “我感觉不太好，但不知道为什么”\n• “我没有明显原因地紧张”\n• “我无法集中注意力”\n• “我的身体很累，但我的头脑想继续”\n• “我没有达到最佳状态”\n\n这些时刻发生在重要会议之前、心理负荷过重之后、繁重任务之间、运动或比赛之前、一天结束时身体疲惫，或早晨能量低时。\n\nNokta One 旨在应对这些日常微失衡，而不是临床情况。"
     },
     "whyOffButOk": {
       "question": "Why do I sometimes feel \"fine\" but not function properly?",
-      "answer": "Because your body and nervous system can be desynchronized.\n\nYou can:\n• Have a good heart rate but feel oppressed\n• Be mentally calm but physically agitated\n• Be motivated but unable to get started\n\nNokta One is based on the principle that body sensation precedes mental performance."
+      "answer": "因为您的身体和神经系统可能不同步。\n\n您可能：\n• 心率良好但感到不堪重负\n• 心理平静但身体不安\n• 有动力但无法开始\n\nNOKTA ONE 基于身体感觉先于心理表现的原则。"
     },
     "differentFromOthers": {
-      "question": "How is Nokta One different from classic wellness apps?",
-      "answer": "Most apps ask you to:\n• Understand what you're feeling\n• Choose a practice\n• Commit to a long time\n\nNokta One does the opposite:\n• It starts from the body signal, not your analysis\n• It reduces choice to one single action\n• It acts in less than 30 seconds\n\nLess thinking, less friction, more impact."
+      "question": "NOKTA ONE 与传统健康应用有什么不同？",
+      "answer": "大多数应用要求您：\n• 理解自己的感受\n• 选择一个练习\n• 长期承诺\n\nNOKTA ONE 则相反：\n• 它从身体信号开始，而不是您的分析\n• 它将选择减少为一个动作\n• 它在 30 秒内完成\n\n更少思考，更少摩擦，更多影响。"
     },
     "analyzeEmotions": {
-      "question": "Does Nokta One \"analyze\" my emotions?",
+      "question": "NOKTA ONE 会“分析”我的情绪吗？",
       "answer": "Nokta One doesn't judge you and makes no diagnosis.\n\nIt only observes neutral body indicators (posture, tension, visible micro-signals) to estimate a global functional state.\n\nThe goal isn't to tell you \"what you're feeling\", but to detect when your body isn't aligned with what you want to do."
     },
     "replaceProfessional": {
@@ -1272,5 +1376,172 @@
       "privacy": "隐私",
       "support": "支持"
     }
+  },
+  "termsPage": {
+    "title": "服务条款",
+    "versionLabel": "版本",
+    "versionValue": "1.0",
+    "updatedLabel": "最后更新",
+    "updatedValue": "2025年1月",
+    "disclaimer": "免责声明：Nokta One 不是医疗设备，不提供医疗建议。如有健康问题，请咨询专业人士。",
+    "contactTitle": "联系",
+    "contactDescription": "如对这些条款有任何疑问：",
+    "acceptanceNotice": "使用Nokta One即表示您已阅读、理解并同意这些条款。",
+    "sections": {
+      "s01": {
+        "title": "第1条 - 接受",
+        "content": "<p>使用Nokta One即表示您同意遵守这些条款。如果您不同意，您必须不使用该服务。</p><p>您声明您至少<strong>16岁</strong>（或13岁且已获得父母同意），并具备签订合同的法律能力。</p>"
+      },
+      "s02": {
+        "title": "第2条 - 服务描述",
+        "content": "<p>Nokta One是一款提供以下功能的健康应用：</p><ul><li>指导的生理调节课程</li><li>呼吸和姿势练习</li><li>健康状态跟踪</li><li>个性化推荐</li></ul><p><strong>该服务仅供信息参考，不替代专业人士的建议。</strong></p>"
+      },
+      "s03": {
+        "title": "第3条 - 用户账户",
+        "content": "<p>要访问某些功能，您必须创建一个账户。您同意：</p><ul><li>提供准确和最新的信息</li><li>维护您的凭据的机密性</li><li>通知我们任何未经授权的使用</li><li>对您账户下的所有活动负责</li></ul>"
+      },
+      "s04": {
+        "title": "第4条 - 订阅",
+        "content": "<p><strong>计划：</strong> 免费（有限访问）或高级（完全访问）</p><p><strong>续订：</strong> 自动，除非在到期前取消</p><p><strong>取消：</strong> 可以随时通过设置或您的平台（App Store，Google Play）取消</p><p><strong>退款：</strong> 不可退款，除非法律要求</p>"
+      },
+      "s05": {
+        "title": "第5条 - 使用规则",
+        "content": "<p><strong>禁止：</strong></p><ul><li>将服务用于非法目的</li><li>尝试未经授权访问我们的系统</li><li>传播病毒或恶意代码</li><li>收集其他用户的数据</li><li>冒充他人</li><li>转售或商业利用该服务</li></ul>"
+      },
+      "s06": {
+        "title": "第6条 - 知识产权",
+        "content": "<p>本服务及其内容（代码、文本、图形、标志等）是出版商的独占财产，并受知识产权法保护。</p><p>您被授予个人、有限、非独占和可撤销的许可，以个人目的使用本服务。</p>"
+      },
+      "s07": {
+        "title": "第7条 - 责任限制",
+        "content": "<p>本服务按“现状”提供，不提供任何形式的保证。</p><p>我们不对以下情况负责：</p><ul><li>间接或后果性损害</li><li>利润或数据损失</li><li>服务中断</li></ul><p><strong>上限：</strong>我们的责任限于过去12个月内支付的金额（或最高€100）。</p>"
+      },
+      "s08": {
+        "title": "第8条 - 终止",
+        "content": "<p><strong>由您：</strong>您可以随时从设置中删除您的账户。</p><p><strong>由我们：</strong>如果您违反这些条款，我们可能会暂停您的访问。</p><p>终止后，您使用本服务的权利立即停止。</p>"
+      },
+      "s09": {
+        "title": "第9条 - 适用法律",
+        "content": "<p>这些条款受<strong>法国法律</strong>管辖。</p><p>如有争议，各方将努力寻找友好解决方案。您可以使用消费者调解。</p><p><strong>管辖权：</strong>巴黎法院，受强制性消费者管辖规则的约束。</p><p><strong>欧洲平台：</strong> <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>ec.europa.eu/consumers/odr</a></p>"
+      }
+    }
+  },
+  "privacyPolicyPage": {
+    "title": "隐私政策",
+    "versionLabel": "版本",
+    "versionValue": "1.0",
+    "updatedLabel": "最后更新",
+    "updatedValue": "2025年1月",
+    "contactTitle": "联系我们",
+    "contactDescription": "如对本政策有任何疑问或行使您的权利：",
+    "sections": {
+      "s01": {
+        "title": "介绍",
+        "content": "<p>本隐私政策描述了您在使用<strong>Nokta One</strong>应用程序时，如何收集、使用和共享您的个人信息。</p><p>Nokta One由一家在巴黎商业和公司注册处注册的法国公司发布。使用我们的服务即表示您同意本政策中描述的做法。</p>"
+      },
+      "s02": {
+        "title": "1. 我们收集的数据",
+        "content": "<p><strong>账户数据：</strong>电子邮件、用户名、密码（哈希）</p><p><strong>个人资料数据：</strong>名字、出生日期、国家、语言</p><p><strong>使用数据：</strong>会话、操作、时间戳</p><p><strong>面部分析：</strong>图像在<strong>您的设备上本地处理</strong>。仅传输匿名的健康分数。我们<strong>不</strong>使用面部识别来识别您。</p>"
+      },
+      "s03": {
+        "title": "2. 我们如何使用数据",
+        "content": "<p>我们使用您的数据来：</p><ul><li>提供和改善服务</li><li>个性化您的体验</li><li>向您发送通讯（如已同意）</li><li>确保服务安全</li></ul><p><strong>法律依据（GDPR）：</strong>合同履行、合法利益、同意。</p>"
+      },
+      "s04": {
+        "title": "3. 数据共享",
+        "content": "<p><strong>我们从不出售您的个人数据。</strong></p><p>我们使用可信的服务提供商（欧盟云基础设施，PCI-DSS认证的支付服务）。转移到欧盟以外的地区受标准合同条款的约束。</p>"
+      },
+      "s05": {
+        "title": "4. 数据保留",
+        "content": "<p><strong>账户数据：</strong> 注册持续时间 + 3年</p><p><strong>会话数据：</strong> 24个月</p><p><strong>支付数据：</strong> 10年（税务义务）</p><p>账户删除后，您的数据将在30天内匿名化或删除。</p>"
+      },
+      "s06": {
+        "title": "5. 您的权利",
+        "content": "<p>您拥有以下权利：</p><ul><li><strong>访问</strong>：获取您的数据副本</li><li><strong>更正</strong>：更正您的数据</li><li><strong>删除</strong>：删除您的数据</li><li><strong>可携带性</strong>：导出您的数据</li><li><strong>异议</strong>：对某些处理提出异议</li><li><strong>撤回同意</strong>：随时</li></ul><p>响应时间：<strong>最长30天</strong>。</p><p>您可以向<strong>CNIL</strong>（www.cnil.fr）提出投诉。</p>"
+      },
+      "s07": {
+        "title": "6. 安全",
+        "content": "<p>您的数据受到以下保护：</p><ul><li>传输加密（TLS 1.3）和静态加密（AES-256）</li><li>安全认证</li><li>有限访问（最小权限原则）</li><li>72小时内通知违规</li></ul>"
+      },
+      "s08": {
+        "title": "7. 未成年人",
+        "content": "<p>我们的服务面向<strong>16岁及以上</strong>的人士。</p><p>在13至16岁之间，需要父母同意。我们不主动收集13岁以下儿童的数据。</p>"
+      },
+      "s09": {
+        "title": "8. 加州 (CCPA)",
+        "content": "<p>如果您是加州居民：</p><ul><li><strong>我们不出售您的个人信息</strong></li><li>您有权了解、删除和选择不参与数据的“销售”</li></ul>"
+      }
+    }
+  },
+  "legalNoticePage": {
+    "title": "法律声明",
+    "updatedLabel": "最后更新",
+    "updatedValue": "2025年1月",
+    "footerNote": "本法律声明可能随时修改。当前版本为应用程序上可访问的版本。",
+    "sections": {
+      "s01": {
+        "title": "1. 应用程序发布者",
+        "content": "<p><strong>Nokta One</strong> 应用程序由以下机构发布：</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>法律形式</strong>: 法国法律下的简化股份公司 (SASU)</p><p><strong>总部</strong>: 法国巴黎</p><p><strong>股本</strong>: 可变</p><p><strong>注册</strong>: 巴黎商业和公司注册处</p><p><strong>增值税号码</strong>: FR [number]</p><p><strong>主要活动</strong>: 应用软件发布 (NAF 代码: 58.29C)</p><p><strong>出版负责人</strong>: 公司的法定代表人</p></div>"
+      },
+      "s02": {
+        "title": "2. 托管",
+        "content": "<p>应用程序及其数据由以下机构托管：</p><h3>主要托管</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Vercel Inc.</strong></p><p>340 S Lemon Ave #4133<br />Walnut, CA 91789<br />美国<br /><a href='https://vercel.com' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://vercel.com</a></p></div><h3>数据库</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p>认证的云基础设施，位于欧盟（德国法兰克福）</p><p><strong>认证</strong>: ISO 27001, SOC 2 Type II</p></div>"
+      },
+      "s03": {
+        "title": "3. 联系我们",
+        "content": "<p>如有任何问题或投诉：</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>一般邮箱</strong>: <a href='mailto:contact@nokta.app' style='color: rgb(59, 130, 246);'>contact@nokta.app</a></p><p><strong>技术支持</strong>: <a href='mailto:support@noktaone.com' style='color: rgb(59, 130, 246);'>support@noktaone.com</a></p><p><strong>数据保护</strong>: <a href='mailto:privacy@nokta.app' style='color: rgb(59, 130, 246);'>privacy@nokta.app</a></p></div>"
+      },
+      "s04": {
+        "title": "4. 知识产权",
+        "content": "<h3>4.1 版权</h3><p>应用程序的所有元素（结构、文本、图形、图像、声音、视频、标志、图标、软件、数据库等）均为出版商或其合作伙伴的专有财产，并受知识产权法保护。</p><p>未经出版商事先书面授权，任何方式复制、展示、修改、发布、改编这些元素的全部或部分，均被禁止，并构成可根据知识产权法第L.335-2条及其后续条款追究责任的侵权行为。</p><h3>4.2 商标</h3><p>'Nokta One'、'Nokta'、Nokta One标志及应用程序中提到的其他商标均为出版商的注册或未注册商标。未经明确授权，禁止复制或使用这些商标。</p>"
+      },
+      "s05": {
+        "title": "5. 个人数据保护",
+        "content": "<p>根据通用数据保护条例（GDPR）和法国数据保护法，您对个人数据拥有权利。</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>数据控制者</strong>: 应用程序出版商</p><p><strong>数据保护官（DPO）</strong>: <a href='mailto:dpo@nokta.app' style='color: rgb(59, 130, 246);'>dpo@nokta.app</a></p><p>更多信息，请参见我们的<a href='/privacy' style='color: rgb(59, 130, 246);'>隐私政策</a>。</p></div><h3>监管机构</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>国家信息与自由委员会（CNIL）</strong></p><p>3 Place de Fontenoy<br />TSA 80715<br />75334 PARIS CEDEX 07<br /><a href='https://www.cnil.fr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>www.cnil.fr</a></p></div>"
+      },
+      "s06": {
+        "title": "6. Cookies和追踪器",
+        "content": "<p>应用程序使用本地存储技术（cookies、localStorage）进行操作。您可以在应用程序设置中管理您的偏好。</p><p>更多信息，请参见我们的<a href='/privacy' style='color: rgb(59, 130, 246);'>隐私政策</a>。</p>"
+      },
+      "s07": {
+        "title": "7. 责任限制",
+        "content": "<h3>7.1 健康信息</h3><p>Nokta One提供的信息和建议是一般性的，仅用于个人健康目的。它们不构成：</p><ul><li>医疗建议</li><li>医疗诊断</li><li>医疗处理</li><li>医疗处方</li></ul><p>应用程序不能替代与医疗专业人员的咨询。如有健康问题，请咨询您的医生。</p><h3>7.2 服务可用性</h3><p>出版商努力保持应用程序可访问，但无法保证持续可用。出版商对服务中断或可能的故障不承担责任。</p>"
+      },
+      "s08": {
+        "title": "8. 适用法律",
+        "content": "<p>本法律通知受法国法律管辖。如有争议，在尝试友好解决后，管辖权归法国法院。</p>"
+      },
+      "s09": {
+        "title": "9. 消费者调解",
+        "content": "<p>根据消费者法典关于争议友好解决的规定，出版商遵守调解服务 [待完成]。</p><p>在联系调解员之前，您必须先通过书面投诉直接与我们的客户服务尝试解决争议。</p><p><strong>欧洲在线争议解决平台</strong>: <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://ec.europa.eu/consumers/odr</a></p>"
+      },
+      "s10": {
+        "title": "10. 版权",
+        "content": "<div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>设计与开发</strong>: Nokta One Team</p><p><strong>设计</strong>: Nokta One Team</p><p><strong>图标</strong>: Lucide Icons (MIT License)</p><p><strong>字体</strong>: Google Fonts</p></div>"
+      }
+    }
+  },
+  "engagement": {
+    "reminderTitle": "你的重置时刻",
+    "reminderDescription": "选择你希望我们提醒你扫描的时间。你掌控一切。",
+    "reminderMorning": "早上",
+    "reminderMorningDesc": "在醒来时调整你的系统",
+    "reminderMidday": "中午",
+    "reminderMiddayDesc": "在一天中间重置",
+    "reminderEvening": "晚上",
+    "reminderEveningDesc": "为夜晚准备你的系统",
+    "reminderInfo": "你可以随时在设置中修改这些时间。",
+    "shareTitle": "分享你的重置",
+    "shareViral": "病毒式分享",
+    "shareOther": "其他",
+    "shareDownload": "下载",
+    "shareTiktokTitle": "在TikTok上分享",
+    "shareImageDownloaded": "图片已下载",
+    "shareTextCopied": "文本已复制",
+    "shareTiktokInstructions": "打开TikTok，创建一个带有图片的视频，并粘贴文本。",
+    "shareOpenTiktok": "打开TikTok",
+    "shareTextCopiedDone": "文本已复制！",
+    "shareDone": "已分享！",
+    "shareComplete": "完成"
   }
 }

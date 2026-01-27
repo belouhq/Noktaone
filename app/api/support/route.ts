@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
 <html>
 <head>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; }
     .container { max-width: 600px; margin: 0 auto; padding: 20px; }
     .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 30px; border-radius: 12px 12px 0 0; }
     .content { background: #f8f9fa; padding: 30px; border-radius: 0 0 12px 12px; }

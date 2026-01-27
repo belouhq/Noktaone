@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Camera, RotateCcw } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import SkaneShareCard from "@/components/skane/SkaneShareCard";
+import SkaneIndexResult, { type FeedbackType } from "@/components/skane/SkaneIndexResult";
+import { getMicroActionDetails } from "@/lib/skane/selector";
 import { getStoredSkanes } from "@/lib/skane/storage";
 import type { InternalState, MicroActionType } from "@/lib/skane/types";
 import { 
@@ -13,18 +14,30 @@ import {
   getOrCreateGuestId, 
   getUserId 
 } from "@/lib/skane/supabase-tracker";
+import { useAuthContext } from "@/components/providers/AuthProvider";
 
 interface AnalysisResult {
   state: InternalState;
   skaneIndex: number;
   microAction: MicroActionType;
+  selectedFeedback?: string;
+  /** Score après micro-action, dérivé du smiley "Comment te sens-tu ?" */
+  afterScore?: number;
 }
+
+// Mapper le feedback utilisateur vers le type attendu
+const FEEDBACK_TO_TYPE: Record<string, FeedbackType> = {
+  worse: "still_high",
+  same: "reduced",
+  better: "clear",
+};
 
 type Step = "selfie" | "preview";
 
 export default function SharePage() {
   const router = useRouter();
   const { t } = useTranslation();
+  const { user } = useAuthContext();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
@@ -34,6 +47,7 @@ export default function SharePage() {
   const [skaneIndexAfter, setSkaneIndexAfter] = useState<number | null>(null);
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
+  const [previousRanges, setPreviousRanges] = useState<{ before: [number, number]; after: [number, number] } | null>(null);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("skane_analysis_result");
@@ -47,38 +61,18 @@ export default function SharePage() {
       const parsed = JSON.parse(stored);
       setResult(parsed);
 
-      // Fourchettes SkaneIndexResult (share-prompt) : avant/après depuis les ranges
-      let usedPayload = false;
-      const payloadRaw = sessionStorage.getItem("skane_share_payload");
-      if (payloadRaw) {
+      // Récupérer les fourchettes précédentes pour anti-répétition
+      const pr = sessionStorage.getItem("skane_previous_ranges");
+      if (pr) {
         try {
-          const payload = JSON.parse(payloadRaw);
-          if (payload.beforeRange?.length === 2 && payload.afterRange?.length === 2) {
-            const before = (payload.beforeRange[0] + payload.beforeRange[1]) / 2;
-            const after = (payload.afterRange[0] + payload.afterRange[1]) / 2;
-            setResult((r) => (r ? { ...r, skaneIndex: Math.round(before) } : r));
-            setSkaneIndexAfter(Math.round(after));
-            sessionStorage.removeItem("skane_share_payload");
-            usedPayload = true;
-          }
+          setPreviousRanges(JSON.parse(pr));
         } catch {
           /* ignore */
         }
       }
 
-      if (!usedPayload) {
-        if (parsed.afterScore != null) {
-          setSkaneIndexAfter(parsed.afterScore);
-        } else {
-          const skanes = getStoredSkanes();
-          const lastSkane = skanes[skanes.length - 1];
-          if (lastSkane?.skaneIndexAfter != null) {
-            setSkaneIndexAfter(lastSkane.skaneIndexAfter);
-          } else {
-            setSkaneIndexAfter(Math.max(10, (parsed.skaneIndex ?? 50) - 40));
-          }
-        }
-      }
+      // Ne pas utiliser le selfie existant - toujours demander une nouvelle photo pour le partage
+      // L'utilisateur doit prendre un selfie spécifiquement pour le partage
     } catch (error) {
       console.error("Error parsing result:", error);
       router.push("/skane");
@@ -166,6 +160,11 @@ export default function SharePage() {
 
     const dataUrl = canvas.toDataURL("image/jpeg", 0.9);
     setSelfieUrl(dataUrl);
+    
+    // Stocker le selfie dans sessionStorage pour le partage (sans le préfixe data:image/jpeg;base64,)
+    const base64Data = dataUrl.split(',')[1];
+    sessionStorage.setItem("skane_share_image", base64Data); // Utiliser une clé différente pour le partage
+    
     stopCamera();
     setStep("preview");
   };
@@ -187,11 +186,98 @@ export default function SharePage() {
     router.push("/");
   };
 
-  if (!result || skaneIndexAfter === null) {
+  if (!result) {
     return (
       <main className="fixed inset-0 bg-nokta-one-black flex items-center justify-center">
         <p className="text-nokta-one-white">{t("common.loading")}</p>
       </main>
+    );
+  }
+
+  // Si on a un selfie et qu'on est en mode preview, afficher SkaneIndexResult
+  if (step === "preview" && selfieUrl) {
+    // Utiliser le selfie pris spécifiquement pour le partage
+    const actionId = result.microAction || (result as any).micro_action?.id || "box_breathing";
+    const actionDetails = getMicroActionDetails(actionId as MicroActionType) || { name: "Skane", duration: 30 };
+    const feedbackUi = result.selectedFeedback || "same";
+    const feedback: FeedbackType = FEEDBACK_TO_TYPE[feedbackUi] ?? "reduced";
+    const isGuestMode = localStorage.getItem("guestMode") === "true";
+
+    // Récupérer le username
+    let username: string;
+    if (isGuestMode) {
+      const guestId = getOrCreateGuestId();
+      // Extraire la partie aléatoire de l'ID (les caractères après le dernier underscore)
+      const randomPart = guestId.split('_').pop() || guestId;
+      username = `guest-${randomPart.slice(0, 6)}`; // Prendre les 6 premiers caractères de la partie aléatoire
+    } else if (user?.user_metadata?.username) {
+      username = user.user_metadata.username;
+    } else if (user?.email) {
+      username = user.email.split('@')[0];
+    } else {
+      username = 'guest';
+    }
+
+    // Toujours fournir un identifiant (user ou guest) pour le tracking / cooldown
+    const userId = getUserId() ?? getOrCreateGuestId();
+
+    // Fonction pour retry avec une autre action (still_high)
+    const handleRetryWithDifferentAction = () => {
+      // Stocker l'info qu'on veut une autre action
+      sessionStorage.setItem("skane_retry_different_action", "true");
+      // Rediriger vers le scan
+      router.push("/skane");
+    };
+
+    // Fonction pour retry simple (clear/reduced)
+    const handleRetry = () => {
+      // Rediriger vers le scan
+      router.push("/skane");
+    };
+
+
+    const skaneIndexBefore = result.skaneIndex ?? (result as { skane_index?: number }).skane_index;
+    const afterScoreFromSmiley = result.afterScore;
+
+    return (
+      <SkaneIndexResult
+        selfieUrl={selfieUrl}
+        feedback={feedback}
+        microActionName={actionDetails.name}
+        microActionDuration={actionDetails.duration}
+        username={username}
+        userId={userId}
+        currentMicroAction={actionId as MicroActionType}
+        isGuestMode={isGuestMode}
+        previousRanges={previousRanges}
+        skaneIndexBefore={typeof skaneIndexBefore === "number" ? skaneIndexBefore : undefined}
+        afterScore={typeof afterScoreFromSmiley === "number" ? afterScoreFromSmiley : undefined}
+        onClose={() => router.push("/")}
+        onRetryWithDifferentAction={handleRetryWithDifferentAction}
+        onRetry={handleRetry}
+        onShare={async (data) => {
+          // Tracker le partage
+          const guestId = isGuestMode ? getOrCreateGuestId() : null;
+          const sessionId = (result as any).sessionId;
+          
+          if (sessionId) {
+            await createShareEvent({
+              user_id: userId,
+              guest_id: guestId,
+              session_id: sessionId,
+              share_type: 'story' as any,
+            });
+          }
+
+          // Stocker les ranges pour la prochaine fois (anti-répétition)
+          sessionStorage.setItem("skane_previous_ranges", JSON.stringify({ 
+            before: data.beforeRange, 
+            after: data.afterRange 
+          }));
+
+          console.log('Share filename:', data.filename);
+        }}
+      />
     );
   }
 
@@ -215,7 +301,7 @@ export default function SharePage() {
               <button onClick={handleClose} className="text-white/60 hover:text-white">
                 <X size={24} />
               </button>
-              <span className="text-white/60 text-sm">{t("share.selfieTitle", "Selfie victoire")}</span>
+              <div className="flex-1" />
               <button onClick={switchCamera} className="text-white/60 hover:text-white">
                 <RotateCcw size={24} />
               </button>
@@ -231,24 +317,20 @@ export default function SharePage() {
               style={{ transform: facingMode === "user" ? "scaleX(-1)" : "none" }}
             />
 
-            {/* Overlay guidage */}
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/80 to-transparent" />
-            </div>
+            {/* Overlay gradient en bas pour lisibilité */}
+            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
 
             {/* Instructions et bouton capture */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col items-center">
-              <p className="text-white/80 text-center mb-6 text-sm">
-                {t("share.selfieInstructions", "Montre ton visage après l'exercice !")}<br />
-                <span className="text-white/50">{t("share.selfieSubtext", "Souris, tu l'as mérité")}</span>
-              </p>
-
+            <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col items-center z-10">
               <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, type: "spring" }}
                 onClick={takeSelfie}
                 disabled={!isCameraReady}
-                className="w-20 h-20 rounded-full bg-white flex items-center justify-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
+                whileHover={{ scale: isCameraReady ? 1.1 : 1 }}
+                whileTap={{ scale: isCameraReady ? 0.9 : 1 }}
                 style={{
                   boxShadow: "0 0 0 4px rgba(255,255,255,0.3), 0 8px 32px rgba(0,0,0,0.5)",
                 }}
@@ -256,73 +338,12 @@ export default function SharePage() {
                 <Camera size={32} className="text-black" />
               </motion.button>
 
-              <button 
-                onClick={handleClose}
-                className="mt-6 text-white/40 text-sm hover:text-white/60"
-              >
-                {t("share.skipSelfie", "Passer cette étape")}
-              </button>
+              <p className="mt-6 text-white/60 text-xs text-center">
+                {t("share.selfieRequired", "Une photo est requise pour partager votre Skane Index")}
+              </p>
             </div>
           </motion.div>
-        ) : (
-          // === ÉTAPE 2: PREVIEW ===
-          <motion.div
-            key="preview"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 flex flex-col items-center justify-center px-4 overflow-y-auto py-8"
-          >
-            <SkaneShareCard
-              capturedImage={selfieUrl || undefined}
-              state={result.state}
-              skaneIndexBefore={result.skaneIndex}
-              skaneIndexAfter={skaneIndexAfter}
-              microAction={result.microAction}
-              onShare={async (shareType: string) => {
-                // Tracker le partage
-                const isGuestMode = localStorage.getItem("guestMode") === "true";
-                const userId = getUserId();
-                const guestId = isGuestMode ? getOrCreateGuestId() : null;
-                const sessionId = (result as any).sessionId;
-                
-                if (sessionId) {
-                  await createShareEvent({
-                    user_id: userId,
-                    guest_id: guestId,
-                    session_id: sessionId,
-                    share_type: shareType as any,
-                  });
-                }
-              }}
-            />
-
-            {/* Boutons */}
-            <div className="mt-6 flex items-center gap-4">
-              <motion.button
-                onClick={retakeSelfie}
-                className="px-5 py-2.5 rounded-xl text-white/60 text-sm border border-white/20 flex items-center gap-2"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <RotateCcw size={16} />
-                {t("share.retake", "Reprendre")}
-              </motion.button>
-
-              <button
-                onClick={() => router.push("/")}
-                className="px-6 py-3 rounded-xl text-nokta-one-white font-medium"
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  backdropFilter: "blur(40px)",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
-                }}
-              >
-                {t("common.back")}
-              </button>
-            </div>
-          </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
     </main>
   );

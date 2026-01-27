@@ -8,7 +8,6 @@ import { useTranslation } from "@/lib/hooks/useTranslation";
 import { MICRO_ACTIONS } from "@/lib/skane/constants";
 import { MICRO_ACTION_SCIENCE, getInstructionColor, getInstructionIcon } from "@/lib/skane/science";
 import type { MicroActionType, Instruction } from "@/lib/skane/types";
-import { hapticV2 } from "@/lib/skane/hapticsV2";
 import ActionTip from "@/components/skane/ActionTip";
 
 /**
@@ -27,7 +26,6 @@ export default function BriefingPage() {
   const [actionId, setActionId] = useState<MicroActionType | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [countdown, setCountdown] = useState<number | null>(null);
   const [showTip, setShowTip] = useState(false);
 
   useEffect(() => {
@@ -59,46 +57,19 @@ export default function BriefingPage() {
     if (action?.tip) {
       setShowTip(true);
     } else {
-      // Sinon, démarrer directement le compte à rebours
-      startCountdown();
+      // Sinon, aller directement sur la page action (le 3-2-1 sera dans le chrono)
+      router.push("/skane/action");
     }
-  };
-
-  const startCountdown = () => {
-    // Démarrer le compte à rebours de 3 secondes
-    setCountdown(3);
-    
-    // Retour haptique initial
-    hapticV2.transition();
-    
-    // Compte à rebours avec retour haptique à chaque seconde
-    const countdownInterval = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev === null || prev <= 1) {
-          clearInterval(countdownInterval);
-          // Retour haptique final avant le démarrage
-          hapticV2.cycleEnd();
-          // Rediriger vers l'action après un court délai
-          setTimeout(() => {
-            router.push("/skane/action");
-          }, 100);
-          return null;
-        }
-        // Retour haptique à chaque seconde
-        hapticV2.transition();
-        return prev - 1;
-      });
-    }, 1000);
   };
 
   const handleTipSkip = () => {
     setShowTip(false);
-    startCountdown();
+    router.push("/skane/action");
   };
 
   const handleTipContinue = () => {
     setShowTip(false);
-    startCountdown();
+    router.push("/skane/action");
   };
 
   const handleBack = () => {
@@ -136,11 +107,11 @@ export default function BriefingPage() {
         <div className="px-6 py-4 flex items-center justify-between">
           <button 
             onClick={handleBack}
-            className="text-white/40 hover:text-white/70 transition-colors text-sm"
+            className="text-white/60 hover:text-white/70 transition-colors text-sm"
           >
             ← Retour
           </button>
-          <span className="text-white/30 text-xs uppercase tracking-widest">
+          <span className="text-white/50 text-xs uppercase tracking-widest">
             Briefing
           </span>
         </div>
@@ -196,7 +167,7 @@ export default function BriefingPage() {
             {/* Résumé du cycle */}
             <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-white/40 text-xs">1 cycle complet</span>
+                <span className="text-white/60 text-xs">1 cycle complet</span>
                 <span className="text-white font-semibold text-sm">
                   {cycleDuration} {cycleDuration > 1 ? "secondes" : "seconde"}
                 </span>
@@ -247,7 +218,7 @@ export default function BriefingPage() {
                   <p className="text-white/80 text-sm font-medium">
                     {science.keySource.institution}
                   </p>
-                  <p className="text-white/40 text-xs">
+                  <p className="text-white/60 text-xs">
                     {science.keySource.year} · {science.studiesCount} études
                   </p>
                 </div>
@@ -334,7 +305,7 @@ export default function BriefingPage() {
               </div>
             </div>
             
-            <p className="text-white/40 text-xs text-center">
+            <p className="text-white/60 text-xs text-center">
               Durée totale : <span className="font-semibold text-white/60">{totalDuration} {totalDuration > 1 ? "secondes" : "seconde"}</span> ({action.repetitions} {action.repetitions > 1 ? "cycles" : "cycle"})
             </p>
           </div>
@@ -354,53 +325,23 @@ export default function BriefingPage() {
         />
       )}
 
-      {/* Overlay de compte à rebours */}
-      <AnimatePresence>
-        {countdown !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
-          >
-            <motion.div
-              key={countdown}
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 1.5, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              className="text-9xl font-bold text-white"
-            >
-              {countdown}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Bouton CTA fixe en bas */}
+      {/* Bouton CTA fixe en bas — le 3-2-1 se fait sur la page action */}
       <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0A0A0B] via-[#0A0A0B] to-transparent">
         <motion.button
           onClick={handleStart}
-          disabled={countdown !== null}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="w-full py-4 rounded-2xl text-white font-semibold text-lg flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-4 rounded-2xl text-white font-semibold text-lg flex items-center justify-center gap-3"
           style={{
             background: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)",
             boxShadow: "0 8px 32px rgba(59, 130, 246, 0.4)",
           }}
-          whileHover={countdown === null ? { scale: 1.02 } : {}}
-          whileTap={countdown === null ? { scale: 0.98 } : {}}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
-          {countdown === null ? (
-            <>
-              Je suis prêt
-              <ArrowRight size={20} />
-            </>
-          ) : (
-            "Préparation..."
-          )}
+          Je suis prêt
+          <ArrowRight size={20} />
         </motion.button>
       </div>
     </div>
@@ -459,7 +400,7 @@ function InstructionRow({ instruction, index, total }: InstructionRowProps) {
           <p className="text-white font-medium text-sm">
             {typeLabels[instruction.type] || instruction.type}
           </p>
-          <p className="text-white/40 text-xs">
+          <p className="text-white/60 text-xs">
             {instruction.text}
           </p>
         </div>

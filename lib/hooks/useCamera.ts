@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 type CameraState = 'idle' | 'requesting' | 'granted' | 'denied' | 'error';
 
 interface UseCameraReturn {
-  videoRef: React.RefObject<HTMLVideoElement>;
+  videoRef: React.RefObject<HTMLVideoElement | null>;
   cameraState: CameraState;
   requestPermission: () => Promise<void>;
   captureFrame: () => string | null;
@@ -19,6 +19,20 @@ export function useCamera(): UseCameraReturn {
   useEffect(() => {
     checkExistingPermission();
   }, []);
+
+  // Attacher le stream à la vidéo quand elle est prête
+  useEffect(() => {
+    if (cameraState !== 'granted') return;
+    if (!streamRef.current || !videoRef.current) return;
+
+    const video = videoRef.current;
+    if (video.srcObject !== streamRef.current) {
+      video.srcObject = streamRef.current;
+      video.play().catch(() => {
+        // Ignore autoplay errors; l'utilisateur peut relancer via le bouton
+      });
+    }
+  }, [cameraState]);
 
   // Écouter les événements de la vidéo pour détecter quand elle est prête
   useEffect(() => {

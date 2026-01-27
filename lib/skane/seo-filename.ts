@@ -85,8 +85,9 @@ export function generateSEOFilename(options: SEOFilenameOptions): string {
   
   // 4. Username (personnalisation pour SEO local et engagement)
   // Seulement si l'username est significatif (3+ chars)
+  let cleanUsername: string | null = null;
   if (username && username.length >= 3) {
-    const cleanUsername = username
+    cleanUsername = username
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "") // Enlever accents
@@ -111,9 +112,9 @@ export function generateSEOFilename(options: SEOFilenameOptions): string {
   const maxLength = 100;
   if (filename.length > maxLength) {
     // Réduire d'abord le username si présent
-    if (username && parts.includes(cleanUsername!)) {
-      const usernameIndex = parts.indexOf(cleanUsername!);
-      parts[usernameIndex] = cleanUsername!.substring(0, 8);
+    if (cleanUsername && parts.includes(cleanUsername)) {
+      const usernameIndex = parts.indexOf(cleanUsername);
+      parts[usernameIndex] = cleanUsername.substring(0, 8);
       filename = parts.join('-');
     }
     
@@ -132,4 +133,16 @@ export function generateSEOFilename(options: SEOFilenameOptions): string {
   }
   
   return `${filename}.png`;
+}
+
+/**
+ * Génère un nom de fichier simple pour le partage SKANE Index
+ * Format: nokta-one-skane-@[username]-[YYYY-MM-DD].png
+ * Exemple: nokta-one-skane-@benjamin-2026-01-17.png
+ */
+export function generateSkaneFilename(username: string): string {
+  const date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  // Nettoyer le username (enlever @ si déjà présent, remplacer espaces)
+  const cleanUsername = username.replace('@', '').replace(/\s+/g, '-').toLowerCase();
+  return `nokta-one-skane-@${cleanUsername}-${date}.png`;
 }

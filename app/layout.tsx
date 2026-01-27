@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import { I18nProvider } from "@/components/providers/I18nProvider";
 import { AuthProvider } from "@/components/providers/AuthProvider";
@@ -8,11 +8,22 @@ import ReferralTracker from "@/components/ReferralTracker";
 import TestButtons from "@/components/debug/TestButtons";
 import "@/lib/utils/console-filter"; // Filtrer les messages TensorFlow
 
-const poppins = Poppins({ 
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-});
+// Police optionnelle - utiliser système si Google Fonts n'est pas disponible
+let poppinsVariable = "";
+try {
+  const { Poppins } = require("next/font/google");
+  const poppins = Poppins({ 
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700"],
+    variable: "--font-poppins",
+    display: "swap",
+    fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "arial"],
+  });
+  poppinsVariable = poppins.variable;
+} catch (e) {
+  // Google Fonts non disponible, utiliser police système
+  console.warn("Google Fonts not available, using system fonts");
+}
 
 export const metadata: Metadata = {
   title: "NOKTA ONE",
@@ -43,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`dark ${poppins.variable}`} dir="ltr" suppressHydrationWarning>
+    <html lang="fr" className={`dark ${poppinsVariable}`} dir="ltr" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -51,11 +62,13 @@ export default function RootLayout({
         <meta name="HandheldFriendly" content="true" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
-      <body className={`${poppins.className} antialiased bg-black text-white`} style={{ pointerEvents: 'auto', position: 'relative', margin: 0, padding: 0 }} suppressHydrationWarning>
+      <body className={`antialiased bg-black text-white`} style={{ pointerEvents: 'auto', position: 'relative', margin: 0, padding: 0 }} suppressHydrationWarning>
         <I18nProvider>
           <AuthProvider>
             <AppProvider>
-              <ReferralTracker />
+              <Suspense fallback={null}>
+                <ReferralTracker />
+              </Suspense>
               <TestButtons />
               <div className="app-container" style={{ pointerEvents: 'auto', position: 'relative' }}>
                 <div className="landscape-warning fixed inset-0 bg-black z-[100] hidden items-center justify-center p-8 text-center pointer-events-none">

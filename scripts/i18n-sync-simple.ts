@@ -71,6 +71,11 @@ const FORBIDDEN_WORDS: Record<string, string[]> = {
   ko: ['진단', '치료', '의학', '질병', '불안', '우울증'],
   zh: ['诊断', '治疗', '医学', '疾病', '焦虑', '抑郁'],
 };
+const ALLOW_FORBIDDEN_KEY_PREFIXES = [
+  'termsPage.',
+  'privacyPolicyPage.',
+  'legalNoticePage.',
+];
 
 // ============================================
 // HELPERS
@@ -164,7 +169,10 @@ function findObsoleteKeys(
 /**
  * Vérifier si une traduction contient des mots interdits
  */
-function checkForbiddenWords(locale: string, text: string): string[] {
+function checkForbiddenWords(locale: string, key: string, text: string): string[] {
+  if (ALLOW_FORBIDDEN_KEY_PREFIXES.some(prefix => key.startsWith(prefix))) {
+    return [];
+  }
   const forbidden = FORBIDDEN_WORDS[locale] || [];
   const hits: string[] = [];
   
@@ -262,7 +270,7 @@ Return format (JSON only, no markdown):
     // Vérifier les mots interdits
     const forbiddenHits: Array<{ key: string; words: string[] }> = [];
     for (const [key, value] of Object.entries(translated)) {
-      const hits = checkForbiddenWords(targetLocale, String(value));
+      const hits = checkForbiddenWords(targetLocale, key, String(value));
       if (hits.length > 0) {
         forbiddenHits.push({ key, words: hits });
         console.warn(`   ⚠️  Forbidden words in ${key}: ${hits.join(', ')}`);

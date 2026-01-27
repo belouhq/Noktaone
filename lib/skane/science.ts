@@ -144,69 +144,6 @@ export const MICRO_ACTION_SCIENCE: Record<MicroActionType, ScienceData> = {
     },
   },
 
-  // === EXPIRATION 3-8 ===
-  expiration_3_8: {
-    studiesCount: 64,
-    yearFirstStudied: 1985,
-    primaryEffect: "Activation parasympathique profonde par ratio expire > inspire",
-    primaryEffectKey: "science.expiration38.effect",
-    mechanism: "L'expiration prolongée stimule le nerf vague et ralentit le rythme cardiaque de 10-15 BPM",
-    mechanismKey: "science.expiration38.mechanism",
-    effectOnset: "immediate",
-    effectOnsetKey: "science.effectOnset.immediate",
-    keySource: {
-      institution: "Yale School of Medicine",
-      year: 2018,
-    },
-    keyStat: {
-      value: "-15 BPM",
-      label: "Réduction cardiaque moyenne",
-      labelKey: "science.expiration38.stat",
-    },
-  },
-
-  // === RESPIRATION 4-6 ===
-  respiration_4_6: {
-    studiesCount: 42,
-    yearFirstStudied: 1992,
-    primaryEffect: "Induction de la cohérence cardiaque à 0.1 Hz",
-    primaryEffectKey: "science.respiration46.effect",
-    mechanism: "Le rythme 4-6 (6 respirations/min) correspond à la fréquence de résonance du système cardiovasculaire",
-    mechanismKey: "science.respiration46.mechanism",
-    effectOnset: "2min",
-    effectOnsetKey: "science.effectOnset.2min",
-    keySource: {
-      institution: "HeartMath Institute",
-      year: 2014,
-    },
-    keyStat: {
-      value: "0.1 Hz",
-      label: "Fréquence de cohérence optimale",
-      labelKey: "science.respiration46.stat",
-    },
-  },
-
-  // === RESPIRATION ÉNERGISANTE 2-1 ===
-  respiration_2_1: {
-    studiesCount: 38,
-    yearFirstStudied: 2003,
-    primaryEffect: "Activation sympathique contrôlée et boost de noradrénaline",
-    primaryEffectKey: "science.respiration21.effect",
-    mechanism: "L'inspiration longue et l'expiration courte activent le système nerveux sympathique sans stress",
-    mechanismKey: "science.respiration21.mechanism",
-    effectOnset: "30s",
-    effectOnsetKey: "science.effectOnset.30s",
-    keySource: {
-      institution: "Radboud University (Méthode Wim Hof)",
-      year: 2014,
-    },
-    keyStat: {
-      value: "+200%",
-      label: "Augmentation de l'adrénaline",
-      labelKey: "science.respiration21.stat",
-    },
-  },
-
   // === DROP TRAPÈZES ===
   drop_trapezes: {
     studiesCount: 156,

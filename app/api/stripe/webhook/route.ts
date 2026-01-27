@@ -19,6 +19,13 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    if (!process.env.STRIPE_WEBHOOK_SECRET) {
+      return NextResponse.json(
+        { error: 'Stripe webhook not configured (missing STRIPE_WEBHOOK_SECRET)' },
+        { status: 503 }
+      );
+    }
     
     // Vérifier la signature
     let event;

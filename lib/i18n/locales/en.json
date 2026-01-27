@@ -21,7 +21,21 @@
   "welcome": {
     "message": "Discover your body's state in seconds.",
     "start": "Get Started",
-    "alreadyAccount": "Already have an account"
+    "alreadyAccount": "Already have an account",
+    "headlinePrefix": "Measure your",
+    "headlineSuffix": "in 3 seconds.",
+    "words": {
+      "stress": "stress",
+      "tension": "tension",
+      "anxiety": "anxiety",
+      "fatigue": "fatigue"
+    },
+    "subheadline": "Reset your nervous system with a 30-second micro-action.",
+    "disclaimer": "Wellness signal · Not medical advice",
+    "featureScan": "3s facial scan",
+    "featureAction": "30s micro-action",
+    "featureResult": "Instant result",
+    "skaneIndex": "SKANE INDEX"
   },
   "firstSkaneResult": {
     "title": "Your body needs a reset.",
@@ -71,7 +85,9 @@
     "lastSkaneTitle": "Last scan",
     "lastSkaneEmpty": "—",
     "justNow": "Just now",
-    "pressToSkane": "Press to\nscan"
+    "pressToSkane": "Press to\nscan",
+    "helpAria": "Help",
+    "startSkaneAria": "Start a Skane"
   },
   "homeAdaptation": {
     "inProgress": "Adapting — Day {{day}} of 7",
@@ -128,6 +144,9 @@
   },
   "skane": {
     "startSkane": "Start\nSkane",
+    "recentActivity": "RECENT ACTIVITY",
+    "streakDays": "day streak",
+    "totalSkanes": "Total skanes",
     "analyzing": "Analyzing...",
     "analyzingPatterns": "Analyzing body patterns...",
     "detectingSignals": "Detecting activation signals...",
@@ -253,6 +272,29 @@
     "skipSelfie": "Skip this step",
     "retake": "Retake"
   },
+  "engagement": {
+    "reminderTitle": "Your reset moments",
+    "reminderDescription": "Choose when you want to be reminded to scan. You're in control.",
+    "reminderMorning": "Morning",
+    "reminderMorningDesc": "Calibrate your system when you wake up",
+    "reminderMidday": "Midday",
+    "reminderMiddayDesc": "Midday reset",
+    "reminderEvening": "Evening",
+    "reminderEveningDesc": "Prepare your system for the night",
+    "reminderInfo": "You can change these times anytime in settings.",
+    "shareTitle": "Share your reset",
+    "shareViral": "Viral",
+    "shareOther": "Other",
+    "shareDownload": "Download",
+    "shareTiktokTitle": "Share on TikTok",
+    "shareImageDownloaded": "Image downloaded",
+    "shareTextCopied": "Text copied",
+    "shareTiktokInstructions": "Open TikTok, create a video with the image, and paste the text.",
+    "shareOpenTiktok": "Open TikTok",
+    "shareTextCopiedDone": "Text copied!",
+    "shareDone": "Shared!",
+    "shareComplete": "Done"
+  },
   "quickSignup": {
     "saveYourReset": "Save your reset",
     "saveAndReminders": "Save your reset and get your reminders",
@@ -310,22 +352,64 @@
     "invitations": "Invitations",
     "invitationsAvailable": "Available invitations",
     "inviteDescription": "Invite your loved ones to try NOKTA ONE as a guest.",
+    "notificationSchedule": "Reminder schedule",
+    "scheduleDescription": "Customize your 3 daily reminders",
+    "morningReminder": "Morning reminder",
+    "afternoonReminder": "Afternoon reminder",
+    "eveningReminder": "Evening reminder",
+    "dailyReminders": "Daily reminders",
+    "dailyRemindersDescription": "3 reminders for your daily reset: morning, noon, evening",
+    "customizeSchedule": "Customize schedule",
+    "remindersScheduleTitle": "Reminder times",
+    "remindersScheduleDescription": "Customize your 3 daily reminders so you never forget your reset.",
+    "reminderMorning": "Morning",
+    "reminderNoon": "Noon",
+    "reminderEvening": "Evening",
+    "remindersScheduleInfo": "Reminders will appear as notifications on your device",
     "copyInviteLink": "Copy invite link",
     "linkCopied": "Link copied!",
     "earnInvitation": "Earn 1 invitation every 3 skanes (24h)",
     "logOut": "Log out",
-    "comingSoon": "Coming soon"
+    "comingSoon": "Coming soon",
+    "more": "More",
+    "exportData": "Export my data",
+    "partnershipManagement": "Partnership management",
+    "enableReminders": "Enable reminders",
+    "notificationPermissionDeniedDesc": "Allow notifications to receive reminders at the times you chose.",
+    "enableNotifications": "Allow notifications",
+    "termsOfUse": "Terms of use",
+    "privacyPolicy": "Privacy policy",
+    "licenses": "Licenses",
+    "privacyAndData": "Privacy & Data",
+    "contactUs": "Contact us",
+    "editProfileAria": "Edit profile"
+  },
+  "invitationsModal": {
+    "title": "Invitations",
+    "counterLabel_one": "1 invitation available",
+    "counterLabel_other": "{{count}} invitations available",
+    "description": "Invite your loved ones to try Nokta One. They can do one free Skane.",
+    "shareInvitation": "Share invitation",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied!",
+    "earnPerFriend": "Earn 1 invitation for each friend who does 3 Skanes",
+    "shareTitle": "Try Nokta One",
+    "shareText": "Discover your stress signal in 3 seconds and reset your nervous system in 30 seconds."
   },
   "devices": {
     "title": "Connected devices",
-    "pwaNote": "Apple Health and Health Connect are available only in the NOKTA mobile app (iOS and Android). Connection is not possible on the web.",
+    "pwaNote": "Apple Health and Health Connect are not yet accessible for the moment on the web. They will be available in the NOKTA One mobile app (iOS and Android).",
     "appleHealth": "Apple Health",
     "healthConnect": "Health Connect",
+    "appleHealthDescription": "Sync your iOS health data",
+    "healthConnectDescription": "Sync your Android health data",
     "statusConnected": "Connected",
     "statusDisconnected": "Disconnected",
-    "statusPwaUnavailable": "Not available on the web",
-    "hintIos": "Use the NOKTA app on iOS to connect Apple Health.",
-    "hintAndroid": "Use the NOKTA app on Android to connect Health Connect."
+    "statusPwaUnavailable": "Not yet accessible for the moment",
+    "comingSoon": "Coming soon",
+    "footerMoreIntegrations": "More integrations coming soon: Garmin, Fitbit, Oura, WHOOP...",
+    "hintIos": "Use the NOKTA One app on iOS to connect Apple Health.",
+    "hintAndroid": "Use the NOKTA One app on Android to connect Health Connect."
   },
   "profile": {
     "firstName": "First name",
@@ -342,11 +426,42 @@
     "phone": "Phone",
     "address": "Address",
     "postalCode": "Postal code",
+    "memberSince": "Member since",
+    "streakDays": "day streak",
+    "inviteFriends": "Invite friends",
     "city": "City",
     "country": "Country",
     "occupation": "Occupation",
     "changePhoto": "Change photo",
     "profileUpdated": "Profile updated!"
+  },
+  "editProfile": {
+    "title": "Edit my profile",
+    "sectionPhoto": "PROFILE PHOTO",
+    "sectionPersonal": "PERSONAL INFORMATION",
+    "sectionContact": "CONTACT DETAILS",
+    "sectionPreferences": "PREFERENCES",
+    "placeholders": {
+      "firstName": "Your first name",
+      "lastName": "Your last name",
+      "username": "username",
+      "email": "your@email.com",
+      "phone": "+1 234 567 8900",
+      "address": "Your address",
+      "postalCode": "12345",
+      "city": "City",
+      "job": "e.g. Entrepreneur, Athlete, Student..."
+    },
+    "saving": "Saving...",
+    "jobOptional": "Occupation (optional)",
+    "countryFR": "France",
+    "countryUS": "United States",
+    "countryGB": "United Kingdom",
+    "countryDE": "Germany",
+    "countryES": "Spain",
+    "countryIT": "Italy",
+    "countryCN": "China",
+    "countryJP": "Japan"
   },
   "consent": {
     "title": "Your Privacy Matters",
@@ -481,7 +596,19 @@
     "signUp": "Create an account",
     "errorRequired": "All fields are required",
     "errorGeneric": "Login error",
-    "errorInvalidCredentials": "Incorrect email or password"
+    "errorInvalidCredentials": "Incorrect email or password",
+    "errorEmailRequired": "Email is required",
+    "errorEmailInvalid": "Invalid email",
+    "errorPasswordRequired": "Password is required",
+    "errorPasswordMin": "Minimum 6 characters",
+    "placeholderEmail": "your@email.com",
+    "placeholderPassword": "••••••••",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "footerPrefix": "By continuing, you agree to our ",
+    "footerTerms": "Terms",
+    "footerAnd": " and ",
+    "footerPrivacy": "Privacy Policy"
   },
   "forgotPassword": {
     "title": "Forgot password?",
@@ -534,11 +661,11 @@
     "contactUs": "Contact us",
     "whatIsNokta": {
       "question": "What is Nokta One, exactly?",
-      "answer": "Nokta One is a body and nervous system reset technology. In seconds, it identifies when your body is \"off\" and suggests a simple micro-action to return to a functional, clear, and high-performing state.\n\nIt's not meditation, therapy, or medical monitoring.\nIt's an immediate adjustment tool, usable in real-life situations."
+      "answer": "Nokta One is a body and nervous system reset technology. In seconds, it identifies when your body is \"off\" and suggests a simple micro-action to return to a functional, clear, and high-performing state.\n\nIt's not meditation or a clinical program.\nIt's an immediate adjustment tool, usable in real-life situations."
     },
     "whenUseful": {
       "question": "When is Nokta One useful?",
-      "answer": "Nokta One is designed for moments when you think:\n\n• \"I don't feel well, but I don't know why\"\n• \"I'm tense for no clear reason\"\n• \"I can't concentrate\"\n• \"My body is tired, but my mind wants to keep going\"\n• \"I'm not at my best\"\n\nThese moments happen before important meetings, after mental overload, between demanding tasks, before sports or competitions, at the end of the day when your body gives out, or in the morning when energy is low.\n\nNokta One is designed for these daily micro-imbalances, not for medical situations."
+      "answer": "Nokta One is designed for moments when you think:\n\n• \"I don't feel well, but I don't know why\"\n• \"I'm tense for no clear reason\"\n• \"I can't concentrate\"\n• \"My body is tired, but my mind wants to keep going\"\n• \"I'm not at my best\"\n\nThese moments happen before important meetings, after mental overload, between demanding tasks, before sports or competitions, at the end of the day when your body gives out, or in the morning when energy is low.\n\nNokta One is designed for these daily micro-imbalances, not for clinical situations."
     },
     "whyOffButOk": {
       "question": "Why do I sometimes feel \"fine\" but not function properly?",
@@ -554,7 +681,7 @@
     },
     "replaceProfessional": {
       "question": "Does NOKTA ONE replace a healthcare professional?",
-      "answer": "No.\n\nNOKTA ONE is a daily regulation tool, not a medical device. It doesn't address any conditions, make any therapeutic promises, and never replaces medical advice.\n\nIt's designed for functional, active, demanding people who want to stay at their best without waiting to feel unwell."
+      "answer": "No.\n\nNOKTA ONE is a daily regulation tool, not a clinical device. It doesn't address conditions, make promises of cure, and never replaces professional advice.\n\nIt's designed for functional, active, demanding people who want to stay at their best without waiting to feel unwell."
     },
     "whyBodyNotMind": {
       "question": "Why act on the body rather than the mind?",
@@ -578,7 +705,7 @@
     },
     "dataPrivacy": {
       "question": "Does NOKTA ONE collect sensitive personal data?",
-      "answer": "NOKTA ONE applies a maximum data minimalism approach.\n\n• No medical exploitation\n• No data resale\n• No intrusive interpretation\n\nInformation is only used to enhance the user experience."
+      "answer": "NOKTA ONE applies a maximum data minimalism approach.\n\n• No health profiling\n• No data resale\n• No intrusive interpretation\n\nInformation is only used to enhance the user experience."
     },
     "allLanguages": {
       "question": "Does NOKTA ONE work in all languages?",
@@ -1261,5 +1388,149 @@
     "codeRequired": "Code required",
     "codeIncorrect": "Incorrect code",
     "tooManyAttempts": "Too many attempts. Please try again later."
+  },
+  "termsPage": {
+    "title": "Terms of Service",
+    "versionLabel": "Version",
+    "versionValue": "1.0",
+    "updatedLabel": "Last updated",
+    "updatedValue": "January 2025",
+    "disclaimer": "DISCLAIMER: Nokta One is NOT a medical device and does NOT provide medical advice. If you have health concerns, consult a professional.",
+    "contactTitle": "Contact",
+    "contactDescription": "For any questions about these terms:",
+    "acceptanceNotice": "By using Nokta One, you acknowledge that you have read, understood, and agree to these Terms.",
+    "sections": {
+      "s01": {
+        "title": "Article 1 - Acceptance",
+        "content": "<p>By using Nokta One, you agree to be bound by these Terms. If you do not agree, you must not use the Service.</p><p>You represent that you are at least <strong>16 years old</strong> (or 13 with parental consent) and have the legal capacity to enter into a contract.</p>"
+      },
+      "s02": {
+        "title": "Article 2 - Description of Service",
+        "content": "<p>Nokta One is a wellness application offering:</p><ul><li>Guided physiological regulation sessions</li><li>Breathing and posture exercises</li><li>Wellness state tracking</li><li>Personalized recommendations</li></ul><p><strong>The Service is provided for informational purposes only and does not replace the advice of a healthcare professional.</strong></p>"
+      },
+      "s03": {
+        "title": "Article 3 - User Account",
+        "content": "<p>To access certain features, you must create an account. You agree to:</p><ul><li>Provide accurate and up-to-date information</li><li>Maintain the confidentiality of your credentials</li><li>Notify us of any unauthorized use</li><li>Be responsible for all activities under your account</li></ul>"
+      },
+      "s04": {
+        "title": "Article 4 - Subscriptions",
+        "content": "<p><strong>Plans:</strong> Free (limited access) or Premium (full access)</p><p><strong>Renewal:</strong> Automatic, unless canceled before expiration</p><p><strong>Cancellation:</strong> At any time from settings or your platform (App Store, Google Play)</p><p><strong>Refunds:</strong> Non-refundable, unless required by law</p>"
+      },
+      "s05": {
+        "title": "Article 5 - Rules of Use",
+        "content": "<p><strong>It is prohibited to:</strong></p><ul><li>Use the Service for illegal purposes</li><li>Attempt unauthorized access to our systems</li><li>Transmit viruses or malicious code</li><li>Collect other users' data</li><li>Impersonate another person</li><li>Resell or commercially exploit the Service</li></ul>"
+      },
+      "s06": {
+        "title": "Article 6 - Intellectual Property",
+        "content": "<p>The Service and its content (code, texts, graphics, logos, etc.) are the exclusive property of the publisher and protected by intellectual property laws.</p><p>You are granted a personal, limited, non-exclusive, and revocable license to use the Service for personal purposes.</p>"
+      },
+      "s07": {
+        "title": "Article 7 - Limitation of Liability",
+        "content": "<p>THE SERVICE IS PROVIDED 'AS IS,' WITHOUT WARRANTY OF ANY KIND.</p><p>We are not liable for:</p><ul><li>Indirect or consequential damages</li><li>Loss of profits or data</li><li>Service interruptions</li></ul><p><strong>Cap:</strong> Our liability is limited to the amount paid in the last 12 months (or €100 maximum).</p>"
+      },
+      "s08": {
+        "title": "Article 8 - Termination",
+        "content": "<p><strong>By you:</strong> You may delete your account at any time from settings.</p><p><strong>By us:</strong> We may suspend your access if you violate these Terms.</p><p>Upon termination, your right to use the Service ceases immediately.</p>"
+      },
+      "s09": {
+        "title": "Article 9 - Governing Law",
+        "content": "<p>These Terms are governed by <strong>French law</strong>.</p><p>In case of dispute, the parties will endeavor to find an amicable solution. You may use consumer mediation.</p><p><strong>Jurisdiction:</strong> Courts of Paris, subject to mandatory consumer jurisdiction rules.</p><p><strong>European platform:</strong> <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>ec.europa.eu/consumers/odr</a></p>"
+      }
+    }
+  },
+  "privacyPolicyPage": {
+    "title": "Privacy Policy",
+    "versionLabel": "Version",
+    "versionValue": "1.0",
+    "updatedLabel": "Last updated",
+    "updatedValue": "January 2025",
+    "contactTitle": "Contact Us",
+    "contactDescription": "For any questions about this policy or to exercise your rights:",
+    "sections": {
+      "s01": {
+        "title": "Introduction",
+        "content": "<p>This Privacy Policy describes how your personal information is collected, used, and shared when you use the <strong>Nokta One</strong> application.</p><p>Nokta One is published by a French company registered with the Paris Trade and Companies Registry. By using our Service, you agree to the practices described in this Policy.</p>"
+      },
+      "s02": {
+        "title": "1. Data We Collect",
+        "content": "<p><strong>Account Data:</strong> Email, username, password (hashed)</p><p><strong>Profile Data:</strong> First name, date of birth, country, language</p><p><strong>Usage Data:</strong> Sessions, actions, timestamps</p><p><strong>Facial Analysis:</strong> Images are processed <strong>locally on your device</strong>. Only anonymized wellness scores are transmitted. We do <strong>not</strong> use facial recognition to identify you.</p>"
+      },
+      "s03": {
+        "title": "2. How We Use Data",
+        "content": "<p>We use your data to:</p><ul><li>Provide and improve the Service</li><li>Personalize your experience</li><li>Send you communications (if consented)</li><li>Ensure Service security</li></ul><p><strong>Legal Basis (GDPR):</strong> Contract performance, legitimate interest, consent.</p>"
+      },
+      "s04": {
+        "title": "3. Data Sharing",
+        "content": "<p><strong>We never sell your personal data.</strong></p><p>We use trusted service providers (EU cloud infrastructure, PCI-DSS certified payment services). Transfers outside the EU are governed by Standard Contractual Clauses.</p>"
+      },
+      "s05": {
+        "title": "4. Retention",
+        "content": "<p><strong>Account Data:</strong> Duration of registration + 3 years</p><p><strong>Session Data:</strong> 24 months</p><p><strong>Payment Data:</strong> 10 years (tax obligations)</p><p>After account deletion, your data is anonymized or deleted within 30 days.</p>"
+      },
+      "s06": {
+        "title": "5. Your Rights",
+        "content": "<p>You have the following rights:</p><ul><li><strong>Access</strong>: Obtain a copy of your data</li><li><strong>Rectification</strong>: Correct your data</li><li><strong>Erasure</strong>: Delete your data</li><li><strong>Portability</strong>: Export your data</li><li><strong>Objection</strong>: Object to certain processing</li><li><strong>Withdraw Consent</strong>: At any time</li></ul><p>Response time: <strong>30 days maximum</strong>.</p><p>You may lodge a complaint with the <strong>CNIL</strong> (www.cnil.fr).</p>"
+      },
+      "s07": {
+        "title": "6. Security",
+        "content": "<p>Your data is protected by:</p><ul><li>Encryption in transit (TLS 1.3) and at rest (AES-256)</li><li>Secure authentication</li><li>Limited access (principle of least privilege)</li><li>Breach notification within 72 hours</li></ul>"
+      },
+      "s08": {
+        "title": "7. Minors",
+        "content": "<p>Our Service is intended for persons <strong>16 years and older</strong>.</p><p>Between 13 and 16 years, parental consent is required. We do not knowingly collect data from children under 13.</p>"
+      },
+      "s09": {
+        "title": "8. California (CCPA)",
+        "content": "<p>If you are a California resident:</p><ul><li><strong>We do not sell your personal information</strong></li><li>You have the right to know, delete, and opt-out of the 'sale' of your data</li></ul>"
+      }
+    }
+  },
+  "legalNoticePage": {
+    "title": "Legal Notice",
+    "updatedLabel": "Last updated",
+    "updatedValue": "January 2025",
+    "footerNote": "This legal notice may be modified at any time. The current version is the one accessible on the Application.",
+    "sections": {
+      "s01": {
+        "title": "1. Application Publisher",
+        "content": "<p>The <strong>Nokta One</strong> application is published by:</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Legal form</strong>: Simplified Joint Stock Company (SASU) under French law</p><p><strong>Headquarters</strong>: Paris, France</p><p><strong>Share capital</strong>: Variable</p><p><strong>Registration</strong>: Paris Trade and Companies Registry</p><p><strong>VAT number</strong>: FR [number]</p><p><strong>Main activity</strong>: Application software publishing (NAF Code: 58.29C)</p><p><strong>Publication director</strong>: The legal representative of the company</p></div>"
+      },
+      "s02": {
+        "title": "2. Hosting",
+        "content": "<p>The Application and its data are hosted by:</p><h3>Main Host</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Vercel Inc.</strong></p><p>340 S Lemon Ave #4133<br />Walnut, CA 91789<br />United States<br /><a href='https://vercel.com' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://vercel.com</a></p></div><h3>Database</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p>Certified cloud infrastructure, located in the European Union (Frankfurt, Germany)</p><p><strong>Certifications</strong>: ISO 27001, SOC 2 Type II</p></div>"
+      },
+      "s03": {
+        "title": "3. Contact",
+        "content": "<p>For any questions or complaints:</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>General email</strong>: <a href='mailto:contact@nokta.app' style='color: rgb(59, 130, 246);'>contact@nokta.app</a></p><p><strong>Technical support</strong>: <a href='mailto:support@noktaone.com' style='color: rgb(59, 130, 246);'>support@noktaone.com</a></p><p><strong>Data protection</strong>: <a href='mailto:privacy@nokta.app' style='color: rgb(59, 130, 246);'>privacy@nokta.app</a></p></div>"
+      },
+      "s04": {
+        "title": "4. Intellectual Property",
+        "content": "<h3>4.1 Copyright</h3><p>All elements comprising the Application (structure, texts, graphics, images, sounds, videos, logos, icons, software, database, etc.) are the exclusive property of the publisher or its partners and are protected by intellectual property law.</p><p>Any reproduction, representation, modification, publication, adaptation, in whole or in part, of these elements, by any means whatsoever, without the prior written authorization of the publisher, is prohibited and would constitute an infringement punishable by articles L.335-2 and following of the Intellectual Property Code.</p><h3>4.2 Trademarks</h3><p>'Nokta One', 'Nokta', the Nokta One logo and other trademarks mentioned on the Application are registered or unregistered trademarks of the publisher. Any reproduction or use of these trademarks without express authorization is prohibited.</p>"
+      },
+      "s05": {
+        "title": "5. Personal Data Protection",
+        "content": "<p>In accordance with the General Data Protection Regulation (GDPR) and the French Data Protection Act, you have rights regarding your personal data.</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Data controller</strong>: The Application publisher</p><p><strong>Data Protection Officer (DPO)</strong>: <a href='mailto:dpo@nokta.app' style='color: rgb(59, 130, 246);'>dpo@nokta.app</a></p><p>For more information, see our <a href='/privacy' style='color: rgb(59, 130, 246);'>Privacy Policy</a>.</p></div><h3>Supervisory authority</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Commission Nationale de l'Informatique et des Libertés (CNIL)</strong></p><p>3 Place de Fontenoy<br />TSA 80715<br />75334 PARIS CEDEX 07<br /><a href='https://www.cnil.fr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>www.cnil.fr</a></p></div>"
+      },
+      "s06": {
+        "title": "6. Cookies and Trackers",
+        "content": "<p>The Application uses local storage technologies (cookies, localStorage) for its operation. You can manage your preferences in the Application settings.</p><p>For more information, see our <a href='/privacy' style='color: rgb(59, 130, 246);'>Privacy Policy</a>.</p>"
+      },
+      "s07": {
+        "title": "7. Limitation of Liability",
+        "content": "<h3>7.1 Wellness Information</h3><p>The information and recommendations provided by Nokta One are general in nature and intended solely for personal wellness purposes. They do not constitute:</p><ul><li>Medical advice</li><li>Medical diagnosis</li><li>Medical treatment</li><li>Medical prescription</li></ul><p>The Application does not replace consultation with a healthcare professional. In case of health problems, consult your doctor.</p><h3>7.2 Service Availability</h3><p>The publisher strives to keep the Application accessible but cannot guarantee continuous availability. The publisher cannot be held responsible for service interruptions or possible malfunctions.</p>"
+      },
+      "s08": {
+        "title": "8. Applicable Law",
+        "content": "<p>This legal notice is subject to French law. In case of dispute, and after attempting amicable resolution, jurisdiction is attributed to French courts.</p>"
+      },
+      "s09": {
+        "title": "9. Consumer Mediation",
+        "content": "<p>In accordance with the provisions of the Consumer Code regarding the amicable settlement of disputes, the publisher adheres to the Mediator Service [to be completed].</p><p>Before contacting the mediator, you must have previously attempted to resolve your dispute directly with our customer service by written complaint.</p><p><strong>European online dispute resolution platform</strong>: <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://ec.europa.eu/consumers/odr</a></p>"
+      },
+      "s10": {
+        "title": "10. Credits",
+        "content": "<div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Design and development</strong>: Nokta One Team</p><p><strong>Design</strong>: Nokta One Team</p><p><strong>Icons</strong>: Lucide Icons (MIT License)</p><p><strong>Fonts</strong>: Google Fonts</p></div>"
+      }
+    }
   }
 }

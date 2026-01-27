@@ -3,21 +3,30 @@
  * Handles all Stripe operations: checkout sessions, webhooks, customer portal
  */
 
-import Stripe from 'stripe';
-import type { SupportedCurrency } from '@/lib/paywall/types';
+import type { Stripe as StripeType } from 'stripe';
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('STRIPE_SECRET_KEY is not set');
+// Stripe est une dépendance optionnelle
+let Stripe: any = null;
+let stripe: any = null;
+
+try {
+  Stripe = require('stripe');
+  if (process.env.STRIPE_SECRET_KEY) {
+    stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: '2024-12-18.acacia',
+    });
+  }
+} catch (e) {
+  // Stripe n'est pas disponible
+  console.warn('Stripe module not available');
 }
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-12-18.acacia',
-});
+import type { SupportedCurrency } from '@/lib/paywall/types';
+import { getStripePriceId } from '@/config/stripe-prices';
 
-const STRIPE_PRICE_IDS = {
-  monthly: process.env.STRIPE_PRICE_MONTHLY || '',
-  annual: process.env.STRIPE_PRICE_ANNUAL || '',
-};
+if (!stripe && process.env.STRIPE_SECRET_KEY) {
+  console.warn('Stripe is configured but module is not installed. Run: npm install stripe');
+}
 
 export interface InfluencerCodeData {
   code: string;
@@ -37,6 +46,7 @@ export interface CreateCheckoutSessionParams {
   email: string;
   plan: 'monthly' | 'annual';
   locale: string;
+  currency?: SupportedCurrency;
   influencerCode?: InfluencerCodeData | null;
 }
 
@@ -51,18 +61,20 @@ export interface CheckoutSessionResult {
 export async function createCheckoutSession(
   params: CreateCheckoutSessionParams
 ): Promise<CheckoutSessionResult> {
-  const { userId, email, plan, locale, influencerCode } = params;
-
-  const priceId = STRIPE_PRICE_IDS[plan];
-  if (!priceId) {
-    throw new Error(`Price ID not configured for plan: ${plan}`);
+  if (!stripe) {
+    throw new Error('Stripe is not configured. Please install stripe: npm install stripe');
   }
+  
+  const { userId, email, plan, locale, influencerCode } = params;
+  const currency: SupportedCurrency = params.currency ?? (locale === 'fr' ? 'EUR' : 'USD');
+  const priceId = getStripePriceId(plan, currency);
 
   // Calculate price with influencer discount if applicable
-  let priceData: Stripe.Checkout.SessionCreateParams.LineItem = {
+  let priceData: StripeType.Checkout.SessionCreateParams.LineItem = {
     price: priceId,
     quantity: 1,
   };
+  let sessionDiscounts: StripeType.Checkout.SessionCreateParams.Discount[] | undefined;
 
   // Apply influencer discount if provided and valid
   if (influencerCode && influencerCode.isActive && influencerCode.discountPercent > 0) {
@@ -88,10 +100,7 @@ export async function createCheckoutSession(
         });
       }
 
-      priceData = {
-        ...priceData,
-        discounts: [{ coupon: couponId }],
-      };
+      sessionDiscounts = [{ coupon: couponId }];
     }
   }
 
@@ -103,9 +112,11 @@ export async function createCheckoutSession(
     success_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/settings/subscription?success=true`,
     cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/settings/subscription?canceled=true`,
     locale: locale === 'fr' ? 'fr' : 'en',
+    ...(sessionDiscounts ? { discounts: sessionDiscounts } : {}),
     metadata: {
       userId,
       plan,
+      currency,
       influencerCode: influencerCode?.code || '',
       influencerId: influencerCode?.influencerId || '',
     },
@@ -113,6 +124,7 @@ export async function createCheckoutSession(
       metadata: {
         userId,
         plan,
+        currency,
         influencerCode: influencerCode?.code || '',
       },
     },
@@ -134,7 +146,10 @@ export async function createCheckoutSession(
 export async function createCustomerPortalSession(
   customerId: string,
   returnUrl: string
-): Promise<Stripe.BillingPortal.Session> {
+): Promise<any> {
+  if (!stripe) {
+    throw new Error('Stripe is not configured');
+  }
   return await stripe.billingPortal.sessions.create({
     customer: customerId,
     return_url: returnUrl,
@@ -146,7 +161,10 @@ export async function createCustomerPortalSession(
  */
 export async function getSubscription(
   subscriptionId: string
-): Promise<Stripe.Subscription> {
+): Promise<any> {
+  if (!stripe) {
+    throw new Error('Stripe is not configured');
+  }
   return await stripe.subscriptions.retrieve(subscriptionId);
 }
 
@@ -156,7 +174,10 @@ export async function getSubscription(
 export function verifyWebhookSignature(
   body: string,
   signature: string
-): Stripe.Event {
+): any {
+  if (!stripe) {
+    throw new Error('Stripe is not configured');
+  }
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!webhookSecret) {
     throw new Error('STRIPE_WEBHOOK_SECRET is not set');
@@ -169,11 +190,14 @@ export function verifyWebhookSignature(
  * Handle webhook events
  */
 export async function handleWebhookEvent(
-  event: Stripe.Event
+  event: any
 ): Promise<{ action: string; data: any }> {
+  if (!stripe) {
+    throw new Error('Stripe is not configured');
+  }
   switch (event.type) {
     case 'checkout.session.completed': {
-      const session = event.data.object as Stripe.Checkout.Session;
+      const session = event.data.object as any;
       const subscriptionId = session.subscription as string;
       
       // Get subscription details
@@ -198,7 +222,7 @@ export async function handleWebhookEvent(
     }
 
     case 'customer.subscription.updated': {
-      const subscription = event.data.object as Stripe.Subscription;
+      const subscription = event.data.object as any;
       const customerId = subscription.customer as string;
       
       // Get user ID from customer metadata or subscription metadata
@@ -217,7 +241,7 @@ export async function handleWebhookEvent(
     }
 
     case 'customer.subscription.deleted': {
-      const subscription = event.data.object as Stripe.Subscription;
+      const subscription = event.data.object as any;
       const userId = subscription.metadata?.userId || '';
 
       return {
@@ -230,7 +254,7 @@ export async function handleWebhookEvent(
     }
 
     case 'invoice.payment_failed': {
-      const invoice = event.data.object as Stripe.Invoice;
+      const invoice = event.data.object as any;
       const subscriptionId = invoice.subscription as string;
       
       if (subscriptionId) {

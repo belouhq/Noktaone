@@ -17,24 +17,18 @@
   },
   "home": {
     "title": "نوكتا ون",
-    "recentSkane": "سكانات حديثة:",
-    "today": "اليوم",
-    "yesterday": "أمس",
-    "daysAgo": "منذ {{count}} أيام",
-    "noResetAvailable": "لا يوجد إعادة تعيين متاحة لمدة {{hours}} ساعات",
-    "pressToSkane": "اضغط للـ\nسكان",
-    "noSkaneYet": "No skane done yet",
-    "readyForFirstSkane": "Ready for your first Skane!",
-    "testKey": "تم الكشف عن إشارة الجسم",
+    "pressToSkane": "اضغط للمسح\n",
     "justNow": "الآن",
-    "minutesAgo": "{{count}} دقيقة مضت",
-    "todayAt": "اليوم – {{time}}",
-    "emptyState": "—",
-    "lastSkaneTitle": "آخر سكنة",
-    "lastSkaneEmpty": "—"
+    "lastSkaneTitle": "آخر مسح",
+    "lastSkaneEmpty": "—",
+    "helpAria": "مساعدة",
+    "startSkaneAria": "بدء سكان"
   },
   "skane": {
     "startSkane": "ابدأ\nسكان",
+    "recentActivity": "النشاط الأخير",
+    "streakDays": "أيام متتالية",
+    "totalSkanes": "إجمالي السكان",
     "analyzing": "جاري التحليل...",
     "analyzingPatterns": "تحليل أنماط الجسم...",
     "detectingSignals": "اكتشاف إشارات التنشيط...",
@@ -42,7 +36,7 @@
     "signal": "الإشارة",
     "action": "الإجراء",
     "startMicroAction": "بدء الإجراء المصغر",
-    "disclaimer": "إشارة الرفاهية – ليست طبية",
+    "disclaimer": "إشارة رفاهية — ليست طبية",
     "guestModeEnabled": "Guest mode enabled",
     "guestModeDisabled": "Guest mode disabled",
     "hint": {
@@ -50,7 +44,7 @@
       "centerFace": "Center your face",
       "moreLight": "More light",
       "holdStill": "Hold still",
-      "oneFaceOnly": "Only one face",
+      "oneFaceOnly": "وجه واحد فقط",
       "fitOval": "Fit your face in the frame",
       "showEyes": "أظهر عينيك",
       "showMouth": "أظهر فمك"
@@ -58,12 +52,12 @@
     "locked": "Locked",
     "cameraNotReady": "الكاميرا غير جاهزة. حاول مرة أخرى.",
     "cameraInvalidDimensions": "أبعاد الكاميرا غير صحيحة. حاول مرة أخرى.",
-    "captureError": "غير قادر على التقاط الصورة. حاول مرة أخرى.",
+    "captureError": "غير قادر على التقاط الصورة. يرجى المحاولة مرة أخرى.",
     "flashEnabled": "تم تفعيل فلاش الشاشة",
     "flashDisabled": "تم تعطيل فلاش الشاشة",
     "centerFace": "ركز وجهك",
     "actionCompleted": "تمت العملية ✓",
-    "observeFeeling": "راقب ما تشعر به.",
+    "observeFeeling": "لاحظ كيف تشعر.",
     "breatheWithRhythm": "تنفس مع الإيقاع.",
     "canPutPhoneDown": "يمكنك وضع هاتفك."
   },
@@ -73,16 +67,16 @@
     "regulated": "منظم"
   },
   "actions": {
-    "physiologicalSigh": "تنهيدة فسيولوجية",
+    "physiologicalSigh": "زفير فسيولوجي",
     "expiration38": "زفير طويل",
     "respiration46": "تنفس مستقر",
     "boxBreathing": "تنفس الصندوق",
     "respiration21": "تنفس منشط",
-    "dropTrapezes": "إسقاط شبه المنحرف",
+    "dropTrapezes": "اسقط الفخاخ",
     "ouvertureThoracique": "فتح الصدر",
     "postureAncrage": "وضعية التثبيت",
     "shakeNeuromusculaire": "اهتزاز عصبي عضلي",
-    "pressionPlantaire": "ضغط أخمصي",
+    "pressionPlantaire": "ضغط القدم",
     "regardFixeExpiration": "نظرة ثابتة + زفير",
     "tipLabel": "نصيحة (اختيارية)",
     "skipTip": "تخطي",
@@ -101,50 +95,50 @@
     "exhale": "زفير",
     "hold": "احتفظ",
     "pause": "وقفة",
-    "throughNose": "من الأنف",
-    "throughMouth": "من الفم",
+    "throughNose": "من خلال الأنف",
+    "throughMouth": "من خلال الفم",
     "slowly": "ببطء",
     "quickly": "بسرعة",
-    "inhaleNose": "شهيق من الأنف",
+    "inhaleNose": "استنشاق من الأنف",
     "inhaleMore": "شهيق أكثر قليلاً",
-    "exhaleSlowMouth": "زفير بطيء من الفم",
-    "exhaleGentleMouth": "زفير لطيف من الفم",
+    "exhaleSlowMouth": "زفير ببطء من الفم",
+    "exhaleGentleMouth": "زفير برفق من الفم",
     "exhaleMouth": "زفير من الفم",
-    "inhaleQuickNose": "شهيق سريع من الأنف",
+    "inhaleQuickNose": "استنشاق بسرعة من الأنف",
     "inhaleCalmly": "شهيق بهدوء",
-    "exhaleSlowLong": "زفير بطيء وطويل"
+    "exhaleSlowLong": "زفير ببطء وبشكل كامل"
   },
   "body": {
-    "raiseShouders": "ارفع الكتفين",
-    "releaseCompletely": "أطلق تماماً",
-    "openChest": "افتح الصدر قليلاً",
+    "raiseShouders": "ارفع كتفيك",
+    "releaseCompletely": "استرخ تمامًا",
+    "openChest": "افتح صدرك برفق",
     "breatheCalmly": "تنفس بهدوء",
     "holdPosture": "حافظ على الوضعية",
-    "standGrounded": "قف وقدميك مثبتتين",
+    "standGrounded": "قف مستقيمًا، قدميك مثبتتين",
     "lookAhead": "انظر للأمام",
     "calmBreathing": "تنفس هادئ",
-    "shakeArms": "اهز الذراعين واليدين برفق",
+    "shakeArms": "اهتز بذراعيك ويديك برفق",
     "moveFreely": "دع الجسم يتحرك بحرية",
     "pressFeet": "اضغط القدمين على الأرض",
     "release": "أطلق",
-    "fixPoint": "ثبت على نقطة مستقرة"
+    "fixPoint": "ركز على نقطة ثابتة"
   },
   "feedback": {
     "howDoYouFeel": "كيف تشعر؟",
     "worse": "ليس أفضل",
     "same": "نفس الشيء",
     "better": "أفضل",
-    "helpImprove": "ملاحظاتك تساعد Nokta One في التعرف عليك",
-    "greatToHear": "رائع! 🎉",
+    "helpImprove": "ملاحظاتك تساعد NOKTA على التعرف عليك",
+    "greatToHear": "سعيدون بسماع ذلك! 🎉",
     "noted": "تمت الملاحظة ✓",
-    "willImprove": "سنقوم بتحسين",
+    "willImprove": "سوف نتحسن",
     "redirecting": "إعادة توجيه...",
-    "privacyNote": "ملاحظاتك تبقى خاصة وتساعد في تخصيص إجراءاتك المستقبلية"
+    "privacyNote": "تظل ملاحظاتك خاصة وتساعد في تخصيص إجراءاتك المستقبلية"
   },
   "share": {
     "shareYourReset": "هل تريد مشاركة إعادة تعيينك؟",
     "no": "لا",
-    "shareToStories": "مشاركة في القصة",
+    "shareToStories": "شارك في القصة",
     "downloadImage": "تحميل الصورة",
     "skaneIndex": "مؤشر السكان",
     "before": "قبل",
@@ -161,17 +155,17 @@
     "retake": "إعادة التقاط"
   },
   "camera": {
-    "accessRequired": "الوصول إلى الكاميرا مطلوب للمسح",
+    "accessRequired": "مطلوب الوصول إلى الكاميرا للمسح",
     "accessDenied": "تم رفض الوصول إلى الكاميرا",
     "accessError": "خطأ تقني",
     "description": "NOKTA ONE يستخدم الكاميرا الأمامية الخاصة بك لمسح لمدة 3 ثوانٍ لتقدير مستوى نشاطك.",
-    "noPhotoStored": "لا توجد صور مخزنة",
+    "noPhotoStored": "لا توجد صورة مخزنة",
     "instantAnalysis": "مسح لمدة 3 ثوانٍ، إشارة فورية",
-    "revocableAnytime": "قابل للإلغاء في أي وقت",
+    "revocableAnytime": "يمكن إلغاءه في أي وقت",
     "allowCamera": "السماح بالكاميرا",
     "howToEnable": "كيفية التفعيل",
-    "refreshPage": "تحديث الصفحة",
-    "cannotAccessCamera": "تعذر الوصول إلى الكاميرا. تحقق من عدم استخدام تطبيق آخر لها.",
+    "refreshPage": "قم بتحديث الصفحة",
+    "cannotAccessCamera": "لا يمكن الوصول إلى الكاميرا. تحقق مما إذا كانت تطبيق آخر يستخدمها.",
     "activatingCamera": "تفعيل الكاميرا...",
     "noCameraFound": "No camera detected. Make sure a camera is connected to your device.",
     "faceReady": "مثالي!",
@@ -211,12 +205,50 @@
     "referralCode": "رمز الإحالة",
     "invitations": "الدعوات",
     "invitationsAvailable": "دعوات متاحة",
-    "inviteDescription": "ادعُ أحباءك لتجربة نوكتا ون في وضع الضيف.",
+    "inviteDescription": "ادعُ أحبائك لتجربة NOKTA ONE كزائر.",
     "copyInviteLink": "نسخ رابط الدعوة",
     "linkCopied": "تم نسخ الرابط!",
     "earnInvitation": "احصل على دعوة واحدة كل 3 سكانات (24 ساعة)",
     "logOut": "تسجيل الخروج",
-    "comingSoon": "قريباً"
+    "comingSoon": "قريباً",
+    "notificationSchedule": "جدول التذكير",
+    "morningReminder": "صباحاً",
+    "afternoonReminder": "ظهراً",
+    "eveningReminder": "مساءً",
+    "scheduleDescription": "التذكيرات تساعدك في الحفاظ على إيقاع skane الخاص بك.",
+    "dailyReminders": "تذكيرات يومية",
+    "dailyRemindersDescription": "3 تذكيرات لإعادة ضبطك اليومية: صباحًا، ظهرًا، مساءً",
+    "customizeSchedule": "تخصيص الجدول",
+    "remindersScheduleTitle": "أوقات التذكيرات",
+    "remindersScheduleDescription": "خصص تذكيراتك الثلاث اليومية حتى لا تنسى إعادة الضبط.",
+    "reminderMorning": "الصباح",
+    "reminderNoon": "الظهر",
+    "reminderEvening": "المساء",
+    "remindersScheduleInfo": "ستظهر التذكيرات كإشعارات على جهازك",
+    "more": "المزيد",
+    "exportData": "تصدير بياناتي",
+    "partnershipManagement": "إدارة الشراكة",
+    "enableReminders": "تفعيل التذكيرات",
+    "termsOfUse": "شروط الاستخدام",
+    "privacyPolicy": "سياسة الخصوصية",
+    "licenses": "التراخيص",
+    "privacyAndData": "الخصوصية والبيانات",
+    "contactUs": "اتصل بنا",
+    "editProfileAria": "تعديل الملف الشخصي",
+    "notificationPermissionDeniedDesc": "قم بتمكين الإشعارات لتلقي تذكيراتك في الأوقات التي اخترتها.",
+    "enableNotifications": "تمكين الإشعارات"
+  },
+  "invitationsModal": {
+    "title": "الدعوات",
+    "counterLabel_one": "دعوة واحدة متاحة",
+    "counterLabel_other": "{{count}} دعوات متاحة",
+    "description": "ادعُ أحباءك لتجربة Nokta One. يمكنهم عمل Skane مجاني.",
+    "shareInvitation": "مشاركة الدعوة",
+    "copyLink": "نسخ الرابط",
+    "linkCopied": "تم نسخ الرابط!",
+    "earnPerFriend": "احصل على دعوة واحدة مقابل كل صديق يقوم بـ 3 Skanes",
+    "shareTitle": "جرب Nokta One",
+    "shareText": "اكتشف إشارة التوتر لديك في 3 ثوانٍ وأعد ضبط جهازك العصبي في 30 ثانية."
   },
   "profile": {
     "firstName": "الاسم الأول",
@@ -237,7 +269,38 @@
     "country": "البلد",
     "occupation": "المهنة",
     "changePhoto": "تغيير الصورة",
-    "profileUpdated": "تم تحديث الملف الشخصي!"
+    "profileUpdated": "تم تحديث الملف الشخصي!",
+    "memberSince": "عضو منذ",
+    "streakDays": "يوم متتالي",
+    "inviteFriends": "دعوة الأصدقاء"
+  },
+  "editProfile": {
+    "title": "تعديل ملفي الشخصي",
+    "sectionPhoto": "صورة الملف الشخصي",
+    "sectionPersonal": "المعلومات الشخصية",
+    "sectionContact": "جهات الاتصال",
+    "sectionPreferences": "التفضيلات",
+    "placeholders": {
+      "firstName": "اسمك الأول",
+      "lastName": "اسم العائلة",
+      "username": "اسم المستخدم",
+      "email": "بريدك@الإلكتروني.com",
+      "phone": "+966 5 1234 5678",
+      "address": "عنوانك",
+      "postalCode": "12345",
+      "city": "المدينة",
+      "job": "مثال: رجل أعمال، رياضي، طالب..."
+    },
+    "saving": "جاري الحفظ...",
+    "jobOptional": "المهنة (اختياري)",
+    "countryFR": "فرنسا",
+    "countryUS": "الولايات المتحدة",
+    "countryGB": "المملكة المتحدة",
+    "countryDE": "ألمانيا",
+    "countryES": "إسبانيا",
+    "countryIT": "إيطاليا",
+    "countryCN": "الصين",
+    "countryJP": "اليابان"
   },
   "info": {
     "whatIsSkane": "ما هو السكان؟",
@@ -402,13 +465,17 @@
     "footerNotice": "بمتابعتك، فإنك توافق على شروط الاستخدام الخاصة بنا."
   },
   "devices": {
-    "title": "Connected Devices",
+    "title": "الأجهزة المتصلة",
     "pwaNote": "Apple Health and Health Connect are only available in the Nokta mobile app (iOS and Android). Connection is not possible on the web.",
     "appleHealth": "Apple Health",
     "healthConnect": "Health Connect",
+    "appleHealthDescription": "مزامنة بيانات صحتك على iOS",
+    "healthConnectDescription": "مزامنة بيانات صحتك على Android",
     "statusConnected": "Connected",
     "statusDisconnected": "Not connected",
     "statusPwaUnavailable": "Not available on web",
+    "comingSoon": "قريباً",
+    "footerMoreIntegrations": "تكاملات أخرى قريباً: Garmin, Fitbit, Oura, WHOOP...",
     "hintIos": "Use the Nokta app on iOS to connect Apple Health.",
     "hintAndroid": "Use the Nokta app on Android to connect Health Connect."
   },
@@ -416,8 +483,8 @@
     "title": "Skane Index",
     "before": "Before",
     "after": "After",
-    "skaneCompleted": "Skane Completed",
-    "activationDisclaimer": "نتيجة التفعيل الخاصة بك · معلومات فقط",
+    "skaneCompleted": "Skane completed",
+    "activationDisclaimer": "نتيجة التنشيط الخاصة بك · معلومات فقط",
     "shareYourReset": "Share your reset",
     "demo": {
       "title": "عرض Skane Index",
@@ -435,11 +502,25 @@
   "welcome": {
     "message": "اكتشف حالة جسمك في ثوانٍ.",
     "start": "ابدأ",
-    "alreadyAccount": "هل لديك حساب بالفعل"
+    "alreadyAccount": "هل لديك حساب بالفعل",
+    "headlinePrefix": "قيس",
+    "headlineSuffix": "في 3 ثوانٍ.",
+    "words": {
+      "stress": "التوتر",
+      "tension": "التوتر",
+      "anxiety": "القلق",
+      "fatigue": "التعب"
+    },
+    "subheadline": "أعد ضبط جهازك العصبي بعملية مصغرة مدتها 30 ثانية.",
+    "disclaimer": "إشارة رفاهية · ليست مشورة طبية",
+    "featureScan": "مسح وجه 3 ثوانٍ",
+    "featureAction": "عمل مصغر 30 ثانية",
+    "featureResult": "نتيجة فورية",
+    "skaneIndex": "SKANE INDEX"
   },
   "firstSkaneResult": {
     "title": "جسمك يحتاج إلى إعادة ضبط.",
-    "subtitle": "نقدم لك إعادة ضبط فورية.",
+    "subtitle": "نقترح إعادة ضبط فورية.",
     "resetNow": "إعادة ضبط الآن ({{duration}}ث)"
   },
   "firstSkaneFeedback": {
@@ -449,42 +530,42 @@
     "notReally": "ليس حقاً",
     "confirmYes": "رائع! 🎉",
     "confirmLittle": "تم الملاحظة ✓",
-    "confirmNot": "شكراً على ملاحظتك"
+    "confirmNot": "شكرًا على ملاحظاتك"
   },
   "onboarding": {
     "continue": {
-      "title": "Nokta One يعمل بشكل أفضل عندما يعرفك قليلاً.",
-      "subtitle": "لا بيانات حساسة. فقط شعورك.",
+      "title": "NOKTA ONE يعمل بشكل أفضل عندما يعرفك قليلاً.",
+      "subtitle": "لا بيانات حساسة. فقط كيف تشعر.",
       "continue": "استمر",
       "later": "لاحقاً"
     },
     "adaptation": {
-      "title": "Nokta تتكيف مع جسمك.",
-      "description": "لمدة {{days}} يومًا، Nokta تضبط توصياتها لتكون متوافقة تمامًا معك.",
+      "title": "NOKTA ONE يتكيف مع جسمك.",
+      "description": "لمدة {{days}} يومًا، يقوم NOKTA ONE بضبط توصياته لتتناسب تمامًا معك.",
       "noAction": "لا تحتاج إلى القيام بأي شيء خاص.",
       "timeline": "اليوم 1 → اليوم 7",
       "accept": "حسناً"
     },
     "bestPractices": {
       "title": "لنتائج أفضل",
-      "practice1": "قم بمسح وجهك فقط",
+      "practice1": "امسح فقط وجهك",
       "practice2": "استخدم وضع الضيف لشخص آخر",
-      "practice3": "قم بمسح عندما تشعر بعدم الارتياح",
+      "practice3": "امسح عندما تشعر حقًا بعدم الارتياح",
       "understood": "فهمت"
     },
     "reflex": {
-      "title": "عندما يكون جسمك غير متوازن، سكَن.",
+      "title": "عندما يكون جسمك غير متوازن، امسح.",
       "subtitle": "ضغط، تعب، تحميل ذهني، قبل لحظة مهمة",
-      "noktaIsHere": "Nokta One هنا.",
-      "nextSkane": "قم بعمليتي السكَن التالية",
+      "noktaIsHere": "NOKTA ONE هنا.",
+      "nextSkane": "قم بمسح التالي",
       "skip": "تخطي"
     }
   },
   "homeAdaptation": {
-    "inProgress": "جاري التكيف — اليوم {{day}} من 7",
+    "inProgress": "يتكيف — اليوم {{day}} من 7",
     "improvesPrecision": "كل Skane يحسن الدقة.",
     "complete": "✓ التكيف مكتمل",
-    "calibrated": "Nokta الآن مُعاير لك."
+    "calibrated": "NOKTA ONE تم معايرته الآن لك."
   },
   "login": {
     "title": "Welcome back",
@@ -501,7 +582,19 @@
     "signUp": "Create account",
     "errorRequired": "All fields are required",
     "errorGeneric": "خطأ في تسجيل الدخول",
-    "errorInvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة"
+    "errorInvalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+    "errorEmailRequired": "البريد الإلكتروني مطلوب",
+    "errorEmailInvalid": "بريد إلكتروني غير صالح",
+    "errorPasswordRequired": "كلمة المرور مطلوبة",
+    "errorPasswordMin": "6 أحرف على الأقل",
+    "placeholderEmail": "your@email.com",
+    "placeholderPassword": "••••••••",
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "footerPrefix": "بالمتابعة، أنت توافق على ",
+    "footerTerms": "الشروط",
+    "footerAnd": " و",
+    "footerPrivacy": "سياسة الخصوصية"
   },
   "faq": {
     "title": "FAQ",
@@ -1272,5 +1365,172 @@
       "privacy": "الخصوصية",
       "support": "الدعم"
     }
+  },
+  "termsPage": {
+    "title": "شروط الخدمة",
+    "versionLabel": "الإصدار",
+    "versionValue": "1.0",
+    "updatedLabel": "آخر تحديث",
+    "updatedValue": "يناير 2025",
+    "disclaimer": "تنبيه: Nokta One ليست جهازًا طبيًا ولا تقدم نصائح طبية. إذا كانت لديك مخاوف صحية، استشر محترفًا.",
+    "contactTitle": "اتصل",
+    "contactDescription": "لأي استفسارات حول هذه الشروط:",
+    "acceptanceNotice": "باستخدامك Nokta One، تقر بأنك قرأت وفهمت وتوافق على هذه الشروط.",
+    "sections": {
+      "s01": {
+        "title": "المادة 1 - القبول",
+        "content": "<p>باستخدامك Nokta One، توافق على الالتزام بهذه الشروط. إذا كنت لا توافق، يجب عليك عدم استخدام الخدمة.</p><p>تمثل أنك تبلغ من العمر <strong>16 عامًا على الأقل</strong> (أو 13 بموافقة الوالدين) ولديك القدرة القانونية للدخول في عقد.</p>"
+      },
+      "s02": {
+        "title": "المادة 2 - وصف الخدمة",
+        "content": "<p>Nokta One هو تطبيق للرفاهية يقدم:</p><ul><li>جلسات تنظيم فسيولوجي موجهة</li><li>تمارين التنفس والوضعية</li><li>تتبع حالة الرفاهية</li><li>توصيات مخصصة</li></ul><p><strong>تُقدم الخدمة لأغراض معلوماتية فقط ولا تحل محل نصيحة محترف الرعاية الصحية.</strong></p>"
+      },
+      "s03": {
+        "title": "المادة 3 - حساب المستخدم",
+        "content": "<p>للوصول إلى ميزات معينة، يجب عليك إنشاء حساب. توافق على:</p><ul><li>تقديم معلومات دقيقة ومحدثة</li><li>الحفاظ على سرية بيانات اعتمادك</li><li>إبلاغنا عن أي استخدام غير مصرح به</li><li>تحمل المسؤولية عن جميع الأنشطة تحت حسابك</li></ul>"
+      },
+      "s04": {
+        "title": "المادة 4 - الاشتراكات",
+        "content": "<p><strong>الخطط:</strong> مجانية (وصول محدود) أو مميزة (وصول كامل)</p><p><strong>التجديد:</strong> تلقائي، ما لم يتم الإلغاء قبل انتهاء الصلاحية</p><p><strong>الإلغاء:</strong> في أي وقت من الإعدادات أو منصتك (متجر التطبيقات، جوجل بلاي)</p><p><strong>الاسترداد:</strong> غير قابلة للاسترداد، ما لم يتطلب القانون ذلك</p>"
+      },
+      "s05": {
+        "title": "المادة 5 - قواعد الاستخدام",
+        "content": "<p><strong>يُحظر:</strong></p><ul><li>استخدام الخدمة لأغراض غير قانونية</li><li>محاولة الوصول غير المصرح به إلى أنظمتنا</li><li>نقل الفيروسات أو الشيفرات الضارة</li><li>جمع بيانات المستخدمين الآخرين</li><li>انتحال شخصية شخص آخر</li><li>إعادة بيع أو استغلال الخدمة تجاريًا</li></ul>"
+      },
+      "s06": {
+        "title": "المادة 6 - الملكية الفكرية",
+        "content": "<p>الخدمة ومحتواها (الكود، النصوص، الرسوم البيانية، الشعارات، إلخ) هي ملكية حصرية للناشر ومحمية بموجب قوانين الملكية الفكرية.</p><p>يتم منحك ترخيصًا شخصيًا ومحدودًا وغير حصري وقابل للإلغاء لاستخدام الخدمة لأغراض شخصية.</p>"
+      },
+      "s07": {
+        "title": "المادة 7 - تحديد المسؤولية",
+        "content": "<p>تُقدم الخدمة 'كما هي'، دون أي ضمان من أي نوع.</p><p>نحن غير مسؤولين عن:</p><ul><li>الأضرار غير المباشرة أو التبعية</li><li>فقدان الأرباح أو البيانات</li><li>انقطاع الخدمة</li></ul><p><strong>الحد:</strong> مسؤوليتنا محدودة بالمبلغ المدفوع في آخر 12 شهرًا (أو 100 يورو كحد أقصى).</p>"
+      },
+      "s08": {
+        "title": "المادة 8 - إنهاء الخدمة",
+        "content": "<p><strong>بواسطتك:</strong> يمكنك حذف حسابك في أي وقت من الإعدادات.</p><p><strong>بواسطتنا:</strong> يمكننا تعليق وصولك إذا انتهكت هذه الشروط.</p><p>عند الإنهاء، ينتهي حقك في استخدام الخدمة على الفور.</p>"
+      },
+      "s09": {
+        "title": "المادة 9 - القانون الحاكم",
+        "content": "<p>تخضع هذه الشروط لـ <strong>القانون الفرنسي</strong>.</p><p>في حالة النزاع، ستسعى الأطراف لإيجاد حل ودي. يمكنك استخدام الوساطة الاستهلاكية.</p><p><strong>الاختصاص:</strong> محاكم باريس، مع مراعاة قواعد الاختصاص الإلزامية للمستهلكين.</p><p><strong>المنصة الأوروبية:</strong> <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>ec.europa.eu/consumers/odr</a></p>"
+      }
+    }
+  },
+  "privacyPolicyPage": {
+    "title": "سياسة الخصوصية",
+    "versionLabel": "الإصدار",
+    "versionValue": "1.0",
+    "updatedLabel": "آخر تحديث",
+    "updatedValue": "يناير 2025",
+    "contactTitle": "اتصل بنا",
+    "contactDescription": "لأي استفسارات حول هذه السياسة أو لممارسة حقوقك:",
+    "sections": {
+      "s01": {
+        "title": "مقدمة",
+        "content": "<p>تصف سياسة الخصوصية هذه كيفية جمع معلوماتك الشخصية واستخدامها ومشاركتها عند استخدامك لتطبيق <strong>Nokta One</strong>.</p><p>تم نشر Nokta One بواسطة شركة فرنسية مسجلة في سجل التجارة والشركات في باريس. باستخدامك لخدمتنا، فإنك توافق على الممارسات الموضحة في هذه السياسة.</p>"
+      },
+      "s02": {
+        "title": "1. البيانات التي نجمعها",
+        "content": "<p><strong>بيانات الحساب:</strong> البريد الإلكتروني، اسم المستخدم، كلمة المرور (مشفرة)</p><p><strong>بيانات الملف الشخصي:</strong> الاسم الأول، تاريخ الميلاد، البلد، اللغة</p><p><strong>بيانات الاستخدام:</strong> الجلسات، الإجراءات، الطوابع الزمنية</p><p><strong>تحليل الوجه:</strong> يتم معالجة الصور <strong>محليًا على جهازك</strong>. يتم نقل درجات العافية المجهولة فقط. نحن <strong>لا</strong> نستخدم التعرف على الوجه لتحديد هويتك.</p>"
+      },
+      "s03": {
+        "title": "2. كيفية استخدام البيانات",
+        "content": "<p>نستخدم بياناتك لـ:</p><ul><li>تقديم الخدمة وتحسينها</li><li>تخصيص تجربتك</li><li>إرسال الاتصالات إليك (إذا تم الموافقة)</li><li>ضمان أمان الخدمة</li></ul><p><strong>الأساس القانوني (GDPR):</strong> تنفيذ العقد، المصلحة المشروعة، الموافقة.</p>"
+      },
+      "s04": {
+        "title": "3. مشاركة البيانات",
+        "content": "<p><strong>نحن لا نبيع بياناتك الشخصية أبدًا.</strong></p><p>نستخدم مزودي خدمات موثوقين (بنية تحتية سحابية في الاتحاد الأوروبي، خدمات دفع معتمدة من PCI-DSS). تخضع التحويلات خارج الاتحاد الأوروبي لبنود تعاقدية قياسية.</p>"
+      },
+      "s05": {
+        "title": "4. الاحتفاظ",
+        "content": "<p><strong>بيانات الحساب:</strong> مدة التسجيل + 3 سنوات</p><p><strong>بيانات الجلسة:</strong> 24 شهرًا</p><p><strong>بيانات الدفع:</strong> 10 سنوات (التزامات ضريبية)</p><p>بعد حذف الحساب، يتم إ anonymization أو حذف بياناتك خلال 30 يومًا.</p>"
+      },
+      "s06": {
+        "title": "5. حقوقك",
+        "content": "<p>لديك الحقوق التالية:</p><ul><li><strong>الوصول</strong>: الحصول على نسخة من بياناتك</li><li><strong>التصحيح</strong>: تصحيح بياناتك</li><li><strong>الحذف</strong>: حذف بياناتك</li><li><strong>التحويل</strong>: تصدير بياناتك</li><li><strong>الاعتراض</strong>: الاعتراض على معالجة معينة</li><li><strong>سحب الموافقة</strong>: في أي وقت</li></ul><p>وقت الاستجابة: <strong>30 يومًا كحد أقصى</strong>.</p><p>يمكنك تقديم شكوى إلى <strong>CNIL</strong> (www.cnil.fr).</p>"
+      },
+      "s07": {
+        "title": "6. الأمان",
+        "content": "<p>بياناتك محمية بواسطة:</p><ul><li>التشفير أثناء النقل (TLS 1.3) وفي حالة السكون (AES-256)</li><li>المصادقة الآمنة</li><li>الوصول المحدود (مبدأ الحد الأدنى من الامتياز)</li><li>إخطار الخرق خلال 72 ساعة</li></ul>"
+      },
+      "s08": {
+        "title": "7. القصر",
+        "content": "<p>خدمتنا مخصصة للأشخاص <strong>16 عامًا فأكثر</strong>.</p><p>بين 13 و 16 عامًا، يتطلب الأمر موافقة الوالدين. نحن لا نجمع بيانات من الأطفال دون 13 عامًا عن علم.</p>"
+      },
+      "s09": {
+        "title": "8. كاليفورنيا (CCPA)",
+        "content": "<p>إذا كنت مقيمًا في كاليفورنيا:</p><ul><li><strong>نحن لا نبيع معلوماتك الشخصية</strong></li><li>لديك الحق في المعرفة، الحذف، والانسحاب من 'بيع' بياناتك</li></ul>"
+      }
+    }
+  },
+  "legalNoticePage": {
+    "title": "إشعار قانوني",
+    "updatedLabel": "آخر تحديث",
+    "updatedValue": "يناير 2025",
+    "footerNote": "يمكن تعديل هذا الإشعار القانوني في أي وقت. النسخة الحالية هي النسخة المتاحة على التطبيق.",
+    "sections": {
+      "s01": {
+        "title": "1. ناشر التطبيق",
+        "content": "<p>تطبيق <strong>Nokta One</strong> تم نشره بواسطة:</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>الشكل القانوني</strong>: شركة مساهمة مبسطة (SASU) بموجب القانون الفرنسي</p><p><strong>المقر الرئيسي</strong>: باريس، فرنسا</p><p><strong>رأس المال</strong>: متغير</p><p><strong>التسجيل</strong>: سجل التجارة والشركات في باريس</p><p><strong>رقم ضريبة القيمة المضافة</strong>: FR [number]</p><p><strong>النشاط الرئيسي</strong>: نشر برامج التطبيقات (رمز NAF: 58.29C)</p><p><strong>مدير النشر</strong>: الممثل القانوني للشركة</p></div>"
+      },
+      "s02": {
+        "title": "2. الاستضافة",
+        "content": "<p>يتم استضافة التطبيق وبياناته بواسطة:</p><h3>المضيف الرئيسي</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Vercel Inc.</strong></p><p>340 S Lemon Ave #4133<br />Walnut, CA 91789<br />الولايات المتحدة<br /><a href='https://vercel.com' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://vercel.com</a></p></div><h3>قاعدة البيانات</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p>بنية تحتية سحابية معتمدة، تقع في الاتحاد الأوروبي (فرانكفورت، ألمانيا)</p><p><strong>الشهادات</strong>: ISO 27001، SOC 2 Type II</p></div>"
+      },
+      "s03": {
+        "title": "3. الاتصال",
+        "content": "<p>لأي استفسارات أو شكاوى:</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>البريد الإلكتروني العام</strong>: <a href='mailto:contact@nokta.app' style='color: rgb(59, 130, 246);'>contact@nokta.app</a></p><p><strong>الدعم الفني</strong>: <a href='mailto:support@noktaone.com' style='color: rgb(59, 130, 246);'>support@noktaone.com</a></p><p><strong>حماية البيانات</strong>: <a href='mailto:privacy@nokta.app' style='color: rgb(59, 130, 246);'>privacy@nokta.app</a></p></div>"
+      },
+      "s04": {
+        "title": "4. الملكية الفكرية",
+        "content": "<h3>4.1 حقوق الطبع والنشر</h3><p>جميع العناصر التي تتكون منها التطبيق (الهيكل، النصوص، الرسوم، الصور، الأصوات، الفيديوهات، الشعارات، الرموز، البرمجيات، قاعدة البيانات، إلخ) هي ملكية حصرية للناشر أو شركائه ومحمية بموجب قانون الملكية الفكرية.</p><p>أي استنساخ أو تمثيل أو تعديل أو نشر أو تكييف، كليًا أو جزئيًا، لهذه العناصر، بأي وسيلة كانت، دون الحصول على إذن كتابي مسبق من الناشر، محظور وسيعتبر انتهاكًا يعاقب عليه المواد L.335-2 وما يليها من قانون الملكية الفكرية.</p><h3>4.2 العلامات التجارية</h3><p>'Nokta One'، 'Nokta'، شعار Nokta One وعلامات تجارية أخرى مذكورة في التطبيق هي علامات تجارية مسجلة أو غير مسجلة للناشر. أي استنساخ أو استخدام لهذه العلامات التجارية دون إذن صريح محظور.</p>"
+      },
+      "s05": {
+        "title": "5. حماية البيانات الشخصية",
+        "content": "<p>وفقًا للائحة العامة لحماية البيانات (GDPR) وقانون حماية البيانات الفرنسي، لديك حقوق تتعلق ببياناتك الشخصية.</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>التحكم في البيانات</strong>: ناشر التطبيق</p><p><strong>مسؤول حماية البيانات (DPO)</strong>: <a href='mailto:dpo@nokta.app' style='color: rgb(59, 130, 246);'>dpo@nokta.app</a></p><p>لمزيد من المعلومات، راجع <a href='/privacy' style='color: rgb(59, 130, 246);'>سياسة الخصوصية</a>.</p></div><h3>السلطة الإشرافية</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>الهيئة الوطنية لحماية البيانات وحرية المعلومات (CNIL)</strong></p><p>3 Place de Fontenoy<br />TSA 80715<br />75334 باريس سيدكس 07<br /><a href='https://www.cnil.fr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>www.cnil.fr</a></p></div>"
+      },
+      "s06": {
+        "title": "6. الكوكيز والمتعقبين",
+        "content": "<p>يستخدم التطبيق تقنيات التخزين المحلية (الكوكيز، localStorage) لعمله. يمكنك إدارة تفضيلاتك في إعدادات التطبيق.</p><p>لمزيد من المعلومات، راجع <a href='/privacy' style='color: rgb(59, 130, 246);'>سياسة الخصوصية</a>.</p>"
+      },
+      "s07": {
+        "title": "7. تحديد المسؤولية",
+        "content": "<h3>7.1 معلومات العافية</h3><p>المعلومات والتوصيات المقدمة من Nokta One عامة بطبيعتها ومخصصة فقط لأغراض العافية الشخصية. لا تشكل:</p><ul><li>نصيحة طبية</li><li>تشخيص طبي</li><li>علاج طبي</li><li>وصفة طبية</li></ul><p>لا يحل التطبيق محل استشارة مع متخصص في الرعاية الصحية. في حالة وجود مشاكل صحية، استشر طبيبك.</p><h3>7.2 توفر الخدمة</h3><p>يسعى الناشر للحفاظ على وصول التطبيق ولكنه لا يمكنه ضمان توفر مستمر. لا يمكن تحميل الناشر المسؤولية عن انقطاع الخدمة أو الأعطال المحتملة.</p>"
+      },
+      "s08": {
+        "title": "8. القانون المعمول به",
+        "content": "<p>هذا الإشعار القانوني يخضع للقانون الفرنسي. في حالة النزاع، وبعد محاولة التسوية الودية، يتم إسناد الاختصاص للمحاكم الفرنسية.</p>"
+      },
+      "s09": {
+        "title": "9. الوساطة الاستهلاكية",
+        "content": "<p>وفقًا لأحكام قانون المستهلك بشأن التسوية الودية للنزاعات، يلتزم الناشر بخدمة الوساطة [للاستكمال].</p><p>قبل الاتصال بالوسيط، يجب أن تكون قد حاولت سابقًا حل نزاعك مباشرة مع خدمة العملاء لدينا من خلال شكوى مكتوبة.</p><p><strong>منصة تسوية النزاعات عبر الإنترنت الأوروبية</strong>: <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://ec.europa.eu/consumers/odr</a></p>"
+      },
+      "s10": {
+        "title": "10. الاعتمادات",
+        "content": "<div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>التصميم والتطوير</strong>: Nokta One Team</p><p><strong>التصميم</strong>: Nokta One Team</p><p><strong>الأيقونات</strong>: Lucide Icons (ترخيص MIT)</p><p><strong>الخطوط</strong>: Google Fonts</p></div>"
+      }
+    }
+  },
+  "engagement": {
+    "reminderTitle": "لحظات إعادة ضبطك",
+    "reminderDescription": "اختر متى تريد أن نذكرك بالمسح. أنت تتحكم.",
+    "reminderMorning": "صباحًا",
+    "reminderMorningDesc": "ضبط نظامك عند الاستيقاظ",
+    "reminderMidday": "ظهرًا",
+    "reminderMiddayDesc": "إعادة ضبط في منتصف اليوم",
+    "reminderEvening": "مساءً",
+    "reminderEveningDesc": "جهز نظامك لليل",
+    "reminderInfo": "يمكنك تعديل هذه المواعيد في أي وقت من الإعدادات.",
+    "shareTitle": "شارك إعادة ضبطك",
+    "shareViral": "فيروسية",
+    "shareOther": "أخرى",
+    "shareDownload": "تحميل",
+    "shareTiktokTitle": "شارك على TikTok",
+    "shareImageDownloaded": "الصورة تم تحميلها",
+    "shareTextCopied": "تم نسخ النص",
+    "shareTiktokInstructions": "افتح TikTok، أنشئ فيديو بالصورة، والصق النص.",
+    "shareOpenTiktok": "فتح TikTok",
+    "shareTextCopiedDone": "تم نسخ النص!",
+    "shareDone": "تم المشاركة!",
+    "shareComplete": "اكتمل"
   }
 }

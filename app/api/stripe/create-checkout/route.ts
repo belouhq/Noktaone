@@ -6,10 +6,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerSupabaseClient } from '@/lib/supabase/server-helpers';
 import { createCheckoutSession } from '@/lib/services/stripe';
 import type { SupportedLocale, SubscriptionPlan } from '@/types/subscription';
+import type { SupportedCurrency } from '@/lib/paywall/types';
 
 interface CreateCheckoutBody {
   plan: SubscriptionPlan;
   locale: SupportedLocale;
+  currency?: SupportedCurrency;
   influencerCode?: string | null;
 }
 
@@ -28,7 +30,7 @@ export async function POST(request: NextRequest) {
     
     // Parser le body
     const body: CreateCheckoutBody = await request.json();
-    const { plan, locale, influencerCode } = body;
+    const { plan, locale, currency, influencerCode } = body;
     
     // Valider les paramètres
     if (!plan || !['monthly', 'annual'].includes(plan)) {
@@ -70,6 +72,7 @@ export async function POST(request: NextRequest) {
       email: user.email!,
       plan,
       locale: locale || 'fr',
+      currency,
       influencerCode: influencerData,
     });
     

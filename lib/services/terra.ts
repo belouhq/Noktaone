@@ -380,7 +380,8 @@ export async function saveWearableConnection(
   userId: string,
   terraUser: TerraUser
 ): Promise<void> {
-  await supabase.from('wearable_connections').upsert(
+  const db = supabase as any;
+  await db.from('wearable_connections').upsert(
     {
       user_id: userId,
       terra_user_id: terraUser.user_id,
@@ -408,6 +409,7 @@ export async function saveBiometricSummary(
   activityData?: TerraActivityData,
   bodyData?: TerraBodyData
 ): Promise<void> {
+  const db = supabase as any;
   const summary: any = {
     user_id: userId,
     date,
@@ -518,7 +520,7 @@ export async function saveBiometricSummary(
     summary.sleep_score = Math.round((durationScore + efficiencyScore) / 2);
   }
 
-  await supabase.from('biometric_daily_summary').upsert(summary, {
+  await db.from('biometric_daily_summary').upsert(summary, {
     onConflict: 'user_id,date,provider',
   });
 }
@@ -530,12 +532,13 @@ export async function processTerraWebhook(
   supabase: ReturnType<typeof createClient>,
   payload: TerraWebhookPayload
 ): Promise<void> {
+  const db = supabase as any;
   const { type, user, data } = payload;
   const terraUserId = user.user_id;
   const provider = mapTerraProvider(user.provider);
 
   // Trouver l'utilisateur Nokta
-  const { data: connection } = await supabase
+  const { data: connection } = await db
     .from('wearable_connections')
     .select('user_id')
     .eq('terra_user_id', terraUserId)
@@ -549,7 +552,7 @@ export async function processTerraWebhook(
   const userId = connection.user_id;
 
   // Mettre à jour le last_sync
-  await supabase
+  await db
     .from('wearable_connections')
     .update({
       last_sync_at: new Date().toISOString(),

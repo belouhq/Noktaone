@@ -25,6 +25,12 @@ interface AttributionResult {
   error?: string;
 }
 
+interface AffiliateTrackingRow {
+  id: string;
+  user_id: string;
+  affiliate_tier: 'nano' | 'micro' | 'mid' | 'macro' | 'mega' | string | null;
+}
+
 // ============================================
 // MAIN FUNCTIONS
 // ============================================
@@ -39,6 +45,7 @@ export async function attributeSignup(
   email: string,
   refCode: string | null
 ): Promise<AttributionResult> {
+  const db = supabase as any;
   
   if (!refCode) {
     return { success: false, error: 'No referral code' };
@@ -46,12 +53,13 @@ export async function attributeSignup(
 
   try {
     // Trouver l'affilié
-    const { data: affiliate, error: findError } = await supabase
+    const { data, error: findError } = await db
       .from('affiliate_tracking')
       .select('id, user_id, affiliate_tier')
       .eq('referral_code', refCode)
       .eq('is_active', true)
       .single();
+    const affiliate = data as AffiliateTrackingRow | null;
 
     if (findError || !affiliate) {
       console.log('Affiliate not found for code:', refCode);
@@ -64,7 +72,7 @@ export async function attributeSignup(
     }
 
     // Créer la conversion (type: signup)
-    const { error: conversionError } = await supabase
+    const { error: conversionError } = await db
       .from('affiliate_conversions')
       .insert({
         affiliate_id: affiliate.id,
@@ -79,13 +87,13 @@ export async function attributeSignup(
     }
 
     // Incrémenter le compteur de signups
-    const { data: currentAffiliate } = await supabase
+    const { data: currentAffiliate } = await db
       .from('affiliate_tracking')
       .select('signups_count')
       .eq('id', affiliate.id)
       .single();
 
-    await supabase
+    await db
       .from('affiliate_tracking')
       .update({
         signups_count: (currentAffiliate?.signups_count || 0) + 1,
@@ -94,7 +102,7 @@ export async function attributeSignup(
       .eq('id', affiliate.id);
 
     // Stocker la référence dans le profil du nouvel utilisateur
-    await supabase
+    await db
       .from('user_profile')
       .update({
         // On pourrait ajouter un champ referred_by_code ou referred_by_affiliate_id
@@ -107,7 +115,8 @@ export async function attributeSignup(
       micro: 25,
       mid: 20,
     };
-    const discountApplied = discounts[affiliate.affiliate_tier] || 30;
+    const tier = affiliate.affiliate_tier ?? 'nano';
+    const discountApplied = discounts[tier] ?? 30;
 
     return {
       success: true,
@@ -131,10 +140,11 @@ export async function attributeConversion(
   paymentAmount: number,
   currency: string = 'USD'
 ): Promise<AttributionResult> {
+  const db = supabase as any;
   
   try {
     // Trouver la conversion signup existante pour cet utilisateur
-    const { data: existingConversion, error: findError } = await supabase
+    const { data: existingConversion, error: findError } = await db
       .from('affiliate_conversions')
       .select(`
         id,
@@ -152,7 +162,7 @@ export async function attributeConversion(
     }
 
     // Mettre à jour la conversion en "paid"
-    const { error: updateError } = await supabase
+    const { error: updateError } = await db
       .from('affiliate_conversions')
       .update({
         conversion_type: 'paid',
@@ -169,14 +179,14 @@ export async function attributeConversion(
     }
 
     // Récupérer les compteurs actuels
-    const { data: currentAffiliate } = await supabase
+    const { data: currentAffiliate } = await db
       .from('affiliate_tracking')
       .select('conversions_count, total_commission_earned, commission_pending')
       .eq('id', existingConversion.affiliate_id)
       .single();
 
     // Mettre à jour les compteurs de l'affilié
-    await supabase
+    await db
       .from('affiliate_tracking')
       .update({
         conversions_count: (currentAffiliate?.conversions_count || 0) + 1,
@@ -204,6 +214,7 @@ export async function attributeConversion(
 export async function processMonthlyCommissions(
   supabase: ReturnType<typeof createClient>
 ): Promise<{ processed: number; errors: number }> {
+  const db = supabase as any;
   
   const now = new Date();
   let processed = 0;
@@ -211,7 +222,7 @@ export async function processMonthlyCommissions(
 
   try {
     // Récupérer toutes les conversions actives (moins de 12 mois)
-    const { data: activeConversions, error } = await supabase
+    const { data: activeConversions, error } = await db
       .from('affiliate_conversions')
       .select(`
         id,
@@ -235,7 +246,7 @@ export async function processMonthlyCommissions(
       // Vérifier si encore dans la période de commission (12 mois max)
       if (monthsSince >= 12) {
         // Marquer comme terminée
-        await supabase
+        await db
           .from('affiliate_conversions')
           .update({ status: 'completed' })
           .eq('id', conversion.id);
@@ -243,7 +254,7 @@ export async function processMonthlyCommissions(
       }
 
       // Vérifier si l'abonné est toujours actif
-      const { data: subscription } = await supabase
+      const { data: subscription } = await db
         .from('subscriptions')
         .select('status')
         .eq('user_id', conversion.converted_user_id)
@@ -254,14 +265,14 @@ export async function processMonthlyCommissions(
       }
 
       // Récupérer les compteurs actuels
-      const { data: currentAffiliate } = await supabase
+      const { data: currentAffiliate } = await db
         .from('affiliate_tracking')
         .select('total_commission_earned, commission_pending')
         .eq('id', conversion.affiliate_id)
         .single();
 
       // Ajouter la commission mensuelle
-      const { error: commissionError } = await supabase
+      const { error: commissionError } = await db
         .from('affiliate_tracking')
         .update({
           total_commission_earned: (currentAffiliate?.total_commission_earned || 0) + COMMISSION_PER_MONTH,
@@ -277,7 +288,7 @@ export async function processMonthlyCommissions(
       }
 
       // Mettre à jour le compteur de mois
-      await supabase
+      await db
         .from('affiliate_conversions')
         .update({
           subscription_months: (conversion.subscription_months || 1) + 1,
@@ -300,10 +311,11 @@ export async function cancelConversion(
   supabase: ReturnType<typeof createClient>,
   userId: string
 ): Promise<void> {
+  const db = supabase as any;
   
   try {
     // Trouver la conversion
-    const { data: conversion } = await supabase
+    const { data: conversion } = await db
       .from('affiliate_conversions')
       .select('id, affiliate_id, commission_amount')
       .eq('converted_user_id', userId)
@@ -313,7 +325,7 @@ export async function cancelConversion(
     if (!conversion) return;
 
     // Marquer comme refund
-    await supabase
+    await db
       .from('affiliate_conversions')
       .update({
         status: 'refunded',
@@ -322,7 +334,7 @@ export async function cancelConversion(
       .eq('id', conversion.id);
 
     // Récupérer les compteurs actuels
-    const { data: currentAffiliate } = await supabase
+    const { data: currentAffiliate } = await db
       .from('affiliate_tracking')
       .select('conversions_count, commission_pending')
       .eq('id', conversion.affiliate_id)
@@ -330,7 +342,7 @@ export async function cancelConversion(
 
     // Décrémenter les compteurs (si commission en attente)
     if (conversion.commission_amount) {
-      await supabase
+      await db
         .from('affiliate_tracking')
         .update({
           conversions_count: Math.max(0, (currentAffiliate?.conversions_count || 0) - 1),

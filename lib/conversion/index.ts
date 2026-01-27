@@ -55,7 +55,7 @@
 export * from './types';
 
 // Constants
-export * from './constants';
+export * as conversionConstants from './constants';
 
 // Utilities
 export * from './utils';

@@ -17,24 +17,18 @@
   },
   "home": {
     "title": "NOKTA ONE",
-    "recentSkane": "हाल का Skane :",
-    "today": "आज",
-    "yesterday": "कल",
-    "daysAgo": "{{count}} दिन पहले",
-    "noResetAvailable": "आज {{hours}} घंटे के लिए कोई रीसेट नहीं",
-    "pressToSkane": "स्केन करने के लिए दबाएं",
-    "noSkaneYet": "No skane done yet",
-    "readyForFirstSkane": "Ready for your first Skane!",
-    "testKey": "शरीर का संकेत मिला",
+    "pressToSkane": "स्कैन करने के लिए दबाएं\n",
     "justNow": "अभी",
-    "minutesAgo": "{{count}} मिनट पहले",
-    "todayAt": "आज – {{time}}",
-    "emptyState": "—",
-    "lastSkaneTitle": "अंतिम स्केन",
-    "lastSkaneEmpty": "—"
+    "lastSkaneTitle": "अंतिम स्कैन",
+    "lastSkaneEmpty": "—",
+    "helpAria": "सहायता",
+    "startSkaneAria": "Skane शुरू करें"
   },
   "skane": {
     "startSkane": "शुरू करें\nSkane",
+    "recentActivity": "हाल की गतिविधि",
+    "streakDays": "दिन लगातार",
+    "totalSkanes": "कुल Skane",
     "analyzing": "विश्लेषण चल रहा है...",
     "analyzingPatterns": "शारीरिक पैटर्न का विश्लेषण...",
     "detectingSignals": "सक्रियता संकेतों का पता लगाना...",
@@ -42,7 +36,7 @@
     "signal": "संकेत",
     "action": "क्रिया",
     "startMicroAction": "सूक्ष्म-क्रिया शुरू करें",
-    "disclaimer": "कल्याण संकेत - चिकित्सा नहीं",
+    "disclaimer": "कल्याण संकेत — चिकित्सा नहीं",
     "guestModeEnabled": "Guest mode enabled",
     "guestModeDisabled": "Guest mode disabled",
     "hint": {
@@ -50,7 +44,7 @@
       "centerFace": "Center your face",
       "moreLight": "More light",
       "holdStill": "Hold still",
-      "oneFaceOnly": "Only one face",
+      "oneFaceOnly": "सिर्फ एक चेहरा",
       "fitOval": "Fit your face in the frame",
       "showEyes": "अपनी आँखें दिखाएं",
       "showMouth": "अपना मुँह दिखाएं"
@@ -63,7 +57,7 @@
     "flashDisabled": "स्क्रीन फ्लैश अक्षम है",
     "centerFace": "अपने चेहरे को केंद्रित करें",
     "actionCompleted": "कार्य पूरा ✓",
-    "observeFeeling": "जो आप महसूस करते हैं, उसे देखें।",
+    "observeFeeling": "आप कैसा महसूस करते हैं, उस पर ध्यान दें।",
     "breatheWithRhythm": "लय के साथ सांस लें।",
     "canPutPhoneDown": "आप अपना फोन रख सकते हैं।"
   },
@@ -74,16 +68,16 @@
   },
   "actions": {
     "physiologicalSigh": "शारीरिक आह",
-    "expiration38": "लंबी श्वास",
-    "respiration46": "स्थिरता श्वास",
+    "expiration38": "लंबी सांस छोड़ें",
+    "respiration46": "स्थिर करने वाली सांस",
     "boxBreathing": "बॉक्स श्वास",
-    "respiration21": "ऊर्जावान श्वास",
-    "dropTrapezes": "ट्रेपेज़ छोड़ें",
-    "ouvertureThoracique": "छाती खोलें",
-    "postureAncrage": "आधारभूत स्थिति",
-    "shakeNeuromusculaire": "न्यूरोमस्क्युलर झटका",
-    "pressionPlantaire": "पैरों का दबाव",
-    "regardFixeExpiration": "स्थिर दृष्टि + श्वास छोड़ना",
+    "respiration21": "ऊर्जा देने वाली सांस",
+    "dropTrapezes": "जाल छोड़ें",
+    "ouvertureThoracique": "छाती खोलना",
+    "postureAncrage": "जमीन पर खड़े होना",
+    "shakeNeuromusculaire": "न्यूरोमस्कुलर झटका",
+    "pressionPlantaire": "पैर का दबाव",
+    "regardFixeExpiration": "स्थिर दृष्टि + बाहर छोड़ें",
     "tipLabel": "टिप (वैकल्पिक)",
     "skipTip": "छोड़ें",
     "continue": "जारी रखें",
@@ -105,46 +99,46 @@
     "throughMouth": "मुंह से",
     "slowly": "धीरे-धीरे",
     "quickly": "जल्दी",
-    "inhaleNose": "नाक से श्वास लें",
+    "inhaleNose": "नाक से अंदर लें",
     "inhaleMore": "थोड़ा और श्वास लें",
-    "exhaleSlowMouth": "मुंह से धीरे-धीरे श्वास छोड़ें",
-    "exhaleGentleMouth": "मुंह से धीरे से श्वास छोड़ें",
-    "exhaleMouth": "मुंह से श्वास छोड़ें",
-    "inhaleQuickNose": "नाक से जल्दी श्वास लें",
+    "exhaleSlowMouth": "धीरे-धीरे मुंह से बाहर छोड़ें",
+    "exhaleGentleMouth": "नरमाई से मुंह से बाहर छोड़ें",
+    "exhaleMouth": "मुंह से बाहर छोड़ें",
+    "inhaleQuickNose": "तेज़ी से नाक से अंदर लें",
     "inhaleCalmly": "शांतिपूर्वक श्वास लें",
-    "exhaleSlowLong": "धीरे और लंबे समय तक श्वास छोड़ें"
+    "exhaleSlowLong": "धीरे और पूरी तरह से बाहर छोड़ें"
   },
   "body": {
-    "raiseShouders": "कंधे उठाएं",
-    "releaseCompletely": "पूर्ण रूप से छोड़ें",
-    "openChest": "छाती को हल्का खोलें",
+    "raiseShouders": "अपने कंधे उठाएं",
+    "releaseCompletely": "पूरी तरह से छोड़ दें",
+    "openChest": "धीरे से अपनी छाती खोलें",
     "breatheCalmly": "शांतिपूर्वक श्वास लें",
     "holdPosture": "स्थिति बनाए रखें",
-    "standGrounded": "पैरों को स्थिर रखकर खड़े रहें",
+    "standGrounded": "सीधे खड़े रहें, पैर जमीन पर",
     "lookAhead": "सामने देखें",
     "calmBreathing": "शांत श्वास",
-    "shakeArms": "हाथों और भुजाओं को धीरे से हिलाएं",
+    "shakeArms": "धीरे से अपने हाथ और भुजाएं हिलाएं",
     "moveFreely": "शरीर को स्वतंत्र रूप से हिलने दें",
     "pressFeet": "पैरों को जमीन में दबाएं",
     "release": "छोड़ें",
-    "fixPoint": "एक स्थिर बिंदु पर देखें"
+    "fixPoint": "एक स्थिर बिंदु पर ध्यान केंद्रित करें"
   },
   "feedback": {
     "howDoYouFeel": "आप कैसा महसूस कर रहे हैं?",
     "worse": "बेहतर नहीं",
     "same": "वैसा ही",
     "better": "बेहतर",
-    "helpImprove": "आपकी प्रतिक्रिया Nokta को आपके बारे में जानने में मदद करती है",
-    "greatToHear": "अच्छा! 🎉",
+    "helpImprove": "आपकी प्रतिक्रिया NOKTA को जानने में मदद करती है",
+    "greatToHear": "सुनकर अच्छा लगा! 🎉",
     "noted": "नोट किया ✓",
     "willImprove": "हम सुधार करेंगे",
     "redirecting": "पुनर्निर्देशित कर रहे हैं...",
-    "privacyNote": "आपकी प्रतिक्रिया निजी रहती है और आपके भविष्य के माइक्रो-एक्शन को व्यक्तिगत बनाने में मदद करती है"
+    "privacyNote": "आपकी प्रतिक्रिया निजी रहती है और आपके भविष्य के माइक्रो-एक्शन को व्यक्तिगत बनाती है"
   },
   "share": {
-    "shareYourReset": "क्या आप अपना Reset साझा करना चाहते हैं?",
+    "shareYourReset": "क्या आप अपना रीसेट साझा करना चाहते हैं?",
     "no": "नहीं",
-    "shareToStories": "स्टोरी में साझा करें",
+    "shareToStories": "कहानी में साझा करें",
     "downloadImage": "छवि डाउनलोड करें",
     "skaneIndex": "SKANE INDEX",
     "before": "पहले",
@@ -161,17 +155,17 @@
     "retake": "फिर से लें"
   },
   "camera": {
-    "accessRequired": "स्कैन के लिए कैमरा एक्सेस आवश्यक है",
+    "accessRequired": "स्कैनिंग के लिए कैमरा एक्सेस आवश्यक है",
     "accessDenied": "कैमरे का उपयोग अस्वीकृत",
     "accessError": "तकनीकी त्रुटि",
     "description": "NOKTA ONE आपके सक्रियता स्तर का अनुमान लगाने के लिए आपके फ्रंट कैमरे का 3-सेकंड का स्कैन करता है।",
-    "noPhotoStored": "कोई छवियाँ संग्रहीत नहीं हैं",
+    "noPhotoStored": "कोई छवि संग्रहीत नहीं है",
     "instantAnalysis": "3-सेकंड का स्कैन, तात्कालिक संकेत",
-    "revocableAnytime": "कभी भी रद्द किया जा सकता है",
+    "revocableAnytime": "किसी भी समय रद्द किया जा सकता है",
     "allowCamera": "कैमरे की अनुमति दें",
     "howToEnable": "कैसे सक्षम करें",
-    "refreshPage": "पृष्ठ ताज़ा करें",
-    "cannotAccessCamera": "कैमरे तक पहुँच नहीं सकता। सुनिश्चित करें कि कोई अन्य ऐप इसका उपयोग नहीं कर रहा है।",
+    "refreshPage": "पृष्ठ को ताज़ा करें",
+    "cannotAccessCamera": "कैमरे तक पहुँच नहीं पा रहे हैं। जाँच करें कि क्या कोई अन्य ऐप इसका उपयोग कर रहा है।",
     "activatingCamera": "कैमरा सक्रिय किया जा रहा है...",
     "noCameraFound": "No camera detected. Make sure a camera is connected to your device.",
     "faceReady": "सही!",
@@ -182,7 +176,7 @@
     "faceAdjusting": "समायोजन कर रहा है...",
     "moreLight": "और रोशनी",
     "moveCloser": "और करीब आएं",
-    "onlyOneFace": "केवल एक चेहरा",
+    "onlyOneFace": "सिर्फ एक चेहरा",
     "showEyes": "अपनी आँखें दिखाएं",
     "showMouth": "अपना मुँह दिखाएं",
     "howToEnableOn": "{{browser}} पर कैसे सक्षम करें:",
@@ -207,16 +201,54 @@
     "editProfile": "मेरी प्रोफ़ाइल संपादित करें",
     "notifications": "सूचनाएँ",
     "language": "भाषा",
-    "connectedDevices": "कनेक्टेड डिवाइस",
+    "connectedDevices": "जुड़े हुए उपकरण",
     "referralCode": "रेफरल कोड",
     "invitations": "निमंत्रण",
     "invitationsAvailable": "उपलब्ध निमंत्रण",
-    "inviteDescription": "अपने प्रियजनों को अतिथि मोड में Nokta One का परीक्षण करने के लिए आमंत्रित करें।",
+    "inviteDescription": "अपने प्रियजनों को NOKTA ONE को मेहमान के रूप में आजमाने के लिए आमंत्रित करें।",
     "copyInviteLink": "निमंत्रण लिंक कॉपी करें",
     "linkCopied": "लिंक कॉपी किया गया!",
     "earnInvitation": "हर 3 स्केन्स (24 घंटे) पर 1 निमंत्रण कमाएं",
     "logOut": "लॉग आउट",
-    "comingSoon": "जल्द आ रहा है"
+    "comingSoon": "जल्द आ रहा है",
+    "notificationSchedule": "याद दिलाने का कार्यक्रम",
+    "morningReminder": "सुबह",
+    "afternoonReminder": "दोपहर",
+    "eveningReminder": "शाम",
+    "scheduleDescription": "याद दिलाने से आपका स्केन रिदम बना रहता है।",
+    "dailyReminders": "दैनिक अनुस्मारक",
+    "dailyRemindersDescription": "आपके दैनिक रीसेट के लिए 3 अनुस्मारक: सुबह, दोपहर, शाम",
+    "customizeSchedule": "अनुसूची अनुकूलित करें",
+    "remindersScheduleTitle": "अनुस्मारक समय",
+    "remindersScheduleDescription": "अपने रीसेट को कभी न भूलने के लिए अपने 3 दैनिक अनुस्मारक अनुकूलित करें।",
+    "reminderMorning": "सुबह",
+    "reminderNoon": "दोपहर",
+    "reminderEvening": "शाम",
+    "remindersScheduleInfo": "अनुस्मारक आपके डिवाइस पर नोटिफिकेशन के रूप में दिखाई देंगे",
+    "more": "और",
+    "exportData": "मेरे डेटा को निर्यात करें",
+    "partnershipManagement": "साझेदारी प्रबंधन",
+    "enableReminders": "अनुस्मारक सक्षम करें",
+    "termsOfUse": "उपयोग की शर्तें",
+    "privacyPolicy": "गोपनीयता नीति",
+    "licenses": "लाइसेंस",
+    "privacyAndData": "गोपनीयता और डेटा",
+    "contactUs": "संपर्क करें",
+    "editProfileAria": "प्रोफ़ाइल संपादित करें",
+    "notificationPermissionDeniedDesc": "अपने चुने हुए समय पर याद दिलाने के लिए सूचनाओं की अनुमति दें।",
+    "enableNotifications": "सूचनाओं की अनुमति दें"
+  },
+  "invitationsModal": {
+    "title": "आमंत्रण",
+    "counterLabel_one": "1 आमंत्रण उपलब्ध",
+    "counterLabel_other": "{{count}} आमंत्रण उपलब्ध",
+    "description": "अपने प्रियजनों को Nokta One आज़माने के लिए आमंत्रित करें। वे एक मुफ्त Skane कर सकेंगे।",
+    "shareInvitation": "आमंत्रण साझा करें",
+    "copyLink": "लिंक कॉपी करें",
+    "linkCopied": "लिंक कॉपी हो गया!",
+    "earnPerFriend": "हर दोस्त के लिए 1 आमंत्रण कमाएं जो 3 Skanes करे",
+    "shareTitle": "Nokta One आज़माएं",
+    "shareText": "3 सेकंड में अपना तनाव संकेत खोजें और 30 सेकंड में अपनी नर्वस सिस्टम रिसेट करें।"
   },
   "profile": {
     "firstName": "पहला नाम",
@@ -237,22 +269,53 @@
     "country": "देश",
     "occupation": "पेशा",
     "changePhoto": "फोटो बदलें",
-    "profileUpdated": "प्रोफ़ाइल अपडेट की गई!"
+    "profileUpdated": "प्रोफ़ाइल अपडेट की गई!",
+    "memberSince": "सदस्यता कब से",
+    "streakDays": "दिनों की श्रृंखला",
+    "inviteFriends": "मित्रों को आमंत्रित करें"
+  },
+  "editProfile": {
+    "title": "मेरी प्रोफ़ाइल संपादित करें",
+    "sectionPhoto": "प्रोफ़ाइल फोटो",
+    "sectionPersonal": "व्यक्तिगत जानकारी",
+    "sectionContact": "संपर्क विवरण",
+    "sectionPreferences": "प्राथमिकताएं",
+    "placeholders": {
+      "firstName": "आपका पहला नाम",
+      "lastName": "आपका उपनाम",
+      "username": "उपयोगकर्ता नाम",
+      "email": "आपका@ईमेल.com",
+      "phone": "+91 98765 43210",
+      "address": "आपका पता",
+      "postalCode": "110001",
+      "city": "शहर",
+      "job": "जैसे: उद्यमी, एथलीट, छात्र..."
+    },
+    "saving": "सहेज रहा है...",
+    "jobOptional": "पेशा (वैकल्पिक)",
+    "countryFR": "फ्रांस",
+    "countryUS": "संयुक्त राज्य अमेरिका",
+    "countryGB": "यूनाइटेड किंगडम",
+    "countryDE": "जर्मनी",
+    "countryES": "स्पेन",
+    "countryIT": "इटली",
+    "countryCN": "चीन",
+    "countryJP": "जापान"
   },
   "info": {
     "whatIsSkane": "SKANE क्या है?",
-    "skaneDescription": "अधिकतम 30 सेकंड का शारीरिक रीसेट:",
+    "skaneDescription": "30 सेकंड तक का शरीर रीसेट:",
     "skanePoint1": "IA चेहरे का स्कैन (3 सेकंड)",
     "skanePoint2": "मार्गदर्शित सूक्ष्म-क्रिया (20-30 सेकंड)",
-    "skanePoint3": "तत्काल संतुलन में वापसी",
-    "noDiagnosis": "कल्याण संकेत केवल। बस क्रिया।",
+    "skanePoint3": "तुरंत संतुलन में लौटें",
+    "noDiagnosis": "कल्याण संकेत केवल। बस एक क्रिया।",
     "guestMode": "अतिथि मोड",
-    "guestDescription": "अपने प्रियजनों को Nokta One का परीक्षण करने के लिए आमंत्रित करें।",
+    "guestDescription": "अपने प्रियजनों को Nokta One आजमाने के लिए आमंत्रित करें।",
     "guestPoint1": "1 निमंत्रण = 1 व्यक्ति प्रयास कर सकता है",
     "guestPoint2": "हर 3 स्केन्स (24 घंटे) पर 1 निमंत्रण कमाएं",
     "guestPoint3": "अतिथि अपने Skane Index को साझा कर सकते हैं",
     "guestPoint4": "अतिथियों के लिए कोई डेटा संग्रहीत नहीं",
-    "blueIconMeansGuest": "नीला आइकन बताता है कि अतिथि मोड सक्रिय है।",
+    "blueIconMeansGuest": "नीला आइकन दर्शाता है कि अतिथि मोड सक्रिय है।",
     "invitationsAvailable": "उपलब्ध निमंत्रण"
   },
   "languages": {
@@ -278,10 +341,10 @@
     "usernameReserved": "यह उपयोगकर्ता नाम आरक्षित है",
     "usernameTaken": "यह उपयोगकर्ता नाम पहले से ही लिया गया है",
     "usernameTooShort": "कम से कम 3 अक्षर",
-    "usernameInvalidChars": "केवल अक्षर, अंक और अंडरस्कोर",
+    "usernameInvalidChars": "केवल अक्षर, संख्या और अंडरस्कोर",
     "usernameAvailable": "उपलब्ध",
     "enableNotifications": "सूचनाएँ सक्षम करें",
-    "notificationsDescription": "अपने रीसेट और प्रगति की जानकारी रखें",
+    "notificationsDescription": "अपने रीसेट और प्रगति पर अपडेट रहें",
     "yourReferralCode": "आपका रेफरल कोड",
     "accountCreated": "खाता सफलतापूर्वक बनाया गया!",
     "acceptTerms": "मैं स्वीकार करता हूँ",
@@ -332,13 +395,13 @@
     "yesterday": "कल"
   },
   "consent": {
-    "title": "स्कैन सहमति",
+    "title": "आपकी गोपनीयता महत्वपूर्ण है",
     "point1": "आप शरीर के विनियमन के लिए 3-सेकंड के चेहरे के स्कैन पर सहमति देते हैं।",
     "point2": "Your images are NOT stored.",
     "point3": "चेहरे के पैटर्न का विश्लेषण केवल — कोई पहचान मान्यता नहीं।",
     "point4": "डेटा का उपयोग केवल शरीर के विनियमन के लिए सूक्ष्म-क्रियाएँ सुझाने के लिए किया जाता है।",
     "point5": "व्यक्तिगत कल्याण के लिए ही।",
-    "disclaimer": "NOKTA केवल कल्याण के लिए है। आवश्यकता होने पर पेशेवर सलाह लें।",
+    "disclaimer": "NOKTA केवल कल्याण के लिए है। यदि आवश्यक हो तो पेशेवर सलाह लें।",
     "accept": "I accept",
     "decline": "Decline",
     "modal": {
@@ -402,22 +465,26 @@
     "footerNotice": "जारी रखते हुए, आप हमारी सेवा की शर्तों को स्वीकार करते हैं।"
   },
   "devices": {
-    "title": "कनेक्टेड डिवाइस",
-    "pwaNote": "Apple Health और Health Connect केवल Nokta मोबाइल ऐप (iOS और Android) में उपलब्ध हैं। वेब पर कनेक्शन संभव नहीं है।",
+    "title": "जुड़े हुए उपकरण",
+    "pwaNote": "Apple Health और Health Connect केवल NOKTA मोबाइल ऐप (iOS और Android) में उपलब्ध हैं। वेब पर कनेक्शन संभव नहीं है।",
     "appleHealth": "Apple Health",
     "healthConnect": "Health Connect",
+    "appleHealthDescription": "iOS पर अपने स्वास्थ्य डेटा को सिंक करें",
+    "healthConnectDescription": "Android पर अपने स्वास्थ्य डेटा को सिंक करें",
     "statusConnected": "कनेक्टेड",
-    "statusDisconnected": "कनेक्टेड नहीं",
+    "statusDisconnected": "अविचलित",
     "statusPwaUnavailable": "वेब पर उपलब्ध नहीं",
-    "hintIos": "Apple Health कनेक्ट करने के लिए iOS पर Nokta ऐप का उपयोग करें।",
-    "hintAndroid": "Health Connect कनेक्ट करने के लिए Android पर Nokta ऐप का उपयोग करें।"
+    "comingSoon": "जल्द आ रहा है",
+    "footerMoreIntegrations": "और इंटीग्रेशन जल्द: Garmin, Fitbit, Oura, WHOOP...",
+    "hintIos": "Apple Health से कनेक्ट करने के लिए iOS पर NOKTA ऐप का उपयोग करें।",
+    "hintAndroid": "Health Connect से कनेक्ट करने के लिए Android पर NOKTA ऐप का उपयोग करें।"
   },
   "skaneIndex": {
     "title": "Skane Index",
     "before": "Before",
     "after": "After",
-    "skaneCompleted": "Skane Completed",
-    "activationDisclaimer": "आपका सक्रियता स्कोर · केवल जानकारी",
+    "skaneCompleted": "Skane पूरा हुआ",
+    "activationDisclaimer": "आपका सक्रियण स्कोर · केवल जानकारी",
     "shareYourReset": "Share your reset",
     "demo": {
       "title": "Skane Index डेमो",
@@ -435,11 +502,25 @@
   "welcome": {
     "message": "कुछ सेकंड में अपने शरीर की स्थिति जानें।",
     "start": "शुरू करें",
-    "alreadyAccount": "क्या आपके पास पहले से एक खाता है"
+    "alreadyAccount": "क्या आपके पास पहले से एक खाता है",
+    "headlinePrefix": "अपना मापें",
+    "headlineSuffix": "3 सेकंड में।",
+    "words": {
+      "stress": "तनाव",
+      "tension": "तनाव",
+      "anxiety": "चिंता",
+      "fatigue": "थकान"
+    },
+    "subheadline": "30 सेकंड की माइक्रो-एक्शन से अपनी नर्वस सिस्टम रिसेट करें।",
+    "disclaimer": "वेलनेस सिग्नल · मेडिकल सलाह नहीं",
+    "featureScan": "3s फेशियल स्कैन",
+    "featureAction": "30s माइक्रो-एक्शन",
+    "featureResult": "तुरंत रिजल्ट",
+    "skaneIndex": "SKANE INDEX"
   },
   "firstSkaneResult": {
     "title": "आपके शरीर को रीसेट की आवश्यकता है।",
-    "subtitle": "हम आपको तुरंत रीसेट प्रदान कर रहे हैं।",
+    "subtitle": "हम तात्कालिक रीसेट का सुझाव दे रहे हैं।",
     "resetNow": "अब रीसेट करें ({{duration}}s)"
   },
   "firstSkaneFeedback": {
@@ -453,61 +534,73 @@
   },
   "onboarding": {
     "continue": {
-      "title": "Nokta One को आपके बारे में थोड़ा जानने पर और बेहतर काम करता है।",
-      "subtitle": "कोई संवेदनशील डेटा नहीं। बस आपकी भावना।",
+      "title": "NOKTA ONE आपके बारे में थोड़ा जानने पर और बेहतर काम करता है।",
+      "subtitle": "कोई संवेदनशील डेटा नहीं। बस आप कैसा महसूस करते हैं।",
       "continue": "जारी रखें",
       "later": "बाद में"
     },
     "adaptation": {
-      "title": "Nokta आपके शरीर के अनुसार अनुकूलित होता है।",
-      "description": "{{days}} दिनों तक, Nokta अपनी सिफारिशों को आपके साथ पूरी तरह से संरेखित करता है।",
+      "title": "NOKTA ONE आपके शरीर के अनुसार अनुकूलित होता है।",
+      "description": "{{days}} दिनों तक, NOKTA ONE अपनी सिफारिशों को आपके साथ पूरी तरह से मेल खाने के लिए समायोजित करता है।",
       "noAction": "आपको कुछ विशेष करने की आवश्यकता नहीं है।",
       "timeline": "दिन 1 → दिन 7",
       "accept": "ठीक है"
     },
     "bestPractices": {
       "title": "बेहतर परिणामों के लिए",
-      "practice1": "सिर्फ अपना चेहरा स्केन करें",
+      "practice1": "सिर्फ अपने चेहरे को स्कैन करें",
       "practice2": "किसी और के लिए गेस्ट मोड का उपयोग करें",
-      "practice3": "जब आप बहुत खराब महसूस करें, तब स्केन करें",
+      "practice3": "जब आप वास्तव में असहज महसूस करें तब स्कैन करें",
       "understood": "समझ गया"
     },
     "reflex": {
-      "title": "जब आपका शरीर असंतुलित हो, स्केन करें।",
+      "title": "जब आपका शरीर असामान्य हो, स्कैन करें।",
       "subtitle": "तनाव, थकान, मानसिक अधिकता, एक महत्वपूर्ण क्षण से पहले",
-      "noktaIsHere": "Nokta is here.",
-      "nextSkane": "मेरा अगला स्केन करें",
+      "noktaIsHere": "NOKTA ONE यहाँ है।",
+      "nextSkane": "मेरा अगला स्कैन करें",
       "skip": "छोड़ें"
     }
   },
   "homeAdaptation": {
-    "inProgress": "अनुकूलन प्रगति में — दिन {{day}} में 7",
+    "inProgress": "अनुकूलन — 7 में से दिन {{day}}",
     "improvesPrecision": "प्रत्येक स्केन सटीकता में सुधार करता है।",
     "complete": "✓ अनुकूलन पूरा",
-    "calibrated": "Nokta आपके लिए अब कैलिब्रेट किया गया है।"
+    "calibrated": "NOKTA ONE अब आपके लिए कैलिब्रेट किया गया है।"
   },
   "login": {
-    "title": "स्वागत है",
-    "subtitle": "जारी रखने के लिए साइन इन करें",
+    "title": "आपको फिर से देखना अच्छा लगा",
+    "subtitle": "जारी रखने के लिए लॉग इन करें",
     "email": "ईमेल",
     "password": "पासवर्ड",
     "forgotPassword": "पासवर्ड भूल गए?",
-    "submit": "साइन इन करें",
-    "loading": "साइन इन कर रहे हैं...",
+    "submit": "लॉग इन करें",
+    "loading": "लॉग इन हो रहा है...",
     "or": "या",
     "withApple": "Apple के साथ जारी रखें",
     "withGoogle": "Google के साथ जारी रखें",
-    "noAccount": "क्या आपका खाता नहीं है?",
+    "noAccount": "क्या आपका अभी तक खाता नहीं है?",
     "signUp": "खाता बनाएं",
     "errorRequired": "सभी फ़ील्ड आवश्यक हैं",
     "errorGeneric": "लॉगिन त्रुटि",
-    "errorInvalidCredentials": "अमान्य ईमेल या पासवर्ड"
+    "errorInvalidCredentials": "गलत ईमेल या पासवर्ड",
+    "errorEmailRequired": "ईमेल आवश्यक है",
+    "errorEmailInvalid": "अमान्य ईमेल",
+    "errorPasswordRequired": "पासवर्ड आवश्यक है",
+    "errorPasswordMin": "कम से कम 6 अक्षर",
+    "placeholderEmail": "aapka@email.com",
+    "placeholderPassword": "••••••••",
+    "showPassword": "पासवर्ड दिखाएं",
+    "hidePassword": "पासवर्ड छिपाएं",
+    "footerPrefix": "जारी रखकर, आप हमारी ",
+    "footerTerms": "शर्तों",
+    "footerAnd": " और ",
+    "footerPrivacy": "गोपनीयता नीति से सहमत हैं"
   },
   "forgotPassword": {
     "title": "पासवर्ड भूल गए?",
     "subtitle": "अपना ईमेल दर्ज करें और हम आपको एक रीसेट लिंक भेजेंगे।",
     "email": "ईमेल",
-    "submit": "रीसेट लिंक भेजें",
+    "submit": "लिंक भेजें",
     "sending": "भेजा जा रहा है...",
     "errorRequired": "ईमेल आवश्यक है",
     "errorInvalid": "अमान्य ईमेल",
@@ -515,35 +608,35 @@
     "successTitle": "ईमेल भेजा गया!",
     "successMessage": "हमने {{email}} पर एक रीसेट लिंक भेजा है। अपने इनबॉक्स की जांच करें।",
     "backToLogin": "लॉगिन पर वापस जाएं",
-    "noEmail": "क्या इसे प्राप्त नहीं किया?",
+    "noEmail": "क्या यह नहीं मिला?",
     "resend": "फिर से भेजें",
-    "rememberPassword": "क्या आप अपना पासवर्ड याद रखते हैं?",
-    "login": "साइन इन करें"
+    "rememberPassword": "याद आया?",
+    "login": "लॉग इन करें"
   },
   "faq": {
     "title": "अक्सर पूछे जाने वाले प्रश्न",
     "subtitle": "अक्सर पूछे जाने वाले प्रश्न",
-    "subtitleDesc": "Nokta के बारे में आपको जो कुछ भी जानने की आवश्यकता है",
+    "subtitleDesc": "Nokta One के बारे में आपको जो कुछ भी जानने की आवश्यकता है",
     "moreQuestions": "और प्रश्न?",
     "contactUs": "हमसे संपर्क करें",
     "whatIsNokta": {
       "question": "Nokta One वास्तव में क्या है?",
-      "answer": "Nokta One is a body and nervous system reset technology. In seconds, it identifies when your body is \"off\" and offers a simple micro-action to return to a functional, clear, and high-performing state.\n\nIt's not meditation, therapy, or medical monitoring.\nIt's an immediate adjustment tool, usable in real life."
+      "answer": "Nokta One एक शरीर और तंत्रिका तंत्र रीसेट तकनीक है। यह सेकंडों में पहचानता है कि आपका शरीर \"बंद\" है और कार्यात्मक, स्पष्ट और उच्च प्रदर्शन वाली स्थिति में लौटने के लिए एक सरल सूक्ष्म क्रिया का सुझाव देता है।\n\nयह ध्यान या एक नैदानिक कार्यक्रम नहीं है।\nयह एक तात्कालिक समायोजन उपकरण है, जिसे वास्तविक जीवन की स्थितियों में उपयोग किया जा सकता है।"
     },
     "whenUseful": {
       "question": "When is Nokta One useful?",
-      "answer": "Nokta One is designed for moments when you think:\n\n• \"I don't feel right, but I don't know why\"\n• \"I'm tense for no clear reason\"\n• \"I can't focus\"\n• \"My body is tired, but my mind wants to keep going\"\n• \"I'm not at my best\"\n\nThese moments happen before important meetings, after mental overload, between demanding tasks, before sports or competition, at the end of the day when your body gives up, or in the morning when energy isn't there.\n\nNokta One is designed for these daily micro-imbalances, not medical situations."
+      "answer": "Nokta One उन क्षणों के लिए डिज़ाइन किया गया है जब आप सोचते हैं:\n\n• \"मुझे अच्छा नहीं लग रहा है, लेकिन मुझे नहीं पता क्यों\"\n• \"मैं बिना स्पष्ट कारण के तनाव में हूँ\"\n• \"मैं ध्यान केंद्रित नहीं कर सकता\"\n• \"मेरा शरीर थका हुआ है, लेकिन मेरा मन आगे बढ़ना चाहता है\"\n• \"मैं अपने सर्वश्रेष्ठ पर नहीं हूँ\"\n\nये क्षण महत्वपूर्ण बैठकों से पहले, मानसिक अधिभार के बाद, मांगलिक कार्यों के बीच, खेल या प्रतियोगिताओं से पहले, दिन के अंत में जब आपका शरीर थक जाता है, या सुबह जब ऊर्जा कम होती है, में होते हैं।\n\nNokta One इन दैनिक सूक्ष्म असंतुलनों के लिए डिज़ाइन किया गया है, नैदानिक स्थितियों के लिए नहीं।"
     },
     "whyOffButOk": {
       "question": "Why do I sometimes feel \"fine\" but not function properly?",
-      "answer": "Because your body and nervous system can be desynchronized.\n\nYou can:\n• Have a good heart rate but feel oppressed\n• Be mentally calm but physically agitated\n• Be motivated but unable to get started\n\nNokta One is based on the principle that body sensation precedes mental performance."
+      "answer": "क्योंकि आपका शरीर और तंत्रिका तंत्र असंगत हो सकते हैं।\n\nआप:\n• अच्छा हृदय गति हो सकता है लेकिन अभिभूत महसूस कर सकते हैं\n• मानसिक रूप से शांत हो सकते हैं लेकिन शारीरिक रूप से बेचैन\n• प्रेरित हो सकते हैं लेकिन शुरू करने में असमर्थ\n\nNOKTA ONE इस सिद्धांत पर आधारित है कि शारीरिक संवेदना मानसिक प्रदर्शन से पहले आती है।"
     },
     "differentFromOthers": {
-      "question": "How is Nokta One different from classic wellness apps?",
-      "answer": "Most apps ask you to:\n• Understand what you're feeling\n• Choose a practice\n• Commit to a long time\n\nNokta One does the opposite:\n• It starts from the body signal, not your analysis\n• It reduces choice to one single action\n• It acts in less than 30 seconds\n\nLess thinking, less friction, more impact."
+      "question": "NOKTA ONE पारंपरिक कल्याण ऐप्स से कैसे अलग है?",
+      "answer": "अधिकांश ऐप्स आपसे पूछते हैं:\n• समझें कि आप कैसा महसूस करते हैं\n• एक अभ्यास चुनें\n• लंबे समय तक प्रतिबद्ध रहें\n\nNOKTA ONE इसका विपरीत करता है:\n• यह शारीरिक संकेत से शुरू होता है, आपके विश्लेषण से नहीं\n• यह विकल्प को एकल क्रिया तक सीमित करता है\n• यह 30 सेकंड के भीतर कार्य करता है\n\nकम सोच, कम घर्षण, अधिक प्रभाव।"
     },
     "analyzeEmotions": {
-      "question": "Does Nokta One \"analyze\" my emotions?",
+      "question": "क्या NOKTA ONE मेरी भावनाओं का \"विश्लेषण\" करता है?",
       "answer": "Nokta One doesn't judge you and makes no diagnosis.\n\nIt only observes neutral body indicators (posture, tension, visible micro-signals) to estimate a global functional state.\n\nThe goal isn't to tell you \"what you're feeling\", but to detect when your body isn't aligned with what you want to do."
     },
     "replaceProfessional": {
@@ -1272,5 +1365,172 @@
       "privacy": "गोपनीयता",
       "support": "सहायता"
     }
+  },
+  "termsPage": {
+    "title": "सेवा की शर्तें",
+    "versionLabel": "संस्करण",
+    "versionValue": "1.0",
+    "updatedLabel": "अंतिम अपडेट",
+    "updatedValue": "जनवरी 2025",
+    "disclaimer": "अस्वीकृति: Nokta One एक चिकित्सा उपकरण नहीं है और चिकित्सा सलाह नहीं देता। यदि आपके पास स्वास्थ्य संबंधी चिंताएँ हैं, तो किसी पेशेवर से परामर्श करें।",
+    "contactTitle": "संपर्क",
+    "contactDescription": "इन शर्तों के बारे में किसी भी प्रश्न के लिए:",
+    "acceptanceNotice": "Nokta One का उपयोग करके, आप स्वीकार करते हैं कि आपने इन शर्तों को पढ़ा, समझा और सहमति दी।",
+    "sections": {
+      "s01": {
+        "title": "अनुच्छेद 1 - स्वीकृति",
+        "content": "<p>Nokta One का उपयोग करके, आप इन शर्तों से बंधने के लिए सहमत होते हैं। यदि आप सहमत नहीं हैं, तो आपको सेवा का उपयोग नहीं करना चाहिए।</p><p>आप यह दर्शाते हैं कि आप कम से कम <strong>16 वर्ष के हैं</strong> (या 13 वर्ष के हैं और माता-पिता की सहमति है) और आपके पास अनुबंध में प्रवेश करने की कानूनी क्षमता है।</p>"
+      },
+      "s02": {
+        "title": "अनुच्छेद 2 - सेवा का विवरण",
+        "content": "<p>Nokta One एक वेलनेस एप्लिकेशन है जो प्रदान करता है:</p><ul><li>निर्देशित शारीरिक विनियमन सत्र</li><li>श्वसन और मुद्रा व्यायाम</li><li>वेलनेस स्थिति ट्रैकिंग</li><li>व्यक्तिगत अनुशंसाएँ</li></ul><p><strong>सेवा केवल सूचनात्मक उद्देश्यों के लिए प्रदान की जाती है और यह स्वास्थ्य पेशेवर की सलाह का विकल्प नहीं है।</strong></p>"
+      },
+      "s03": {
+        "title": "अनुच्छेद 3 - उपयोगकर्ता खाता",
+        "content": "<p>कुछ सुविधाओं तक पहुँचने के लिए, आपको एक खाता बनाना होगा। आप सहमत होते हैं:</p><ul><li>सटीक और अद्यतन जानकारी प्रदान करें</li><li>अपने क्रेडेंशियल्स की गोपनीयता बनाए रखें</li><li>अनधिकृत उपयोग के बारे में हमें सूचित करें</li><li>अपने खाते के तहत सभी गतिविधियों के लिए जिम्मेदार रहें</li></ul>"
+      },
+      "s04": {
+        "title": "अनुच्छेद 4 - सदस्यताएँ",
+        "content": "<p><strong>योजनाएँ:</strong> मुफ्त (सीमित पहुँच) या प्रीमियम (पूर्ण पहुँच)</p><p><strong>नवीनीकरण:</strong> स्वचालित, जब तक समाप्ति से पहले रद्द नहीं किया जाता</p><p><strong>रद्द करना:</strong> सेटिंग्स या आपके प्लेटफ़ॉर्म (ऐप स्टोर, गूगल प्ले) से किसी भी समय</p><p><strong>रिफंड:</strong> गैर-रिफंडेबल, जब तक कानून द्वारा आवश्यक न हो</p>"
+      },
+      "s05": {
+        "title": "अनुच्छेद 5 - उपयोग के नियम",
+        "content": "<p><strong>यह निषिद्ध है:</strong></p><ul><li>सेवा का उपयोग अवैध उद्देश्यों के लिए</li><li>हमारे सिस्टम में अनधिकृत पहुँच का प्रयास करना</li><li>वायरस या दुर्भावनापूर्ण कोड का प्रसारण करना</li><li>अन्य उपयोगकर्ताओं का डेटा एकत्र करना</li><li>किसी अन्य व्यक्ति का अनुकरण करना</li><li>सेवा को पुनर्विक्रय या व्यावसायिक रूप से लाभ उठाना</li></ul>"
+      },
+      "s06": {
+        "title": "अनुच्छेद 6 - बौद्धिक संपदा",
+        "content": "<p>सेवा और इसकी सामग्री (कोड, पाठ, ग्राफिक्स, लोगो, आदि) प्रकाशक की विशेष संपत्ति हैं और बौद्धिक संपदा कानूनों द्वारा संरक्षित हैं।</p><p>आपको व्यक्तिगत उद्देश्यों के लिए सेवा का उपयोग करने के लिए व्यक्तिगत, सीमित, गैर-विशेष और रद्द करने योग्य लाइसेंस दिया गया है।</p>"
+      },
+      "s07": {
+        "title": "अनुच्छेद 7 - जिम्मेदारी की सीमा",
+        "content": "<p>सेवा 'जैसा है' प्रदान की जाती है, किसी भी प्रकार की वारंटी के बिना।</p><p>हम जिम्मेदार नहीं हैं:</p><ul><li>अप्रत्यक्ष या परिणामस्वरूप नुकसान</li><li>लाभ या डेटा की हानि</li><li>सेवा में रुकावट</li></ul><p><strong>सीमा:</strong> हमारी जिम्मेदारी पिछले 12 महीनों में भुगतान की गई राशि (या अधिकतम €100) तक सीमित है।</p>"
+      },
+      "s08": {
+        "title": "अनुच्छेद 8 - समाप्ति",
+        "content": "<p><strong>आप द्वारा:</strong> आप सेटिंग्स से कभी भी अपना खाता हटा सकते हैं।</p><p><strong>हम द्वारा:</strong> यदि आप इन शर्तों का उल्लंघन करते हैं तो हम आपकी पहुंच निलंबित कर सकते हैं।</p><p>समाप्ति पर, सेवा का उपयोग करने का आपका अधिकार तुरंत समाप्त हो जाता है।</p>"
+      },
+      "s09": {
+        "title": "अनुच्छेद 9 - शासक कानून",
+        "content": "<p>ये शर्तें <strong>फ्रांसीसी कानून</strong> द्वारा शासित हैं।</p><p>विवाद की स्थिति में, पक्ष एक सौहार्दपूर्ण समाधान खोजने का प्रयास करेंगे। आप उपभोक्ता मध्यस्थता का उपयोग कर सकते हैं।</p><p><strong>अधिकार क्षेत्र:</strong> पेरिस की अदालतें, अनिवार्य उपभोक्ता अधिकार क्षेत्र नियमों के अधीन।</p><p><strong>यूरोपीय मंच:</strong> <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>ec.europa.eu/consumers/odr</a></p>"
+      }
+    }
+  },
+  "privacyPolicyPage": {
+    "title": "गोपनीयता नीति",
+    "versionLabel": "संस्करण",
+    "versionValue": "1.0",
+    "updatedLabel": "अंतिम अपडेट",
+    "updatedValue": "जनवरी 2025",
+    "contactTitle": "संपर्क करें",
+    "contactDescription": "इस नीति के बारे में किसी भी प्रश्न के लिए या अपने अधिकारों का उपयोग करने के लिए:",
+    "sections": {
+      "s01": {
+        "title": "परिचय",
+        "content": "<p>यह गोपनीयता नीति बताती है कि आपका व्यक्तिगत जानकारी कैसे एकत्रित, उपयोग और साझा की जाती है जब आप <strong>Nokta One</strong> एप्लिकेशन का उपयोग करते हैं।</p><p><strong>Nokta One</strong> एक फ्रांसीसी कंपनी द्वारा प्रकाशित किया गया है जो पेरिस व्यापार और कंपनियों के रजिस्ट्र में पंजीकृत है। हमारी सेवा का उपयोग करके, आप इस नीति में वर्णित प्रथाओं से सहमत होते हैं। </p>"
+      },
+      "s02": {
+        "title": "1. हम कौन सा डेटा एकत्र करते हैं",
+        "content": "<p><strong>खाता डेटा:</strong> ईमेल, उपयोगकर्ता नाम, पासवर्ड (हैश किया गया)</p><p><strong>प्रोफ़ाइल डेटा:</strong> पहला नाम, जन्म तिथि, देश, भाषा</p><p><strong>उपयोग डेटा:</strong> सत्र, क्रियाएँ, समय चिह्न</p><p><strong>चेहरे का विश्लेषण:</strong> छवियाँ <strong>आपके डिवाइस पर स्थानीय रूप से</strong> संसाधित की जाती हैं। केवल अज्ञात कल्याण स्कोर भेजे जाते हैं। हम आपकी पहचान के लिए चेहरे की पहचान का उपयोग <strong>नहीं</strong> करते हैं।</p>"
+      },
+      "s03": {
+        "title": "2. हम डेटा का उपयोग कैसे करते हैं",
+        "content": "<p>हम आपके डेटा का उपयोग करते हैं:</p><ul><li>सेवा प्रदान करने और सुधारने के लिए</li><li>आपके अनुभव को व्यक्तिगत बनाने के लिए</li><li>आपको संचार भेजने के लिए (यदि सहमति दी गई हो)</li><li>सेवा की सुरक्षा सुनिश्चित करने के लिए</li></ul><p><strong>कानूनी आधार (GDPR):</strong> अनुबंध का प्रदर्शन, वैध हित, सहमति।</p>"
+      },
+      "s04": {
+        "title": "3. डेटा साझा करना",
+        "content": "<p><strong>हम आपका व्यक्तिगत डेटा कभी नहीं बेचते।</strong></p><p>हम विश्वसनीय सेवा प्रदाताओं का उपयोग करते हैं (ईयू क्लाउड अवसंरचना, PCI-DSS प्रमाणित भुगतान सेवाएँ)। ईयू के बाहर के स्थानांतरण मानक संविदात्मक धाराओं द्वारा शासित होते हैं।</p>"
+      },
+      "s05": {
+        "title": "4. संरक्षण",
+        "content": "<p><strong>खाता डेटा:</strong> पंजीकरण की अवधि + 3 वर्ष</p><p><strong>सत्र डेटा:</strong> 24 महीने</p><p><strong>भुगतान डेटा:</strong> 10 वर्ष (कर संबंधी दायित्व)</p><p>खाता हटाने के बाद, आपका डेटा 30 दिनों के भीतर अज्ञात या हटा दिया जाता है।</p>"
+      },
+      "s06": {
+        "title": "5. आपके अधिकार",
+        "content": "<p>आपके पास निम्नलिखित अधिकार हैं:</p><ul><li><strong>पहुंच</strong>: अपने डेटा की एक प्रति प्राप्त करें</li><li><strong>सुधार</strong>: अपने डेटा को सही करें</li><li><strong>हटाना</strong>: अपने डेटा को हटाएँ</li><li><strong>पोर्टेबिलिटी</strong>: अपने डेटा को निर्यात करें</li><li><strong>आपत्ति</strong>: कुछ प्रसंस्करण पर आपत्ति करें</li><li><strong>सहमति वापस लेना</strong>: किसी भी समय</li></ul><p>प्रतिक्रिया समय: <strong>अधिकतम 30 दिन</strong>.</p><p>आप <strong>CNIL</strong> (www.cnil.fr) के साथ शिकायत दर्ज कर सकते हैं।</p>"
+      },
+      "s07": {
+        "title": "6. सुरक्षा",
+        "content": "<p>आपका डेटा निम्नलिखित द्वारा सुरक्षित है:</p><ul><li>संक्रमण में एन्क्रिप्शन (TLS 1.3) और विश्राम में (AES-256)</li><li>सुरक्षित प्रमाणीकरण</li><li>सीमित पहुंच (कम से कम विशेषाधिकार का सिद्धांत)</li><li>72 घंटे के भीतर उल्लंघन की सूचना</li></ul>"
+      },
+      "s08": {
+        "title": "7. नाबालिग",
+        "content": "<p>हमारी सेवा उन व्यक्तियों के लिए है <strong>16 वर्ष और उससे अधिक</strong>.</p><p>13 से 16 वर्ष के बीच, माता-पिता की सहमति आवश्यक है। हम जानबूझकर 13 वर्ष से कम उम्र के बच्चों का डेटा एकत्र नहीं करते हैं।</p>"
+      },
+      "s09": {
+        "title": "8. कैलिफोर्निया (CCPA)",
+        "content": "<p>यदि आप कैलिफोर्निया निवासी हैं:</p><ul><li><strong>हम आपकी व्यक्तिगत जानकारी नहीं बेचते</strong></li><li>आपको अपने डेटा की 'बिक्री' के बारे में जानने, हटाने और ऑप्ट-आउट करने का अधिकार है</li></ul>"
+      }
+    }
+  },
+  "legalNoticePage": {
+    "title": "कानूनी सूचना",
+    "updatedLabel": "अंतिम अपडेट",
+    "updatedValue": "जनवरी 2025",
+    "footerNote": "यह कानूनी सूचना किसी भी समय संशोधित की जा सकती है। वर्तमान संस्करण एप्लिकेशन पर उपलब्ध है।",
+    "sections": {
+      "s01": {
+        "title": "1. एप्लिकेशन प्रकाशक",
+        "content": "<p><strong>Nokta One</strong> एप्लिकेशन का प्रकाशन:</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>कानूनी रूप</strong>: सरल संयुक्त स्टॉक कंपनी (SASU) फ्रांसीसी कानून के तहत</p><p><strong>मुख्यालय</strong>: पेरिस, फ्रांस</p><p><strong>शेयर पूंजी</strong>: परिवर्तनीय</p><p><strong>पंजीकरण</strong>: पेरिस व्यापार और कंपनियों का रजिस्टर</p><p><strong>वैट संख्या</strong>: FR [number]</p><p><strong>मुख्य गतिविधि</strong>: एप्लिकेशन सॉफ़्टवेयर प्रकाशन (NAF कोड: 58.29C)</p><p><strong>प्रकाशन निदेशक</strong>: कंपनी का कानूनी प्रतिनिधि</p></div>"
+      },
+      "s02": {
+        "title": "2. होस्टिंग",
+        "content": "<p>एप्लिकेशन और इसके डेटा को होस्ट किया गया है:</p><h3>मुख्य होस्ट</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Vercel Inc.</strong></p><p>340 S Lemon Ave #4133<br />Walnut, CA 91789<br />संयुक्त राज्य<br /><a href='https://vercel.com' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://vercel.com</a></p></div><h3>डेटाबेस</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p>प्रमाणित क्लाउड अवसंरचना, यूरोपीय संघ (फ्रैंकफर्ट, जर्मनी) में स्थित</p><p><strong>प्रमाणपत्र</strong>: ISO 27001, SOC 2 प्रकार II</p></div>"
+      },
+      "s03": {
+        "title": "3. संपर्क",
+        "content": "<p>किसी भी प्रश्न या शिकायत के लिए:</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>सामान्य ईमेल</strong>: <a href='mailto:contact@nokta.app' style='color: rgb(59, 130, 246);'>contact@nokta.app</a></p><p><strong>तकनीकी सहायता</strong>: <a href='mailto:support@noktaone.com' style='color: rgb(59, 130, 246);'>support@noktaone.com</a></p><p><strong>डेटा सुरक्षा</strong>: <a href='mailto:privacy@nokta.app' style='color: rgb(59, 130, 246);'>privacy@nokta.app</a></p></div>"
+      },
+      "s04": {
+        "title": "4. बौद्धिक संपदा",
+        "content": "<h3>4.1 कॉपीराइट</h3><p>ऐप्लिकेशन के सभी तत्व (संरचना, पाठ, ग्राफिक्स, छवियाँ, ध्वनियाँ, वीडियो, लोगो, आइकन, सॉफ़्टवेयर, डेटाबेस, आदि) प्रकाशक या इसके भागीदारों की विशेष संपत्ति हैं और बौद्धिक संपदा कानून द्वारा संरक्षित हैं।</p><p>इन तत्वों की किसी भी प्रकार की पुनरुत्पादन, प्रतिनिधित्व, संशोधन, प्रकाशन, अनुकूलन, आंशिक या पूर्ण, प्रकाशक की पूर्व लिखित अनुमति के बिना निषिद्ध है और यह बौद्धिक संपदा संहिता के अनुच्छेद L.335-2 और इसके बाद के अनुच्छेदों द्वारा दंडनीय होगा।</p><h3>4.2 ट्रेडमार्क</h3><p>'Nokta One', 'Nokta', Nokta One लोगो और ऐप्लिकेशन पर उल्लिखित अन्य ट्रेडमार्क प्रकाशक के पंजीकृत या अपंजीकृत ट्रेडमार्क हैं। इन ट्रेडमार्क का पुनरुत्पादन या उपयोग बिना स्पष्ट अनुमति के निषिद्ध है।</p>"
+      },
+      "s05": {
+        "title": "5. व्यक्तिगत डेटा सुरक्षा",
+        "content": "<p>सामान्य डेटा सुरक्षा विनियमन (GDPR) और फ्रांसीसी डेटा सुरक्षा अधिनियम के अनुसार, आपके व्यक्तिगत डेटा के संबंध में आपके अधिकार हैं।</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>डेटा नियंत्रक</strong>: ऐप्लिकेशन प्रकाशक</p><p><strong>डेटा सुरक्षा अधिकारी (DPO)</strong>: <a href='mailto:dpo@nokta.app' style='color: rgb(59, 130, 246);'>dpo@nokta.app</a></p><p>अधिक जानकारी के लिए, हमारी <a href='/privacy' style='color: rgb(59, 130, 246);'>गोपनीयता नीति</a> देखें।</p></div><h3>निगरानी प्राधिकरण</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>कमिशन नेशनल डि ल'इन्फॉर्मेटिक एट डेस लिबर्टीज (CNIL)</strong></p><p>3 प्लेस डि फोंटेनॉय<br />TSA 80715<br />75334 पेरिस सेडेक 07<br /><a href='https://www.cnil.fr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>www.cnil.fr</a></p></div>"
+      },
+      "s06": {
+        "title": "6. कुकीज़ और ट्रैकर",
+        "content": "<p>ऐप्लिकेशन अपने संचालन के लिए स्थानीय स्टोरेज तकनीकों (कुकीज़, localStorage) का उपयोग करता है। आप ऐप्लिकेशन सेटिंग्स में अपनी प्राथमिकताओं का प्रबंधन कर सकते हैं।</p><p>अधिक जानकारी के लिए, हमारी <a href='/privacy' style='color: rgb(59, 130, 246);'>गोपनीयता नीति</a> देखें।</p>"
+      },
+      "s07": {
+        "title": "7. जिम्मेदारी की सीमाएँ",
+        "content": "<h3>7.1 कल्याण जानकारी</h3><p>Nokta One द्वारा प्रदान की गई जानकारी और सिफारिशें सामान्य हैं और केवल व्यक्तिगत कल्याण के उद्देश्यों के लिए हैं। ये नहीं हैं:</p><ul><li>चिकित्सा सलाह</li><li>चिकित्सा निदान</li><li>चिकित्सा उपचार</li><li>चिकित्सा प्रिस्क्रिप्शन</li></ul><p>ऐप्लिकेशन स्वास्थ्य पेशेवर के साथ परामर्श का विकल्प नहीं है। स्वास्थ्य समस्याओं की स्थिति में, अपने डॉक्टर से परामर्श करें।</p><h3>7.2 सेवा उपलब्धता</h3><p>प्रकाशक ऐप्लिकेशन को सुलभ रखने का प्रयास करता है लेकिन निरंतर उपलब्धता की गारंटी नहीं दे सकता। प्रकाशक सेवा में रुकावटों या संभावित खराबी के लिए जिम्मेदार नहीं हो सकता।</p>"
+      },
+      "s08": {
+        "title": "8. लागू कानून",
+        "content": "<p>यह कानूनी नोटिस फ्रांसीसी कानून के अधीन है। विवाद की स्थिति में, और आपसी समाधान का प्रयास करने के बाद, न्यायालय की अधिकारिता फ्रांसीसी अदालतों को दी जाती है।</p>"
+      },
+      "s09": {
+        "title": "9. उपभोक्ता मध्यस्थता",
+        "content": "<p>विवादों के आपसी समाधान के संबंध में उपभोक्ता कोड के प्रावधानों के अनुसार, प्रकाशक मध्यस्थ सेवा [पूर्ण किया जाना है] का पालन करता है।</p><p>मध्यस्थ से संपर्क करने से पहले, आपको पहले हमारी ग्राहक सेवा के साथ लिखित शिकायत के माध्यम से अपने विवाद को सीधे हल करने का प्रयास करना चाहिए।</p><p><strong>यूरोपीय ऑनलाइन विवाद समाधान मंच</strong>: <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://ec.europa.eu/consumers/odr</a></p>"
+      },
+      "s10": {
+        "title": "10. क्रेडिट",
+        "content": "<div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>डिजाइन और विकास</strong>: Nokta One Team</p><p><strong>डिजाइन</strong>: Nokta One Team</p><p><strong>आइकन</strong>: Lucide Icons (MIT License)</p><p><strong>फॉन्ट्स</strong>: Google Fonts</p></div>"
+      }
+    }
+  },
+  "engagement": {
+    "reminderTitle": "तेरे रीसेट के पल",
+    "reminderDescription": "चुनो कि तुम कब चाहते हो कि हम तुम्हें स्कैन करने की याद दिलाएं। तुम नियंत्रण में हो।",
+    "reminderMorning": "सुबह",
+    "reminderMorningDesc": "जागने पर अपने सिस्टम को कैलिब्रेट करो",
+    "reminderMidday": "दोपहर",
+    "reminderMiddayDesc": "दोपहर में रीसेट",
+    "reminderEvening": "शाम",
+    "reminderEveningDesc": "रात के लिए अपने सिस्टम को तैयार करो",
+    "reminderInfo": "तुम इन समयों को कभी भी सेटिंग्स में बदल सकते हो।",
+    "shareTitle": "अपने रीसेट को साझा करें",
+    "shareViral": "वायरल",
+    "shareOther": "अन्य",
+    "shareDownload": "डाउनलोड करें",
+    "shareTiktokTitle": "TikTok पर साझा करें",
+    "shareImageDownloaded": "छवि डाउनलोड की गई",
+    "shareTextCopied": "पाठ कॉपी किया गया",
+    "shareTiktokInstructions": "TikTok खोलें, छवि के साथ एक वीडियो बनाएं, और पाठ चिपकाएं।",
+    "shareOpenTiktok": "TikTok खोलें",
+    "shareTextCopiedDone": "पाठ कॉपी किया गया!",
+    "shareDone": "साझा किया गया!",
+    "shareComplete": "पूर्ण"
   }
 }

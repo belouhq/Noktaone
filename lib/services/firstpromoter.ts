@@ -404,6 +404,7 @@ export async function syncAffiliateWithSupabase(
   email: string,
   referralCode: string
 ): Promise<void> {
+  const db = supabase as any;
   try {
     // Vérifier si le user est déjà un promoteur
     let promoter = await firstPromoterService.getPromoter({ email });
@@ -420,7 +421,7 @@ export async function syncAffiliateWithSupabase(
     // Sync avec Supabase
     const defaultPromotion = promoter.promotions?.[0];
 
-    await supabase.from('affiliate_tracking').upsert(
+    await db.from('affiliate_tracking').upsert(
       {
         user_id: userId,
         firstpromoter_id: promoter.id.toString(),
@@ -452,6 +453,7 @@ export async function trackReferralSignup(
   email: string,
   refCode: string
 ): Promise<void> {
+  const db = supabase as any;
   try {
     // Tracker chez FirstPromoter
     await firstPromoterService.trackReferral({
@@ -461,7 +463,7 @@ export async function trackReferralSignup(
     });
 
     // Trouver l'affilié qui a parrainé
-    const { data: affiliate } = await supabase
+    const { data: affiliate } = await db
       .from('affiliate_tracking')
       .select('id, user_id')
       .eq('referral_code', refCode)
@@ -469,7 +471,7 @@ export async function trackReferralSignup(
 
     if (affiliate) {
       // Mettre à jour le profil du nouveau user
-      await supabase
+      await db
         .from('user_profile')
         .update({
           // Référé par cet affilié
@@ -477,7 +479,7 @@ export async function trackReferralSignup(
         .eq('user_id', newUserId);
 
       // Créer une conversion
-      await supabase.from('affiliate_conversions').insert({
+      await db.from('affiliate_conversions').insert({
         affiliate_id: affiliate.id,
         converted_user_id: newUserId,
         conversion_type: 'signup',
@@ -485,10 +487,10 @@ export async function trackReferralSignup(
       });
 
       // Incrémenter le compteur
-      await supabase
+      await db
         .from('affiliate_tracking')
         .update({
-          signups_count: supabase.rpc('increment', { x: 1 }),
+          signups_count: db.rpc('increment', { x: 1 }),
           updated_at: new Date().toISOString(),
         })
         .eq('id', affiliate.id);
@@ -510,6 +512,7 @@ export async function trackReferralConversion(
   plan: string,
   currency: string = 'EUR'
 ): Promise<void> {
+  const db = supabase as any;
   try {
     // Tracker chez FirstPromoter
     await firstPromoterService.trackSale({
@@ -521,7 +524,7 @@ export async function trackReferralConversion(
     });
 
     // Mettre à jour dans Supabase si ce user a été référé
-    const { data: conversion } = await supabase
+    const { data: conversion } = await db
       .from('affiliate_conversions')
       .select('id, affiliate_id')
       .eq('converted_user_id', userId)
@@ -530,7 +533,7 @@ export async function trackReferralConversion(
 
     if (conversion) {
       // Mettre à jour la conversion
-      await supabase
+      await db
         .from('affiliate_conversions')
         .update({
           conversion_type: 'paid',
@@ -541,10 +544,10 @@ export async function trackReferralConversion(
         .eq('id', conversion.id);
 
       // Incrémenter le compteur de l'affilié
-      await supabase
+      await db
         .from('affiliate_tracking')
         .update({
-          conversions_count: supabase.rpc('increment', { x: 1 }),
+          conversions_count: db.rpc('increment', { x: 1 }),
           updated_at: new Date().toISOString(),
         })
         .eq('id', conversion.affiliate_id);

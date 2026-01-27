@@ -11,13 +11,12 @@ export type SupportedLocale =
   | 'en' | 'fr' | 'de' | 'es' | 'it' | 'pt'
   | 'ja' | 'ko' | 'zh' | 'hi' | 'ar' | 'ru';
 
-export type SupportedCurrency = 
-  | 'USD' | 'EUR' | 'JPY' | 'KRW' 
-  | 'CNY' | 'INR' | 'AED' | 'RUB';
+import type { SupportedCurrency } from '@/lib/paywall/types';
+export type { SupportedCurrency };
 
 export type InfluencerTier = 'nano' | 'micro' | 'mid' | 'macro' | 'mega';
 
-export type NotificationType = 'trial' | 'conversion' | 'engagement' | 'winback' | 'transactional';
+type NotificationType = 'trial' | 'conversion' | 'engagement' | 'winback' | 'transactional';
 
 export interface LocalePricing {
   currency: SupportedCurrency;
@@ -83,6 +82,20 @@ export const PRICING_ROADMAP = {
   plus6months: { monthly: 20.99, annual: 189.00 },
   plus12to18months: { monthly: 22.99, annual: 199.00 },
 };
+
+// ===================
+// CONVERSION THRESHOLDS
+// ===================
+
+/**
+ * Seuils pour déclencher différents messages/paywalls en fonction
+ * de la probabilité de conversion (0..1).
+ */
+export const CONVERSION_THRESHOLDS = {
+  LOW: 0.35,
+  MEDIUM: 0.55,
+  HIGH: 0.75,
+} as const;
 
 /**
  * Pricing par locale avec PPP
@@ -391,6 +404,18 @@ export const NOTIFICATION_TEMPLATES: Record<string, NotificationTemplate> = {
 // ===================
 
 export const PAYWALL_CONFIG = {
+  // Default pricing used as initial state in hooks (before locale pricing loads)
+  DEFAULT_PRICING: {
+    monthly: { original: Math.round(LOCALE_PRICING.fr.monthly * 100) },
+    annual: {
+      original: Math.round(LOCALE_PRICING.fr.annual * 100),
+      savingsPercent: Math.round(
+        ((LOCALE_PRICING.fr.monthly * 12 - LOCALE_PRICING.fr.annual) / (LOCALE_PRICING.fr.monthly * 12)) * 100
+      ),
+    },
+    currency: LOCALE_PRICING.fr.currency,
+    influencerDiscount: null,
+  },
   TRUST_ELEMENTS: {
     USER_COUNT: 15000,
     RATING_SCORE: 4.8,

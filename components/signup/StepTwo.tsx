@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "@/lib/hooks/useTranslation";
+import { LANGUAGES } from "@/lib/i18n/languages";
 
 interface StepTwoProps {
   email: string;
@@ -26,14 +28,7 @@ const countries = [
   { code: "AU", name: "Australia", flag: "🇦🇺" },
 ];
 
-const languages = [
-  { code: "fr", name: "Français", flag: "🇫🇷" },
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪" },
-  { code: "it", name: "Italiano", flag: "🇮🇹" },
-  { code: "zh", name: "中文", flag: "🇨🇳" },
-];
+const languages = LANGUAGES;
 
 export default function StepTwo({
   email,

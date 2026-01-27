@@ -13,6 +13,10 @@ import {
   getOrCreateGuestId, 
   getUserId 
 } from '@/lib/skane/supabase-tracker';
+import { hapticV1 } from '@/lib/skane/hapticsV1';
+
+/** Compte à rebours 3-2-1 avant de lancer le chrono (évite le décalage du chargement de la page). */
+type PreCountdown = 3 | 2 | 1 | null;
 
 export default function ActionPage() {
   const router = useRouter();
@@ -22,6 +26,7 @@ export default function ActionPage() {
   const [actionId, setActionId] = useState<MicroActionType | null>(null);
   const [phase, setPhase] = useState<PhaseState | null>(null);
   const [isReady, setIsReady] = useState(false);
+  const [preCountdown, setPreCountdown] = useState<PreCountdown>(null);
 
   // État initial pour éviter le loader infini
   const getInitialPhase = (action: MicroAction): PhaseState => {
@@ -129,13 +134,30 @@ export default function ActionPage() {
       }
     );
 
-    // Démarrer immédiatement (start() appelle emitState() immédiatement)
-    runnerRef.current.start();
+    // 3-2-1 dans le chrono (pas sur le briefing) pour éviter le décalage au chargement
+    setPreCountdown(3);
+    hapticV1.transition();
 
     return () => {
       runnerRef.current?.stop();
     };
   }, [isReady, actionId, router]);
+
+  // Compte à rebours 3-2-1 : une seconde par chiffre, puis start du runner
+  useEffect(() => {
+    if (preCountdown === null) return;
+    const t = setTimeout(() => {
+      if (preCountdown > 1) {
+        hapticV1.transition();
+        setPreCountdown((prev) => (prev! - 1) as PreCountdown);
+      } else {
+        hapticV1.cycleEnd();
+        setPreCountdown(null);
+        runnerRef.current?.start();
+      }
+    }, 1000);
+    return () => clearTimeout(t);
+  }, [preCountdown]);
 
   if (!actionId || !phase) {
     return (
@@ -146,6 +168,25 @@ export default function ActionPage() {
   }
 
   const action = MICRO_ACTIONS[actionId];
+
+  // Overlay 3-2-1 au début du chrono (évite le décalage lié au chargement)
+  if (preCountdown !== null) {
+    return (
+      <div className="fixed inset-0 bg-nokta-one-black flex flex-col items-center justify-center">
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={preCountdown}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            className="text-[8rem] font-bold text-nokta-one-blue tabular-nums"
+          >
+            {preCountdown}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-nokta-one-black flex flex-col">

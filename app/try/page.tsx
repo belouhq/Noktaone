@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Camera, Clock, Shield, ArrowRight, X } from "lucide-react";
@@ -18,7 +18,7 @@ import { Sparkles, Camera, Clock, Shield, ArrowRight, X } from "lucide-react";
  * 4. Après le scan → prompt inscription
  */
 
-export default function TryPage() {
+function TryPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -311,5 +311,13 @@ export default function TryPage() {
         )}
       </AnimatePresence>
     </main>
+  );
+}
+
+export default function TryPage() {
+  return (
+    <Suspense fallback={null}>
+      <TryPageContent />
+    </Suspense>
   );
 }

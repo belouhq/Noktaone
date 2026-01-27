@@ -327,12 +327,13 @@ export async function syncUserWithOneSignal(
   userId: string,
   playerId: string
 ): Promise<void> {
+  const db = supabase as any;
   try {
     // Lier external_user_id
     await oneSignalService.setExternalUserId(playerId, userId);
 
     // Récupérer les infos user pour les tags
-    const { data: profile } = await supabase
+    const { data: profile } = await db
       .from('user_profile')
       .select('plan, locale, timezone, current_streak_days:user_streaks(current_streak_days)')
       .eq('user_id', userId)
@@ -349,7 +350,7 @@ export async function syncUserWithOneSignal(
     }
 
     // Sauvegarder le player_id dans Supabase
-    await supabase
+    await db
       .from('user_profile')
       .update({
         onesignal_player_id: playerId,
@@ -359,7 +360,7 @@ export async function syncUserWithOneSignal(
 
     // Ajouter le device
     const playerInfo = await oneSignalService.getPlayer(playerId);
-    await supabase.from('notification_devices').upsert(
+    await db.from('notification_devices').upsert(
       {
         user_id: userId,
         onesignal_player_id: playerId,

@@ -17,24 +17,18 @@
   },
   "home": {
     "title": "NOKTA ONE",
-    "recentSkane": "Letzte Skanes",
-    "today": "Heute",
-    "yesterday": "Gestern",
-    "daysAgo": "vor {{count}} Tagen",
-    "noResetAvailable": "Kein Reset verfügbar für {{hours}} Stunden",
-    "pressToSkane": "Drücken für Skane",
-    "noSkaneYet": "No skane done yet",
-    "readyForFirstSkane": "Ready for your first Skane!",
-    "testKey": "Körpersignal erkannt",
+    "pressToSkane": "Drücken zum\nscannen",
     "justNow": "Gerade jetzt",
-    "minutesAgo": "{{count}} Min. her",
-    "todayAt": "Heute – {{time}}",
-    "emptyState": "—",
-    "lastSkaneTitle": "Letzte Skane",
-    "lastSkaneEmpty": "—"
+    "lastSkaneTitle": "Letztes Scannen",
+    "lastSkaneEmpty": "—",
+    "helpAria": "Hilfe",
+    "startSkaneAria": "Skane starten"
   },
   "skane": {
     "startSkane": "Skane starten",
+    "recentActivity": "AKTIVITÄT",
+    "streakDays": "Tage in Folge",
+    "totalSkanes": "Skane gesamt",
     "completed": "SKANE ABGESCHLOSSEN",
     "startMicroAction": "Mikro-Aktion starten",
     "analyzing": "Analyse läuft...",
@@ -42,7 +36,7 @@
     "detectingSignals": "Erkennung der Aktivierungssignale...",
     "signal": "Signal",
     "action": "Aktion",
-    "disclaimer": "Wohlfühl-Signal – nicht medizinisch",
+    "disclaimer": "Wellness-Signal — nicht medizinisch",
     "guestModeEnabled": "Guest mode enabled",
     "guestModeDisabled": "Guest mode disabled",
     "hint": {
@@ -50,7 +44,7 @@
       "centerFace": "Center your face",
       "moreLight": "More light",
       "holdStill": "Hold still",
-      "oneFaceOnly": "Only one face",
+      "oneFaceOnly": "Nur ein Gesicht",
       "fitOval": "Fit your face in the frame",
       "showEyes": "Zeige deine Augen",
       "showMouth": "Zeige deinen Mund"
@@ -63,7 +57,7 @@
     "flashDisabled": "Bildschirmblitz deaktiviert",
     "centerFace": "Zentriere dein Gesicht",
     "actionCompleted": "Aktion abgeschlossen ✓",
-    "observeFeeling": "Beobachte, was du fühlst.",
+    "observeFeeling": "Achten Sie darauf, wie Sie sich fühlen.",
     "breatheWithRhythm": "Atme im Rhythmus.",
     "canPutPhoneDown": "Du kannst dein Telefon ablegen."
   },
@@ -72,25 +66,25 @@
     "worse": "Nicht besser",
     "same": "Gleich",
     "better": "Besser",
-    "helpImprove": "Ihr Feedback hilft Nokta One, Sie besser kennenzulernen",
-    "greatToHear": "Super! 🎉",
+    "helpImprove": "Ihr Feedback hilft NOKTA, Sie besser kennenzulernen",
+    "greatToHear": "Schön zu hören! 🎉",
     "noted": "Vermerkt ✓",
     "willImprove": "Wir werden uns verbessern",
     "redirecting": "Weiterleitung...",
     "privacyNote": "Ihr Feedback bleibt privat und hilft, Ihre zukünftigen Mikroaktionen zu personalisieren"
   },
   "camera": {
-    "accessRequired": "Kamerazugriff erforderlich für Scan",
+    "accessRequired": "Kamerazugriff erforderlich für das Scannen",
     "accessDenied": "Kamerazugriff verweigert",
     "allowCamera": "Kamera erlauben",
     "accessError": "Technischer Fehler",
     "description": "NOKTA ONE verwendet Ihre Frontkamera für einen 3-Sekunden-Scan zur Schätzung Ihres Aktivierungsniveaus.",
-    "noPhotoStored": "Keine Bilder gespeichert",
+    "noPhotoStored": "Kein Bild gespeichert",
     "instantAnalysis": "3-Sekunden-Scan, sofortiges Signal",
     "revocableAnytime": "Jederzeit widerrufbar",
     "howToEnable": "Wie aktivieren",
     "refreshPage": "Seite aktualisieren",
-    "cannotAccessCamera": "Kamera kann nicht zugegriffen werden. Überprüfe, ob eine andere App sie verwendet.",
+    "cannotAccessCamera": "Kann auf die Kamera nicht zugreifen. Überprüfen Sie, ob eine andere App sie verwendet.",
     "activatingCamera": "Kamera wird aktiviert...",
     "noCameraFound": "No camera detected. Make sure a camera is connected to your device.",
     "faceReady": "Perfekt!",
@@ -106,7 +100,7 @@
     "showMouth": "Zeige deinen Mund",
     "howToEnableOn": "So aktivieren in {{browser}}:",
     "browserStep1": "Öffnen Sie die Website oder die Browsereinstellungen",
-    "browserStep2": "Kameraerlaubnis finden",
+    "browserStep2": "Kamera-Berechtigung finden",
     "browserStep3": "Kamera für diese Website erlauben",
     "browserStep4": "Seite aktualisieren",
     "browserChrome": "Chrome",
@@ -127,15 +121,53 @@
     "title": "Profil",
     "settingsSection": "Einstellungen",
     "editProfile": "Profil bearbeiten",
-    "connectedDevices": "Verbunde Geräte",
+    "connectedDevices": "Verbundenen Geräte",
     "referralCode": "Empfehlungscode",
     "invitations": "Einladungen",
     "invitationsAvailable": "Verfügbare Einladungen",
-    "inviteDescription": "Lade deine Freunde ein, NOKTA ONE im Gastmodus zu testen.",
+    "inviteDescription": "Laden Sie Ihre Lieben ein, NOKTA ONE als Gast auszuprobieren.",
     "copyInviteLink": "Einladungslink kopieren",
     "linkCopied": "Link kopiert!",
     "earnInvitation": "Verdiene 1 Einladung alle 3 Skans (24h)",
-    "comingSoon": "Bald verfügbar"
+    "comingSoon": "Bald verfügbar",
+    "notificationSchedule": "Erinnerungszeitplan",
+    "morningReminder": "Morgen",
+    "afternoonReminder": "Nachmittag",
+    "eveningReminder": "Abend",
+    "scheduleDescription": "Erinnerungen helfen, deinen Skane-Rhythmus aufrechtzuerhalten.",
+    "dailyReminders": "Tägliche Erinnerungen",
+    "dailyRemindersDescription": "3 Erinnerungen für deinen täglichen Reset: Morgen, Mittag, Abend",
+    "customizeSchedule": "Zeitplan anpassen",
+    "remindersScheduleTitle": "Erinnerungszeiten",
+    "remindersScheduleDescription": "Passe deine 3 täglichen Erinnerungen an, um deinen Reset nicht zu vergessen.",
+    "reminderMorning": "Morgen",
+    "reminderNoon": "Mittag",
+    "reminderEvening": "Abend",
+    "remindersScheduleInfo": "Erinnerungen erscheinen als Benachrichtigungen auf deinem Gerät",
+    "more": "Mehr",
+    "exportData": "Meine Daten exportieren",
+    "partnershipManagement": "Partnerschaftsverwaltung",
+    "enableReminders": "Erinnerungen aktivieren",
+    "termsOfUse": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "licenses": "Lizenzen",
+    "privacyAndData": "Datenschutz & Daten",
+    "contactUs": "Kontakt",
+    "editProfileAria": "Profil bearbeiten",
+    "notificationPermissionDeniedDesc": "Erlaube die Benachrichtigungen, um deine Erinnerungen zu den von dir gewählten Zeiten zu erhalten.",
+    "enableNotifications": "Benachrichtigungen erlauben"
+  },
+  "invitationsModal": {
+    "title": "Einladungen",
+    "counterLabel_one": "1 Einladung verfügbar",
+    "counterLabel_other": "{{count}} Einladungen verfügbar",
+    "description": "Lade deine Liebsten ein, Nokta One auszuprobieren. Sie können einen kostenlosen Skane machen.",
+    "shareInvitation": "Einladung teilen",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert!",
+    "earnPerFriend": "Erhalte 1 Einladung pro Freund, der 3 Skanes macht",
+    "shareTitle": "Probiere Nokta One",
+    "shareText": "Entdecke dein Stress-Signal in 3 Sekunden und setze dein Nervensystem in 30 Sekunden zurück."
   },
   "languages": {
     "fr": "Französisch",
@@ -160,15 +192,15 @@
   "actions": {
     "physiologicalSigh": "Physiologisches Seufzen",
     "expiration38": "Lange Ausatmung",
-    "respiration46": "Stabilisierende Atmung",
+    "respiration46": "Stabilisierender Atem",
     "boxBreathing": "Box Atemübung",
-    "respiration21": "Energiegebende Atmung",
-    "dropTrapezes": "Trapeze fallen lassen",
+    "respiration21": "Energiegebender Atem",
+    "dropTrapezes": "Falle loslassen",
     "ouvertureThoracique": "Brustöffnung",
     "postureAncrage": "Verankerungsposition",
     "shakeNeuromusculaire": "Neuromuskuläres Schütteln",
-    "pressionPlantaire": "Fussdruck",
-    "regardFixeExpiration": "Fester Blick + Ausatmung",
+    "pressionPlantaire": "Fußdruck",
+    "regardFixeExpiration": "Fester Blick + ausatmen",
     "tipLabel": "Tipp (optional)",
     "skipTip": "Überspringen",
     "continue": "Fortfahren",
@@ -197,25 +229,25 @@
     "exhaleMouth": "Durch den Mund ausatmen",
     "inhaleQuickNose": "Schnell durch die Nase einatmen",
     "inhaleCalmly": "Ruhig einatmen",
-    "exhaleSlowLong": "Langsam und lange ausatmen"
+    "exhaleSlowLong": "Langsam und vollständig ausatmen"
   },
   "body": {
     "raiseShouders": "Schultern heben",
-    "releaseCompletely": "Vollständig entspannen",
-    "openChest": "Brust leicht öffnen",
+    "releaseCompletely": "Vollständig loslassen",
+    "openChest": "Brust sanft öffnen",
     "breatheCalmly": "Ruhig atmen",
     "holdPosture": "Position halten",
-    "standGrounded": "Stehe fest, Füße verankert",
+    "standGrounded": "Aufrecht stehen, Füße fest",
     "lookAhead": "Blick nach vorne",
     "calmBreathing": "Ruhige Atmung",
-    "shakeArms": "Sanft die Arme und Hände schütteln",
+    "shakeArms": "Arme und Hände sanft schütteln",
     "moveFreely": "Lass den Körper frei bewegen",
     "pressFeet": "Füsse in den Boden drücken",
     "release": "Loslassen",
-    "fixPoint": "Einen stabilen Punkt fixieren"
+    "fixPoint": "Auf einen stabilen Punkt fokussieren"
   },
   "share": {
-    "shareYourReset": "Möchtest du deinen Reset teilen?",
+    "shareYourReset": "Möchten Sie Ihren Reset teilen?",
     "no": "NEIN",
     "shareToStories": "In Story teilen",
     "downloadImage": "Bild herunterladen",
@@ -252,17 +284,48 @@
     "country": "Land",
     "occupation": "Beruf",
     "changePhoto": "Foto ändern",
-    "profileUpdated": "Profil aktualisiert!"
+    "profileUpdated": "Profil aktualisiert!",
+    "memberSince": "Mitglied seit",
+    "streakDays": "Tage-Serie",
+    "inviteFriends": "Freunde einladen"
+  },
+  "editProfile": {
+    "title": "Profil bearbeiten",
+    "sectionPhoto": "PROFILFOTO",
+    "sectionPersonal": "PERSÖNLICHE DATEN",
+    "sectionContact": "KONTAKTDATEN",
+    "sectionPreferences": "PRÄFERENZEN",
+    "placeholders": {
+      "firstName": "Dein Vorname",
+      "lastName": "Dein Nachname",
+      "username": "benutzername",
+      "email": "deine@email.de",
+      "phone": "+49 171 2345678",
+      "address": "Deine Adresse",
+      "postalCode": "10115",
+      "city": "Berlin",
+      "job": "z.B. Unternehmer, Athlet, Student..."
+    },
+    "saving": "Wird gespeichert...",
+    "jobOptional": "Beruf (optional)",
+    "countryFR": "Frankreich",
+    "countryUS": "Vereinigte Staaten",
+    "countryGB": "Vereinigtes Königreich",
+    "countryDE": "Deutschland",
+    "countryES": "Spanien",
+    "countryIT": "Italien",
+    "countryCN": "China",
+    "countryJP": "Japan"
   },
   "info": {
     "whatIsSkane": "WAS IST EIN SKANE?",
-    "skaneDescription": "Ein körperlicher Reset von maximal 30 Sekunden:",
+    "skaneDescription": "Ein Körperreset von bis zu 30 Sekunden:",
     "skanePoint1": "KI-Gesichtsscanner (3 Sekunden)",
     "skanePoint2": "Geführte Mikro-Aktion (20-30 Sekunden)",
     "skanePoint3": "Sofortige Rückkehr zur Balance",
-    "noDiagnosis": "Wellnesssignal nur. Nur Handlung.",
+    "noDiagnosis": "Wohlfühl-Signal nur. Nur eine Aktion.",
     "guestMode": "GASTMODUS",
-    "guestDescription": "Lade deine Freunde ein, NOKTA ONE zu testen.",
+    "guestDescription": "Laden Sie Ihre Lieben ein, Nokta One auszuprobieren.",
     "guestPoint1": "1 Einladung = 1 Person kann ausprobieren",
     "guestPoint2": "Verdiene 1 Einladung alle 3 Skans (24h)",
     "guestPoint3": "Gäste können ihren Skane Index teilen",
@@ -271,7 +334,7 @@
     "invitationsAvailable": "Verfügbare Einladungen"
   },
   "signup": {
-    "createAccount": "Ein Konto erstellen",
+    "createAccount": "Konto erstellen",
     "step1": "Identität",
     "step2": "Kontakt",
     "step3": "Benachrichtigungen",
@@ -281,7 +344,7 @@
     "usernameInvalidChars": "Nur Buchstaben, Zahlen und Unterstriche",
     "usernameAvailable": "Verfügbar",
     "enableNotifications": "Benachrichtigungen aktivieren",
-    "notificationsDescription": "Bleibe über deine Resets und Fortschritte informiert",
+    "notificationsDescription": "Bleiben Sie über Ihre Resets und Fortschritte informiert",
     "yourReferralCode": "Dein Empfehlungscode",
     "accountCreated": "Konto erfolgreich erstellt!",
     "acceptTerms": "Ich akzeptiere die",
@@ -298,8 +361,8 @@
   },
   "support": {
     "title": "Hilfe",
-    "contactUs": "Kontaktieren Sie uns",
-    "createTicket": "Kontaktieren Sie uns",
+    "contactUs": "Kontaktiere uns",
+    "createTicket": "Kontaktiere uns",
     "category": "Kategorie",
     "categories": {
       "bug": "🐛 Fehler / Technisches Problem",
@@ -313,11 +376,11 @@
     "message": "Nachricht",
     "messagePlaceholder": "Beschreiben Sie Ihr Problem im Detail...",
     "email": "Ihre E-Mail",
-    "emailPlaceholder": "Um Ihnen zu antworten",
+    "emailPlaceholder": "Um dir zu antworten",
     "send": "Senden",
     "sending": "Wird gesendet...",
     "success": "Nachricht gesendet!",
-    "successMessage": "Wir werden Ihnen innerhalb von 24-48 Stunden antworten.",
+    "successMessage": "Wir melden uns innerhalb von 24-48 Stunden bei dir.",
     "error": "Fehler beim Senden",
     "errorMessage": "Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt unter support@noktaone.com",
     "ticketId": "Referenz",
@@ -332,13 +395,13 @@
     "yesterday": "Gestern"
   },
   "consent": {
-    "title": "Scan-Zustimmung",
+    "title": "Ihre Privatsphäre ist wichtig",
     "point1": "Sie stimmen einem 3-Sekunden-Gesichtsscan zur Körperregulation zu.",
     "point2": "Your images are NOT stored.",
     "point3": "Analyse des Gesichtsmusters — keine Identitätskennung.",
     "point4": "Daten werden nur verwendet, um Mikroaktionen zur Körperregulation zu empfehlen.",
     "point5": "Nur für persönliches Wohlbefinden.",
-    "disclaimer": "NOKTA ist nur für Wohlbefinden. Holen Sie sich bei Bedarf professionelle Beratung.",
+    "disclaimer": "NOKTA dient nur dem Wohlbefinden. Suchen Sie bei Bedarf professionelle Beratung.",
     "accept": "I accept",
     "decline": "Decline",
     "modal": {
@@ -402,25 +465,29 @@
     "footerNotice": "Wenn Sie fortfahren, akzeptieren Sie unsere Nutzungsbedingungen."
   },
   "devices": {
-    "title": "Verbundene Geräte",
-    "pwaNote": "Apple Health und Health Connect sind nur in der Nokta Mobile-App (iOS und Android) verfügbar. Verbindung ist im Web nicht möglich.",
+    "title": "Verbundenen Geräte",
+    "pwaNote": "Apple Health und Health Connect sind nur in der NOKTA mobilen App (iOS und Android) verfügbar. Verbindung ist im Web nicht möglich.",
     "appleHealth": "Apple Health",
     "healthConnect": "Health Connect",
+    "appleHealthDescription": "Gesundheitsdaten unter iOS synchronisieren",
+    "healthConnectDescription": "Gesundheitsdaten unter Android synchronisieren",
     "statusConnected": "Verbunden",
-    "statusDisconnected": "Nicht verbunden",
+    "statusDisconnected": "Getrennt",
     "statusPwaUnavailable": "Im Web nicht verfügbar",
-    "hintIos": "Verwenden Sie die Nokta-App auf iOS, um Apple Health zu verbinden.",
-    "hintAndroid": "Verwenden Sie die Nokta-App auf Android, um Health Connect zu verbinden."
+    "comingSoon": "Demnächst",
+    "footerMoreIntegrations": "Weitere Integrationen demnächst: Garmin, Fitbit, Oura, WHOOP...",
+    "hintIos": "Verwenden Sie die NOKTA App auf iOS, um Apple Health zu verbinden.",
+    "hintAndroid": "Verwenden Sie die NOKTA App auf Android, um Health Connect zu verbinden."
   },
   "skaneIndex": {
     "title": "Skane Index",
     "before": "Before",
     "after": "After",
-    "skaneCompleted": "Skane Completed",
-    "activationDisclaimer": "Ihr Aktivierungsscore · Nur informativ",
+    "skaneCompleted": "Skane abgeschlossen",
+    "activationDisclaimer": "Ihr Aktivierungspunkt · Nur zur Information",
     "shareYourReset": "Share your reset",
     "demo": {
-      "title": "Skane Index-Demo",
+      "title": "Skane Index Demo",
       "feedback": "Feedback",
       "feedbackClear": "Löschen",
       "feedbackReduced": "Reduziert",
@@ -434,12 +501,26 @@
   },
   "welcome": {
     "message": "Entdecke den Zustand deines Körpers in Sekunden.",
-    "start": "Starten",
-    "alreadyAccount": "Bereits ein Konto?"
+    "start": "Loslegen",
+    "alreadyAccount": "Bereits ein Konto?",
+    "headlinePrefix": "Miss deinen",
+    "headlineSuffix": "in 3 Sekunden.",
+    "words": {
+      "stress": "Stress",
+      "tension": "Anspannung",
+      "anxiety": "Angst",
+      "fatigue": "Müdigkeit"
+    },
+    "subheadline": "Setze dein Nervensystem mit einer 30-Sekunden-Mikroaktion zurück.",
+    "disclaimer": "Wohlfühl-Signal · Kein medizinischer Rat",
+    "featureScan": "3s Gesichtsscan",
+    "featureAction": "30s Mikroaktion",
+    "featureResult": "Sofortiges Ergebnis",
+    "skaneIndex": "SKANE INDEX"
   },
   "firstSkaneResult": {
     "title": "Ihr Körper braucht einen Reset.",
-    "subtitle": "Wir bieten Ihnen einen sofortigen Reset an.",
+    "subtitle": "Wir schlagen einen sofortigen Reset vor.",
     "resetNow": "Jetzt zurücksetzen ({{duration}}s)"
   },
   "firstSkaneFeedback": {
@@ -453,128 +534,140 @@
   },
   "onboarding": {
     "continue": {
-      "title": "Nokta works even better when it knows you a bit.",
-      "subtitle": "No medical data. Just your feeling.",
+      "title": "NOKTA ONE funktioniert besser, wenn es Sie ein wenig kennt.",
+      "subtitle": "Keine sensiblen Daten. Nur wie Sie sich fühlen.",
       "continue": "Continue",
       "later": "Later"
     },
     "adaptation": {
-      "title": "Nokta passt sich deinem Körper an.",
-      "description": "Für {{days}} Tage passt Nokta seine Empfehlungen perfekt auf dich an.",
-      "noAction": "Du musst nichts Besonderes tun.",
+      "title": "NOKTA ONE passt sich Ihrem Körper an.",
+      "description": "Für {{days}} Tage passt NOKTA ONE seine Empfehlungen perfekt an Sie an.",
+      "noAction": "Sie müssen nichts Besonderes tun.",
       "timeline": "Tag 1 → Tag 7",
       "accept": "Okay"
     },
     "bestPractices": {
       "title": "Für bessere Ergebnisse",
-      "practice1": "Skane nur dein Gesicht",
+      "practice1": "Scannen Sie nur Ihr Gesicht",
       "practice2": "Benutze den Gastmodus für jemand anderen",
-      "practice3": "Skane, wenn du dich wirklich schlecht fühlst",
+      "practice3": "Scannen Sie, wenn Sie sich wirklich unwohl fühlen",
       "understood": "Verstanden"
     },
     "reflex": {
-      "title": "Wenn dein Körper nicht im Gleichgewicht ist, skane.",
+      "title": "Scannen, wenn Ihr Körper nicht in Ordnung ist.",
       "subtitle": "Stress, Müdigkeit, geistige Überlastung, vor einem wichtigen Moment",
-      "noktaIsHere": "Nokta ist hier.",
-      "nextSkane": "Mach mein nächstes skane",
+      "noktaIsHere": "NOKTA ONE ist hier.",
+      "nextSkane": "Mein nächstes Scannen durchführen",
       "skip": "Überspringen"
     }
   },
   "homeAdaptation": {
-    "inProgress": "Anpassung in Arbeit — Tag {{day}} von 7",
+    "inProgress": "Anpassung — Tag {{day}} von 7",
     "improvesPrecision": "Jede Skane verbessert die Präzision.",
     "complete": "✓ Anpassung abgeschlossen",
-    "calibrated": "Nokta ist jetzt auf dich kalibriert."
+    "calibrated": "NOKTA ONE ist jetzt auf Sie kalibriert."
   },
   "faq": {
     "title": "FAQ",
     "subtitle": "Frequently Asked Questions",
-    "subtitleDesc": "Everything you need to know about Nokta",
+    "subtitleDesc": "Alles, was Sie über Nokta One wissen müssen",
     "moreQuestions": "More questions?",
     "contactUs": "Contact us",
     "whatIsNokta": {
       "question": "What is Nokta One, exactly?",
-      "answer": "Nokta One is a body and nervous system reset technology. In seconds, it identifies when your body is \"off\" and offers a simple micro-action to return to a functional, clear, and high-performing state.\n\nIt's not meditation, therapy, or medical monitoring.\nIt's an immediate adjustment tool, usable in real life."
+      "answer": "Nokta One ist eine Technologie zum Reset des Körpers und des Nervensystems. In Sekunden erkennt es, wann Ihr Körper \"aus dem Gleichgewicht\" ist und schlägt eine einfache Mikroaktion vor, um in einen funktionalen, klaren und leistungsstarken Zustand zurückzukehren.\n\nEs ist keine Meditation oder ein klinisches Programm.\nEs ist ein sofortiges Anpassungswerkzeug, das in realen Situationen verwendet werden kann."
     },
     "whenUseful": {
       "question": "When is Nokta One useful?",
-      "answer": "Nokta One is designed for moments when you think:\n\n• \"I don't feel right, but I don't know why\"\n• \"I'm tense for no clear reason\"\n• \"I can't focus\"\n• \"My body is tired, but my mind wants to keep going\"\n• \"I'm not at my best\"\n\nThese moments happen before important meetings, after mental overload, between demanding tasks, before sports or competition, at the end of the day when your body gives up, or in the morning when energy isn't there.\n\nNokta One is designed for these daily micro-imbalances, not medical situations."
+      "answer": "Nokta One ist für Momente gedacht, in denen Sie denken:\n\n• \"Ich fühle mich nicht wohl, aber ich weiß nicht warum\"\n• \"Ich bin ohne klaren Grund angespannt\"\n• \"Ich kann mich nicht konzentrieren\"\n• \"Mein Körper ist müde, aber mein Geist will weitermachen\"\n• \"Ich bin nicht auf meinem besten Stand\"\n\nDiese Momente treten vor wichtigen Meetings, nach mentaler Überlastung, zwischen anspruchsvollen Aufgaben, vor Sport oder Wettkämpfen, am Ende des Tages, wenn Ihr Körper nachgibt, oder am Morgen, wenn die Energie niedrig ist, auf.\n\nNokta One ist für diese täglichen Mikro-Ungleichgewichte gedacht, nicht für klinische Situationen."
     },
     "whyOffButOk": {
       "question": "Why do I sometimes feel \"fine\" but not function properly?",
-      "answer": "Because your body and nervous system can be desynchronized.\n\nYou can:\n• Have a good heart rate but feel oppressed\n• Be mentally calm but physically agitated\n• Be motivated but unable to get started\n\nNokta One is based on the principle that body sensation precedes mental performance."
+      "answer": "Weil Ihr Körper und Nervensystem nicht synchron sein können.\n\nSie könnten:\n• Einen guten Herzschlag haben, sich aber überwältigt fühlen\n• Mental ruhig, aber körperlich unruhig sein\n• Motiviert sein, aber nicht anfangen können\n\nNOKTA ONE basiert auf dem Prinzip, dass körperliches Empfinden vor mentaler Leistung kommt."
     },
     "differentFromOthers": {
-      "question": "How is Nokta One different from classic wellness apps?",
-      "answer": "Most apps ask you to:\n• Understand what you're feeling\n• Choose a practice\n• Commit to a long time\n\nNokta One does the opposite:\n• It starts from the body signal, not your analysis\n• It reduces choice to one single action\n• It acts in less than 30 seconds\n\nLess thinking, less friction, more impact."
+      "question": "Wie unterscheidet sich NOKTA ONE von traditionellen Wellness-Apps?",
+      "answer": "Die meisten Apps verlangen von Ihnen:\n• Zu verstehen, wie Sie sich fühlen\n• Eine Praxis auszuwählen\n• Sich langfristig zu verpflichten\n\nNOKTA ONE macht das Gegenteil:\n• Es beginnt mit dem Körpersignal, nicht mit Ihrer Analyse\n• Es reduziert die Wahl auf eine einzige Aktion\n• Es handelt in weniger als 30 Sekunden\n\nWeniger Denken, weniger Reibung, mehr Wirkung."
     },
     "analyzeEmotions": {
-      "question": "Does Nokta One \"analyze\" my emotions?",
-      "answer": "Nokta One doesn't judge you and makes no diagnosis.\n\nIt only observes neutral body indicators (posture, tension, visible micro-signals) to estimate a global functional state.\n\nThe goal isn't to tell you \"what you're feeling\", but to detect when your body isn't aligned with what you want to do."
+      "question": "Analysiert NOKTA ONE meine Emotionen?",
+      "answer": "NOKTA ONE bewertet dich nicht.\n\nEs beobachtet nur neutrale körperliche Indikatoren (Haltung, Spannung, sichtbare Mikrosignale), um einen allgemeinen Funktionszustand zu schätzen.\n\nDas Ziel ist nicht, dir zu sagen, \"wie du dich fühlst\", sondern zu erkennen, wenn dein Körper nicht im Einklang mit dem ist, was du tun möchtest."
     },
     "replaceProfessional": {
-      "question": "Does Nokta One replace a healthcare professional?",
-      "answer": "No.\n\nNokta One is a daily regulation tool, not a medical device. It treats no pathology, makes no therapeutic promises, and never replaces medical advice.\n\nIt's designed for functional, active, demanding people who want to stay high-performing without waiting to feel bad."
+      "question": "Ersetzt NOKTA ONE einen Gesundheitsfachmann?",
+      "answer": "Nein.\n\nNOKTA ONE ist ein tägliches Regulierungstool, kein klinisches Gerät. Es behandelt keine Zustände, macht keine Heilungsversprechen und ersetzt niemals professionelle Beratung.\n\nEs ist für funktionale, aktive, anspruchsvolle Menschen gedacht, die ihr Bestes geben wollen, ohne darauf zu warten, sich unwohl zu fühlen."
     },
     "whyBodyNotMind": {
       "question": "Why act on the body rather than the mind?",
-      "answer": "Because in most cases:\n• The mind follows the body\n• Clarity comes after regulation\n• Performance returns when the nervous system is stable\n\nA well-targeted physical micro-action can produce an immediate effect, where a mental approach takes more time."
+      "answer": "Weil in den meisten Fällen:\n• Der Geist dem Körper folgt\n• Klarheit nach der Regulierung kommt\n• Leistung zurückkehrt, wenn das Nervensystem stabil ist\n\nEine gut gezielte Mikroaktion kann sofortige Effekte erzeugen, während ein mentaler Ansatz mehr Zeit benötigt."
     },
     "howOften": {
-      "question": "How often should I use Nokta One?",
-      "answer": "Nokta One imposes no rhythm.\n\nSome use it:\n• 1-2 times a day as a quick check\n• Before a key moment\n• Only when \"something feels off\"\n\nThe goal isn't dependence, but autonomy."
+      "question": "Wie oft sollte ich NOKTA ONE verwenden?",
+      "answer": "NOKTA ONE setzt keinen Rhythmus fest.\n\nEinige verwenden es:\n• 1-2 Mal täglich für eine schnelle Überprüfung\n• Vor einem wichtigen Moment\n• Nur wenn \"etwas nicht stimmt\"\n\nDas Ziel ist nicht Abhängigkeit, sondern Autonomie."
     },
     "forAthletesOnly": {
-      "question": "Is Nokta One only for athletes or entrepreneurs?",
-      "answer": "No, but it's particularly useful for people seeking:\n• Clarity\n• Consistency\n• Sustainable performance\n\nThe launch targets the US market, very oriented toward performance, optimization, and efficiency, but Nokta One is designed for all cultures, all ages, and all lifestyles."
+      "question": "Ist NOKTA ONE nur für Sportler oder Unternehmer?",
+      "answer": "Nein, aber es ist besonders nützlich für diejenigen, die suchen:\n• Klarheit\n• Konsistenz\n• Nachhaltige Leistung\n\nDer Start richtet sich an den US-Markt, der sehr leistungsorientiert ist, aber NOKTA ONE ist für alle Kulturen, Altersgruppen und Lebensstile konzipiert."
     },
     "dontBelieveBreathing": {
       "question": "Does it work even if I don't believe in \"breathing techniques\"?",
-      "answer": "Yes, because Nokta One doesn't rely on belief.\n\nThe proposed micro-actions are:\n• Simple\n• Short\n• Based on known physiological mechanisms\n\nYou don't need to \"believe\" anything.\nYou do the action, you observe the effect."
+      "answer": "Ja, denn NOKTA ONE basiert nicht auf Glauben.\n\nDie vorgeschlagenen Mikroaktionen sind:\n• Einfach\n• Kurz\n• Basierend auf bekannten physiologischen Mechanismen\n\nDu musst nichts \"glauben\".\nDu führst die Aktion aus, du beobachtest die Wirkung."
     },
     "whySoShort": {
       "question": "Why such short actions?",
       "answer": "Because the nervous system often responds better to:\n• Clear signals\n• Brief stimulations\n• Sharp interruptions of the previous state\n\n30 well-targeted seconds can be more effective than 10 poorly engaged minutes."
     },
     "dataPrivacy": {
-      "question": "Does Nokta One collect sensitive personal data?",
-      "answer": "Nokta One applies a maximum data sobriety logic.\n\n• No medical exploitation\n• No data resale\n• No intrusive interpretation\n\nInformation only serves to improve the user experience."
+      "question": "Sammelt NOKTA ONE sensible persönliche Daten?",
+      "answer": "NOKTA ONE verfolgt einen maximalen Datenminimalismus.\n\n• Keine Gesundheitsprofilierung\n• Kein Datenverkauf\n• Keine aufdringliche Interpretation\n\nInformationen werden nur verwendet, um die Benutzererfahrung zu verbessern."
     },
     "allLanguages": {
-      "question": "Does Nokta One work in all languages?",
-      "answer": "Yes.\nNokta One launches in 12 languages, with particular attention to universal sensation, not complex vocabulary.\n\nThe body speaks the same language everywhere."
+      "question": "Funktioniert NOKTA ONE in allen Sprachen?",
+      "answer": "Ja.\nNOKTA ONE startet in 12 Sprachen, mit Fokus auf universelle Empfindungen, nicht komplexe Vokabeln.\n\nDer Körper spricht überall dieselbe Sprache."
     },
     "whoIsItFor": {
-      "question": "Who is Nokta One really for?",
-      "answer": "For those who:\n• Want to stay functional without over-analyzing\n• Sense when something \"slips\" but don't want to dramatize\n• Seek a simple, fast, discreet tool\n• Want to perform without exhausting themselves\n\nNokta One isn't here to change you.\nIt's here to help you return to your normal state."
+      "question": "Für wen ist NOKTA ONE wirklich?",
+      "answer": "Für diejenigen, die:\n• Funktional bleiben wollen, ohne zu überanalysieren\n• Fühlen, wenn etwas \"nicht stimmt\", aber nicht dramatisieren wollen\n• Ein einfaches, schnelles, diskretes Tool suchen\n• Leistung erbringen wollen, ohne auszubrennen\n\nNOKTA ONE ist nicht hier, um dich zu verändern.\nEs ist hier, um dir zu helfen, zu deinem Normalzustand zurückzukehren."
     },
     "whyNow": {
       "question": "Why now?",
-      "answer": "Because the world moves fast, pressure is real, and many people function in degraded mode without realizing it.\n\nNokta One answers a modern need:\nRecalibrate quickly, without stopping to live."
+      "answer": "Weil die Welt sich schnell bewegt, der Druck real ist und viele Menschen in einem verschlechterten Modus funktionieren, ohne es zu merken.\n\nNOKTA ONE erfüllt ein modernes Bedürfnis:\nSchnell neu kalibrieren, ohne das Leben anzuhalten."
     }
   },
   "login": {
-    "title": "Willkommen zurück",
+    "title": "Schön, Sie wiederzusehen",
     "subtitle": "Melden Sie sich an, um fortzufahren",
     "email": "E-Mail",
     "password": "Passwort",
     "forgotPassword": "Passwort vergessen?",
     "submit": "Anmelden",
-    "loading": "Anmeldung...",
+    "loading": "Anmelden...",
     "or": "oder",
     "withApple": "Mit Apple fortfahren",
     "withGoogle": "Mit Google fortfahren",
-    "noAccount": "Haben Sie kein Konto?",
+    "noAccount": "Haben Sie noch kein Konto?",
     "signUp": "Konto erstellen",
     "errorRequired": "Alle Felder sind erforderlich",
     "errorGeneric": "Anmeldefehler",
-    "errorInvalidCredentials": "Ungültige E-Mail oder Passwort"
+    "errorInvalidCredentials": "Falsche E-Mail oder Passwort",
+    "errorEmailRequired": "E-Mail erforderlich",
+    "errorEmailInvalid": "Ungültige E-Mail",
+    "errorPasswordRequired": "Passwort erforderlich",
+    "errorPasswordMin": "Mindestens 6 Zeichen",
+    "placeholderEmail": "deine@email.com",
+    "placeholderPassword": "••••••••",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
+    "footerPrefix": "Mit dem Fortfahren stimmst du unseren ",
+    "footerTerms": "AGB",
+    "footerAnd": " und der ",
+    "footerPrivacy": "Datenschutzrichtlinie zu"
   },
   "forgotPassword": {
     "title": "Passwort vergessen?",
     "subtitle": "Geben Sie Ihre E-Mail ein und wir senden Ihnen einen Link zum Zurücksetzen.",
     "email": "E-Mail",
-    "submit": "Link zum Zurücksetzen senden",
+    "submit": "Link senden",
     "sending": "Wird gesendet...",
     "errorRequired": "E-Mail ist erforderlich",
     "errorInvalid": "Ungültige E-Mail",
@@ -582,9 +675,9 @@
     "successTitle": "E-Mail gesendet!",
     "successMessage": "Wir haben einen Link zum Zurücksetzen an {{email}} gesendet. Überprüfen Sie Ihren Posteingang.",
     "backToLogin": "Zurück zur Anmeldung",
-    "noEmail": "Nicht erhalten?",
+    "noEmail": "Haben Sie ihn nicht erhalten?",
     "resend": "Erneut senden",
-    "rememberPassword": "Passwort merken?",
+    "rememberPassword": "Erinnert?",
     "login": "Anmelden"
   },
   "quickSignup": {
@@ -1272,5 +1365,172 @@
       "privacy": "Datenschutz",
       "support": "Unterstützung"
     }
+  },
+  "termsPage": {
+    "title": "Nutzungsbedingungen",
+    "versionLabel": "Version",
+    "versionValue": "1.0",
+    "updatedLabel": "Zuletzt aktualisiert",
+    "updatedValue": "Januar 2025",
+    "disclaimer": "HAFTUNGSAUSSCHLUSS: Nokta One ist kein medizinisches Gerät und bietet keine medizinischen Ratschläge. Bei gesundheitlichen Bedenken konsultieren Sie bitte einen Fachmann.",
+    "contactTitle": "Kontakt",
+    "contactDescription": "Bei Fragen zu diesen Bedingungen:",
+    "acceptanceNotice": "Durch die Nutzung von Nokta One bestätigen Sie, dass Sie diese Bedingungen gelesen, verstanden und akzeptiert haben.",
+    "sections": {
+      "s01": {
+        "title": "Artikel 1 - Akzeptanz",
+        "content": "<p>Durch die Nutzung von Nokta One stimmen Sie zu, an diese Bedingungen gebunden zu sein. Wenn Sie nicht zustimmen, dürfen Sie den Dienst nicht nutzen.</p><p>Sie bestätigen, dass Sie mindestens <strong>16 Jahre alt</strong> sind (oder 13 mit elterlicher Zustimmung) und die rechtliche Fähigkeit haben, einen Vertrag abzuschließen.</p>"
+      },
+      "s02": {
+        "title": "Artikel 2 - Beschreibung des Dienstes",
+        "content": "<p>Nokta One ist eine Wellness-Anwendung, die Folgendes bietet:</p><ul><li>Geführte physiologische Regulierungssitzungen</li><li>Atem- und Haltungsübungen</li><li>Verfolgung des Wellness-Zustands</li><li>Personalisierte Empfehlungen</li></ul><p><strong>Der Dienst wird nur zu Informationszwecken bereitgestellt und ersetzt nicht den Rat eines Fachmanns.</strong></p>"
+      },
+      "s03": {
+        "title": "Artikel 3 - Benutzerkonto",
+        "content": "<p>Um auf bestimmte Funktionen zuzugreifen, müssen Sie ein Konto erstellen. Sie stimmen zu:</p><ul><li>Genau und aktuell Informationen bereitzustellen</li><li>Die Vertraulichkeit Ihrer Anmeldedaten zu wahren</li><li>Uns über unbefugte Nutzung zu informieren</li><li>Für alle Aktivitäten unter Ihrem Konto verantwortlich zu sein</li></ul>"
+      },
+      "s04": {
+        "title": "Artikel 4 - Abonnements",
+        "content": "<p><strong>Pläne:</strong> Kostenlos (eingeschränkter Zugang) oder Premium (voller Zugang)</p><p><strong>Erneuerung:</strong> Automatisch, es sei denn, es wird vor Ablauf gekündigt</p><p><strong>Kündigung:</strong> Jederzeit über die Einstellungen oder Ihre Plattform (App Store, Google Play)</p><p><strong>Rückerstattungen:</strong> Nicht erstattungsfähig, es sei denn, gesetzlich vorgeschrieben</p>"
+      },
+      "s05": {
+        "title": "Artikel 5 - Nutzungsregeln",
+        "content": "<p><strong>Es ist verboten:</strong></p><ul><li>Den Dienst für illegale Zwecke zu nutzen</li><li>Unbefugten Zugriff auf unsere Systeme zu versuchen</li><li>Viruses oder schädlichen Code zu übertragen</li><li>Daten anderer Benutzer zu sammeln</li><li>Eine andere Person zu imitieren</li><li>Den Dienst weiterzuverkaufen oder kommerziell auszubeuten</li></ul>"
+      },
+      "s06": {
+        "title": "Artikel 6 - Geistiges Eigentum",
+        "content": "<p>Der Dienst und sein Inhalt (Code, Texte, Grafiken, Logos usw.) sind das ausschließliche Eigentum des Herausgebers und durch Gesetze zum geistigen Eigentum geschützt.</p><p>Sie erhalten eine persönliche, begrenzte, nicht-exklusive und widerrufbare Lizenz zur Nutzung des Dienstes für persönliche Zwecke.</p>"
+      },
+      "s07": {
+        "title": "Artikel 7 - Haftungsbeschränkung",
+        "content": "<p>DER DIENST WIRD 'WIE BESEHEN' OHNE GARANTIE IRGENDWELCHER ART BEREITGESTELLT.</p><p>Wir haften nicht für:</p><ul><li>Indirekte oder Folgeschäden</li><li>Verlust von Gewinnen oder Daten</li><li>Unterbrechungen des Dienstes</li></ul><p><strong>Obergrenze:</strong> Unsere Haftung ist auf den Betrag beschränkt, der in den letzten 12 Monaten gezahlt wurde (oder maximal 100 €).</p>"
+      },
+      "s08": {
+        "title": "Artikel 8 - Kündigung",
+        "content": "<p><strong>Von Ihnen:</strong> Sie können Ihr Konto jederzeit über die Einstellungen löschen.</p><p><strong>Von uns:</strong> Wir können Ihren Zugang sperren, wenn Sie gegen diese Bedingungen verstoßen.</p><p>Bei Kündigung erlischt Ihr Recht zur Nutzung des Dienstes sofort.</p>"
+      },
+      "s09": {
+        "title": "Artikel 9 - Anwendbares Recht",
+        "content": "<p>Diese Bedingungen unterliegen dem <strong>französischen Recht</strong>.</p><p>Im Streitfall werden die Parteien versuchen, eine einvernehmliche Lösung zu finden. Sie können die Verbraucher mediation in Anspruch nehmen.</p><p><strong>Gerichtsbarkeit:</strong> Gerichte von Paris, vorbehaltlich der zwingenden Regeln zur Verbrauchergerichtsbarkeit.</p><p><strong>Europäische Plattform:</strong> <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>ec.europa.eu/consumers/odr</a></p>"
+      }
+    }
+  },
+  "privacyPolicyPage": {
+    "title": "Datenschutzrichtlinie",
+    "versionLabel": "Version",
+    "versionValue": "1.0",
+    "updatedLabel": "Zuletzt aktualisiert",
+    "updatedValue": "Januar 2025",
+    "contactTitle": "Kontaktieren Sie uns",
+    "contactDescription": "Bei Fragen zu dieser Richtlinie oder zur Ausübung Ihrer Rechte:",
+    "sections": {
+      "s01": {
+        "title": "Einführung",
+        "content": "<p>Diese Datenschutzrichtlinie beschreibt, wie Ihre persönlichen Informationen gesammelt, verwendet und geteilt werden, wenn Sie die <strong>Nokta One</strong>-Anwendung nutzen.</p><p>Nokta One wird von einem in Frankreich registrierten Unternehmen veröffentlicht. Durch die Nutzung unseres Dienstes stimmen Sie den in dieser Richtlinie beschriebenen Praktiken zu.</p>"
+      },
+      "s02": {
+        "title": "1. Daten, die wir sammeln",
+        "content": "<p><strong>Kontodaten:</strong> E-Mail, Benutzername, Passwort (verschlüsselt)</p><p><strong>Profildaten:</strong> Vorname, Geburtsdatum, Land, Sprache</p><p><strong>Nutzungsdaten:</strong> Sitzungen, Aktionen, Zeitstempel</p><p><strong>Gesichtsanalyse:</strong> Bilder werden <strong>lokal auf Ihrem Gerät</strong> verarbeitet. Nur anonymisierte Wellness-Werte werden übertragen. Wir verwenden <strong>keine</strong> Gesichtserkennung zur Identifizierung.</p>"
+      },
+      "s03": {
+        "title": "2. Wie wir Daten verwenden",
+        "content": "<p>Wir verwenden Ihre Daten, um:</p><ul><li>den Dienst bereitzustellen und zu verbessern</li><li>Ihr Erlebnis zu personalisieren</li><li>Kommunikationen zu senden (wenn zugestimmt)</li><li>die Sicherheit des Dienstes zu gewährleisten</li></ul><p><strong>Rechtsgrundlage (DSGVO):</strong> Vertragserfüllung, berechtigtes Interesse, Einwilligung.</p>"
+      },
+      "s04": {
+        "title": "3. Datenweitergabe",
+        "content": "<p><strong>Wir verkaufen Ihre persönlichen Daten niemals.</strong></p><p>Wir nutzen vertrauenswürdige Dienstleister (EU-Cloud-Infrastruktur, PCI-DSS-zertifizierte Zahlungsdienste). Übertragungen außerhalb der EU unterliegen Standardvertragsklauseln.</p>"
+      },
+      "s05": {
+        "title": "4. Aufbewahrung",
+        "content": "<p><strong>Kontodaten:</strong> Dauer der Registrierung + 3 Jahre</p><p><strong>Sitzungsdaten:</strong> 24 Monate</p><p><strong>Zahlungsdaten:</strong> 10 Jahre (steuerliche Verpflichtungen)</p><p>Nach der Kontolöschung werden Ihre Daten innerhalb von 30 Tagen anonymisiert oder gelöscht.</p>"
+      },
+      "s06": {
+        "title": "5. Ihre Rechte",
+        "content": "<p>Sie haben folgende Rechte:</p><ul><li><strong>Zugriff</strong>: Eine Kopie Ihrer Daten erhalten</li><li><strong>Berichtigung</strong>: Ihre Daten korrigieren</li><li><strong>Löschung</strong>: Ihre Daten löschen</li><li><strong>Datenübertragbarkeit</strong>: Ihre Daten exportieren</li><li><strong>Widerspruch</strong>: Widerspruch gegen bestimmte Verarbeitung</li><li><strong>Einwilligung widerrufen</strong>: Jederzeit</li></ul><p>Antwortzeit: <strong>maximal 30 Tage</strong>.</p><p>Sie können eine Beschwerde bei der <strong>CNIL</strong> (www.cnil.fr) einreichen.</p>"
+      },
+      "s07": {
+        "title": "6. Sicherheit",
+        "content": "<p>Ihre Daten sind geschützt durch:</p><ul><li>Verschlüsselung während der Übertragung (TLS 1.3) und im Ruhezustand (AES-256)</li><li>Sichere Authentifizierung</li><li>Begrenzter Zugriff (Prinzip der minimalen Berechtigung)</li><li>Benachrichtigung bei Datenpannen innerhalb von 72 Stunden</li></ul>"
+      },
+      "s08": {
+        "title": "7. Minderjährige",
+        "content": "<p>Unser Dienst richtet sich an Personen <strong>ab 16 Jahren</strong>.</p><p>Zwischen 13 und 16 Jahren ist die Zustimmung der Eltern erforderlich. Wir sammeln nicht wissentlich Daten von Kindern unter 13 Jahren.</p>"
+      },
+      "s09": {
+        "title": "8. Kalifornien (CCPA)",
+        "content": "<p>Wenn Sie in Kalifornien wohnen:</p><ul><li><strong>Wir verkaufen Ihre persönlichen Informationen nicht</strong></li><li>Sie haben das Recht zu wissen, Ihre Daten zu löschen und der 'Verkauf' Ihrer Daten zu widersprechen</li></ul>"
+      }
+    }
+  },
+  "legalNoticePage": {
+    "title": "Rechtshinweis",
+    "updatedLabel": "Zuletzt aktualisiert",
+    "updatedValue": "Januar 2025",
+    "footerNote": "Dieser rechtliche Hinweis kann jederzeit geändert werden. Die aktuelle Version ist die auf der Anwendung zugängliche.",
+    "sections": {
+      "s01": {
+        "title": "1. Herausgeber der Anwendung",
+        "content": "<p>Die <strong>Nokta One</strong>-Anwendung wird veröffentlicht von:</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Rechtsform</strong>: Vereinfachte Aktiengesellschaft (SASU) nach französischem Recht</p><p><strong>Sitz</strong>: Paris, Frankreich</p><p><strong>Stammkapital</strong>: Variabel</p><p><strong>Registrierung</strong>: Handels- und Gesellschaftsregister Paris</p><p><strong>USt-IdNr.</strong>: FR [Nummer]</p><p><strong>Haupttätigkeit</strong>: Veröffentlichung von Anwendungssoftware (NAF-Code: 58.29C)</p><p><strong>Veröffentlichungsleiter</strong>: Der gesetzliche Vertreter des Unternehmens</p></div>"
+      },
+      "s02": {
+        "title": "2. Hosting",
+        "content": "<p>Die Anwendung und ihre Daten werden gehostet von:</p><h3>Haupt-Host</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Vercel Inc.</strong></p><p>340 S Lemon Ave #4133<br />Walnut, CA 91789<br />Vereinigte Staaten<br /><a href='https://vercel.com' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://vercel.com</a></p></div><h3>Datenbank</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p>Zertifizierte Cloud-Infrastruktur, die sich in der Europäischen Union (Frankfurt, Deutschland) befindet</p><p><strong>Zertifizierungen</strong>: ISO 27001, SOC 2 Typ II</p></div>"
+      },
+      "s03": {
+        "title": "3. Kontakt",
+        "content": "<p>Bei Fragen oder Beschwerden:</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Allgemeine E-Mail</strong>: <a href='mailto:contact@nokta.app' style='color: rgb(59, 130, 246);'>contact@nokta.app</a></p><p><strong>Technischer Support</strong>: <a href='mailto:support@noktaone.com' style='color: rgb(59, 130, 246);'>support@noktaone.com</a></p><p><strong>Datenschutz</strong>: <a href='mailto:privacy@nokta.app' style='color: rgb(59, 130, 246);'>privacy@nokta.app</a></p></div>"
+      },
+      "s04": {
+        "title": "4. Geistiges Eigentum",
+        "content": "<h3>4.1 Urheberrecht</h3><p>Alle Elemente der Anwendung (Struktur, Texte, Grafiken, Bilder, Töne, Videos, Logos, Icons, Software, Datenbank usw.) sind das ausschließliche Eigentum des Herausgebers oder seiner Partner und durch das Recht des geistigen Eigentums geschützt.</p><p>Jede Vervielfältigung, Darstellung, Änderung, Veröffentlichung, Anpassung, ganz oder teilweise, dieser Elemente, in welcher Form auch immer, ohne vorherige schriftliche Genehmigung des Herausgebers, ist untersagt und würde eine Verletzung darstellen, die gemäß den Artikeln L.335-2 und folgenden des Gesetzes über das geistige Eigentum bestraft wird.</p><h3>4.2 Marken</h3><p>'Nokta One', 'Nokta', das Nokta One-Logo und andere auf der Anwendung erwähnte Marken sind eingetragene oder nicht eingetragene Marken des Herausgebers. Jede Vervielfältigung oder Nutzung dieser Marken ohne ausdrückliche Genehmigung ist untersagt.</p>"
+      },
+      "s05": {
+        "title": "5. Schutz personenbezogener Daten",
+        "content": "<p>Gemäß der Datenschutz-Grundverordnung (DSGVO) und dem französischen Datenschutzgesetz haben Sie Rechte bezüglich Ihrer personenbezogenen Daten.</p><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Verantwortlicher für die Datenverarbeitung</strong>: Der Herausgeber der Anwendung</p><p><strong>Datenschutzbeauftragter (DPO)</strong>: <a href='mailto:dpo@nokta.app' style='color: rgb(59, 130, 246);'>dpo@nokta.app</a></p><p>Für weitere Informationen siehe unsere <a href='/privacy' style='color: rgb(59, 130, 246);'>Datenschutzrichtlinie</a>.</p></div><h3>Aufsichtsbehörde</h3><div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Commission Nationale de l'Informatique et des Libertés (CNIL)</strong></p><p>3 Place de Fontenoy<br />TSA 80715<br />75334 PARIS CEDEX 07<br /><a href='https://www.cnil.fr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>www.cnil.fr</a></p></div>"
+      },
+      "s06": {
+        "title": "6. Cookies und Tracker",
+        "content": "<p>Die Anwendung verwendet lokale Speichertechnologien (Cookies, localStorage) für ihren Betrieb. Sie können Ihre Präferenzen in den Anwendungseinstellungen verwalten.</p><p>Für weitere Informationen siehe unsere <a href='/privacy' style='color: rgb(59, 130, 246);'>Datenschutzrichtlinie</a>.</p>"
+      },
+      "s07": {
+        "title": "7. Haftungsbeschränkung",
+        "content": "<h3>7.1 Wellness-Informationen</h3><p>Die von Nokta One bereitgestellten Informationen und Empfehlungen sind allgemeiner Natur und dienen ausschließlich persönlichen Wellness-Zwecken. Sie stellen keine dar:</p><ul><li>Ärztlichen Rat</li><li>Ärztliche Diagnose</li><li>Ärztliche Behandlung</li><li>Ärztliches Rezept</li></ul><p>Die Anwendung ersetzt nicht die Konsultation eines Gesundheitsdienstleisters. Bei Gesundheitsproblemen konsultieren Sie Ihren Arzt.</p><h3>7.2 Verfügbarkeit des Dienstes</h3><p>Der Herausgeber bemüht sich, die Anwendung zugänglich zu halten, kann jedoch keine kontinuierliche Verfügbarkeit garantieren. Der Herausgeber kann nicht für Dienstunterbrechungen oder mögliche Fehlfunktionen verantwortlich gemacht werden.</p>"
+      },
+      "s08": {
+        "title": "8. Anwendbares Recht",
+        "content": "<p>Dieser rechtliche Hinweis unterliegt dem französischen Recht. Im Falle eines Streits und nach dem Versuch einer einvernehmlichen Lösung ist das französische Gericht zuständig.</p>"
+      },
+      "s09": {
+        "title": "9. Verbraucher-Mediation",
+        "content": "<p>Gemäß den Bestimmungen des Verbrauchergesetzes zur einvernehmlichen Beilegung von Streitigkeiten verpflichtet sich der Herausgeber, den Mediationsdienst [auszufüllen].</p><p>Bevor Sie den Mediator kontaktieren, müssen Sie zuvor versucht haben, Ihren Streit direkt mit unserem Kundenservice durch eine schriftliche Beschwerde zu lösen.</p><p><strong>Europäische Online-Streitbeilegungsplattform</strong>: <a href='https://ec.europa.eu/consumers/odr' target='_blank' rel='noopener noreferrer' style='color: rgb(59, 130, 246);'>https://ec.europa.eu/consumers/odr</a></p>"
+      },
+      "s10": {
+        "title": "10. Credits",
+        "content": "<div style='background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;'><p><strong>Design und Entwicklung</strong>: Nokta One Team</p><p><strong>Design</strong>: Nokta One Team</p><p><strong>Icons</strong>: Lucide Icons (MIT-Lizenz)</p><p><strong>Schriften</strong>: Google Fonts</p></div>"
+      }
+    }
+  },
+  "engagement": {
+    "reminderTitle": "Deine Reset-Momente",
+    "reminderDescription": "Wähle, wann du erinnert werden möchtest, zu scannen. Du behältst die Kontrolle.",
+    "reminderMorning": "Morgen",
+    "reminderMorningDesc": "Kalibriere dein System beim Aufwachen",
+    "reminderMidday": "Mittag",
+    "reminderMiddayDesc": "Reset zur Mittagszeit",
+    "reminderEvening": "Abend",
+    "reminderEveningDesc": "Bereite dein System für die Nacht vor",
+    "reminderInfo": "Du kannst diese Zeiten jederzeit in den Einstellungen ändern.",
+    "shareTitle": "Teile deinen Reset",
+    "shareViral": "Viral",
+    "shareOther": "Andere",
+    "shareDownload": "Herunterladen",
+    "shareTiktokTitle": "Teile auf TikTok",
+    "shareImageDownloaded": "Bild heruntergeladen",
+    "shareTextCopied": "Text kopiert",
+    "shareTiktokInstructions": "Öffne TikTok, erstelle ein Video mit dem Bild und füge den Text ein.",
+    "shareOpenTiktok": "Öffne TikTok",
+    "shareTextCopiedDone": "Text kopiert!",
+    "shareDone": "Geteilt!",
+    "shareComplete": "Fertig"
   }
 }

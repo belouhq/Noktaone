@@ -46,6 +46,7 @@ export default function SkaneIndexDemo() {
         feedback={feedback}
         microActionName="Physiological Sigh"
         microActionDuration={24}
+        username="demo-user"
         isGuestMode={isGuestMode}
         previousRanges={previousRanges}
         onClose={handleClose}

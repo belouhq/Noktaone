@@ -12,6 +12,8 @@ interface GlassButtonProps {
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
+  ariaLabel?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 export default function GlassButton({
@@ -22,6 +24,8 @@ export default function GlassButton({
   variant = "secondary",
   size = "md",
   fullWidth = false,
+  ariaLabel,
+  type = "button",
 }: GlassButtonProps) {
   const variantClass = {
     primary: "glass-button-primary",
@@ -37,14 +41,19 @@ export default function GlassButton({
 
   return (
     <motion.button
+      type={type}
       onClick={onClick}
       disabled={disabled}
+      aria-label={ariaLabel}
+      aria-disabled={disabled}
       className={clsx(
         "glass-button",
         variantClass,
         sizeClass,
         fullWidth && "w-full",
         "no-select",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500",
+        "focus-visible:ring-offset-2 focus-visible:ring-offset-black",
         className
       )}
       whileHover={disabled ? {} : { scale: 1.02 }}

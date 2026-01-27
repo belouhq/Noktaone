@@ -62,27 +62,18 @@ export default function ResultPage() {
 
   const handleStartAction = () => {
     if (!result) return;
-    
-    // Utiliser microAction ou micro_action.id
-    const actionId = result.microAction || result.micro_action?.id;
-    if (!actionId) {
-      console.error("No action ID found in result");
-      router.push("/skane");
-      return;
-    }
-    
-    // Récupérer sessionId de façon robuste
+
+    // microAction ou micro_action.id ; si absent (ancien cache, erreur API), fallback pour ne pas bloquer
+    const actionId = (result.microAction || result.micro_action?.id || "box_breathing") as MicroActionType;
     const sessionId = result.sessionId || result.sessionPayload?.sessionId;
-    
-    // Stocker le résultat complet avec toutes les données nécessaires
+
     const fullResult = {
       ...result,
       microAction: actionId,
-      sessionId: sessionId, // S'assurer que sessionId est à la racine
+      micro_action: result.micro_action || { id: actionId, duration_seconds: 24, category: "breathing" },
+      sessionId: sessionId ?? undefined,
     };
     sessionStorage.setItem("skane_analysis_result", JSON.stringify(fullResult));
-    
-    // CHANGEMENT: Aller vers briefing au lieu de action directement
     router.push("/skane/briefing");
   };
 
@@ -125,111 +116,91 @@ export default function ResultPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70" />
       </div>
 
-      {/* Contenu */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
-        {/* Icône de succès */}
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", duration: 0.6 }}
-          className="mb-6"
-        >
-          <div
-            className="w-24 h-24 rounded-full flex items-center justify-center"
-            style={{
-              border: `3px dashed ${stateColor}`,
-              background: `${stateColor}15`,
-            }}
+      {/* Contenu : colonne pour ne pas cacher Signal, Action ni disclaimer */}
+      <div className="relative z-10 flex flex-col min-h-screen px-8">
+        {/* Bloc principal centré */}
+        <div className="flex-1 flex flex-col items-center justify-center">
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", duration: 0.6 }}
+            className="mb-6"
           >
-            <Check className="w-10 h-10" style={{ color: stateColor }} />
-          </div>
-        </motion.div>
-
-        {/* SKANE TERMINÉ */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-2xl font-bold text-white tracking-wider mb-8"
-        >
-          {t("skane.completed")}
-        </motion.h1>
-
-        {/* Signal et Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-center mb-12"
-        >
-          <p className="text-lg text-white mb-3">
-            <span className="text-white/60">{t("skane.signal")}: </span>
-            <span
-              className="inline-flex items-center gap-2 font-semibold"
-              style={{ color: stateColor }}
+            <div
+              className="w-24 h-24 rounded-full flex items-center justify-center"
+              style={{
+                border: `3px dashed ${stateColor}`,
+                background: `${stateColor}15`,
+              }}
             >
+              <Check className="w-10 h-10" style={{ color: stateColor }} />
+            </div>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-2xl font-bold text-white tracking-wider mb-8"
+          >
+            {t("skane.completed")}
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-center"
+          >
+            <p className="text-lg text-white mb-3">
+              <span className="text-white/60">{t("skane.signal")}: </span>
               <span
-                className="w-2.5 h-2.5 rounded-full"
-                style={{ backgroundColor: stateColor }}
-              />
-              {signalLabel}
-            </span>
-          </p>
-          <p className="text-lg text-white">
-            <span className="text-white/60">{t("skane.action")}: </span>
-            <span className="text-white font-semibold">
-              {actionName}
-            </span>
-          </p>
-        </motion.div>
-      </div>
+                className="inline-flex items-center gap-2 font-semibold"
+                style={{ color: stateColor }}
+              >
+                <span
+                  className="w-2.5 h-2.5 rounded-full"
+                  style={{ backgroundColor: stateColor }}
+                />
+                {signalLabel}
+              </span>
+            </p>
+            <p className="text-lg text-white">
+              <span className="text-white/60">{t("skane.action")}: </span>
+              <span className="text-white font-semibold">
+                {actionName}
+              </span>
+            </p>
+          </motion.div>
+        </div>
 
-      {/* Bouton Start micro-action - ROND, Liquid glass, position fixe en bas */}
-      <motion.button
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.6, type: "spring" }}
-        onClick={handleStartAction}
-        className="fixed z-30 rounded-full flex items-center justify-center"
-        style={{
-          width: "160px",
-          height: "160px",
-          bottom: "100px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          // Liquid glass style amélioré
-          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%)",
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-          border: "1.5px solid rgba(255, 255, 255, 0.25)",
-          boxShadow: `
-            0 8px 32px rgba(0, 0, 0, 0.4),
-            0 0 80px ${stateColor}20,
-            inset 0 1px 0 rgba(255, 255, 255, 0.15),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.1)
-          `,
-        }}
-        whileHover={{ 
-          scale: 1.05,
-          boxShadow: `
-            0 12px 40px rgba(0, 0, 0, 0.5),
-            0 0 100px ${stateColor}30,
-            inset 0 1px 0 rgba(255, 255, 255, 0.2),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.1)
-          `,
-        }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <span className="text-white text-lg font-bold text-center leading-tight px-4">
-          {t("skane.startMicroAction")}
-        </span>
-      </motion.button>
+        {/* Zone bouton + disclaimer : en flux, rien n’est caché */}
+        <div className="flex-shrink-0 flex flex-col items-center gap-4 pt-6 pb-6">
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6, type: "spring" }}
+            onClick={handleStartAction}
+            className="rounded-full flex items-center justify-center text-center"
+            style={{
+              width: "112px",
+              height: "112px",
+              background: "linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%)",
+              border: "1.5px solid rgba(255, 255, 255, 0.3)",
+              boxShadow: "0 4px 24px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)",
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="text-white text-sm font-semibold leading-tight px-3 text-center">
+              {t("skane.startMicroAction")}
+            </span>
+          </motion.button>
 
-      {/* Disclaimer en bas */}
-      <div className="fixed bottom-6 left-0 right-0 text-center z-10">
-        <p className="text-white/30 text-xs">
-          {t("skane.disclaimer")}
-        </p>
+          <p className="text-white/50 text-xs text-center">
+            {t("skane.disclaimer")}
+          </p>
+        </div>
       </div>
     </div>
   );

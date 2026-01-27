@@ -18,18 +18,18 @@ export const MICRO_ACTIONS: Record<MicroActionType, MicroAction> = {
     ]
   },
   
-  // === 2. EXPIRATION LONGUE 3-8 (33s) ===
+  // === 2. EXPIRATION LONGUE 3-8 (30s) ===
   expiration_3_8: {
     id: 'expiration_3_8',
     name: 'Expiration longue',
     nameKey: 'actions.expiration38',
-    duration: 33,
+    duration: 30,
     repetitions: 3,
     tip: 'Laisse l\'air sortir tout seul, sans pousser.',
     tipKey: 'actions.tips.expiration38',
     instructions: [
       { text: 'Inspire par le nez', textKey: 'breathing.inhaleNose', duration: 3, type: 'inhale' },
-      { text: 'Expire lentement par la bouche', textKey: 'breathing.exhaleSlowMouth', duration: 8, type: 'exhale' },
+      { text: 'Expire lentement par la bouche', textKey: 'breathing.exhaleSlowMouth', duration: 7, type: 'exhale' },
     ]
   },
   

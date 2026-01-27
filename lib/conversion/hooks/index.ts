@@ -12,6 +12,7 @@ import type {
   PricingDisplay, 
   TrialProgress, 
   PaywallTrigger,
+  SupportedCurrency,
   SubscriptionPlan,
 } from '../types';
 import type { SupportedLocale } from '../constants';
@@ -151,7 +152,7 @@ export function useTrial(params: UseTrialParams): UseTrialReturn {
   const daysRemaining = trialEndDate
     ? Math.max(0, Math.ceil((trialEndDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)))
     : 0;
-  const isExpired = daysRemaining === 0 && trialEndDate && new Date() > trialEndDate;
+  const isExpired = !!trialEndDate && daysRemaining === 0 && new Date() > trialEndDate;
 
   return { trialProgress, isLoading, error, daysRemaining, isExpired };
 }
@@ -235,6 +236,7 @@ export function usePaywall(params: UsePaywallParams): UsePaywallReturn {
         body: JSON.stringify({
           plan,
           locale,
+          currency: pricing?.currency,
         }),
       });
 

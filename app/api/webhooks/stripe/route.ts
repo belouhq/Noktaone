@@ -1,23 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2023-10-16',
-});
+// Stripe est une dépendance optionnelle - utiliser dynamic import pour éviter les erreurs de compilation
+let Stripe: any = null;
+let stripe: any = null;
+
+// Initialiser Stripe de manière asynchrone si disponible
+if (typeof require !== 'undefined') {
+  try {
+    Stripe = require('stripe');
+    if (process.env.STRIPE_SECRET_KEY) {
+      stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+        apiVersion: '2023-10-16',
+      });
+    }
+  } catch (e) {
+    // Stripe n'est pas disponible, ce n'est pas grave
+  }
+}
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(req: NextRequest) {
-  const body = await req.text();
-  const signature = req.headers.get('stripe-signature')!;
+  if (!stripe) {
+    return NextResponse.json({ error: 'Stripe not configured' }, { status: 503 });
+  }
 
-  let event: Stripe.Event;
+  if (!webhookSecret) {
+    return NextResponse.json(
+      { error: 'Stripe webhook not configured (missing STRIPE_WEBHOOK_SECRET)' },
+      { status: 503 }
+    );
+  }
+  
+  const body = await req.text();
+  const signature = req.headers.get('stripe-signature');
+
+  if (!signature) {
+    return NextResponse.json({ error: 'Missing signature' }, { status: 400 });
+  }
+
+  let event: any;
 
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
@@ -30,23 +58,23 @@ export async function POST(req: NextRequest) {
     switch (event.type) {
       case 'customer.subscription.created':
       case 'customer.subscription.updated':
-        await handleSubscriptionChange(event.data.object as Stripe.Subscription);
+        await handleSubscriptionChange(event.data.object as any);
         break;
 
       case 'customer.subscription.deleted':
-        await handleSubscriptionCanceled(event.data.object as Stripe.Subscription);
+        await handleSubscriptionCanceled(event.data.object as any);
         break;
 
       case 'invoice.paid':
-        await handleInvoicePaid(event.data.object as Stripe.Invoice);
+        await handleInvoicePaid(event.data.object as any);
         break;
 
       case 'invoice.payment_failed':
-        await handlePaymentFailed(event.data.object as Stripe.Invoice);
+        await handlePaymentFailed(event.data.object as any);
         break;
 
       case 'checkout.session.completed':
-        await handleCheckoutCompleted(event.data.object as Stripe.Checkout.Session);
+        await handleCheckoutCompleted(event.data.object as any);
         break;
 
       default:
@@ -69,7 +97,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-async function handleSubscriptionChange(subscription: Stripe.Subscription) {
+async function handleSubscriptionChange(subscription: any) {
   const customerId = subscription.customer as string;
   
   // Trouver l'utilisateur
@@ -113,7 +141,7 @@ async function handleSubscriptionChange(subscription: Stripe.Subscription) {
   }).eq('user_id', existingSub.user_id);
 }
 
-async function handleSubscriptionCanceled(subscription: Stripe.Subscription) {
+async function handleSubscriptionCanceled(subscription: any) {
   const customerId = subscription.customer as string;
 
   await supabase.from('subscriptions').update({
@@ -138,7 +166,7 @@ async function handleSubscriptionCanceled(subscription: Stripe.Subscription) {
   }
 }
 
-async function handleInvoicePaid(invoice: Stripe.Invoice) {
+async function handleInvoicePaid(invoice: any) {
   const customerId = invoice.customer as string;
   const { data: sub } = await supabase
     .from('subscriptions')
@@ -160,7 +188,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
   }
 }
 
-async function handlePaymentFailed(invoice: Stripe.Invoice) {
+async function handlePaymentFailed(invoice: any) {
   const customerId = invoice.customer as string;
   const { data: sub } = await supabase
     .from('subscriptions')
@@ -183,12 +211,12 @@ async function handlePaymentFailed(invoice: Stripe.Invoice) {
   }
 }
 
-async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+async function handleCheckoutCompleted(session: any) {
   // Tracker la conversion si c'est un referral
   if (session.customer_email && session.amount_total) {
     const { trackReferralConversion } = await import('@/lib/services/firstpromoter');
     await trackReferralConversion(
-      supabase,
+      supabase as any,
       session.client_reference_id || '',
       session.customer_email,
       session.amount_total / 100,
@@ -197,7 +225,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   }
 }
 
-async function getUserIdFromStripeEvent(event: Stripe.Event): Promise<string | null> {
+async function getUserIdFromStripeEvent(event: any): Promise<string | null> {
   const obj = event.data.object as any;
   const customerId = obj.customer;
   

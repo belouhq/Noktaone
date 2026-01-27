@@ -21,7 +21,7 @@ export function useSwipe({
 }: SwipeOptions = {}) {
   const [touchStart, setTouchStart] = useState<{ x: number; y: number; time: number } | null>(null);
   const [touchEnd, setTouchEnd] = useState<{ x: number; y: number; time: number } | null>(null);
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   const minSwipeDistance = threshold;
 

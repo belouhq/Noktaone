@@ -3,8 +3,24 @@
  */
 
 export type SupportedCurrency = 
-  | 'EUR' | 'USD' | 'GBP' | 'CAD' | 'AUD'
-  | 'JPY' | 'KRW' | 'CNY' | 'INR' | 'AED' | 'RUB';
+  // Tier 1
+  | 'USD' | 'EUR' | 'GBP'
+  // Tier 2
+  | 'CAD' | 'AUD' | 'CHF'
+  // Tier 3
+  | 'JPY' | 'CNY' | 'HKD' | 'SGD' | 'KRW' | 'INR'
+  // Tier 4
+  | 'BRL' | 'MXN'
+  // Tier 5
+  | 'SEK' | 'NOK' | 'DKK' | 'PLN' | 'CZK'
+  // Tier 6
+  | 'AED' | 'ILS' | 'ZAR'
+  // Tier 7
+  | 'TRY' | 'THB' | 'PHP' | 'IDR' | 'MYR' | 'VND'
+  // Tier 8
+  | 'NZD' | 'TWD' | 'HUF' | 'RON'
+  // Legacy / already used in codebase
+  | 'RUB';
 
 export type PaywallTrigger = 
   | 'trial_expired'

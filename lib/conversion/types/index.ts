@@ -4,6 +4,10 @@
  * All TypeScript types for the conversion system
  */
 
+import type { PricingDisplay, TrialProgress, PaywallTrigger, SupportedCurrency } from '@/lib/paywall/types';
+import type { SubscriptionPlan, SupportedLocale } from '@/types/subscription';
+import type { NotificationType } from '@/lib/notifications/types';
+
 // Re-export from paywall types
 export type {
   PricingDisplay,

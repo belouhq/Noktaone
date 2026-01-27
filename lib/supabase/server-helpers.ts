@@ -14,38 +14,40 @@ import { supabaseConfig } from './config';
 export async function createServerSupabaseClient() {
   const cookieStore = await cookies();
   
+  const options = {
+    auth: {
+      getSession: async () => {
+        const accessToken = cookieStore.get('sb-access-token')?.value;
+        const refreshToken = cookieStore.get('sb-refresh-token')?.value;
+        
+        if (!accessToken || !refreshToken) {
+          return { data: { session: null }, error: null };
+        }
+        
+        // Create a session object
+        return {
+          data: {
+            session: {
+              access_token: accessToken,
+              refresh_token: refreshToken,
+              expires_at: Date.now() / 1000 + 3600, // 1 hour
+              expires_in: 3600,
+              token_type: 'bearer',
+              user: null, // Will be fetched by getUser()
+            },
+          },
+          error: null,
+        };
+      },
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+  } as any;
+
   return createClient(
     supabaseConfig.url,
     supabaseConfig.anonKey,
-    {
-      auth: {
-        getSession: async () => {
-          const accessToken = cookieStore.get('sb-access-token')?.value;
-          const refreshToken = cookieStore.get('sb-refresh-token')?.value;
-          
-          if (!accessToken || !refreshToken) {
-            return { data: { session: null }, error: null };
-          }
-          
-          // Create a session object
-          return {
-            data: {
-              session: {
-                access_token: accessToken,
-                refresh_token: refreshToken,
-                expires_at: Date.now() / 1000 + 3600, // 1 hour
-                expires_in: 3600,
-                token_type: 'bearer',
-                user: null, // Will be fetched by getUser()
-              },
-            },
-            error: null,
-          };
-        },
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    }
+    options
   );
 }
 

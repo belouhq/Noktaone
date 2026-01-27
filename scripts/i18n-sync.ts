@@ -51,7 +51,7 @@ const FAIL_ON_MISSING = process.env.I18N_FAIL_ON_MISSING === "true";
 const DRY_RUN = process.env.I18N_DRY_RUN === "true";
 
 // Rate control
-const MAX_KEYS_PER_CALL = 35;
+const MAX_KEYS_PER_CALL = 10;
 const MAX_RETRIES = 2;
 
 // ---- Forbidden words (exact lists) ----
@@ -79,6 +79,11 @@ const ALLOW_FORBIDDEN_ON_KEYS: string[] = [
   "skane.disclaimer",
   "info.noDiagnosis",
   "camera.cannotAccessCamera", // May contain "medical" in error context
+];
+const ALLOW_FORBIDDEN_KEY_PREFIXES: string[] = [
+  "termsPage.",
+  "privacyPolicyPage.",
+  "legalNoticePage.",
 ];
 
 function readJson<T>(p: string): T {
@@ -171,6 +176,9 @@ function saveLocale(locale: Locale, dict: Dict) {
 
 function isForbiddenHit(locale: Locale, key: string, value: string): string[] {
   if (ALLOW_FORBIDDEN_ON_KEYS.includes(key)) return [];
+  if (ALLOW_FORBIDDEN_KEY_PREFIXES.some((prefix) => key.startsWith(prefix))) {
+    return [];
+  }
   const list = FORBIDDEN[locale] ?? [];
   const v = value.toLowerCase();
   return list.filter((w) => v.includes(w.toLowerCase()));

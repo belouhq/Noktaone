@@ -39,66 +39,30 @@ export default function FeedbackPage() {
     }
   }, []);
 
-  const handleFeedback = async (feedback: FeedbackValue) => {
+  const handleFeedback = (feedback: FeedbackValue) => {
     if (selectedFeedback || isSubmitting) return;
-    
+
     setSelectedFeedback(feedback);
     setIsSubmitting(true);
 
-    // Récupérer le mode invité (uniformiser : utiliser localStorage comme partout ailleurs)
     const isGuestMode = localStorage.getItem("guestMode") === "true";
     const userId = getUserId();
-    const guestId = isGuestMode ? getOrCreateGuestId() : null;
-    
-    // Calculer after_score basé sur le feedback
     const effect = feedbackToEffect(feedback);
     const afterScore = calculateAfterScore(result?.skaneIndex || 50, effect);
 
-    // Nokta Core : enregistrer dans nokta_sessions si sessionPayload (userId fourni à l'analyse)
-    let noktaData: { sessionId: string | null; skaneIndex: unknown } | null = null;
-    const sessionPayload = (result as { sessionPayload?: unknown }).sessionPayload;
-    if (sessionPayload) {
-      try {
-        const res = await fetch("/api/nokta/submit-feedback", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ sessionPayload, feedback }),
-        });
-        const data = await res.json();
-        if (data?.success) noktaData = { sessionId: data.sessionId ?? null, skaneIndex: data.skaneIndex };
-      } catch (e) {
-        console.warn("[Nokta] submit-feedback failed", e);
-      }
-    }
+    // Mise à jour sessionStorage immédiate pour que share-prompt ait aprèsScore/feedback sans attendre le réseau
+    const updatedResult = {
+      ...result,
+      afterScore,
+      selectedFeedback: feedback,
+    };
+    sessionStorage.setItem("skane_analysis_result", JSON.stringify(updatedResult));
 
-    // Mettre à jour le feedback dans Supabase
-    const eventId = sessionStorage.getItem('micro_action_event_id');
-    if (eventId) {
-      await updateMicroActionFeedback(eventId, effect);
-    }
-
-    // Mettre à jour la session SKANE (after_score)
-    const sessionId = result?.sessionId;
-    if (sessionId) {
-      await updateSkaneSession(sessionId, afterScore, result.skaneIndex);
-      
-      // Mettre à jour sessionStorage pour la page share
-      const updatedResult = {
-        ...result,
-        afterScore: afterScore,
-        selectedFeedback: feedback, // Stocker le feedback pour share-prompt
-        ...(noktaData && { noktaSessionId: noktaData.sessionId, noktaSkaneIndex: noktaData.skaneIndex }),
-      };
-      sessionStorage.setItem("skane_analysis_result", JSON.stringify(updatedResult));
-    }
-
-    // Mettre à jour la session locale (nouveau modèle)
+    // Sauvegardes locales synchrones (pas de réseau)
     const localSessionId = result?.localSessionId;
     if (localSessionId) {
       updateSessionFeedback(localSessionId, feedback);
     }
-
-    // Sauvegarder aussi en localStorage (fallback)
     const skaneId = generateSkaneId();
     const skaneResult = {
       id: skaneId,
@@ -111,11 +75,8 @@ export default function FeedbackPage() {
       skaneIndexBefore: result?.skaneIndex,
       skaneIndexAfter: afterScore,
     };
-
     saveSkane(skaneResult);
     updateSkaneFeedback(skaneId, feedback);
-
-    // Also save to guest cache if in guest mode
     if (isGuestMode) {
       addToGuestCache({
         id: skaneId,
@@ -125,8 +86,52 @@ export default function FeedbackPage() {
       });
     }
 
-    // Si utilisateur non connecté ET pas en mode invité → afficher modal inscription
-    // En mode invité, on ne demande pas d'inscription (l'utilisateur peut s'inscrire via lien partagé)
+    // Sauvegardes réseau en arrière-plan (ne bloquent plus la redirection)
+    const sessionId = result?.sessionId;
+    const sessionPayload = (result as { sessionPayload?: unknown })?.sessionPayload;
+    const eventId = sessionStorage.getItem("micro_action_event_id");
+    void (async () => {
+      let noktaData: { sessionId: string | null; skaneIndex: unknown } | null = null;
+      if (sessionPayload) {
+        try {
+          const res = await fetch("/api/nokta/submit-feedback", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ sessionPayload, feedback }),
+          });
+          const data = await res.json();
+          if (data?.success)
+            noktaData = { sessionId: data.sessionId ?? null, skaneIndex: data.skaneIndex };
+          if (noktaData) {
+            const current = sessionStorage.getItem("skane_analysis_result");
+            if (current) {
+              const parsed = JSON.parse(current) as Record<string, unknown>;
+              sessionStorage.setItem(
+                "skane_analysis_result",
+                JSON.stringify({ ...parsed, ...noktaData })
+              );
+            }
+          }
+        } catch (e) {
+          console.warn("[Nokta] submit-feedback failed", e);
+        }
+      }
+      if (eventId) {
+        try {
+          await updateMicroActionFeedback(eventId, effect);
+        } catch (e) {
+          console.warn("[Feedback] updateMicroActionFeedback failed", e);
+        }
+      }
+      if (sessionId) {
+        try {
+          await updateSkaneSession(sessionId, afterScore, result.skaneIndex);
+        } catch (e) {
+          console.warn("[Feedback] updateSkaneSession failed", e);
+        }
+      }
+    })();
+
     if (!user && !authLoading && !isGuestMode) {
       setPendingFeedback(feedback);
       setShowSignupModal(true);
@@ -134,14 +139,15 @@ export default function FeedbackPage() {
       return;
     }
 
-    // Si connecté → rediriger normalement
+    // Redirection rapide après un court délai (message de confiance)
+    const redirectDelayMs = 500;
     setTimeout(() => {
       if (feedback === "better") {
         router.push("/skane/share-prompt");
       } else {
         router.push("/");
       }
-    }, 600);
+    }, redirectDelayMs);
   };
 
   const handleSignupSuccess = async (userId: string, username: string) => {

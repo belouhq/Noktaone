@@ -10,6 +10,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
+interface ReminderTimes {
+  morning: string; // Format HH:mm
+  afternoon: string;
+  evening: string;
+}
+
+const DEFAULT_TIMES: ReminderTimes = {
+  morning: "08:00",
+  afternoon: "13:00",
+  evening: "20:00",
+};
+
 // Vérifier que c'est bien le cron qui appelle
 function verifyCronSecret(request: NextRequest): boolean {
   const authHeader = request.headers.get("authorization");
@@ -111,9 +123,25 @@ export async function GET(request: NextRequest) {
     // - téléphone non dans la liste des désabonnés
     const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString();
 
+    // Récupérer l'heure actuelle pour filtrer les utilisateurs
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const currentTime = `${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+
+    // Déterminer quelle période de la journée (matin, midi, soir)
+    let timeOfDay: 'morning' | 'afternoon' | 'evening' | null = null;
+    if (currentHour >= 5 && currentHour < 12) {
+      timeOfDay = 'morning';
+    } else if (currentHour >= 12 && currentHour < 17) {
+      timeOfDay = 'afternoon';
+    } else if (currentHour >= 17 && currentHour < 23) {
+      timeOfDay = 'evening';
+    }
+
     const { data: users, error: fetchError } = await supabase
       .from("user_profiles")
-      .select("user_id, phone, country, sms_frequency, last_sms_sent_at")
+      .select("user_id, phone, country, sms_frequency, last_sms_sent_at, reminder_times")
       .eq("sms_consent", true)
       .neq("sms_frequency", "none")
       .not("phone", "is", null)
@@ -132,6 +160,42 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    // Filtrer les utilisateurs qui doivent recevoir une notification maintenant
+    // en fonction de leurs horaires personnalisés
+    const usersToNotify = users.filter((user) => {
+      if (!timeOfDay) {
+        return false; // Pas dans une période de rappel
+      }
+
+      // Récupérer les horaires personnalisés ou utiliser les valeurs par défaut
+      const reminderTimes = (user.reminder_times as ReminderTimes | null) || DEFAULT_TIMES;
+      const userReminderTime = reminderTimes[timeOfDay];
+
+      // Comparer l'heure actuelle avec l'heure de rappel de l'utilisateur
+      // Format: "HH:mm"
+      const [reminderHour, reminderMinute] = userReminderTime.split(':').map(Number);
+      
+      // Vérifier si on est dans la fenêtre de 5 minutes autour de l'heure de rappel
+      const timeDiff = Math.abs(
+        (currentHour * 60 + currentMinute) - (reminderHour * 60 + reminderMinute)
+      );
+      
+      // Envoyer si on est dans les 5 minutes après l'heure de rappel
+      return timeDiff <= 5 && currentMinute >= reminderMinute;
+    });
+
+    if (usersToNotify.length === 0) {
+      return NextResponse.json({
+        success: true,
+        message: "No users to notify at this time",
+        stats,
+        duration: Date.now() - startTime,
+        currentTime,
+        timeOfDay,
+        totalUsers: users.length,
+      });
+    }
+
     // Récupérer la liste des désabonnés
     const { data: unsubscribed } = await supabase
       .from("sms_unsubscribes")
@@ -139,7 +203,7 @@ export async function GET(request: NextRequest) {
 
     const unsubscribedPhones = new Set(unsubscribed?.map(u => u.phone) || []);
 
-    stats.total = users.length;
+    stats.total = usersToNotify.length;
 
     // Twilio credentials
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -151,7 +215,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Envoyer les SMS (en batch, avec délai pour éviter rate limits)
-    for (const user of users) {
+    for (const user of usersToNotify) {
       // Vérifier si désabonné
       if (unsubscribedPhones.has(user.phone)) {
         stats.unsubscribed++;
@@ -233,6 +297,10 @@ export async function GET(request: NextRequest) {
       success: true,
       stats,
       duration,
+      currentTime,
+      timeOfDay,
+      totalUsers: users.length,
+      usersToNotify: usersToNotify.length,
     });
 
   } catch (error: any) {

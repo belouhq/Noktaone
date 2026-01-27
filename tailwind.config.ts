@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-poppins)', 'Poppins', 'system-ui', 'sans-serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', "'SF Pro Display'", 'sans-serif'],
       },
       colors: {
         "nokta-one": {

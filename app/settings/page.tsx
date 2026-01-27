@@ -1,25 +1,48 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { Bell, Globe, Smartphone, Gift, Copy, UserPlus, HelpCircle, ChevronRight, BookOpen } from "lucide-react";
+import { 
+  Bell, Globe, Smartphone, UserPlus, HelpCircle, ChevronRight, BookOpen, 
+  Edit2, MoreHorizontal, ChevronDown, MessageCircle, Shield, LogOut, Users, Download
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { useSwipe } from "@/lib/hooks/useSwipe";
 import i18n from "@/lib/i18n";
 import { SafeAreaContainer } from "@/components/ui/SafeAreaContainer";
-import ProfileCard from "@/components/settings/ProfileCard";
-import SettingItem from "@/components/settings/SettingItem";
-import LanguageModal from "@/components/modals/LanguageModal";
+import { SettingsRow } from "@/components/settings/SettingsRow";
 import { LANGUAGES } from "@/lib/i18n/languages";
 import ComingSoonModal from "@/components/modals/ComingSoonModal";
 import ConnectedDevicesModal from "@/components/modals/ConnectedDevicesModal";
 import InvitationsModal from "@/components/modals/InvitationsModal";
 import EditProfileModal from "@/components/modals/EditProfileModal";
+import { ReminderSetupModalViral } from "@/components/engagement";
 import { SupportModal } from "@/components/modals/SupportModal";
-import PrivacySettingsSection from "@/components/settings/PrivacySettingsSection";
-import PartnershipSection from "@/components/settings/PartnershipSection";
-import { createClient } from "@supabase/supabase-js";
+import TeslaSettingsLayout from "@/components/settings/TeslaSettingsLayout";
+import { supabase } from "@/lib/supabase/client";
+import { calculateStreak, getMemberSince } from "@/lib/utils/profile-stats";
+
+const REMINDER_TIMES_KEY = "nokta_reminder_times";
+
+type ReminderTimesStored = { morning?: string; afternoon?: string; evening?: string };
+
+function getInitialReminderSchedule(): { morning: string; noon: string; evening: string } {
+  if (typeof window === "undefined")
+    return { morning: "08:00", noon: "13:00", evening: "20:00" };
+  const raw = localStorage.getItem(REMINDER_TIMES_KEY);
+  if (!raw) return { morning: "08:00", noon: "13:00", evening: "20:00" };
+  try {
+    const parsed = JSON.parse(raw) as ReminderTimesStored;
+    return {
+      morning: parsed.morning ?? "08:00",
+      noon: parsed.afternoon ?? "13:00",
+      evening: parsed.evening ?? "20:00",
+    };
+  } catch {
+    return { morning: "08:00", noon: "13:00", evening: "20:00" };
+  }
+}
 
 // Mock user data
 const mockUser = {
@@ -43,7 +66,23 @@ const mockUser = {
 export default function SettingsPage() {
   const router = useRouter();
   const { t, changeLanguage, currentLanguage, isClient } = useTranslation();
+  const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>("default");
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "Notification" in window) {
+      setNotificationPermission(Notification.permission);
+    }
+  }, []);
+
+  const requestNotificationPermission = useCallback(async () => {
+    if (typeof window !== "undefined" && "Notification" in window) {
+      const result = await Notification.requestPermission();
+      setNotificationPermission(result);
+      return result === "granted";
+    }
+    return false;
+  }, []);
   const [, forceUpdate] = useState(0);
   const [mounted, setMounted] = useState(false);
   const [isChangingLanguage, setIsChangingLanguage] = useState(false);
@@ -69,14 +108,20 @@ export default function SettingsPage() {
       i18n.off('languageChanged', handleLanguageChange);
     };
   }, []);
-  const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
   const [isComingSoonModalOpen, setIsComingSoonModalOpen] = useState(false);
   const [isDevicesModalOpen, setIsDevicesModalOpen] = useState(false);
   const [isInvitationsModalOpen, setIsInvitationsModalOpen] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
+  const [showMoreOptions, setShowMoreOptions] = useState(false);
+  const [showScheduleModal, setShowScheduleModal] = useState(false);
+  const [reminderSchedule, setReminderSchedule] = useState<{ morning: string; noon: string; evening: string }>(() =>
+    typeof window !== "undefined" ? getInitialReminderSchedule() : { morning: "08:00", noon: "13:00", evening: "20:00" }
+  );
   const [copied, setCopied] = useState(false);
   const [invitationsCount] = useState(3); // Mock pour l'instant, plus tard : calculer depuis skanesLast24h
+  const [streakDays, setStreakDays] = useState(0);
+  const [memberSince, setMemberSince] = useState('Jan 2026');
   const [userProfile, setUserProfile] = useState({
     ...mockUser,
     language: currentLanguage || "fr", // Synchroniser avec i18n
@@ -120,6 +165,11 @@ export default function SettingsPage() {
     } else {
       setUserId(mockUser.username);
     }
+
+    // Calculer le streak et la date d'inscription
+    setStreakDays(calculateStreak());
+    setMemberSince(getMemberSince());
+    setReminderSchedule(getInitialReminderSchedule());
   }, []);
 
   // Attacher les event listeners pour tous les boutons
@@ -255,244 +305,39 @@ export default function SettingsPage() {
         ref={swipeRef}
         className="relative min-h-screen-safe bg-nokta-one-black"
       >
-        <div className="px-4 pt-8 pb-8">
-        {/* Header */}
-        <h1 
-          className="text-center text-2xl font-light text-nokta-one-white tracking-widest mb-8"
-          suppressHydrationWarning
-        >
-          {t("settings.profile")}
-        </h1>
-
-        {/* Profile Card */}
-        <ProfileCard
-          username={userProfile.username}
-          email={userProfile.email}
-          avatar={userProfile.avatar}
-          onAvatarClick={handleAvatarClick}
-          onEditClick={() => setIsEditProfileModalOpen(true)}
-        />
-
-        {/* Settings Title */}
-        <h2 
-          className="text-lg font-semibold text-nokta-one-white mt-8 mb-4"
-          suppressHydrationWarning
-        >
-          {t("settings.settingsSection")}
-        </h2>
-
-        {/* Settings List */}
-        <div className="space-y-3">
-          {/* Notifications */}
-          <SettingItem
-            icon={Bell}
-            label={t("settings.notifications")}
-            rightElement={
-              <motion.button
-                data-setting="notifications-toggle"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setNotificationsEnabled(!notificationsEnabled);
-                }}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
-                  notificationsEnabled ? "bg-nokta-one-blue" : "bg-gray-600"
-                }`}
-                whileTap={{ scale: 0.95 }}
-                style={{ pointerEvents: "auto", zIndex: 10 }}
-              >
-                <motion.div
-                  className="absolute top-1 left-1 w-4 h-4 bg-white rounded-full"
-                  animate={{
-                    x: notificationsEnabled ? 24 : 0,
-                  }}
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                />
-              </motion.button>
-            }
-          />
-
-          {/* Language */}
-          <div 
-            className="w-full p-4 rounded-xl flex items-center justify-between"
-            style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+        <div className="w-full max-w-[430px] mx-auto">
+          <TeslaSettingsLayout
+            user={{
+              username: userProfile.username,
+              email: userProfile.email,
+              streak: streakDays,
+              memberSince,
             }}
-          >
-            <div className="flex items-center gap-3">
-              <Globe size={20} className="text-nokta-one-white" />
-              <span className="text-nokta-one-white" suppressHydrationWarning>
-                {t("settings.language")}
-              </span>
-            </div>
-            <div className="relative flex-shrink-0" style={{ zIndex: 100 }}>
-              {mounted ? (
-                <>
-                  <select
-                    value={currentLanguage}
-                    onChange={(e) => {
-                      const newLang = e.target.value;
-                      handleLanguageSelect(newLang).catch(console.error);
-                    }}
-                    disabled={isChangingLanguage}
-                    className="p-2 pr-10 rounded-lg text-nokta-one-white appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-nokta-one-blue bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
-                    style={{
-                      fontSize: "16px",
-                      border: "none",
-                      position: "relative",
-                      zIndex: 100,
-                    }}
-                  >
-                    {LANGUAGES.map((lang) => {
-                      const isSelected = lang.code === currentLanguage;
-                      return (
-                        <option
-                          key={lang.code}
-                          value={lang.code}
-                          style={{
-                            background: "#000000",
-                            color: "#FFFFFF",
-                            padding: "12px",
-                          }}
-                        >
-                          {isSelected ? "✓ " : ""}{lang.flag} {lang.name}
-                        </option>
-                      );
-                    })}
-                  </select>
-                  <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" style={{ zIndex: 1 }}>
-                    <ChevronRight size={20} className="text-gray-400 rotate-90" />
-                  </div>
-                </>
-              ) : (
-                <div className="p-2 pr-10 text-nokta-one-white" style={{ fontSize: "16px" }}>
-                  {LANGUAGES.find(l => l.code === "fr")?.flag} {LANGUAGES.find(l => l.code === "fr")?.name}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Connected Devices */}
-          <SettingItem
-            icon={Smartphone}
-            label={t("settings.connectedDevices")}
-            onClick={() => setIsDevicesModalOpen(true)}
-            showChevron
+            rappelsEnabled={notificationsEnabled}
+            onToggleRappels={setNotificationsEnabled}
+            reminderTimes={reminderSchedule}
+            notificationPermission={notificationPermission}
+            onRequestNotificationPermission={() => void requestNotificationPermission()}
+            onEditProfile={() => setIsEditProfileModalOpen(true)}
+            onPersonnaliserHoraires={() => setShowScheduleModal(true)}
+            onDevices={() => setIsDevicesModalOpen(true)}
+            onInvite={() => setIsInvitationsModalOpen(true)}
+            onFaq={() => router.push("/faq")}
+            onContact={() => setIsSupportModalOpen(true)}
+            onTerms={() => router.push("/terms")}
+            onPrivacy={() => router.push("/privacy")}
+            onLicenses={() => setIsComingSoonModalOpen(true)}
+            onPrivacyData={() => setIsComingSoonModalOpen(true)}
+            onLogout={handleLogOut}
+            languageLabel={LANGUAGES.find(l => l.code === currentLanguage)?.name ?? "Français"}
+            languages={LANGUAGES}
+            currentLanguageCode={currentLanguage || "fr"}
+            onSelectLanguage={handleLanguageSelect}
+            showBottomNav={false}
           />
-
-          {/* Partnership Section */}
-          {userId && (
-            <div className="mt-8">
-              <PartnershipSection
-                userId={userId}
-                locale={currentLanguage || 'fr'}
-              />
-            </div>
-          )}
-
-          {/* Privacy & Data Section */}
-          {userId && (
-            <div className="mt-8">
-              <PrivacySettingsSection
-                userId={userId}
-                currentConsents={{
-                  analytics: true, // TODO: Load from profile
-                  marketing: userProfile.email ? true : false, // TODO: Load from profile
-                }}
-                onUpdateConsents={async (consents) => {
-                  // Save to Supabase
-                  const supabase = createClient(
-                    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-                    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-                  );
-                  await supabase
-                    .from("profiles")
-                    .update({
-                      marketing_opt_in: consents.marketing,
-                      updated_at: new Date().toISOString(),
-                    })
-                    .eq("id", userId);
-                }}
-                onExportData={async () => {
-                  const { exportUserData } = await import("@/lib/hooks/useConsent");
-                  const blob = await exportUserData(userId);
-                  const url = URL.createObjectURL(blob);
-                  const a = document.createElement("a");
-                  a.href = url;
-                  a.download = `nokta-export-${Date.now()}.json`;
-                  a.click();
-                  URL.revokeObjectURL(url);
-                }}
-                onDeleteAccount={async () => {
-                  const { deleteUserAccount } = await import("@/lib/hooks/useConsent");
-                  await deleteUserAccount(userId);
-                  window.location.href = "/";
-                }}
-              />
-            </div>
-          )}
-
-          {/* Invitations */}
-          <SettingItem
-            icon={UserPlus}
-            label={t("settings.invitations")}
-            dataSetting="invitations"
-            showChevron
-          />
-
-          {/* FAQ */}
-          <SettingItem
-            icon={HelpCircle}
-            label={t("faq.title")}
-            onClick={() => router.push("/faq")}
-            showChevron
-          />
-
-          {/* Nokta Dictionary */}
-          <SettingItem
-            icon={BookOpen}
-            label="Nokta Dictionary"
-            onClick={() => router.push("/dictionary")}
-            showChevron
-          />
-
-          {/* Support */}
-          <motion.button
-            data-setting="support"
-            className="w-full p-4 rounded-xl flex items-center justify-between transition-colors"
-            style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-            }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <div className="flex items-center gap-3">
-              <HelpCircle size={20} className="text-nokta-one-white" />
-              <span className="text-nokta-one-white" suppressHydrationWarning>
-                {t("support.contactUs")}
-              </span>
-            </div>
-            <ChevronRight size={20} className="text-gray-400" />
-          </motion.button>
         </div>
 
-        {/* Log Out Button */}
-        <motion.button
-          data-setting="logout"
-          className="glass-button-secondary w-full mt-10 py-4 font-medium"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          suppressHydrationWarning
-        >
-          {t("settings.logOut")}
-        </motion.button>
-      </div>
-
-      {/* Modals */}
+        {/* Modals */}
 
       <ComingSoonModal
         isOpen={isComingSoonModalOpen}
@@ -502,6 +347,34 @@ export default function SettingsPage() {
       <ConnectedDevicesModal
         isOpen={isDevicesModalOpen}
         onClose={() => setIsDevicesModalOpen(false)}
+      />
+
+      <ReminderSetupModalViral
+        isOpen={showScheduleModal}
+        onClose={() => setShowScheduleModal(false)}
+        initialTimes={{ morning: reminderSchedule.morning, midday: reminderSchedule.noon, evening: reminderSchedule.evening }}
+        onSave={(times) => {
+          const payload: ReminderTimesStored = {
+            morning: times.morning ?? getInitialReminderSchedule().morning,
+            afternoon: times.midday ?? getInitialReminderSchedule().noon,
+            evening: times.evening ?? getInitialReminderSchedule().evening,
+          };
+          localStorage.setItem(REMINDER_TIMES_KEY, JSON.stringify(payload));
+          setReminderSchedule({
+            morning: payload.morning ?? "08:00",
+            noon: payload.afternoon ?? "13:00",
+            evening: payload.evening ?? "20:00",
+          });
+          if (userId) {
+            supabase
+              .from("profiles")
+              .update({ reminder_times: payload })
+              .eq("id", userId)
+              .then(({ error }) => {
+                if (error) console.error("Error saving reminder times:", error);
+              });
+          }
+        }}
       />
 
       <InvitationsModal

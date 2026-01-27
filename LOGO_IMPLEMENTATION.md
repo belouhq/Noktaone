@@ -46,7 +46,7 @@ import Logo from "@/components/Logo";
 
 ### Composants de partage
 
-6. **`components/skane/SkaneShareCardV2.tsx`**
+6. **`components/skane/SkaneShareCardV1.tsx`**
    - ✅ Remplacé "NOKTA ONE" par `<Logo variant="text" />`
 
 7. **`components/skane/SkaneShareCard.tsx`**

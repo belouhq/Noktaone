@@ -14,7 +14,7 @@ app/
 │           └── route.ts          ✅ API tracking des clics
 ├── skane/
 │   └── share/
-│       └── page-v2.tsx            ✅ Page de partage V2
+│       └── page-v1.tsx            ✅ Page de partage V1
 └── try/
     └── page.tsx                   ✅ Landing page virale
 
@@ -78,7 +78,7 @@ Tu as deux options :
 **Option A : Remplacer complètement**
 ```bash
 mv app/skane/share/page.tsx app/skane/share/page.old.tsx
-mv app/skane/share/page-v2.tsx app/skane/share/page.tsx
+mv app/skane/share/page-v1.tsx app/skane/share/page.tsx
 ```
 
 **Option B : A/B Test avec feature flag**
@@ -88,7 +88,7 @@ import SharePageV2 from './page-v2';
 
 const useV2 = true; // ou feature flag
 
-export default useV2 ? SharePageV2 : SharePage;
+export default useV1 ? SharePageV1 : SharePage;
 ```
 
 ### 4. Tester le flow complet

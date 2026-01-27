@@ -29,7 +29,10 @@ export default function SkaneButton({ onClick, disabled }: SkaneButtonProps) {
       onClick={handleClick}
       type="button"
       disabled={disabled}
-      className="relative rounded-full flex flex-col items-center justify-center z-10"
+      aria-label={t("home.pressToSkane")}
+      className="relative rounded-full flex flex-col items-center justify-center z-10 
+                 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-500/50 
+                 focus-visible:ring-offset-4 focus-visible:ring-offset-black"
       style={{
         pointerEvents: 'auto',
         position: 'relative',
@@ -69,10 +72,13 @@ export default function SkaneButton({ onClick, disabled }: SkaneButtonProps) {
           ease: "easeOut",
         },
       }}
+      whileFocus={{
+        boxShadow: `0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 60px rgba(255, 255, 255, 0.05), 0 0 0 4px rgba(6, 182, 212, 0.5)`,
+      }}
     >
       {/* Texte : "Press to Skane" */}
       <span 
-        className="text-nokta-one-white text-center whitespace-pre-line"
+        className="text-white text-center whitespace-pre-line"
         style={{
           fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
           fontWeight: 600, // Semi-bold

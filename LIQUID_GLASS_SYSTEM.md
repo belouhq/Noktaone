@@ -116,7 +116,7 @@ Toutes les variables sont définies dans `app/globals.css` :
 - `app/welcome/page.tsx` - Bouton principal avec `.glass-button-primary`
 - `app/login/page.tsx` - Inputs avec `.glass-input`, boutons avec classes glass
 - `app/forgot-password/page.tsx` - Inputs et boutons harmonisés
-- `app/skane/share-prompt-v2/page.tsx` - Bouton principal harmonisé
+- `app/skane/share-prompt-v1/page.tsx` - Bouton principal harmonisé
 - `app/dictionary/page.tsx` - Bouton retour avec `.glass-icon-button`
 - `app/settings/page.tsx` - Bouton logout harmonisé
 

@@ -40,42 +40,54 @@ export default function AnalyzingPage() {
         clearInterval(progressInterval);
         setProgress(100);
 
-        // Stocker le résultat
-        // Stocker dans les deux formats pour compatibilité
+        // Stocker le résultat (les deux formats pour compatibilité)
         sessionStorage.setItem("skane_result", JSON.stringify(result));
-        sessionStorage.setItem("skane_analysis_result", JSON.stringify(result));
+        const toStore = {
+          ...result,
+          microAction: result.microAction || result.micro_action?.id || "box_breathing",
+          micro_action: result.micro_action || { id: result.microAction || result.micro_action?.id || "box_breathing", duration_seconds: result.micro_action?.duration_seconds ?? 24, category: result.micro_action?.category ?? "breathing" },
+        };
+        sessionStorage.setItem("skane_analysis_result", JSON.stringify(toStore));
 
-        // Rediriger vers la page de résultat
-        setTimeout(() => {
-          router.push("/skane/result");
-        }, 500);
+        // Aller directement aux indications de la micro-action (briefing)
+        setTimeout(() => router.push("/skane/briefing"), 400);
       })
       .catch((error) => {
         console.error("Analysis error:", error);
         clearInterval(progressInterval);
         setProgress(100);
-        // Utiliser un résultat par défaut en cas d'erreur
         const fallbackResult = {
           success: true,
           internal_state: "REGULATED",
           signal_label: "Clear Signal",
-          micro_action: {
-            id: "box_breathing",
-            duration_seconds: 24,
-            category: "breathing",
-          },
+          state: "REGULATED",
+          microAction: "box_breathing",
+          micro_action: { id: "box_breathing", duration_seconds: 24, category: "breathing" },
           skane_index: 45,
+          skaneIndex: 45,
         };
-        // Stocker dans les deux formats pour compatibilité
         sessionStorage.setItem("skane_result", JSON.stringify(fallbackResult));
         sessionStorage.setItem("skane_analysis_result", JSON.stringify(fallbackResult));
-        setTimeout(() => {
-          router.push("/skane/result");
-        }, 500);
+        setTimeout(() => router.push("/skane/briefing"), 400);
       });
 
     return () => clearInterval(progressInterval);
   }, [router]);
+
+  const getFallbackResult = () => ({
+    success: true,
+    internal_state: "REGULATED",
+    signal_label: "Clear Signal",
+    state: "REGULATED",
+    microAction: "box_breathing",
+    micro_action: {
+      id: "box_breathing",
+      duration_seconds: 24,
+      category: "breathing",
+    },
+    skane_index: 45,
+    skaneIndex: 45,
+  });
 
   const analyzeImage = async (imageBase64: string | null) => {
     try {
@@ -94,21 +106,23 @@ export default function AnalyzingPage() {
       });
 
       const data = await response.json();
+
+      // Si l’API renvoie une erreur (rate limit, etc.), utiliser un fallback pour que
+      // l’utilisateur puisse quand même aller vers résultat → indications micro-action.
+      if (!response.ok || data.error) {
+        console.warn("Analyze API error or rate limit, using fallback", data.error || response.status);
+        return getFallbackResult();
+      }
+
+      // S’assurer que le résultat a bien microAction ou micro_action pour la page résultat / briefing
+      if (!data.microAction && !data.micro_action?.id) {
+        const fallback = getFallbackResult();
+        return { ...fallback, ...data, microAction: data.microAction ?? fallback.microAction, micro_action: data.micro_action ?? fallback.micro_action };
+      }
       return data;
     } catch (error) {
       console.error("Analysis error:", error);
-      // Retourner un résultat par défaut en cas d'erreur
-      return {
-        success: true,
-        internal_state: "REGULATED",
-        signal_label: "Clear Signal",
-        micro_action: {
-          id: "box_breathing",
-          duration_seconds: 24,
-          category: "breathing",
-        },
-        skane_index: 45,
-      };
+      return getFallbackResult();
     }
   };
 

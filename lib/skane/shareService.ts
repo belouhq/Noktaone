@@ -1,5 +1,5 @@
 /**
- * SHARE SERVICE V2.1 - Avec TikTok + Sans Émojis
+ * SHARE SERVICE V1 - Avec TikTok + Sans Émojis
  * 
  * MODIFICATIONS :
  * 1. TikTok INCLUS avec flow guidé (télécharger + instructions)
@@ -43,6 +43,18 @@ export interface ShareResult {
   platform: SharePlatform;
   error?: string;
   requiresManualStep?: boolean; // Pour TikTok
+}
+
+function triggerDownload(imageBlob?: Blob, filename?: string) {
+  if (!imageBlob) return;
+  const url = URL.createObjectURL(imageBlob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename || "nokta-skane.png";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 // ============================================
@@ -122,30 +134,36 @@ export async function shareToInstagramStories(data: ShareData): Promise<ShareRes
   const platform = detectPlatform();
   
   if (platform === "desktop") {
+    window.open("https://www.instagram.com/", "_blank");
     return { 
-      success: false, 
-      platform: "instagram", 
-      error: "Instagram Stories sharing requires mobile" 
+      success: true, 
+      platform: "instagram",
+      requiresManualStep: true,
     };
   }
 
   try {
-    // Copier l'image dans le clipboard si possible
+    // Copier l'image dans le clipboard si possible (sans casser le geste utilisateur)
     if (platform === "ios" && data.imageBlob) {
-      try {
-        await navigator.clipboard.write([
-          new ClipboardItem({ "image/png": data.imageBlob })
-        ]);
-      } catch (e) {
+      navigator.clipboard.write([
+        new ClipboardItem({ "image/png": data.imageBlob })
+      ]).catch((e) => {
         console.warn("Could not copy to clipboard:", e);
-      }
+      });
     }
     
-    // Deep link Instagram Stories
-    const instagramUrl = "instagram-stories://share?source_application=com.nokta.one";
-    window.location.href = instagramUrl;
+    // Télécharger l'image pour l'ajouter depuis Photos si besoin
+    triggerDownload(data.imageBlob, data.filename);
+
+    // Ouvrir le partage Story Instagram
+    if (platform === "android") {
+      window.location.href =
+        "intent://share#Intent;scheme=instagram-stories;package=com.instagram.android;end";
+    } else {
+      window.location.href = "instagram-stories://share?source_application=com.nokta.one";
+    }
     
-    return { success: true, platform: "instagram" };
+    return { success: true, platform: "instagram", requiresManualStep: true };
     
   } catch (error: any) {
     return { success: false, platform: "instagram", error: error.message };
@@ -169,28 +187,19 @@ export async function shareToTikTok(data: ShareData): Promise<ShareResult> {
   
   try {
     // Étape 1 : Télécharger l'image automatiquement
-    const url = URL.createObjectURL(data.imageBlob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = data.filename || "nokta-skane.png";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    triggerDownload(data.imageBlob, data.filename);
 
-    // Étape 2 : Ouvrir TikTok après un délai
-    setTimeout(() => {
-      if (platform === "ios") {
-        // iOS deep link
-        window.location.href = "tiktok://";
-      } else if (platform === "android") {
-        // Android intent
-        window.location.href = "intent://www.tiktok.com/#Intent;package=com.zhiliaoapp.musically;scheme=https;end";
-      } else {
-        // Desktop fallback
-        window.open("https://www.tiktok.com/upload", "_blank");
-      }
-    }, 500);
+    // Étape 2 : Ouvrir TikTok immédiatement (garder le geste utilisateur)
+    if (platform === "ios") {
+      // iOS deep link
+      window.location.href = "tiktok://";
+    } else if (platform === "android") {
+      // Android intent
+      window.location.href = "intent://www.tiktok.com/#Intent;package=com.zhiliaoapp.musically;scheme=https;end";
+    } else {
+      // Desktop fallback
+      window.open("https://www.tiktok.com/upload", "_blank");
+    }
     
     return { 
       success: true, 
@@ -209,17 +218,23 @@ export async function shareToTikTok(data: ShareData): Promise<ShareResult> {
 
 export async function shareToWhatsApp(data: ShareData): Promise<ShareResult> {
   try {
+    triggerDownload(data.imageBlob, data.filename);
     const text = encodeURIComponent(`${data.text}\n\n${data.url || ""}`);
     const whatsappUrl = `whatsapp://send?text=${text}`;
+    const webUrl = `https://wa.me/?text=${text}`;
     
-    window.location.href = whatsappUrl;
+    if (detectPlatform() === "desktop") {
+      window.open(webUrl, "_blank");
+    } else {
+      window.location.href = whatsappUrl;
+    }
     
-    return { success: true, platform: "whatsapp" };
+    return { success: true, platform: "whatsapp", requiresManualStep: true };
   } catch (error: any) {
     const text = encodeURIComponent(`${data.text}\n\n${data.url || ""}`);
     window.open(`https://wa.me/?text=${text}`, "_blank");
     
-    return { success: true, platform: "whatsapp" };
+    return { success: true, platform: "whatsapp", requiresManualStep: true };
   }
 }
 
@@ -229,13 +244,14 @@ export async function shareToWhatsApp(data: ShareData): Promise<ShareResult> {
 
 export async function shareToTwitter(data: ShareData): Promise<ShareResult> {
   try {
+    triggerDownload(data.imageBlob, data.filename);
     const text = encodeURIComponent(data.text);
     const url = encodeURIComponent(data.url || "");
     const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
     
     window.open(twitterUrl, "_blank");
     
-    return { success: true, platform: "twitter" };
+    return { success: true, platform: "twitter", requiresManualStep: true };
   } catch (error: any) {
     return { success: false, platform: "twitter", error: error.message };
   }
@@ -247,15 +263,22 @@ export async function shareToTwitter(data: ShareData): Promise<ShareResult> {
 
 export async function shareToTelegram(data: ShareData): Promise<ShareResult> {
   try {
+    triggerDownload(data.imageBlob, data.filename);
     const text = encodeURIComponent(`${data.text}\n\n${data.url || ""}`);
-    window.location.href = `tg://msg?text=${text}`;
+    const tgUrl = `tg://msg?text=${text}`;
+    const webUrl = `https://t.me/share/url?url=${encodeURIComponent(data.url || "")}&text=${text}`;
+    if (detectPlatform() === "desktop") {
+      window.open(webUrl, "_blank");
+    } else {
+      window.location.href = tgUrl;
+    }
     
-    return { success: true, platform: "telegram" };
+    return { success: true, platform: "telegram", requiresManualStep: true };
   } catch (error: any) {
     const text = encodeURIComponent(`${data.text}\n\n${data.url || ""}`);
     window.open(`https://t.me/share/url?url=${encodeURIComponent(data.url || "")}&text=${text}`, "_blank");
     
-    return { success: true, platform: "telegram" };
+    return { success: true, platform: "telegram", requiresManualStep: true };
   }
 }
 
@@ -265,8 +288,13 @@ export async function shareToTelegram(data: ShareData): Promise<ShareResult> {
 
 export async function shareToFacebookStories(data: ShareData): Promise<ShareResult> {
   try {
-    window.location.href = "fb://stories/create";
-    return { success: true, platform: "facebook" };
+    triggerDownload(data.imageBlob, data.filename);
+    if (detectPlatform() === "desktop") {
+      window.open("https://www.facebook.com/stories/", "_blank");
+    } else {
+      window.location.href = "fb://stories/create";
+    }
+    return { success: true, platform: "facebook", requiresManualStep: true };
   } catch (error: any) {
     return { success: false, platform: "facebook", error: error.message };
   }
@@ -285,17 +313,10 @@ export async function shareToSnapchat(data: ShareData): Promise<ShareResult> {
 
   try {
     // Télécharger l'image d'abord
-    const url = URL.createObjectURL(data.imageBlob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = data.filename || "nokta-skane.png";
-    a.click();
-    URL.revokeObjectURL(url);
+    triggerDownload(data.imageBlob, data.filename);
 
     // Ouvrir Snapchat
-    setTimeout(() => {
-      window.location.href = "snapchat://";
-    }, 500);
+    window.location.href = "snapchat://";
     
     return { success: true, platform: "snapchat", requiresManualStep: true };
   } catch (error: any) {
@@ -393,7 +414,7 @@ export interface PlatformOption {
   manualStepDescription?: string;
 }
 
-export function getAvailablePlatforms(): PlatformOption[] {
+export function getAvailablePlatforms(options?: { includeUnavailable?: boolean }): PlatformOption[] {
   const platform = detectPlatform();
   const webShareSupported = isWebShareSupported();
   const canShare = canShareFiles();
@@ -412,22 +433,24 @@ export function getAvailablePlatforms(): PlatformOption[] {
     // TikTok - TOUJOURS DISPONIBLE sur mobile (flow guidé)
     {
       id: "tiktok",
-      name: "TikTok",
+      name: "TikTok Story",
       icon: "tiktok",
       color: "#000000",
       available: isMobile,
       recommended: isMobile, // Recommandé car stratégie virale TikTok
       requiresManualStep: true,
-      manualStepDescription: "Image téléchargée. Créez votre story dans TikTok.",
+      manualStepDescription: "Image téléchargée. Créez votre story sur TikTok.",
     },
     // Instagram Stories
     {
       id: "instagram",
-      name: "Instagram",
+      name: "Instagram Story",
       icon: "instagram",
       color: "#E4405F",
-      available: isMobile,
+      available: true,
       recommended: isMobile,
+      requiresManualStep: true,
+      manualStepDescription: "Story ouverte. Ajoutez l'image (coller ou depuis Photos), puis envoyez.",
     },
     // WhatsApp
     {
@@ -437,6 +460,8 @@ export function getAvailablePlatforms(): PlatformOption[] {
       color: "#25D366",
       available: true,
       recommended: false,
+      requiresManualStep: true,
+      manualStepDescription: "WhatsApp ouvert. Ajoutez l'image puis envoyez.",
     },
     // Snapchat
     {
@@ -457,6 +482,8 @@ export function getAvailablePlatforms(): PlatformOption[] {
       color: "#000000",
       available: true,
       recommended: false,
+      requiresManualStep: true,
+      manualStepDescription: "X ouvert. Ajoutez l'image puis publiez.",
     },
     // Telegram
     {
@@ -466,6 +493,8 @@ export function getAvailablePlatforms(): PlatformOption[] {
       color: "#0088CC",
       available: true,
       recommended: false,
+      requiresManualStep: true,
+      manualStepDescription: "Telegram ouvert. Ajoutez l'image puis envoyez.",
     },
     // Facebook Stories
     {
@@ -475,6 +504,8 @@ export function getAvailablePlatforms(): PlatformOption[] {
       color: "#1877F2",
       available: isMobile,
       recommended: false,
+      requiresManualStep: true,
+      manualStepDescription: "Story ouverte. Ajoutez l'image puis publiez.",
     },
     // Télécharger
     {
@@ -496,13 +527,13 @@ export function getAvailablePlatforms(): PlatformOption[] {
     },
   ];
 
-  return platforms
-    .filter((p) => p.available)
-    .sort((a, b) => {
-      if (a.recommended && !b.recommended) return -1;
-      if (!a.recommended && b.recommended) return 1;
-      return 0;
-    });
+  const visible = options?.includeUnavailable ? platforms : platforms.filter((p) => p.available);
+
+  return visible.sort((a, b) => {
+    if (a.recommended && !b.recommended) return -1;
+    if (!a.recommended && b.recommended) return 1;
+    return 0;
+  });
 }
 
 // ============================================
@@ -529,6 +560,24 @@ export function getShareMessage(language: string = "fr"): string {
   return langMessages[Math.floor(Math.random() * langMessages.length)];
 }
 
+export function getShareStoryMessage(language: string = "fr"): string {
+  const messages = {
+    fr: [
+      "Story Skane. Reset en 30 secondes.",
+      "Story Skane · 30 secondes pour reset.",
+      "Story Skane. Mon système s'est recalé.",
+    ],
+    en: [
+      "Skane story. 30-second reset.",
+      "Skane story · 30 seconds to reset.",
+      "Skane story. My system re-centered.",
+    ],
+  };
+
+  const langMessages = messages[language as keyof typeof messages] || messages.en;
+  return langMessages[Math.floor(Math.random() * langMessages.length)];
+}
+
 export function getShareUrl(): string {
   return "https://noktaone.app";
 }
@@ -547,6 +596,7 @@ export default {
   downloadImage,
   getAvailablePlatforms,
   getShareMessage,
+  getShareStoryMessage,
   getShareUrl,
   detectPlatform,
   isWebShareSupported,

@@ -7,7 +7,7 @@ import { getLastSession } from '@/lib/skane/session-model';
 import { noktaService, mapGptToFacial, SIGNAL_LABELS } from '@/lib/nokta';
 import { logger } from '@/lib/utils/logger';
 import { validateBase64Image, validateUserId, validationErrorResponse, serverErrorResponse, checkRateLimit } from '@/lib/utils/guards';
-import { selectMicroActionV25 } from '@/lib/skane/selector-v25';
+import { selectMicroActionV1 } from '@/lib/skane/selector-v1';
 
 // Helper pour déterminer le moment de la journée
 function getTimeOfDay(): 'morning' | 'afternoon' | 'evening' | 'night' {
@@ -158,7 +158,7 @@ export async function POST(request: NextRequest) {
         
         // Utiliser le sélecteur V2.5 pour choisir la micro-action
         const isGuestMode = false; // userId présent = mode compte
-        const selectionResult = await selectMicroActionV25(noktaState, userId, isGuestMode);
+        const selectionResult = await selectMicroActionV1(noktaState, userId, isGuestMode);
         const actionId = selectionResult.actionId;
         const skaneIndexVal = sessionPayload.internalScoreBefore.rawScore;
 
@@ -202,7 +202,7 @@ export async function POST(request: NextRequest) {
 
     // Utiliser le sélecteur V2.5 pour choisir la micro-action
     const isGuestMode = !userId || userId === 'guest';
-    const selectionResult = await selectMicroActionV25(state, userId || null, isGuestMode);
+    const selectionResult = await selectMicroActionV1(state, userId || null, isGuestMode);
     const selectedActionId = selectionResult.actionId;
 
     // Générer le Skane Index (avant l'action)

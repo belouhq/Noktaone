@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
     console.log('Terra webhook:', payload.type, payload.user.provider);
 
     // Traiter le webhook
-    await processTerraWebhook(supabase, payload);
+    await processTerraWebhook(supabase as any, payload);
 
     return NextResponse.json({ received: true });
   } catch (error) {

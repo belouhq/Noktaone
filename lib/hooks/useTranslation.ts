@@ -25,9 +25,11 @@ export function useTranslation() {
     
     // Si la traduction retourne la clé elle-même, c'est qu'elle n'a pas été trouvée
     if (translatedStr === key && i18nInstance.isInitialized) {
-      // Fallback anglais pour les clés manquantes (plus universel)
-      const fallbacks: Record<string, string> = {
+      // Fallbacks par clé ; certaines ont une valeur par langue
+      const fallbacksRaw: Record<string, string | Record<string, string>> = {
         'settings.settingsSection': 'Settings',
+        'settings.contactUs': { fr: 'Contactez-nous', en: 'Contact us' },
+        'settings.privacyAndData': { fr: 'Confidentialité & Données', en: 'Privacy & Data' },
         'support.contactUs': 'Contact Us',
         'home.lastSkaneTitle': 'Last skane',
         'home.lastSkaneEmpty': '—',
@@ -39,14 +41,19 @@ export function useTranslation() {
         'time.todayAt': 'Today – {{time}}',
         'time.yesterday': 'Yesterday',
       };
-      const fallback = fallbacks[key];
-      if (fallback && options) {
+      const raw = fallbacksRaw[key];
+      const lang = (i18nInstance.language || 'fr').split('-')[0];
+      const fallback = typeof raw === 'object' && raw !== null
+        ? (raw[lang as keyof typeof raw] || raw['en'] || raw['fr'])
+        : raw;
+      const fallbackStr = typeof fallback === 'string' ? fallback : undefined;
+      if (fallbackStr && options) {
         // Replace placeholders in fallback
-        return fallback.replace(/\{\{(\w+)\}\}/g, (_, name) => {
+        return fallbackStr.replace(/\{\{(\w+)\}\}/g, (_, name) => {
           return options[name]?.toString() || '';
         });
       }
-      return fallback || key;
+      return fallbackStr || key;
     }
     return translatedStr;
   };
