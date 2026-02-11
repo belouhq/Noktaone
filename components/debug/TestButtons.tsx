@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { RotateCcw, Home, UserX, Settings, X, ChevronDown } from "lucide-react";
@@ -9,15 +9,23 @@ import { RotateCcw, Home, UserX, Settings, X, ChevronDown } from "lucide-react";
  * Composant de test/debug pour réinitialiser l'état utilisateur
  * Visible uniquement en mode développement ou avec un flag spécial
  */
+const TEST_PANEL_Z = 9999;
+
 export default function TestButtons() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Afficher seulement en développement ou si un flag est activé
-  const shouldShow = 
-    process.env.NODE_ENV === 'development' || 
-    typeof window !== 'undefined' && localStorage.getItem('debug_mode') === 'true';
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Afficher seulement en développement ou si un flag est activé (après montage client)
+  const shouldShow = mounted && (
+    process.env.NODE_ENV === "development" ||
+    (typeof window !== "undefined" && localStorage.getItem("debug_mode") === "true")
+  );
 
   if (!shouldShow) return null;
 
@@ -28,7 +36,7 @@ export default function TestButtons() {
     sessionStorage.removeItem("onboarding_skipped");
     sessionStorage.removeItem("adaptation_exited");
     sessionStorage.removeItem("first_skane_flow");
-    router.push("/splash");
+    router.push("/");
   };
 
   const handleResetAdaptation = () => {
@@ -53,12 +61,19 @@ export default function TestButtons() {
     
     sessionStorage.clear();
     
-    router.push("/splash");
+    router.push("/");
   };
 
-  const handleGoHome = () => {
+  /** Page d'accueil (landing) : WelcomeScreen avec "Mesure ton stress..." */
+  const handleGoLanding = () => {
     sessionStorage.setItem("adaptation_exited", "true");
     router.push("/");
+  };
+
+  /** Accueil app : page Accueil V4 avec bouton Skane (après connexion / nav) */
+  const handleGoHomeApp = () => {
+    sessionStorage.setItem("adaptation_exited", "true");
+    router.push("/home");
   };
 
   const handleToggleDebug = () => {
@@ -77,8 +92,9 @@ export default function TestButtons() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
+        className="fixed bottom-24 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
         style={{
+          zIndex: TEST_PANEL_Z,
           background: "linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%)",
           boxShadow: "0 4px 20px rgba(139, 92, 246, 0.4)",
         }}
@@ -100,8 +116,9 @@ export default function TestButtons() {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-32 right-6 z-50 w-64 rounded-2xl p-4"
+            className="fixed bottom-32 right-6 w-64 rounded-2xl p-4"
             style={{
+              zIndex: TEST_PANEL_Z,
               background: "rgba(0, 0, 0, 0.95)",
               backdropFilter: "blur(20px)",
               border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -126,7 +143,7 @@ export default function TestButtons() {
             {/* Boutons principaux (toujours visibles) */}
             <div className="flex flex-col gap-2">
               <motion.button
-                onClick={handleGoHome}
+                onClick={handleGoLanding}
                 className="flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium transition-colors"
                 style={{
                   background: "rgba(59, 130, 246, 0.2)",
@@ -136,7 +153,20 @@ export default function TestButtons() {
                 whileTap={{ scale: 0.98 }}
               >
                 <Home size={18} />
-                <span>Accueil normale</span>
+                <span>Page d&apos;accueil (landing)</span>
+              </motion.button>
+              <motion.button
+                onClick={handleGoHomeApp}
+                className="flex items-center gap-3 px-4 py-3 rounded-xl text-white text-sm font-medium transition-colors"
+                style={{
+                  background: "rgba(16, 185, 129, 0.2)",
+                  border: "1px solid rgba(16, 185, 129, 0.3)",
+                }}
+                whileHover={{ background: "rgba(16, 185, 129, 0.3)" }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Home size={18} />
+                <span>Accueil app (Skane / nav)</span>
               </motion.button>
 
               {/* Boutons avancés (expandables) */}

@@ -5,6 +5,10 @@ import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { X, User, Users, Zap } from "lucide-react";
 
+/**
+ * ONBOARDING - Adaptation (7 jours) + bonnes pratiques
+ * Dernier code reçu : framer-motion + i18n
+ */
 export default function OnboardingAdaptationPage() {
   const router = useRouter();
   const { t } = useTranslation();
@@ -25,7 +29,6 @@ export default function OnboardingAdaptationPage() {
 
   return (
     <main className="fixed inset-0 bg-black flex flex-col px-6 py-safe overflow-y-auto">
-      {/* Header avec bouton retour */}
       <div className="flex items-center justify-between py-4">
         <motion.button
           initial={{ opacity: 0 }}
@@ -41,20 +44,16 @@ export default function OnboardingAdaptationPage() {
         >
           <X size={20} className="text-white/70" />
         </motion.button>
-        
-        {/* Indicateur de progression */}
+
         <div className="flex gap-2">
           <div className="w-8 h-1 rounded-full bg-cyan-500" />
           <div className="w-8 h-1 rounded-full bg-white/20" />
         </div>
-        
+
         <div className="w-9" />
       </div>
 
-      {/* Contenu scrollable */}
       <div className="flex-1 flex flex-col justify-center py-8 max-w-sm mx-auto w-full">
-        
-        {/* Section 1: Adaptation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,12 +63,10 @@ export default function OnboardingAdaptationPage() {
           <h1 className="text-2xl font-semibold text-white mb-4 text-center">
             {t("onboarding.adaptation.title")}
           </h1>
-          
           <p className="text-white/70 text-center text-sm leading-relaxed mb-6">
             {t("onboarding.adaptation.description", { days: 7 })}
           </p>
 
-          {/* Timeline 7 jours */}
           <div className="flex items-center justify-center gap-1.5">
             {[1, 2, 3, 4, 5, 6, 7].map((day) => (
               <div
@@ -87,10 +84,8 @@ export default function OnboardingAdaptationPage() {
           </div>
         </motion.div>
 
-        {/* Séparateur */}
         <div className="w-full h-px bg-white/10 my-6" />
 
-        {/* Section 2: Bonnes pratiques */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,7 +94,6 @@ export default function OnboardingAdaptationPage() {
           <h2 className="text-lg font-medium text-white/90 mb-4 text-center">
             {t("onboarding.bestPractices.title")}
           </h2>
-          
           <div className="space-y-3">
             {practices.map((practice, index) => (
               <motion.div
@@ -131,7 +125,6 @@ export default function OnboardingAdaptationPage() {
         </motion.div>
       </div>
 
-      {/* CTA fixé en bas */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -89,7 +89,7 @@ export function CameraPermissionScreen({ state, onRequestPermission }: CameraPer
           </motion.button>
         </motion.div>
         
-        <BottomNav />
+        <BottomNav currentPage="skane" />
       </div>
     );
   }
@@ -101,7 +101,7 @@ export function CameraPermissionScreen({ state, onRequestPermission }: CameraPer
         <BackButton />
         <div className="w-16 h-16 border-4 border-nokta-one-blue border-t-transparent rounded-full animate-spin mb-4" />
         <p className="text-gray-400">{t("camera.activatingCamera")}</p>
-        <BottomNav />
+        <BottomNav currentPage="skane" />
       </div>
     );
   }
@@ -150,6 +150,9 @@ export function CameraPermissionScreen({ state, onRequestPermission }: CameraPer
             {t("camera.refreshPage")}
           </motion.button>
         </motion.div>
+
+        {/* Menu bas pour pouvoir sortir facilement */}
+        <BottomNav currentPage="skane" />
       </div>
     );
   }
@@ -191,7 +194,7 @@ export function CameraPermissionScreen({ state, onRequestPermission }: CameraPer
           </motion.button>
         </motion.div>
         
-        <BottomNav />
+        <BottomNav currentPage="skane" />
       </div>
     );
   }

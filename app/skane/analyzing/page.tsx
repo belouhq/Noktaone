@@ -49,8 +49,8 @@ export default function AnalyzingPage() {
         };
         sessionStorage.setItem("skane_analysis_result", JSON.stringify(toStore));
 
-        // Aller directement aux indications de la micro-action (briefing)
-        setTimeout(() => router.push("/skane/briefing"), 400);
+        // Aller d'abord à l'écran de résultat, puis l'utilisateur lance la micro-action
+        setTimeout(() => router.push("/skane/result"), 400);
       })
       .catch((error) => {
         console.error("Analysis error:", error);
@@ -68,7 +68,7 @@ export default function AnalyzingPage() {
         };
         sessionStorage.setItem("skane_result", JSON.stringify(fallbackResult));
         sessionStorage.setItem("skane_analysis_result", JSON.stringify(fallbackResult));
-        setTimeout(() => router.push("/skane/briefing"), 400);
+        setTimeout(() => router.push("/skane/result"), 400);
       });
 
     return () => clearInterval(progressInterval);

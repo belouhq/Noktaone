@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H localhost",
-    "dev:clean": "rm -rf .next && next dev -H localhost",
-    "dev:fresh": "rm -rf .next && next build && next dev -H localhost",
+    "dev": "next dev -H 0.0.0.0",
+    "dev:local": "next dev -H localhost",
+    "dev:clean": "rm -rf .next && next dev -H 0.0.0.0",
+    "dev:fresh": "rm -rf .next && next build && next dev -H 0.0.0.0",
     "prebuild": "npx ts-node --project scripts/tsconfig.json scripts/check-translations.ts",
     "build": "next build",
     "start": "next start",

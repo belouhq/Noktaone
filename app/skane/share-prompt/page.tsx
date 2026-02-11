@@ -4,33 +4,12 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { toPng } from "html-to-image";
 import SkaneIndexResult, { type FeedbackType } from "@/components/skane/SkaneIndexResult";
-import { ShareCardViral, ShareFlowViral, ReminderSetupModalViral } from "@/components/engagement";
+import { ShareCardViral, ShareFlowViral } from "@/components/engagement";
 import type { ShareFlowData } from "@/lib/viral/types";
 import { getMicroActionDetails } from "@/lib/skane/selector";
 import type { MicroActionType } from "@/lib/skane/types";
 import { useAuthContext } from "@/components/providers/AuthProvider";
 import { getOrCreateGuestId, getUserId } from "@/lib/skane/supabase-tracker";
-import { supabase } from "@/lib/supabase/client";
-
-const HAS_SEEN_REMINDER_SETUP_KEY = "has_seen_reminder_setup";
-const REMINDER_TIMES_KEY = "nokta_reminder_times";
-const NOTIFICATION_PERMISSION_DENIED_KEY = "notification_permission_denied";
-
-function getReminderInitialTimes(): { morning: string; midday: string; evening: string } {
-  if (typeof window === "undefined") return { morning: "08:00", midday: "13:00", evening: "20:00" };
-  try {
-    const raw = localStorage.getItem(REMINDER_TIMES_KEY);
-    if (!raw) return { morning: "08:00", midday: "13:00", evening: "20:00" };
-    const p = JSON.parse(raw) as { morning?: string; afternoon?: string; evening?: string };
-    return {
-      morning: p.morning ?? "08:00",
-      midday: p.afternoon ?? "13:00",
-      evening: p.evening ?? "20:00",
-    };
-  } catch {
-    return { morning: "08:00", midday: "13:00", evening: "20:00" };
-  }
-}
 
 const FEEDBACK_TO_TYPE: Record<string, FeedbackType> = {
   worse: "still_high",
@@ -67,7 +46,6 @@ export default function SharePromptPage() {
   const [shareFlowData, setShareFlowData] = useState<ShareFlowData | null>(null);
   const [showShareFlow, setShowShareFlow] = useState(false);
   const [isGeneratingBlob, setIsGeneratingBlob] = useState(false);
-  const [showReminderSetup, setShowReminderSetup] = useState(false);
 
   useEffect(() => {
     const stored = sessionStorage.getItem("skane_analysis_result");
@@ -132,60 +110,6 @@ export default function SharePromptPage() {
     }
     setReady(true);
   }, [router]);
-
-  // Après le premier Skane complété : proposer la config des rappels (onboarding viral)
-  useEffect(() => {
-    if (!ready || !props) return;
-    if (typeof window === "undefined") return;
-    if (localStorage.getItem(HAS_SEEN_REMINDER_SETUP_KEY) === "true") return;
-    setShowReminderSetup(true);
-  }, [ready, props]);
-
-  const requestNotificationPermissionPostOnboarding = useCallback(() => {
-    if (typeof window === "undefined" || !("Notification" in window)) return;
-    if (localStorage.getItem(NOTIFICATION_PERMISSION_DENIED_KEY) === "true") return;
-    if (Notification.permission !== "default") return;
-    const ask = () => {
-      Notification.requestPermission().then((result) => {
-        if (result === "denied") {
-          localStorage.setItem(NOTIFICATION_PERMISSION_DENIED_KEY, "true");
-        }
-      });
-    };
-    const t = setTimeout(ask, 600);
-    return () => clearTimeout(t);
-  }, []);
-
-  const handleReminderSave = useCallback(
-    (times: Record<string, string>) => {
-      const payload = {
-        morning: times.morning ?? "08:00",
-        afternoon: times.midday ?? "13:00",
-        evening: times.evening ?? "20:00",
-      };
-      localStorage.setItem(REMINDER_TIMES_KEY, JSON.stringify(payload));
-      localStorage.setItem(HAS_SEEN_REMINDER_SETUP_KEY, "true");
-      setShowReminderSetup(false);
-      const uid = getUserId();
-      if (uid) {
-        supabase
-          .from("profiles")
-          .update({ reminder_times: payload })
-          .eq("id", uid)
-          .then(({ error }) => {
-            if (error) console.error("Reminder save error:", error);
-          });
-      }
-      requestNotificationPermissionPostOnboarding();
-    },
-    [requestNotificationPermissionPostOnboarding]
-  );
-
-  const handleReminderSkip = useCallback(() => {
-    localStorage.setItem(HAS_SEEN_REMINDER_SETUP_KEY, "true");
-    setShowReminderSetup(false);
-    requestNotificationPermissionPostOnboarding();
-  }, [requestNotificationPermissionPostOnboarding]);
 
   // Générer le blob à partir de ShareCardViral quand l'utilisateur clique Partager (flux viral)
   useEffect(() => {
@@ -324,17 +248,9 @@ export default function SharePromptPage() {
           />
         </div>
       )}
-
       {showShareFlow && shareFlowData && (
         <ShareFlowViral shareData={shareFlowData} onClose={handleCloseShareFlow} />
       )}
-
-      <ReminderSetupModalViral
-        isOpen={showReminderSetup}
-        onClose={handleReminderSkip}
-        initialTimes={getReminderInitialTimes()}
-        onSave={handleReminderSave}
-      />
     </>
   );
 }

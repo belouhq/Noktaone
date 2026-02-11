@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { motion, AnimatePresence } from "framer-motion";
 import EditProfileScreen, { type EditProfileFormData } from "@/components/profile/EditProfileScreen";
@@ -50,7 +51,13 @@ export default function EditProfileModal({
   onSave,
   initialData,
 }: EditProfileModalProps) {
+  const router = useRouter();
   const { t, currentLanguage } = useTranslation();
+
+  const handleNav = (path: string) => {
+    onClose();
+    router.push(path);
+  };
 
   const handleSave = (data: EditProfileFormData & { dateOfBirth: string; language?: string }) => {
     const genderLabel = genderCodeToLabel(data.gender, t);
@@ -93,8 +100,12 @@ export default function EditProfileModal({
                 onSave={handleSave}
                 onCancel={onClose}
                 onClose={onClose}
-                showBottomNav={false}
+                showBottomNav
                 embeddedInModal
+                activeNav="settings"
+                onHome={() => handleNav("/")}
+                onSkane={() => handleNav("/skane")}
+                onSettings={() => handleNav("/settings")}
               />
             </div>
           </motion.div>

@@ -6,18 +6,8 @@ import { User, Users, Zap, X } from "lucide-react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 /**
- * ONBOARDING - Étape 9 : Bonnes pratiques (positives)
- * 
- * Titre : "Pour de meilleurs résultats"
- * 
- * Règles (max 3, formulation POSITIVE) :
- * 1. Skane uniquement ton visage
- * 2. Utilise le mode invité pour quelqu'un d'autre
- * 3. Skane quand tu te sens vraiment off
- * 
- * CTA : "Compris"
- * 
- * Aucune formulation négative.
+ * ONBOARDING - Bonnes pratiques (standalone)
+ * Dernier code reçu : framer-motion + i18n
  */
 export default function OnboardingBestPracticesPage() {
   const router = useRouter();
@@ -28,31 +18,17 @@ export default function OnboardingBestPracticesPage() {
   };
 
   const handleBack = () => {
-    // Retour à la page d'accueil normale
     router.push("/");
   };
 
   const practices = [
-    {
-      icon: User,
-      textKey: "practice1",
-      color: "#3B82F6",
-    },
-    {
-      icon: Users,
-      textKey: "practice2",
-      color: "#8B5CF6",
-    },
-    {
-      icon: Zap,
-      textKey: "practice3",
-      color: "#10B981",
-    },
+    { icon: User, textKey: "practice1", color: "#3B82F6" },
+    { icon: Users, textKey: "practice2", color: "#8B5CF6" },
+    { icon: Zap, textKey: "practice3", color: "#10B981" },
   ];
 
   return (
     <main className="fixed inset-0 bg-nokta-one-black flex flex-col items-center justify-between px-8 py-16">
-      {/* Bouton retour en haut à gauche */}
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -69,22 +45,17 @@ export default function OnboardingBestPracticesPage() {
         <X size={20} className="text-white/70" />
       </motion.button>
 
-      {/* Espace haut */}
       <div className="pt-8" />
 
-      {/* Centre - Contenu principal */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="text-center w-full max-w-sm"
       >
-        {/* Titre */}
         <h1 className="text-2xl font-semibold text-nokta-one-white mb-10">
           {t("onboarding.bestPractices.title")}
         </h1>
-        
-        {/* Liste des bonnes pratiques */}
         <div className="space-y-4">
           {practices.map((practice, index) => (
             <motion.div
@@ -115,7 +86,6 @@ export default function OnboardingBestPracticesPage() {
         </div>
       </motion.div>
 
-      {/* Bas - CTA */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

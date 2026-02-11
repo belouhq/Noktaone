@@ -45,8 +45,8 @@ export default function HomeAdaptationPage() {
     // Vérifier si l'utilisateur a complété l'onboarding
     const onboardingCompleted = localStorage.getItem("onboarding_completed");
     if (!onboardingCompleted) {
-      // Rediriger vers le splash si pas d'onboarding
-      router.push("/splash");
+      // Rediriger vers la landing si pas d'onboarding
+      router.push("/");
       return;
     }
 
@@ -68,10 +68,10 @@ export default function HomeAdaptationPage() {
   const handleExitAdaptation = () => {
     // Marquer que l'utilisateur a quitté le mode adaptation
     sessionStorage.setItem("adaptation_exited", "true");
-    // Retirer le mode adaptation et revenir à la page d'accueil normale
+    // Retirer le mode adaptation et revenir à la page d'accueil (design V4)
     localStorage.removeItem("adaptation_start_date");
     localStorage.removeItem("adaptation_day");
-    router.push("/");
+    router.push("/home");
   };
 
   return (

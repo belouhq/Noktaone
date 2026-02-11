@@ -1,181 +1,186 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import React, { useState, useEffect } from "react";
 
 // ============================================
-// ÉCRAN D'ACCUEIL / LANDING - NOKTA ONE
-// Style Tesla épuré + Impact conversion
+// NOKTA ONE - ÉCRAN D'ACCUEIL / WELCOME
+// ✅ AUDIT UI APPLE-LIKE (dernier code reçu pour la page d'accueil)
 // ============================================
 
-const WORD_KEYS = ["stress", "tension", "anxiety", "fatigue"] as const;
+const DYNAMIC_HEADLINES = [
+  "un message te crispe.",
+  "une réponse te bloque.",
+  "une décision te paralyse.",
+  "tu entres en réunion.",
+  "un call t'a vidé.",
+  "tu dois prendre la parole.",
+  "tu scrolles sans t'en rendre compte.",
+  "ton cerveau sature.",
+  "tu switch d'un écran à l'autre.",
+  "tu es au lit mais pas prêt à dormir.",
+  "ton corps est fatigué mais pas ton mental.",
+];
+
+const DYNAMIC_HEADLINES_US = [
+  "a message throws you off.",
+  "you freeze on a decision.",
+  "something triggers you.",
+  "you walk into a meeting.",
+  "a call drains you.",
+  "you need to speak up.",
+  "you catch yourself doom-scrolling.",
+  "your brain feels overloaded.",
+  "you're switching tabs nonstop.",
+  "your body's tired but your mind won't stop.",
+  "you're in bed but can't shut off.",
+];
 
 export const WelcomeScreen = ({
   onStart = () => {},
   onLogin = () => {},
+  locale = "fr",
 }: {
   onStart?: () => void;
   onLogin?: () => void;
+  locale?: "fr" | "en";
 }) => {
-  const { t } = useTranslation();
-  const [mounted, setMounted] = useState(false);
-  const [activeWord, setActiveWord] = useState(0);
+  const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [shownIndices, setShownIndices] = useState<number[]>([]);
+
+  const headlines = locale === "en" ? DYNAMIC_HEADLINES_US : DYNAMIC_HEADLINES;
+
+  const getRandomUnseenIndex = (shown: number[], total: number) => {
+    if (shown.length >= total) return Math.floor(Math.random() * total);
+    const unseenIndices: number[] = [];
+    for (let i = 0; i < total; i++) {
+      if (!shown.includes(i)) unseenIndices.push(i);
+    }
+    return unseenIndices[Math.floor(Math.random() * unseenIndices.length)];
+  };
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    const initialIndex = Math.floor(Math.random() * headlines.length);
+    setCurrentHeadlineIndex(initialIndex);
+    setShownIndices([initialIndex]);
+  }, [headlines.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveWord((prev) => (prev + 1) % WORD_KEYS.length);
-    }, 2500);
+      setIsVisible(false);
+      setTimeout(() => {
+        setShownIndices((prev) => {
+          const newShown = prev.length >= headlines.length ? [] : prev;
+          const newIndex = getRandomUnseenIndex(newShown, headlines.length);
+          setCurrentHeadlineIndex(newIndex);
+          return [...newShown, newIndex];
+        });
+        setIsVisible(true);
+      }, 250);
+    }, 3500);
     return () => clearInterval(interval);
-  }, []);
+  }, [headlines.length]);
 
   return (
     <div style={styles.container}>
-      <div style={styles.backgroundGlow} />
-
-      <header style={styles.header}>
-        <div style={styles.logoContainer}>
-          <SkaneIcon />
-          <span style={styles.logoText}>NOKTA ONE</span>
-        </div>
-      </header>
-
       <main style={styles.content}>
-        <div
-          style={{
-            ...styles.headlineContainer,
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? "translateY(0)" : "translateY(20px)",
-          }}
-        >
-          <h1 style={styles.headline}>
-            {t("welcome.headlinePrefix")}{" "}
-            <span style={styles.headlineHighlight}>
-              {t(`welcome.words.${WORD_KEYS[activeWord]}`)}
-            </span>
-            <br />
-            {t("welcome.headlineSuffix")}
-          </h1>
-
-          <p style={styles.subheadline}>{t("welcome.subheadline")}</p>
+        <div style={styles.logoContainer}>
+          <NoktaLogo />
         </div>
-
-        <div
-          style={{
-            ...styles.visualContainer,
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? "translateY(0)" : "translateY(30px)",
-            transitionDelay: "0.2s",
-          }}
-        >
-          <div style={styles.skanePreview}>
-            <div style={styles.previewCircle}>
-              <div style={styles.previewCircleInner}>
-                <span style={styles.previewScore}>?</span>
-              </div>
-              <svg style={styles.previewRing} viewBox="0 0 100 100">
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="46"
-                  fill="none"
-                  stroke="#1C1C1E"
-                  strokeWidth="3"
-                />
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="46"
-                  fill="none"
-                  stroke="url(#gradient)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeDasharray="289"
-                  strokeDashoffset="72"
-                  style={{
-                    transform: "rotate(-90deg)",
-                    transformOrigin: "center",
-                  }}
-                />
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#FF453A" />
-                    <stop offset="100%" stopColor="#30D158" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <span style={styles.previewLabel}>{t("welcome.skaneIndex")}</span>
-          </div>
-        </div>
-
-        <div
-          style={{
-            ...styles.features,
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? "translateY(0)" : "translateY(30px)",
-            transitionDelay: "0.4s",
-          }}
-        >
-          <div style={styles.feature}>
-            <span style={styles.featureIcon}>📷</span>
-            <span style={styles.featureText}>{t("welcome.featureScan")}</span>
-          </div>
-          <div style={styles.featureDivider} />
-          <div style={styles.feature}>
-            <span style={styles.featureIcon}>🧘</span>
-            <span style={styles.featureText}>{t("welcome.featureAction")}</span>
-          </div>
-          <div style={styles.featureDivider} />
-          <div style={styles.feature}>
-            <span style={styles.featureIcon}>📊</span>
-            <span style={styles.featureText}>{t("welcome.featureResult")}</span>
-          </div>
+        <div style={styles.headlineContainer}>
+          <p style={styles.headlineFixed}>
+            {locale === "en" ? "Use Nokta One when" : "Utilise Nokta One quand"}
+          </p>
+          <p
+            style={{
+              ...styles.headlineDynamic,
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(6px)",
+            }}
+          >
+            {headlines[currentHeadlineIndex]}
+          </p>
+          <p style={styles.tagline}>Body Reset System</p>
         </div>
       </main>
-
-      <footer
-        style={{
-          ...styles.footer,
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? "translateY(0)" : "translateY(20px)",
-          transitionDelay: "0.6s",
-        }}
-      >
-        <button style={styles.ctaButton} onClick={onStart}>
-          <span style={styles.ctaText}>{t("welcome.start")}</span>
-          <ArrowIcon />
+      <footer style={styles.footer}>
+        <div style={styles.featuresContainer}>
+          <Feature icon={<ScanIcon />} label={locale === "en" ? "Face scan" : "Scan facial"} />
+          <div style={styles.separator} />
+          <Feature icon={<TimerIcon />} label={locale === "en" ? "30s action" : "Action 30s"} />
+          <div style={styles.separator} />
+          <Feature icon={<CheckIcon />} label={locale === "en" ? "Instant result" : "Résultat instantané"} />
+        </div>
+        <button
+          type="button"
+          style={styles.ctaButton}
+          onClick={onStart}
+          onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.98)")}
+          onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
+          {locale === "en" ? "Get Started" : "Commencer"}
         </button>
-
-        <button style={styles.loginButton} onClick={onLogin}>
-          {t("welcome.alreadyAccount")}
+        <button type="button" style={styles.textLink} onClick={onLogin}>
+          {locale === "en" ? "Already have an account?" : "Déjà un compte ?"}
         </button>
-
-        <p style={styles.disclaimer}>{t("welcome.disclaimer")}</p>
+        <p style={styles.legal}>Wellness signal · Not medical advice</p>
       </footer>
     </div>
   );
 };
 
-const SkaneIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round">
-    <path d="M3 8V5a2 2 0 012-2h3" />
-    <path d="M16 3h3a2 2 0 012 2v3" />
-    <path d="M3 16v3a2 2 0 002 2h3" />
-    <path d="M16 21h3a2 2 0 002-2v-3" />
-    <circle cx="9" cy="10" r="1" fill="#FFFFFF" stroke="none" />
-    <circle cx="15" cy="10" r="1" fill="#FFFFFF" stroke="none" />
-    <path d="M9 15c.83.67 2 1 3 1s2.17-.33 3-1" />
+const Feature = ({ icon, label }: { icon: React.ReactNode; label: string }) => (
+  <div style={styles.feature}>
+    {icon}
+    <span style={styles.featureLabel}>{label}</span>
+  </div>
+);
+
+const NoktaLogo = () => (
+  <svg width="88" height="88" viewBox="0 0 100 100" fill="none">
+    {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
+      const offset = i * 2.2;
+      const opacity = 1 - i * 0.05;
+      return (
+        <path
+          key={i}
+          d={`M 50 ${18 + offset} C ${18 + offset} ${18 + offset}, ${18 + offset} 50, 50 50 C ${18 + offset} 50, ${18 + offset} ${82 - offset}, 50 ${82 - offset} C ${82 - offset} ${82 - offset}, ${82 - offset} 50, 50 50 C ${82 - offset} 50, ${82 - offset} ${18 + offset}, 50 ${18 + offset} Z`}
+          stroke="#FFFFFF"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          opacity={opacity}
+        />
+      );
+    })}
   </svg>
 );
 
-const ArrowIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <line x1="5" y1="12" x2="19" y2="12" />
-    <polyline points="12,5 19,12 12,19" />
+const ScanIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M7 3H5a2 2 0 00-2 2v2" />
+    <path d="M17 3h2a2 2 0 012 2v2" />
+    <path d="M7 21H5a2 2 0 01-2-2v-2" />
+    <path d="M17 21h2a2 2 0 002-2v-2" />
+    <circle cx="9" cy="9" r="1" fill="#8E8E93" />
+    <circle cx="15" cy="9" r="1" fill="#8E8E93" />
+    <path d="M9 15c.83.67 2 1 3 1s2.17-.33 3-1" />
+  </svg>
+);
+const TimerIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="13" r="8" />
+    <path d="M12 9v4l2 2" />
+    <path d="M9 2h6" />
+    <path d="M12 2v2" />
+  </svg>
+);
+const CheckIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M9 12l2 2 4-4" />
   </svg>
 );
 
@@ -183,39 +188,15 @@ const styles: Record<string, React.CSSProperties> = {
   container: {
     display: "flex",
     flexDirection: "column",
-    minHeight: "100vh",
+    height: "100vh",
+    minHeight: "-webkit-fill-available",
     backgroundColor: "#000000",
     color: "#FFFFFF",
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif",
     maxWidth: "430px",
     margin: "0 auto",
-    position: "relative",
-    overflow: "hidden",
-  },
-  backgroundGlow: {
-    position: "absolute",
-    top: "20%",
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "300px",
-    height: "300px",
-    background: "radial-gradient(circle, rgba(48,209,88,0.08) 0%, rgba(0,0,0,0) 70%)",
-    pointerEvents: "none",
-  },
-  header: {
-    padding: "20px",
-    paddingTop: "60px",
-  },
-  logoContainer: {
-    display: "flex",
-    alignItems: "center",
-    gap: "12px",
-  },
-  logoText: {
-    fontSize: "14px",
-    fontWeight: 600,
-    letterSpacing: "0.1em",
-    color: "#FFFFFF",
+    WebkitFontSmoothing: "antialiased",
+    MozOsxFontSmoothing: "grayscale",
   },
   content: {
     flex: 1,
@@ -223,143 +204,49 @@ const styles: Record<string, React.CSSProperties> = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    padding: "20px",
-    gap: "48px",
+    padding: "0 24px",
   },
-  headlineContainer: {
-    textAlign: "center",
-    transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-  },
-  headline: {
-    fontSize: "32px",
+  logoContainer: { marginBottom: "32px" },
+  headlineContainer: { textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" },
+  headlineFixed: { fontSize: "17px", fontWeight: 400, color: "#8E8E93", margin: 0, letterSpacing: "-0.01em", lineHeight: 1.3 },
+  headlineDynamic: {
+    fontSize: "22px",
     fontWeight: 600,
-    lineHeight: 1.2,
+    color: "#0A84FF",
     margin: 0,
-    marginBottom: "16px",
+    marginTop: "6px",
     letterSpacing: "-0.02em",
-  },
-  headlineHighlight: {
-    color: "#30D158",
-    transition: "opacity 0.3s ease",
-  },
-  subheadline: {
-    fontSize: "17px",
-    fontWeight: 400,
-    color: "#8E8E93",
-    margin: 0,
-    lineHeight: 1.5,
-  },
-  visualContainer: {
-    transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-  },
-  skanePreview: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "16px",
-  },
-  previewCircle: {
-    position: "relative",
-    width: "120px",
-    height: "120px",
-  },
-  previewCircleInner: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    lineHeight: 1.3,
+    transition: "opacity 0.25s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)",
+    minHeight: "58px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-  },
-  previewScore: {
-    fontSize: "36px",
-    fontWeight: 600,
-    color: "#6E6E73",
-  },
-  previewRing: {
-    width: "100%",
-    height: "100%",
-  },
-  previewLabel: {
-    fontSize: "11px",
-    fontWeight: 500,
-    letterSpacing: "0.1em",
-    color: "#6E6E73",
-  },
-  features: {
-    display: "flex",
-    alignItems: "center",
-    gap: "16px",
-    transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-  },
-  feature: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "6px",
-  },
-  featureIcon: {
-    fontSize: "20px",
-  },
-  featureText: {
-    fontSize: "12px",
-    fontWeight: 500,
-    color: "#6E6E73",
-    whiteSpace: "nowrap",
-  },
-  featureDivider: {
-    width: "1px",
-    height: "32px",
-    backgroundColor: "#2C2C2E",
-  },
-  footer: {
-    padding: "20px",
-    paddingBottom: "40px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "16px",
-    transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
-  },
-  ctaButton: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "12px",
-    width: "100%",
-    padding: "18px",
-    backgroundColor: "#FFFFFF",
-    color: "#000000",
-    border: "none",
-    borderRadius: "14px",
-    fontSize: "17px",
-    fontWeight: 600,
-    cursor: "pointer",
-    transition: "transform 0.2s ease, opacity 0.2s ease",
-  },
-  ctaText: {
-    letterSpacing: "-0.01em",
-  },
-  loginButton: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    padding: "16px",
-    backgroundColor: "transparent",
-    color: "#8E8E93",
-    border: "none",
-    fontSize: "15px",
-    fontWeight: 500,
-    cursor: "pointer",
-  },
-  disclaimer: {
-    fontSize: "12px",
-    color: "#48484A",
     textAlign: "center",
-    margin: 0,
-    marginTop: "8px",
+    padding: "0 16px",
   },
+  tagline: { fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em", color: "#636366", margin: 0, marginTop: "20px", textTransform: "uppercase" },
+  footer: { padding: "24px 24px 40px", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" },
+  featuresContainer: { display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", marginBottom: "8px" },
+  feature: { display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" },
+  featureLabel: { fontSize: "11px", fontWeight: 500, color: "#636366", letterSpacing: "-0.01em" },
+  separator: { width: "1px", height: "28px", backgroundColor: "#38383A" },
+  ctaButton: {
+    width: "100%",
+    height: "50px",
+    backgroundColor: "#FFFFFF",
+    border: "none",
+    borderRadius: "12px",
+    color: "#000000",
+    fontSize: "17px",
+    fontWeight: 600,
+    letterSpacing: "-0.01em",
+    cursor: "pointer",
+    transition: "transform 0.1s cubic-bezier(0.25, 0.1, 0.25, 1)",
+    WebkitTapHighlightColor: "transparent",
+  },
+  textLink: { background: "none", border: "none", color: "#0A84FF", fontSize: "15px", fontWeight: 400, letterSpacing: "-0.01em", cursor: "pointer", padding: "8px 16px", WebkitTapHighlightColor: "transparent" },
+  legal: { fontSize: "11px", fontWeight: 400, color: "#48484A", margin: 0 },
 };
 
 export default WelcomeScreen;

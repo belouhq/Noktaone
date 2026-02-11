@@ -1,42 +1,178 @@
 "use client";
 
 import React from "react";
-import { useTranslation } from "@/lib/hooks/useTranslation";
-import { BottomNav, type NavPageId } from "@/components/ui/BottomNav";
 
 // ============================================
-// NOKTA ONE - PAGES FINALES V4
-// Logo "NOKTA ONE" en haut à gauche | (?) aide en haut à droite
-// Bouton Skane EN BAS (zone du pouce) | Nav 3 onglets + point actif
+// NOKTA ONE - PAGES FINALES V5
+// ============================================
+// ✅ Logo "NOKTA ONE" en haut à gauche (police High Cruiser)
+// ✅ Bouton (?) aide en haut à droite
+// ✅ Bouton Skane EN BAS (zone du pouce)
+// ✅ Navigation 3 onglets : Accueil | Skane | Paramètres
+// ✅ Couleur BLEUE CYAN quand actif (#0A84FF)
+// ✅ Icône Skane avec yeux en points remplis
+// ✅ PAS DE SCORES sur l'accueil
+// ============================================
+
+// Couleur bleue Nokta One (iOS system blue)
+const NOKTA_BLUE = "#0A84FF";
+const INACTIVE_COLOR = "#6E6E73";
+
+// ============================================
+// ICÔNES SVG
+// ============================================
+
+const HelpIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+    <line x1="12" y1="17" x2="12.01" y2="17" />
+  </svg>
+);
+
+const SkaneIconLarge = () => (
+  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+  </svg>
+);
+
+const HomeIcon = ({ active }: { active: boolean }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={active ? NOKTA_BLUE : INACTIVE_COLOR}
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+    <polyline points="9,22 9,12 15,12 15,22" />
+  </svg>
+);
+
+const SkaneIcon = ({ active }: { active: boolean }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={active ? NOKTA_BLUE : INACTIVE_COLOR}
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4 8V6a2 2 0 012-2h2" />
+    <path d="M16 4h2a2 2 0 012 2v2" />
+    <path d="M4 16v2a2 2 0 002 2h2" />
+    <path d="M16 20h2a2 2 0 002-2v-2" />
+    <circle cx="9" cy="10" r="1.5" fill={active ? NOKTA_BLUE : INACTIVE_COLOR} stroke="none" />
+    <circle cx="15" cy="10" r="1.5" fill={active ? NOKTA_BLUE : INACTIVE_COLOR} stroke="none" />
+    <path d="M9 15c1 1 2.5 1.5 3 1.5s2-.5 3-1.5" />
+  </svg>
+);
+
+const SettingsIcon = ({ active }: { active: boolean }) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={active ? NOKTA_BLUE : INACTIVE_COLOR}
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+  </svg>
+);
+
+// ============================================
+// ANIMATIONS CSS
+// ============================================
+
+const animations = `
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(10, 132, 255, 0.3), 0 0 30px rgba(10, 132, 255, 0.15);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(10, 132, 255, 0.5), 0 0 50px rgba(10, 132, 255, 0.25);
+    }
+  }
+`;
+
+// ============================================
+// BOTTOM NAVIGATION
+// ============================================
+
+export const BottomNav = ({
+  currentPage = "home",
+  onNavigate = () => {},
+}: {
+  currentPage?: string;
+  onNavigate?: (id: string) => void;
+}) => {
+  const navItems = [
+    { id: "home", label: "Accueil", Icon: HomeIcon },
+    { id: "skane", label: "Skane", Icon: SkaneIcon },
+    { id: "settings", label: "Paramètres", Icon: SettingsIcon },
+  ];
+
+  return (
+    <nav style={styles.bottomNav}>
+      {navItems.map(({ id, label, Icon }) => {
+        const isActive = currentPage === id;
+        return (
+          <button
+            key={id}
+            style={styles.navItem}
+            onClick={() => {
+              if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate(5);
+              onNavigate(id);
+            }}
+            aria-label={label}
+            aria-current={isActive ? "page" : undefined}
+          >
+            <Icon active={isActive} />
+            <span style={{ ...styles.navLabel, color: isActive ? NOKTA_BLUE : INACTIVE_COLOR }}>
+              {label}
+            </span>
+          </button>
+        );
+      })}
+    </nav>
+  );
+};
+
+// ============================================
+// PAGE HOME - ULTRA MINIMALISTE
 // ============================================
 
 export interface HomePageV3Props {
   onStartSkane?: () => void;
-  onNavigate?: (pageId: NavPageId) => void;
+  onNavigate?: (key: string) => void;
   onHelp?: () => void;
 }
 
-export function HomePageV3({
+export const HomePage = ({
   onStartSkane = () => {},
   onNavigate = () => {},
   onHelp = () => {},
-}: HomePageV3Props) {
-  const { t } = useTranslation();
-
+}: HomePageV3Props) => {
   const handleStartSkane = () => {
-    if (navigator.vibrate) navigator.vibrate([10, 30, 10]);
+    if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate([10, 30, 10]);
     onStartSkane();
   };
 
   return (
     <div style={styles.container}>
       <header style={styles.header}>
-        <span style={styles.logo}>{t("home.title")}</span>
-        <button
-          style={styles.helpButton}
-          onClick={onHelp}
-          aria-label={t("home.helpAria")}
-        >
+        <span style={styles.logo}>NOKTA ONE</span>
+        <button style={styles.helpButton} onClick={onHelp} aria-label="Aide">
           <HelpIcon />
         </button>
       </header>
@@ -47,243 +183,167 @@ export function HomePageV3({
           <button
             style={styles.skaneButton}
             onClick={handleStartSkane}
-            aria-label={t("home.startSkaneAria")}
+            aria-label="Commencer un Skane"
           >
-            <div style={styles.pulseRing} />
-            <div style={{ ...styles.pulseRing, animationDelay: "1s" }} />
-            <div style={styles.skaneButtonInner}>
-              <SkaneIconLarge />
-              <span style={styles.skaneButtonText}>{t("nav.skane")}</span>
-            </div>
+            <span style={styles.skaneButtonText}>Skane</span>
           </button>
         </div>
       </main>
 
-      <BottomNav variant="v4" currentPage="home" onNavigate={onNavigate} />
-
-      <style>{pulseKeyframes}</style>
+      <BottomNav currentPage="home" onNavigate={onNavigate} />
+      <style>{animations}</style>
     </div>
   );
-}
+};
 
 // ============================================
-// PAGE SKANE - HISTORIQUE + STATS + BOUTON
+// PAGE SKANE - HISTORIQUE DES SKANES
 // ============================================
 
-export interface RecentSkaneItem {
+export interface RecentSkaneItemV5 {
+  id: number;
   date: string;
   time: string;
   emoji: string;
 }
 
 export interface SkanePageV3Props {
-  recentSkanes?: RecentSkaneItem[];
+  recentSkanes?: RecentSkaneItemV5[];
   streak?: number;
   totalSkanes?: number;
   onStartSkane?: () => void;
-  onNavigate?: (pageId: NavPageId) => void;
+  onNavigate?: (key: string) => void;
 }
 
-export function SkanePageV3({
+export const SkanePage = ({
   recentSkanes = [
-    { date: "Aujourd'hui", time: "14:34", emoji: "😌" },
-    { date: "Hier", time: "09:15", emoji: "😐" },
-    { date: "Il y a 2 jours", time: "20:30", emoji: "😌" },
+    { id: 1, date: "Aujourd'hui", time: "14:34", emoji: "😌" },
+    { id: 2, date: "Hier", time: "09:15", emoji: "😐" },
+    { id: 3, date: "Il y a 2 jours", time: "20:30", emoji: "😌" },
   ],
   streak = 3,
   totalSkanes = 47,
   onStartSkane = () => {},
   onNavigate = () => {},
-}: SkanePageV3Props) {
-  const { t } = useTranslation();
-
-  const handleStartSkane = () => {
-    if (navigator.vibrate) navigator.vibrate([10, 30, 10]);
-    onStartSkane();
-  };
-
+}: SkanePageV3Props) => {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
-        <span style={styles.pageTitle}>{t("nav.skane")}</span>
+        <span style={styles.pageTitle}>Skane</span>
         <div style={{ width: 40 }} />
       </header>
 
       <main style={styles.contentSkane}>
-        {recentSkanes && recentSkanes.length > 0 && (
-          <section style={styles.section}>
-            <span style={styles.sectionTitle}>
-              {t("skane.recentActivity")}
-            </span>
-            <div style={styles.recentList}>
-              {recentSkanes.slice(0, 3).map((skane, index) => (
-                <div key={index} style={styles.recentItem}>
-                  <span style={styles.recentEmoji}>{skane.emoji}</span>
-                  <div style={styles.recentInfo}>
-                    <span style={styles.recentDate}>{skane.date}</span>
-                    <span style={styles.recentTime}>{skane.time}</span>
+        <section style={styles.historySection}>
+          <h2 style={styles.sectionTitle}>Historique récent</h2>
+          <div style={styles.historyList}>
+            {recentSkanes.map((skane) => (
+              <div key={skane.id} style={styles.historyItem}>
+                <div style={styles.historyLeft}>
+                  <span style={styles.historyEmoji}>{skane.emoji}</span>
+                  <div style={styles.historyInfo}>
+                    <span style={styles.historyDate}>{skane.date}</span>
+                    <span style={styles.historyTime}>{skane.time}</span>
                   </div>
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <section style={styles.statsCard}>
+        <section style={styles.statsSection}>
           <div style={styles.statItem}>
             <span style={styles.statValue}>{streak}</span>
-            <span style={styles.statLabel}>{t("skane.streakDays")}</span>
+            <span style={styles.statLabel}>jours d&apos;affilée</span>
           </div>
           <div style={styles.statDivider} />
           <div style={styles.statItem}>
             <span style={styles.statValue}>{totalSkanes}</span>
-            <span style={styles.statLabel}>{t("skane.totalSkanes")}</span>
+            <span style={styles.statLabel}>Skanes total</span>
           </div>
         </section>
 
-        <div style={{ flex: 1 }} />
-
-        <div style={styles.buttonWrapper}>
+        <div style={styles.buttonWrapperSkane}>
           <button
-            style={styles.skaneButton}
-            onClick={handleStartSkane}
-            aria-label={t("home.startSkaneAria")}
+            style={styles.skaneButtonSmall}
+            onClick={() => {
+              if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate([10, 30, 10]);
+              onStartSkane();
+            }}
+            aria-label="Nouveau Skane"
           >
-            <div style={styles.pulseRing} />
-            <div style={{ ...styles.pulseRing, animationDelay: "1s" }} />
-            <div style={styles.skaneButtonInner}>
-              <SkaneIconLarge />
-              <span style={styles.skaneButtonText}>{t("nav.skane")}</span>
-            </div>
+            <SkaneIcon active={false} />
+            <span style={styles.skaneButtonTextSmall}>Nouveau Skane</span>
           </button>
         </div>
       </main>
 
-      <BottomNav variant="v4" currentPage="skane" onNavigate={onNavigate} />
-
-      <style>{pulseKeyframes}</style>
+      <BottomNav currentPage="skane" onNavigate={onNavigate} />
     </div>
   );
-}
+};
 
 // ============================================
-// ICÔNES
-// ============================================
-
-function HelpIcon() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#6E6E73"
-      strokeWidth="1.5"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" />
-      <line x1="12" y1="17" x2="12.01" y2="17" />
-    </svg>
-  );
-}
-
-function SkaneIconLarge() {
-  return (
-    <svg
-      width="48"
-      height="48"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#FFFFFF"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    >
-      <path d="M3 8V5a2 2 0 012-2h3" />
-      <path d="M16 3h3a2 2 0 012 2v3" />
-      <path d="M3 16v3a2 2 0 002 2h3" />
-      <path d="M16 21h3a2 2 0 002-2v-3" />
-      <circle cx="9" cy="10" r="1.5" fill="#FFFFFF" stroke="none" />
-      <circle cx="15" cy="10" r="1.5" fill="#FFFFFF" stroke="none" />
-      <path d="M9 15c.83.67 2 1 3 1s2.17-.33 3-1" strokeWidth="2" />
-    </svg>
-  );
-}
-
-// ============================================
-// ANIMATION V4 (opacity 0.2)
-// ============================================
-
-const pulseKeyframes = `
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.2;
-    }
-    100% {
-      transform: scale(1.5);
-      opacity: 0;
-    }
-  }
-`;
-
-// ============================================
-// STYLES V4
+// STYLES
 // ============================================
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
-    display: "flex",
-    flexDirection: "column",
     minHeight: "100vh",
-    maxHeight: "100vh",
     backgroundColor: "#000000",
     color: "#FFFFFF",
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    display: "flex",
+    flexDirection: "column",
     maxWidth: "430px",
     margin: "0 auto",
     position: "relative",
-    overflow: "hidden",
   },
   header: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     padding: "16px 20px",
-    paddingTop: "60px",
-    flexShrink: 0,
+    paddingTop: "env(safe-area-inset-top, 16px)",
   },
   logo: {
     fontSize: "18px",
-    fontWeight: 700,
-    letterSpacing: "0.15em",
+    fontWeight: "700",
+    letterSpacing: "0.1em",
     color: "#FFFFFF",
     fontFamily: "'High Cruiser', -apple-system, sans-serif",
   },
   pageTitle: {
-    fontSize: "18px",
-    fontWeight: 600,
+    fontSize: "28px",
+    fontWeight: "700",
     color: "#FFFFFF",
   },
   helpButton: {
     width: "40px",
     height: "40px",
+    borderRadius: "50%",
+    backgroundColor: "transparent",
+    border: "1px solid #2C2C2E",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: "none",
-    border: "1px solid #2C2C2E",
-    borderRadius: "50%",
     cursor: "pointer",
+    color: "#6E6E73",
+    transition: "all 0.2s ease",
   },
   contentHome: {
     flex: 1,
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     padding: "0 20px",
     paddingBottom: "100px",
   },
-  emptySpace: {
-    flex: 1,
+  emptySpace: { flex: 1 },
+  buttonWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    paddingBottom: "40px",
   },
   contentSkane: {
     flex: 1,
@@ -291,99 +351,36 @@ const styles: Record<string, React.CSSProperties> = {
     flexDirection: "column",
     padding: "0 20px",
     paddingBottom: "100px",
-    overflowY: "auto",
+    gap: "24px",
   },
-  buttonWrapper: {
-    display: "flex",
-    justifyContent: "center",
-    paddingBottom: "20px",
-  },
-  skaneButton: {
-    position: "relative",
-    width: "180px",
-    height: "180px",
-    borderRadius: "50%",
-    backgroundColor: "transparent",
-    border: "2px solid #3C3C3E",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 0,
-  },
-  skaneButtonInner: {
-    width: "156px",
-    height: "156px",
-    borderRadius: "50%",
-    backgroundColor: "#1C1C1E",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "8px",
-  },
-  skaneButtonText: {
-    fontSize: "18px",
-    fontWeight: 600,
-    color: "#FFFFFF",
-    letterSpacing: "0.02em",
-  },
-  pulseRing: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    borderRadius: "50%",
-    border: "1px solid rgba(255,255,255,0.12)",
-    animation: "pulse 2.5s ease-out infinite",
-    pointerEvents: "none",
-  },
-  section: {
-    marginBottom: "20px",
-  },
+  historySection: { marginTop: "8px" },
   sectionTitle: {
-    fontSize: "11px",
-    fontWeight: 600,
-    letterSpacing: "0.1em",
+    fontSize: "13px",
+    fontWeight: "600",
     color: "#6E6E73",
-    marginBottom: "12px",
-    display: "block",
+    textTransform: "uppercase",
+    letterSpacing: "0.05em",
+    marginBottom: "16px",
   },
-  recentList: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  recentItem: {
+  historyList: { display: "flex", flexDirection: "column" },
+  historyItem: {
     display: "flex",
     alignItems: "center",
-    gap: "14px",
+    justifyContent: "space-between",
     padding: "14px 0",
     borderBottom: "1px solid #1C1C1E",
   },
-  recentEmoji: {
-    fontSize: "24px",
-  },
-  recentInfo: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "2px",
-  },
-  recentDate: {
-    fontSize: "15px",
-    fontWeight: 500,
-    color: "#FFFFFF",
-  },
-  recentTime: {
-    fontSize: "13px",
-    color: "#6E6E73",
-  },
-  statsCard: {
+  historyLeft: { display: "flex", alignItems: "center", gap: "14px" },
+  historyEmoji: { fontSize: "24px" },
+  historyInfo: { display: "flex", flexDirection: "column", gap: "2px" },
+  historyDate: { fontSize: "15px", fontWeight: "500", color: "#FFFFFF" },
+  historyTime: { fontSize: "13px", color: "#6E6E73" },
+  statsSection: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     gap: "32px",
-    padding: "20px",
+    padding: "24px",
     backgroundColor: "#1C1C1E",
     borderRadius: "16px",
   },
@@ -393,22 +390,88 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: "center",
     gap: "4px",
   },
-  statValue: {
-    fontSize: "28px",
-    fontWeight: 700,
-    color: "#FFFFFF",
-  },
-  statLabel: {
-    fontSize: "12px",
-    color: "#6E6E73",
-  },
+  statValue: { fontSize: "28px", fontWeight: "700", color: "#FFFFFF" },
+  statLabel: { fontSize: "13px", color: "#6E6E73" },
   statDivider: {
     width: "1px",
     height: "40px",
     backgroundColor: "#2C2C2E",
   },
+  skaneButton: {
+    width: "160px",
+    height: "160px",
+    borderRadius: "50%",
+    backgroundColor: "transparent",
+    border: `2px solid ${NOKTA_BLUE}`,
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "all 0.3s ease",
+    animation: "glowPulse 2.5s ease-in-out infinite",
+  },
+  skaneButtonInner: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  skaneButtonText: {
+    fontSize: "24px",
+    fontWeight: "600",
+    color: NOKTA_BLUE,
+    letterSpacing: "0.05em",
+  },
+  buttonWrapperSkane: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "auto",
+    paddingBottom: "20px",
+  },
+  skaneButtonSmall: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    padding: "16px 32px",
+    backgroundColor: "#1C1C1E",
+    border: "none",
+    borderRadius: "50px",
+    cursor: "pointer",
+    color: "#FFFFFF",
+    transition: "all 0.2s ease",
+  },
+  skaneButtonTextSmall: { fontSize: "16px", fontWeight: "600", color: "#FFFFFF" },
+  bottomNav: {
+    position: "fixed",
+    bottom: 0,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "100%",
+    maxWidth: "430px",
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    padding: "8px 0",
+    paddingBottom: "max(28px, env(safe-area-inset-bottom))",
+    backgroundColor: "transparent",
+  },
+  navItem: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "4px",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    padding: "8px 24px",
+    position: "relative",
+    transition: "all 0.2s ease",
+  },
+  navLabel: { fontSize: "10px", fontWeight: "500" },
 };
 
-// Alias pour compatibilité
-export { HomePageV3 as HomePage, SkanePageV3 as SkanePage };
-export default { HomePageV3, SkanePageV3, HomePage: HomePageV3, SkanePage: SkanePageV3 };
+// Compatibilité avec les imports existants
+export const HomePageV3 = HomePage;
+export const SkanePageV3 = SkanePage;
+
+export default HomePage;

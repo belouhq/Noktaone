@@ -133,18 +133,53 @@ export default function SkaneScan({ onSkaneComplete, onClose }: SkaneScanProps) 
     }
   };
 
-  // Afficher l'écran de permission si nécessaire
+  // Afficher l'écran de permission ou d'erreur si la caméra n'est pas disponible
   if (cameraState !== 'granted') {
+    const isError = cameraState === 'error';
+    const isDenied = cameraState === 'denied';
+    const isRequesting = cameraState === 'requesting';
+
     return (
       <div className="fixed inset-0 bg-black flex items-center justify-center">
-        <div className="text-center px-6">
-          <p className="text-white text-lg mb-4">Autorisation caméra requise</p>
-          <button
-            onClick={requestPermission}
-            className="px-6 py-3 bg-blue-500 rounded-full text-white font-medium"
-          >
-            Autoriser la caméra
-          </button>
+        <div className="text-center px-6 max-w-sm">
+          {isError ? (
+            <>
+              <p className="text-white text-lg mb-2">Aucune caméra trouvée</p>
+              <p className="text-white/60 text-sm mb-6">
+                Utilisez un appareil avec une caméra (smartphone ou ordinateur avec webcam) pour faire un Skane.
+              </p>
+              <button
+                onClick={requestPermission}
+                className="px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white font-medium"
+              >
+                Réessayer
+              </button>
+            </>
+          ) : isDenied ? (
+            <>
+              <p className="text-white text-lg mb-4">Accès à la caméra refusé</p>
+              <p className="text-white/60 text-sm mb-6">
+                Autorisez la caméra dans les paramètres du navigateur pour utiliser le Skane.
+              </p>
+              <button
+                onClick={requestPermission}
+                className="px-6 py-3 bg-blue-500 rounded-full text-white font-medium"
+              >
+                Réessayer
+              </button>
+            </>
+          ) : (
+            <>
+              <p className="text-white text-lg mb-4">Autorisation caméra requise</p>
+              <button
+                onClick={requestPermission}
+                disabled={isRequesting}
+                className="px-6 py-3 bg-blue-500 rounded-full text-white font-medium disabled:opacity-50"
+              >
+                {isRequesting ? 'Demande en cours…' : 'Autoriser la caméra'}
+              </button>
+            </>
+          )}
         </div>
       </div>
     );
@@ -239,34 +274,49 @@ export default function SkaneScan({ onSkaneComplete, onClose }: SkaneScanProps) 
 
               {/* Boutons droite */}
               <div className="flex items-center gap-2">
-                {/* Flash (apparaît si low light ou activé) */}
-                {(isLowLight || isFlashEnabled) && (
-                  <button
-                    onClick={toggleFlash}
-                    className={`
-                      w-10 h-10 rounded-full flex items-center justify-center
-                      active:scale-95 transition-all
-                      ${isFlashEnabled 
-                        ? 'bg-yellow-500/20 border border-yellow-500/50' 
+                {/* Flash - toujours visible, mis en avant quand utile */}
+                <button
+                  onClick={toggleFlash}
+                  className={`
+                    w-10 h-10 rounded-full flex items-center justify-center
+                    active:scale-95 transition-all
+                    ${
+                      isFlashEnabled || isLowLight
+                        ? 'bg-yellow-500/20 border border-yellow-500/50'
                         : 'bg-white/10 backdrop-blur-sm'
-                      }
-                    `}
-                  >
-                    <Zap 
-                      size={18} 
-                      className={isFlashEnabled ? 'text-yellow-400' : 'text-white/70'} 
-                      fill={isFlashEnabled ? 'currentColor' : 'none'}
-                    />
-                  </button>
-                )}
+                    }
+                  `}
+                >
+                  <Zap
+                    size={18}
+                    className={
+                      isFlashEnabled || isLowLight ? 'text-yellow-400' : 'text-white/60'
+                    }
+                    fill={isFlashEnabled ? 'currentColor' : 'none'}
+                  />
+                </button>
 
-                {/* Mode Invité */}
+                {/* Mode Invité - bleu seulement quand actif */}
                 <button
                   onClick={toggleGuestMode}
-                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 active:scale-95 transition-transform"
+                  className={`flex items-center gap-2 px-3 py-2 rounded-full backdrop-blur-sm active:scale-95 transition-transform border
+                    ${
+                      isGuestMode
+                        ? 'bg-blue-500/20 border-blue-500/30'
+                        : 'bg-white/10 border-white/20'
+                    }`}
                 >
-                  <UserPlus size={16} className="text-blue-400" />
-                  <span className="text-blue-400 text-xs font-medium">Inviter</span>
+                  <UserPlus
+                    size={16}
+                    className={isGuestMode ? 'text-blue-400' : 'text-white/70'}
+                  />
+                  <span
+                    className={`text-xs font-medium ${
+                      isGuestMode ? 'text-blue-400' : 'text-white/70'
+                    }`}
+                  >
+                    Invité
+                  </span>
                   {invitationsCount > 0 && (
                     <span className="min-w-[18px] h-[18px] bg-blue-500 rounded-full text-[10px] font-bold text-white flex items-center justify-center">
                       {invitationsCount}

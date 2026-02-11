@@ -246,20 +246,67 @@ export function ReminderSetupModalViral({
     midday: initialTimes.midday ?? "13:00",
     evening: initialTimes.evening ?? "20:00",
   });
-  const [enabledSlots, setEnabledSlots] = useState({
-    morning: true,
-    midday: true,
-    evening: true,
+  const [enabledSlots, setEnabledSlots] = useState(() => {
+    if (typeof window === "undefined") {
+      return {
+        morning: true,
+        midday: true,
+        evening: true,
+      };
+    }
+    try {
+      const raw = window.localStorage.getItem("nokta_reminder_slots_enabled");
+      if (!raw) {
+        return {
+          morning: true,
+          midday: true,
+          evening: true,
+        };
+      }
+      const parsed = JSON.parse(raw) as {
+        morning?: boolean;
+        afternoon?: boolean;
+        evening?: boolean;
+      };
+      return {
+        morning: parsed.morning !== false,
+        midday: parsed.afternoon !== false,
+        evening: parsed.evening !== false,
+      };
+    } catch {
+      return {
+        morning: true,
+        midday: true,
+        evening: true,
+      };
+    }
   });
 
   if (!isOpen) return null;
 
   const handleSave = () => {
-    if (navigator.vibrate) navigator.vibrate(10);
+    if (typeof navigator !== "undefined" && (navigator as any).vibrate) {
+      (navigator as any).vibrate(10);
+    }
     const enabledTimes: Record<string, string> = {};
     (["morning", "midday", "evening"] as const).forEach((slot) => {
       if (enabledSlots[slot]) enabledTimes[slot] = times[slot];
     });
+    try {
+      const slotsPayload = {
+        morning: !!enabledSlots.morning,
+        afternoon: !!enabledSlots.midday,
+        evening: !!enabledSlots.evening,
+      };
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          "nokta_reminder_slots_enabled",
+          JSON.stringify(slotsPayload)
+        );
+      }
+    } catch {
+      // ignore storage errors
+    }
     onSave(enabledTimes);
     onClose();
   };

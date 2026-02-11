@@ -141,16 +141,14 @@ export function useCamera(): UseCameraReturn {
 
       setCameraState('granted');
     } catch (error: any) {
-      console.error('Camera error:', error);
-      
       if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
         setCameraState('denied');
       } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
-        // Pas de caméra disponible
         setCameraState('error');
+        // Cas attendu (ex. desktop sans webcam) — pas de log, l'UI affiche "Aucune caméra trouvée"
       } else {
-        // Autre erreur technique
         setCameraState('error');
+        console.error('Camera error:', error);
       }
     }
   };

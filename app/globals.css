@@ -779,3 +779,10 @@ select option {
   margin-right: 0;
   margin-left: auto;
 }
+
+/* Spinner pour page Paramètres */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

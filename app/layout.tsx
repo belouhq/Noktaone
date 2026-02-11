@@ -6,13 +6,12 @@ import { AuthProvider } from "@/components/providers/AuthProvider";
 import AppProvider from "@/components/providers/AppProvider";
 import ReferralTracker from "@/components/ReferralTracker";
 import TestButtons from "@/components/debug/TestButtons";
-import "@/lib/utils/console-filter"; // Filtrer les messages TensorFlow
+import "@/lib/utils/console-filter";
 
-// Police optionnelle - utiliser système si Google Fonts n'est pas disponible
 let poppinsVariable = "";
 try {
   const { Poppins } = require("next/font/google");
-  const poppins = Poppins({ 
+  const poppins = Poppins({
     subsets: ["latin"],
     weight: ["300", "400", "500", "600", "700"],
     variable: "--font-poppins",
@@ -21,7 +20,6 @@ try {
   });
   poppinsVariable = poppins.variable;
 } catch (e) {
-  // Google Fonts non disponible, utiliser police système
   console.warn("Google Fonts not available, using system fonts");
 }
 
@@ -62,7 +60,11 @@ export default function RootLayout({
         <meta name="HandheldFriendly" content="true" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
-      <body className={`antialiased bg-black text-white`} style={{ pointerEvents: 'auto', position: 'relative', margin: 0, padding: 0 }} suppressHydrationWarning>
+      <body
+        className="antialiased bg-black text-white"
+        style={{ pointerEvents: "auto", position: "relative", margin: 0, padding: 0 }}
+        suppressHydrationWarning
+      >
         <I18nProvider>
           <AuthProvider>
             <AppProvider>
@@ -70,7 +72,7 @@ export default function RootLayout({
                 <ReferralTracker />
               </Suspense>
               <TestButtons />
-              <div className="app-container" style={{ pointerEvents: 'auto', position: 'relative' }}>
+              <div className="app-container" style={{ pointerEvents: "auto", position: "relative" }}>
                 <div className="landscape-warning fixed inset-0 bg-black z-[100] hidden items-center justify-center p-8 text-center pointer-events-none">
                   <div>
                     <p className="text-4xl mb-4"></p>
@@ -79,7 +81,7 @@ export default function RootLayout({
                     </p>
                   </div>
                 </div>
-                <main className="main-content" style={{ pointerEvents: 'auto', position: 'relative', zIndex: 10 }}>
+                <main className="main-content" style={{ pointerEvents: "auto", position: "relative", zIndex: 10 }}>
                   {children}
                 </main>
               </div>

@@ -5,6 +5,10 @@ import { motion } from "framer-motion";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { X, Sparkles } from "lucide-react";
 
+/**
+ * ONBOARDING - Dernière étape : réflexe Nokta
+ * Dernier code reçu : framer-motion + i18n
+ */
 export default function OnboardingReflexPage() {
   const router = useRouter();
   const { t } = useTranslation();
@@ -29,7 +33,6 @@ export default function OnboardingReflexPage() {
 
   return (
     <main className="fixed inset-0 bg-black flex flex-col px-6 py-safe">
-      {/* Header */}
       <div className="flex items-center justify-between py-4">
         <motion.button
           initial={{ opacity: 0 }}
@@ -45,20 +48,16 @@ export default function OnboardingReflexPage() {
         >
           <X size={20} className="text-white/70" />
         </motion.button>
-        
-        {/* Indicateur 2/2 */}
+
         <div className="flex gap-2">
           <div className="w-8 h-1 rounded-full bg-cyan-500" />
           <div className="w-8 h-1 rounded-full bg-cyan-500" />
         </div>
-        
+
         <div className="w-9" />
       </div>
 
-      {/* Contenu centré */}
       <div className="flex-1 flex flex-col items-center justify-center max-w-sm mx-auto w-full">
-        
-        {/* Animation pulsante */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -85,7 +84,6 @@ export default function OnboardingReflexPage() {
           </motion.div>
         </motion.div>
 
-        {/* Message clé */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -95,11 +93,9 @@ export default function OnboardingReflexPage() {
           <h1 className="text-3xl font-bold text-white leading-tight mb-6">
             {t("onboarding.reflex.title")}
           </h1>
-          
           <p className="text-white/60 text-base leading-relaxed">
             {t("onboarding.reflex.subtitle")}
           </p>
-          
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -111,7 +107,6 @@ export default function OnboardingReflexPage() {
         </motion.div>
       </div>
 
-      {/* CTAs */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

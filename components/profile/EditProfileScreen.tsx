@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import { useRouter } from "next/navigation";
 
 // ============================================
 // ÉCRAN MODIFIER MON PROFIL - NOKTA ONE
@@ -24,12 +24,6 @@ export interface EditProfileFormData {
   avatar: string | null;
 }
 
-const GENDER_VALUES = ["male", "female", "other", "prefer_not"] as const;
-const COUNTRY_CODES = ["FR", "US", "GB", "DE", "ES", "IT", "CN", "JP"] as const;
-const FLAGS: Record<(typeof COUNTRY_CODES)[number], string> = {
-  FR: "🇫🇷", US: "🇺🇸", GB: "🇬🇧", DE: "🇩🇪", ES: "🇪🇸", IT: "🇮🇹", CN: "🇨🇳", JP: "🇯🇵",
-};
-
 const DEFAULT_DATA: EditProfileFormData = {
   firstName: "",
   lastName: "",
@@ -46,15 +40,6 @@ const DEFAULT_DATA: EditProfileFormData = {
   avatar: null,
 };
 
-function toGenderCode(v: string): (typeof GENDER_VALUES)[number] {
-  const lower = (v || "").toLowerCase();
-  if (lower === "homme" || lower === "male" || lower === "hombre" || lower === "male") return "male";
-  if (lower === "femme" || lower === "female" || lower === "mujer" || lower === "female") return "female";
-  if (lower === "autre" || lower === "other" || lower === "otro") return "other";
-  if (lower === "prefer_not" || lower === "prefère ne pas dire" || lower.includes("prefer")) return "prefer_not";
-  return "male";
-}
-
 function normalizeInitial(d: Record<string, unknown> | undefined): EditProfileFormData {
   if (!d) return { ...DEFAULT_DATA };
   const dob = d.dateOfBirth ?? d.birthDate;
@@ -69,7 +54,7 @@ function normalizeInitial(d: Record<string, unknown> | undefined): EditProfileFo
     lastName: String(d.lastName ?? ""),
     username: String(d.username ?? "").replace(/^@/, ""),
     dateOfBirth: dateStr || "1993-01-15",
-    gender: toGenderCode(String(d.gender ?? "male")),
+    gender: String(d.gender ?? "male"),
     email: String(d.email ?? ""),
     phone: String(d.phone ?? ""),
     address: String(d.address ?? ""),
@@ -81,6 +66,24 @@ function normalizeInitial(d: Record<string, unknown> | undefined): EditProfileFo
   };
 }
 
+const genderOptions = [
+  { value: "male", label: "Homme" },
+  { value: "female", label: "Femme" },
+  { value: "other", label: "Autre" },
+  { value: "prefer_not", label: "Ne pas préciser" },
+];
+
+const countryOptions = [
+  { value: "FR", label: "France", flag: "🇫🇷" },
+  { value: "US", label: "États-Unis", flag: "🇺🇸" },
+  { value: "GB", label: "Royaume-Uni", flag: "🇬🇧" },
+  { value: "DE", label: "Allemagne", flag: "🇩🇪" },
+  { value: "ES", label: "Espagne", flag: "🇪🇸" },
+  { value: "IT", label: "Italie", flag: "🇮🇹" },
+  { value: "CN", label: "Chine", flag: "🇨🇳" },
+  { value: "JP", label: "Japon", flag: "🇯🇵" },
+];
+
 interface EditProfileScreenProps {
   initialData?: Record<string, unknown>;
   onSave?: (data: EditProfileFormData & { dateOfBirth: string; language?: string }) => void;
@@ -91,7 +94,6 @@ interface EditProfileScreenProps {
   onSkane?: () => void;
   onSettings?: () => void;
   activeNav?: "home" | "skane" | "settings";
-  /** When true (e.g. inside a modal), footer is sticky at bottom of container instead of viewport-fixed */
   embeddedInModal?: boolean;
 }
 
@@ -107,21 +109,17 @@ export default function EditProfileScreen({
   activeNav = "settings",
   embeddedInModal = false,
 }: EditProfileScreenProps) {
-  const { t } = useTranslation();
-  const containerStyle = embeddedInModal
-    ? { ...styles.container, minHeight: 0, height: "100%", maxWidth: "100%" }
-    : styles.container;
-  const headerStyle = embeddedInModal
-    ? { ...styles.header, paddingTop: "20px" }
-    : styles.header;
-  const footerStyle = embeddedInModal
-    ? { ...styles.footer, position: "sticky" as const, bottom: 0, marginTop: "auto" }
-    : styles.footer;
+  const router = useRouter();
   const [formData, setFormData] = useState<EditProfileFormData>(() =>
     normalizeInitial(initialData as Record<string, unknown>)
   );
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Navigation : si le parent ne fournit pas les callbacks, on utilise le router
+  const handleNavHome = onHome ?? (() => router.push("/"));
+  const handleNavSkane = onSkane ?? (() => router.push("/skane"));
+  const handleNavSettings = onSettings ?? (() => router.push("/settings"));
 
   useEffect(() => {
     setFormData(normalizeInitial(initialData as Record<string, unknown>));
@@ -160,20 +158,29 @@ export default function EditProfileScreen({
     }
   };
 
-  const getCountryLabel = (code: string) => {
-    const key = `editProfile.country${code}` as "editProfile.countryFR";
-    return t(key);
+  const getSelectedOption = <T extends { value: string }>(options: T[], value: string): T => {
+    return options.find((opt) => opt.value === value) ?? options[0];
   };
+
+  const containerStyle = embeddedInModal
+    ? { ...styles.container, minHeight: 0, height: "100%", maxWidth: "100%" }
+    : styles.container;
+  const headerStyle = embeddedInModal
+    ? { ...styles.header, paddingTop: "20px" }
+    : styles.header;
+  const footerStyle = embeddedInModal
+    ? { ...styles.footer, position: "sticky" as const, bottom: 0, marginTop: "auto" }
+    : styles.footer;
 
   return (
     <div style={containerStyle}>
       <header style={headerStyle}>
-        <h1 style={styles.headerTitle}>{t("editProfile.title")}</h1>
+        <h1 style={styles.headerTitle}>Modifier mon profil</h1>
         <button
           type="button"
           style={styles.closeButton}
           onClick={onClose}
-          aria-label={t("common.close")}
+          aria-label="Fermer"
         >
           <CloseIcon />
         </button>
@@ -181,19 +188,23 @@ export default function EditProfileScreen({
 
       <main style={styles.content}>
         <section style={styles.section}>
-          <span style={styles.sectionTitle}>{t("editProfile.sectionPhoto")}</span>
+          <span style={styles.sectionTitle}>PHOTO DE PROFIL</span>
           <div style={styles.photoSection}>
             <div style={styles.avatarContainer}>
               {formData.avatar ? (
-                <img src={formData.avatar} alt="" style={styles.avatar} />
+                <img src={formData.avatar} alt="Avatar" style={styles.avatar} />
               ) : (
                 <div style={styles.avatarPlaceholder}>
                   <UserIcon />
                 </div>
               )}
             </div>
-            <button type="button" style={styles.changePhotoButton} onClick={handlePhotoChange}>
-              {t("profile.changePhoto")}
+            <button
+              type="button"
+              style={styles.changePhotoButton}
+              onClick={handlePhotoChange}
+            >
+              Changer la photo
             </button>
             <input
               ref={fileInputRef}
@@ -207,35 +218,37 @@ export default function EditProfileScreen({
         </section>
 
         <section style={styles.section}>
-          <span style={styles.sectionTitle}>{t("editProfile.sectionPersonal")}</span>
+          <span style={styles.sectionTitle}>INFORMATIONS PERSONNELLES</span>
+
           <div style={styles.row}>
             <div style={styles.fieldHalf}>
               <label style={styles.label}>
-                {t("profile.firstName")} <span style={styles.required}>*</span>
+                Prénom <span style={styles.required}>*</span>
               </label>
               <input
                 type="text"
                 value={formData.firstName}
                 onChange={(e) => handleChange("firstName", e.target.value)}
                 style={styles.input}
-                placeholder={t("editProfile.placeholders.firstName")}
+                placeholder="Votre prénom"
               />
             </div>
             <div style={styles.fieldHalf}>
               <label style={styles.label}>
-                {t("profile.lastName")} <span style={styles.required}>*</span>
+                Nom <span style={styles.required}>*</span>
               </label>
               <input
                 type="text"
                 value={formData.lastName}
                 onChange={(e) => handleChange("lastName", e.target.value)}
                 style={styles.input}
-                placeholder={t("editProfile.placeholders.lastName")}
+                placeholder="Votre nom"
               />
             </div>
           </div>
+
           <div style={styles.field}>
-            <label style={styles.label}>@ {t("profile.username")}</label>
+            <label style={styles.label}>@ Username</label>
             <div style={styles.inputWithPrefix}>
               <span style={styles.inputPrefix}>@</span>
               <input
@@ -243,13 +256,14 @@ export default function EditProfileScreen({
                 value={formData.username}
                 onChange={(e) => handleChange("username", e.target.value)}
                 style={styles.inputNoBorder}
-                placeholder={t("editProfile.placeholders.username")}
+                placeholder="username"
               />
             </div>
           </div>
+
           <div style={styles.field}>
             <label style={styles.label}>
-              {t("profile.dateOfBirth")} <span style={styles.required}>*</span>
+              Date de naissance <span style={styles.required}>*</span>
             </label>
             <input
               type="date"
@@ -258,92 +272,17 @@ export default function EditProfileScreen({
               style={styles.input}
             />
           </div>
+
           <div style={styles.field}>
-            <label style={styles.label}>{t("profile.gender")}</label>
+            <label style={styles.label}>Genre</label>
             <select
               value={formData.gender}
               onChange={(e) => handleChange("gender", e.target.value)}
               style={styles.select}
             >
-              <option value="male">{t("profile.genderMale")}</option>
-              <option value="female">{t("profile.genderFemale")}</option>
-              <option value="other">{t("profile.genderOther")}</option>
-              <option value="prefer_not">{t("profile.genderPreferNotToSay")}</option>
-            </select>
-          </div>
-        </section>
-
-        <section style={styles.section}>
-          <span style={styles.sectionTitle}>{t("editProfile.sectionContact")}</span>
-          <div style={styles.field}>
-            <label style={styles.label}>
-              {t("profile.email")} <span style={styles.required}>*</span>
-            </label>
-            <input
-              type="email"
-              value={formData.email}
-              onChange={(e) => handleChange("email", e.target.value)}
-              style={styles.input}
-              placeholder={t("editProfile.placeholders.email")}
-            />
-          </div>
-          <div style={styles.field}>
-            <label style={styles.label}>{t("profile.phone")}</label>
-            <div style={styles.inputWithPrefix}>
-              <span style={styles.flagPrefix}>
-                {FLAGS[formData.country as (typeof COUNTRY_CODES)[number]] ?? "🇫🇷"}
-              </span>
-              <input
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => handleChange("phone", e.target.value)}
-                style={styles.inputNoBorder}
-                placeholder={t("editProfile.placeholders.phone")}
-              />
-            </div>
-          </div>
-          <div style={styles.field}>
-            <label style={styles.label}>{t("profile.address")}</label>
-            <input
-              type="text"
-              value={formData.address}
-              onChange={(e) => handleChange("address", e.target.value)}
-              style={styles.input}
-              placeholder={t("editProfile.placeholders.address")}
-            />
-          </div>
-          <div style={styles.row}>
-            <div style={styles.fieldHalf}>
-              <label style={styles.label}>{t("profile.postalCode")}</label>
-              <input
-                type="text"
-                value={formData.postalCode}
-                onChange={(e) => handleChange("postalCode", e.target.value)}
-                style={styles.input}
-                placeholder={t("editProfile.placeholders.postalCode")}
-              />
-            </div>
-            <div style={styles.fieldHalf}>
-              <label style={styles.label}>{t("profile.city")}</label>
-              <input
-                type="text"
-                value={formData.city}
-                onChange={(e) => handleChange("city", e.target.value)}
-                style={styles.input}
-                placeholder={t("editProfile.placeholders.city")}
-              />
-            </div>
-          </div>
-          <div style={styles.field}>
-            <label style={styles.label}>{t("profile.country")}</label>
-            <select
-              value={formData.country}
-              onChange={(e) => handleChange("country", e.target.value)}
-              style={styles.select}
-            >
-              {COUNTRY_CODES.map((code) => (
-                <option key={code} value={code}>
-                  {FLAGS[code]} {getCountryLabel(code)}
+              {genderOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
                 </option>
               ))}
             </select>
@@ -351,15 +290,98 @@ export default function EditProfileScreen({
         </section>
 
         <section style={styles.section}>
-          <span style={styles.sectionTitle}>{t("editProfile.sectionPreferences")}</span>
+          <span style={styles.sectionTitle}>COORDONNÉES</span>
+
           <div style={styles.field}>
-            <label style={styles.label}>{t("editProfile.jobOptional")}</label>
+            <label style={styles.label}>
+              Email <span style={styles.required}>*</span>
+            </label>
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleChange("email", e.target.value)}
+              style={styles.input}
+              placeholder="votre@email.com"
+            />
+          </div>
+
+          <div style={styles.field}>
+            <label style={styles.label}>Téléphone</label>
+            <div style={styles.inputWithPrefix}>
+              <span style={styles.flagPrefix}>
+                {getSelectedOption(countryOptions, formData.country).flag}
+              </span>
+              <input
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => handleChange("phone", e.target.value)}
+                style={styles.inputNoBorder}
+                placeholder="+33 6 12 34 56 78"
+              />
+            </div>
+          </div>
+
+          <div style={styles.field}>
+            <label style={styles.label}>Adresse</label>
+            <input
+              type="text"
+              value={formData.address}
+              onChange={(e) => handleChange("address", e.target.value)}
+              style={styles.input}
+              placeholder="Votre adresse"
+            />
+          </div>
+
+          <div style={styles.row}>
+            <div style={styles.fieldHalf}>
+              <label style={styles.label}>Code postal</label>
+              <input
+                type="text"
+                value={formData.postalCode}
+                onChange={(e) => handleChange("postalCode", e.target.value)}
+                style={styles.input}
+                placeholder="75000"
+              />
+            </div>
+            <div style={styles.fieldHalf}>
+              <label style={styles.label}>Ville</label>
+              <input
+                type="text"
+                value={formData.city}
+                onChange={(e) => handleChange("city", e.target.value)}
+                style={styles.input}
+                placeholder="Paris"
+              />
+            </div>
+          </div>
+
+          <div style={styles.field}>
+            <label style={styles.label}>Pays</label>
+            <select
+              value={formData.country}
+              onChange={(e) => handleChange("country", e.target.value)}
+              style={styles.select}
+            >
+              {countryOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.flag} {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </section>
+
+        <section style={styles.section}>
+          <span style={styles.sectionTitle}>PRÉFÉRENCES</span>
+
+          <div style={styles.field}>
+            <label style={styles.label}>Métier (optionnel)</label>
             <input
               type="text"
               value={formData.occupation}
               onChange={(e) => handleChange("occupation", e.target.value)}
               style={styles.input}
-              placeholder={t("editProfile.placeholders.job")}
+              placeholder="Ex: Entrepreneur, Athlète, Étudiant..."
             />
           </div>
         </section>
@@ -367,7 +389,7 @@ export default function EditProfileScreen({
 
       <footer style={footerStyle}>
         <button type="button" style={styles.cancelButton} onClick={onCancel}>
-          {t("common.cancel")}
+          Annuler
         </button>
         <button
           type="button"
@@ -378,45 +400,83 @@ export default function EditProfileScreen({
           onClick={handleSave}
           disabled={isLoading}
         >
-          {isLoading ? t("editProfile.saving") : t("common.save")}
+          {isLoading ? "Enregistrement..." : "Enregistrer"}
         </button>
       </footer>
 
       {showBottomNav && (
         <nav style={styles.bottomNav}>
-          <button
-            type="button"
-            style={{ ...styles.navItem, opacity: activeNav === "home" ? 1 : 0.5 }}
-            onClick={onHome}
-          >
-            <HomeIcon />
-            <span style={styles.navLabel}>{t("nav.home")}</span>
-          </button>
-          <button
-            type="button"
-            style={{ ...styles.navItem, opacity: activeNav === "skane" ? 1 : 0.5 }}
-            onClick={onSkane}
-          >
-            <SkaneIcon />
-            <span style={styles.navLabel}>{t("nav.skane")}</span>
-          </button>
-          <button
-            type="button"
-            style={{ ...styles.navItem, opacity: activeNav === "settings" ? 1 : 0.5 }}
-            onClick={onSettings}
-          >
-            <SettingsIcon />
-            <span style={styles.navLabel}>{t("nav.settings")}</span>
-          </button>
+          <NavItem
+            icon={<HomeIcon />}
+            label="Accueil"
+            active={activeNav === "home"}
+            onClick={handleNavHome}
+          />
+          <NavItem
+            icon={<SkaneIcon />}
+            label="Skane"
+            active={activeNav === "skane"}
+            onClick={handleNavSkane}
+          />
+          <NavItem
+            icon={<SettingsIcon />}
+            label="Paramètres"
+            active={activeNav === "settings"}
+            onClick={handleNavSettings}
+          />
         </nav>
       )}
+
+      <style>{globalStyles}</style>
     </div>
   );
 }
 
+// ============================================
+// COMPOSANTS
+// ============================================
+
+function NavItem({
+  icon,
+  label,
+  active,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  active: boolean;
+  onClick?: () => void;
+}) {
+  const handleClick = () => {
+    if (onClick) onClick();
+  };
+  return (
+    <button
+      type="button"
+      style={{ ...styles.navItem, opacity: active ? 1 : 0.5, cursor: onClick ? "pointer" : "default" }}
+      onClick={handleClick}
+      aria-label={label}
+    >
+      {icon}
+      <span style={styles.navLabel}>{label}</span>
+    </button>
+  );
+}
+
+// ============================================
+// ICÔNES
+// ============================================
+
 function CloseIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6E6E73" strokeWidth="2">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#6E6E73"
+      strokeWidth="2"
+    >
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
@@ -425,7 +485,14 @@ function CloseIcon() {
 
 function UserIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6E6E73" strokeWidth="1.5">
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#6E6E73"
+      strokeWidth="1.5"
+    >
       <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
       <circle cx="12" cy="7" r="4" />
     </svg>
@@ -434,7 +501,14 @@ function UserIcon() {
 
 function HomeIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
       <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
       <polyline points="9,22 9,12 15,12 15,22" />
     </svg>
@@ -443,7 +517,15 @@ function HomeIcon() {
 
 function SkaneIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    >
       <path d="M3 8V5a2 2 0 012-2h3" />
       <path d="M16 3h3a2 2 0 012 2v3" />
       <path d="M3 16v3a2 2 0 002 2h3" />
@@ -457,12 +539,43 @@ function SkaneIcon() {
 
 function SettingsIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    >
       <circle cx="12" cy="12" r="3" />
       <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
     </svg>
   );
 }
+
+// ============================================
+// STYLES
+// ============================================
+
+const globalStyles = `
+  input::placeholder {
+    color: #48484A;
+  }
+  
+  input:focus, select:focus {
+    border-color: #3C3C3E;
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.5;
+  }
+  
+  select option {
+    background-color: #1C1C1E;
+    color: #FFFFFF;
+  }
+`;
 
 const styles: Record<string, React.CSSProperties> = {
   container: {
@@ -557,8 +670,12 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 500,
     cursor: "pointer",
   },
-  field: { marginBottom: "16px" },
-  fieldHalf: { flex: 1 },
+  field: {
+    marginBottom: "16px",
+  },
+  fieldHalf: {
+    flex: 1,
+  },
   row: {
     display: "flex",
     gap: "12px",
@@ -571,7 +688,9 @@ const styles: Record<string, React.CSSProperties> = {
     display: "block",
     marginBottom: "8px",
   },
-  required: { color: "#FF453A" },
+  required: {
+    color: "#FF453A",
+  },
   input: {
     width: "100%",
     padding: "16px",
