@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 // ============================================
 // NOKTA ONE - PAGES FINALES V5
@@ -109,6 +110,12 @@ const animations = `
 // BOTTOM NAVIGATION
 // ============================================
 
+const NAV_PATHS: Record<string, string> = {
+  home: "/home",
+  skane: "/home?tab=skane",
+  settings: "/settings",
+};
+
 export const BottomNav = ({
   currentPage = "home",
   onNavigate = () => {},
@@ -116,10 +123,11 @@ export const BottomNav = ({
   currentPage?: string;
   onNavigate?: (id: string) => void;
 }) => {
+  const { t } = useTranslation();
   const navItems = [
-    { id: "home", label: "Accueil", Icon: HomeIcon },
-    { id: "skane", label: "Skane", Icon: SkaneIcon },
-    { id: "settings", label: "Paramètres", Icon: SettingsIcon },
+    { id: "home", label: t("nav.home"), Icon: HomeIcon },
+    { id: "skane", label: t("nav.skaneboard"), Icon: SkaneIcon },
+    { id: "settings", label: t("nav.settings"), Icon: SettingsIcon },
   ];
 
   return (
@@ -130,6 +138,8 @@ export const BottomNav = ({
           <button
             key={id}
             style={styles.navItem}
+            data-nav-button
+            data-nav-path={NAV_PATHS[id] ?? "/"}
             onClick={() => {
               if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate(5);
               onNavigate(id);
@@ -163,6 +173,7 @@ export const HomePage = ({
   onNavigate = () => {},
   onHelp = () => {},
 }: HomePageV3Props) => {
+  const { t } = useTranslation();
   const handleStartSkane = () => {
     if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate([10, 30, 10]);
     onStartSkane();
@@ -172,7 +183,7 @@ export const HomePage = ({
     <div style={styles.container}>
       <header style={styles.header}>
         <span style={styles.logo}>NOKTA ONE</span>
-        <button style={styles.helpButton} onClick={onHelp} aria-label="Aide">
+        <button style={styles.helpButton} onClick={onHelp} aria-label={t("home.helpAria")}>
           <HelpIcon />
         </button>
       </header>
@@ -183,7 +194,7 @@ export const HomePage = ({
           <button
             style={styles.skaneButton}
             onClick={handleStartSkane}
-            aria-label="Commencer un Skane"
+            aria-label={t("home.startSkaneAria")}
           >
             <span style={styles.skaneButtonText}>Skane</span>
           </button>
@@ -226,6 +237,7 @@ export const SkanePage = ({
   onStartSkane = () => {},
   onNavigate = () => {},
 }: SkanePageV3Props) => {
+  const { t } = useTranslation();
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -235,7 +247,7 @@ export const SkanePage = ({
 
       <main style={styles.contentSkane}>
         <section style={styles.historySection}>
-          <h2 style={styles.sectionTitle}>Historique récent</h2>
+          <h2 style={styles.sectionTitle}>{t("home.recentHistory")}</h2>
           <div style={styles.historyList}>
             {recentSkanes.map((skane) => (
               <div key={skane.id} style={styles.historyItem}>
@@ -254,12 +266,12 @@ export const SkanePage = ({
         <section style={styles.statsSection}>
           <div style={styles.statItem}>
             <span style={styles.statValue}>{streak}</span>
-            <span style={styles.statLabel}>jours d&apos;affilée</span>
+            <span style={styles.statLabel}>{t("home.streakDays")}</span>
           </div>
           <div style={styles.statDivider} />
           <div style={styles.statItem}>
             <span style={styles.statValue}>{totalSkanes}</span>
-            <span style={styles.statLabel}>Skanes total</span>
+            <span style={styles.statLabel}>{t("home.totalSkanes")}</span>
           </div>
         </section>
 
@@ -270,10 +282,10 @@ export const SkanePage = ({
               if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate([10, 30, 10]);
               onStartSkane();
             }}
-            aria-label="Nouveau Skane"
+            aria-label={t("home.newSkane")}
           >
             <SkaneIcon active={false} />
-            <span style={styles.skaneButtonTextSmall}>Nouveau Skane</span>
+            <span style={styles.skaneButtonTextSmall}>{t("home.newSkane")}</span>
           </button>
         </div>
       </main>
@@ -454,6 +466,8 @@ const styles: Record<string, React.CSSProperties> = {
     padding: "8px 0",
     paddingBottom: "max(28px, env(safe-area-inset-bottom))",
     backgroundColor: "transparent",
+    zIndex: 100,
+    pointerEvents: "auto",
   },
   navItem: {
     display: "flex",
@@ -466,6 +480,8 @@ const styles: Record<string, React.CSSProperties> = {
     padding: "8px 24px",
     position: "relative",
     transition: "all 0.2s ease",
+    touchAction: "manipulation",
+    pointerEvents: "auto",
   },
   navLabel: { fontSize: "10px", fontWeight: "500" },
 };

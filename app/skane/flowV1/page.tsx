@@ -1,26 +1,18 @@
 /**
- * Point d'entrée FlowV1
- * Route conditionnelle : /skane/flowV1
- * Redirige vers le flow approprié selon FLOW_V1_ENABLED
+ * Legacy route /skane/flowV1 — redirects to main Skane flow.
+ * flowV1/scan did not exist (404). Always use /skane/analyzing.
  */
 
 'use client';
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { FLOW_V1_ENABLED } from '@/lib/flowV1';
 
 export default function FlowV1EntryPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (FLOW_V1_ENABLED) {
-      // Redirige vers le nouveau flow
-      router.replace('/skane/flowV1/scan');
-    } else {
-      // Redirige vers le flow existant
-      router.replace('/skane');
-    }
+    router.replace('/skane');
   }, [router]);
 
   return (

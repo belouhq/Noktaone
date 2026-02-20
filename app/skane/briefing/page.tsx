@@ -73,7 +73,7 @@ export default function BriefingPage() {
   };
 
   const handleBack = () => {
-    router.push("/skane/result");
+    router.push("/skane");
   };
 
   if (!isReady || !actionId) {

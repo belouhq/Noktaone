@@ -8,11 +8,13 @@
     "retry": "Erneut versuchen",
     "loading": "Laden...",
     "error": "Fehler",
-    "success": "Erfolg"
+    "success": "Erfolg",
+    "landscapeWarning": "Bitte drehen Sie Ihr Telefon in den Hochformatmodus"
   },
   "nav": {
     "home": "Startseite",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "Einstellungen"
   },
   "home": {
@@ -22,7 +24,11 @@
     "lastSkaneTitle": "Letztes Scannen",
     "lastSkaneEmpty": "—",
     "helpAria": "Hilfe",
-    "startSkaneAria": "Skane starten"
+    "startSkaneAria": "Skane starten",
+    "recentHistory": "Letzter Verlauf",
+    "streakDays": "Tage in Folge",
+    "totalSkanes": "Skanes gesamt",
+    "newSkane": "Neuer Skane"
   },
   "skane": {
     "startSkane": "Skane starten",
@@ -59,7 +65,10 @@
     "actionCompleted": "Aktion abgeschlossen ✓",
     "observeFeeling": "Achten Sie darauf, wie Sie sich fühlen.",
     "breatheWithRhythm": "Atme im Rhythmus.",
-    "canPutPhoneDown": "Du kannst dein Telefon ablegen."
+    "canPutPhoneDown": "Du kannst dein Telefon ablegen.",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "feedback": {
     "howDoYouFeel": "Wie fühlst du dich?",
@@ -155,7 +164,44 @@
     "contactUs": "Kontakt",
     "editProfileAria": "Profil bearbeiten",
     "notificationPermissionDeniedDesc": "Erlaube die Benachrichtigungen, um deine Erinnerungen zu den von dir gewählten Zeiten zu erhalten.",
-    "enableNotifications": "Benachrichtigungen erlauben"
+    "enableNotifications": "Benachrichtigungen erlauben",
+    "sectionNotifications": "Benachrichtigungen",
+    "sectionPreferences": "Einstellungen",
+    "sectionShare": "Teilen",
+    "sectionSubscription": "Abonnement",
+    "sectionHelp": "Hilfe",
+    "pushNotifications": "Push-Benachrichtigungen",
+    "enableNotificationsShort": "Benachrichtigungen aktivieren",
+    "remindersActive_one": "1 aktive Erinnerung",
+    "remindersActive_other": "{{count}} aktive Erinnerungen",
+    "noRemindersConfigured": "Keine Erinnerungen konfiguriert",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "Freunde einladen",
+    "edit": "Bearbeiten",
+    "premium": "Premium",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "18,99 €/Monat",
+    "subscriptionActiveRenewal": "Aktiv · Verlängerung am {{date}}",
+    "manageSubscription": "Abonnement verwalten",
+    "manageSubscriptionDesc": "Ändern, kündigen oder Plan wechseln",
+    "paymentHistory": "Zahlungsverlauf",
+    "faq": "FAQ",
+    "shareInviteText": "Entdecke Nokta One, das Body Reset System! Nutze meinen Code: {{code}}",
+    "comingSoonDevices": "Demnächst",
+    "comingSoonDevicesDesc": "Verbindung mit Apple Health, WHOOP, Oura und anderen Wearables wird in einem zukünftigen Update verfügbar sein.",
+    "contactModalTitle": "Kontaktiere uns",
+    "contactModalDescription": "Eine Frage, ein Fehler, ein Vorschlag?",
+    "subscriptionModalTitle": "Mein Abonnement",
+    "nextPayment": "Nächste Zahlung",
+    "paymentMethod": "Zahlungsmethode",
+    "changePaymentMethod": "Zahlungsmethode ändern",
+    "viewInvoices": "Rechnungen anzeigen",
+    "cancelSubscription": "Abonnement kündigen",
+    "cancelSubscriptionConfirm": "Möchtest du dein Abonnement wirklich kündigen? Du verlierst den Zugang zu Premium-Funktionen.",
+    "contactToCancel": "Kontaktiere support@nokta.app zum Kündigen.",
+    "subscriptionQuestion": "Bei Fragen zu deinem Abonnement, kontaktiere support@nokta.app",
+    "remindersModalDescription": "Wähle, wann du an einen Skane erinnert werden möchtest.",
+    "remindersNightNote": "Erinnerungen werden zwischen 22 und 6 Uhr nicht gesendet."
   },
   "invitationsModal": {
     "title": "Einladungen",
@@ -445,7 +491,17 @@
       "deleteDescription": "Alle Ihre Daten werden dauerhaft gelöscht.",
       "deleting": "Löschen...",
       "confirmDelete": "Löschen bestätigen",
-      "deleteError": "Fehler beim Löschen"
+      "deleteError": "Fehler beim Löschen",
+      "sectionConsents": "Einwilligungen",
+      "sectionYourData": "Ihre Daten",
+      "sectionLegalDocuments": "Rechtliche Dokumente",
+      "analyticsAnonymous": "Anonyme Analytics",
+      "analyticsHelp": "Hilft Nokta zu verbessern",
+      "marketingEmails": "Marketing-E-Mails",
+      "marketingHelp": "Tipps, News, Angebote",
+      "exportJsonDesc": "Als JSON herunterladen (Art. 20 DSGVO)",
+      "deleteDesc": "Permanente Löschung (Art. 17 DSGVO)",
+      "saved": "✓ Gespeichert"
     },
     "subtitle": "Wir respektieren Ihre Privatsphäre. Wählen Sie, was Sie akzeptieren.",
     "required": "Erforderlich",
@@ -516,7 +572,20 @@
     "featureScan": "3s Gesichtsscan",
     "featureAction": "30s Mikroaktion",
     "featureResult": "Sofortiges Ergebnis",
-    "skaneIndex": "SKANE INDEX"
+    "skaneIndex": "SKANE INDEX",
+    "headlinePrefixUse": "Use Nokta One when",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
+    "tagline": "Body Reset System"
   },
   "firstSkaneResult": {
     "title": "Ihr Körper braucht einen Reset.",
@@ -714,7 +783,10 @@
     "deleteConfirmDescription": "Alle Ihre Daten werden dauerhaft gelöscht. Diese Aktion ist unwiderruflich.",
     "deleteConfirmLabel": "Geben Sie DELETE zur Bestätigung ein",
     "cancel": "Abbrechen",
-    "confirmDelete": "Dauerhaft löschen"
+    "confirmDelete": "Dauerhaft löschen",
+    "rgpdNotice": "Gemäß DSGVO haben Sie das Recht auf Zugang, Berichtigung, Löschung und Übertragbarkeit Ihrer Daten. Kontakt: privacy@nokta.app",
+    "deleteConfirmWarning": "Diese Aktion ist unwiderruflich",
+    "deleteConfirmDetails": "Alle Ihre Daten werden dauerhaft gelöscht: Scan-Verlauf, Einstellungen, Statistiken."
   },
   "privacyPolicy": {
     "title": "Datenschutzrichtlinie",

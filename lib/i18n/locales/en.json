@@ -8,11 +8,13 @@
     "retry": "Retry",
     "loading": "Loading...",
     "error": "Error",
-    "success": "Success"
+    "success": "Success",
+    "landscapeWarning": "Please rotate your phone to portrait mode"
   },
   "nav": {
     "home": "Home",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "Settings"
   },
   "splash": {
@@ -21,9 +23,21 @@
   "welcome": {
     "message": "Discover your body's state in seconds.",
     "start": "Get Started",
-    "alreadyAccount": "Already have an account",
+    "alreadyAccount": "Already have an account?",
     "headlinePrefix": "Measure your",
+    "headlinePrefixUse": "Use Nokta One when",
     "headlineSuffix": "in 3 seconds.",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
     "words": {
       "stress": "stress",
       "tension": "tension",
@@ -32,9 +46,10 @@
     },
     "subheadline": "Reset your nervous system with a 30-second micro-action.",
     "disclaimer": "Wellness signal · Not medical advice",
-    "featureScan": "3s facial scan",
-    "featureAction": "30s micro-action",
+    "featureScan": "Face scan",
+    "featureAction": "30s action",
     "featureResult": "Instant result",
+    "tagline": "Body Reset System",
     "skaneIndex": "SKANE INDEX"
   },
   "firstSkaneResult": {
@@ -87,7 +102,11 @@
     "justNow": "Just now",
     "pressToSkane": "Press to\nscan",
     "helpAria": "Help",
-    "startSkaneAria": "Start a Skane"
+    "startSkaneAria": "Start a Skane",
+    "recentHistory": "Recent history",
+    "streakDays": "day streak",
+    "totalSkanes": "Total skanes",
+    "newSkane": "New Skane"
   },
   "homeAdaptation": {
     "inProgress": "Adapting — Day {{day}} of 7",
@@ -177,7 +196,10 @@
       "showEyes": "Show your eyes",
       "showMouth": "Show your mouth"
     },
-    "locked": "Locked"
+    "locked": "Locked",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "states": {
     "highActivation": "High activation",
@@ -382,7 +404,44 @@
     "licenses": "Licenses",
     "privacyAndData": "Privacy & Data",
     "contactUs": "Contact us",
-    "editProfileAria": "Edit profile"
+    "editProfileAria": "Edit profile",
+    "sectionNotifications": "Notifications",
+    "sectionPreferences": "Preferences",
+    "sectionShare": "Share",
+    "sectionSubscription": "Subscription",
+    "sectionHelp": "Help",
+    "pushNotifications": "Push notifications",
+    "enableNotificationsShort": "Enable notifications",
+    "remindersActive_one": "1 active reminder",
+    "remindersActive_other": "{{count}} active reminders",
+    "noRemindersConfigured": "No reminders configured",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "Invite friends",
+    "edit": "Edit",
+    "premium": "Premium",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "$18.99/month",
+    "subscriptionActiveRenewal": "Active · Renewal on {{date}}",
+    "manageSubscription": "Manage subscription",
+    "manageSubscriptionDesc": "Modify, cancel or change plan",
+    "paymentHistory": "Payment history",
+    "faq": "FAQ",
+    "shareInviteText": "Discover Nokta One, the Body Reset System! Use my code: {{code}}",
+    "comingSoonDevices": "Coming soon",
+    "comingSoonDevicesDesc": "Connection with Apple Health, WHOOP, Oura and other wearables will be available in a future update.",
+    "contactModalTitle": "Contact us",
+    "contactModalDescription": "A question, a bug, a suggestion?",
+    "subscriptionModalTitle": "My subscription",
+    "nextPayment": "Next payment",
+    "paymentMethod": "Payment method",
+    "changePaymentMethod": "Change payment method",
+    "viewInvoices": "View invoices",
+    "cancelSubscription": "Cancel subscription",
+    "cancelSubscriptionConfirm": "Are you sure you want to cancel your subscription? You will lose access to Premium features.",
+    "contactToCancel": "Contact support@nokta.app to cancel.",
+    "subscriptionQuestion": "For any questions about your subscription, contact support@nokta.app",
+    "remindersModalDescription": "Choose when you want to be reminded to do a Skane.",
+    "remindersNightNote": "Reminders are not sent between 10pm and 6am."
   },
   "invitationsModal": {
     "title": "Invitations",
@@ -530,7 +589,17 @@
       "deleteDescription": "All your data will be permanently deleted.",
       "deleting": "Deleting...",
       "confirmDelete": "Confirm deletion",
-      "deleteError": "Error during deletion"
+      "deleteError": "Error during deletion",
+      "sectionConsents": "Consents",
+      "sectionYourData": "Your data",
+      "sectionLegalDocuments": "Legal documents",
+      "analyticsAnonymous": "Anonymous analytics",
+      "analyticsHelp": "Helps improve Nokta",
+      "marketingEmails": "Marketing emails",
+      "marketingHelp": "Tips, news, offers",
+      "exportJsonDesc": "Download in JSON format (Art. 20 GDPR)",
+      "deleteDesc": "Permanent deletion (Art. 17 GDPR)",
+      "saved": "✓ Saved"
     }
   },
   "privacy": {
@@ -548,7 +617,10 @@
     "deleteConfirmDescription": "This action is permanent and cannot be undone. All your data, including scan history and preferences, will be permanently deleted.",
     "deleteConfirmLabel": "Type DELETE to confirm",
     "cancel": "Cancel",
-    "confirmDelete": "Delete Account"
+    "confirmDelete": "Delete Account",
+    "rgpdNotice": "Under GDPR, you have the right to access, rectify, erase, and port your data. Contact: privacy@nokta.app",
+    "deleteConfirmWarning": "This action is irreversible",
+    "deleteConfirmDetails": "All your data will be permanently deleted: scan history, preferences, statistics."
   },
   "info": {
     "whatIsSkane": "WHAT IS A SKANE?",

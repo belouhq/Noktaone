@@ -143,7 +143,7 @@ export default function FeedbackPage() {
     const redirectDelayMs = 500;
     setTimeout(() => {
       if (feedback === "better") {
-        router.push("/skane/share-prompt");
+        router.push("/skane/result");
       } else {
         router.push("/");
       }
@@ -167,7 +167,7 @@ export default function FeedbackPage() {
 
     // Rediriger selon le feedback
     if (pendingFeedback === "better") {
-      router.push("/skane/share-prompt");
+      router.push("/skane/result");
     } else {
       router.push("/");
     }
@@ -180,7 +180,7 @@ export default function FeedbackPage() {
     
     // Rediriger selon le feedback (utiliser la variable locale pour éviter le problème de timing)
     if (feedbackToRedirect === "better") {
-      router.push("/skane/share-prompt");
+      router.push("/skane/result");
     } else {
       router.push("/");
     }

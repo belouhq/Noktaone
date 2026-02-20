@@ -47,7 +47,8 @@ if (!i18n.isInitialized) {
         escapeValue: false
       },
       react: {
-        useSuspense: false // ← IMPORTANT pour éviter les erreurs d'hydratation
+        useSuspense: false, // ← IMPORTANT pour éviter les erreurs d'hydratation
+        bindI18n: 'languageChanged loaded' // ← Force le re-render des composants au changement de langue
       }
     });
 }

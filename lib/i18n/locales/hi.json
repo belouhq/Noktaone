@@ -8,11 +8,13 @@
     "retry": "फिर से प्रयास करें",
     "loading": "लोड हो रहा है...",
     "error": "त्रुटि",
-    "success": "सफलता"
+    "success": "सफलता",
+    "landscapeWarning": "कृपया अपना फोन पोर्ट्रेट मोड में घुमाएं"
   },
   "nav": {
     "home": "मुख्य पृष्ठ",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "सेटिंग्स"
   },
   "home": {
@@ -22,7 +24,11 @@
     "lastSkaneTitle": "अंतिम स्कैन",
     "lastSkaneEmpty": "—",
     "helpAria": "सहायता",
-    "startSkaneAria": "Skane शुरू करें"
+    "startSkaneAria": "Skane शुरू करें",
+    "recentHistory": "Recent history",
+    "streakDays": "day streak",
+    "totalSkanes": "Total skanes",
+    "newSkane": "New Skane"
   },
   "skane": {
     "startSkane": "शुरू करें\nSkane",
@@ -59,7 +65,10 @@
     "actionCompleted": "कार्य पूरा ✓",
     "observeFeeling": "आप कैसा महसूस करते हैं, उस पर ध्यान दें।",
     "breatheWithRhythm": "लय के साथ सांस लें।",
-    "canPutPhoneDown": "आप अपना फोन रख सकते हैं।"
+    "canPutPhoneDown": "आप अपना फोन रख सकते हैं।",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "states": {
     "highActivation": "उच्च सक्रियता",
@@ -236,7 +245,44 @@
     "contactUs": "संपर्क करें",
     "editProfileAria": "प्रोफ़ाइल संपादित करें",
     "notificationPermissionDeniedDesc": "अपने चुने हुए समय पर याद दिलाने के लिए सूचनाओं की अनुमति दें।",
-    "enableNotifications": "सूचनाओं की अनुमति दें"
+    "enableNotifications": "सूचनाओं की अनुमति दें",
+    "sectionNotifications": "सूचनाएं",
+    "sectionPreferences": "प्राथमिकताएं",
+    "sectionShare": "साझा करें",
+    "sectionSubscription": "सदस्यता",
+    "sectionHelp": "सहायता",
+    "pushNotifications": "पुश सूचनाएं",
+    "enableNotificationsShort": "सूचनाएं सक्षम करें",
+    "remindersActive_one": "1 सक्रिय रिमाइंडर",
+    "remindersActive_other": "{{count}} सक्रिय रिमाइंडर",
+    "noRemindersConfigured": "कोई रिमाइंडर कॉन्फ़िगर नहीं",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "दोस्तों को आमंत्रित करें",
+    "edit": "संपादित करें",
+    "premium": "प्रीमियम",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "₹18.99/माह",
+    "subscriptionActiveRenewal": "सक्रिय · {{date}} को नवीनीकरण",
+    "manageSubscription": "सदस्यता प्रबंधित करें",
+    "manageSubscriptionDesc": "संशोधित करें, रद्द करें या योजना बदलें",
+    "paymentHistory": "भुगतान इतिहास",
+    "faq": "FAQ",
+    "shareInviteText": "Nokta One खोजें, Body Reset System! मेरा कोड इस्तेमाल करें: {{code}}",
+    "comingSoonDevices": "जल्द आ रहा है",
+    "comingSoonDevicesDesc": "Apple Health, WHOOP, Oura और अन्य वियरेबल्स के साथ कनेक्शन भविष्य के अपडेट में उपलब्ध होगा।",
+    "contactModalTitle": "संपर्क करें",
+    "contactModalDescription": "सवाल, बग, सुझाव?",
+    "subscriptionModalTitle": "मेरी सदस्यता",
+    "nextPayment": "अगला भुगतान",
+    "paymentMethod": "भुगतान विधि",
+    "changePaymentMethod": "भुगतान विधि बदलें",
+    "viewInvoices": "इनवॉइस देखें",
+    "cancelSubscription": "सदस्यता रद्द करें",
+    "cancelSubscriptionConfirm": "क्या आप वाकई अपनी सदस्यता रद्द करना चाहते हैं? आपको Premium सुविधाओं तक पहुंच खो जाएगी।",
+    "contactToCancel": "रद्द करने के लिए support@nokta.app से संपर्क करें।",
+    "subscriptionQuestion": "अपनी सदस्यता के बारे में किसी भी प्रश्न के लिए, support@nokta.app से संपर्क करें।",
+    "remindersModalDescription": "चुनें कि आपको Skane करने की याद कब दिलाई जाए।",
+    "remindersNightNote": "22:00 से 6:00 के बीच रिमाइंडर नहीं भेजे जाते।"
   },
   "invitationsModal": {
     "title": "आमंत्रण",
@@ -445,7 +491,17 @@
       "deleteDescription": "आपके सभी डेटा स्थायी रूप से हटा दिए जाएंगे।",
       "deleting": "हटाया जा रहा है...",
       "confirmDelete": "हटाने की पुष्टि करें",
-      "deleteError": "हटाने में त्रुटि"
+      "deleteError": "हटाने में त्रुटि",
+      "sectionConsents": "सहमति",
+      "sectionYourData": "आपका डेटा",
+      "sectionLegalDocuments": "कानूनी दस्तावेज़",
+      "analyticsAnonymous": "अनाम एनालिटिक्स",
+      "analyticsHelp": "Nokta को बेहतर बनाने में मदद करता है",
+      "marketingEmails": "मार्केटिंग ईमेल",
+      "marketingHelp": "सुझाव, खबरें, ऑफर",
+      "exportJsonDesc": "JSON प्रारूप में डाउनलोड करें (अनुच्छेद 20 GDPR)",
+      "deleteDesc": "स्थायी विलोपन (अनुच्छेद 17 GDPR)",
+      "saved": "✓ सहेजा गया"
     },
     "subtitle": "हम आपकी गोपनीयता का सम्मान करते हैं। जो आप स्वीकार करते हैं उसे चुनें।",
     "required": "अनिवार्य",
@@ -516,7 +572,20 @@
     "featureScan": "3s फेशियल स्कैन",
     "featureAction": "30s माइक्रो-एक्शन",
     "featureResult": "तुरंत रिजल्ट",
-    "skaneIndex": "SKANE INDEX"
+    "skaneIndex": "SKANE INDEX",
+    "headlinePrefixUse": "Use Nokta One when",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
+    "tagline": "Body Reset System"
   },
   "firstSkaneResult": {
     "title": "आपके शरीर को रीसेट की आवश्यकता है।",
@@ -714,7 +783,10 @@
     "deleteConfirmDescription": "आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा। यह क्रिया अपरिवर्तनीय है।",
     "deleteConfirmLabel": "पुष्टि करने के लिए DELETE टाइप करें",
     "cancel": "रद्द करें",
-    "confirmDelete": "स्थायी रूप से हटाएं"
+    "confirmDelete": "स्थायी रूप से हटाएं",
+    "rgpdNotice": "GDPR के अनुसार, आपको अपने डेटा तक पहुंच, सुधार, मिटाने और पोर्ट करने का अधिकार है। संपर्क: privacy@nokta.app",
+    "deleteConfirmWarning": "यह क्रिया अपरिवर्तनीय है",
+    "deleteConfirmDetails": "आपका सभी डेटा स्थायी रूप से हटा दिया जाएगा: स्कैन इतिहास, प्राथमिकताएं, आंकड़े।"
   },
   "privacyPolicy": {
     "title": "गोपनीयता नीति",

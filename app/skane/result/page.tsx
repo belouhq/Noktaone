@@ -36,10 +36,7 @@ export default function ResultPage() {
   } | null>(null);
 
   useEffect(() => {
-    let stored = sessionStorage.getItem("skane_analysis_result");
-    if (!stored) {
-      stored = sessionStorage.getItem("skane_result");
-    }
+    const stored = sessionStorage.getItem("skane_analysis_result");
     if (!stored) {
       router.push("/skane");
       return;
@@ -103,7 +100,7 @@ export default function ResultPage() {
       duration={props.duration}
       feedback={props.feedback}
       onRetry={() => router.push("/skane")}
-      onHome={() => router.push("/")}
+      onHome={() => router.push("/home")}
       appDownloadLink="https://nokta.app/download"
     />
   );

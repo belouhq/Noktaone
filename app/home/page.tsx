@@ -1,17 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { HomePage, SkanePage } from "@/components/home/HomePageV3";
 
 /**
  * Page Accueil app – PAGES FINALES V5
  * C’est la cible du bouton « Accueil » dans la bottom nav.
- * Affiche soit HomePage (logo + bouton Skane) soit SkanePage (historique récent).
+ * Affiche soit HomePage (logo + bouton Skane) soit SkanePage (Skaneboard = historique récent).
+ * /home?tab=skane → Skaneboard ( Historique récent, stats, Nouveau Skane)
  */
 export default function HomeRoutePage() {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState<"home" | "skane">("home");
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const [currentPage, setCurrentPage] = useState<"home" | "skane">(
+    tabParam === "skane" ? "skane" : "home"
+  );
+
+  useEffect(() => {
+    if (tabParam === "skane") setCurrentPage("skane");
+    else if (tabParam === "home") setCurrentPage("home");
+  }, [tabParam]);
 
   const handleNavigate = (key: string) => {
     if (key === "home") {

@@ -6,6 +6,7 @@ import { AuthProvider } from "@/components/providers/AuthProvider";
 import AppProvider from "@/components/providers/AppProvider";
 import ReferralTracker from "@/components/ReferralTracker";
 import TestButtons from "@/components/debug/TestButtons";
+import { LandscapeWarning } from "@/components/ui/LandscapeWarning";
 import "@/lib/utils/console-filter";
 
 let poppinsVariable = "";
@@ -52,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`dark ${poppinsVariable}`} dir="ltr" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" className={`dark ${poppinsVariable}`} dir="ltr" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -73,14 +74,7 @@ export default function RootLayout({
               </Suspense>
               <TestButtons />
               <div className="app-container" style={{ pointerEvents: "auto", position: "relative" }}>
-                <div className="landscape-warning fixed inset-0 bg-black z-[100] hidden items-center justify-center p-8 text-center pointer-events-none">
-                  <div>
-                    <p className="text-4xl mb-4"></p>
-                    <p className="text-white text-lg">
-                      Veuillez tourner votre téléphone en mode portrait
-                    </p>
-                  </div>
-                </div>
+                <LandscapeWarning />
                 <main className="main-content" style={{ pointerEvents: "auto", position: "relative", zIndex: 10 }}>
                   {children}
                 </main>
@@ -88,34 +82,6 @@ export default function RootLayout({
             </AppProvider>
           </AuthProvider>
         </I18nProvider>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                function attachNavListeners() {
-                  const navButtons = document.querySelectorAll('[data-nav-button]');
-                  navButtons.forEach(btn => {
-                    const path = btn.getAttribute('data-nav-path');
-                    if (path) {
-                      btn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        window.location.href = path;
-                      });
-                    }
-                  });
-                }
-                if (document.readyState === 'loading') {
-                  document.addEventListener('DOMContentLoaded', attachNavListeners);
-                } else {
-                  attachNavListeners();
-                }
-                setTimeout(attachNavListeners, 100);
-                setTimeout(attachNavListeners, 500);
-              })();
-            `,
-          }}
-        />
       </body>
     </html>
   );

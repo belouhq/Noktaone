@@ -8,11 +8,13 @@
     "retry": "Coba lagi",
     "loading": "Memuat...",
     "error": "Kesalahan",
-    "success": "Sukses"
+    "success": "Sukses",
+    "landscapeWarning": "Putar ponsel Anda ke mode portrait"
   },
   "nav": {
     "home": "Beranda",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "Pengaturan"
   },
   "home": {
@@ -22,7 +24,11 @@
     "lastSkaneTitle": "Pindai terakhir",
     "lastSkaneEmpty": "—",
     "helpAria": "Bantuan",
-    "startSkaneAria": "Mulai Skane"
+    "startSkaneAria": "Mulai Skane",
+    "recentHistory": "Recent history",
+    "streakDays": "day streak",
+    "totalSkanes": "Total skanes",
+    "newSkane": "New Skane"
   },
   "skane": {
     "startSkane": "Mulai\nSkane",
@@ -59,7 +65,10 @@
     "actionCompleted": "Tindakan selesai ✓",
     "observeFeeling": "Perhatikan bagaimana perasaan Anda.",
     "breatheWithRhythm": "Bernapas dengan ritme.",
-    "canPutPhoneDown": "Kamu bisa meletakkan ponselmu."
+    "canPutPhoneDown": "Kamu bisa meletakkan ponselmu.",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "states": {
     "highActivation": "Aktivasi tinggi",
@@ -236,7 +245,44 @@
     "contactUs": "Hubungi kami",
     "editProfileAria": "Edit profil",
     "notificationPermissionDeniedDesc": "Izinkan notifikasi untuk menerima pengingat pada waktu yang kamu pilih.",
-    "enableNotifications": "Izinkan notifikasi"
+    "enableNotifications": "Izinkan notifikasi",
+    "sectionNotifications": "Notifikasi",
+    "sectionPreferences": "Preferensi",
+    "sectionShare": "Bagikan",
+    "sectionSubscription": "Berlangganan",
+    "sectionHelp": "Bantuan",
+    "pushNotifications": "Notifikasi push",
+    "enableNotificationsShort": "Aktifkan notifikasi",
+    "remindersActive_one": "1 pengingat aktif",
+    "remindersActive_other": "{{count}} pengingat aktif",
+    "noRemindersConfigured": "Tidak ada pengingat dikonfigurasi",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "Undang teman",
+    "edit": "Edit",
+    "premium": "Premium",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "Rp 18.99/bulan",
+    "subscriptionActiveRenewal": "Aktif · Perpanjangan pada {{date}}",
+    "manageSubscription": "Kelola langganan",
+    "manageSubscriptionDesc": "Ubah, batalkan atau ubah paket",
+    "paymentHistory": "Riwayat pembayaran",
+    "faq": "FAQ",
+    "shareInviteText": "Temukan Nokta One, Body Reset System! Gunakan kode saya: {{code}}",
+    "comingSoonDevices": "Segera hadir",
+    "comingSoonDevicesDesc": "Koneksi dengan Apple Health, WHOOP, Oura dan wearables lainnya akan tersedia di pembaruan mendatang.",
+    "contactModalTitle": "Hubungi kami",
+    "contactModalDescription": "Pertanyaan, bug, saran?",
+    "subscriptionModalTitle": "Langganan saya",
+    "nextPayment": "Pembayaran berikutnya",
+    "paymentMethod": "Metode pembayaran",
+    "changePaymentMethod": "Ubah metode pembayaran",
+    "viewInvoices": "Lihat faktur",
+    "cancelSubscription": "Batalkan langganan",
+    "cancelSubscriptionConfirm": "Apakah kamu yakin ingin membatalkan langganan? Kamu akan kehilangan akses ke fitur Premium.",
+    "contactToCancel": "Hubungi support@nokta.app untuk membatalkan.",
+    "subscriptionQuestion": "Untuk pertanyaan tentang langganan kamu, hubungi support@nokta.app",
+    "remindersModalDescription": "Pilih kapan kamu ingin diingatkan untuk melakukan Skane.",
+    "remindersNightNote": "Pengingat tidak dikirim antara jam 22:00 dan 6:00."
   },
   "invitationsModal": {
     "title": "Undangan",
@@ -445,7 +491,17 @@
       "deleteDescription": "Semua data Anda akan dihapus secara permanen.",
       "deleting": "Menghapus...",
       "confirmDelete": "Konfirmasi penghapusan",
-      "deleteError": "Kesalahan saat menghapus"
+      "deleteError": "Kesalahan saat menghapus",
+      "sectionConsents": "Persetujuan",
+      "sectionYourData": "Data Anda",
+      "sectionLegalDocuments": "Dokumen hukum",
+      "analyticsAnonymous": "Analytics anonim",
+      "analyticsHelp": "Membantu meningkatkan Nokta",
+      "marketingEmails": "Email marketing",
+      "marketingHelp": "Tips, berita, penawaran",
+      "exportJsonDesc": "Unduh dalam format JSON (Pasal 20 GDPR)",
+      "deleteDesc": "Penghapusan permanen (Pasal 17 GDPR)",
+      "saved": "✓ Disimpan"
     },
     "subtitle": "Kami menghargai privasi Anda. Pilih apa yang Anda setujui.",
     "required": "Wajib",
@@ -516,7 +572,20 @@
     "featureScan": "Pemindaian wajah 3d",
     "featureAction": "Mikroaksi 30d",
     "featureResult": "Hasil instan",
-    "skaneIndex": "SKANE INDEX"
+    "skaneIndex": "SKANE INDEX",
+    "headlinePrefixUse": "Use Nokta One when",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
+    "tagline": "Body Reset System"
   },
   "firstSkaneResult": {
     "title": "Tubuh Anda perlu direset.",
@@ -714,7 +783,10 @@
     "deleteConfirmDescription": "Semua data Anda akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.",
     "deleteConfirmLabel": "Ketik DELETE untuk mengonfirmasi",
     "cancel": "Batal",
-    "confirmDelete": "Hapus secara permanen"
+    "confirmDelete": "Hapus secara permanen",
+    "rgpdNotice": "Sesuai GDPR, Anda memiliki hak akses, perbaikan, penghapusan, dan portabilitas data Anda. Kontak: privacy@nokta.app",
+    "deleteConfirmWarning": "Tindakan ini tidak dapat dibatalkan",
+    "deleteConfirmDetails": "Semua data Anda akan dihapus permanen: riwayat pemindaian, preferensi, statistik."
   },
   "privacyPolicy": {
     "title": "Kebijakan Privasi",

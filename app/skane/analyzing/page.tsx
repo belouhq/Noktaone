@@ -40,56 +40,33 @@ export default function AnalyzingPage() {
         clearInterval(progressInterval);
         setProgress(100);
 
-        // Stocker le résultat (les deux formats pour compatibilité)
-        sessionStorage.setItem("skane_result", JSON.stringify(result));
-        const toStore = {
-          ...result,
-          microAction: result.microAction || result.micro_action?.id || "box_breathing",
-          micro_action: result.micro_action || { id: result.microAction || result.micro_action?.id || "box_breathing", duration_seconds: result.micro_action?.duration_seconds ?? 24, category: result.micro_action?.category ?? "breathing" },
-        };
+        if (result === null) {
+          router.push("/skane/error");
+          return;
+        }
+
+        const r = result as { microAction?: string; micro_action?: { id?: string; duration_seconds?: number; category?: string } };
+        const actionId = r.microAction || r.micro_action?.id || "box_breathing";
+        const micro_action = r.micro_action
+          ? { ...r.micro_action, id: r.micro_action.id || actionId }
+          : { id: actionId, duration_seconds: 24, category: "breathing" as const };
+        const toStore = { ...result, microAction: actionId, micro_action };
         sessionStorage.setItem("skane_analysis_result", JSON.stringify(toStore));
 
-        // Aller d'abord à l'écran de résultat, puis l'utilisateur lance la micro-action
-        setTimeout(() => router.push("/skane/result"), 400);
+        // Aller au briefing (micro-action + explication) avant de faire l'action
+        setTimeout(() => router.push("/skane/briefing"), 400);
       })
       .catch((error) => {
         console.error("Analysis error:", error);
         clearInterval(progressInterval);
         setProgress(100);
-        const fallbackResult = {
-          success: true,
-          internal_state: "REGULATED",
-          signal_label: "Clear Signal",
-          state: "REGULATED",
-          microAction: "box_breathing",
-          micro_action: { id: "box_breathing", duration_seconds: 24, category: "breathing" },
-          skane_index: 45,
-          skaneIndex: 45,
-        };
-        sessionStorage.setItem("skane_result", JSON.stringify(fallbackResult));
-        sessionStorage.setItem("skane_analysis_result", JSON.stringify(fallbackResult));
-        setTimeout(() => router.push("/skane/result"), 400);
+        router.push("/skane/error");
       });
 
     return () => clearInterval(progressInterval);
   }, [router]);
 
-  const getFallbackResult = () => ({
-    success: true,
-    internal_state: "REGULATED",
-    signal_label: "Clear Signal",
-    state: "REGULATED",
-    microAction: "box_breathing",
-    micro_action: {
-      id: "box_breathing",
-      duration_seconds: 24,
-      category: "breathing",
-    },
-    skane_index: 45,
-    skaneIndex: 45,
-  });
-
-  const analyzeImage = async (imageBase64: string | null) => {
+  const analyzeImage = async (imageBase64: string | null): Promise<Record<string, unknown> | null> => {
     try {
       const response = await fetch("/api/skane/analyze", {
         method: "POST",
@@ -109,20 +86,20 @@ export default function AnalyzingPage() {
 
       // Si l’API renvoie une erreur (rate limit, etc.), utiliser un fallback pour que
       // l’utilisateur puisse quand même aller vers résultat → indications micro-action.
-      if (!response.ok || data.error) {
-        console.warn("Analyze API error or rate limit, using fallback", data.error || response.status);
-        return getFallbackResult();
+      if (!response.ok || data.error || data.isFallback) {
+        console.warn("Analyze API error", data.error || response.status, data.isFallback);
+        return null;
       }
 
       // S’assurer que le résultat a bien microAction ou micro_action pour la page résultat / briefing
       if (!data.microAction && !data.micro_action?.id) {
-        const fallback = getFallbackResult();
-        return { ...fallback, ...data, microAction: data.microAction ?? fallback.microAction, micro_action: data.micro_action ?? fallback.micro_action };
+        console.warn("Invalid analysis result: missing microAction");
+        return null;
       }
       return data;
     } catch (error) {
       console.error("Analysis error:", error);
-      return getFallbackResult();
+      throw error;
     }
   };
 

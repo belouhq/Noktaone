@@ -150,8 +150,7 @@ export const AppLayout = ({
 
       <BottomNav
         currentPage={currentPage}
-        onNavigate={handleNavigate}
-        hideSkaneOnHomeAndSkane={false}
+        onNavigate={(key) => handleNavigate(key as NavPageId)}
       />
     </div>
   );

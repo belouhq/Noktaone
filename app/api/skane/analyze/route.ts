@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getOpenAIClient, generateRequestId } from '@/lib/openai/client';
 import { SYSTEM_PROMPT, generateUserPrompt } from '@/lib/skane/prompt-canon';
-import { InternalState, type AnalysisResponse } from '@/lib/skane/types';
+import { InternalState, type AnalysisResponse, type InferredSignals } from '@/lib/skane/types';
 import { SKANE_INDEX_RANGES } from '@/lib/skane/constants';
 import { getLastSession } from '@/lib/skane/session-model';
 import { noktaService, mapGptToFacial, SIGNAL_LABELS } from '@/lib/nokta';
@@ -16,6 +16,29 @@ function getTimeOfDay(): 'morning' | 'afternoon' | 'evening' | 'night' {
   if (hour >= 12 && hour < 17) return 'afternoon';
   if (hour >= 17 && hour < 21) return 'evening';
   return 'night';
+}
+
+/** Compute Skane Index 0-100 from GPT-4o inferred_signals (reproducible, not random) */
+function computeSkaneIndexFromSignals(signals: InferredSignals | null | undefined): number | null {
+  if (!signals || typeof signals !== 'object') return null;
+  const s = signals as Partial<InferredSignals>;
+  const jaw = clampNum(s.jaw_tension, 0, 1);
+  const forehead = clampNum(s.forehead_tension, 0, 1);
+  const lip = clampNum(s.lip_compression, 0, 1);
+  const headStability = clampNum(s.head_stability, 0, 1);
+  const blink = clampNum(s.blink_rate, 0, 1);
+  const raw =
+    jaw * 25 +
+    forehead * 25 +
+    lip * 20 +
+    (1 - headStability) * 15 +
+    blink * 15;
+  return Math.round(Math.min(100, Math.max(0, raw)));
+}
+
+function clampNum(v: unknown, min: number, max: number): number {
+  const n = typeof v === 'number' && !Number.isNaN(v) ? v : 0;
+  return Math.max(min, Math.min(max, n));
 }
 
 export async function POST(request: NextRequest) {
@@ -205,11 +228,13 @@ export async function POST(request: NextRequest) {
     const selectionResult = await selectMicroActionV1(state, userId || null, isGuestMode);
     const selectedActionId = selectionResult.actionId;
 
-    // Générer le Skane Index (avant l'action)
+    // Skane Index basé sur inferred_signals (reproductible), sinon midpoint de la fourchette
+    const signalBasedIndex = computeSkaneIndexFromSignals(analysis.inferred_signals);
     const range = SKANE_INDEX_RANGES[state];
-    const skaneIndex = Math.floor(
-      Math.random() * (range.max - range.min) + range.min
-    );
+    const skaneIndex =
+      signalBasedIndex != null
+        ? signalBasedIndex
+        : Math.round((range.min + range.max) / 2);
 
     // Retourner la réponse complète (format compatible avec les deux APIs)
     // Recalculer processingTime pour le log final (inclut tout le traitement)
@@ -279,17 +304,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Fallback en cas d'erreur
-    const fallbackResult = generateFallbackResult();
-    logger.logResponse(endpoint, 'POST', requestId, 200, processingTime, { fallback: true });
+    // Ne jamais retourner success: true quand l'analyse a échoué
+    logger.logResponse(endpoint, 'POST', requestId, 503, processingTime, { fallback: true });
     return NextResponse.json(
       {
-        success: true,
-        ...fallbackResult,
+        success: false,
+        error: 'Analysis temporarily unavailable. Please try again.',
+        isFallback: true,
+        warning: 'The analysis could not be completed.',
         requestId,
-        error: 'Analysis failed, using fallback',
       },
-      { status: 200 } // Retourner 200 pour ne pas casser le flow
+      { status: 503 }
     );
   }
 }

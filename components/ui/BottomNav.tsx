@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 // ============================================
 // BOTTOM NAVIGATION - TRANSPARENT & ADAPTIVE
@@ -12,7 +13,7 @@ const NOKTA_BLUE = "#0A84FF";
 
 const PATHS: Record<string, string> = {
   home: "/home",
-  skane: "/skane",
+  skane: "/home?tab=skane", // Skaneboard = page Historique récent
   settings: "/settings",
   history: "/history",
 };
@@ -31,11 +32,12 @@ export const BottomNav = ({
   variant?: string;
 }) => {
   const router = useRouter();
+  const { t } = useTranslation();
   const handleNavigate = onNavigate ?? ((key: string) => router.push(PATHS[key] ?? "/"));
   const tabs = [
-    { key: "home", label: "Accueil", icon: HomeIcon },
-    { key: "skane", label: "Skane", icon: SkaneIcon },
-    { key: "settings", label: "Paramètres", icon: SettingsIcon },
+    { key: "home", label: t("nav.home"), icon: HomeIcon },
+    { key: "skane", label: t("nav.skaneboard"), icon: SkaneIcon },
+    { key: "settings", label: t("nav.settings"), icon: SettingsIcon },
   ];
 
   // Couleurs selon le thème
@@ -52,7 +54,10 @@ export const BottomNav = ({
             type="button"
             key={tab.key}
             style={styles.tab}
-            onClick={() => {
+            data-nav-button
+            data-nav-path={PATHS[tab.key] ?? "/"}
+            onClick={(e) => {
+              e.preventDefault();
               if (typeof navigator !== "undefined" && (navigator as any).vibrate) {
                 (navigator as any).vibrate(5);
               }
@@ -86,7 +91,7 @@ export const BottomNav = ({
 // ICÔNES - Uniquement les traits en bleu
 // ============================================
 
-const HomeIcon = ({ active, inactiveColor = "#6E6E73" }) => (
+const HomeIcon = ({ active, inactiveColor = "#6E6E73" }: { active: boolean; inactiveColor?: string }) => (
   <svg
     width="24"
     height="24"
@@ -102,7 +107,7 @@ const HomeIcon = ({ active, inactiveColor = "#6E6E73" }) => (
   </svg>
 );
 
-const SkaneIcon = ({ active, inactiveColor = "#6E6E73" }) => (
+const SkaneIcon = ({ active, inactiveColor = "#6E6E73" }: { active: boolean; inactiveColor?: string }) => (
   <svg
     width="24"
     height="24"
@@ -123,7 +128,7 @@ const SkaneIcon = ({ active, inactiveColor = "#6E6E73" }) => (
   </svg>
 );
 
-const SettingsIcon = ({ active, inactiveColor = "#6E6E73" }) => (
+const SettingsIcon = ({ active, inactiveColor = "#6E6E73" }: { active: boolean; inactiveColor?: string }) => (
   <svg
     width="24"
     height="24"
@@ -143,7 +148,7 @@ const SettingsIcon = ({ active, inactiveColor = "#6E6E73" }) => (
 // STYLES
 // ============================================
 
-const styles = {
+const styles: Record<string, React.CSSProperties> = {
   nav: {
     position: "fixed",
     bottom: 0,
@@ -157,7 +162,8 @@ const styles = {
     padding: "8px 0",
     paddingBottom: "28px", // Safe area iOS
     backgroundColor: "transparent", // Pas de fond
-    zIndex: 50,
+    zIndex: 100,
+    pointerEvents: "auto",
   },
   tab: {
     display: "flex",
@@ -169,6 +175,8 @@ const styles = {
     border: "none",
     cursor: "pointer",
     WebkitTapHighlightColor: "transparent",
+    touchAction: "manipulation",
+    pointerEvents: "auto",
   },
   iconWrapper: {
     width: "24px",

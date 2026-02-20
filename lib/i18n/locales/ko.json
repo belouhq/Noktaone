@@ -8,11 +8,13 @@
     "retry": "다시 시도",
     "loading": "로딩 중...",
     "error": "오류",
-    "success": "성공"
+    "success": "성공",
+    "landscapeWarning": "휴대폰을 세로 모드로 회전해 주세요"
   },
   "nav": {
     "home": "홈",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "설정"
   },
   "home": {
@@ -22,7 +24,11 @@
     "lastSkaneTitle": "마지막 스캔",
     "lastSkaneEmpty": "—",
     "helpAria": "도움말",
-    "startSkaneAria": "Skane 시작"
+    "startSkaneAria": "Skane 시작",
+    "recentHistory": "Recent history",
+    "streakDays": "day streak",
+    "totalSkanes": "Total skanes",
+    "newSkane": "New Skane"
   },
   "skane": {
     "startSkane": "스캔 시작",
@@ -59,7 +65,10 @@
     "actionCompleted": "작업 완료 ✓",
     "observeFeeling": "기분을 주목하세요.",
     "breatheWithRhythm": "리듬에 맞춰 호흡하세요.",
-    "canPutPhoneDown": "휴대폰을 내려놓을 수 있습니다."
+    "canPutPhoneDown": "휴대폰을 내려놓을 수 있습니다.",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "states": {
     "highActivation": "높은 활성화",
@@ -236,7 +245,44 @@
     "contactUs": "문의하기",
     "editProfileAria": "프로필 수정",
     "notificationPermissionDeniedDesc": "선택한 시간에 알림을 받으려면 알림을 허용하세요.",
-    "enableNotifications": "알림 허용"
+    "enableNotifications": "알림 허용",
+    "sectionNotifications": "알림",
+    "sectionPreferences": "환경설정",
+    "sectionShare": "공유",
+    "sectionSubscription": "구독",
+    "sectionHelp": "도움말",
+    "pushNotifications": "푸시 알림",
+    "enableNotificationsShort": "알림 활성화",
+    "remindersActive_one": "활성 알림 1개",
+    "remindersActive_other": "활성 알림 {{count}}개",
+    "noRemindersConfigured": "알림이 설정되지 않음",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "친구 초대",
+    "edit": "편집",
+    "premium": "프리미엄",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "₩18,900/월",
+    "subscriptionActiveRenewal": "활성 · {{date}}에 갱신",
+    "manageSubscription": "구독 관리",
+    "manageSubscriptionDesc": "수정, 취소 또는 플랜 변경",
+    "paymentHistory": "결제 내역",
+    "faq": "FAQ",
+    "shareInviteText": "Nokta One, Body Reset System을 발견하세요! 내 코드 사용: {{code}}",
+    "comingSoonDevices": "곧 출시",
+    "comingSoonDevicesDesc": "Apple Health, WHOOP, Oura 및 기타 웨어러블과의 연결은 향후 업데이트에서 제공됩니다.",
+    "contactModalTitle": "문의하기",
+    "contactModalDescription": "질문, 버그, 제안이 있으신가요?",
+    "subscriptionModalTitle": "내 구독",
+    "nextPayment": "다음 결제",
+    "paymentMethod": "결제 수단",
+    "changePaymentMethod": "결제 수단 변경",
+    "viewInvoices": "청구서 보기",
+    "cancelSubscription": "구독 취소",
+    "cancelSubscriptionConfirm": "구독을 취소하시겠습니까? Premium 기능에 대한 액세스가 손실됩니다.",
+    "contactToCancel": "취소하려면 support@nokta.app으로 문의하세요.",
+    "subscriptionQuestion": "구독에 대한 문의사항은 support@nokta.app으로 연락하세요.",
+    "remindersModalDescription": "Skane 알림을 받을 시간을 선택하세요.",
+    "remindersNightNote": "22시부터 6시 사이에는 알림이 전송되지 않습니다."
   },
   "invitationsModal": {
     "title": "초대",
@@ -445,7 +491,17 @@
       "deleteDescription": "모든 데이터가 영구적으로 삭제됩니다.",
       "deleting": "삭제 중...",
       "confirmDelete": "삭제 확인",
-      "deleteError": "삭제 중 오류 발생"
+      "deleteError": "삭제 중 오류 발생",
+      "sectionConsents": "동의",
+      "sectionYourData": "귀하의 데이터",
+      "sectionLegalDocuments": "법적 문서",
+      "analyticsAnonymous": "익명 분석",
+      "analyticsHelp": "Nokta 개선에 도움",
+      "marketingEmails": "마케팅 이메일",
+      "marketingHelp": "팁, 뉴스, 제안",
+      "exportJsonDesc": "JSON 형식으로 다운로드(제20조 GDPR)",
+      "deleteDesc": "영구 삭제(제17조 GDPR)",
+      "saved": "✓ 저장됨"
     },
     "subtitle": "우리는 귀하의 개인 정보를 존중합니다. 수락할 항목을 선택하세요.",
     "required": "필수",
@@ -516,7 +572,20 @@
     "featureScan": "3초 얼굴 스캔",
     "featureAction": "30초 마이크로 액션",
     "featureResult": "즉시 결과",
-    "skaneIndex": "SKANE INDEX"
+    "skaneIndex": "SKANE INDEX",
+    "headlinePrefixUse": "Use Nokta One when",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
+    "tagline": "Body Reset System"
   },
   "firstSkaneResult": {
     "title": "몸을 리셋할 필요가 있습니다.",
@@ -714,7 +783,10 @@
     "deleteConfirmDescription": "모든 데이터가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다.",
     "deleteConfirmLabel": "확인을 위해 DELETE 입력",
     "cancel": "취소",
-    "confirmDelete": "영구 삭제"
+    "confirmDelete": "영구 삭제",
+    "rgpdNotice": "GDPR에 따라 귀하는 데이터에 대한 접근, 수정, 삭제 및 이전 권리가 있습니다. 문의: privacy@nokta.app",
+    "deleteConfirmWarning": "이 작업은 되돌릴 수 없습니다",
+    "deleteConfirmDetails": "모든 데이터가 영구적으로 삭제됩니다: 스캔 기록, 설정, 통계."
   },
   "privacyPolicy": {
     "title": "개인정보 보호정책",

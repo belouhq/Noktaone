@@ -22,7 +22,11 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     // Utiliser requestAnimationFrame pour s'assurer que le DOM est prêt
     const rafId = requestAnimationFrame(() => {
       // Côté client uniquement : charger la langue sauvegardée
-      const savedLanguage = localStorage.getItem('language');
+      let savedLanguage = localStorage.getItem('language');
+      if (!savedLanguage) {
+        savedLanguage = localStorage.getItem('selectedLanguage');
+        if (savedLanguage) localStorage.setItem('language', savedLanguage);
+      }
       
       if (savedLanguage && savedLanguage !== i18n.language) {
         // Changer la langue APRÈS l'hydratation

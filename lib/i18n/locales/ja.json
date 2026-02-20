@@ -8,11 +8,13 @@
     "retry": "再試行",
     "loading": "読み込み中...",
     "error": "エラー",
-    "success": "成功"
+    "success": "成功",
+    "landscapeWarning": "スマートフォンを縦向きに回転してください"
   },
   "nav": {
     "home": "ホーム",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "設定"
   },
   "home": {
@@ -22,7 +24,11 @@
     "lastSkaneTitle": "最後のスキャン",
     "lastSkaneEmpty": "—",
     "helpAria": "ヘルプ",
-    "startSkaneAria": "Skaneを開始"
+    "startSkaneAria": "Skaneを開始",
+    "recentHistory": "Recent history",
+    "streakDays": "day streak",
+    "totalSkanes": "Total skanes",
+    "newSkane": "New Skane"
   },
   "skane": {
     "startSkane": "Skaneを開始",
@@ -59,7 +65,10 @@
     "actionCompleted": "アクション完了 ✓",
     "observeFeeling": "自分の気分に注意してください。",
     "breatheWithRhythm": "リズムに合わせて呼吸する。",
-    "canPutPhoneDown": "電話を置いても大丈夫です。"
+    "canPutPhoneDown": "電話を置いても大丈夫です。",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "states": {
     "highActivation": "高い活性",
@@ -236,7 +245,44 @@
     "contactUs": "お問い合わせ",
     "editProfileAria": "プロフィールを編集",
     "notificationPermissionDeniedDesc": "選択した時間にリマインダーを受け取るために通知を許可してください。",
-    "enableNotifications": "通知を許可"
+    "enableNotifications": "通知を許可",
+    "sectionNotifications": "通知",
+    "sectionPreferences": "設定",
+    "sectionShare": "共有",
+    "sectionSubscription": "プラン",
+    "sectionHelp": "ヘルプ",
+    "pushNotifications": "プッシュ通知",
+    "enableNotificationsShort": "通知を有効にする",
+    "remindersActive_one": "1件のアクティブなリマインダー",
+    "remindersActive_other": "{{count}}件のアクティブなリマインダー",
+    "noRemindersConfigured": "リマインダーが設定されていません",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "友達を招待",
+    "edit": "編集",
+    "premium": "プレミアム",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "¥1,899/月",
+    "subscriptionActiveRenewal": "アクティブ · {{date}}に更新",
+    "manageSubscription": "プラン管理",
+    "manageSubscriptionDesc": "変更、キャンセル、プラン変更",
+    "paymentHistory": "支払い履歴",
+    "faq": "FAQ",
+    "shareInviteText": "Nokta One、Body Reset Systemを発見！私のコードを使用: {{code}}",
+    "comingSoonDevices": "近日公開",
+    "comingSoonDevicesDesc": "Apple Health、WHOOP、Ouraなどのウェアラブルとの接続は今後のアップデートで利用可能になります。",
+    "contactModalTitle": "お問い合わせ",
+    "contactModalDescription": "質問、バグ、提案はありますか？",
+    "subscriptionModalTitle": "マイプラン",
+    "nextPayment": "次の支払い",
+    "paymentMethod": "支払い方法",
+    "changePaymentMethod": "支払い方法を変更",
+    "viewInvoices": "請求書を表示",
+    "cancelSubscription": "プランをキャンセル",
+    "cancelSubscriptionConfirm": "プランをキャンセルしてもよろしいですか？Premium機能へのアクセスがなくなります。",
+    "contactToCancel": "キャンセルについては support@nokta.app までお問い合わせください。",
+    "subscriptionQuestion": "プランに関するご質問は support@nokta.app までお問い合わせください。",
+    "remindersModalDescription": "Skaneのリマインダーを受け取る時間を選択してください。",
+    "remindersNightNote": "22時から6時の間はリマインダーが送信されません。"
   },
   "invitationsModal": {
     "title": "招待",
@@ -445,7 +491,17 @@
       "deleteDescription": "すべてのデータが完全に削除されます。",
       "deleting": "削除中...",
       "confirmDelete": "削除を確認",
-      "deleteError": "削除中にエラーが発生しました"
+      "deleteError": "削除中にエラーが発生しました",
+      "sectionConsents": "同意",
+      "sectionYourData": "あなたのデータ",
+      "sectionLegalDocuments": "法的文書",
+      "analyticsAnonymous": "匿名 Analytics",
+      "analyticsHelp": "Noktaの改善に役立ちます",
+      "marketingEmails": "マーケティングメール",
+      "marketingHelp": "ヒント、ニュース、オファー",
+      "exportJsonDesc": "JSON形式でダウンロード(第20条 GDPR)",
+      "deleteDesc": "完全削除(第17条 GDPR)",
+      "saved": "✓ 保存しました"
     },
     "subtitle": "あなたのプライバシーを尊重します。受け入れる内容を選んでください。",
     "required": "必須",
@@ -516,7 +572,20 @@
     "featureScan": "3秒顔スキャン",
     "featureAction": "30秒マイクロアクション",
     "featureResult": "即座の結果",
-    "skaneIndex": "SKANE INDEX"
+    "skaneIndex": "SKANE INDEX",
+    "headlinePrefixUse": "Use Nokta One when",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
+    "tagline": "Body Reset System"
   },
   "firstSkaneResult": {
     "title": "体をリセットする必要があります。",
@@ -714,7 +783,10 @@
     "deleteConfirmDescription": "すべてのデータが完全に削除されます。この操作は取り消せません。",
     "deleteConfirmLabel": "確認するにはDELETEと入力してください",
     "cancel": "キャンセル",
-    "confirmDelete": "完全に削除"
+    "confirmDelete": "完全に削除",
+    "rgpdNotice": "GDPRに従い、お客様のデータへのアクセス、修正、削除、移植の権利があります。お問い合わせ: privacy@nokta.app",
+    "deleteConfirmWarning": "この操作は取り消せません",
+    "deleteConfirmDetails": "すべてのデータが永久に削除されます：スキャン履歴、設定、統計。"
   },
   "privacyPolicy": {
     "title": "プライバシーポリシー",

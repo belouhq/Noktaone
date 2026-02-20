@@ -68,7 +68,8 @@ function generateDeviceFingerprint(): string {
     components.push(`${screen.width}x${screen.height}x${screen.colorDepth}`);
   }
   const ls = safeLocalStorage();
-  const nowStr = Date.now().toString();
+  const now = Date.now();
+  const nowStr = now.toString();
   const firstVisit = (ls && ls.getItem("nokta_first_visit")) || nowStr;
   if (ls) ls.setItem("nokta_first_visit", firstVisit);
   components.push(firstVisit);
@@ -77,7 +78,7 @@ function generateDeviceFingerprint(): string {
     "device_" +
     Math.abs(hashString(fingerprint)).toString(16) +
     "_" +
-    nowStr.toString(36)
+    now.toString(36)
   );
 }
 

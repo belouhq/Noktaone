@@ -8,11 +8,13 @@
     "retry": "Reintentar",
     "loading": "Cargando...",
     "error": "Error",
-    "success": "Éxito"
+    "success": "Éxito",
+    "landscapeWarning": "Por favor gira tu teléfono en modo retrato"
   },
   "nav": {
     "home": "Inicio",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "Ajustes"
   },
   "home": {
@@ -22,7 +24,11 @@
     "lastSkaneTitle": "Último escaneo",
     "lastSkaneEmpty": "—",
     "helpAria": "Ayuda",
-    "startSkaneAria": "Iniciar un Skane"
+    "startSkaneAria": "Iniciar un Skane",
+    "recentHistory": "Historial reciente",
+    "streakDays": "días seguidos",
+    "totalSkanes": "Skanes total",
+    "newSkane": "Nuevo Skane"
   },
   "skane": {
     "startSkane": "Iniciar Skane",
@@ -59,7 +65,10 @@
     "actionCompleted": "Acción completada ✓",
     "observeFeeling": "Nota cómo te sientes.",
     "breatheWithRhythm": "Respira con el ritmo.",
-    "canPutPhoneDown": "Puedes dejar tu teléfono."
+    "canPutPhoneDown": "Puedes dejar tu teléfono.",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "feedback": {
     "howDoYouFeel": "¿Cómo te sientes?",
@@ -155,7 +164,44 @@
     "contactUs": "Contáctanos",
     "editProfileAria": "Editar perfil",
     "notificationPermissionDeniedDesc": "Permite las notificaciones para recibir tus recordatorios a las horas que has elegido.",
-    "enableNotifications": "Permitir notificaciones"
+    "enableNotifications": "Permitir notificaciones",
+    "sectionNotifications": "Notificaciones",
+    "sectionPreferences": "Preferencias",
+    "sectionShare": "Compartir",
+    "sectionSubscription": "Suscripción",
+    "sectionHelp": "Ayuda",
+    "pushNotifications": "Notificaciones push",
+    "enableNotificationsShort": "Activar notificaciones",
+    "remindersActive_one": "1 recordatorio activo",
+    "remindersActive_other": "{{count}} recordatorios activos",
+    "noRemindersConfigured": "Ningún recordatorio configurado",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "Invitar amigos",
+    "edit": "Editar",
+    "premium": "Premium",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "18,99 €/mes",
+    "subscriptionActiveRenewal": "Activo · Renovación el {{date}}",
+    "manageSubscription": "Gestionar suscripción",
+    "manageSubscriptionDesc": "Modificar, cancelar o cambiar de plan",
+    "paymentHistory": "Historial de pagos",
+    "faq": "FAQ",
+    "shareInviteText": "Descubre Nokta One, el Body Reset System! Usa mi código: {{code}}",
+    "comingSoonDevices": "Próximamente",
+    "comingSoonDevicesDesc": "La conexión con Apple Health, WHOOP, Oura y otros wearables estará disponible en una actualización futura.",
+    "contactModalTitle": "Contáctanos",
+    "contactModalDescription": "¿Una pregunta, un error, una sugerencia?",
+    "subscriptionModalTitle": "Mi suscripción",
+    "nextPayment": "Próximo pago",
+    "paymentMethod": "Método de pago",
+    "changePaymentMethod": "Cambiar método de pago",
+    "viewInvoices": "Ver facturas",
+    "cancelSubscription": "Cancelar suscripción",
+    "cancelSubscriptionConfirm": "¿Estás seguro de que quieres cancelar tu suscripción? Perderás el acceso a las funciones Premium.",
+    "contactToCancel": "Contacta support@nokta.app para cancelar.",
+    "subscriptionQuestion": "Para cualquier pregunta sobre tu suscripción, contacta support@nokta.app",
+    "remindersModalDescription": "Elige cuándo quieres recibir un recordatorio para hacer un Skane.",
+    "remindersNightNote": "Los recordatorios no se envían entre las 22h y las 6h."
   },
   "invitationsModal": {
     "title": "Invitaciones",
@@ -445,7 +491,17 @@
       "deleteDescription": "Todos tus datos se eliminarán de forma permanente.",
       "deleting": "Eliminando...",
       "confirmDelete": "Confirmar eliminación",
-      "deleteError": "Error al eliminar"
+      "deleteError": "Error al eliminar",
+      "sectionConsents": "Consentimientos",
+      "sectionYourData": "Tus datos",
+      "sectionLegalDocuments": "Documentos legales",
+      "analyticsAnonymous": "Analytics anónimos",
+      "analyticsHelp": "Ayuda a mejorar Nokta",
+      "marketingEmails": "Emails de marketing",
+      "marketingHelp": "Consejos, novedades, ofertas",
+      "exportJsonDesc": "Descargar en formato JSON (Art. 20 RGPD)",
+      "deleteDesc": "Eliminación definitiva (Art. 17 RGPD)",
+      "saved": "✓ Guardado"
     },
     "subtitle": "Respetamos tu privacidad. Elige lo que aceptas.",
     "required": "Obligatorio",
@@ -504,7 +560,19 @@
     "start": "Comenzar",
     "alreadyAccount": "¿Ya tienes una cuenta?",
     "headlinePrefix": "Mide tu",
+    "headlinePrefixUse": "Usa Nokta One cuando",
     "headlineSuffix": "en 3 segundos.",
+    "headline0": "un mensaje te crispa.",
+    "headline1": "una respuesta te bloquea.",
+    "headline2": "una decisión te paraliza.",
+    "headline3": "entras en reunión.",
+    "headline4": "una llamada te ha vaciado.",
+    "headline5": "tienes que tomar la palabra.",
+    "headline6": "haces scroll sin darte cuenta.",
+    "headline7": "tu cerebro satura.",
+    "headline8": "cambias de pantalla sin parar.",
+    "headline9": "estás en la cama pero no listo para dormir.",
+    "headline10": "tu cuerpo está cansado pero no tu mente.",
     "words": {
       "stress": "estrés",
       "tension": "tensión",
@@ -513,9 +581,10 @@
     },
     "subheadline": "Resetea tu sistema nervioso con una microacción de 30 segundos.",
     "disclaimer": "Señal de bienestar · No es un consejo médico",
-    "featureScan": "Escaneo facial 3s",
-    "featureAction": "Microacción 30s",
+    "featureScan": "Escaneo facial",
+    "featureAction": "Acción 30s",
     "featureResult": "Resultado instantáneo",
+    "tagline": "Body Reset System",
     "skaneIndex": "SKANE INDEX"
   },
   "firstSkaneResult": {
@@ -714,7 +783,10 @@
     "deleteConfirmDescription": "Todos tus datos se eliminarán de forma permanente. Esta acción es irreversible.",
     "deleteConfirmLabel": "Escribe DELETE para confirmar",
     "cancel": "Cancelar",
-    "confirmDelete": "Eliminar permanentemente"
+    "confirmDelete": "Eliminar permanentemente",
+    "rgpdNotice": "De conformidad con el RGPD, tiene derecho de acceso, rectificación, supresión y portabilidad de sus datos. Contacto: privacy@nokta.app",
+    "deleteConfirmWarning": "Esta acción es irreversible",
+    "deleteConfirmDetails": "Todos tus datos se eliminarán permanentemente: historial de escaneos, preferencias, estadísticas."
   },
   "privacyPolicy": {
     "title": "Política de Privacidad",

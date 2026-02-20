@@ -40,10 +40,6 @@ export function useNotificationSystem({
         new Notification(title, {
           body,
           icon: "/icons/icon-192.png",
-          badge: "/icons/icon-192.png",
-          tag: "nokta-reminder",
-          renotify: true,
-          vibrate: [100, 50, 100],
         });
       }, delay);
     },

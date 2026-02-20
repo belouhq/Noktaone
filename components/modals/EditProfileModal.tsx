@@ -92,7 +92,7 @@ export default function EditProfileModal({
             onClick={(e) => e.stopPropagation()}
           >
             <div
-              className="relative w-full max-w-[430px] max-h-[90vh] sm:max-h-[85vh] rounded-t-2xl sm:rounded-2xl overflow-hidden bg-black flex flex-col"
+              className="relative w-full max-w-[430px] h-[90vh] sm:h-[85vh] rounded-t-2xl sm:rounded-2xl overflow-hidden bg-black flex flex-col min-h-0"
               style={{ boxShadow: "0 -4px 24px rgba(0,0,0,0.5)" }}
             >
               <EditProfileScreen
@@ -103,7 +103,7 @@ export default function EditProfileModal({
                 showBottomNav
                 embeddedInModal
                 activeNav="settings"
-                onHome={() => handleNav("/")}
+                onHome={() => handleNav("/home")}
                 onSkane={() => handleNav("/skane")}
                 onSettings={() => handleNav("/settings")}
               />

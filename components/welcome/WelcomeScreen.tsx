@@ -1,54 +1,29 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 // ============================================
 // NOKTA ONE - ÉCRAN D'ACCUEIL / WELCOME
-// ✅ AUDIT UI APPLE-LIKE (dernier code reçu pour la page d'accueil)
+// ✅ Connecté à i18n pour toutes les langues
 // ============================================
 
-const DYNAMIC_HEADLINES = [
-  "un message te crispe.",
-  "une réponse te bloque.",
-  "une décision te paralyse.",
-  "tu entres en réunion.",
-  "un call t'a vidé.",
-  "tu dois prendre la parole.",
-  "tu scrolles sans t'en rendre compte.",
-  "ton cerveau sature.",
-  "tu switch d'un écran à l'autre.",
-  "tu es au lit mais pas prêt à dormir.",
-  "ton corps est fatigué mais pas ton mental.",
-];
-
-const DYNAMIC_HEADLINES_US = [
-  "a message throws you off.",
-  "you freeze on a decision.",
-  "something triggers you.",
-  "you walk into a meeting.",
-  "a call drains you.",
-  "you need to speak up.",
-  "you catch yourself doom-scrolling.",
-  "your brain feels overloaded.",
-  "you're switching tabs nonstop.",
-  "your body's tired but your mind won't stop.",
-  "you're in bed but can't shut off.",
-];
+const HEADLINE_KEYS = ["headline0", "headline1", "headline2", "headline3", "headline4", "headline5", "headline6", "headline7", "headline8", "headline9", "headline10"] as const;
 
 export const WelcomeScreen = ({
   onStart = () => {},
   onLogin = () => {},
-  locale = "fr",
 }: {
   onStart?: () => void;
   onLogin?: () => void;
-  locale?: "fr" | "en";
+  locale?: string;
 }) => {
+  const { t } = useTranslation();
   const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [shownIndices, setShownIndices] = useState<number[]>([]);
 
-  const headlines = locale === "en" ? DYNAMIC_HEADLINES_US : DYNAMIC_HEADLINES;
+  const headlines = useMemo(() => HEADLINE_KEYS.map((k) => t(`welcome.${k}`)), [t]);
 
   const getRandomUnseenIndex = (shown: number[], total: number) => {
     if (shown.length >= total) return Math.floor(Math.random() * total);
@@ -89,7 +64,7 @@ export const WelcomeScreen = ({
         </div>
         <div style={styles.headlineContainer}>
           <p style={styles.headlineFixed}>
-            {locale === "en" ? "Use Nokta One when" : "Utilise Nokta One quand"}
+            {t("welcome.headlinePrefixUse")}
           </p>
           <p
             style={{
@@ -100,16 +75,16 @@ export const WelcomeScreen = ({
           >
             {headlines[currentHeadlineIndex]}
           </p>
-          <p style={styles.tagline}>Body Reset System</p>
+          <p style={styles.tagline}>{t("welcome.tagline")}</p>
         </div>
       </main>
       <footer style={styles.footer}>
         <div style={styles.featuresContainer}>
-          <Feature icon={<ScanIcon />} label={locale === "en" ? "Face scan" : "Scan facial"} />
+          <Feature icon={<ScanIcon />} label={t("welcome.featureScan")} />
           <div style={styles.separator} />
-          <Feature icon={<TimerIcon />} label={locale === "en" ? "30s action" : "Action 30s"} />
+          <Feature icon={<TimerIcon />} label={t("welcome.featureAction")} />
           <div style={styles.separator} />
-          <Feature icon={<CheckIcon />} label={locale === "en" ? "Instant result" : "Résultat instantané"} />
+          <Feature icon={<CheckIcon />} label={t("welcome.featureResult")} />
         </div>
         <button
           type="button"
@@ -119,12 +94,12 @@ export const WelcomeScreen = ({
           onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
           onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         >
-          {locale === "en" ? "Get Started" : "Commencer"}
+          {t("welcome.start")}
         </button>
         <button type="button" style={styles.textLink} onClick={onLogin}>
-          {locale === "en" ? "Already have an account?" : "Déjà un compte ?"}
+          {t("welcome.alreadyAccount")}
         </button>
-        <p style={styles.legal}>Wellness signal · Not medical advice</p>
+        <p style={styles.legal}>{t("welcome.disclaimer")}</p>
       </footer>
     </div>
   );

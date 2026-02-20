@@ -17,8 +17,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    // Get initial session with timeout (évite de bloquer si Supabase est lent/inaccessible)
+    const timeoutMs = 8000;
+    Promise.race([
+      supabase.auth.getSession(),
+      new Promise<{ data: { session: null } }>((resolve) =>
+        setTimeout(() => resolve({ data: { session: null } }), timeoutMs)
+      ),
+    ]).then(({ data: { session } }) => {
       setUser(session?.user ?? null);
       setLoading(false);
     });

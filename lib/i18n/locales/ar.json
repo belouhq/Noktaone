@@ -8,11 +8,13 @@
     "retry": "إعادة المحاولة",
     "loading": "جاري التحميل...",
     "error": "خطأ",
-    "success": "نجاح"
+    "success": "نجاح",
+    "landscapeWarning": "يرجى تدوير هاتفك إلى الوضع العمودي"
   },
   "nav": {
     "home": "الرئيسية",
     "skane": "سكان",
+    "skaneboard": "Skaneboard",
     "settings": "الإعدادات"
   },
   "home": {
@@ -22,7 +24,11 @@
     "lastSkaneTitle": "آخر مسح",
     "lastSkaneEmpty": "—",
     "helpAria": "مساعدة",
-    "startSkaneAria": "بدء سكان"
+    "startSkaneAria": "بدء سكان",
+    "recentHistory": "Recent history",
+    "streakDays": "day streak",
+    "totalSkanes": "Total skanes",
+    "newSkane": "New Skane"
   },
   "skane": {
     "startSkane": "ابدأ\nسكان",
@@ -59,7 +65,10 @@
     "actionCompleted": "تمت العملية ✓",
     "observeFeeling": "لاحظ كيف تشعر.",
     "breatheWithRhythm": "تنفس مع الإيقاع.",
-    "canPutPhoneDown": "يمكنك وضع هاتفك."
+    "canPutPhoneDown": "يمكنك وضع هاتفك.",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "states": {
     "highActivation": "تنشيط عالي",
@@ -236,7 +245,44 @@
     "contactUs": "اتصل بنا",
     "editProfileAria": "تعديل الملف الشخصي",
     "notificationPermissionDeniedDesc": "قم بتمكين الإشعارات لتلقي تذكيراتك في الأوقات التي اخترتها.",
-    "enableNotifications": "تمكين الإشعارات"
+    "enableNotifications": "تمكين الإشعارات",
+    "sectionNotifications": "الإشعارات",
+    "sectionPreferences": "التفضيلات",
+    "sectionShare": "مشاركة",
+    "sectionSubscription": "الاشتراك",
+    "sectionHelp": "المساعدة",
+    "pushNotifications": "الإشعارات الفورية",
+    "enableNotificationsShort": "تفعيل الإشعارات",
+    "remindersActive_one": "تذكير واحد نشط",
+    "remindersActive_other": "{{count}} تذكيرات نشطة",
+    "noRemindersConfigured": "لا توجد تذكيرات معينة",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "دعوة الأصدقاء",
+    "edit": "تعديل",
+    "premium": "بريميوم",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "18,99 €/شهر",
+    "subscriptionActiveRenewal": "نشط · التجديد في {{date}}",
+    "manageSubscription": "إدارة الاشتراك",
+    "manageSubscriptionDesc": "تعديل أو إلغاء أو تغيير الخطة",
+    "paymentHistory": "سجل الدفع",
+    "faq": "الأسئلة الشائعة",
+    "shareInviteText": "اكتشف Nokta One، نظام Body Reset! استخدم الرمز الخاص بي: {{code}}",
+    "comingSoonDevices": "قريباً",
+    "comingSoonDevicesDesc": "الاتصال بـ Apple Health و WHOOP و Oura وأجهزة أخرى سيكون متاحاً في تحديث مستقبلي.",
+    "contactModalTitle": "اتصل بنا",
+    "contactModalDescription": "سؤال، خطأ، اقتراح؟",
+    "subscriptionModalTitle": "اشتراكي",
+    "nextPayment": "الدفعة القادمة",
+    "paymentMethod": "طريقة الدفع",
+    "changePaymentMethod": "تغيير طريقة الدفع",
+    "viewInvoices": "عرض الفواتير",
+    "cancelSubscription": "إلغاء الاشتراك",
+    "cancelSubscriptionConfirm": "هل أنت متأكد أنك تريد إلغاء اشتراكك؟ ستخسر الوصول إلى ميزات Premium.",
+    "contactToCancel": "اتصل بـ support@nokta.app للإلغاء.",
+    "subscriptionQuestion": "لأي أسئلة حول اشتراكك، اتصل بـ support@nokta.app",
+    "remindersModalDescription": "اختر متى تريد أن يتم تذكيرك لعمل Skane.",
+    "remindersNightNote": "لا يتم إرسال التذكيرات بين 22:00 و 6:00."
   },
   "invitationsModal": {
     "title": "الدعوات",
@@ -445,7 +491,17 @@
       "deleteDescription": "ستتم إزالة جميع بياناتك بشكل نهائي.",
       "deleting": "جاري الحذف...",
       "confirmDelete": "تأكيد الحذف",
-      "deleteError": "حدث خطأ أثناء الحذف"
+      "deleteError": "حدث خطأ أثناء الحذف",
+      "sectionConsents": "الموافقات",
+      "sectionYourData": "بياناتك",
+      "sectionLegalDocuments": "المستندات القانونية",
+      "analyticsAnonymous": "تحليلات مجهولة",
+      "analyticsHelp": "يساعد في تحسين Nokta",
+      "marketingEmails": "رسائل التسويق",
+      "marketingHelp": "نصائح، أخبار، عروض",
+      "exportJsonDesc": "تحميل بتنسيق JSON (المادة 20 GDPR)",
+      "deleteDesc": "حذف نهائي (المادة 17 GDPR)",
+      "saved": "✓ تم الحفظ"
     },
     "subtitle": "نحن نحترم خصوصيتك. اختر ما تقبله.",
     "required": "إلزامي",
@@ -516,7 +572,20 @@
     "featureScan": "مسح وجه 3 ثوانٍ",
     "featureAction": "عمل مصغر 30 ثانية",
     "featureResult": "نتيجة فورية",
-    "skaneIndex": "SKANE INDEX"
+    "skaneIndex": "SKANE INDEX",
+    "headlinePrefixUse": "Use Nokta One when",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
+    "tagline": "Body Reset System"
   },
   "firstSkaneResult": {
     "title": "جسمك يحتاج إلى إعادة ضبط.",
@@ -714,7 +783,10 @@
     "deleteConfirmDescription": "ستتم إزالة جميع بياناتك بشكل دائم. هذه العملية لا يمكن التراجع عنها.",
     "deleteConfirmLabel": "اكتب DELETE للتأكيد",
     "cancel": "إلغاء",
-    "confirmDelete": "حذف نهائي"
+    "confirmDelete": "حذف نهائي",
+    "rgpdNotice": "وفقًا للائحة العامة لحماية البيانات، لديك الحق في الوصول والتصحيح والمحو وإمكانية نقل بياناتك. الاتصال: privacy@nokta.app",
+    "deleteConfirmWarning": "هذا الإجراء لا رجعة فيه",
+    "deleteConfirmDetails": "سيتم حذف جميع بياناتك نهائيًا: سجل المسح، التفضيلات، الإحصائيات."
   },
   "privacyPolicy": {
     "title": "سياسة الخصوصية",

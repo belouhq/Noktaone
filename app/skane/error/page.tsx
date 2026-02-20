@@ -28,11 +28,11 @@ export default function ErrorPage() {
 
       {/* Error Message */}
       <h1 className="text-2xl font-semibold text-nokta-one-white mb-4 text-center">
-        We have encountered a problem.
+        {t("skane.errorTitle")}
       </h1>
 
       <p className="text-gray-400 text-center mb-8 max-w-sm">
-        Please try again.
+        {t("skane.errorMessage")}
       </p>
 
       {/* Restart Button */}
@@ -47,7 +47,7 @@ export default function ErrorPage() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        Restart Skane
+        {t("skane.errorRetry")}
       </motion.button>
     </main>
   );

@@ -1,11 +1,20 @@
 #!/bin/bash
 # Script de démarrage pour contourner les problèmes de permissions réseau macOS
 
+# Fix EMFILE (too many open files) sur macOS
+ulimit -n 10240 2>/dev/null || true
+
 # Tuer les processus existants
 pkill -9 -f "next dev" 2>/dev/null
 
 # Attendre un peu
 sleep 2
+
+# Nettoyer le cache Next.js si problème
+if [ "${CLEAN:-0}" = "1" ]; then
+  echo "Nettoyage du cache .next..."
+  rm -rf .next
+fi
 
 # Essayer différents ports
 PORTS=(3000 3001 3002 8080 8081)

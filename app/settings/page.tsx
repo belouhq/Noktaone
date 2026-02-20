@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { SafeAreaContainer } from "@/components/ui/SafeAreaContainer";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 // ============================================
 // NOKTA ONE - PAGE PARAMÈTRES COMPLÈTE
@@ -37,14 +38,43 @@ interface ReminderSettings {
 // COMPOSANT PRINCIPAL - PAGE SETTINGS
 // ============================================
 
+const FAQ_ITEM_KEYS = [
+  "whatIsNokta",
+  "whenUseful",
+  "whyOffButOk",
+  "differentFromOthers",
+  "analyzeEmotions",
+  "replaceProfessional",
+  "whyBodyNotMind",
+  "howOften",
+  "forAthletesOnly",
+  "dontBelieveBreathing",
+  "whySoShort",
+  "dataPrivacy",
+  "allLanguages",
+  "whoIsItFor",
+  "whyNow",
+] as const;
+
 export default function SettingsPage() {
   const router = useRouter();
+  const { t, changeLanguage, currentLanguage } = useTranslation();
 
-  // États
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
+  // États - données mockées, pas de chargement réseau
+  const [user, setUser] = useState<UserProfile | null>({
+    id: "user_123",
+    firstName: "Benjamin",
+    lastName: "de Beaupuis",
+    username: "benjamin",
+    email: "benjamin@nokta.app",
+    dateOfBirth: "1993-05-15",
+    country: "FR",
+    avatarUrl: undefined,
+    language: "fr",
+    referralCode: "@benjamin-4521",
+    createdAt: "2026-01-15",
+  });
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
-  const [currentLanguage, setCurrentLanguage] = useState("fr");
 
   // Rappels
   const [reminders, setReminders] = useState<ReminderSettings>({
@@ -102,40 +132,19 @@ export default function SettingsPage() {
     { code: "OTHER", name: "Autre", flag: "🌍" },
   ];
 
-  // Charger les données utilisateur
+  // Restaurer les rappels depuis localStorage
   useEffect(() => {
-    const loadUser = async () => {
-      setTimeout(() => {
-        setUser({
-          id: "user_123",
-          firstName: "Benjamin",
-          lastName: "de Beaupuis",
-          username: "benjamin",
-          email: "benjamin@nokta.app",
-          dateOfBirth: "1993-05-15",
-          country: "FR",
-          avatarUrl: undefined,
-          language: "fr",
-          referralCode: "@benjamin-4521",
-          createdAt: "2026-01-15",
-        });
-        setLoading(false);
-      }, 500);
-    };
-
-    loadUser();
-
-    const savedLang = localStorage.getItem("selectedLanguage");
-    if (savedLang) setCurrentLanguage(savedLang);
-
-    const savedReminders = localStorage.getItem("reminderSettings");
-    if (savedReminders) setReminders(JSON.parse(savedReminders));
+    try {
+      const savedReminders = localStorage.getItem("reminderSettings");
+      if (savedReminders) setReminders(JSON.parse(savedReminders));
+    } catch {
+      // ignore invalid localStorage data
+    }
   }, []);
 
   // Handlers
-  const handleLanguageChange = (langCode: string) => {
-    setCurrentLanguage(langCode);
-    localStorage.setItem("selectedLanguage", langCode);
+  const handleLanguageChange = async (langCode: string) => {
+    await changeLanguage(langCode);
     if (user) setUser({ ...user, language: langCode });
     setShowLanguageModal(false);
   };
@@ -183,19 +192,6 @@ export default function SettingsPage() {
     }
   };
 
-  // Loading
-  if (loading) {
-    return (
-      <SafeAreaContainer currentPage="settings">
-        <div style={styles.container}>
-          <div style={styles.loadingContainer}>
-            <div style={styles.spinner} />
-          </div>
-        </div>
-      </SafeAreaContainer>
-    );
-  }
-
   // Si on affiche la sous-page Confidentialité
   if (showPrivacyPage) {
     return (
@@ -215,7 +211,7 @@ export default function SettingsPage() {
     <SafeAreaContainer currentPage="settings">
       <div style={styles.container}>
         <header style={styles.header}>
-          <h1 style={styles.headerTitle}>Paramètres</h1>
+          <h1 style={styles.headerTitle}>{t("settings.settingsSection")}</h1>
         </header>
 
         <div style={styles.content}>
@@ -244,19 +240,19 @@ export default function SettingsPage() {
                 style={styles.editProfileButton}
                 onClick={() => setShowEditProfile(true)}
               >
-                Modifier
+                {t("settings.edit")}
               </button>
             </div>
           </section>
 
           {/* SECTION NOTIFICATIONS */}
           <section style={styles.section}>
-            <h2 style={styles.sectionTitle}>Notifications</h2>
+            <h2 style={styles.sectionTitle}>{t("settings.sectionNotifications")}</h2>
             <div style={styles.settingsGroup}>
               <SettingsRow
                 icon={<BellIcon />}
-                label="Notifications push"
-                description="Activer les notifications"
+                label={t("settings.pushNotifications")}
+                description={t("settings.enableNotificationsShort")}
                 trailing={
                   <Toggle
                     checked={notificationsEnabled}
@@ -269,11 +265,11 @@ export default function SettingsPage() {
                   <Divider />
                   <SettingsRow
                     icon={<ClockIcon />}
-                    label="Rappels quotidiens"
+                    label={t("settings.dailyReminders")}
                     description={
                       activeRemindersCount > 0
-                        ? `${activeRemindersCount} rappel${activeRemindersCount > 1 ? "s" : ""} actif${activeRemindersCount > 1 ? "s" : ""}`
-                        : "Aucun rappel configuré"
+                        ? t("settings.remindersActive", { count: activeRemindersCount })
+                        : t("settings.noRemindersConfigured")
                     }
                     onClick={() => setShowRemindersModal(true)}
                     hasArrow
@@ -285,11 +281,11 @@ export default function SettingsPage() {
 
           {/* SECTION PRÉFÉRENCES */}
           <section style={styles.section}>
-            <h2 style={styles.sectionTitle}>Préférences</h2>
+            <h2 style={styles.sectionTitle}>{t("settings.sectionPreferences")}</h2>
             <div style={styles.settingsGroup}>
               <SettingsRow
                 icon={<GlobeIcon />}
-                label="Langue"
+                label={t("settings.language")}
                 value={`${currentLang?.flag} ${currentLang?.name}`}
                 onClick={() => setShowLanguageModal(true)}
                 hasArrow
@@ -297,8 +293,8 @@ export default function SettingsPage() {
               <Divider />
               <SettingsRow
                 icon={<WatchIcon />}
-                label="Appareils connectés"
-                description="Apple Health, WHOOP, Oura..."
+                label={t("settings.connectedDevices")}
+                description={t("settings.devicesShortDescription")}
                 onClick={() => setShowDevicesModal(true)}
                 hasArrow
               />
@@ -307,11 +303,11 @@ export default function SettingsPage() {
 
           {/* SECTION PARTAGER */}
           <section style={styles.section}>
-            <h2 style={styles.sectionTitle}>Partager</h2>
+            <h2 style={styles.sectionTitle}>{t("settings.sectionShare")}</h2>
             <div style={styles.settingsGroup}>
               <SettingsRow
                 icon={<GiftIcon />}
-                label="Code parrainage"
+                label={t("settings.referralCode")}
                 value={user?.referralCode || ""}
                 trailing={
                   <button
@@ -328,12 +324,12 @@ export default function SettingsPage() {
               <Divider />
               <SettingsRow
                 icon={<UsersIcon />}
-                label="Inviter des amis"
+                label={t("settings.inviteFriends")}
                 onClick={() => {
                   if (navigator.share && user?.referralCode) {
                     navigator.share({
                       title: "Nokta One",
-                      text: `Découvre Nokta One, le Body Reset System ! Utilise mon code : ${user.referralCode}`,
+                      text: t("settings.shareInviteText", { code: user.referralCode }),
                       url: "https://nokta.app",
                     });
                   }
@@ -346,31 +342,31 @@ export default function SettingsPage() {
 
           {/* SECTION ABONNEMENT */}
           <section style={styles.section}>
-            <h2 style={styles.sectionTitle}>Abonnement</h2>
+            <h2 style={styles.sectionTitle}>{t("settings.sectionSubscription")}</h2>
             <div style={styles.settingsGroup}>
               <div style={styles.subscriptionCard}>
                 <div style={styles.subscriptionInfo}>
-                  <div style={styles.subscriptionBadge}>Premium</div>
-                  <p style={styles.subscriptionPlan}>Nokta One Premium</p>
-                  <p style={styles.subscriptionPrice}>18,99 €/mois</p>
+                  <div style={styles.subscriptionBadge}>{t("settings.premium")}</div>
+                  <p style={styles.subscriptionPlan}>{t("settings.premiumPlan")}</p>
+                  <p style={styles.subscriptionPrice}>{t("settings.premiumPrice")}</p>
                   <p style={styles.subscriptionStatus}>
                     <span style={styles.statusDot} />
-                    Actif · Renouvellement le 15 fév. 2026
+                    {t("settings.subscriptionActiveRenewal", { date: "15 fév. 2026" })}
                   </p>
                 </div>
               </div>
               <Divider />
               <SettingsRow
                 icon={<CreditCardIcon />}
-                label="Gérer mon abonnement"
-                description="Modifier, annuler ou changer de forfait"
+                label={t("settings.manageSubscription")}
+                description={t("settings.manageSubscriptionDesc")}
                 onClick={handleManageSubscription}
                 hasArrow
               />
               <Divider />
               <SettingsRow
                 icon={<ReceiptIcon />}
-                label="Historique des paiements"
+                label={t("settings.paymentHistory")}
                 onClick={handleManageSubscription}
                 hasArrow
               />
@@ -379,18 +375,18 @@ export default function SettingsPage() {
 
           {/* SECTION AIDE */}
           <section style={styles.section}>
-            <h2 style={styles.sectionTitle}>Aide</h2>
+            <h2 style={styles.sectionTitle}>{t("settings.sectionHelp")}</h2>
             <div style={styles.settingsGroup}>
               <SettingsRow
                 icon={<HelpIcon />}
-                label="FAQ"
+                label={t("settings.faq")}
                 onClick={() => setShowFAQModal(true)}
                 hasArrow
               />
               <Divider />
               <SettingsRow
                 icon={<MessageIcon />}
-                label="Nous contacter"
+                label={t("settings.contactUs")}
                 onClick={() => setShowContactModal(true)}
                 hasArrow
               />
@@ -411,7 +407,7 @@ export default function SettingsPage() {
           <section style={styles.logoutSection}>
             <button style={styles.logoutButton} onClick={handleLogout}>
               <LogoutIcon />
-              <span>Déconnexion</span>
+              <span>{t("settings.logOut")}</span>
             </button>
             <p style={styles.versionText}>v1.0.0 · Nokta One</p>
           </section>
@@ -428,7 +424,7 @@ export default function SettingsPage() {
         )}
 
         {showLanguageModal && (
-          <Modal onClose={() => setShowLanguageModal(false)} title="Langue">
+          <Modal onClose={() => setShowLanguageModal(false)} title={t("settings.language")}>
             <div style={styles.languageList}>
               {LANGUAGES.map((lang) => (
                 <button
@@ -462,46 +458,36 @@ export default function SettingsPage() {
         )}
 
         {showDevicesModal && (
-          <Modal onClose={() => setShowDevicesModal(false)} title="Appareils connectés">
+          <Modal onClose={() => setShowDevicesModal(false)} title={t("settings.connectedDevices")}>
             <div style={styles.comingSoonContent}>
               <WatchIcon style={{ width: 48, height: 48, color: "#636366" }} />
-              <p style={styles.comingSoonText}>Bientôt disponible</p>
+              <p style={styles.comingSoonText}>{t("settings.comingSoonDevices")}</p>
               <p style={styles.comingSoonDescription}>
-                La connexion avec Apple Health, Oura, WHOOP et autres wearables
-                sera disponible dans une prochaine mise à jour.
+                {t("settings.comingSoonDevicesDesc")}
               </p>
             </div>
           </Modal>
         )}
 
         {showFAQModal && (
-          <Modal onClose={() => setShowFAQModal(false)} title="FAQ">
+          <Modal onClose={() => setShowFAQModal(false)} title={t("faq.title")}>
             <div style={styles.faqContent}>
-              <FAQItem
-                question="Comment fonctionne le Skane ?"
-                answer="Le Skane analyse votre visage pendant 3 secondes pour évaluer les signes de stress physiologique via l'IA."
-              />
-              <FAQItem
-                question="Mes données sont-elles sécurisées ?"
-                answer="Oui. Les scans sont analysés localement. Seules les données anonymisées sont stockées si vous l'avez accepté."
-              />
-              <FAQItem
-                question="Les micro-actions sont-elles efficaces ?"
-                answer="Oui, elles sont basées sur des techniques validées : respiration diaphragmatique, stimulation vagale, ancrage sensoriel."
-              />
-              <FAQItem
-                question="Comment annuler mon abonnement ?"
-                answer="Dans Confidentialité & Données, vous pouvez gérer votre abonnement et exporter ou supprimer vos données."
-              />
+              {FAQ_ITEM_KEYS.map((key) => (
+                <FAQItem
+                  key={key}
+                  question={t(`faq.${key}.question`)}
+                  answer={t(`faq.${key}.answer`)}
+                />
+              ))}
             </div>
           </Modal>
         )}
 
         {showContactModal && (
-          <Modal onClose={() => setShowContactModal(false)} title="Nous contacter">
+          <Modal onClose={() => setShowContactModal(false)} title={t("settings.contactModalTitle")}>
             <div style={styles.contactContent}>
               <p style={styles.contactDescription}>
-                Une question, un bug, une suggestion ?
+                {t("settings.contactModalDescription")}
               </p>
               <a href="mailto:support@nokta.app" style={styles.contactOption}>
                 <MailIcon />
@@ -529,7 +515,7 @@ export default function SettingsPage() {
         {showSubscriptionModal && (
           <Modal
             onClose={() => setShowSubscriptionModal(false)}
-            title="Mon abonnement"
+            title={t("settings.subscriptionModalTitle")}
           >
             <div style={styles.subscriptionModalContent}>
               <div style={styles.subscriptionModalCard}>
@@ -548,11 +534,11 @@ export default function SettingsPage() {
                   </span>
                 </div>
                 <div style={styles.subscriptionDetailRow}>
-                  <span style={styles.subscriptionDetailLabel}>Prochain paiement</span>
+                  <span style={styles.subscriptionDetailLabel}>{t("settings.nextPayment")}</span>
                   <span style={styles.subscriptionDetailValue}>15 février 2026</span>
                 </div>
                 <div style={styles.subscriptionDetailRow}>
-                  <span style={styles.subscriptionDetailLabel}>Moyen de paiement</span>
+                  <span style={styles.subscriptionDetailLabel}>{t("settings.paymentMethod")}</span>
                   <span style={styles.subscriptionDetailValue}>•••• 4242</span>
                 </div>
               </div>
@@ -565,7 +551,7 @@ export default function SettingsPage() {
                   }
                 >
                   <CreditCardIcon />
-                  Modifier le moyen de paiement
+                  {t("settings.changePaymentMethod")}
                 </button>
                 <button
                   style={styles.subscriptionActionButton}
@@ -574,27 +560,22 @@ export default function SettingsPage() {
                   }
                 >
                   <ReceiptIcon />
-                  Voir les factures
+                  {t("settings.viewInvoices")}
                 </button>
                 <button
                   style={styles.subscriptionCancelButton}
                   onClick={() => {
-                    if (
-                      confirm(
-                        "Êtes-vous sûr de vouloir annuler votre abonnement ? Vous perdrez l'accès aux fonctionnalités Premium."
-                      )
-                    ) {
-                      alert("Contactez support@nokta.app pour annuler.");
+                    if (confirm(t("settings.cancelSubscriptionConfirm"))) {
+                      alert(t("settings.contactToCancel"));
                     }
                   }}
                 >
-                  Annuler l'abonnement
+                  {t("settings.cancelSubscription")}
                 </button>
               </div>
 
               <p style={styles.subscriptionNote}>
-                Pour toute question concernant votre abonnement, contactez
-                support@nokta.app
+                {t("settings.subscriptionQuestion")}
               </p>
             </div>
           </Modal>
@@ -616,6 +597,7 @@ function PrivacyDataPage({
   user: UserProfile | null;
 }) {
   const router = useRouter();
+  const { t } = useTranslation();
   const [consent, setConsent] = useState({
     analytics: true,
     marketing: false,
@@ -656,7 +638,7 @@ function PrivacyDataPage({
       a.download = `nokta-data-${user?.username || "user"}-${new Date().toISOString().split("T")[0]}.json`;
       a.click();
     } catch (e) {
-      alert("Erreur lors de l'export");
+      alert(t("consent.settings.exportError"));
     } finally {
       setExporting(false);
     }
@@ -669,7 +651,7 @@ function PrivacyDataPage({
       localStorage.clear();
       router.push("/");
     } catch (e) {
-      alert("Erreur lors de la suppression");
+      alert(t("consent.settings.deleteError"));
     } finally {
       setDeleting(false);
     }
@@ -680,19 +662,19 @@ function PrivacyDataPage({
       <header style={styles.subPageHeader}>
         <button style={styles.backButton} onClick={onBack}>
           <ChevronLeftIcon />
-          <span>Retour</span>
+          <span>{t("common.back")}</span>
         </button>
-        <h1 style={styles.subPageTitle}>Confidentialité & Données</h1>
+        <h1 style={styles.subPageTitle}>{t("settings.privacyAndData")}</h1>
       </header>
 
       <div style={styles.content}>
         <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Consentements</h2>
+          <h2 style={styles.sectionTitle}>{t("consent.settings.sectionConsents")}</h2>
           <div style={styles.settingsGroup}>
             <SettingsRow
               icon={<ChartIcon />}
-              label="Analytics anonymes"
-              description="Aide à améliorer Nokta"
+              label={t("consent.settings.analyticsAnonymous")}
+              description={t("consent.settings.analyticsHelp")}
               trailing={
                 <Toggle
                   checked={consent.analytics}
@@ -703,8 +685,8 @@ function PrivacyDataPage({
             <Divider />
             <SettingsRow
               icon={<MailIcon />}
-              label="Emails marketing"
-              description="Conseils, actualités, offres"
+              label={t("consent.settings.marketingEmails")}
+              description={t("consent.settings.marketingHelp")}
               trailing={
                 <Toggle
                   checked={consent.marketing}
@@ -713,16 +695,16 @@ function PrivacyDataPage({
               }
             />
           </div>
-          {saved && <p style={styles.savedText}>✓ Enregistré</p>}
+          {saved && <p style={styles.savedText}>{t("consent.settings.saved")}</p>}
         </section>
 
         <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Vos données</h2>
+          <h2 style={styles.sectionTitle}>{t("consent.settings.sectionYourData")}</h2>
           <div style={styles.settingsGroup}>
             <SettingsRow
               icon={<DownloadIcon />}
-              label="Exporter mes données"
-              description="Télécharger au format JSON (Art. 20 RGPD)"
+              label={t("consent.settings.export")}
+              description={t("consent.settings.exportJsonDesc")}
               onClick={handleExport}
               trailing={
                 exporting ? (
@@ -735,8 +717,8 @@ function PrivacyDataPage({
             <Divider />
             <SettingsRow
               icon={<TrashIcon />}
-              label="Supprimer mon compte"
-              description="Suppression définitive (Art. 17 RGPD)"
+              label={t("consent.settings.delete")}
+              description={t("consent.settings.deleteDesc")}
               onClick={() => setShowDeleteModal(true)}
               danger
               hasArrow
@@ -745,18 +727,18 @@ function PrivacyDataPage({
         </section>
 
         <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Documents légaux</h2>
+          <h2 style={styles.sectionTitle}>{t("consent.settings.sectionLegalDocuments")}</h2>
           <div style={styles.settingsGroup}>
             <SettingsRow
               icon={<ShieldIcon />}
-              label="Politique de confidentialité"
+              label={t("settings.privacyPolicy")}
               onClick={() => window.open("https://nokta.app/privacy", "_blank")}
               hasArrow
             />
             <Divider />
             <SettingsRow
               icon={<FileIcon />}
-              label="Conditions d'utilisation"
+              label={t("settings.termsOfUse")}
               onClick={() => window.open("https://nokta.app/terms", "_blank")}
               hasArrow
             />
@@ -765,9 +747,7 @@ function PrivacyDataPage({
 
         <section style={styles.rgpdInfo}>
           <p style={styles.rgpdText}>
-            Conformément au RGPD, vous disposez d'un droit d'accès, de
-            rectification, d'effacement et de portabilité de vos données.
-            Contact : privacy@nokta.app
+            {t("privacy.rgpdNotice")}
           </p>
         </section>
       </div>
@@ -778,20 +758,19 @@ function PrivacyDataPage({
             setShowDeleteModal(false);
             setDeleteConfirmText("");
           }}
-          title="Supprimer votre compte ?"
+          title={t("privacy.deleteConfirmTitle")}
         >
           <div style={styles.deleteModalContent}>
             <div style={styles.warningBanner}>
               <WarningIcon />
-              <p>Cette action est irréversible</p>
+              <p>{t("privacy.deleteConfirmWarning")}</p>
             </div>
             <p style={styles.deleteDescription}>
-              Toutes vos données seront définitivement supprimées : historique
-              des scans, préférences, statistiques.
+              {t("privacy.deleteConfirmDetails")}
             </p>
             <div style={styles.deleteInputGroup}>
               <label style={styles.deleteLabel}>
-                Tapez <strong>DELETE</strong> pour confirmer :
+                {t("privacy.deleteConfirmLabel")} :
               </label>
               <input
                 type="text"
@@ -806,7 +785,7 @@ function PrivacyDataPage({
                 style={styles.cancelButton}
                 onClick={() => setShowDeleteModal(false)}
               >
-                Annuler
+                {t("privacy.cancel")}
               </button>
               <button
                 style={{
@@ -816,7 +795,7 @@ function PrivacyDataPage({
                 onClick={handleDelete}
                 disabled={deleteConfirmText !== "DELETE" || deleting}
               >
-                {deleting ? "Suppression..." : "Supprimer"}
+                {deleting ? t("consent.settings.deleting") : t("privacy.confirmDelete")}
               </button>
             </div>
           </div>
@@ -841,6 +820,7 @@ function EditProfileModal({
   onSave: (user: UserProfile) => void;
   onClose: () => void;
 }) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     firstName: user.firstName,
     lastName: user.lastName,
@@ -863,19 +843,19 @@ function EditProfileModal({
       <div style={styles.modalContentFull} onClick={(e) => e.stopPropagation()}>
         <div style={styles.modalHeader}>
           <button style={styles.modalCloseText} onClick={onClose}>
-            Annuler
+            {t("common.cancel")}
           </button>
-          <h2 style={styles.modalTitle}>Modifier le profil</h2>
+          <h2 style={styles.modalTitle}>{t("settings.editProfile")}</h2>
           <button
             style={styles.modalSaveText}
             onClick={handleSave}
             disabled={saving}
           >
-            {saving ? "..." : "OK"}
+            {saving ? "..." : t("common.save")}
           </button>
         </div>
 
-        <div style={styles.editProfileContent}>
+        <div style={styles.editProfileContentScroll}>
           <div style={styles.editAvatarSection}>
             <div style={styles.avatarLarge}>
               {user.avatarUrl ? (
@@ -886,7 +866,7 @@ function EditProfileModal({
                 </span>
               )}
             </div>
-            <button style={styles.changePhotoButton}>Changer la photo</button>
+            <button style={styles.changePhotoButton}>{t("profile.changePhoto")}</button>
           </div>
 
           <div style={styles.formFields}>
@@ -979,6 +959,7 @@ function RemindersModal({
   onChange: (r: ReminderSettings) => void;
   onClose: () => void;
 }) {
+  const { t } = useTranslation();
   const [local, setLocal] = useState(reminders);
 
   const handleToggle = (key: "morning" | "midday" | "evening") => {
@@ -1003,15 +984,15 @@ function RemindersModal({
   };
 
   return (
-    <Modal onClose={onClose} title="Rappels quotidiens">
+    <Modal onClose={onClose} title={t("settings.dailyReminders")}>
       <div style={styles.remindersContent}>
         <p style={styles.remindersDescription}>
-          Choisis quand tu veux être rappelé pour faire un Skane.
+          {t("settings.remindersModalDescription")}
         </p>
 
         {(["morning", "midday", "evening"] as const).map((key) => {
           const emoji = { morning: "🌅", midday: "☀️", evening: "🌙" }[key];
-          const label = { morning: "Matin", midday: "Midi", evening: "Soir" }[key];
+          const label = t(`settings.reminder${key === "morning" ? "Morning" : key === "midday" ? "Noon" : "Evening"}`);
           return (
             <div key={key} style={styles.reminderRow}>
               <div style={styles.reminderInfo}>
@@ -1043,7 +1024,7 @@ function RemindersModal({
         })}
 
         <p style={styles.remindersNote}>
-          Les rappels ne sont pas envoyés entre 22h et 6h.
+          {t("settings.remindersNightNote")}
         </p>
       </div>
     </Modal>
@@ -1097,45 +1078,55 @@ const SettingsRow = ({
   hasArrow?: boolean;
   highlight?: boolean;
   danger?: boolean;
-}) => (
-  <button
-    style={{
-      ...styles.settingsRow,
-      backgroundColor: highlight ? "rgba(10, 132, 255, 0.1)" : "transparent",
-    }}
-    onClick={onClick}
-    disabled={!onClick && !trailing}
-  >
-    <div style={styles.settingsRowLeft}>
-      <div
-        style={{
-          ...styles.settingsRowIcon,
-          color: danger ? "#FF453A" : highlight ? "#0A84FF" : "#8E8E93",
-        }}
-      >
-        {icon}
-      </div>
-      <div style={styles.settingsRowText}>
-        <span
+}) => {
+  const isClickable = Boolean(onClick);
+  const rowStyle = {
+    ...styles.settingsRow,
+    backgroundColor: highlight ? "rgba(10, 132, 255, 0.1)" : "transparent",
+    cursor: isClickable ? "pointer" : "default",
+  };
+  return (
+    <div
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      style={rowStyle}
+      onClick={isClickable ? onClick : undefined}
+      onKeyDown={isClickable ? (e) => e.key === "Enter" && onClick?.() : undefined}
+    >
+      <div style={styles.settingsRowLeft}>
+        <div
           style={{
-            ...styles.settingsRowLabel,
-            color: danger ? "#FF453A" : "#FFFFFF",
+            ...styles.settingsRowIcon,
+            color: danger ? "#FF453A" : highlight ? "#0A84FF" : "#8E8E93",
           }}
         >
-          {label}
-        </span>
-        {description && (
-          <span style={styles.settingsRowDescription}>{description}</span>
-        )}
+          {icon}
+        </div>
+        <div style={styles.settingsRowText}>
+          <span
+            style={{
+              ...styles.settingsRowLabel,
+              color: danger ? "#FF453A" : "#FFFFFF",
+            }}
+          >
+            {label}
+          </span>
+          {description && (
+            <span style={styles.settingsRowDescription}>{description}</span>
+          )}
+        </div>
+      </div>
+      <div
+        style={styles.settingsRowRight}
+        onClick={(e) => trailing && e.stopPropagation()}
+      >
+        {value && <span style={styles.settingsRowValue}>{value}</span>}
+        {trailing}
+        {hasArrow && !trailing && <ChevronRightIcon />}
       </div>
     </div>
-    <div style={styles.settingsRowRight}>
-      {value && <span style={styles.settingsRowValue}>{value}</span>}
-      {trailing}
-      {hasArrow && !trailing && <ChevronRightIcon />}
-    </div>
-  </button>
-);
+  );
+};
 
 const Divider = () => <div style={styles.divider} />;
 
@@ -1444,8 +1435,22 @@ const styles: { [key: string]: React.CSSProperties } = {
   settingsRowText: { display: "flex", flexDirection: "column", gap: "2px" },
   settingsRowLabel: { fontSize: "16px", fontWeight: "400" },
   settingsRowDescription: { fontSize: "12px", color: "#636366" },
-  settingsRowRight: { display: "flex", alignItems: "center", gap: "8px" },
-  settingsRowValue: { fontSize: "14px", color: "#636366" },
+  settingsRowRight: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    flexShrink: 1,
+    minWidth: 0,
+  },
+  settingsRowValue: {
+    fontSize: "14px",
+    color: "#636366",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    minWidth: 0,
+    flex: 1,
+  },
   divider: {
     height: "1px",
     backgroundColor: "rgba(255,255,255,0.08)",
@@ -1530,6 +1535,8 @@ const styles: { [key: string]: React.CSSProperties } = {
   copyButton: {
     width: "36px",
     height: "36px",
+    minWidth: "36px",
+    flexShrink: 0,
     borderRadius: "8px",
     backgroundColor: "rgba(255,255,255,0.1)",
     border: "none",
@@ -1597,6 +1604,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     height: "100vh",
     backgroundColor: "#000",
     overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
   },
   modalHeader: {
     display: "flex",
@@ -1604,6 +1613,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     justifyContent: "space-between",
     padding: "20px 24px",
     borderBottom: "1px solid rgba(255,255,255,0.1)",
+    flexShrink: 0,
   },
   modalTitle: { fontSize: "18px", fontWeight: "600", margin: 0 },
   modalClose: {
@@ -1680,6 +1690,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     color: "#8E8E93",
     lineHeight: "1.5",
     margin: 0,
+    whiteSpace: "pre-line",
   },
   contactContent: { display: "flex", flexDirection: "column", gap: "16px" },
   contactDescription: { fontSize: "14px", color: "#8E8E93", margin: 0 },
@@ -1696,6 +1707,16 @@ const styles: { [key: string]: React.CSSProperties } = {
   contactLabel: { fontSize: "12px", color: "#8E8E93", margin: "0 0 2px 0" },
   contactValue: { fontSize: "15px", color: "#FFFFFF", margin: 0 },
   editProfileContent: {
+    padding: "24px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "32px",
+  },
+  editProfileContentScroll: {
+    flex: 1,
+    minHeight: 0,
+    overflowY: "auto",
+    WebkitOverflowScrolling: "touch",
     padding: "24px",
     display: "flex",
     flexDirection: "column",

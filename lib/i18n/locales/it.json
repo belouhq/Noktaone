@@ -8,11 +8,13 @@
     "retry": "Riprova",
     "loading": "Caricamento...",
     "error": "Errore",
-    "success": "Successo"
+    "success": "Successo",
+    "landscapeWarning": "Ruota il telefono in modalità verticale"
   },
   "nav": {
     "home": "Home",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "Impostazioni"
   },
   "home": {
@@ -22,7 +24,11 @@
     "lastSkaneTitle": "Ultima scansione",
     "lastSkaneEmpty": "—",
     "helpAria": "Aiuto",
-    "startSkaneAria": "Avvia un Skane"
+    "startSkaneAria": "Avvia un Skane",
+    "recentHistory": "Cronologia recente",
+    "streakDays": "giorni consecutivi",
+    "totalSkanes": "Skanes totali",
+    "newSkane": "Nuovo Skane"
   },
   "skane": {
     "startSkane": "Avvia Skane",
@@ -59,7 +65,10 @@
     "actionCompleted": "Azione completata ✓",
     "observeFeeling": "Nota come ti senti.",
     "breatheWithRhythm": "Respira con il ritmo.",
-    "canPutPhoneDown": "Puoi mettere giù il telefono."
+    "canPutPhoneDown": "Puoi mettere giù il telefono.",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "feedback": {
     "howDoYouFeel": "Come ti senti?",
@@ -155,7 +164,44 @@
     "contactUs": "Contattaci",
     "editProfileAria": "Modifica profilo",
     "notificationPermissionDeniedDesc": "Abilita le notifiche per ricevere i tuoi promemoria negli orari che hai scelto.",
-    "enableNotifications": "Abilita le notifiche"
+    "enableNotifications": "Abilita le notifiche",
+    "sectionNotifications": "Notifiche",
+    "sectionPreferences": "Preferenze",
+    "sectionShare": "Condividi",
+    "sectionSubscription": "Abbonamento",
+    "sectionHelp": "Aiuto",
+    "pushNotifications": "Notifiche push",
+    "enableNotificationsShort": "Attiva notifiche",
+    "remindersActive_one": "1 promemoria attivo",
+    "remindersActive_other": "{{count}} promemoria attivi",
+    "noRemindersConfigured": "Nessun promemoria configurato",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "Invita amici",
+    "edit": "Modifica",
+    "premium": "Premium",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "18,99 €/mese",
+    "subscriptionActiveRenewal": "Attivo · Rinnovo il {{date}}",
+    "manageSubscription": "Gestisci abbonamento",
+    "manageSubscriptionDesc": "Modifica, annulla o cambia piano",
+    "paymentHistory": "Cronologia pagamenti",
+    "faq": "FAQ",
+    "shareInviteText": "Scopri Nokta One, il Body Reset System! Usa il mio codice: {{code}}",
+    "comingSoonDevices": "Prossimamente",
+    "comingSoonDevicesDesc": "La connessione con Apple Health, WHOOP, Oura e altri wearables sarà disponibile in un aggiornamento futuro.",
+    "contactModalTitle": "Contattaci",
+    "contactModalDescription": "Una domanda, un bug, un suggerimento?",
+    "subscriptionModalTitle": "Il mio abbonamento",
+    "nextPayment": "Prossimo pagamento",
+    "paymentMethod": "Metodo di pagamento",
+    "changePaymentMethod": "Modifica metodo di pagamento",
+    "viewInvoices": "Visualizza fatture",
+    "cancelSubscription": "Annulla abbonamento",
+    "cancelSubscriptionConfirm": "Sei sicuro di voler annullare il tuo abbonamento? Perderai l'accesso alle funzionalità Premium.",
+    "contactToCancel": "Contatta support@nokta.app per annullare.",
+    "subscriptionQuestion": "Per qualsiasi domanda sul tuo abbonamento, contatta support@nokta.app",
+    "remindersModalDescription": "Scegli quando vuoi essere ricordato di fare uno Skane.",
+    "remindersNightNote": "I promemoria non vengono inviati tra le 22 e le 6."
   },
   "invitationsModal": {
     "title": "Inviti",
@@ -445,7 +491,17 @@
       "deleteDescription": "Tutti i tuoi dati saranno eliminati definitivamente.",
       "deleting": "Eliminazione in corso...",
       "confirmDelete": "Conferma eliminazione",
-      "deleteError": "Errore durante l'eliminazione"
+      "deleteError": "Errore durante l'eliminazione",
+      "sectionConsents": "Consensi",
+      "sectionYourData": "I tuoi dati",
+      "sectionLegalDocuments": "Documenti legali",
+      "analyticsAnonymous": "Analytics anonimi",
+      "analyticsHelp": "Aiuta a migliorare Nokta",
+      "marketingEmails": "Email marketing",
+      "marketingHelp": "Consigli, novità, offerte",
+      "exportJsonDesc": "Scarica in formato JSON (Art. 20 GDPR)",
+      "deleteDesc": "Eliminazione definitiva (Art. 17 GDPR)",
+      "saved": "✓ Salvato"
     },
     "subtitle": "Rispettiamo la tua privacy. Scegli cosa accetti.",
     "required": "Obbligatorio",
@@ -516,7 +572,20 @@
     "featureScan": "Scan facciale 3s",
     "featureAction": "Microazione 30s",
     "featureResult": "Risultato istantaneo",
-    "skaneIndex": "SKANE INDEX"
+    "skaneIndex": "SKANE INDEX",
+    "headlinePrefixUse": "Use Nokta One when",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
+    "tagline": "Body Reset System"
   },
   "firstSkaneResult": {
     "title": "Il tuo corpo ha bisogno di un reset.",
@@ -714,7 +783,10 @@
     "deleteConfirmDescription": "Tutti i tuoi dati saranno eliminati definitivamente. Questa azione è irreversibile.",
     "deleteConfirmLabel": "Digita DELETE per confermare",
     "cancel": "Annulla",
-    "confirmDelete": "Elimina definitivamente"
+    "confirmDelete": "Elimina definitivamente",
+    "rgpdNotice": "Conformemente al GDPR, hai diritto di accesso, rettifica, cancellazione e portabilità dei tuoi dati. Contatto: privacy@nokta.app",
+    "deleteConfirmWarning": "Questa azione è irreversibile",
+    "deleteConfirmDetails": "Tutti i tuoi dati saranno eliminati definitivamente: cronologia scansioni, preferenze, statistiche."
   },
   "privacyPolicy": {
     "title": "Informativa sulla Privacy",

@@ -12,8 +12,8 @@ interface SafeAreaContainerProps {
 }
 
 const PATHS: Record<string, string> = {
-  home: '/',
-  skane: '/skane',
+  home: '/home',
+  skane: '/home?tab=skane', // Skaneboard = page Historique récent
   settings: '/settings',
 };
 

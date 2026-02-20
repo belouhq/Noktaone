@@ -8,11 +8,13 @@
     "retry": "Réessayer",
     "loading": "Chargement...",
     "error": "Erreur",
-    "success": "Succès"
+    "success": "Succès",
+    "landscapeWarning": "Veuillez tourner votre téléphone en mode portrait"
   },
   "nav": {
     "home": "Accueil",
     "skane": "Skane",
+    "skaneboard": "Skaneboard",
     "settings": "Paramètres"
   },
   "splash": {
@@ -23,7 +25,19 @@
     "start": "Commencer",
     "alreadyAccount": "Déjà un compte",
     "headlinePrefix": "Mesure ton",
+    "headlinePrefixUse": "Utilise Nokta One quand",
     "headlineSuffix": "en 3 secondes.",
+    "headline0": "un message te crispe.",
+    "headline1": "une réponse te bloque.",
+    "headline2": "une décision te paralyse.",
+    "headline3": "tu entres en réunion.",
+    "headline4": "un call t'a vidé.",
+    "headline5": "tu dois prendre la parole.",
+    "headline6": "tu scrolles sans t'en rendre compte.",
+    "headline7": "ton cerveau sature.",
+    "headline8": "tu switch d'un écran à l'autre.",
+    "headline9": "tu es au lit mais pas prêt à dormir.",
+    "headline10": "ton corps est fatigué mais pas ton mental.",
     "words": {
       "stress": "stress",
       "tension": "tension",
@@ -32,9 +46,10 @@
     },
     "subheadline": "Reset ton système nerveux avec une micro-action de 30 secondes.",
     "disclaimer": "Signal bien-être · Pas un avis médical",
-    "featureScan": "Scan facial 3s",
-    "featureAction": "Micro-action 30s",
-    "featureResult": "Résultat instant",
+    "featureScan": "Scan facial",
+    "featureAction": "Action 30s",
+    "featureResult": "Résultat instantané",
+    "tagline": "Body Reset System",
     "skaneIndex": "SKANE INDEX"
   },
   "firstSkaneResult": {
@@ -87,7 +102,11 @@
     "justNow": "À l'instant",
     "pressToSkane": "Appuyez pour\nskane",
     "helpAria": "Aide",
-    "startSkaneAria": "Commencer un Skane"
+    "startSkaneAria": "Commencer un Skane",
+    "recentHistory": "Historique récent",
+    "streakDays": "jours d'affilée",
+    "totalSkanes": "Skanes total",
+    "newSkane": "Nouveau Skane"
   },
   "homeAdaptation": {
     "inProgress": "Adaptation — Jour {{day}} de 7",
@@ -177,7 +196,10 @@
       "showEyes": "Montrez vos yeux",
       "showMouth": "Montrez votre bouche"
     },
-    "locked": "Verrouillé"
+    "locked": "Verrouillé",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "states": {
     "highActivation": "Haute activation",
@@ -382,7 +404,44 @@
     "licenses": "Licences",
     "privacyAndData": "Confidentialité & Données",
     "contactUs": "Contactez-nous",
-    "editProfileAria": "Modifier le profil"
+    "editProfileAria": "Modifier le profil",
+    "sectionNotifications": "Notifications",
+    "sectionPreferences": "Préférences",
+    "sectionShare": "Partager",
+    "sectionSubscription": "Abonnement",
+    "sectionHelp": "Aide",
+    "pushNotifications": "Notifications push",
+    "enableNotificationsShort": "Activer les notifications",
+    "remindersActive_one": "1 rappel actif",
+    "remindersActive_other": "{{count}} rappels actifs",
+    "noRemindersConfigured": "Aucun rappel configuré",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "Inviter des amis",
+    "edit": "Modifier",
+    "premium": "Premium",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "18,99 €/mois",
+    "subscriptionActiveRenewal": "Actif · Renouvellement le {{date}}",
+    "manageSubscription": "Gérer mon abonnement",
+    "manageSubscriptionDesc": "Modifier, annuler ou changer de forfait",
+    "paymentHistory": "Historique des paiements",
+    "faq": "FAQ",
+    "shareInviteText": "Découvre Nokta One, le Body Reset System ! Utilise mon code : {{code}}",
+    "comingSoonDevices": "Bientôt disponible",
+    "comingSoonDevicesDesc": "La connexion avec Apple Health, WHOOP, Oura et autres wearables sera disponible dans une prochaine mise à jour.",
+    "contactModalTitle": "Nous contacter",
+    "contactModalDescription": "Une question, un bug, une suggestion ?",
+    "subscriptionModalTitle": "Mon abonnement",
+    "nextPayment": "Prochain paiement",
+    "paymentMethod": "Moyen de paiement",
+    "changePaymentMethod": "Modifier le moyen de paiement",
+    "viewInvoices": "Voir les factures",
+    "cancelSubscription": "Annuler l'abonnement",
+    "cancelSubscriptionConfirm": "Êtes-vous sûr de vouloir annuler votre abonnement ? Vous perdrez l'accès aux fonctionnalités Premium.",
+    "contactToCancel": "Contactez support@nokta.app pour annuler.",
+    "subscriptionQuestion": "Pour toute question concernant votre abonnement, contactez support@nokta.app",
+    "remindersModalDescription": "Choisis quand tu veux être rappelé pour faire un Skane.",
+    "remindersNightNote": "Les rappels ne sont pas envoyés entre 22h et 6h."
   },
   "invitationsModal": {
     "title": "Invitations",
@@ -530,7 +589,17 @@
       "deleteDescription": "Toutes vos données seront supprimées définitivement.",
       "deleting": "Suppression...",
       "confirmDelete": "Confirmer la suppression",
-      "deleteError": "Erreur lors de la suppression"
+      "deleteError": "Erreur lors de la suppression",
+      "sectionConsents": "Consentements",
+      "sectionYourData": "Vos données",
+      "sectionLegalDocuments": "Documents légaux",
+      "analyticsAnonymous": "Analytics anonymes",
+      "analyticsHelp": "Aide à améliorer Nokta",
+      "marketingEmails": "Emails marketing",
+      "marketingHelp": "Conseils, actualités, offres",
+      "exportJsonDesc": "Télécharger au format JSON (Art. 20 RGPD)",
+      "deleteDesc": "Suppression définitive (Art. 17 RGPD)",
+      "saved": "✓ Enregistré"
     }
   },
   "privacy": {
@@ -548,7 +617,10 @@
     "deleteConfirmDescription": "Cette action est irréversible. Toutes vos données, y compris l'historique des scans et vos préférences, seront définitivement supprimées.",
     "deleteConfirmLabel": "Tapez DELETE pour confirmer",
     "cancel": "Annuler",
-    "confirmDelete": "Supprimer le compte"
+    "confirmDelete": "Supprimer le compte",
+    "rgpdNotice": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité de vos données. Contact : privacy@nokta.app",
+    "deleteConfirmWarning": "Cette action est irréversible",
+    "deleteConfirmDetails": "Toutes vos données seront définitivement supprimées : historique des scans, préférences, statistiques."
   },
   "info": {
     "whatIsSkane": "QU'EST-CE QU'UN SKANE ?",

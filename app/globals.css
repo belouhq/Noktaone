@@ -543,7 +543,8 @@ body {
   pointer-events: none;
 }
 
-@media (orientation: landscape) and (max-height: 500px) {
+/* Affichage uniquement sur mobile en paysage (pas sur desktop) */
+@media (orientation: landscape) and (max-height: 500px) and (max-width: 900px) {
   .landscape-warning {
     display: flex !important;
     pointer-events: auto !important;

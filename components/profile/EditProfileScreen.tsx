@@ -117,7 +117,7 @@ export default function EditProfileScreen({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Navigation : si le parent ne fournit pas les callbacks, on utilise le router
-  const handleNavHome = onHome ?? (() => router.push("/"));
+  const handleNavHome = onHome ?? (() => router.push("/home"));
   const handleNavSkane = onSkane ?? (() => router.push("/skane"));
   const handleNavSettings = onSettings ?? (() => router.push("/settings"));
 
@@ -163,7 +163,7 @@ export default function EditProfileScreen({
   };
 
   const containerStyle = embeddedInModal
-    ? { ...styles.container, minHeight: 0, height: "100%", maxWidth: "100%" }
+    ? { ...styles.container, minHeight: 0, height: "100%", maxWidth: "100%", overflow: "hidden" as const }
     : styles.container;
   const headerStyle = embeddedInModal
     ? { ...styles.header, paddingTop: "20px" }
@@ -619,9 +619,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
   content: {
     flex: 1,
+    minHeight: 0,
     padding: "0 20px",
     paddingBottom: "180px",
     overflowY: "auto",
+    WebkitOverflowScrolling: "touch",
   },
   section: {
     paddingTop: "24px",

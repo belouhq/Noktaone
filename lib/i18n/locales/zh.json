@@ -8,11 +8,13 @@
     "retry": "重试",
     "loading": "加载中...",
     "error": "错误",
-    "success": "成功"
+    "success": "成功",
+    "landscapeWarning": "请将手机旋转至竖屏模式"
   },
   "nav": {
     "home": "首页",
     "skane": "扫描",
+    "skaneboard": "Skaneboard",
     "settings": "设置"
   },
   "home": {
@@ -33,7 +35,11 @@
     "lastSkaneTitle": "最后一次扫描",
     "lastSkaneEmpty": "—",
     "helpAria": "帮助",
-    "startSkaneAria": "开始Skane"
+    "startSkaneAria": "开始Skane",
+    "recentHistory": "Recent history",
+    "streakDays": "day streak",
+    "totalSkanes": "Total skanes",
+    "newSkane": "New Skane"
   },
   "skane": {
     "startSkane": "开始扫描",
@@ -70,7 +76,10 @@
     "actionCompleted": "操作已完成 ✓",
     "observeFeeling": "注意您的感受。",
     "breatheWithRhythm": "跟着节奏呼吸。",
-    "canPutPhoneDown": "你可以放下手机。"
+    "canPutPhoneDown": "你可以放下手机。",
+    "errorTitle": "We have encountered a problem.",
+    "errorMessage": "Please try again.",
+    "errorRetry": "Restart Skane"
   },
   "feedback": {
     "howDoYouFeel": "你感觉怎么样？",
@@ -166,7 +175,44 @@
     "contactUs": "联系我们",
     "editProfileAria": "编辑个人资料",
     "notificationPermissionDeniedDesc": "允许通知以接收你选择的时间的提醒。",
-    "enableNotifications": "允许通知"
+    "enableNotifications": "允许通知",
+    "sectionNotifications": "通知",
+    "sectionPreferences": "偏好设置",
+    "sectionShare": "分享",
+    "sectionSubscription": "订阅",
+    "sectionHelp": "帮助",
+    "pushNotifications": "推送通知",
+    "enableNotificationsShort": "启用通知",
+    "remindersActive_one": "1 个活跃提醒",
+    "remindersActive_other": "{{count}} 个活跃提醒",
+    "noRemindersConfigured": "未配置提醒",
+    "devicesShortDescription": "Apple Health, WHOOP, Oura...",
+    "inviteFriends": "邀请好友",
+    "edit": "编辑",
+    "premium": "高级版",
+    "premiumPlan": "Nokta One Premium",
+    "premiumPrice": "¥18.99/月",
+    "subscriptionActiveRenewal": "有效 · {{date}} 续订",
+    "manageSubscription": "管理订阅",
+    "manageSubscriptionDesc": "修改、取消或更改套餐",
+    "paymentHistory": "支付历史",
+    "faq": "常见问题",
+    "shareInviteText": "发现 Nokta One，Body Reset System！使用我的邀请码：{{code}}",
+    "comingSoonDevices": "即将推出",
+    "comingSoonDevicesDesc": "与 Apple Health、WHOOP、Oura 等穿戴设备的连接将在未来更新中提供。",
+    "contactModalTitle": "联系我们",
+    "contactModalDescription": "有问题、错误或建议？",
+    "subscriptionModalTitle": "我的订阅",
+    "nextPayment": "下次付款",
+    "paymentMethod": "付款方式",
+    "changePaymentMethod": "更改付款方式",
+    "viewInvoices": "查看发票",
+    "cancelSubscription": "取消订阅",
+    "cancelSubscriptionConfirm": "您确定要取消订阅吗？您将失去对 Premium 功能的访问权限。",
+    "contactToCancel": "请联系 support@nokta.app 取消。",
+    "subscriptionQuestion": "如有任何订阅问题，请联系 support@nokta.app。",
+    "remindersModalDescription": "选择何时接收Skane提醒。",
+    "remindersNightNote": "22:00至6:00之间不发送提醒。"
   },
   "invitationsModal": {
     "title": "邀请",
@@ -456,7 +502,17 @@
       "deleteDescription": "您的所有数据将被永久删除。",
       "deleting": "正在删除...",
       "confirmDelete": "确认删除",
-      "deleteError": "删除时出错"
+      "deleteError": "删除时出错",
+      "sectionConsents": "同意",
+      "sectionYourData": "您的数据",
+      "sectionLegalDocuments": "法律文件",
+      "analyticsAnonymous": "匿名分析",
+      "analyticsHelp": "有助于改进 Nokta",
+      "marketingEmails": "营销邮件",
+      "marketingHelp": "提示、新闻、优惠",
+      "exportJsonDesc": "以 JSON 格式下载（第 20 条 GDPR）",
+      "deleteDesc": "永久删除（第 17 条 GDPR）",
+      "saved": "✓ 已保存"
     },
     "subtitle": "我们尊重您的隐私。选择您接受的内容。",
     "required": "必填",
@@ -527,7 +583,20 @@
     "featureScan": "3秒面部扫描",
     "featureAction": "30秒微动作",
     "featureResult": "即时结果",
-    "skaneIndex": "SKANE INDEX"
+    "skaneIndex": "SKANE INDEX",
+    "headlinePrefixUse": "Use Nokta One when",
+    "headline0": "a message throws you off.",
+    "headline1": "you freeze on a decision.",
+    "headline2": "something triggers you.",
+    "headline3": "you walk into a meeting.",
+    "headline4": "a call drains you.",
+    "headline5": "you need to speak up.",
+    "headline6": "you catch yourself doom-scrolling.",
+    "headline7": "your brain feels overloaded.",
+    "headline8": "you're switching tabs nonstop.",
+    "headline9": "your body's tired but your mind won't stop.",
+    "headline10": "you're in bed but can't shut off.",
+    "tagline": "Body Reset System"
   },
   "firstSkaneResult": {
     "title": "您的身体需要重置。",
@@ -725,7 +794,10 @@
     "deleteConfirmDescription": "您的所有数据将被永久删除。此操作无法恢复。",
     "deleteConfirmLabel": "输入 DELETE 以确认",
     "cancel": "取消",
-    "confirmDelete": "永久删除"
+    "confirmDelete": "永久删除",
+    "rgpdNotice": "根据 GDPR，您有权访问、更正、删除和转移您的数据。联系方式：privacy@nokta.app",
+    "deleteConfirmWarning": "此操作不可逆",
+    "deleteConfirmDetails": "您的所有数据将被永久删除：扫描历史、偏好设置、统计数据。"
   },
   "privacyPolicy": {
     "title": "隐私政策",

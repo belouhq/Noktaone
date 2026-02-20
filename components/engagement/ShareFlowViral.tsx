@@ -343,7 +343,7 @@ export function ShareFlowViral({ shareData, onClose }: ShareFlowProps) {
                 <span>Instagram</span>
               </button>
 
-              {typeof navigator !== "undefined" && navigator.share && (
+              {typeof navigator !== "undefined" && typeof navigator.share === "function" && (
                 <button
                   type="button"
                   style={styles.platformButton}

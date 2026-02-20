@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -H 0.0.0.0",
+    "dev": "WATCHPACK_POLLING=true next dev -H localhost",
     "dev:local": "next dev -H localhost",
+    "dev:network": "WATCHPACK_POLLING=true next dev -H 0.0.0.0",
+    "dev:fix": "bash start-dev.sh",
     "dev:clean": "rm -rf .next && next dev -H 0.0.0.0",
     "dev:fresh": "rm -rf .next && next build && next dev -H 0.0.0.0",
     "prebuild": "npx ts-node --project scripts/tsconfig.json scripts/check-translations.ts",
